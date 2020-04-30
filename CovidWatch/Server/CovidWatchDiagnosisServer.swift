@@ -50,8 +50,8 @@ class CovidWatchDiagnosisServer: DiagnosisServer {
                     os_log(
                         "Fetched positive diagnoses since=%@ response=%@",
                         log: .app,
-                        response.description,
-                        startDate.description
+                        startDate.description,
+                        response.description
                     )
                     
                     let decoder = JSONDecoder()

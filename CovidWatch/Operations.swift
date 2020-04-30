@@ -89,7 +89,8 @@ class DownloadPositiveDiagnosesFromServerOperation: Operation {
                     "Fetching positive diagnoses from server since=%@ failed=%@",
                     log: .app,
                     type: .error,
-                    sinceDate?.description ?? "", error as CVarArg
+                    sinceDate?.description ?? "",
+                    error as CVarArg
             )
             case .success(let positiveDiagnoses):
                 os_log(
@@ -114,7 +115,11 @@ class DownloadPositiveDiagnosesFromServerOperation: Operation {
             return
         }
         
-        os_log("Downloading positive diagnoses from server since=%@ ...", log: .app, sinceDate.description)
+        os_log(
+            "Downloading positive diagnoses from server since=%@ ...",
+            log: .app,
+            sinceDate.description
+        )
         
         currentDownloadTask = server.fetch(since: sinceDate, completion: finish)
     }
