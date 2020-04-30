@@ -138,7 +138,7 @@ class AddPositiveDiagnosesToEventNotificationFramework: Operation, DiagnosisKeyP
             "Processing the %d diagnosis keys of the positive diagnosis with permission number=%@",
             log: .app,
             keysToAdd.count,
-            entries[currentIndex].publicHealthAuthorityPermissionNumber
+            entries[currentIndex].publicHealthAuthorityPermissionNumber ?? ""
         )
         currentIndex += 1
         completion(.success(keysToAdd))

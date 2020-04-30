@@ -6,6 +6,7 @@
 import Foundation
 
 // A struct representing the response from the server for a single entry.
+
 public struct PositiveDiagnosis: Codable {
     
     public struct DiagnosisKey: Codable {
@@ -14,6 +15,6 @@ public struct PositiveDiagnosis: Codable {
     }
     
     let diagnosisKeys: [DiagnosisKey]
-    let publicHealthAuthorityPermissionNumber: String
+    let publicHealthAuthorityPermissionNumber: String?
     let timestamp: Date? // Set by the server, ignored on upload
 }
