@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e2Z-yQ-Lzd">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="PaF-Uz-NdK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e2Z-yQ-Lzd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eTb-l9-dD5">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bWu-Fx-rAT" kind="relationship" relationship="rootViewController" id="CfD-fI-qNA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UMU-5X-5Ue" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="76.339285714285708"/>
+        </scene>
+        <!--Exposures-->
+        <scene sceneID="S5J-7K-XqF">
+            <objects>
+                <tableViewController id="bWu-Fx-rAT" customClass="ExposureInfoTableViewController" customModule="Covid_Watch" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="64" estimatedSectionHeaderHeight="64" sectionFooterHeight="28" id="vEp-54-U4i">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="RM0-Ln-gxP">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4t0-mf-qcJ">
+                                    <rect key="frame" x="16" y="8" width="338" height="68"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Exposure summary" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOH-RV-ynk">
+                                            <rect key="frame" x="0.0" y="0.0" width="338" height="53.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Detail exposure summary" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CM-Ly-r8g" userLabel="Detail Exposure Summary Label">
+                                            <rect key="frame" x="0.0" y="53.5" width="338" height="14.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erc-E8-CEM">
+                                    <rect key="frame" x="0.0" y="20" width="398" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="ilH-bQ-7gt"/>
+                                    </constraints>
+                                    <connections>
+                                        <action selector="handleTapExposureNotificationSummaryButton:" destination="bWu-Fx-rAT" eventType="touchUpInside" id="RKp-fr-J8z"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="erc-E8-CEM" firstAttribute="leading" secondItem="RM0-Ln-gxP" secondAttribute="leading" id="1os-Pg-Mft"/>
+                                <constraint firstAttribute="trailing" secondItem="4t0-mf-qcJ" secondAttribute="trailing" constant="60" id="53W-rh-BLD"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="4t0-mf-qcJ" secondAttribute="bottom" id="6ZV-T3-iaB"/>
+                                <constraint firstItem="4t0-mf-qcJ" firstAttribute="centerY" secondItem="RM0-Ln-gxP" secondAttribute="centerY" id="TTk-qb-rb3"/>
+                                <constraint firstItem="4t0-mf-qcJ" firstAttribute="leading" secondItem="RM0-Ln-gxP" secondAttribute="leadingMargin" constant="8" id="US4-ZB-WhI"/>
+                                <constraint firstItem="4t0-mf-qcJ" firstAttribute="top" secondItem="RM0-Ln-gxP" secondAttribute="topMargin" id="UWx-OA-Coc"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="erc-E8-CEM" secondAttribute="trailingMargin" constant="16" id="VG8-ur-Tpp"/>
+                                <constraint firstItem="erc-E8-CEM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="RM0-Ln-gxP" secondAttribute="top" id="ZiO-XQ-m0F"/>
+                                <constraint firstItem="erc-E8-CEM" firstAttribute="centerY" secondItem="4t0-mf-qcJ" secondAttribute="centerY" id="Zng-45-ygP"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="erc-E8-CEM" secondAttribute="bottom" id="wC2-4V-oQf"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ExposureInfoRow" textLabel="3tV-3Q-K5v" style="IBUITableViewCellStyleDefault" id="1e0-GM-gde">
+                                <rect key="frame" x="0.0" y="112" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1e0-GM-gde" id="aHg-xg-QGX">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3tV-3Q-K5v">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bWu-Fx-rAT" id="Ajy-hK-ezl"/>
+                            <outlet property="delegate" destination="bWu-Fx-rAT" id="zlI-go-aix"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Exposures" id="iJL-C7-LiE">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="icloud.and.arrow.up" catalog="system" id="jiM-nb-Arp">
+                            <connections>
+                                <action selector="handleTapActionButton:" destination="bWu-Fx-rAT" id="BoM-rQ-S0C"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Start" id="n7B-Rx-gXb">
+                                <connections>
+                                    <action selector="handleTapToggleExposureNotificationBarButtonItem:" destination="bWu-Fx-rAT" id="7ey-jm-Poy"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Reset" id="nJH-Lm-GCc">
+                                <connections>
+                                    <action selector="handleTapResetExposureNotificationBarButtonItem:" destination="bWu-Fx-rAT" id="82a-qZ-f6z"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="detailExposureSummaryLabel" destination="9CM-Ly-r8g" id="zWZ-vB-ZpX"/>
+                        <outlet property="exposureSummaryLabel" destination="OOH-RV-ynk" id="Aaf-WF-GmW"/>
+                        <outlet property="tableHeaderView" destination="RM0-Ln-gxP" id="tgm-ed-Y1q"/>
+                        <outlet property="toggleExposureNotificationBarButtonItem" destination="n7B-Rx-gXb" id="xt4-rB-f6h"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gfS-4P-CTZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1059" y="76"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icloud.and.arrow.up" catalog="system" width="128" height="106"/>
+    </resources>
+</document>
