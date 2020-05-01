@@ -37,6 +37,7 @@
 		2DC9211724587071005E2DEA /* CovidWatchDiagnosisServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC9211624587071005E2DEA /* CovidWatchDiagnosisServer.swift */; };
 		2DC9211924588C8F005E2DEA /* URLSession+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC9211824588C8E005E2DEA /* URLSession+Additions.swift */; };
 		2DE6C47B245AB40800D0D7E3 /* ExposureNotification+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9CF4112455E1FA005B085E /* ExposureNotification+Additions.swift */; };
+		E2209580245BA49400819BD1 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E220957F245BA49400819BD1 /* Environment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		2DAA0151245742C0008241E9 /* Operations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
 		2DC9211624587071005E2DEA /* CovidWatchDiagnosisServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidWatchDiagnosisServer.swift; sourceTree = "<group>"; };
 		2DC9211824588C8E005E2DEA /* URLSession+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Additions.swift"; sourceTree = "<group>"; };
+		E220957F245BA49400819BD1 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 				2D9CF3DB2455B9F4005B085E /* LaunchScreen.storyboard */,
 				2D9CF3DE2455B9F4005B085E /* Info.plist */,
 				2D9CF3D62455B9F1005B085E /* CovidWatch.xcdatamodeld */,
+				E220957F245BA49400819BD1 /* Environment.swift */,
 			);
 			path = CovidWatch;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D9CF3F72455B9F5005B085E /* Build configuration list for PBXNativeTarget "CovidWatch" */;
 			buildPhases = (
+				E20D4F06245B9B0000B97B4B /* Environment */,
 				2D9CF3C62455B9F1005B085E /* Sources */,
 				2D9CF3C72455B9F1005B085E /* Frameworks */,
 				2D9CF3C82455B9F1005B085E /* Resources */,
@@ -362,6 +366,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E20D4F06245B9B0000B97B4B /* Environment */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Environment;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# contents of SCHEME_FILE is definied in the scheme > build > pre action\n# SCHEME_FILE path is definied in Target Build Settings User Defined ENV vars\necho \"Running Scheme and IP Sniffer\"\nSCHEME_NAME=`cat ${SCHEME_FILE}`\necho $SCHEME_NAME\necho $INFOPLIST_FILE\n/usr/libexec/PlistBuddy -c \"Set :SchemeName \\\"$SCHEME_NAME\\\"\" \"$INFOPLIST_FILE\"\n\nif [ \"$SCHEME_NAME\" = \"covidwatch-ios-dev\" ]; then\nLOCAL_IP=$(LANG=C /sbin/ifconfig  | sed -ne $'/127.0.0.1/ ! { s/^[ \\t]*inet[ \\t]\\\\{1,99\\\\}\\\\(addr:\\\\)\\\\{0,1\\\\}\\\\([0-9.]*\\\\)[ \\t\\/].*$/\\\\2/p; }' | head -n 1)\nelse\nLOCAL_IP=\"\"\nfi;\n/usr/libexec/PlistBuddy -c \"Set :LocalIP \\\"$LOCAL_IP\\\"\" \"$INFOPLIST_FILE\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2D9CF3C62455B9F1005B085E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -388,6 +413,7 @@
 				2D9CF3D82455B9F1005B085E /* CovidWatch.xcdatamodeld in Sources */,
 				2D9E6B2D2456E9A800150D1C /* AppDelegate+UserNotificationCenter.swift in Sources */,
 				2D9E6B2F2456F05C00150D1C /* Mocks.swift in Sources */,
+				E2209580245BA49400819BD1 /* Environment.swift in Sources */,
 				2DC9211724587071005E2DEA /* CovidWatchDiagnosisServer.swift in Sources */,
 				2D5CD54E24571D5800191B4E /* MockDiagnosisServer.swift in Sources */,
 				2DAA014E24573A87008241E9 /* PositiveDiagnosis+Additions.swift in Sources */,
@@ -569,6 +595,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CQRZ4E7K9U;
 				INFOPLIST_FILE = CovidWatch/Info.plist;
+				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -577,6 +604,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.covidwatch.ios;
 				PRODUCT_NAME = "Covid Watch";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -591,6 +619,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CQRZ4E7K9U;
 				INFOPLIST_FILE = CovidWatch/Info.plist;
+				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -599,6 +628,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.covidwatch.ios;
 				PRODUCT_NAME = "Covid Watch";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

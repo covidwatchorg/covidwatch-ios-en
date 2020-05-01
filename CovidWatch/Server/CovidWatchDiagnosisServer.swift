@@ -26,10 +26,8 @@ class CovidWatchDiagnosisServer: DiagnosisServer {
             startDate.description
         )
 
-//        let apiUrlString = "http://192.168.176.131:5001/covidwatch-354ce/us-central1/fetchDiagnosis"
-        let apiUrlString = "https://us-central1-covidwatch-354ce.cloudfunctions.net/fetchDiagnosis"
-        
-        let fetchReportsUrl = URL(string: apiUrlString)!
+        let apiUrlString = getAPIUrl(getAppScheme())
+        let fetchReportsUrl = URL(string: "\(apiUrlString)/fetchDiagnosis") ?? URL(fileURLWithPath: "")
         
         let request = URLRequest(url: fetchReportsUrl)
         
@@ -117,9 +115,8 @@ class CovidWatchDiagnosisServer: DiagnosisServer {
             positiveDiagnosis.publicHealthAuthorityPermissionNumber ?? ""
         )
 
-//        let apiUrlString = "http://192.168.176.131:5001/covidwatch-354ce/us-central1"
-        let apiUrlString = "https://us-central1-covidwatch-354ce.cloudfunctions.net"
-        let submitUrl = URL(string: "\(apiUrlString)/submitDiagnosis")!
+        let apiUrlString = getAPIUrl(getAppScheme())
+        let submitUrl = URL(string: "\(apiUrlString)/submitDiagnosis") ?? URL(fileURLWithPath: "")
         
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
