@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CovidWatchExposureNotification",
+        "repositoryURL": "https://github.com/covid19risk/covidwatch-ios-exposurenotification",
+        "state": {
+          "branch": "master",
+          "revision": "cf01a44439ed2ef8563fddaae95873f27e7d4a02",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

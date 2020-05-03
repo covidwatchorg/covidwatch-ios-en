@@ -7,6 +7,7 @@ import CoreData
 import ExposureNotification
 import CovidWatchExposureNotification
 import os.log
+import SwiftUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -33,13 +34,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             getAppScheme().description,
             getAPIUrl(getAppScheme())
         )
-        
+                
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = window
         self.window?.tintColor = UIColor(named: "tintColor")
+        window.makeKeyAndVisible()
         
         // Setup Exposure Notification
-        let exposureInfoTableViewController = (window?.rootViewController as?
-            UINavigationController)?.viewControllers.first as? ExposureInfoTableViewController
-        exposureInfoTableViewController?.diagnosisServer = diagnosisServer
+//        let exposureInfoTableViewController = (window?.rootViewController as?
+//            UINavigationController)?.viewControllers.first as? ExposureInfoTableViewController
+//        exposureInfoTableViewController?.diagnosisServer = diagnosisServer
         
         ENManager.shared.activate { (error) in
             if let error = error {
@@ -107,6 +111,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 )
                 return
             }
+            
+            let contentView = ContentView().environment(\.managedObjectContext, PersistentContainer.shared.viewContext)
+            self.window?.rootViewController = UIHostingController(rootView: contentView)
             
             // Load mock data
             PersistentContainer.shared.loadInitialData()
