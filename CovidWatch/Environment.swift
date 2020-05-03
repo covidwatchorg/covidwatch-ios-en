@@ -1,16 +1,21 @@
 //
-//  Environment.swift
-//  CovidWatch
-//
 //  Created by Madhava Jay on 1/5/20.
-//  Copyright © 2020 Covid Watch. All rights reserved.
 //
 
 import Foundation
 
-enum AppScheme {
+enum AppScheme: CustomStringConvertible {
     case production
     case development
+    
+    var description: String {
+        switch self {
+            case .production:
+                return "Production"
+            case .development:
+                return "Development"
+        }
+    }
 }
 
 func getLocalIP() -> String {
@@ -36,23 +41,22 @@ func getAPIUrl(_ scheme: AppScheme) -> String {
         let projectSlug = "\(firebaseProjectId)/us-central1"
         return "\(localProtocol)\(getLocalIP()):\(localPort)/\(projectSlug)"
     }
-
+    
     switch scheme {
-    case .production:
-        return "https://us-central1-\(firebaseProjectId).cloudfunctions.net"
-    default:
-        return getLocalURL()
+        case .production:
+            return "https://us-central1-\(firebaseProjectId).cloudfunctions.net"
+        default:
+            return getLocalURL()
     }
 }
 
 func getAppScheme() -> AppScheme {
     if let schemeName = Bundle.main.infoDictionary?["SchemeName"] as? String {
-        print("Scheme Name: \(schemeName)")
         switch schemeName {
-        case "CovidWatch-prod":
-            return .production
-        default:
-            return .development
+            case "CovidWatch-prod":
+                return .production
+            default:
+                return .development
         }
     }
     return .development

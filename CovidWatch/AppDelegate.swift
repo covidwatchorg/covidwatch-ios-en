@@ -5,77 +5,126 @@
 import UIKit
 import CoreData
 import ExposureNotification
+import CovidWatchExposureNotification
+import os.log
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    var isFetching = false
-    var fetchCompletionHandlers = [((Result<Void, Error>) -> Void)]()
+    // Background tasks
+    var isPerformingFetch = false
     
-    var diagnosisServer = CovidWatchDiagnosisServer()
+    // Diagnosis server
+    var diagnosisServer = CovidWatchDiagnosisServer(
+        apiUrlString: getAPIUrl(getAppScheme())
+    )
     //    var diagnosisServer = MockDiagnosisServer()
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
         
-        window?.tintColor = UIColor(named: "tintColor")
-
-        print("Starting app with: \(getAppScheme()) and API Url: \(getAPIUrl(getAppScheme()))")
-
+        os_log(
+            "Starting app with scheme=%@ and API Url=%@",
+            log: .app,
+            getAppScheme().description,
+            getAPIUrl(getAppScheme())
+        )
+        
+        self.window?.tintColor = UIColor(named: "tintColor")
+        
         // Setup Exposure Notification
-        let exposureInfoTableViewController = (window?.rootViewController as? UINavigationController)?.viewControllers.first as? ExposureInfoTableViewController
+        let exposureInfoTableViewController = (window?.rootViewController as?
+            UINavigationController)?.viewControllers.first as? ExposureInfoTableViewController
         exposureInfoTableViewController?.diagnosisServer = diagnosisServer
+        
         ENManager.shared.activate { (error) in
             if let error = error {
-                UIApplication.shared.topViewController?.present(error as NSError, animated: true, completion: nil)
+                UIApplication.shared.topViewController?.present(
+                    error as NSError,
+                    animated: true,
+                    completion: nil
+                )
             }
         }
         
+        // Setup Background tasks
         self.registerBackgroundTasks()
         
-        let actionsAfterLoading = {
-            UserDefaults.standard.register(defaults: UserDefaults.Key.registration)
-            PersistentContainer.shared.loadInitialData()
-            self.configureCurrentUserNotificationCenter()
-            self.requestUserNotificationAuthorization(provisional: true)
-        }
+        // Setup User notification
+        self.configureCurrentUserNotificationCenter()
+        self.requestUserNotificationAuthorization(provisional: true)
+        
+        // Setup Core Data
         PersistentContainer.shared.load { error in
             if let error = error {
-                let alertController = UIAlertController(title: NSLocalizedString("Error Loading Data", comment: ""), message: error.localizedDescription, preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: NSLocalizedString("Delete Data", comment: ""), style: .destructive, handler: { _ in
-                    let confirmDeleteController = UIAlertController(title: NSLocalizedString("Confirm", comment: ""), message: nil, preferredStyle: .alert)
-                    confirmDeleteController.addAction(UIAlertAction(title: NSLocalizedString("Delete Data", comment: ""), style: .destructive, handler: { _ in
-                        PersistentContainer.shared.delete()
-                        abort()
-                    }))
-                    confirmDeleteController.addAction(UIAlertAction(title: NSLocalizedString("Quit", comment: ""), style: .cancel, handler: { _ in
-                        abort()
-                    }))
-                    UIApplication.shared.topViewController?.present(confirmDeleteController, animated: true, completion: nil)
+                let alertController = UIAlertController(
+                    title: NSLocalizedString("Error Loading Data", comment: ""),
+                    message: error.localizedDescription,
+                    preferredStyle: .alert
+                )
+                alertController.addAction(UIAlertAction(
+                    title: NSLocalizedString("Delete Data", comment: ""),
+                    style: .destructive,
+                    handler: { _ in
+                        
+                        let confirmDeleteController = UIAlertController(
+                            title: NSLocalizedString("Confirm", comment: ""),
+                            message: nil, preferredStyle: .alert
+                        )
+                        confirmDeleteController.addAction(UIAlertAction(
+                            title: NSLocalizedString("Delete Data", comment: ""),
+                            style: .destructive,
+                            handler: { _ in
+                                PersistentContainer.shared.delete()
+                                abort()
+                        }))
+                        confirmDeleteController.addAction(UIAlertAction(
+                            title: NSLocalizedString("Quit", comment: ""),
+                            style: .cancel,
+                            handler: { _ in
+                                abort()
+                        }))
+                        UIApplication.shared.topViewController?.present(
+                            confirmDeleteController,
+                            animated: true,
+                            completion: nil
+                        )
                 }))
-                alertController.addAction(UIAlertAction(title: NSLocalizedString("Quit", comment: ""), style: .cancel, handler: { _ in
-                    abort()
+                alertController.addAction(UIAlertAction(
+                    title: NSLocalizedString("Quit", comment: ""),
+                    style: .cancel,
+                    handler: { _ in
+                        abort()
                 }))
-                UIApplication.shared.topViewController?.present(alertController, animated: true, completion: nil)
+                UIApplication.shared.topViewController?.present(
+                    alertController,
+                    animated: true,
+                    completion: nil
+                )
                 return
             }
-            actionsAfterLoading()
+            
+            // Load mock data
+            PersistentContainer.shared.loadInitialData()
         }
+        
         return true
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        PersistentContainer.shared.load { (error) in
-            guard error == nil else { return }
-            if ENManager.shared.exposureNotificationEnabled {
-                self.performFetch(task: nil, completionHandler: nil)
-            }
+        if PersistentContainer.shared.isLoaded &&
+            ENManager.shared.exposureNotificationEnabled {
+            self.performFetch(withTask: nil)
         }
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Save changes in the application's managed object context when the application transitions to the background.
+        // Save changes in the application's managed object context when the
+        // application transitions to the background.
         if PersistentContainer.shared.isLoaded {
             PersistentContainer.shared.saveContext()
         }
