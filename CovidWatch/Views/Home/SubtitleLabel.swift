@@ -5,11 +5,11 @@
 
 import SwiftUI
 
-struct SubtitleLabel: ViewModifier {
+struct SubtitleText: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.custom("Montserrat-Regular", size: 18))
-            .foregroundColor(Color("subtitleLabel"))
+            .foregroundColor(Color("Subtitle Text Color"))
             .frame(maxWidth: .infinity, alignment: .leading)            
             .padding(.horizontal, 2 * .standardSpacing)
     }

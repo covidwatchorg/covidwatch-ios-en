@@ -12,7 +12,7 @@ struct CallToAction: ViewModifier {
             .frame(maxWidth: .infinity)
             .padding()
             .foregroundColor(.white)
-            .background(Color("tintColor"))
+            .background(Color("Tint Color"))
             .cornerRadius(10)
     }
 }

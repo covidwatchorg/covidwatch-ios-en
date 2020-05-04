@@ -37,24 +37,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
-        self.window?.tintColor = UIColor(named: "tintColor")
+        self.window?.tintColor = UIColor(named: "Tint Color")
         window.makeKeyAndVisible()
         
         // Setup Exposure Notification
 //        let exposureInfoTableViewController = (window?.rootViewController as?
 //            UINavigationController)?.viewControllers.first as? ExposureInfoTableViewController
 //        exposureInfoTableViewController?.diagnosisServer = diagnosisServer
-        
-        ENManager.shared.activate { (error) in
-            if let error = error {
-                UIApplication.shared.topViewController?.present(
-                    error as NSError,
-                    animated: true,
-                    completion: nil
-                )
-            }
-        }
-        
+                
         // Setup Background tasks
         self.registerBackgroundTasks()
         
@@ -112,7 +102,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return
             }
             
-            let contentView = ContentView().environment(\.managedObjectContext, PersistentContainer.shared.viewContext)
+            let contentView = ContentView()
+                .environment(\.managedObjectContext, PersistentContainer.shared.viewContext)
+                .environmentObject(ApplicationController.shared.userData)
             self.window?.rootViewController = UIHostingController(rootView: contentView)
             
             // Load mock data

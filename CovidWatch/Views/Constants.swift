@@ -7,5 +7,6 @@ import CoreGraphics
 
 extension CGFloat {
     
-    public static let standardSpacing: CGFloat = 13    
+    public static let standardSpacing: CGFloat = 13
+    public static let headerHeight: CGFloat = 64
 }

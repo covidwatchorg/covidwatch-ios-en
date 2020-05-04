@@ -6,40 +6,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @EnvironmentObject var userData: UserData
+    
     var body: some View {
-        
-        ZStack(alignment: .top) {
-            
-            ScrollView(.vertical, showsIndicators: false) {
-                
-                Image("Family")
-                
-                Text("Welcome Back!").modifier(TitleLabel())
-                
-                Text("Covid Watch has not detected exposure to COVID-19. Share the app with family and friends to help your community stay safe.").modifier(SubtitleLabel()).padding(.vertical, .standardSpacing)
-                
-                Button(action: { () }) {
-                    Text("Share the App").modifier(CallToAction())
-                }.frame(minHeight: 58)
-                    .padding(.top, 2 * .standardSpacing)
-                    .padding(.bottom, .standardSpacing)
-                    .padding(.horizontal, 2 * .standardSpacing)
-                
-                Text("It works best when everyone uses it.").modifier(SubCallToAction())
-                
-                Button(action: { () }) {
-                    Text("Tested for COVID-19?").modifier(CallToAction())
-                }.frame(minHeight: 58)
-                    .padding(.top, 2 * .standardSpacing)
-                    .padding(.bottom, .standardSpacing)
-                    .padding(.horizontal, 2 * .standardSpacing)
-                
-                Text("Share your result anonymously to help your community stay safe.").modifier(SubCallToAction())
+        if !userData.isOnboardingCompleted {
+            return AnyView(Splash())
+        } else {
+            if !userData.isSetupCompleted {
+                return AnyView(Setup())
             }
-            
-            TopBar().padding(.horizontal, 2 * .standardSpacing)
+            else {
+                return AnyView(Home())
+            }
         }
-    }
+    }        
 }
 
 struct ContentView_Previews: PreviewProvider {
