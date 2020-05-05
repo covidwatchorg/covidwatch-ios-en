@@ -14,14 +14,18 @@ struct Settings: View {
             
             ScrollView(.vertical, showsIndicators: false) {
                 
-                Text("Settings")
-                    .padding(.top, 116)
+                Text("Settings")                    
                     .modifier(TitleText())
-                
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.top, .paddingLargeHeight)
+                    .padding(.horizontal, 2 * .standardSpacing)
+
                 Text("The following issue(s) need to be resolved for the app to work properly.")
                     .modifier(SubtitleText())
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     .padding(.vertical, .standardSpacing)
-                
+                    .padding(.horizontal, 2 * .standardSpacing)
+
                 Button(action: {
                     if self.userData.exposureNotificationStatus == .unknown {
                         ApplicationController.shared.startExposureNotification(notifyUserOnError: true)
@@ -34,7 +38,7 @@ struct Settings: View {
                     }
                 }) {
                     HStack {
-                        Spacer()                        
+//                        Spacer()
                         Text(verbatim: self.userData.exposureNotificationStatus.description)
                         Spacer()
                         if self.userData.exposureNotificationStatus == .active {
@@ -45,13 +49,15 @@ struct Settings: View {
                         }
                     }.modifier(SettingsCallToAction())
                 }
-                .frame(minHeight: 58)
+                .frame(minHeight: .callToActionButtonHeight)
                     .padding(.top, 34)
                     .padding(.bottom, .standardSpacing)
                     .padding(.horizontal, 2 * .standardSpacing)
 
-                Text(verbatim: self.userData.exposureNotificationStatus.detailedDescription).modifier(SubCallToAction())
-                
+                Text(verbatim: self.userData.exposureNotificationStatus.detailedDescription)
+                    .modifier(SubCallToAction())
+                    .padding(.horizontal, 2 * .standardSpacing)
+
                 Button(action: {
                     if self.userData.notificationsAuthorizationStatus == .authorized {
                     } else if self.userData.notificationsAuthorizationStatus == .denied {
@@ -66,7 +72,7 @@ struct Settings: View {
                     }
                 }) {
                     HStack {
-                        Spacer()
+                        // Spacer() // WTF: Putting this spacer in makes drag-to-dismiss not work
                         Text(verbatim: self.userData.notificationsAuthorizationStatus.description)
                         Spacer()
                         if self.userData.notificationsAuthorizationStatus == .authorized {
@@ -77,13 +83,14 @@ struct Settings: View {
                         }
                     }.modifier(SettingsCallToAction())
                 }
-                .frame(minHeight: 58)
+                .frame(minHeight: .callToActionButtonHeight)
                     .padding(.top, 2 * .standardSpacing)
                     .padding(.bottom, .standardSpacing)
                     .padding(.horizontal, 2 * .standardSpacing)
-
+                
                 Text(verbatim: self.userData.notificationsAuthorizationStatus.detailedDescription)
                     .modifier(SubCallToAction())
+                    .padding(.horizontal, 2 * .standardSpacing)
             }
             
             TopBar(showMenu: false, showDismissButton: true)

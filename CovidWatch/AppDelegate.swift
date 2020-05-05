@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     // Background tasks
-    var isPerformingFetch = false
+    var isPerformingBackgroundExposureNotification = false
     
     // Diagnosis server
     var diagnosisServer = CovidWatchDiagnosisServer(
@@ -47,6 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
         // Setup Background tasks
         self.registerBackgroundTasks()
+        self.scheduleBackgroundProcessingExposureNotificationTaskIfNeeded()
         
         // Setup User notification
         self.configureCurrentUserNotificationCenter()
@@ -116,8 +117,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         if PersistentContainer.shared.isLoaded &&
+            ENManager.authorizationStatus == .authorized &&
             ENManager.shared.exposureNotificationEnabled {
-            self.performFetch(withTask: nil)
+            
+            self.performBackgroundExposureNotification(withTask: nil)
         }
     }
     
@@ -127,6 +130,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if PersistentContainer.shared.isLoaded {
             PersistentContainer.shared.saveContext()
         }
-        self.scheduleBackgroundTasks()
+        self.scheduleBackgroundProcessingExposureNotificationTaskIfNeeded()
     }
 }

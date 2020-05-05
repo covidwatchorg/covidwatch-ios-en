@@ -13,6 +13,6 @@ struct CallToAction: ViewModifier {
             .padding()
             .foregroundColor(.white)
             .background(Color("Tint Color"))
-            .cornerRadius(10)
+            .cornerRadius(.buttonCornerRadius)
     }
 }

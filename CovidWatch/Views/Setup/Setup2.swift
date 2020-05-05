@@ -18,10 +18,13 @@ struct Setup2: View {
             
             Text("Receive Alerts")
                 .modifier(TitleText())
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 2 * .standardSpacing)
             
             Text("Enable notifications to receive anonymous alerts if you have come into contact with a confirmed case of COVID-19.")
                 .modifier(SubtitleText())
                 .padding(.vertical, .standardSpacing)
+                .padding(.horizontal, 2 * .standardSpacing)
             
             Button(action: {
                 self.userData.isNotificationsConfigured = true
@@ -30,7 +33,7 @@ struct Setup2: View {
                     .requestUserNotificationAuthorization(provisional: false)
             }) {
                 Text("Allow Notifications").modifier(CallToAction())
-            }.frame(minHeight: 58)
+            }.frame(minHeight: .callToActionButtonHeight)
                 .padding(.top, 2 * .standardSpacing)
                 .padding(.bottom, .standardSpacing)
                 .padding(.horizontal, 2 * .standardSpacing)

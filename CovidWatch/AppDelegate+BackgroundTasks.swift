@@ -11,7 +11,7 @@ import CovidWatchExposureNotification
 
 extension String {
     
-    public static let appRefreshBackgroundTaskIdentifier = "org.covidwatch.ios.app-refresh"
+    public static let exposureNotificationBackgroundTaskIdentifier = "org.covidwatch.ios.exposure-notification"
 }
 
 extension TimeInterval {
@@ -24,7 +24,7 @@ extension AppDelegate {
     
     func registerBackgroundTasks() {
         let taskIdentifiers: [String] = [
-            .appRefreshBackgroundTaskIdentifier,
+            .exposureNotificationBackgroundTaskIdentifier,
         ]
         taskIdentifiers.forEach { identifier in
             let success = BGTaskScheduler.shared.register(
@@ -50,29 +50,29 @@ extension AppDelegate {
     
     func handleBackground(task: BGTask) {
         switch task.identifier {
-            case .appRefreshBackgroundTaskIdentifier:
-                guard let task = task as? BGAppRefreshTask else { break }
-                self.handleBackgroundAppRefresh(task: task)
+            case .exposureNotificationBackgroundTaskIdentifier:
+                guard let task = task as? BGProcessingTask else { break }
+                self.handleBackgroundProcessing(task: task)
             default:
                 task.setTaskCompleted(success: false)
         }
     }
     
-    func handleBackgroundAppRefresh(task: BGAppRefreshTask) {
+    func handleBackgroundProcessing(task: BGProcessingTask) {
         // Schedule a new task
-        self.scheduleBackgroundAppRefreshTask()
-        self.performFetch(withTask: task)
+        self.scheduleBackgroundProcessingExposureNotificationTaskIfNeeded()
+        self.performBackgroundExposureNotification(withTask: task)
     }
     
     public enum PerformFetchError: Error {
         case `internal`
     }
     
-    public func performFetch(withTask task: BGAppRefreshTask?) {
-        guard !isPerformingFetch else { return }
-        self.isPerformingFetch = true
+    public func performBackgroundExposureNotification(withTask task: BGProcessingTask?) {
+        guard !isPerformingBackgroundExposureNotification else { return }
+        self.isPerformingBackgroundExposureNotification = true
         
-        os_log("Performing fetch...", log: .app)
+        os_log("Performing background exposure notification ...", log: .app)
         
         let now = Date()
         let oldestDownloadDate = now.addingTimeInterval(-oldestPositiveDiagnosesToFetch)
@@ -93,7 +93,7 @@ extension AppDelegate {
         guard let lastOperation = operations.last as?
             AddExposureInfosFromExposureDetectionSessionToStoreOperation else {
             // Shouldn't get here
-            self.isPerformingFetch = false
+            self.isPerformingBackgroundExposureNotification = false
             task?.setTaskCompleted(success: false)
             return
         }
@@ -107,8 +107,8 @@ extension AppDelegate {
         lastOperation.completionBlock = {
             DispatchQueue.main.async {
                 defer {
-                    self.isPerformingFetch = false
-                    os_log("Performed fetch", log: .app)
+                    self.isPerformingBackgroundExposureNotification = false
+                    os_log("Performed background exposure notification ", log: .app)
                 }
                 
                 if !lastOperation.isCancelled,
@@ -132,14 +132,12 @@ extension AppDelegate {
         queue.addOperations(operations, waitUntilFinished: false)
     }
     
-    func scheduleBackgroundTasks() {
-        self.scheduleBackgroundAppRefreshTask()
-    }
-    
-    func scheduleBackgroundAppRefreshTask() {
-        let request = BGAppRefreshTaskRequest(
-            identifier: .appRefreshBackgroundTaskIdentifier
+    func scheduleBackgroundProcessingExposureNotificationTaskIfNeeded() {
+        guard ENManager.authorizationStatus == .authorized else { return }
+        let request = BGProcessingTaskRequest(
+            identifier: .exposureNotificationBackgroundTaskIdentifier
         )
+        request.requiresNetworkConnectivity = true
         request.earliestBeginDate = Date(
             timeIntervalSinceNow: .minimumBackgroundFetchTimeInterval
         )

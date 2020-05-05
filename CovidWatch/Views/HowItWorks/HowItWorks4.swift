@@ -24,6 +24,7 @@ struct HowItWorks4: View {
             
             Text("Safer Community")
                 .modifier(HowItWorksTitleText())
+                .frame(maxWidth: .infinity, alignment: .leading)
             
             Image("How it Works 04")
             
@@ -36,13 +37,12 @@ struct HowItWorks4: View {
                     self.userData.isOnboardingCompleted = true                
                 }) {
                     Text("Setup").modifier(CallToAction())
-                }.frame(minHeight: 58)
+                }.frame(minHeight: .callToActionButtonHeight)
                     .padding(.top, 2 * .standardSpacing)
                     .padding(.bottom, .standardSpacing + 44)
                     .padding(.horizontal, 2 * .standardSpacing)
             }
         }
-        
     }
 }
 

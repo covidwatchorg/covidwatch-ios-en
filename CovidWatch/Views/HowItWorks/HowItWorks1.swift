@@ -15,12 +15,14 @@ struct HowItWorks1: View {
             
             Text("Secure Connection")
                 .modifier(HowItWorksTitleText())
+                .frame(maxWidth: .infinity, alignment: .leading)
             
             Image("How it Works 01")
             
             Text("Sam and Jane cross paths for the first time and have a 15 minute conversation. The Covid Watch app creates a randomized key to log the interaction on both of their phones. The logs are 100% anonymous and no personal information is ever stored or saved.")
                 .modifier(HowItWorksSubtitleText())
                 .padding(.vertical, .standardSpacing)
+                .padding(.bottom, 3 * .standardSpacing)
         }
     }
 }

@@ -18,10 +18,13 @@ struct Setup1: View {
             
             Text("Privately Connect")
                 .modifier(TitleText())
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 2 * .standardSpacing)
             
             Text("The app uses Bluetooth to collect data when other phones with Covid Watch apps are nearby. The generated information stays on your phone.")
                 .modifier(SubtitleText())
                 .padding(.vertical, .standardSpacing)
+                .padding(.horizontal, 2 * .standardSpacing)
             
             Button(action: {
                 self.userData.isExposureNotificationSetup = true
@@ -30,12 +33,14 @@ struct Setup1: View {
                 )
             }) {
                 Text("Allow Exposure Notifications").modifier(CallToAction())
-            }.frame(minHeight: 58)
+            }.frame(minHeight: .callToActionButtonHeight)
                 .padding(.top, 2 * .standardSpacing)
                 .padding(.bottom, .standardSpacing)
                 .padding(.horizontal, 2 * .standardSpacing)
             
-            Text("This is required for the app to work.").modifier(SubCallToAction())
+            Text("This is required for the app to work.")
+                .modifier(SubCallToAction())
+                .padding(.horizontal, 2 * .standardSpacing)
         }
     }
 }

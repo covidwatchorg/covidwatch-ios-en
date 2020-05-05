@@ -27,14 +27,15 @@ struct TopBar: View {
                 Button(action: {
                     self.userData.isShowingMenu.toggle()
                 }) {
-                   Image("Menu Button").frame(minWidth: 44, minHeight: 44)
+                    Image("Menu Button").frame(minWidth: 44, minHeight: 44)
                 }.sheet(isPresented: self.$userData.isShowingMenu) { Menu().environmentObject(self.userData) }
             }
             if self.showDismissButton {
                 Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
-                    Image("Dismiss Button").frame(minWidth: 44, minHeight: 44)
+                    Image("Dismiss Button")
+                        .frame(minWidth: 44, minHeight: 44)
                 }
             }
         }

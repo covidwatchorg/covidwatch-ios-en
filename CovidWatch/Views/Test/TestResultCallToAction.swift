@@ -5,7 +5,14 @@
 
 import SwiftUI
 
-struct SettingsCallToAction: ViewModifier {
+struct TestResultsCallToAction: ViewModifier {
+    
+    let borderColor: Color
+    
+    init(borderColor: Color) {
+        self.borderColor = borderColor
+    }
+    
     func body(content: Content) -> some View {
         content
             .font(.custom("Montserrat-Bold", size: 18))
@@ -14,7 +21,7 @@ struct SettingsCallToAction: ViewModifier {
             .foregroundColor(Color("Settings Button Text Color"))
             .overlay(
                 RoundedRectangle(cornerRadius: .buttonCornerRadius)
-                    .stroke(Color("Settings Button Border Color"), lineWidth: 2)
+                    .stroke(self.borderColor, lineWidth: 2)
         )
     }
 }

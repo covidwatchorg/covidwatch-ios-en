@@ -15,12 +15,14 @@ struct HowItWorks2: View {
             
             Text("Diagnosis Reports")
                 .modifier(HowItWorksTitleText())
+                .frame(maxWidth: .infinity, alignment: .leading)
             
             Image("How it Works 02")
             
             Text("Three days later Sam tests positive for COVID-19. He reports his test results to the Covid Watch app. With his consent, his log of anonymous keys for the past 14 days is shared with other Covid Watch users.")
                 .modifier(HowItWorksSubtitleText())
                 .padding(.vertical, .standardSpacing)
+                .padding(.bottom, 3 * .standardSpacing)
         }
     }
 }

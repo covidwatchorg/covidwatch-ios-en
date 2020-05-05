@@ -11,7 +11,13 @@ struct Menu: View {
     
     @State var isShowingSettings: Bool = false
     
+    @State var isShowingTestResults: Bool = false
+    
     @State var isShowingHowItWorks: Bool = false
+    
+    init(){
+        UITableView.appearance().backgroundColor = .systemBackground
+    }
     
     var body: some View {
         
@@ -34,12 +40,13 @@ struct Menu: View {
                 .listRowBackground(Color(UIColor.systemBackground))
 
                 Button(action: {
-                    ()
+                    self.isShowingTestResults.toggle()
                 }) {
                     HStack {
                         Text("Test Results")
                     }.modifier(MenuTitleText())
                 }
+                .sheet(isPresented: $isShowingTestResults) { TestResults().environmentObject(self.userData) }
                 .listRowBackground(Color(UIColor.systemBackground))
 
                 Button(action: {

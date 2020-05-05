@@ -44,6 +44,17 @@ class ApplicationController: NSObject {
                 }
                 return
             }
+                    
+            // Ensure exposure notifications are enabled if the app is authorized. The app
+            // could get into a state where it is authorized, but exposure
+            // notifications are not enabled,  if the user initially denied Exposure Notifications
+            // during onboarding, but then flipped on the "COVID-19 Exposure Notifications" switch
+            // in Settings.
+            if ENManager.authorizationStatus == .authorized &&
+                !ENManager.shared.exposureNotificationEnabled {
+                
+                self.startExposureNotification(notifyUserOnError: notifyUserOnError)
+            }
         }
     }
     
