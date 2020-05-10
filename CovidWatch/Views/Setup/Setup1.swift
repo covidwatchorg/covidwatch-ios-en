@@ -7,40 +7,97 @@ import SwiftUI
 
 struct Setup1: View {
     
+    let dismissesAutomatically: Bool
+    
     @EnvironmentObject var userData: UserData
+    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    init(dismissesAutomatically: Bool = false) {
+        self.dismissesAutomatically = dismissesAutomatically
+    }
     
     var body: some View {
         
-        ScrollView(.vertical, showsIndicators: false) {
+        ZStack(alignment: .bottom) {
             
-            Image("People Network")
-                .padding(.top, .headerHeight)
+            ScrollView(.vertical, showsIndicators: false) {
+                
+                VStack(spacing: 0) {
+                
+                    Spacer(minLength: .headerHeight)
+                    
+                    Text("Enable Exposures")
+                        .modifier(TitleText())
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, 2 * .standardSpacing)
+                    
+                    Spacer(minLength: 2 * .standardSpacing)
+                    
+                    Image("Web 01")
+                    
+                    Spacer(minLength: 2 * .standardSpacing)
+                    
+                    Text("These notifications are designed to notify you if you’ve been exposed to a user who later reports themselves as testing positive for COVID-19. You can choose to turn off these notifications at any time.\n\nExposure notifications rely on the sharing and collection of random IDs. These IDs are a random string of numbers that won’t identify you to other users and change many times a day to protect your privacy.")
+                        .modifier(SubtitleText())
+                        .padding(.horizontal, 2 * .standardSpacing)
+                    
+                    Spacer(minLength: .stickyFooterHeight + .standardSpacing)
+                    
+                }
+            }
             
-            Text("Privately Connect")
-                .modifier(TitleText())
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 2 * .standardSpacing)
-            
-            Text("The app uses Bluetooth to collect data when other phones with Covid Watch apps are nearby. The generated information stays on your phone.")
-                .modifier(SubtitleText())
-                .padding(.vertical, .standardSpacing)
-                .padding(.horizontal, 2 * .standardSpacing)
-            
-            Button(action: {
-                self.userData.isExposureNotificationSetup = true
-                ApplicationController.shared.startExposureNotification(
-                    notifyUserOnError: true
-                )
-            }) {
-                Text("Allow Exposure Notifications").modifier(CallToAction())
-            }.frame(minHeight: .callToActionButtonHeight)
-                .padding(.top, 2 * .standardSpacing)
-                .padding(.bottom, .standardSpacing)
-                .padding(.horizontal, 2 * .standardSpacing)
-            
-            Text("This is required for the app to work.")
-                .modifier(SubCallToAction())
-                .padding(.horizontal, 2 * .standardSpacing)
+            VStack {
+                
+                Button(action: {
+                    
+                    ExposureManager.shared.manager.setExposureNotificationEnabled(true) { (error) in
+                        
+                        if let error = error {
+                            UIApplication.shared.topViewController?.present(
+                                error as NSError,
+                                animated: true,
+                                completion: nil
+                            )
+                            return
+                        }
+                        
+                        self.userData.isExposureNotificationSetup = true
+                        
+                        if self.dismissesAutomatically {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                    }
+                    
+                }) {
+                    
+                    Text("Enable").modifier(SmallCallToAction())
+                    
+                }.frame(minHeight: .callToActionSmallButtonHeight)
+                    .padding(.top, .standardSpacing)
+                    .padding(.horizontal, 2 * .standardSpacing)
+                
+                Button(action: {
+                    
+                    self.userData.isExposureNotificationSetup = true
+                    
+                    if self.dismissesAutomatically {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                }) {
+                    
+                    Text("Not Now")
+                        .font(.custom("Montserrat-Medium", size: 16))
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                    
+                }.frame(minHeight: .callToActionSmallButtonHeight)
+                    .padding(.top, 5)
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .padding(.bottom, .standardSpacing)
+            }
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .stickyFooterHeight, alignment: .topLeading)
+            .background(BlurView(style: .systemChromeMaterial).edgesIgnoringSafeArea(.all))
         }
     }
 }

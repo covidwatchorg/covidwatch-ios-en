@@ -11,6 +11,5 @@ struct HowItWorksSubtitleText: ViewModifier {
             .font(.custom("Montserrat-Regular", size: 18))
             .foregroundColor(Color("Title Text Color"))
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal, 2 * .standardSpacing)
     }
 }

@@ -16,31 +16,51 @@ struct HowItWorks4: View {
     }
     
     var body: some View {
+        
         ScrollView(.vertical, showsIndicators: false) {
             
-            Text("How It Works".uppercased())
-                .modifier(HowItWorksSubtitleText())
-                .padding(.top, .headerHeight + 2 * .standardSpacing)
-            
-            Text("Safer Community")
-                .modifier(HowItWorksTitleText())
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
-            Image("How it Works 04")
-            
-            Text("Both Jane and Sam just helped their communities stay safe by using Covid Watch and following local healthcare guidelines for COVID-19. They share the app with friends and family so that they can help, too.")
-                .modifier(HowItWorksSubtitleText())
-                .padding(.vertical, .standardSpacing)
-            
-            if self.showsSetupButton {
-                Button(action: {
-                    self.userData.isOnboardingCompleted = true                
-                }) {
-                    Text("Setup").modifier(CallToAction())
-                }.frame(minHeight: .callToActionButtonHeight)
-                    .padding(.top, 2 * .standardSpacing)
-                    .padding(.bottom, .standardSpacing + 44)
+            VStack(spacing: 0) {
+                
+                Spacer(minLength: .headerHeight)
+                
+                Text("How It Works".uppercased())
+                    .font(.custom("Montserrat-Regular", size: 14))
+                    .foregroundColor(Color("Title Text Color"))
                     .padding(.horizontal, 2 * .standardSpacing)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Text("Safe Communities")
+                    .modifier(HowItWorksTitleText())
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Image("How it Works 04")
+                
+                if self.showsSetupButton {
+                    
+                    Text("Jane and Sam help keep their communities safe. They share the app so that others can, too.")
+                        .modifier(HowItWorksSubtitleText())
+                        .padding(.horizontal, 2 * .standardSpacing)
+                    
+                    Spacer(minLength: 2 * .standardSpacing)
+                    
+                    Button(action: {
+                        self.userData.isOnboardingCompleted = true
+                    }) {
+                        Text("Continue Setup").modifier(SmallCallToAction())
+                    }.frame(minHeight: .callToActionSmallButtonHeight)
+                        .padding(.horizontal, 2 * .standardSpacing)
+                    
+                } else {
+                    
+                    Spacer(minLength: .standardSpacing)
+                    
+                    Text("Jane and Sam help keep their communities safe. They share the app so that others can, too.")
+                        .modifier(HowItWorksSubtitleText())
+                        .padding(.horizontal, 2 * .standardSpacing)
+                }
+                
+                Spacer(minLength: 4 * .standardSpacing)
             }
         }
     }

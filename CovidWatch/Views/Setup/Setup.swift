@@ -19,7 +19,7 @@ struct Setup: View {
                 Setup2()
             }
             
-            TopBar(showMenu: false)
+            HeaderBar(showMenu: false)
         }
     }
 }

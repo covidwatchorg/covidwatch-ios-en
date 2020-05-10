@@ -5,10 +5,8 @@
 import UserNotifications
 import UIKit
 import os.log
-import CovidWatchExposureNotification
 
 // TODO: Clean up this file
-
 extension UNNotificationCategory {
     
     public static let exposureDetectionSummary = "exposureDetectionSummary"

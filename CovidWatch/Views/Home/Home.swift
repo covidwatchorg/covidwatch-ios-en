@@ -9,9 +9,15 @@ struct Home: View {
     
     @EnvironmentObject var userData: UserData
     
-    @State var isShowingSettings: Bool = false
+    @EnvironmentObject var localStore: LocalStore
     
-    @State var isShowingTestResults: Bool = false
+    @State var isShowingExposureSettings: Bool = false
+    
+    @State var isShowingNotificationSettings: Bool = false
+    
+    @State var isShowingPossibleExposures: Bool = false
+    
+    @State var isShowingReporting: Bool = false
     
     var body: some View {
         
@@ -19,136 +25,112 @@ struct Home: View {
             
             ScrollView(.vertical, showsIndicators: false) {
                 
-                if (userData.matchedKeyCount != 0 ||
-                    userData.exposureNotificationStatus != .active ||
-                    userData.notificationsAuthorizationStatus != .authorized) {
+                VStack(spacing: 0) {
                     
-                    VStack(spacing: 1) {
+                    if (userData.exposureNotificationStatus != .active ||
+                        userData.notificationsAuthorizationStatus != .authorized) {
                         
-                        if userData.matchedKeyCount != 0 {
-                            Button(action: {
-                                self.isShowingTestResults.toggle()
-                            }) {
-                                Alert(
-                                    message: String.localizedStringWithFormat(NSLocalizedString("%d day(s) since last exposure", comment: ""), userData.daysSinceLastExposure),
-                                    backgroundColor: Color("Alert Background Critical Color")
-                                )
+                        VStack(spacing: 1) {
+                            
+                            if userData.exposureNotificationStatus != .active {
+                                Button(action: {
+                                    self.isShowingExposureSettings.toggle()
+                                }) {
+                                    Alert(
+                                        message: userData.exposureNotificationStatus.detailedDescription,
+                                        backgroundColor: Color("Alert Background Normal Color")
+                                    )
+                                }
+                                .sheet(isPresented: $isShowingExposureSettings) {
+                                    Setup1(dismissesAutomatically: true).environmentObject(self.userData)
+                                }
                             }
-                            .sheet(isPresented: $isShowingTestResults) { TestResults().environmentObject(self.userData) }
+                            
+                            if userData.notificationsAuthorizationStatus != .authorized {
+                                Button(action: {
+                                    self.isShowingNotificationSettings.toggle()
+                                }) {
+                                    Alert(
+                                        message: userData.notificationsAuthorizationStatus.detailedDescription,
+                                        backgroundColor: Color("Alert Background Normal Color")
+                                    )
+                                }
+                                .sheet(isPresented: $isShowingNotificationSettings) {
+                                    Setup2(dismissesAutomatically: true).environmentObject(self.userData)
+                                }
+                            }
+                            
+                        }.padding(.top, .headerHeight)
+                    }
+                    
+                    ZStack(alignment: .top) {
+                        
+                        VStack(spacing: 0) {
+                            
+                            Image("Family 2")
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 232, alignment: .top)
+                                .background(LinearGradient(gradient: Gradient(colors: [Color(red: 0.263, green: 0.769, blue: 0.851, opacity: 1), Color.white.opacity(0.4)]), startPoint: .top, endPoint: .bottom))
+                            
+                            Spacer(minLength: 2 * .standardSpacing)
+                            
+                            Text("My Possible Exposures")
+                                .font(.custom("Montserrat-SemiBold", size: 24))
+                                .foregroundColor(Color("Title Text Color"))
+                                .padding(.horizontal, 2 * .standardSpacing)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            
+                            Button(action: {
+                                self.isShowingPossibleExposures.toggle()
+                            }) {
+                                PossibleExposureSummary()
+                                    .environmentObject(self.localStore)
+                            }
+                            .padding(.top, 8)
+                            .padding(.horizontal, 2 * .standardSpacing)
+                            .sheet(isPresented: $isShowingPossibleExposures) {
+                                PossibleExposures()
+                                    .environmentObject(self.userData)
+                                    .environmentObject(self.localStore)
+                            }
+                            
+                            Spacer(minLength: 2 * .standardSpacing)
+                            
+                            Text("Got a positive diagnosis? Share it anonymously to help your community stay safe.")
+                                .modifier(SubCallToAction())
+                                .padding(.horizontal, 2 * .standardSpacing)
+                            
+                            Button(action: {
+                                self.isShowingReporting.toggle()
+                            }) {
+                                Text("Notify Others").modifier(SmallCallToAction())
+                            }.frame(minHeight: .callToActionSmallButtonHeight)
+                                .padding(.top, .standardSpacing)
+                                .padding(.bottom, .standardSpacing)
+                                .padding(.horizontal, 2 * .standardSpacing)
+                                .sheet(isPresented: $isShowingReporting) {
+                                    Reporting().environmentObject(self.localStore)                                    
+                            }
+                            
+                            Button(action: {
+                                ApplicationController.shared.share()
+                            }) {
+                                Text("Share the App").modifier(SmallCallToAction())
+                            }.frame(minHeight: .callToActionSmallButtonHeight)
+                                .padding(.top, 2 * .standardSpacing)
+                                .padding(.horizontal, 2 * .standardSpacing)
+                            
+                            Image("Powered By CW Grey")
+                                .padding(.top, 2 * .standardSpacing)
+                                .padding(.bottom, 3 * .standardSpacing)
                         }
                         
-                        if userData.exposureNotificationStatus != .active {
-                            Button(action: {
-                                self.isShowingSettings.toggle()
-                            }) {
-                                Alert(
-                                    message: userData.exposureNotificationStatus.detailedDescription,
-                                    backgroundColor: Color("Alert Background Normal Color")
-                                )
-                            }
-                            .sheet(isPresented: $isShowingSettings) { Settings().environmentObject(self.userData) }
-                        }
-                        
-                        if userData.notificationsAuthorizationStatus != .authorized {
-                            Button(action: {
-                                self.isShowingSettings.toggle()
-                            }) {
-                                Alert(
-                                    message: userData.notificationsAuthorizationStatus.detailedDescription,
-                                    backgroundColor: Color("Alert Background Normal Color")
-                                )
-                            }
-                            .sheet(isPresented: $isShowingSettings) { Settings().environmentObject(self.userData) }
-                        }
-                    }
-                    .padding(.top, .headerHeight + 2 * .standardSpacing)
-                }
-                
-                if userData.isAfterSubmitReport {
-                    Image("Hero Woman")
-                    
-                    Text("Thank you for helping your community stay safe, anonymously.")
-                        .modifier(SubtitleText())
-                        .padding(.vertical, .standardSpacing)
-                        .padding(.horizontal, 2 * .standardSpacing)
-                        .multilineTextAlignment(.center)
-                }
-                else {
-                    Image("Family")
-                }
-                
-                if userData.isRightAfterSetup && !userData.isAfterSubmitReport {
-                    Text("You're all set!")
-                        .modifier(TitleText())
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.top, -2 * .standardSpacing)
-                        .padding(.horizontal, 2 * .standardSpacing)
-                    
-                    Text("Thank you for helping protect your communities. You will be notified of potential exposure to COVID-19.")
-                        .modifier(SubtitleText())
-                        .padding(.vertical, .standardSpacing)
-                        .padding(.horizontal, 2 * .standardSpacing)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                else {
-                    if !userData.isAfterSubmitReport {
-                        Text("Welcome Back!")
-                            .modifier(TitleText())
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.top, -2 * .standardSpacing)
-                            .padding(.horizontal, 2 * .standardSpacing)
-                    }
-                    
-                    if self.userData.lastReportDate != .distantPast {
-                        
-                        Text("You reported a postive test result for COVID-19 on \(DateFormatter.localizedString(from: self.userData.lastReportDate, dateStyle: .medium, timeStyle: .none))")
-                            .modifier(SubtitleText())
-                            .padding(.vertical, .standardSpacing)
-                            .padding(.horizontal, 2 * .standardSpacing)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        Advice()
-                            .padding(.horizontal, 4 * .standardSpacing)
-                        
-                    }
-                    else {
-                        Text("Covid Watch has not detected exposure to COVID-19. Share the app with family and friends to help your community stay safe.")
-                            .modifier(SubtitleText())
-                            .padding(.vertical, .standardSpacing)
-                            .padding(.horizontal, 2 * .standardSpacing)
+                        //                            LinearGradient(gradient: Gradient(colors: [.init(red: 0.263, green: 0.769, blue: 0.851), .init(red: 1, green: 1, blue: 1, opacity: 0.4)]), startPoint: .top, endPoint: .bottom)
+                        //                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 10, alignment: .top)
                     }
                 }
-                
-                Button(action: {
-                    ApplicationController.shared.share()
-                }) {
-                    Text("Share the App").modifier(CallToAction())
-                }.frame(minHeight: .callToActionButtonHeight)
-                    .padding(.top, 2 * .standardSpacing)
-                    .padding(.bottom, .standardSpacing)
-                    .padding(.horizontal, 2 * .standardSpacing)
-                
-                Text("It works best when everyone uses it.")
-                    .modifier(SubCallToAction())
-                    .padding(.horizontal, 2 * .standardSpacing)
-                    .padding(.bottom, .standardSpacing)
-                
-                Button(action: {
-                    self.isShowingTestResults.toggle()
-                }) {
-                    Text("Tested for COVID-19?").modifier(CallToAction())
-                }.frame(minHeight: .callToActionButtonHeight)
-                    .padding(.vertical, .standardSpacing)
-                    .padding(.horizontal, 2 * .standardSpacing)
-                    .sheet(isPresented: $isShowingTestResults) { TestResults().environmentObject(self.userData) }
-                
-                Text("Share your result anonymously to help your community stay safe.")
-                    .modifier(SubCallToAction())
-                    .padding(.bottom, .standardSpacing)
-                    .padding(.horizontal, 2 * .standardSpacing)
             }
             
-            TopBar()                
+            HeaderBar()
         }
     }
 }

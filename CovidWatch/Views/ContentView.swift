@@ -9,14 +9,15 @@ struct ContentView: View {
     
     @EnvironmentObject var userData: UserData
     
+    @EnvironmentObject var localStore: LocalStore
+    
     var body: some View {
         if !userData.isOnboardingCompleted {
             return AnyView(Splash())
         } else {
             if !userData.isSetupCompleted {
                 return AnyView(Setup())
-            }
-            else {
+            } else {
                 return AnyView(Home())
             }
         }

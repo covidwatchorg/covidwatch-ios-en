@@ -5,6 +5,7 @@
 
 import SwiftUI
 
+// TODO: Remove
 struct Settings: View {
     
     @EnvironmentObject var userData: UserData
@@ -93,7 +94,7 @@ struct Settings: View {
                     .padding(.horizontal, 2 * .standardSpacing)
             }
             
-            TopBar(showMenu: false, showDismissButton: true)
+            HeaderBar(showMenu: false, showDismissButton: true)
         }
     }
 }

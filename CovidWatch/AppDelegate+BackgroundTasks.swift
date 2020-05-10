@@ -7,7 +7,7 @@ import BackgroundTasks
 import os.log
 import ExposureNotification
 import UIKit
-import CovidWatchExposureNotification
+
 
 extension String {
     
@@ -22,144 +22,36 @@ extension TimeInterval {
 @available(iOS 13.0, *)
 extension AppDelegate {
     
-    func registerBackgroundTasks() {
-        let taskIdentifiers: [String] = [
-            .exposureNotificationBackgroundTaskIdentifier,
-        ]
-        taskIdentifiers.forEach { identifier in
-            let success = BGTaskScheduler.shared.register(
-                forTaskWithIdentifier: identifier,
-                using: nil
-            ) { task in
-                os_log(
-                    "Start background task=%@",
-                    log: .app,
-                    identifier
-                )
-                self.handleBackground(task: task)
+    func setupBackgroundTask() {
+        
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: .exposureNotificationBackgroundTaskIdentifier, using: .main) { task in
+            
+            // Perform the exposure detection
+            let progress = ExposureManager.shared.detectExposures { success in
+                task.setTaskCompleted(success: success)
             }
-            os_log(
-                "Register background task=%@ success=%d",
-                log: .app,
-                type: success ? .default : .error,
-                identifier,
-                success
-            )
-        }
-    }
-    
-    func handleBackground(task: BGTask) {
-        switch task.identifier {
-            case .exposureNotificationBackgroundTaskIdentifier:
-                guard let task = task as? BGProcessingTask else { break }
-                self.handleBackgroundProcessing(task: task)
-            default:
-                task.setTaskCompleted(success: false)
-        }
-    }
-    
-    func handleBackgroundProcessing(task: BGProcessingTask) {
-        // Schedule a new task
-        self.scheduleBackgroundProcessingExposureNotificationTaskIfNeeded()
-        self.performBackgroundExposureNotification(withTask: task)
-    }
-    
-    public enum PerformFetchError: Error {
-        case `internal`
-    }
-    
-    public func performBackgroundExposureNotification(withTask task: BGProcessingTask?) {
-        guard !isPerformingBackgroundExposureNotification else { return }
-        self.isPerformingBackgroundExposureNotification = true
-        
-        os_log("Performing background exposure notification ...", log: .app)
-        
-        let now = Date()
-        let oldestDownloadDate = now.addingTimeInterval(-oldestPositiveDiagnosesToFetch)
-        var startDate = UserDefaults.standard.lastFetchDate ?? oldestDownloadDate
-        if startDate < oldestDownloadDate {
-            startDate = oldestDownloadDate
-        }
-        
-        let queue = OperationQueue()
-        queue.maxConcurrentOperationCount = 1
-        
-        let operations = Operations.getOperationsToFetchLatestPositiveDiagnoses(
-            sinceDate: startDate,
-            server: self.diagnosisServer,
-            context: PersistentContainer.shared.newBackgroundContext()
-        )
-        
-        guard let lastOperation = operations.last as?
-            AddExposureInfosFromExposureDetectionSessionToStoreOperation else {
-            // Shouldn't get here
-            self.isPerformingBackgroundExposureNotification = false
-            task?.setTaskCompleted(success: false)
-            return
-        }
-        
-        task?.expirationHandler = {
-            // After all operations are cancelled, the completion block below is
-            // called to set the task to complete.
-            queue.cancelAllOperations()
-        }
-        
-        lastOperation.completionBlock = {
-            DispatchQueue.main.async {
-                defer {
-                    self.isPerformingBackgroundExposureNotification = false
-                    os_log("Performed background exposure notification ", log: .app)
-                }
-                
-                if !lastOperation.isCancelled,
-                    case .success(_) = lastOperation.result {
-                    
-                    lastOperation.session?.invalidate()
-                    
-                    if lastOperation.error == nil {
-                        UserDefaults.standard.setValue(
-                            now,
-                            forKey: UserDefaults.Key.lastFetchDate
-                        )
-                    }
-                    task?.setTaskCompleted(success: lastOperation.error == nil)
-                } else {
-                    task?.setTaskCompleted(success: false)
-                }
+            
+            // Handle running out of time
+            task.expirationHandler = {
+                progress.cancel()
+                LocalStore.shared.exposureDetectionErrorLocalizedDescription = NSLocalizedString("BACKGROUND_TIMEOUT", comment: "Error")
             }
+            
+            // Schedule the next background task
+            self.scheduleBackgroundTaskIfNeeded()
         }
         
-        queue.addOperations(operations, waitUntilFinished: false)
+        scheduleBackgroundTaskIfNeeded()
     }
     
-    func scheduleBackgroundProcessingExposureNotificationTaskIfNeeded() {
+    func scheduleBackgroundTaskIfNeeded() {
         guard ENManager.authorizationStatus == .authorized else { return }
-        let request = BGProcessingTaskRequest(
-            identifier: .exposureNotificationBackgroundTaskIdentifier
-        )
-        request.requiresNetworkConnectivity = true
-        request.earliestBeginDate = Date(
-            timeIntervalSinceNow: .minimumBackgroundFetchTimeInterval
-        )
-        self.submitTask(request: request)
-    }
-    
-    func submitTask(request: BGTaskRequest) {
+        let taskRequest = BGProcessingTaskRequest(identifier: .exposureNotificationBackgroundTaskIdentifier)
+        taskRequest.requiresNetworkConnectivity = true
         do {
-            try BGTaskScheduler.shared.submit(request)
-            os_log(
-                "Submit task request=%@",
-                log: .app,
-                request.description
-            )
+            try BGTaskScheduler.shared.submit(taskRequest)
         } catch {
-            os_log(
-                "Submit task request=%@ failed: %@",
-                log: .app,
-                type: .error,
-                request.description,
-                error as CVarArg
-            )
+            print("Unable to schedule background task: \(error)")
         }
     }
 }

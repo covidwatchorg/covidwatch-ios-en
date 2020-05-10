@@ -6,14 +6,12 @@ import Foundation
 import UIKit
 import Combine
 import ExposureNotification
-import CovidWatchExposureNotification
+
 import SwiftUI
 
 class ApplicationController: NSObject {
     
     static let shared = ApplicationController()
-    
-    let userData = UserData()
     
     var userNotificationsObserver: NSObjectProtocol?
     var exposureNotificationStatusObservation: NSKeyValueObservation? = nil
@@ -21,46 +19,17 @@ class ApplicationController: NSObject {
     override init() {
         super.init()
         
-        if self.userData.firstRun {
-            self.userData.firstRun = false
+        if UserData.shared.firstRun {
+            UserData.shared.firstRun = false
         }
         
-        self.activeExposureNotification()
         self.configureExposureNotificationStatusObserver()
         self.configureUserNotificationStatusObserver()
     }
     
-    func activeExposureNotification(notifyUserOnError: Bool = false) {
-        
-        ENManager.shared.activate { (error) in
-            
-            if let error = error {
-                if notifyUserOnError {
-                    UIApplication.shared.topViewController?.present(
-                        error as NSError,
-                        animated: true,
-                        completion: nil
-                    )
-                }
-                return
-            }
-                    
-            // Ensure exposure notifications are enabled if the app is authorized. The app
-            // could get into a state where it is authorized, but exposure
-            // notifications are not enabled,  if the user initially denied Exposure Notifications
-            // during onboarding, but then flipped on the "COVID-19 Exposure Notifications" switch
-            // in Settings.
-            if ENManager.authorizationStatus == .authorized &&
-                !ENManager.shared.exposureNotificationEnabled {
-                
-                self.startExposureNotification(notifyUserOnError: notifyUserOnError)
-            }
-        }
-    }
-    
     func startExposureNotification(notifyUserOnError: Bool = false) {
         
-        ENManager.shared.setExposureNotificationEnabled(true) { (error) in
+        ExposureManager.shared.manager.setExposureNotificationEnabled(true) { (error) in
             
             if let error = error {
                 if notifyUserOnError {
@@ -76,13 +45,13 @@ class ApplicationController: NSObject {
     }
     
     func configureExposureNotificationStatusObserver() {
-        self.exposureNotificationStatusObservation = ENManager.shared.observe(
+        self.exposureNotificationStatusObservation = ExposureManager.shared.manager.observe(
             \.exposureNotificationStatus, options: [.initial, .old, .new]
-        ) { [weak self] (_, change) in
+        ) { (_, change) in
             
             DispatchQueue.main.async {
                 withAnimation {
-                    self?.userData.exposureNotificationStatus =
+                    UserData.shared.exposureNotificationStatus =
                         change.newValue ?? .unknown
                 }
             }
@@ -101,11 +70,11 @@ class ApplicationController: NSObject {
     
     func checkNotificationPersmission() {
         UNUserNotificationCenter.current().getNotificationSettings(
-            completionHandler: { [weak self] (settings) in
+            completionHandler: { (settings) in
                 
                 DispatchQueue.main.async {
                     withAnimation {
-                        self?.userData.notificationsAuthorizationStatus =
+                        UserData.shared.notificationsAuthorizationStatus =
                             settings.authorizationStatus
                     }
                 }

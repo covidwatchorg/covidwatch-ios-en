@@ -7,22 +7,34 @@ import SwiftUI
 
 struct HowItWorks3: View {
     var body: some View {
+        
         ScrollView(.vertical, showsIndicators: false) {
             
-            Text("How It Works".uppercased())
-                .modifier(HowItWorksSubtitleText())
-                .padding(.top, .headerHeight + 2 * .standardSpacing)
-            
-            Text("Exposure Notifications")
-                .modifier(HowItWorksTitleText())
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
-            Image("How it Works 03")
-            
-            Text("Jane’s Covid Watch app sees that a shared key matches her log, and the app notifies her that she may have been in contact with COVID-19 within the past 14 days. She receives tips on what to do next.")
-                .modifier(HowItWorksSubtitleText())
-                .padding(.vertical, .standardSpacing)
-                .padding(.bottom, 3 * .standardSpacing)
+            VStack(spacing: 0) {
+                
+                Spacer(minLength: .headerHeight)
+                
+                Text("How It Works".uppercased())
+                    .font(.custom("Montserrat-Regular", size: 14))
+                    .foregroundColor(Color("Title Text Color"))
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Text("Exposure Alerts")
+                    .modifier(HowItWorksTitleText())
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Image("How it Works 03")
+                
+                Spacer(minLength: .standardSpacing)
+                
+                Text("Jane’s phone gets an alert that someone she’s seen has now tested positive. The app tells her how to take action.")
+                    .modifier(HowItWorksSubtitleText())
+                    .padding(.horizontal, 2 * .standardSpacing)
+                
+                Spacer(minLength: 3 * .standardSpacing)
+            }
         }
     }
 }

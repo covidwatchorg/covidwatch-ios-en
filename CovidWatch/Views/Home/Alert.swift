@@ -19,14 +19,14 @@ struct Alert: View {
         HStack(spacing: 15) {
             Image("Alert")
             Text(verbatim: self.message)
-                .font(.custom("Montserrat-Bold", size: 18))
+                .font(.custom("Montserrat-SemiBold", size: 14))
                 .foregroundColor(.white)
                 .multilineTextAlignment(.leading)
             Spacer()
             Image("Right Arrow")
         }
         .padding(.horizontal, 2 * .standardSpacing)  
-        .frame(height: 130, alignment: .center)
+        .frame(height: 70, alignment: .center)
         .background(self.backgroundColor)
     }
 }

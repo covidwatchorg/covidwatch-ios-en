@@ -7,22 +7,34 @@ import SwiftUI
 
 struct HowItWorks1: View {
     var body: some View {
+        
         ScrollView(.vertical, showsIndicators: false) {
             
-            Text("How It Works".uppercased())
-                .modifier(HowItWorksSubtitleText())
-                .padding(.top, .headerHeight + 2 * .standardSpacing)
-            
-            Text("Secure Connection")
-                .modifier(HowItWorksTitleText())
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
-            Image("How it Works 01")
-            
-            Text("Sam and Jane cross paths for the first time and have a 15 minute conversation. The Covid Watch app creates a randomized key to log the interaction on both of their phones. The logs are 100% anonymous and no personal information is ever stored or saved.")
-                .modifier(HowItWorksSubtitleText())
-                .padding(.vertical, .standardSpacing)
-                .padding(.bottom, 3 * .standardSpacing)
+            VStack(spacing: 0) {
+                
+                Spacer(minLength: .headerHeight)
+                
+                Text("How It Works".uppercased())
+                    .font(.custom("Montserrat-Regular", size: 14))
+                    .foregroundColor(Color("Title Text Color"))
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Text("Always Anonymous")
+                    .modifier(HowItWorksTitleText())
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Image("How it Works 01")
+                
+                Spacer(minLength: .standardSpacing)
+                
+                Text("While Sam and Jane chat, their phones note each others’ anonymous signals and list them securely.")
+                    .modifier(HowItWorksSubtitleText())
+                    .padding(.horizontal, 2 * .standardSpacing)
+                
+                Spacer(minLength: 3 * .standardSpacing)
+            }
         }
     }
 }

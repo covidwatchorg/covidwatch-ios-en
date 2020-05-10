@@ -7,22 +7,34 @@ import SwiftUI
 
 struct HowItWorks2: View {
     var body: some View {
+
         ScrollView(.vertical, showsIndicators: false) {
             
-            Text("How It Works".uppercased())
-                .modifier(HowItWorksSubtitleText())
-                .padding(.top, .headerHeight + 2 * .standardSpacing)
-            
-            Text("Diagnosis Reports")
-                .modifier(HowItWorksTitleText())
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
-            Image("How it Works 02")
-            
-            Text("Three days later Sam tests positive for COVID-19. He reports his test results to the Covid Watch app. With his consent, his log of anonymous keys for the past 14 days is shared with other Covid Watch users.")
-                .modifier(HowItWorksSubtitleText())
-                .padding(.vertical, .standardSpacing)
-                .padding(.bottom, 3 * .standardSpacing)
+            VStack(spacing: 0) {
+                
+                Spacer(minLength: .headerHeight)
+                
+                Text("How It Works".uppercased())
+                    .font(.custom("Montserrat-Regular", size: 14))
+                    .foregroundColor(Color("Title Text Color"))
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Text("Diagnosis Reports")
+                    .modifier(HowItWorksTitleText())
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Image("How it Works 02")
+                
+                Spacer(minLength: .standardSpacing)
+                
+                Text("A few days later, Sam tests positive for COVID-19. He enters the verified results into the Covid Watch app.")
+                    .modifier(HowItWorksSubtitleText())
+                    .padding(.horizontal, 2 * .standardSpacing)
+                
+                Spacer(minLength: 3 * .standardSpacing)
+            }
         }
     }
 }

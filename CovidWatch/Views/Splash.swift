@@ -19,43 +19,53 @@ struct Splash: View {
     }
     
     var splash: some View {
-    
+        
         ZStack(alignment: .top) {
             
-            Image("Splash Background")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
+            Color("Tint Color")
                 .edgesIgnoringSafeArea(.all)
             
-            VStack {
+            ScrollView(.vertical, showsIndicators: false) {
                 
-                Image("Covid Watch Logo - Stacked White")
-                    .padding(.top, 140)
-                
-                Spacer()
-                
-                Text("Help your community stay safe, anonymously.")
-                    .font(.custom("Montserrat-Medium", size: 22))
-                    .foregroundColor(.white)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 2 * .standardSpacing)
-                
-                Button(action: {
-                    withAnimation() {
-                        self.showHowItWorks = true
-                    }
-                }) {
-                    Text("How it Works")
-                        .font(.custom("Montserrat-Bold", size: 24))
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .foregroundColor(Color("Title Text Color"))
-                        .background(Color.white)
-                        .cornerRadius(.buttonCornerRadius)
-                }.frame(minHeight: .callToActionButtonHeight)
-                    .padding(.top, 2 * .standardSpacing)
-                    .padding(.horizontal, 2 * .standardSpacing)
-                    .padding(.bottom, 86)
+                VStack(spacing: 0) {
+                    
+                    Image("California Bear")
+                        .padding(.top, 2 * .standardSpacing)
+                    
+                    Spacer(minLength: 2 * .standardSpacing)
+                    
+                    Text("The power to stop COVID-19 in the palm of your hand.")
+                        .font(.custom("Montserrat-SemiBold", size: 21))
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 2 * .standardSpacing)
+                    
+                    Image("People Network")
+                        .padding(.top, 2 * .standardSpacing)
+                    
+                    Spacer(minLength: 2 * .standardSpacing)
+                    
+                    Button(action: {
+                        withAnimation() {
+                            self.showHowItWorks = true
+                        }
+                    }) {
+                        
+                        Text("Get Started")
+                            .font(.custom("Montserrat-Bold", size: 24))
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .foregroundColor(Color("Tint Color"))
+                            .background(Color.white)
+                            .cornerRadius(.buttonCornerRadius)
+                        
+                    }.frame(minHeight: .callToActionButtonHeight)
+                        .padding(.horizontal, 2 * .standardSpacing)
+                    
+                    Image("Powered By CW")
+                        .padding(.top, 2 * .standardSpacing)
+                        .padding(.bottom, .standardSpacing)
+                }
             }
         }
     }
