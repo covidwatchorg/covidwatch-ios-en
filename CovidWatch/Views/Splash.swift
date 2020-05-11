@@ -11,10 +11,12 @@ struct Splash: View {
     @State var showHowItWorks = false
     
     var body: some View {
-        if self.showHowItWorks {
-            return AnyView(HowItWorks())
-        } else {
-            return AnyView(self.splash)
+        VStack {
+            if self.showHowItWorks {
+                HowItWorks().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+            } else {
+                self.splash.transition(.slide)
+            }
         }
     }
     

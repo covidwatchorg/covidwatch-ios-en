@@ -12,13 +12,15 @@ struct ContentView: View {
     @EnvironmentObject var localStore: LocalStore
     
     var body: some View {
-        if !userData.isOnboardingCompleted {
-            return AnyView(Splash())
-        } else {
-            if !userData.isSetupCompleted {
-                return AnyView(Setup())
+        VStack {
+            if !userData.isOnboardingCompleted {
+                Splash().transition(.slide)
             } else {
-                return AnyView(Home())
+                if !userData.isSetupCompleted {
+                    Setup().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                } else {
+                    Home().transition(.move(edge: .trailing))
+                }
             }
         }
     }        

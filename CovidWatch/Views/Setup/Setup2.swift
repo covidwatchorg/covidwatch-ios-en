@@ -61,8 +61,10 @@ struct Setup2: View {
                                     return
                                 }
                                 
-                                self.userData.isNotificationsConfigured = true
-                                self.userData.isSetupCompleted = true
+                                withAnimation {
+                                    self.userData.isNotificationsConfigured = true
+                                    self.userData.isSetupCompleted = true
+                                }
                                 
                                 if self.dismissesAutomatically {
                                     self.presentationMode.wrappedValue.dismiss()
@@ -80,8 +82,10 @@ struct Setup2: View {
 
                 Button(action: {
                     
-                    self.userData.isNotificationsConfigured = true
-                    self.userData.isSetupCompleted = true
+                    withAnimation {
+                        self.userData.isNotificationsConfigured = true
+                        self.userData.isSetupCompleted = true
+                    }
                     
                     if self.dismissesAutomatically {
                         self.presentationMode.wrappedValue.dismiss()

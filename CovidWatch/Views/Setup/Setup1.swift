@@ -62,7 +62,9 @@ struct Setup1: View {
                             return
                         }
                         
-                        self.userData.isExposureNotificationSetup = true
+                        withAnimation {
+                            self.userData.isExposureNotificationSetup = true
+                        }
                         
                         if self.dismissesAutomatically {
                             self.presentationMode.wrappedValue.dismiss()
@@ -79,7 +81,9 @@ struct Setup1: View {
                 
                 Button(action: {
                     
-                    self.userData.isExposureNotificationSetup = true
+                    withAnimation {
+                        self.userData.isExposureNotificationSetup = true
+                    }
                     
                     if self.dismissesAutomatically {
                         self.presentationMode.wrappedValue.dismiss()

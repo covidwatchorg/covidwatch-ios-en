@@ -45,7 +45,9 @@ struct HowItWorks4: View {
                     Spacer(minLength: 2 * .standardSpacing)
                     
                     Button(action: {
-                        self.userData.isOnboardingCompleted = true
+                        withAnimation {
+                            self.userData.isOnboardingCompleted = true
+                        }
                     }) {
                         
                         Text("Continue Setup").modifier(SmallCallToAction())

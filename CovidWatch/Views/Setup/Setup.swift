@@ -14,9 +14,9 @@ struct Setup: View {
         ZStack(alignment: .top) {
             
             if !userData.isExposureNotificationSetup {
-                Setup1()
+                Setup1().transition(.slide)
             } else {
-                Setup2()
+                Setup2().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
             }
             
             HeaderBar(showMenu: false)
