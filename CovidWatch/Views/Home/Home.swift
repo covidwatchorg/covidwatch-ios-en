@@ -70,6 +70,7 @@ struct Home: View {
                             Image("Family 2")
                                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 232, alignment: .top)
                                 .background(LinearGradient(gradient: Gradient(colors: [Color(red: 0.263, green: 0.769, blue: 0.851, opacity: 1), Color.white.opacity(0.4)]), startPoint: .top, endPoint: .bottom))
+                                .padding(.bottom, .standardSpacing)
                             
                             Text("My Possible Exposures")
                                 .font(.custom("Montserrat-SemiBold", size: 24))
