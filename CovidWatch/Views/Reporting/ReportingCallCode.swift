@@ -19,10 +19,13 @@ struct ReportingCallCode: View {
     
     var body: some View {
         
-        if isShowingFinish {
-            return AnyView(ReportingFinish())
-        } else {
-            return AnyView(
+        VStack {
+            if isShowingFinish {
+                
+                ReportingFinish().transition(.opacity)
+                
+            } else {
+                
                 ZStack(alignment: .top) {
                     
                     ScrollView(.vertical, showsIndicators: false) {
@@ -109,7 +112,8 @@ struct ReportingCallCode: View {
                     
                     HeaderBar(showMenu: false, showDismissButton: true)
                 }
-            )
+                .transition(.opacity)
+            }
         }
     }
     
@@ -131,7 +135,10 @@ struct ReportingCallCode: View {
             handler: { _ in
                 
                 self.localStore.testResults[self.selectedTestResultIndex].isVerified = true
-                self.isShowingFinish = true
+                
+                withAnimation {
+                    self.isShowingFinish = true
+                }
         }))
         UIApplication.shared.topViewController?.present(alertController, animated: true)
     }
