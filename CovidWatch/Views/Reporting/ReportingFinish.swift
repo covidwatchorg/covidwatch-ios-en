@@ -34,7 +34,7 @@ struct ReportingFinish: View {
                         .padding(.horizontal, 2 * .standardSpacing)
                     
                     Button(action: {
-                        ApplicationController.shared.share()
+                        ApplicationController.shared.shareApp()
                     }) {
                         Text("Share the App").modifier(SmallCallToAction())
                     }

@@ -111,7 +111,7 @@ struct Home: View {
                             }
                             
                             Button(action: {
-                                ApplicationController.shared.share()
+                                ApplicationController.shared.shareApp()
                             }) {
                                 Text("Share the App").modifier(SmallCallToAction())
                             }

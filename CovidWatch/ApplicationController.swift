@@ -27,23 +27,6 @@ class ApplicationController: NSObject {
         self.configureUserNotificationStatusObserver()
     }
     
-    func startExposureNotification(notifyUserOnError: Bool = false) {
-        
-        ExposureManager.shared.manager.setExposureNotificationEnabled(true) { (error) in
-            
-            if let error = error {
-                if notifyUserOnError {
-                    UIApplication.shared.topViewController?.present(
-                        error as NSError,
-                        animated: true,
-                        completion: nil
-                    )
-                }
-                return
-            }
-        }
-    }
-    
     func configureExposureNotificationStatusObserver() {
         self.exposureNotificationStatusObservation = ExposureManager.shared.manager.observe(
             \.exposureNotificationStatus, options: [.initial, .old, .new]
@@ -81,11 +64,11 @@ class ApplicationController: NSObject {
         })
     }
     
-    @objc func share() {
-        let text = "Become a Covid Watcher and help your community stay safe."
-        let url = NSURL(string: "https://www.covid-watch.org")
+    @objc func shareApp() {
+        let text = NSLocalizedString("Become a Covid Watcher and help your community stay safe.", comment: "")
+        let url = URL(string: "https://www.covid-watch.org")
         
-        let itemsToShare: [Any] = [ text, url as Any ]
+        let itemsToShare: [Any] = [text, url as Any]
         let activityViewController = UIActivityViewController(
             activityItems: itemsToShare,
             applicationActivities: nil
