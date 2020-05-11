@@ -983,7 +983,7 @@
 				CODE_SIGN_ENTITLEMENTS = "CovidWatch/Covid Watch.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CQRZ4E7K9U;
+				DEVELOPMENT_TEAM = GD7NMG67S7;
 				INFOPLIST_FILE = CovidWatch/Info.plist;
 				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1007,7 +1007,7 @@
 				CODE_SIGN_ENTITLEMENTS = "CovidWatch/Covid Watch.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CQRZ4E7K9U;
+				DEVELOPMENT_TEAM = GD7NMG67S7;
 				INFOPLIST_FILE = CovidWatch/Info.plist;
 				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
