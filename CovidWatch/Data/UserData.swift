@@ -38,7 +38,9 @@ final class UserData: ObservableObject  {
                             completion: nil
                         )
                         
-                        self.isExposureNotificationEnabled = false
+                        withAnimation {
+                            self.isExposureNotificationEnabled = false
+                        }
                         
                         return
                     }

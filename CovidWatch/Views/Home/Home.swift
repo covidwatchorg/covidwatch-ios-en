@@ -34,7 +34,12 @@ struct Home: View {
                             
                             if userData.exposureNotificationStatus != .active {
                                 Button(action: {
-                                    self.isShowingExposureSettings.toggle()
+                                    
+                                    if self.userData.exposureNotificationStatus == .unknown ||
+                                        self.userData.exposureNotificationStatus == .disabled {
+                                        self.isShowingExposureSettings.toggle()
+                                    }
+                                
                                 }) {
                                     Alert(
                                         message: userData.exposureNotificationStatus.detailedDescription,
@@ -48,7 +53,18 @@ struct Home: View {
                             
                             if userData.notificationsAuthorizationStatus != .authorized {
                                 Button(action: {
-                                    self.isShowingNotificationSettings.toggle()
+                                    
+                                    if self.userData.notificationsAuthorizationStatus == .denied {
+                                        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString),
+                                            UIApplication.shared.canOpenURL(settingsUrl) else {
+                                            return
+                                        }
+                                        UIApplication.shared.open(settingsUrl, completionHandler: nil)
+                                    }
+                                    else {
+                                        self.isShowingNotificationSettings.toggle()
+                                    }
+                                    
                                 }) {
                                     Alert(
                                         message: userData.notificationsAuthorizationStatus.detailedDescription,
