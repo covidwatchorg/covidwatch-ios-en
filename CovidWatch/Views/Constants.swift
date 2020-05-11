@@ -9,11 +9,9 @@ extension CGFloat {
     
     public static let standardSpacing: CGFloat = 12
     public static let headerHeight: CGFloat = 80
-    public static let stickyFooterHeight: CGFloat = .standardSpacing + .callToActionSmallButtonHeight + 5 + .callToActionSmallButtonHeight + 2 * .standardSpacing + .standardSpacing
+    public static let stickyFooterHeight: CGFloat = .standardSpacing + .callToActionSmallButtonHeight + 5 + .callToActionSmallButtonHeight + .standardSpacing
     public static let callToActionButtonHeight: CGFloat = 58
-    public static let callToActionSmallButtonHeight: CGFloat = 40
-    public static let paddingLargeHeight: CGFloat = 9 * standardSpacing
-    public static let buttonCornerRadius: CGFloat = 10
-    //public static let smallButtonCornerRadius: CGFloat = 5
-    public static let smallButtonCornerRadius: CGFloat = 13
+    public static let callToActionButtonCornerRadius: CGFloat = 10
+    public static let callToActionSmallButtonHeight: CGFloat = 44
+    public static let callToActionSmallButtonCornerRadius: CGFloat = 5
 }

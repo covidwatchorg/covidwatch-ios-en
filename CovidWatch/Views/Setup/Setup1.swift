@@ -73,9 +73,9 @@ struct Setup1: View {
                     
                     Text("Enable").modifier(SmallCallToAction())
                     
-                }.frame(minHeight: .callToActionSmallButtonHeight)
-                    .padding(.top, .standardSpacing)
-                    .padding(.horizontal, 2 * .standardSpacing)
+                }
+                .padding(.top, .standardSpacing)
+                .padding(.horizontal, 2 * .standardSpacing)
                 
                 Button(action: {
                     
@@ -91,10 +91,10 @@ struct Setup1: View {
                         .frame(maxWidth: .infinity)
                         .padding()
                     
-                }.frame(minHeight: .callToActionSmallButtonHeight)
-                    .padding(.top, 5)
-                    .padding(.horizontal, 2 * .standardSpacing)
-                    .padding(.bottom, .standardSpacing)
+                }
+                .padding(.top, 5)
+                .padding(.horizontal, 2 * .standardSpacing)
+                .padding(.bottom, .standardSpacing)
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .stickyFooterHeight, alignment: .topLeading)
             .background(BlurView(style: .systemChromeMaterial).edgesIgnoringSafeArea(.all))

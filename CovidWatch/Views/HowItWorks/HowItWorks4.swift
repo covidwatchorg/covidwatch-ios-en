@@ -47,9 +47,10 @@ struct HowItWorks4: View {
                     Button(action: {
                         self.userData.isOnboardingCompleted = true
                     }) {
+                        
                         Text("Continue Setup").modifier(SmallCallToAction())
-                    }.frame(minHeight: .callToActionSmallButtonHeight)
-                        .padding(.horizontal, 2 * .standardSpacing)
+                        
+                    }.padding(.horizontal, 2 * .standardSpacing)
                     
                 } else {
                     

@@ -15,7 +15,7 @@ struct HowItWorks0: View {
                 Image("Family Dancing 02")
                     .background(Image("Rectangle 33").resizable().aspectRatio(contentMode: .fill))
                     .padding(.top, .headerHeight)
-                    .frame(maxWidth: .infinity, alignment: .center)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                 
                 Text("Welcome to the {UCSF Health Covid Watch} App")
                     .modifier(HowItWorksTitleText())

@@ -57,6 +57,5 @@ final class UserData: ObservableObject  {
     var exposureNotificationStatus: ENStatus = .active
     
     @Published
-    var notificationsAuthorizationStatus: UNAuthorizationStatus = .authorized
-    
+    var notificationsAuthorizationStatus: UNAuthorizationStatus = .authorized    
 }

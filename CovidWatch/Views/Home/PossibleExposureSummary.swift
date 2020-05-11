@@ -23,94 +23,84 @@ struct PossibleExposureSummary: View {
     
     var body: some View {
         
-        VStack( spacing: .standardSpacing) {
+        VStack(spacing: 0) {
             
-            if self.localStore.exposures.isEmpty {
+            HStack {
                 
-                Text("Thank you for installing the app. You will be notified of possible exposure to COVID-19, so come back later to review your updated exposure status.")
-                    .font(.custom("Montserrat-Regular", size: 16))
-                    .foregroundColor(Color("Title Text Color"))
-                    .padding(.horizontal, 2 * .standardSpacing)
-                    .padding(.vertical, 4 * .standardSpacing)
-                
-            } else {
-                
-                HStack {
+                VStack(alignment: .leading, spacing: .standardSpacing) {
                     
-                    VStack(alignment: .leading, spacing: .standardSpacing) {
+                    HStack(spacing: .standardSpacing) {
                         
-                        HStack(spacing: .standardSpacing) {
+                        Text(verbatim: self.localStore.exposures.isEmpty ? "-" :  String(Calendar.current.dateComponents([.day], from: self.localStore.exposures.first!.date, to: Date()).day ?? 0))
+                            .font(.custom("Montserrat-SemiBold", size: 48))
+                            .foregroundColor(Color("Title Text Color"))
+                            .frame(minWidth: 6 * .standardSpacing, alignment: .trailing)
+                        
+                        VStack(alignment: .leading) {
                             
-                            Text(verbatim: String(Calendar.current.dateComponents([.day], from: self.localStore.exposures.first!.date, to: Date()).day ?? 0))
-                                .font(.custom("Montserrat-SemiBold", size: 48))
+                            Text("days")
+                                .font(.custom("Montserrat-Bold", size: 16))
                                 .foregroundColor(Color("Title Text Color"))
                             
-                            VStack(alignment: .leading) {
-                                
-                                Text("days")
-                                    .font(.custom("Montserrat-Bold", size: 16))
-                                    .foregroundColor(Color("Title Text Color"))
-                                
-                                Text("since last exposure")
-                                    .font(.custom("Montserrat-Regular", size: 14))
-                                    .foregroundColor(Color("Title Text Color"))
-                                
-                            }
-                        }
-                        
-                        HStack(spacing: .standardSpacing) {
-                            
-                            Text(verbatim: NumberFormatter.localizedString(from: NSNumber(value: self.localStore.exposures.count), number: .decimal))
-                                .font(.custom("Montserrat-SemiBold", size: 48))
+                            Text("since last exposure")
+                                .font(.custom("Montserrat-Regular", size: 14))
                                 .foregroundColor(Color("Title Text Color"))
                             
-                            VStack(alignment: .leading) {
-                                
-                                Text("total exposures")
-                                    .font(.custom("Montserrat-Bold", size: 16))
-                                    .foregroundColor(Color("Title Text Color"))
-                                
-                                Text("in the last 14 days")
-                                    .font(.custom("Montserrat-Regular", size: 14))
-                                    .foregroundColor(Color("Title Text Color"))
-                                
-                            }
-                        }
-                        
-                        HStack(spacing: .standardSpacing) {
-                            
-                            Text(verbatim: String(maxTotalRiscScore()))
-                                .font(.custom("Montserrat-SemiBold", size: 48))
-                                .foregroundColor( maxTotalRiscScore() > 6 ?
-                                    Color("Alert Background Critical Color") : Color("Title Text Color"))
-                            
-                            VStack(alignment: .leading) {
-                                
-                                Text("total risk score")
-                                    .font(.custom("Montserrat-Bold", size: 16))
-                                    .foregroundColor(Color("Title Text Color"))
-                                
-                                Text("(1-8 scale)")
-                                    .font(.custom("Montserrat-Regular", size: 14))
-                                    .foregroundColor(Color("Title Text Color"))
-                                
-                            }
                         }
                     }
                     
-                    Spacer()
+                    HStack(spacing: .standardSpacing) {
+                        
+                        Text(verbatim: NumberFormatter.localizedString(from: NSNumber(value: self.localStore.exposures.count), number: .decimal))
+                            .font(.custom("Montserrat-SemiBold", size: 48))
+                            .foregroundColor(Color("Title Text Color"))
+                            .frame(minWidth: 6 * .standardSpacing, alignment: .trailing)
+                        
+                        VStack(alignment: .leading) {
+                            
+                            Text("total exposures")
+                                .font(.custom("Montserrat-Bold", size: 16))
+                                .foregroundColor(Color("Title Text Color"))
+                            
+                            Text("in the last 14 days")
+                                .font(.custom("Montserrat-Regular", size: 14))
+                                .foregroundColor(Color("Title Text Color"))
+                            
+                        }
+                    }
                     
-                    Image("Right Arrow-1")
-                    
+                    HStack(spacing: .standardSpacing) {
+                        
+                        Text(verbatim: String(maxTotalRiscScore()))
+                            .font(.custom("Montserrat-SemiBold", size: 48))
+                            .foregroundColor( maxTotalRiscScore() > 6 ?
+                                Color("Alert Critical Color") : Color("Title Text Color"))
+                            .frame(minWidth: 6 * .standardSpacing, alignment: .trailing)
+                        
+                        VStack(alignment: .leading) {
+                            
+                            Text("total risk score")
+                                .font(.custom("Montserrat-Bold", size: 16))
+                                .foregroundColor(Color("Title Text Color"))
+                            
+                            Text("(1-8 scale)")
+                                .font(.custom("Montserrat-Regular", size: 14))
+                                .foregroundColor(Color("Title Text Color"))
+                            
+                        }
+                    }
                 }
-                .padding(.vertical, .standardSpacing)
-                .padding(.leading, 2 * .standardSpacing)
-                .padding(.trailing, .standardSpacing)
                 
+                Spacer()
+                
+                Image("Right Arrow-1")
             }
+            .padding(.vertical, .standardSpacing)
+            .padding(.leading, 2 * .standardSpacing)
+            .padding(.trailing, .standardSpacing)
             
         }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-            .border(Color("Settings Button Border Color"), width: 1)
+            .border(Color("Button Border Color"), width: 1)
     }
 }
 

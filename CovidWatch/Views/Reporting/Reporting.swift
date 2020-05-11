@@ -69,81 +69,87 @@ struct Reporting: View {
                         
                         Text("Share a Positive Diagnosis").modifier(SmallCallToAction())
                         
-                    }.frame(minHeight: .callToActionSmallButtonHeight)
-                        .padding(.top, 2 * .standardSpacing)
-                        .padding(.horizontal, 2 * .standardSpacing)
-                        .sheet(isPresented: self.$isShowingCallCode) {
-                            ReportingCallCode(selectedTestResultIndex: self.selectedTestResultIndex)
-                                .environmentObject(self.localStore)
+                    }
+                    .padding(.top, 2 * .standardSpacing)
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .padding(.bottom, .standardSpacing)
+                    .sheet(isPresented: self.$isShowingCallCode) {
+                        ReportingCallCode(selectedTestResultIndex: self.selectedTestResultIndex)
+                            .environmentObject(self.localStore)
                     }
                     
                     Image("Doctors Security")
                     
                     VStack(spacing: 0) {
-                        Text("Past Positive Diagnoses")
-                            .font(.custom("Montserrat-SemiBold", size: 18))
-                            .foregroundColor(Color("Title Text Color"))
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.top, 2 * .standardSpacing)
-                            .padding(.bottom, .standardSpacing)
                         
-                        ForEach(self.localStore.testResults, id:\.id) { testResult in
+                        if !self.localStore.testResults.isEmpty {
                             
-                            Button(action: {
+                            Text("Past Positive Diagnoses")
+                                .font(.custom("Montserrat-SemiBold", size: 18))
+                                .foregroundColor(Color("Title Text Color"))
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.top, 2 * .standardSpacing)
+                                .padding(.bottom, .standardSpacing)
+                            
+                            ForEach(self.localStore.testResults, id:\.id) { testResult in
                                 
-                                self.selectedTestResultIndex = self.localStore.testResults.firstIndex { testResult.id == $0.id } ?? 0
-                                self.isShowingCallCode.toggle()
-                                
-                            }) {
-                                HStack(spacing: .standardSpacing) {
+                                Button(action: {
                                     
-                                    if !testResult.isVerified {
-                                        Image("Past Diagnosis Row Alert")
-                                    } else {
-                                        Image("Past Diagnosis Row Checkmark")
-                                    }
+                                    self.selectedTestResultIndex = self.localStore.testResults.firstIndex { testResult.id == $0.id } ?? 0
+                                    self.isShowingCallCode.toggle()
                                     
-                                    VStack(alignment: .leading, spacing: 0) {
+                                }) {
+
+                                    HStack(spacing: .standardSpacing) {
                                         
                                         if !testResult.isVerified {
-                                            
-                                            Text("Needs Verification")
-                                                .font(.custom("Montserrat-Bold", size: 14))
-                                                .foregroundColor(Color("Alert Background Critical Color"))
-                                            
+                                            Image("Past Diagnosis Row Alert")
                                         } else {
+                                            Image("Past Diagnosis Row Checkmark")
+                                        }
+                                        
+                                        VStack(alignment: .leading, spacing: 0) {
                                             
-                                            Text("Verified")
+                                            if !testResult.isVerified {
+                                                
+                                                Text("Needs Verification")
+                                                    .font(.custom("Montserrat-Bold", size: 14))
+                                                    .foregroundColor(Color("Alert Critical Color"))
+                                                
+                                            } else {
+                                                
+                                                Text("Verified")
+                                                    .font(.custom("Montserrat-Bold", size: 14))
+                                                    .foregroundColor(Color.init(red: 75.0/255.0, green: 10.0/255.0, blue: 112.0/255.0))
+                                                
+                                            }
+                                            
+                                            Text("COVID-19 Positive")
                                                 .font(.custom("Montserrat-Bold", size: 14))
-                                                .foregroundColor(Color.init(red: 75.0/255.0, green: 10.0/255.0, blue: 112.0/255.0))
+                                                .foregroundColor(Color("Title Text Color"))
+                                            
+                                            Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("Test Date: %@", comment: ""), DateFormatter.localizedString(from: testResult.dateAdministered, dateStyle: .short, timeStyle: .none)))
+                                                .font(.custom("Montserrat-Regular", size: 14))
+                                                .foregroundColor(Color("Title Text Color"))
                                             
                                         }
                                         
-                                        Text("COVID-19 Positive")
-                                            .font(.custom("Montserrat-Bold", size: 14))
-                                            .foregroundColor(Color("Title Text Color"))
+                                        Spacer()
                                         
-                                        Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("Test Date: %@", comment: ""), DateFormatter.localizedString(from: testResult.dateAdministered, dateStyle: .short, timeStyle: .none)))
-                                            .font(.custom("Montserrat-Regular", size: 14))
-                                            .foregroundColor(Color("Title Text Color"))
+                                        if !testResult.isVerified {
+                                            Image("Exposure Row Right Arrow")
+                                        }
                                         
                                     }
-                                    
-                                    Spacer()
-                                    
-                                    if !testResult.isVerified {
-                                        Image("Exposure Row Right Arrow")
-                                    }
-                                    
-                                }
-                                .padding(.horizontal, 2 * .standardSpacing)
+                                    .padding(.horizontal, 2 * .standardSpacing)
                                     .frame(minHeight: 84, alignment: .leading)
                                     .background(Color(UIColor.secondarySystemBackground))
-                                    .border(Color("Settings Button Border Color"), width: 1)
-                            }
-                            .disabled(testResult.isVerified)
-                            .sheet(isPresented: self.$isShowingCallCode) {
-                                ReportingCallCode(selectedTestResultIndex: self.selectedTestResultIndex).environmentObject(self.localStore)
+                                    .border(Color("Button Border Color"), width: 1)
+                                }
+                                .disabled(testResult.isVerified)
+                                .sheet(isPresented: self.$isShowingCallCode) {
+                                    ReportingCallCode(selectedTestResultIndex: self.selectedTestResultIndex).environmentObject(self.localStore)
+                                }
                             }
                         }
                         
@@ -151,8 +157,9 @@ struct Reporting: View {
                             .padding(.top, 2 * .standardSpacing)
                             .padding(.bottom, .standardSpacing)
                         
-                    }.padding(.horizontal, 2 * .standardSpacing)
-                    //.background(Color.init(white: 0.949))
+                    }
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    
                 }
             }
             

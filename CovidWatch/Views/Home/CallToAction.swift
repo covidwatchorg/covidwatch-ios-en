@@ -9,10 +9,9 @@ struct CallToAction: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.custom("Montserrat-Bold", size: 18))
-            .frame(maxWidth: .infinity)
-            .padding()
+            .frame(maxWidth: .infinity, minHeight: .callToActionButtonHeight)
             .foregroundColor(.white)
             .background(Color("Tint Color"))
-            .cornerRadius(.buttonCornerRadius)
+            .cornerRadius(.callToActionButtonCornerRadius, antialiased: true)
     }
 }

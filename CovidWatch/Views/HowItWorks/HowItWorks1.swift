@@ -29,7 +29,7 @@ struct HowItWorks1: View {
                 
                 Spacer(minLength: .standardSpacing)
                 
-                Text("While Sam and Jane chat, their phones note each others’ anonymous signals and list them securely.")
+                Text("While Sam and Jane chat, their phones note each others’ anonymous signals and store them securely.")
                     .modifier(HowItWorksSubtitleText())
                     .padding(.horizontal, 2 * .standardSpacing)
                 

@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2D29BAE9246060B400E8BEC4 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAE8246060B400E8BEC4 /* Alert.swift */; };
-		2D29BAEB2460689000E8BEC4 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAEA2460689000E8BEC4 /* Settings.swift */; };
-		2D29BAEE24606D9A00E8BEC4 /* SettingsCallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAED24606D9A00E8BEC4 /* SettingsCallToAction.swift */; };
 		2D29BAF124607DA100E8BEC4 /* ENStatus+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF024607DA100E8BEC4 /* ENStatus+Additions.swift */; };
 		2D29BAF324607F2C00E8BEC4 /* UNAuthorizationStatus+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF224607F2C00E8BEC4 /* UNAuthorizationStatus+Additions.swift */; };
 		2D29BAF62460951200E8BEC4 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF52460951200E8BEC4 /* Menu.swift */; };
@@ -133,8 +131,6 @@
 
 /* Begin PBXFileReference section */
 		2D29BAE8246060B400E8BEC4 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
-		2D29BAEA2460689000E8BEC4 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		2D29BAED24606D9A00E8BEC4 /* SettingsCallToAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCallToAction.swift; sourceTree = "<group>"; };
 		2D29BAF024607DA100E8BEC4 /* ENStatus+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ENStatus+Additions.swift"; sourceTree = "<group>"; };
 		2D29BAF224607F2C00E8BEC4 /* UNAuthorizationStatus+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UNAuthorizationStatus+Additions.swift"; sourceTree = "<group>"; };
 		2D29BAF52460951200E8BEC4 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
@@ -272,15 +268,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2D29BAEC24606A2400E8BEC4 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				2D29BAEA2460689000E8BEC4 /* Settings.swift */,
-				2D29BAED24606D9A00E8BEC4 /* SettingsCallToAction.swift */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
 		2D29BAEF24607D8500E8BEC4 /* ExposureNotification */ = {
 			isa = PBXGroup;
 			children = (
@@ -504,12 +491,11 @@
 				2DD7B444245F4DE7001B30F0 /* HeaderBar.swift */,
 				2D5D9414246025EC00718412 /* HowItWorks */,
 				2D9034C32460497700351C3C /* Setup */,
-				2D9034CA2460509200351C3C /* Support */,
 				2D9034CB2460525200351C3C /* Home */,
 				2D46AA602465E6A30003936C /* PossibleExposures */,
 				2D7942A12467E91A008AF148 /* Reporting */,
 				2D29BAF72460955000E8BEC4 /* Menu */,
-				2D29BAEC24606A2400E8BEC4 /* Settings */,
+				2D9034CA2460509200351C3C /* Support */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -772,7 +758,6 @@
 				2DD7B494245F646D001B30F0 /* SubtitleText.swift in Sources */,
 				2D9034C924604BB000351C3C /* Setup2.swift in Sources */,
 				2D5D94112460231C00718412 /* PageView.swift in Sources */,
-				2D29BAEB2460689000E8BEC4 /* Settings.swift in Sources */,
 				2D9CF3CE2455B9F1005B085E /* AppDelegate.swift in Sources */,
 				2D46AA3E2465E1010003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift in Sources */,
 				2D29BAF124607DA100E8BEC4 /* ENStatus+Additions.swift in Sources */,
@@ -795,7 +780,6 @@
 				2D46AA5A2465E1240003936C /* LocalStore.swift in Sources */,
 				2D9034BA24603E1A00351C3C /* HowItWorks3.swift in Sources */,
 				2D9034B62460396300351C3C /* HowItWorksTitleText.swift in Sources */,
-				2D29BAEE24606D9A00E8BEC4 /* SettingsCallToAction.swift in Sources */,
 				2D46AA582465E1240003936C /* DeveloperDiagnosisKeyFileProtobuf.pb.swift in Sources */,
 				2D5D941624602FE100718412 /* HowItWorks1.swift in Sources */,
 				2D46AA402465E1010003936C /* CodableDiagnosisKey+ExposureNotification.swift in Sources */,

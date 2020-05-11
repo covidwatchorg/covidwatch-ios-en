@@ -29,7 +29,7 @@ struct PossibleExposureTable: View {
                     Spacer(minLength: 10)
                 }.frame(minHeight: 30, alignment: .leading)
                     .background(Color(UIColor.secondarySystemBackground))
-                    .border(Color("Settings Button Border Color"), width: 1)
+                    .border(Color("Button Border Color"), width: 1)
                 
                 HStack {
                     Spacer(minLength: 10)
@@ -38,7 +38,7 @@ struct PossibleExposureTable: View {
                     Spacer(minLength: 10)
                 }.frame(minHeight: 30, alignment: .leading)
                     .background(Color(UIColor.secondarySystemBackground))
-                    .border(Color("Settings Button Border Color"), width: 1)
+                    .border(Color("Button Border Color"), width: 1)
                 
 //                HStack {
 //                    Spacer(minLength: 10)
@@ -47,7 +47,7 @@ struct PossibleExposureTable: View {
 //                    Spacer(minLength: 10)
 //                }.frame(minHeight: 30, alignment: .leading)
 //                    .background(Color(UIColor.secondarySystemBackground))
-//                    .border(Color("Settings Button Border Color"), width: 1)
+//                    .border(Color("Button Border Color"), width: 1)
                                 
                 HStack {
                     Spacer(minLength: 10)
@@ -56,7 +56,7 @@ struct PossibleExposureTable: View {
                     Spacer(minLength: 10)
                 }.frame(minHeight: 30, alignment: .leading)
                     .background(Color(UIColor.secondarySystemBackground))
-                    .border(Color("Settings Button Border Color"), width: 1)
+                    .border(Color("Button Border Color"), width: 1)
                 
                 HStack {
                     Spacer(minLength: 10)
@@ -65,7 +65,7 @@ struct PossibleExposureTable: View {
                     Spacer(minLength: 10)
                 }.frame(minHeight: 30, alignment: .leading)
                     .background(Color(UIColor.secondarySystemBackground))
-                    .border(Color("Settings Button Border Color"), width: 1)
+                    .border(Color("Button Border Color"), width: 1)
                 
             }.font(.custom("Montserrat-Bold", size: 14))
             
@@ -78,7 +78,7 @@ struct PossibleExposureTable: View {
                     Spacer(minLength: 10)
                 }.frame(minHeight: 30, alignment: .leading)
                     .background(Color(UIColor.systemBackground))
-                    .border(Color("Settings Button Border Color"), width: 1)
+                    .border(Color("Button Border Color"), width: 1)
                 
                 HStack {
                     Spacer(minLength: 20)
@@ -87,7 +87,7 @@ struct PossibleExposureTable: View {
                     Spacer(minLength: 10)
                 }.frame(minHeight: 30, alignment: .leading)
                     .background(Color(UIColor.systemBackground))
-                    .border(Color("Settings Button Border Color"), width: 1)
+                    .border(Color("Button Border Color"), width: 1)
                 
 //                HStack {
 //                    Spacer(minLength: 20)
@@ -96,7 +96,7 @@ struct PossibleExposureTable: View {
 //                    Spacer(minLength: 10)
 //                }.frame(minHeight: 30, alignment: .leading)
 //                    .background(Color(UIColor.systemBackground))
-//                    .border(Color("Settings Button Border Color"), width: 1)
+//                    .border(Color("Button Border Color"), width: 1)
                 
                 HStack {
                     Spacer(minLength: 20)
@@ -105,7 +105,7 @@ struct PossibleExposureTable: View {
                     Spacer(minLength: 10)
                 }.frame(minHeight: 30, alignment: .leading)
                     .background(Color(UIColor.systemBackground))
-                    .border(Color("Settings Button Border Color"), width: 1)
+                    .border(Color("Button Border Color"), width: 1)
                 
                 HStack {
                     Spacer(minLength: 20)
@@ -114,7 +114,7 @@ struct PossibleExposureTable: View {
                     Spacer(minLength: 10)
                 }.frame(minHeight: 30, alignment: .leading)
                     .background(Color(UIColor.systemBackground))
-                    .border(Color("Settings Button Border Color"), width: 1)
+                    .border(Color("Button Border Color"), width: 1)
                                 
             }.font(.custom("Montserrat-Regular", size: 14))
         }

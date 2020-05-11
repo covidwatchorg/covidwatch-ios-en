@@ -27,7 +27,7 @@ struct PossibleExposure: View {
                     
                     Text("Possible Exposure")
                         .font(.custom("Montserrat-SemiBold", size: 31))
-                        .foregroundColor(Color("Alert Background Critical Color"))
+                        .foregroundColor(Color("Alert Critical Color"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.top, .headerHeight)
                         .padding(.horizontal, 2 * .standardSpacing)
@@ -50,14 +50,14 @@ struct PossibleExposure: View {
                     PossibleExposureTable(exposure: self.exposure)
                         .padding(.horizontal, 2 * .standardSpacing)
                         .padding(.top, .standardSpacing)
-                        .padding(.bottom, .standardSpacing)
+                    
+                    Spacer(minLength: 2 * .standardSpacing)
                     
                     Text("Next Steps")
                         .font(.custom("Montserrat-SemiBold", size: 18))
                         .foregroundColor(Color("Title Text Color"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 2 * .standardSpacing)
-                        .padding(.top, 2 * .standardSpacing)
                     
                     Spacer(minLength: .standardSpacing)
                     
@@ -66,12 +66,13 @@ struct PossibleExposure: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(Color("Title Text Color"))
                         .padding(.horizontal, 2 * .standardSpacing)
-                        
-                    Spacer(minLength: .standardSpacing)
-                    
+                                            
                     VStack(spacing: 0) {
                         
+                        Spacer(minLength: 2 * .standardSpacing)
+                        
                         Text("Got a positive diagnosis? Share it anonymously to help your community stay safe.")
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .modifier(SubCallToAction())
                             .padding(.horizontal, 2 * .standardSpacing)
                         
@@ -79,12 +80,12 @@ struct PossibleExposure: View {
                             self.isShowingReporting.toggle()
                         }) {
                             Text("Notify Others").modifier(SmallCallToAction())
-                        }.frame(minHeight: .callToActionSmallButtonHeight)
-                            .padding(.top, 2 * .standardSpacing)
-                            .padding(.bottom, 2 * .standardSpacing)
-                            .padding(.horizontal, 2 * .standardSpacing)
-                            .sheet(isPresented: $isShowingReporting) {
-                                Reporting().environmentObject(self.localStore)
+                        }
+                        .padding(.top, .standardSpacing)
+                        .padding(.bottom, .standardSpacing)
+                        .padding(.horizontal, 2 * .standardSpacing)
+                        .sheet(isPresented: $isShowingReporting) {
+                            Reporting().environmentObject(self.localStore)
                         }
                         
                         Button(action: {
@@ -92,9 +93,9 @@ struct PossibleExposure: View {
                         }) {
                             Text("Find COVID-19 Test Site")
                                 .modifier(SmallCallToAction())
-                        }.frame(minHeight: .callToActionSmallButtonHeight)
-                            .padding(.top, 2 * .standardSpacing)
-                            .padding(.horizontal, 2 * .standardSpacing)
+                        }
+                        .padding(.top, 2 * .standardSpacing)
+                        .padding(.horizontal, 2 * .standardSpacing)
                         
                         Image("Powered By CW Grey")
                             .padding(.top, 2 * .standardSpacing)

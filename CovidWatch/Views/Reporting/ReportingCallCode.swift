@@ -84,23 +84,22 @@ struct ReportingCallCode: View {
                                 
                             }) {
                                 Text("Call 1-800-000-0000").modifier(SmallCallToAction())
-                            }.frame(minHeight: .callToActionSmallButtonHeight)
-                                .padding(.top, .standardSpacing)
-                                .padding(.bottom, 2 * .standardSpacing)
-                                .padding(.horizontal, 2 * .standardSpacing)
+                            }
+                            .padding(.top, .standardSpacing)
+                            .padding(.bottom, 2 * .standardSpacing)
+                            .padding(.horizontal, 2 * .standardSpacing)
                             
-                            Text("Already verified the code?")
+                            Text("Done verifying the code?")
                                 .modifier(SubCallToAction())
                                 .padding(.horizontal, 2 * .standardSpacing)
                             
                             Button(action: {
-                                self.localStore.testResults[self.selectedTestResultIndex].isVerified = true
-                                self.isShowingFinish = true
+                                self.confirmFinishCodeVerification()
                             }) {
                                 Text("Finish Code Verification").modifier(SmallCallToAction())
-                            }.frame(minHeight: .callToActionSmallButtonHeight)
-                                .padding(.top, .standardSpacing)
-                                .padding(.horizontal, 2 * .standardSpacing)
+                            }
+                            .padding(.top, .standardSpacing)
+                            .padding(.horizontal, 2 * .standardSpacing)
                             
                             Image("Powered By CW Grey")
                                 .padding(.top, 2 * .standardSpacing)
@@ -112,6 +111,29 @@ struct ReportingCallCode: View {
                 }
             )
         }
+    }
+    
+    func confirmFinishCodeVerification() {
+        let alertController = UIAlertController(
+            title: NSLocalizedString("Confirm you're finished verifying the code with the public health authority.", comment: ""),
+            message: "",
+            preferredStyle: .alert
+        )
+        alertController.addAction(UIAlertAction(
+            title: NSLocalizedString("Cancel", comment: ""),
+            style: .cancel,
+            handler: { _ in
+                ()
+        }))
+        alertController.addAction(UIAlertAction(
+            title: NSLocalizedString("Confirm", comment: ""),
+            style: .default,
+            handler: { _ in
+                
+                self.localStore.testResults[self.selectedTestResultIndex].isVerified = true
+                self.isShowingFinish = true
+        }))
+        UIApplication.shared.topViewController?.present(alertController, animated: true)
     }
 }
 

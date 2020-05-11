@@ -38,6 +38,7 @@ struct Splash: View {
                         .font(.custom("Montserrat-SemiBold", size: 21))
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .padding(.horizontal, 2 * .standardSpacing)
                     
                     Image("People Network")
@@ -53,14 +54,12 @@ struct Splash: View {
                         
                         Text("Get Started")
                             .font(.custom("Montserrat-Bold", size: 24))
-                            .frame(maxWidth: .infinity)
-                            .padding()
+                            .frame(maxWidth: .infinity, minHeight: .callToActionButtonHeight)
                             .foregroundColor(Color("Tint Color"))
                             .background(Color.white)
-                            .cornerRadius(.buttonCornerRadius)
+                            .cornerRadius(.callToActionButtonCornerRadius, antialiased: true)
                         
-                    }.frame(minHeight: .callToActionButtonHeight)
-                        .padding(.horizontal, 2 * .standardSpacing)
+                    }.padding(.horizontal, 2 * .standardSpacing)
                     
                     Image("Powered By CW")
                         .padding(.top, 2 * .standardSpacing)

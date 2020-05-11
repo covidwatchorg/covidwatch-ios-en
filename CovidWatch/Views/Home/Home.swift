@@ -38,7 +38,7 @@ struct Home: View {
                                 }) {
                                     Alert(
                                         message: userData.exposureNotificationStatus.detailedDescription,
-                                        backgroundColor: Color("Alert Background Normal Color")
+                                        backgroundColor: Color("Alert Normal Color")
                                     )
                                 }
                                 .sheet(isPresented: $isShowingExposureSettings) {
@@ -52,7 +52,7 @@ struct Home: View {
                                 }) {
                                     Alert(
                                         message: userData.notificationsAuthorizationStatus.detailedDescription,
-                                        backgroundColor: Color("Alert Background Normal Color")
+                                        backgroundColor: Color("Alert Normal Color")
                                     )
                                 }
                                 .sheet(isPresented: $isShowingNotificationSettings) {
@@ -70,8 +70,6 @@ struct Home: View {
                             Image("Family 2")
                                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 232, alignment: .top)
                                 .background(LinearGradient(gradient: Gradient(colors: [Color(red: 0.263, green: 0.769, blue: 0.851, opacity: 1), Color.white.opacity(0.4)]), startPoint: .top, endPoint: .bottom))
-                            
-                            Spacer(minLength: 2 * .standardSpacing)
                             
                             Text("My Possible Exposures")
                                 .font(.custom("Montserrat-SemiBold", size: 24))
@@ -97,27 +95,28 @@ struct Home: View {
                             
                             Text("Got a positive diagnosis? Share it anonymously to help your community stay safe.")
                                 .modifier(SubCallToAction())
+                                .frame(maxWidth: .infinity)
                                 .padding(.horizontal, 2 * .standardSpacing)
                             
                             Button(action: {
                                 self.isShowingReporting.toggle()
                             }) {
                                 Text("Notify Others").modifier(SmallCallToAction())
-                            }.frame(minHeight: .callToActionSmallButtonHeight)
-                                .padding(.top, .standardSpacing)
-                                .padding(.bottom, .standardSpacing)
-                                .padding(.horizontal, 2 * .standardSpacing)
-                                .sheet(isPresented: $isShowingReporting) {
-                                    Reporting().environmentObject(self.localStore)                                    
+                            }
+                            .padding(.top, .standardSpacing)
+                            .padding(.bottom, .standardSpacing)
+                            .padding(.horizontal, 2 * .standardSpacing)
+                            .sheet(isPresented: $isShowingReporting) {
+                                Reporting().environmentObject(self.localStore)
                             }
                             
                             Button(action: {
                                 ApplicationController.shared.share()
                             }) {
                                 Text("Share the App").modifier(SmallCallToAction())
-                            }.frame(minHeight: .callToActionSmallButtonHeight)
-                                .padding(.top, 2 * .standardSpacing)
-                                .padding(.horizontal, 2 * .standardSpacing)
+                            }
+                            .padding(.top, 2 * .standardSpacing)
+                            .padding(.horizontal, 2 * .standardSpacing)
                             
                             Image("Powered By CW Grey")
                                 .padding(.top, 2 * .standardSpacing)

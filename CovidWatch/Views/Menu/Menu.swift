@@ -34,35 +34,23 @@ struct Menu: View {
                     
                     VStack(spacing: 0) {
                         
-//                        Divider()
-//
-//                        Button(action: {
-//                            self.isShowingSettings.toggle()
-//                        }) {
-//                            HStack {
-//                                Text("Settings")
-//                                Spacer()
-//                                if (userData.exposureNotificationStatus != .active ||
-//                                    userData.notificationsAuthorizationStatus != .authorized) {
-//                                    Image("Settings Alert")
-//                                }
-//                            }.modifier(MenuTitleText())
-//                        }
-//                        .sheet(isPresented: $isShowingSettings) { Settings().environmentObject(self.userData) }
-                        
                         Divider()
                         
                         Button(action: {
                             
-                            let exposures = (0...Int.random(in: 1...10)).map { _ -> Exposure in
-                                Exposure(date: Date(), duration: TimeInterval(Int.random(in: 1...6) * 5 * 60), totalRiskScore: UInt8.random(in: 1...8), transmissionRiskLevel: UInt8.random(in: 1...8))
-                            }
-                            self.localStore.exposures.insert(contentsOf: exposures, at: 0)
+//                            let exposures = (0...Int.random(in: 1...10)).map { _ -> Exposure in
+//                                Exposure(date: Date(), duration: TimeInterval(Int.random(in: 1...6) * 5 * 60), totalRiskScore: UInt8.random(in: 1...8), transmissionRiskLevel: UInt8.random(in: 1...8))
+//                            }
+//                            self.localStore.exposures.insert(contentsOf: exposures, at: 0)
+                            self.localStore.exposures.insert(
+                                Exposure(date: Date(), duration: TimeInterval(Int.random(in: 1...6) * 5 * 60), totalRiskScore: UInt8.random(in: 1...8), transmissionRiskLevel: UInt8.random(in: 1...8)),
+                                at: 0
+                            )
                             self.localStore.dateLastPerformedExposureDetection = Date()
                             
                         }) {
                             HStack {
-                                Text("(Testing) Add Random Exposures")
+                                Text("(Testing) Generate Random Exposure")
                                 Spacer()
                                 Image("Settings Button Checkmark")
                             }.modifier(MenuTitleText())
