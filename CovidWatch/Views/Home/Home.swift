@@ -77,6 +77,7 @@ struct Home: View {
                             }
                             
                         }.padding(.top, .headerHeight)
+                            .zIndex(1) // Required for the shadow effect to be visible. Otherwise the content the follows below covers it.
                     }
                     
                     ZStack(alignment: .top) {

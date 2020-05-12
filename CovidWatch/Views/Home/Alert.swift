@@ -27,7 +27,7 @@ struct Alert: View {
         }
         .padding(.horizontal, 2 * .standardSpacing)  
         .frame(height: 70, alignment: .center)
-        .background(self.backgroundColor)
+        .background(self.backgroundColor.shadow(color: .init(white: 0.5), radius: 2, x: 0, y: 2))
     }
 }
 
