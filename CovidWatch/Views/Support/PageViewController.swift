@@ -10,6 +10,7 @@ import UIKit
 
 struct PageViewController: UIViewControllerRepresentable {
     var controllers: [UIViewController]
+    let loops: Bool = false
     @Binding var currentPage: Int
 
     func makeCoordinator() -> Coordinator {
@@ -45,7 +46,7 @@ struct PageViewController: UIViewControllerRepresentable {
                 return nil
             }
             if index == 0 {
-                return parent.controllers.last
+                return parent.loops ? parent.controllers.last : nil
             }
             return parent.controllers[index - 1]
         }
@@ -57,7 +58,7 @@ struct PageViewController: UIViewControllerRepresentable {
                 return nil
             }
             if index + 1 == parent.controllers.count {
-                return parent.controllers.first
+                return parent.loops ? parent.controllers.first : nil
             }
             return parent.controllers[index + 1]
         }
