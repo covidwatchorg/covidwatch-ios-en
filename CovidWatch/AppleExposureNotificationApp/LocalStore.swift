@@ -64,23 +64,35 @@ public class LocalStore: ObservableObject {
     public static let shared = LocalStore()
     
     @Persisted(userDefaultsKey: "isOnboarded", notificationName: .init("LocalStoreIsOnboardedDidChange"), defaultValue: false)
-    public var isOnboarded: Bool
+    public var isOnboarded: Bool {
+        willSet { objectWillChange.send() }
+    }
     
     @Persisted(userDefaultsKey: "nextDiagnosisKeyFileIndex", notificationName: .init("LocalStoreNextDiagnosisKeyFileIndexDidChange"), defaultValue: 0)
-    public var nextDiagnosisKeyFileIndex: Int
+    public var nextDiagnosisKeyFileIndex: Int {
+        willSet { objectWillChange.send() }
+    }
     
     @Persisted(userDefaultsKey: "exposures", notificationName: .init("LocalStoreExposuresDidChange"), defaultValue: [])
-    public var exposures: [Exposure]
+    public var exposures: [Exposure] {
+        willSet { objectWillChange.send() }
+    }
     
     @Persisted(userDefaultsKey: "dateLastPerformedExposureDetection",
                notificationName: .init("LocalStoreDateLastPerformedExposureDetectionDidChange"), defaultValue: nil)
-    public var dateLastPerformedExposureDetection: Date?
+    public var dateLastPerformedExposureDetection: Date? {
+        willSet { objectWillChange.send() }
+    }
     
     @Persisted(userDefaultsKey: "exposureDetectionErrorLocalizedDescription", notificationName:
         .init("LocalStoreExposureDetectionErrorLocalizedDescriptionDidChange"), defaultValue: nil)
-    public var exposureDetectionErrorLocalizedDescription: String?
+    public var exposureDetectionErrorLocalizedDescription: String? {
+        willSet { objectWillChange.send() }
+    }
     
     @Persisted(userDefaultsKey: "testResults", notificationName: .init("LocalStoreTestResultsDidChange"), defaultValue: [])
-    public var testResults: [TestResult]
+    public var testResults: [TestResult] {
+        willSet { objectWillChange.send() }
+    }
     
 }
