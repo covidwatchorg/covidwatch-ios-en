@@ -4,6 +4,7 @@
 //
 
 import SwiftUI
+import ExposureNotification
 
 struct Reporting: View {
     
@@ -45,25 +46,47 @@ struct Reporting: View {
                             self.isShowingCallCode = true
                         }
                         
-                        afterGetAndPostDiagnosisKeys(result: String(Int.random(in: 10000..<99999)))
+//                        afterGetAndPostDiagnosisKeys(result: String(Int.random(in: 10000..<99999)))
                         
-//                        ExposureManager.shared.getAndPostDiagnosisKeys { (result) in
+                        //ExposureManager.shared.getAndPostDiagnosisKeys { (result) in
+                        ExposureManager.shared.getAndPostTestDiagnosisKeys { (result) in
+                            DispatchQueue.main.async {
+
+                                switch result {
+                                    case let .success(verificationCode):
+
+                                        afterGetAndPostDiagnosisKeys(result: verificationCode ?? "123456789")
+
+                                    case let .failure(error):
+                                        if let error = error as? ENError, error.code == .notAuthorized {
+                                            UIApplication.shared.topViewController?.present(
+                                                error,
+                                                animated: true,
+                                                completion: nil
+                                            )
+                                        }
+                                        else {
+                                            afterGetAndPostDiagnosisKeys(result: String(Int.random(in: 10000..<99999)))
+                                        }
+                                        return
+                                }
+
+                                
+//                                switch result {
+//                                    case let .success(verificationCode):
 //
-//                            switch result {
-//                                case let .success(verificationCode):
+//                                        afterGetAndPostDiagnosisKeys(result: verificationCode ?? "123456789")
 //
-//                                    afterGetAndPostDiagnosisKeys(result: verificationCode ?? "123456789")
-//
-//                                case let .failure(error):
-//                                    UIApplication.shared.topViewController?.present(
-//                                        error as NSError,
-//                                        animated: true,
-//                                        completion: nil
-//                                    )
-//                                    return
-//                            }
-//
-//                        }
+//                                    case let .failure(error):
+//                                        UIApplication.shared.topViewController?.present(
+//                                            error,
+//                                            animated: true,
+//                                            completion: nil
+//                                        )
+//                                        return
+//                                }
+                            }
+                        }
                         
                     }) {
                         

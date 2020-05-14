@@ -3,19 +3,20 @@
 //
 
 import UIKit
+import ExposureNotification
 
 extension UIViewController {
     
     public func present(
-        _ errorToPresent: NSError,
+        nsError: NSError,
         title: String? = NSLocalizedString("Error", comment: ""),
         swapTitleAndMessage swapFlag: Bool = false,
         animated flag: Bool,
         completion: (() -> Swift.Void)? = nil
     ) {
         var messages = [String]()
-        messages.append(errorToPresent.localizedDescription)
-        if let suggestion = errorToPresent.localizedRecoverySuggestion {
+        messages.append(nsError.localizedDescription)
+        if let suggestion = nsError.localizedRecoverySuggestion {
             messages.append(suggestion)
         }
         let message = messages.joined(separator: "\n")
@@ -25,15 +26,15 @@ extension UIViewController {
             message: swapFlag ? title : message,
             preferredStyle: .alert
         )
-        if let options = errorToPresent.localizedRecoveryOptions,
-            let recoveryAttempter = errorToPresent.recoveryAttempter {
+        if let options = nsError.localizedRecoveryOptions,
+            let recoveryAttempter = nsError.recoveryAttempter {
             for (index, option) in options.enumerated() {
                 let action = UIAlertAction(
                     title: option,
                     style: .default,
                     handler: { (action) in
                         _ = (recoveryAttempter as AnyObject).attemptRecovery(
-                            fromError: errorToPresent,
+                            fromError: nsError,
                             optionIndex: index
                         )
                 })
@@ -53,5 +54,48 @@ extension UIViewController {
             )
         }        
         present(alertController, animated: flag, completion: completion)
-    }    
+    }
+    
+    public func present(
+        _ error: Error,
+        animated: Bool,
+        completion: (() -> Swift.Void)? = nil
+    ) {
+        if let error = error as? ENError,
+            let message = (error).userInfo["cuErrorMsg"] as? String {
+            self.present(
+                message: message,
+                animated: animated,
+                completion: completion
+            )
+        }
+        else {
+            self.present(
+                nsError: error as NSError,
+                animated: animated,
+                completion: completion
+            )
+        }
+    }
+    
+    public func present(
+        title: String? = NSLocalizedString("Error", comment: ""),
+        message: String? = nil,
+        recoveryAction: UIAlertAction? = nil,
+        animated flag: Bool,
+        completion: (() -> Swift.Void)? = nil
+    ) {
+        let alertController = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        
+        alertController.addAction(UIAlertAction(
+            title: NSLocalizedString("OK", comment: ""),
+            style: .default,
+            handler: nil)
+        )
+        present(alertController, animated: flag, completion: completion)
+    }
 }

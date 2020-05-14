@@ -27,58 +27,54 @@ struct Home: View {
                 
                 VStack(spacing: 0) {
                     
-                    if (userData.exposureNotificationStatus != .active ||
-                        userData.notificationsAuthorizationStatus != .authorized) {
+                    VStack(spacing: 1) {
                         
-                        VStack(spacing: 1) {
-                            
-                            if userData.exposureNotificationStatus != .active {
-                                Button(action: {
-                                    
-                                    if self.userData.exposureNotificationStatus == .unknown ||
-                                        self.userData.exposureNotificationStatus == .disabled {
-                                        self.isShowingExposureSettings.toggle()
-                                    }
+                        if userData.exposureNotificationStatus != .active {
+                            Button(action: {
                                 
-                                }) {
-                                    Alert(
-                                        message: userData.exposureNotificationStatus.detailedDescription,
-                                        backgroundColor: Color("Alert Normal Color")
-                                    )
+                                if self.userData.exposureNotificationStatus == .unknown ||
+                                    self.userData.exposureNotificationStatus == .disabled {
+                                    self.isShowingExposureSettings.toggle()
                                 }
-                                .sheet(isPresented: $isShowingExposureSettings) {
-                                    Setup1(dismissesAutomatically: true).environmentObject(self.userData)
-                                }
+                                
+                            }) {
+                                Alert(
+                                    message: userData.exposureNotificationStatus.detailedDescription,
+                                    backgroundColor: Color("Alert Normal Color")
+                                )
                             }
-                            
-                            if userData.notificationsAuthorizationStatus != .authorized {
-                                Button(action: {
-                                    
-                                    if self.userData.notificationsAuthorizationStatus == .denied {
-                                        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString),
-                                            UIApplication.shared.canOpenURL(settingsUrl) else {
+                            .sheet(isPresented: $isShowingExposureSettings) {
+                                Setup1(dismissesAutomatically: true).environmentObject(self.userData)
+                            }
+                        }
+                        
+                        if userData.notificationsAuthorizationStatus != .authorized {
+                            Button(action: {
+                                
+                                if self.userData.notificationsAuthorizationStatus == .denied {
+                                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString),
+                                        UIApplication.shared.canOpenURL(settingsUrl) else {
                                             return
-                                        }
-                                        UIApplication.shared.open(settingsUrl, completionHandler: nil)
                                     }
-                                    else {
-                                        self.isShowingNotificationSettings.toggle()
-                                    }
-                                    
-                                }) {
-                                    Alert(
-                                        message: userData.notificationsAuthorizationStatus.detailedDescription,
-                                        backgroundColor: Color("Alert Normal Color")
-                                    )
+                                    UIApplication.shared.open(settingsUrl, completionHandler: nil)
                                 }
-                                .sheet(isPresented: $isShowingNotificationSettings) {
-                                    Setup2(dismissesAutomatically: true).environmentObject(self.userData)
+                                else {
+                                    self.isShowingNotificationSettings.toggle()
                                 }
+                                
+                            }) {
+                                Alert(
+                                    message: userData.notificationsAuthorizationStatus.detailedDescription,
+                                    backgroundColor: Color("Alert Normal Color")
+                                )
                             }
-                            
-                        }.padding(.top, .headerHeight)
-                            .zIndex(1) // Required for the shadow effect to be visible. Otherwise the content the follows below covers it.
-                    }
+                            .sheet(isPresented: $isShowingNotificationSettings) {
+                                Setup2(dismissesAutomatically: true).environmentObject(self.userData)
+                            }
+                        }
+                        
+                    }.padding(.top, .headerHeight)
+                        .zIndex(1) // Required for the shadow effect to be visible. Otherwise the content the follows below covers it.
                     
                     ZStack(alignment: .top) {
                         

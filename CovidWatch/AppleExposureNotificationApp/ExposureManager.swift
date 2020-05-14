@@ -22,14 +22,14 @@ public class ExposureManager {
             // notifications are not enabled,  if the user initially denied Exposure Notifications
             // during onboarding, but then flipped on the "COVID-19 Exposure Notifications" switch
             // in Settings.
-            if ENManager.authorizationStatus == .authorized && !self.manager.exposureNotificationEnabled {
-                self.manager.setExposureNotificationEnabled(true) { error in
-                    // No error handling for attempts to enable on launch
-                    if (error == nil) {
-                        UserData.shared.isExposureNotificationEnabled = true
-                    }
-                }
-            }
+//            if ENManager.authorizationStatus == .authorized && !self.manager.exposureNotificationEnabled {
+//                self.manager.setExposureNotificationEnabled(true) { error in
+//                    // No error handling for attempts to enable on launch
+//                    if (error == nil) {
+//                        UserData.shared.exposureNotificationEnabled = true
+//                    }
+//                }
+//            }
         }
     }
     

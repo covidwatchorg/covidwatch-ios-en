@@ -22,42 +22,60 @@ final class UserData: ObservableObject  {
     @Published(key: "isSetupCompleted")
     var isSetupCompleted: Bool = false
     
+    @Published(key: "isExposureNotificationSetup")
+    var isExposureNotificationSetup: Bool = false
+    
+    @Published(key: "isUserNotificationsSetup")
+    var isUserNotificationsSetup: Bool = false
+    
     @Published
-    var isExposureNotificationEnabled: Bool = false {
+    var exposureNotificationEnabled: Bool = ExposureManager.shared.manager.exposureNotificationEnabled {
         didSet {
+            guard exposureNotificationEnabled != oldValue else { return }
             
-            if !ExposureManager.shared.manager.exposureNotificationEnabled &&
-                isExposureNotificationEnabled {
-                
-                ExposureManager.shared.manager.setExposureNotificationEnabled(true) { (error) in
-                    
-                    if let error = error {
-                        UIApplication.shared.topViewController?.present(
-                            error as NSError,
-                            animated: true,
-                            completion: nil
-                        )
-                        
-                        withAnimation {
-                            self.isExposureNotificationEnabled = false
+            defer {
+                self.configureExposureNotificationStatusMessage()
+            }
+            
+            guard ENManager.authorizationStatus == .authorized else {
+                if ENManager.authorizationStatus != .unknown {
+                    if self.exposureNotificationEnabled {
+                        withAnimation  {
+                            ApplicationController.shared.handleExposureNotificationEnabled(error: ENError(.notAuthorized))
+                            self.exposureNotificationEnabled = false
                         }
-                        
-                        return
                     }
+                }
+                return
+            }
+            
+            ExposureManager.shared.manager.setExposureNotificationEnabled(
+                self.exposureNotificationEnabled
+            ) { (error) in
+
+                if let error = error {
+                    ApplicationController.shared.handleExposureNotificationEnabled(error: error)
+                    return
                 }
             }
         }
     }
     
-    @Published(key: "isExposureNotificationsConfigured")
-    var isExposureNotificationSetup: Bool = false
-    
-    @Published(key: "isNotificationsConfigured")
-    var isNotificationsConfigured: Bool = false
-        
     @Published
-    var exposureNotificationStatus: ENStatus = .active
+    var exposureNotificationStatus: ENStatus = .active {
+        didSet {
+            configureExposureNotificationStatusMessage()
+        }
+    }
+    
+    func configureExposureNotificationStatusMessage() {
+        self.exposureNotificationStatusMessage =
+            self.exposureNotificationStatus.detailedDescription
+    }
     
     @Published
-    var notificationsAuthorizationStatus: UNAuthorizationStatus = .authorized    
+    var exposureNotificationStatusMessage: String = ""
+    
+    @Published
+    var notificationsAuthorizationStatus: UNAuthorizationStatus = .authorized
 }

@@ -30,7 +30,7 @@ struct PossibleExposures: View {
                         .padding(.top, .headerHeight)
                         .padding(.horizontal, 2 * .standardSpacing)
                     
-                    Toggle(isOn: self.$userData.isExposureNotificationEnabled) {
+                    Toggle(isOn: self.$userData.exposureNotificationEnabled) {
                         Text("Exposure Notifications")
                             .font(.custom("Montserrat-SemiBold", size: 18))
                             .foregroundColor(Color("Title Text Color"))
@@ -40,9 +40,9 @@ struct PossibleExposures: View {
                     
                     Spacer(minLength: .standardSpacing)
                     
-                    Text(verbatim: self.userData.exposureNotificationStatus.detailedDescription)
+                    Text(verbatim: self.userData.exposureNotificationStatusMessage)
                         .font(.custom("Montserrat-Regular", size: 16))
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                         .foregroundColor(Color("Title Text Color"))
                         .padding(.horizontal, 2 * .standardSpacing)
                     

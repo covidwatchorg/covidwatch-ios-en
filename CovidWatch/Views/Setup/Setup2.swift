@@ -57,12 +57,12 @@ struct Setup2: View {
                             
                             DispatchQueue.main.async {
                                 if let error = error {
-                                    UIApplication.shared.topViewController?.present(error as NSError, animated: true)
+                                    UIApplication.shared.topViewController?.present(error, animated: true)
                                     return
                                 }
                                 
                                 withAnimation {
-                                    self.userData.isNotificationsConfigured = true
+                                    self.userData.isUserNotificationsSetup = true
                                     self.userData.isSetupCompleted = true
                                 }
                                 
@@ -83,7 +83,7 @@ struct Setup2: View {
                 Button(action: {
                     
                     withAnimation {
-                        self.userData.isNotificationsConfigured = true
+                        self.userData.isUserNotificationsSetup = true
                         self.userData.isSetupCompleted = true
                     }
                     

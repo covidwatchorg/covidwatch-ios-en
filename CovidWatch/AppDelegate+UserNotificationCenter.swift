@@ -99,7 +99,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                 
                 DispatchQueue.main.async {
                     if let error = error {
-                        UIApplication.shared.topViewController?.present(error as NSError, animated: true)
+                        UIApplication.shared.topViewController?.present(error, animated: true)
                         return
                     }
                 }

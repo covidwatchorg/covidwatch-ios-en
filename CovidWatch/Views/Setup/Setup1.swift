@@ -4,6 +4,7 @@
 //
 
 import SwiftUI
+import ExposureNotification
 
 struct Setup1: View {
     
@@ -54,11 +55,7 @@ struct Setup1: View {
                     ExposureManager.shared.manager.setExposureNotificationEnabled(true) { (error) in
                         
                         if let error = error {
-                            UIApplication.shared.topViewController?.present(
-                                error as NSError,
-                                animated: true,
-                                completion: nil
-                            )
+                            ApplicationController.shared.handleExposureNotificationEnabled(error: error)
                             return
                         }
                         
