@@ -13,6 +13,30 @@ public struct PoWSolution: Equatable {
     let challengeNonceHex: String
     let workFactor: Int
     let solutionNonceHex: String
+    let hashHex: String?
+
+    init(challengeNonceHex: String, workFactor: Int,
+         solutionNonceHex: String, hashHex: String? = nil) {
+        self.challengeNonceHex = challengeNonceHex
+        self.workFactor = workFactor
+        self.solutionNonceHex = solutionNonceHex
+        self.hashHex = hashHex
+    }
+
+    func isValid() -> Bool {
+        if let hashHex = hashHex {
+            let hashBytes = [UInt8](hex: hashHex)
+            let data = Data(hashBytes)
+            if let uint64 = data.to(type: UInt64.self) {
+                let bigIndian = uint64.bigEndian
+                let valid = bigIndian % UInt64(self.workFactor) == 0
+                if valid {
+                    return true
+                }
+            }
+        }
+        return false
+    }
 }
 
 public struct PoWError: LocalizedError {
@@ -59,7 +83,8 @@ public struct ProofOfWork {
                             PoWSolution(
                                 challengeNonceHex: self.challengeNonceHex,
                                 workFactor: self.workFactor,
-                                solutionNonceHex: password
+                                solutionNonceHex: password,
+                                hashHex: answer.hexStringValue()
                             )
                         )
                     }
@@ -88,99 +113,3 @@ extension Data {
         return value
     }
 }
-
-//extension String {
-//
-//    /// Decode string with desire mode.
-//    ///
-//    /// - Parameter encodeMode: Mode for Decode.
-//    /// - Returns: Bytes.
-//    func decode(encodeMode: EncodeMode = .hex) -> [UInt8] {
-//        switch encodeMode {
-//        case .hex: return self.hexDecode()
-//        case .base64: return self.base64Decode()
-//        }
-//    }
-//
-//    /// Decode hexadecimal string to bytes.
-//    ///
-//    /// - Returns: Decoded bytes.
-//    func hexDecode() -> [UInt8] {
-//        var start = startIndex
-//        return (0...count/2).compactMap {  _ in
-//            let end = index(start, offsetBy: 2, limitedBy: endIndex) ?? endIndex
-//            defer { start = end }
-//            return UInt8(String(self[start..<end]), radix: 16)
-//        }
-//    }
-//
-//    /// Decode base64 string to bytes.
-//    ///
-//    /// - Returns: Decoded bytes.
-//    func base64Decode() -> [UInt8] {
-//        let base64Data = Data(base64Encoded: self)
-//        let decodeString = String(data: base64Data ?? Data(), encoding: String.Encoding.utf8) ?? ""
-//        return [UInt8](decodeString.utf8)
-//    }
-//
-//    /// Generate an appoint length string fill by zero.
-//    ///
-//    /// - Parameter length: Zero count.
-//    /// - Returns: Desired zero string.
-//    static func zeroString(length: Int) -> String {
-//        var zeroString = String()
-//        for _ in 0 ..< length {
-//            zeroString += "0"
-//        }
-//        return zeroString
-//    }
-//
-//}
-//
-///// Encode modes.
-//public enum EncodeMode {
-//
-//    /// Hexadecimal.
-//    case hex
-//
-//    /// Base64.
-//    case base64
-//
-//}
-//
-//extension Array {
-//
-//    /// Encode bytes with desire mode.
-//    ///
-//    /// - Parameter encodeMode: Mode for encode.
-//    /// - Returns: Encoded string.
-//    func encode(encodeMode: EncodeMode = .hex) -> String {
-//        if self is [UInt8] {
-//            switch encodeMode {
-//            case .hex: return self.hexEncode()
-//            case .base64: return self.base64Encode()
-//            }
-//        }
-//        return ""
-//    }
-//
-//    /// Encode to hexadecimal string.
-//    ///
-//    /// - Returns: Encoded string.
-//    func hexEncode() -> String {
-//        var hexString = String()
-//        for element in self {
-//            hexString = hexString.appendingFormat("%02x", (element as? UInt8)!)
-//        }
-//        return hexString
-//    }
-//
-//    /// Encode to base64 string.
-//    ///
-//    /// - Returns: Encoded string.
-//    func base64Encode() -> String {
-//        let base64Data = Data(bytes: self, count: self.count)
-//        return base64Data.base64EncodedString()
-//    }
-//
-//}
