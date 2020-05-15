@@ -110,6 +110,12 @@
 		2DD7B498245F65E1001B30F0 /* SubCallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B497245F65E1001B30F0 /* SubCallToAction.swift */; };
 		2DD7B49A245F66F2001B30F0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B499245F66F2001B30F0 /* Constants.swift */; };
 		E2209580245BA49400819BD1 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E220957F245BA49400819BD1 /* Environment.swift */; };
+		E223CBAE246E40D20030D01F /* CatCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E223CBAC246E40C30030D01F /* CatCrypto.framework */; };
+		E223CBAF246E40D20030D01F /* CatCrypto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E223CBAC246E40C30030D01F /* CatCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E223CBB2246E4A490030D01F /* ProofOfWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = E223CBB1246E4A490030D01F /* ProofOfWork.swift */; };
+		E223CBB4246E4F500030D01F /* Array+HexExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E223CBB3246E4F500030D01F /* Array+HexExtension.swift */; };
+		E223CBB6246E4FF60030D01F /* PoWTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E223CBB5246E4FF60030D01F /* PoWTests.swift */; };
+		E223CBB8246E50270030D01F /* XCTestCase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E223CBB7246E50270030D01F /* XCTestCase+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +134,20 @@
 			remoteInfo = CovidWatch;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E223CBA2246D2F010030D01F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E223CBAF246E40D20030D01F /* CatCrypto.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2D29BAE8246060B400E8BEC4 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
@@ -240,6 +260,11 @@
 		2DD7B497245F65E1001B30F0 /* SubCallToAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCallToAction.swift; sourceTree = "<group>"; };
 		2DD7B499245F66F2001B30F0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E220957F245BA49400819BD1 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		E223CBAC246E40C30030D01F /* CatCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CatCrypto.framework; path = Carthage/Build/iOS/CatCrypto.framework; sourceTree = "<group>"; };
+		E223CBB1246E4A490030D01F /* ProofOfWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProofOfWork.swift; sourceTree = "<group>"; };
+		E223CBB3246E4F500030D01F /* Array+HexExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+HexExtension.swift"; sourceTree = "<group>"; };
+		E223CBB5246E4FF60030D01F /* PoWTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoWTests.swift; sourceTree = "<group>"; };
+		E223CBB7246E50270030D01F /* XCTestCase+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +272,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E223CBAE246E40D20030D01F /* CatCrypto.framework in Frameworks */,
 				2D46AA5D2465E1710003936C /* SwiftProtobuf in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,6 +334,8 @@
 				2D46AA4A2465E1190003936C /* URLSession+Additions.swift */,
 				2D46AA4B2465E1190003936C /* UIWindow+ViewControllerUtility.swift */,
 				2D46AA4C2465E1190003936C /* UIViewController+ErrorPresenting.swift */,
+				E223CBB1246E4A490030D01F /* ProofOfWork.swift */,
+				E223CBB3246E4F500030D01F /* Array+HexExtension.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -338,6 +366,7 @@
 		2D48BF7C245B21BD00012E79 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E223CBAC246E40C30030D01F /* CatCrypto.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -469,6 +498,8 @@
 			children = (
 				2D9CF3E72455B9F5005B085E /* CovidWatchTests.swift */,
 				2D9CF3E92455B9F5005B085E /* Info.plist */,
+				E223CBB5246E4FF60030D01F /* PoWTests.swift */,
+				E223CBB7246E50270030D01F /* XCTestCase+Extensions.swift */,
 			);
 			path = CovidWatchTests;
 			sourceTree = "<group>";
@@ -555,6 +586,7 @@
 				2D9CF3C62455B9F1005B085E /* Sources */,
 				2D9CF3C72455B9F1005B085E /* Frameworks */,
 				2D9CF3C82455B9F1005B085E /* Resources */,
+				E223CBA2246D2F010030D01F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -753,6 +785,7 @@
 				2D29BAF324607F2C00E8BEC4 /* UNAuthorizationStatus+Additions.swift in Sources */,
 				2D7942962466CEE1008AF148 /* SmallCallToAction.swift in Sources */,
 				2D46AA412465E1010003936C /* PositiveDiagnosis+ExposureNotification.swift in Sources */,
+				E223CBB4246E4F500030D01F /* Array+HexExtension.swift in Sources */,
 				2D46AA432465E1010003936C /* PositiveDiagnosis.swift in Sources */,
 				2D7942A52467FB40008AF148 /* ReportingCallCode.swift in Sources */,
 				2DD7B494245F646D001B30F0 /* SubtitleText.swift in Sources */,
@@ -797,6 +830,7 @@
 				2D46AA3F2465E1010003936C /* UserDefaults+Shared.swift in Sources */,
 				2D9034B824603D6200351C3C /* HowItWorks2.swift in Sources */,
 				2D46AA422465E1010003936C /* ENTemporaryExposureKey+CodableDiagnosisKey.swift in Sources */,
+				E223CBB2246E4A490030D01F /* ProofOfWork.swift in Sources */,
 				2D29BAE9246060B400E8BEC4 /* Alert.swift in Sources */,
 				2D46AA4F2465E1190003936C /* UIViewController+ErrorPresenting.swift in Sources */,
 				2D9034C7246049EC00351C3C /* Setup1.swift in Sources */,
@@ -807,7 +841,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E223CBB6246E4FF60030D01F /* PoWTests.swift in Sources */,
 				2D9CF3E82455B9F5005B085E /* CovidWatchTests.swift in Sources */,
+				E223CBB8246E50270030D01F /* XCTestCase+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -965,10 +1001,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "CovidWatch/Covid Watch.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 82;
-				DEVELOPMENT_TEAM = GD7NMG67S7;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 80;
+				DEVELOPMENT_TEAM = CQRZ4E7K9U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CovidWatch/Info.plist;
 				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -990,10 +1031,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "CovidWatch/Covid Watch.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 82;
-				DEVELOPMENT_TEAM = GD7NMG67S7;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 80;
+				DEVELOPMENT_TEAM = CQRZ4E7K9U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CovidWatch/Info.plist;
 				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1016,8 +1062,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CQRZ4E7K9U;
 				INFOPLIST_FILE = CovidWatchTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1027,7 +1074,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CovidWatch.app/CovidWatch";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Covid Watch.app/Covid Watch";
 			};
 			name = Debug;
 		};
@@ -1037,8 +1084,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CQRZ4E7K9U;
 				INFOPLIST_FILE = CovidWatchTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1048,7 +1096,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CovidWatch.app/CovidWatch";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Covid Watch.app/Covid Watch";
 			};
 			name = Release;
 		};
@@ -1057,6 +1105,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CQRZ4E7K9U;
 				INFOPLIST_FILE = CovidWatchUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1076,6 +1125,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CQRZ4E7K9U;
 				INFOPLIST_FILE = CovidWatchUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
