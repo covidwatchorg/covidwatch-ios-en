@@ -40,7 +40,8 @@ struct Home: View {
                             }) {
                                 Alert(
                                     message: userData.exposureNotificationStatus.detailedDescription,
-                                    backgroundColor: Color("Alert Normal Color")
+                                    backgroundColor: Color("Alert Normal Color"),
+                                    showArror: (self.userData.exposureNotificationStatus == .unknown || self.userData.exposureNotificationStatus == .disabled)
                                 )
                             }
                             .sheet(isPresented: $isShowingExposureSettings) {

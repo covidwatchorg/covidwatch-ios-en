@@ -9,10 +9,12 @@ struct Alert: View {
     
     var message: String
     var backgroundColor: Color
+    var showArror: Bool
     
-    init(message: String, backgroundColor: Color) {
+    init(message: String, backgroundColor: Color, showArror: Bool = true) {
         self.message = message
         self.backgroundColor = backgroundColor
+        self.showArror = showArror
     }
     
     var body: some View {
@@ -23,7 +25,9 @@ struct Alert: View {
                 .foregroundColor(.white)
                 .multilineTextAlignment(.leading)
             Spacer()
-            Image("Right Arrow")
+            if showArror {
+                Image("Right Arrow")
+            }
         }
         .padding(.horizontal, 2 * .standardSpacing)  
         .frame(height: 70, alignment: .center)

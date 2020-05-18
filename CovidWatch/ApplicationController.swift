@@ -136,10 +136,6 @@ class ApplicationController: NSObject {
                 completion: nil
             )
         }
-        
-        withAnimation {
-            UserData.shared.exposureNotificationEnabled = false
-        }
     }
     
     @objc func shareApp() {
