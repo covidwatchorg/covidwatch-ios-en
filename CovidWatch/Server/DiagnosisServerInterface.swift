@@ -32,7 +32,7 @@ public protocol DiagnosisServer {
     // The user can use this token to verify their report with the public health
     // authority (e.g., over the phone).
     func sharePositiveDiagnosis(
-        _ positiveDiagnosis: PositiveDiagnosis,
+        _ positiveDiagnosis: PublishExposure,
         completion: @escaping (Result<String?, Error>) -> Void
     )
     

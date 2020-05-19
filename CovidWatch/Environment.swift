@@ -21,30 +21,23 @@ enum AppScheme: CustomStringConvertible {
 func getLocalIP() -> String {
     // sometimes the xcode ip sniff fails, in that case you can just
     // hard code it during development
-    //return "192.168.176.132"
+    // return "192.168.176.131"
     if let localIP = Bundle.main.infoDictionary?["LocalIP"] as? String {
         return localIP
     }
     return "localhost"
 }
 
-func getLocalFirebaseHost() -> String {
-    let firebasePort = 8080
-    return "\(getLocalIP()):\(firebasePort)"
-}
-
 func getAPIUrl(_ scheme: AppScheme) -> String {
-    let firebaseProjectId = "covidwatch-354ce"
     func getLocalURL() -> String {
         let localProtocol = "http://"
-        let localPort = 5001
-        let projectSlug = "\(firebaseProjectId)/us-central1"
-        return "\(localProtocol)\(getLocalIP()):\(localPort)/\(projectSlug)"
+        let localPort = 8080
+        return "\(localProtocol)\(getLocalIP()):\(localPort)"
     }
     
     switch scheme {
         case .production:
-            return "https://us-central1-\(firebaseProjectId).cloudfunctions.net"
+            return ""
         default:
             return getLocalURL()
     }

@@ -10,10 +10,10 @@ import ExposureNotification
 import SwiftProtobuf
 
 public struct CodableDiagnosisKey: Codable, Equatable {
-    let keyData: Data
+    let key: Data
     let rollingPeriod: ENIntervalNumber
     let rollingStartNumber: ENIntervalNumber
-    let transmissionRiskLevel: ENRiskLevel
+    let transmissionRisk: ENRiskLevel
 }
 
 public struct CodableExposureConfiguration: Codable {
@@ -41,20 +41,25 @@ public class Server {
         
         // Convert keys to something that can be encoded to JSON and upload them.
         let codableDiagnosisKeys = diagnosisKeys.compactMap { diagnosisKey -> CodableDiagnosisKey? in
-            return CodableDiagnosisKey(keyData: diagnosisKey.keyData,
+            return CodableDiagnosisKey(key: diagnosisKey.keyData,
                                        rollingPeriod: diagnosisKey.rollingPeriod,
                                        rollingStartNumber: diagnosisKey.rollingStartNumber,
-                                       transmissionRiskLevel: diagnosisKey.transmissionRiskLevel)
+                                       transmissionRisk: diagnosisKey.transmissionRiskLevel)
         }
         
         // Your server needs to handle de-duplicating keys.
         if let diagnosisServer = self.diagnosisServer {
             
             diagnosisServer.sharePositiveDiagnosis(
-                PositiveDiagnosis(
-                    diagnosisKeys: codableDiagnosisKeys,
-                    publicHealthAuthorityPermissionNumber: nil,
-                    timestamp: nil),
+                PublishExposure(
+                    temporaryExposureKeys: codableDiagnosisKeys,
+                    regions: ["US"],
+                    appPackageName: "com.example.android.app",
+                    platform: "android",
+                    deviceVerificationPayload: "base64 encoded attestation payload string",
+                    verificationPayload: "signature /code from  of verifying authority",
+                    padding: "random string data..."
+                ),
                 completion: completion)
         }
         else {

@@ -6,6 +6,17 @@ import Foundation
 import os.log
 import ExposureNotification
 
+public struct PublishExposure: Codable {
+    let temporaryExposureKeys: [CodableDiagnosisKey]
+    let regions: [String]
+    let appPackageName: String
+    let platform: String
+    let deviceVerificationPayload: String
+    let verificationPayload: String
+    let padding: String
+}
+
+
 @available(iOS 13.5, *)
 public class CovidWatchDiagnosisServer: DiagnosisServer {
     
@@ -220,31 +231,30 @@ public class CovidWatchDiagnosisServer: DiagnosisServer {
     }
     
     public func sharePositiveDiagnosis(
-        _ positiveDiagnosis: PositiveDiagnosis,
+        _ positiveDiagnosis: PublishExposure,
         completion: @escaping (Result<String?, Error>) -> Void
     ) {        
         os_log(
-            "Uploading positive diagnosis with permission number=%@ ...",
-            log: .cwen,
-            positiveDiagnosis.publicHealthAuthorityPermissionNumber ?? ""
+            "Uploading positive diagnosis ...",
+            log: .cwen
         )
         
-        let submitUrl = URL(string: "\(apiUrlString)/sharePositiveDiagnosis") ??
+        let submitUrl = URL(string: "\(apiUrlString)/publish") ??
             URL(fileURLWithPath: "")
-        
+
         let encoder = JSONEncoder()
-        encoder.keyEncodingStrategy = .convertToSnakeCase
         encoder.dataEncodingStrategy = .base64
-        
+
         var uploadData: Data! = try? encoder.encode(positiveDiagnosis)
         if uploadData == nil {
             uploadData = Data()
         }
-        
+
         var request = URLRequest(url: submitUrl)
         request.httpMethod = "POST"
+
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+
         let task = URLSession.shared.uploadTask(
             with: request,
             from: uploadData
@@ -252,10 +262,9 @@ public class CovidWatchDiagnosisServer: DiagnosisServer {
             switch result {
                 case .failure(let error):
                     os_log(
-                        "Uploading positive diagnosis with permission number=%@ failed=%@",
+                        "Uploading positive diagnosis failed=%@",
                         log: .cwen,
                         type: .error,
-                        positiveDiagnosis.publicHealthAuthorityPermissionNumber ?? "",
                         error as CVarArg
                     )
                     completion(.failure(error))
@@ -270,9 +279,8 @@ public class CovidWatchDiagnosisServer: DiagnosisServer {
                         serverResponse = dataString
                     }
                     os_log(
-                        "Uploaded positive diagnosis with permission number=%@ response=%@",
+                        "Uploaded positive diagnosis with response=%@",
                         log: .cwen,
-                        positiveDiagnosis.publicHealthAuthorityPermissionNumber ?? "",
                         serverResponse
                     )
                     completion(.success(nil))

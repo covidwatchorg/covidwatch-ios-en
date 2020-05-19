@@ -10,10 +10,10 @@ extension CodableDiagnosisKey {
     @available(iOS 13.5, *)
     init(_ key: ENTemporaryExposureKey) {
         self.init(
-            keyData: key.keyData,
+            key: key.keyData,
             rollingPeriod: key.rollingPeriod,
             rollingStartNumber: key.rollingStartNumber,
-            transmissionRiskLevel: key.transmissionRiskLevel
+            transmissionRisk: key.transmissionRiskLevel
         )
     }
 }
