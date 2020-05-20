@@ -8,6 +8,7 @@
 import Foundation
 import ExposureNotification
 import SwiftProtobuf
+import DeviceCheck
 
 public struct CodableDiagnosisKey: Codable, Equatable {
     let key: Data
@@ -50,17 +51,28 @@ public class Server {
         // Your server needs to handle de-duplicating keys.
         if let diagnosisServer = self.diagnosisServer {
             
-            diagnosisServer.sharePositiveDiagnosis(
-                PublishExposure(
+            DCDevice.current.generateToken { (token, error) in
+                if let error = error {
+                    print(error)
+                    completion(.failure(error))
+                    return
+                }
+             
+                let publishExposure = PublishExposure(
                     temporaryExposureKeys: codableDiagnosisKeys,
                     regions: ["US"],
-                    appPackageName: "com.example.android.app",
-                    platform: "android",
-                    deviceVerificationPayload: "base64 encoded attestation payload string",
+                    appPackageName: "org.covidwatch.california.ios",
+                    platform: "ios",
+                    deviceVerificationPayload: token!.base64EncodedString(),
                     verificationPayload: "signature /code from  of verifying authority",
                     padding: "random string data..."
-                ),
-                completion: completion)
+                )
+                
+                diagnosisServer.sharePositiveDiagnosis(
+                    publishExposure,
+                    completion: completion)
+
+            }
         }
         else {
             completion(.failure(CocoaError(.fileNoSuchFile)))

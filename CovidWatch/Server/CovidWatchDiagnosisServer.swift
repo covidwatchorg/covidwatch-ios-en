@@ -239,7 +239,10 @@ public class CovidWatchDiagnosisServer: DiagnosisServer {
             log: .cwen
         )
         
-        let submitUrl = URL(string: "\(apiUrlString)/publish") ??
+//        let submitUrl = URL(string: "\(apiUrlString)/publish") ??
+//            URL(fileURLWithPath: "")
+        
+        let submitUrl = URL(string: "https://exposure-2sav64smma-uc.a.run.app/") ??
             URL(fileURLWithPath: "")
 
         let encoder = JSONEncoder()

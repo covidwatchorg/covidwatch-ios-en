@@ -48,8 +48,8 @@ struct Reporting: View {
                         
 //                        afterGetAndPostDiagnosisKeys(result: String(Int.random(in: 10000..<99999)))
                         
-                        //ExposureManager.shared.getAndPostDiagnosisKeys { (result) in
-                        ExposureManager.shared.getAndPostTestDiagnosisKeys { (result) in
+                        ExposureManager.shared.getAndPostDiagnosisKeys { (result) in
+//                        ExposureManager.shared.getAndPostTestDiagnosisKeys { (result) in
                             DispatchQueue.main.async {
 
                                 switch result {
