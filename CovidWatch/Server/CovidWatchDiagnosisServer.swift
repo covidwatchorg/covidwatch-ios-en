@@ -5,6 +5,8 @@
 import Foundation
 import os.log
 import ExposureNotification
+import DeviceCheck
+import ZIPFoundation
 
 public struct PublishExposure: Codable {
     let temporaryExposureKeys: [CodableDiagnosisKey]
@@ -20,12 +22,133 @@ public struct PublishExposure: Codable {
 @available(iOS 13.5, *)
 public class CovidWatchDiagnosisServer: DiagnosisServer {
     
-    public let apiUrlString: String
+    public let configuration: DiagnosisServerConfiguration
     
-    public init(apiUrlString: String) {
-        self.apiUrlString = apiUrlString
+    public required init(configuration: DiagnosisServerConfiguration) {
+        self.configuration = configuration
     }
     
+    // TODO
+    public func verifyUniqueTestIdentifier(
+        _ identifier: String,
+        completion: @escaping (Result<Bool, Error>) -> Void
+    ) {
+        os_log(
+            "Verifying unique test identifier=%@ ...",
+            log: .cwen,
+            identifier
+        )
+        
+        let fetchUrl = URL(string: "\(self.configuration.apiUrlString)/verifyUniqueTestIdentifier") ??
+            URL(fileURLWithPath: "")
+        
+        let request = URLRequest(url: fetchUrl)
+        
+        URLSession.shared.dataTask(with: request) { (result) in
+            switch result {
+                case .failure(let error):
+                    os_log(
+                        "Verifying unique test identifier=%@ failed=%@ ...",
+                        log: .cwen,
+                        type: .error,
+                        identifier,
+                        error as CVarArg
+                    )
+                    completion(.failure(error))
+                    return
+                
+                case .success(let (response, _)):
+                    os_log(
+                        "Verified unique test identifier=%@ response=%@",
+                        log: .cwen,
+                        identifier,
+                        response.description
+                    )
+                    completion(.success(true))
+                    return
+            }
+        }.resume()
+    }
+    
+    public func postDiagnosisKeys(
+        _ diagnosisKeys: [CodableDiagnosisKey],
+        completion: @escaping (Error?) -> Void
+    ) {
+        os_log(
+            "Posting %d diagnosis key(s) ...",
+            log: .cwen,
+            diagnosisKeys.count
+        )
+        
+        DCDevice.current.generateToken { (token, error) in
+            if let error = error {
+                os_log(
+                    "Posting %d diagnosis key(s) failed=%@",
+                    log: .cwen,
+                    type: .error,
+                    diagnosisKeys.count,
+                    error as CVarArg
+                )
+                completion(error)
+                return
+            }
+            
+            let publishExposure = PublishExposure(
+                temporaryExposureKeys: diagnosisKeys,
+                regions: self.configuration.regions,
+                appPackageName: Bundle.main.bundleIdentifier!,
+                platform: "ios",
+                deviceVerificationPayload: token!.base64EncodedString(),
+                verificationPayload: "signature /code from  of verifying authority",
+                padding: Data.random(count: Int.random(in: 1024..<2048)).base64EncodedString()
+            )
+                        
+            let requestURL = URL(string: self.configuration.apiExposureURLString) ?? URL(fileURLWithPath: "")
+
+            let encoder = JSONEncoder()
+            encoder.dataEncodingStrategy = .base64
+
+            var uploadData: Data! = try? encoder.encode(publishExposure)
+            if uploadData == nil {
+                uploadData = Data()
+            }
+
+            var request = URLRequest(url: requestURL)
+            request.httpMethod = "POST"
+
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+            let task = URLSession.shared.uploadTask(
+                with: request,
+                from: uploadData
+            ) { (result) in
+                switch result {
+                    case .failure(let error):
+                        os_log(
+                            "Posting %d diagnosis key(s) failed=%@",
+                            log: .cwen,
+                            type: .error,
+                            diagnosisKeys.count,
+                            error as CVarArg
+                        )
+                        completion(error)
+                        return
+                    
+                    case .success(_):
+                        os_log(
+                            "Posted %d diagnosis key(s)",
+                            log: .cwen,
+                            diagnosisKeys.count
+                        )
+                        completion(nil)
+                        return
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    // TODO
     public func getDiagnosisKeyFileURLs(
         startingAt index: Int,
         completion: @escaping (Result<[URL], Error>) -> Void
@@ -36,7 +159,7 @@ public class CovidWatchDiagnosisServer: DiagnosisServer {
             index
         )
         
-        let fetchUrl = URL(string: "\(apiUrlString)/getDiagnosisKeyFileURLs?startingAt=\(index)") ??
+        let fetchUrl = URL(string: "\(self.configuration.apiUrlString)/getDiagnosisKeyFileURLs?startingAt=\(index)") ??
             URL(fileURLWithPath: "")
         
         let request = URLRequest(url: fetchUrl)
@@ -86,7 +209,7 @@ public class CovidWatchDiagnosisServer: DiagnosisServer {
     
     public func downloadDiagnosisKeyFile(
         at remoteURL: URL,
-        completion: @escaping (Result<URL, Error>) -> Void
+        completion: @escaping (Result<[URL], Error>) -> Void
     ) {
         os_log(
             "Downloading diagnosis key file at remote URL=%@ ...",
@@ -116,13 +239,19 @@ public class CovidWatchDiagnosisServer: DiagnosisServer {
                 
                 try FileManager.default.moveItem(at: url, to: savedURL)
                 
+                let unzipDestinationDirectory = cachesDirectoryURL.appendingPathComponent(UUID().uuidString)
+                try FileManager.default.createDirectory(at: unzipDestinationDirectory, withIntermediateDirectories: true, attributes: nil)
+                try FileManager.default.unzipItem(at: savedURL, to: unzipDestinationDirectory)
+                try FileManager.default.removeItem(at: savedURL)
+                let zipFileContentURLs = try FileManager.default.contentsOfDirectory(at: unzipDestinationDirectory, includingPropertiesForKeys: nil)
+                
                 os_log(
                     "Downloaded diagnosis key file at remote URL=%@ to=%@",
                     log: .cwen,
                     remoteURL.description,
-                    savedURL.description
+                    zipFileContentURLs.description
                 )
-                completion(.success(savedURL))
+                completion(.success(zipFileContentURLs))
             } catch {
                 os_log(
                     "Downloading diagnosis key file at remote URL=%@ failed=%@ ...",
@@ -136,6 +265,7 @@ public class CovidWatchDiagnosisServer: DiagnosisServer {
         }.resume()
     }
     
+    // TODO
     public func getExposureConfiguration(
         completion: @escaping (Result<CodableExposureConfiguration, Error>) -> Void
     ) {
@@ -144,7 +274,7 @@ public class CovidWatchDiagnosisServer: DiagnosisServer {
             log: .cwen
         )
         
-        let fetchUrl = URL(string: "\(apiUrlString)/getExposureConfiguration") ??
+        let fetchUrl = URL(string: "\(self.configuration.apiUrlString)/getExposureConfiguration") ??
             URL(fileURLWithPath: "")
         
         let request = URLRequest(url: fetchUrl)
@@ -187,109 +317,5 @@ public class CovidWatchDiagnosisServer: DiagnosisServer {
                     return
             }
         }.resume()
-    }
-    
-    public func verifyUniqueTestIdentifier(
-        _ identifier: String,
-        completion: @escaping (Result<Bool, Error>) -> Void
-    ) {
-        os_log(
-            "Verifying unique test identifier=%@ ...",
-            log: .cwen,
-            identifier
-        )
-        
-        let fetchUrl = URL(string: "\(apiUrlString)/verifyUniqueTestIdentifier") ??
-            URL(fileURLWithPath: "")
-        
-        let request = URLRequest(url: fetchUrl)
-        
-        URLSession.shared.dataTask(with: request) { (result) in
-            switch result {
-                case .failure(let error):
-                    os_log(
-                        "Verifying unique test identifier=%@ failed=%@ ...",
-                        log: .cwen,
-                        type: .error,
-                        identifier,
-                        error as CVarArg
-                    )
-                    completion(.failure(error))
-                    return
-                
-                case .success(let (response, _)):
-                    os_log(
-                        "Verified unique test identifier=%@ response=%@",
-                        log: .cwen,
-                        identifier,
-                        response.description
-                    )
-                    completion(.success(true))
-                    return
-            }
-        }.resume()
-    }
-    
-    public func sharePositiveDiagnosis(
-        _ positiveDiagnosis: PublishExposure,
-        completion: @escaping (Result<String?, Error>) -> Void
-    ) {        
-        os_log(
-            "Uploading positive diagnosis ...",
-            log: .cwen
-        )
-        
-//        let submitUrl = URL(string: "\(apiUrlString)/publish") ??
-//            URL(fileURLWithPath: "")
-        
-        let submitUrl = URL(string: "https://exposure-2sav64smma-uc.a.run.app/") ??
-            URL(fileURLWithPath: "")
-
-        let encoder = JSONEncoder()
-        encoder.dataEncodingStrategy = .base64
-
-        var uploadData: Data! = try? encoder.encode(positiveDiagnosis)
-        if uploadData == nil {
-            uploadData = Data()
-        }
-
-        var request = URLRequest(url: submitUrl)
-        request.httpMethod = "POST"
-
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        let task = URLSession.shared.uploadTask(
-            with: request,
-            from: uploadData
-        ) { (result) in
-            switch result {
-                case .failure(let error):
-                    os_log(
-                        "Uploading positive diagnosis failed=%@",
-                        log: .cwen,
-                        type: .error,
-                        error as CVarArg
-                    )
-                    completion(.failure(error))
-                    return
-                
-                case .success(let (response, data)):
-                    var serverResponse = ""
-                    if let mimeType = response.mimeType,
-                        mimeType == "application/json",
-                        let dataString = String(data: data, encoding: .utf8) {
-                        
-                        serverResponse = dataString
-                    }
-                    os_log(
-                        "Uploaded positive diagnosis with response=%@",
-                        log: .cwen,
-                        serverResponse
-                    )
-                    completion(.success(nil))
-                    return
-            }
-        }
-        task.resume()
     }
 }

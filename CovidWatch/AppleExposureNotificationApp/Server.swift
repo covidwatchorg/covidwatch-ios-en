@@ -8,25 +8,28 @@
 import Foundation
 import ExposureNotification
 import SwiftProtobuf
-import DeviceCheck
 
 public struct CodableDiagnosisKey: Codable, Equatable {
-    let key: Data
+    let keyData: Data
     let rollingPeriod: ENIntervalNumber
     let rollingStartNumber: ENIntervalNumber
-    let transmissionRisk: ENRiskLevel
+    let transmissionRiskLevel: ENRiskLevel
+    
+    enum CodingKeys: String, CodingKey {
+        case keyData = "key"
+        case rollingPeriod
+        case rollingStartNumber
+        case transmissionRiskLevel = "transmissionRisk"
+    }
 }
 
 public struct CodableExposureConfiguration: Codable {
     let minimumRiskScore: ENRiskScore
+    let attenuationDurationThresholds: [Int]
     let attenuationLevelValues: [ENRiskLevelValue]
-    let attenuationWeight: Double
     let daysSinceLastExposureLevelValues: [ENRiskLevelValue]
-    let daysSinceLastExposureWeight: Double
     let durationLevelValues: [ENRiskLevelValue]
-    let durationWeight: Double
     let transmissionRiskLevelValues: [ENRiskLevelValue]
-    let transmissionRiskWeight: Double
 }
 
 @available(iOS 13.5, *)
@@ -38,44 +41,26 @@ public class Server {
     
     public var diagnosisServer: DiagnosisServer?
     
-    func postDiagnosisKeys(_ diagnosisKeys: [ENTemporaryExposureKey], completion: @escaping (Result<String?, Error>) -> Void) {
+    func postDiagnosisKeys(_ diagnosisKeys: [ENTemporaryExposureKey], completion: @escaping (Error?) -> Void) {
         
         // Convert keys to something that can be encoded to JSON and upload them.
         let codableDiagnosisKeys = diagnosisKeys.compactMap { diagnosisKey -> CodableDiagnosisKey? in
-            return CodableDiagnosisKey(key: diagnosisKey.keyData,
+            return CodableDiagnosisKey(keyData: diagnosisKey.keyData,
                                        rollingPeriod: diagnosisKey.rollingPeriod,
                                        rollingStartNumber: diagnosisKey.rollingStartNumber,
-                                       transmissionRisk: diagnosisKey.transmissionRiskLevel)
+                                       transmissionRiskLevel: diagnosisKey.transmissionRiskLevel)            
         }
         
         // Your server needs to handle de-duplicating keys.
         if let diagnosisServer = self.diagnosisServer {
             
-            DCDevice.current.generateToken { (token, error) in
-                if let error = error {
-                    print(error)
-                    completion(.failure(error))
-                    return
-                }
-             
-                let publishExposure = PublishExposure(
-                    temporaryExposureKeys: codableDiagnosisKeys,
-                    regions: ["US"],
-                    appPackageName: "org.covidwatch.california.ios",
-                    platform: "ios",
-                    deviceVerificationPayload: token!.base64EncodedString(),
-                    verificationPayload: "signature /code from  of verifying authority",
-                    padding: "random string data..."
-                )
-                
-                diagnosisServer.sharePositiveDiagnosis(
-                    publishExposure,
-                    completion: completion)
-
-            }
+            diagnosisServer.postDiagnosisKeys(
+                codableDiagnosisKeys,
+                completion: completion
+            )
         }
         else {
-            completion(.failure(CocoaError(.fileNoSuchFile)))
+            completion(CocoaError(.fileNoSuchFile))
         }
     }
     
@@ -94,7 +79,7 @@ public class Server {
     }
     
     // The URL passed to the completion is the local URL of the downloaded diagnosis key file
-    func downloadDiagnosisKeyFile(at remoteURL: URL, completion: @escaping (Result<URL, Error>) -> Void) {
+    func downloadDiagnosisKeyFile(at remoteURL: URL, completion: @escaping (Result<[URL], Error>) -> Void) {
         
         if let diagnosisServer = self.diagnosisServer {
             
@@ -108,10 +93,12 @@ public class Server {
         }
     }
     
-    func deleteDiagnosisKeyFile(at localURL: URL) throws {
-        try FileManager.default.removeItem(at: localURL)
+    func deleteDiagnosisKeyFile(at localURLs: [URL]) throws {
+        for localURL in localURLs {
+            try FileManager.default.removeItem(at: localURL)
+        }
     }
-    
+
     func getExposureConfiguration(completion: @escaping (Result<ENExposureConfiguration, Error>) -> Void) {
         
         if let diagnosisServer = self.diagnosisServer {

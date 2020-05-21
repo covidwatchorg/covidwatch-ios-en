@@ -26,6 +26,9 @@ extension AppDelegate {
         
         BGTaskScheduler.shared.register(forTaskWithIdentifier: .exposureNotificationBackgroundTaskIdentifier, using: .main) { task in
             
+            // Notify the user if bluetooth is off
+            ExposureManager.shared.showBluetoothOffUserNotificationIfNeeded()
+            
             // Perform the exposure detection
             let progress = ExposureManager.shared.detectExposures { success in
                 task.setTaskCompleted(success: success)

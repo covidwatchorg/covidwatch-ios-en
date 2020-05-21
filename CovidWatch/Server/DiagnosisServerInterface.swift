@@ -5,15 +5,29 @@
 import Foundation
 import ExposureNotification
 
-public let oldestPositiveDiagnosesToFetch: TimeInterval = 60*60*24*7*2
-
-public enum DiagnosisServerError: Error {
-    case invalidPublicHealthAuthorityPermissionNumber
+public struct DiagnosisServerConfiguration {
+    
+    let apiUrlString: String
+    let apiExposureURLString: String
+    let regions: [String]
 }
 
 public protocol DiagnosisServer {
+        
+    var configuration: DiagnosisServerConfiguration { get }
     
-    // Note: Server might return URLs pointing to different hosts.
+    init(configuration: DiagnosisServerConfiguration)
+    
+    func verifyUniqueTestIdentifier(
+        _ identifier: String,
+        completion: @escaping (Result<Bool, Error>) -> Void
+    )
+    
+    func postDiagnosisKeys(
+        _ diagnosisKeys: [CodableDiagnosisKey],
+        completion: @escaping (Error?) -> Void
+    ) -> Void
+    
     func getDiagnosisKeyFileURLs(
         startingAt index: Int,
         completion: @escaping (Result<[URL], Error>) -> Void
@@ -21,25 +35,10 @@ public protocol DiagnosisServer {
     
     func downloadDiagnosisKeyFile(
         at remoteURL: URL,
-        completion: @escaping (Result<URL, Error>) -> Void
+        completion: @escaping (Result<[URL], Error>) -> Void
     )
     
     func getExposureConfiguration(
         completion: @escaping (Result<CodableExposureConfiguration, Error>) -> Void
-    )
-    
-    // On success, server might return a short and user-friendly token.
-    // The user can use this token to verify their report with the public health
-    // authority (e.g., over the phone).
-    func sharePositiveDiagnosis(
-        _ positiveDiagnosis: PublishExposure,
-        completion: @escaping (Result<String?, Error>) -> Void
-    )
-    
-    // In case the user has a test identifier available at the time of submitting
-    // the report.
-    func verifyUniqueTestIdentifier(
-        _ identifier: String,
-        completion: @escaping (Result<Bool, Error>) -> Void
     )
 }

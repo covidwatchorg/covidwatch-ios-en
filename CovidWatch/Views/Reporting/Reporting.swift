@@ -38,38 +38,51 @@ struct Reporting: View {
                         .padding(.horizontal, 2 * .standardSpacing)
                     
                     Button(action: {
+
+                        let verificationCode = String(Int.random(in: 10000..<99999))
+                        let testResult = TestResult(id: UUID(), isAdded: false, dateAdministered: Date(), isShared: true, verificationCode: verificationCode, isVerified: false)
+                        self.localStore.testResults.insert(testResult, at: 0)
+                        self.selectedTestResultIndex = 0
                         
                         func afterGetAndPostDiagnosisKeys(result: String) {
-                            let testResult = TestResult(id: UUID(), isAdded: false, dateAdministered: Date(), isShared: true, verificationCode: result, isVerified: false)
-                            self.localStore.testResults.insert(testResult, at: 0)
-                            self.selectedTestResultIndex = 0
                             self.isShowingCallCode = true
                         }
                         
 //                        afterGetAndPostDiagnosisKeys(result: String(Int.random(in: 10000..<99999)))
                         
-                        ExposureManager.shared.getAndPostDiagnosisKeys { (result) in
+                        ExposureManager.shared.getAndPostDiagnosisKeys(testResult: testResult) { (error) in
 //                        ExposureManager.shared.getAndPostTestDiagnosisKeys { (result) in
                             DispatchQueue.main.async {
 
-                                switch result {
-                                    case let .success(verificationCode):
-
-                                        afterGetAndPostDiagnosisKeys(result: verificationCode ?? "123456789")
-
-                                    case let .failure(error):
-                                        if let error = error as? ENError, error.code == .notAuthorized {
-                                            UIApplication.shared.topViewController?.present(
-                                                error,
-                                                animated: true,
-                                                completion: nil
-                                            )
-                                        }
-                                        else {
-                                            afterGetAndPostDiagnosisKeys(result: String(Int.random(in: 10000..<99999)))
-                                        }
-                                        return
+                                if let error = error as? ENError, error.code == .notAuthorized {
+                                    UIApplication.shared.topViewController?.present(
+                                        error,
+                                        animated: true,
+                                        completion: nil
+                                    )
                                 }
+                                else {
+                                    afterGetAndPostDiagnosisKeys(result: String(Int.random(in: 10000..<99999)))
+                                }
+
+//                                switch result {
+//                                    case let .success(verificationCode):
+//
+//                                        afterGetAndPostDiagnosisKeys(result: verificationCode ?? "123456789")
+//
+//                                    case let .failure(error):
+//                                        if let error = error as? ENError, error.code == .notAuthorized {
+//                                            UIApplication.shared.topViewController?.present(
+//                                                error,
+//                                                animated: true,
+//                                                completion: nil
+//                                            )
+//                                        }
+//                                        else {
+//                                            afterGetAndPostDiagnosisKeys(result: String(Int.random(in: 10000..<99999)))
+//                                        }
+//                                        return
+//                                }
 
                                 
 //                                switch result {

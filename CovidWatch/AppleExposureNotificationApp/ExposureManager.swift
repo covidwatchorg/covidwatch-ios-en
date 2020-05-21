@@ -7,13 +7,13 @@ A class that manages a singleton ENManager object.
 
 import Foundation
 import ExposureNotification
+import UserNotifications
 
-@available(iOS 13.5, *)
-public class ExposureManager {
+class ExposureManager {
     
-    public static let shared = ExposureManager()
+    static let shared = ExposureManager()
     
-    public let manager = ENManager()
+    let manager = ENManager()
     
     init() {
         manager.activate { _ in
@@ -23,11 +23,8 @@ public class ExposureManager {
             // during onboarding, but then flipped on the "COVID-19 Exposure Notifications" switch
             // in Settings.
 //            if ENManager.authorizationStatus == .authorized && !self.manager.exposureNotificationEnabled {
-//                self.manager.setExposureNotificationEnabled(true) { error in
+//                self.manager.setExposureNotificationEnabled(true) { _ in
 //                    // No error handling for attempts to enable on launch
-//                    if (error == nil) {
-//                        UserData.shared.exposureNotificationEnabled = true
-//                    }
 //                }
 //            }
         }
@@ -41,7 +38,7 @@ public class ExposureManager {
     
     var detectingExposures = false
     
-    public func detectExposures(completionHandler: ((Bool) -> Void)? = nil) -> Progress {
+    func detectExposures(completionHandler: ((Bool) -> Void)? = nil) -> Progress {
         
         let progress = Progress()
         
@@ -56,9 +53,7 @@ public class ExposureManager {
         
         func finish(_ result: Result<([Exposure], Int), Error>) {
             
-            for localURL in localURLs {
-                try? Server.shared.deleteDiagnosisKeyFile(at: localURL)
-            }
+            try? Server.shared.deleteDiagnosisKeyFile(at: localURLs)
             
             let success: Bool
             if progress.isCancelled {
@@ -87,7 +82,7 @@ public class ExposureManager {
         Server.shared.getDiagnosisKeyFileURLs(startingAt: nextDiagnosisKeyFileIndex) { result in
             
             let dispatchGroup = DispatchGroup()
-            var localURLResults = [Result<URL, Error>]()
+            var localURLResults = [Result<[URL], Error>]()
             
             switch result {
             case let .success(remoteURLs):
@@ -105,8 +100,8 @@ public class ExposureManager {
             dispatchGroup.notify(queue: .main) {
                 for result in localURLResults {
                     switch result {
-                    case let .success(localURL):
-                        localURLs.append(localURL)
+                    case let .success(urls):
+                        localURLs.append(contentsOf: urls)
                     case let .failure(error):
                         finish(.failure(error))
                         return
@@ -146,30 +141,50 @@ public class ExposureManager {
         return progress
     }
     
-    public func getAndPostDiagnosisKeys(completion: @escaping (Result<String?, Error>) -> Void) {
+    func getAndPostDiagnosisKeys(testResult: TestResult, completion: @escaping (Error?) -> Void) {
         manager.getDiagnosisKeys { temporaryExposureKeys, error in
             if let error = error {
-                completion(.failure(error))
+                completion(error)
             } else {
-                Server.shared.postDiagnosisKeys(
-                    temporaryExposureKeys!,
-                    completion: completion
-                )
+                // In this sample app, transmissionRiskLevel isn't set for any of the diagnosis keys. However, it is at this point that an app could
+                // use information accumulated in testResult to determine a transmissionRiskLevel for each diagnosis key.
+                Server.shared.postDiagnosisKeys(temporaryExposureKeys!) { error in
+                    completion(error)
+                }
             }
         }
     }
     
     // Includes today's key, requires com.apple.developer.exposure-notification-test entitlement
-    public func getAndPostTestDiagnosisKeys(completion: @escaping (Result<String?, Error>) -> Void) {
+    func getAndPostTestDiagnosisKeys(completion: @escaping (Error?) -> Void) {
         manager.getTestDiagnosisKeys { temporaryExposureKeys, error in
             if let error = error {
-                completion(.failure(error))
+                completion(error)
             } else {
-                Server.shared.postDiagnosisKeys(
-                    temporaryExposureKeys!,
-                    completion: completion
-                )
+                Server.shared.postDiagnosisKeys(temporaryExposureKeys!) { error in
+                    completion(error)
+                }
             }
+        }
+    }
+    
+    func showBluetoothOffUserNotificationIfNeeded() {
+        let identifier = "bluetooth-off"
+        if ENManager.authorizationStatus == .authorized && manager.exposureNotificationStatus == .bluetoothOff {
+            let content = UNMutableNotificationContent()
+            content.title = NSLocalizedString("USER_NOTIFICATION_BLUETOOTH_OFF_TITLE", comment: "User notification title")
+            content.body = NSLocalizedString("USER_NOTIFICATION_BLUETOOTH_OFF_BODY", comment: "User notification")
+            content.sound = .default
+            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
+            UNUserNotificationCenter.current().add(request) { error in
+                DispatchQueue.main.async {
+                    if let error = error {
+                        print("Error showing error user notification: \(error)")
+                    }
+                }
+            }
+        } else {
+            UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [identifier])
         }
     }
 }

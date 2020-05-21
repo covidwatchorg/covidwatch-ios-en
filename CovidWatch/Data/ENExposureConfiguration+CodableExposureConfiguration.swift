@@ -15,12 +15,9 @@ extension ENExposureConfiguration {
         self.init()
         self.minimumRiskScore = codableExposureConfiguration.minimumRiskScore
         self.attenuationLevelValues = codableExposureConfiguration.attenuationLevelValues as [NSNumber]
-        self.attenuationWeight = codableExposureConfiguration.attenuationWeight
         self.daysSinceLastExposureLevelValues = codableExposureConfiguration.daysSinceLastExposureLevelValues as [NSNumber]
-        self.daysSinceLastExposureWeight = codableExposureConfiguration.daysSinceLastExposureWeight
         self.durationLevelValues = codableExposureConfiguration.durationLevelValues as [NSNumber]
-        self.durationWeight = codableExposureConfiguration.durationWeight
         self.transmissionRiskLevelValues = codableExposureConfiguration.transmissionRiskLevelValues as [NSNumber]
-        self.transmissionRiskWeight = codableExposureConfiguration.transmissionRiskWeight
-    }        
+        self.metadata = ["attenuationDurationThresholds": codableExposureConfiguration.attenuationDurationThresholds]
+    }
 }

@@ -10,8 +10,9 @@ extension ENTemporaryExposureKey {
     
     convenience init(_ key: CodableDiagnosisKey) {
         self.init()
-        self.keyData = key.key
+        self.keyData = key.keyData
+        self.rollingPeriod = key.rollingPeriod
         self.rollingStartNumber = key.rollingStartNumber
-        self.transmissionRiskLevel = key.transmissionRisk
+        self.transmissionRiskLevel = key.transmissionRiskLevel
     }
 }

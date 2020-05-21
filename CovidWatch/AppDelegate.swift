@@ -18,10 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var isPerformingBackgroundExposureNotification = false
     
     // Diagnosis server
-    var diagnosisServer = CovidWatchDiagnosisServer(
-        apiUrlString: getAPIUrl(getAppScheme())
-    )
-    //    var diagnosisServer = MockDiagnosisServer()
+    var diagnosisServer = CovidWatchDiagnosisServer(configuration: .current)
     
     func application(
         _ application: UIApplication,
