@@ -14,7 +14,7 @@ extension DiagnosisServerConfiguration {
             case .development:
                 return DiagnosisServerConfiguration(
                     apiUrlString: getAPIUrl(appScheme),
-                    apiExposureURLString: getAPIUrl(appScheme) + "/exposure",
+                    apiExposureURLString: getAPIUrl(appScheme) + "/publish",
                     regions: ["US"]
             )
             case .production:
