@@ -18,7 +18,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var isPerformingBackgroundExposureNotification = false
     
     // Diagnosis server
-    var diagnosisServer = CovidWatchDiagnosisServer(configuration: .current)
+    lazy var diagnosisServer: DiagnosisServer = {
+        let appScheme = getAppScheme()
+        switch appScheme {
+            case .development:
+                // TODO
+                return GCPGoogleExposureNotificationServer(
+                    exposureURLString: getAPIUrl(appScheme) + "/publish",
+                    appConfiguration: AppConfiguration(regions: ["US"]),
+                    exportConfiguration: ExportConfiguration(
+                        filenameRoot: "exposureKeyExport-US",
+                        bucketName: "exposure-notification-export-ibznj"
+                    )
+            )
+            case .production:
+                // This returns the configuration for the sandbox CW EN server
+                return GCPGoogleExposureNotificationServer(
+                    exposureURLString: "https://exposure-2sav64smma-uc.a.run.app/",
+                    appConfiguration: AppConfiguration(regions: ["US"]),
+                    exportConfiguration: ExportConfiguration(
+                        filenameRoot: "exposureKeyExport-US",
+                        bucketName: "exposure-notification-export-ibznj"
+                    )
+            )
+        }
+    }()
     
     func application(
         _ application: UIApplication,
@@ -43,6 +67,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Setup diagnosis server
         Server.shared.diagnosisServer = self.diagnosisServer
+        
+        // Testing: Detect exposures on app launch
+        if ENManager.authorizationStatus == .authorized {
+            _ = ExposureManager.shared.detectExposures { success in
+                os_log(
+                    "Detected exposures result=%d",
+                    log: .app,
+                    success
+                )
+            }
+        }
         
         _ = ExposureManager.shared
         _ = ApplicationController.shared

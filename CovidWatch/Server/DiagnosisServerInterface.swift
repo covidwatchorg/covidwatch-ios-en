@@ -3,21 +3,9 @@
 //
 
 import Foundation
-import ExposureNotification
-
-public struct DiagnosisServerConfiguration {
-    
-    let apiUrlString: String
-    let apiExposureURLString: String
-    let regions: [String]
-}
 
 public protocol DiagnosisServer {
         
-    var configuration: DiagnosisServerConfiguration { get }
-    
-    init(configuration: DiagnosisServerConfiguration)
-    
     func verifyUniqueTestIdentifier(
         _ identifier: String,
         completion: @escaping (Result<Bool, Error>) -> Void
