@@ -40,12 +40,12 @@ struct Reporting: View {
                     Button(action: {
 
                         let verificationCode = String(Int.random(in: 10000..<99999))
-                        let testResult = TestResult(id: UUID(), isAdded: false, dateAdministered: Date(), isShared: true, verificationCode: verificationCode, isVerified: false)
+                        let testResult = TestResult(id: UUID(), isAdded: false, dateAdministered: Date(), isShared: true, verificationCode: verificationCode, isVerified: true)
                         self.localStore.testResults.insert(testResult, at: 0)
                         self.selectedTestResultIndex = 0
                         
                         func afterGetAndPostDiagnosisKeys(result: String) {
-                            self.isShowingCallCode = true
+//                            self.isShowingCallCode = true
                         }
                         
 //                        afterGetAndPostDiagnosisKeys(result: String(Int.random(in: 10000..<99999)))
@@ -54,7 +54,7 @@ struct Reporting: View {
 //                        ExposureManager.shared.getAndPostTestDiagnosisKeys { (result) in
                             DispatchQueue.main.async {
 
-                                if let error = error as? ENError, error.code == .notAuthorized {
+                                if let error = error {
                                     UIApplication.shared.topViewController?.present(
                                         error,
                                         animated: true,
