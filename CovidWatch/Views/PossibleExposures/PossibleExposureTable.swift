@@ -40,6 +40,24 @@ struct PossibleExposureTable: View {
                     .background(Color(UIColor.secondarySystemBackground))
                     .border(Color("Button Border Color"), width: 1)
                 
+                HStack {
+                    Spacer(minLength: 10)
+                    Text("Attenuation")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer(minLength: 10)
+                }.frame(minHeight: 30, alignment: .leading)
+                    .background(Color(UIColor.secondarySystemBackground))
+                    .border(Color("Button Border Color"), width: 1)
+                
+                HStack {
+                    Spacer(minLength: 10)
+                    Text("Attenuation Durations")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer(minLength: 10)
+                }.frame(minHeight: 30, alignment: .leading)
+                    .background(Color(UIColor.secondarySystemBackground))
+                    .border(Color("Button Border Color"), width: 1)
+                
 //                HStack {
 //                    Spacer(minLength: 10)
 //                    Text("Attenuation")
@@ -83,6 +101,24 @@ struct PossibleExposureTable: View {
                 HStack {
                     Spacer(minLength: 20)
                     Text(verbatim: durationFormatter.string(from: exposure.duration) ?? "")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer(minLength: 10)
+                }.frame(minHeight: 30, alignment: .leading)
+                    .background(Color(UIColor.systemBackground))
+                    .border(Color("Button Border Color"), width: 1)
+                
+                HStack {
+                    Spacer(minLength: 20)
+                    Text(verbatim: String(exposure.attenuationValue))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer(minLength: 10)
+                }.frame(minHeight: 30, alignment: .leading)
+                    .background(Color(UIColor.systemBackground))
+                    .border(Color("Button Border Color"), width: 1)
+                
+                HStack {
+                    Spacer(minLength: 20)
+                    Text(verbatim: "[\(exposure.attenuationDurations.map({String($0/60)}).joined(separator: ", "))]")
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
                 }.frame(minHeight: 30, alignment: .leading)

@@ -9,8 +9,8 @@ extension OSLog {
     
     public static let app = OSLog(subsystem: "org.covidwatch", category: "App")
     
-    public static let cwen = OSLog(
+    public static let en = OSLog(
         subsystem: "org.covidwatch",
-        category: "CWEN"
+        category: "EN"
     )
 }

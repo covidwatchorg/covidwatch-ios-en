@@ -55,8 +55,54 @@ struct Menu: View {
 //                                Image("Settings Button Checkmark")
 //                            }.modifier(MenuTitleText())
 //                        }
-                        
-                        Divider()
+                        VStack(spacing: 0) {
+                            
+                            Divider()
+                            
+                            Button(action: {
+                                self.localStore.exposures = []
+                                self.localStore.dateLastPerformedExposureDetection = nil
+                            }) {
+                                HStack {
+                                    Text("[Test] Reset Possible Exposures")
+                                }.modifier(MenuTitleText())
+                            }
+                            
+                            Divider()
+                            
+                            Button(action: {
+                                _ = ExposureManager.shared.detectExposures(notifyUserOnError: true) { success in
+                                }
+                            }) {
+                                HStack {
+                                    Text("[Test] Detect Exposures from Server")
+                                }.modifier(MenuTitleText())
+                            }
+                            
+                            Divider()
+                            
+                            Button(action: {
+                                let alertController = UIAlertController(title: NSLocalizedString("Exposure Configuration JSON", comment: ""), message: nil, preferredStyle: .alert)
+                                alertController.addTextField { (textField) in
+                                    textField.text = self.localStore.exposureConfiguration
+                                }
+                                alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
+                                alertController.addAction(UIAlertAction(title: NSLocalizedString("Save", comment: ""), style: .default, handler: { _ in
+                                    guard let json = alertController.textFields?.first?.text else { return }
+                                    self.localStore.exposureConfiguration = json
+                                }))
+                                alertController.addAction(UIAlertAction(title: NSLocalizedString("Reset to Default", comment: ""), style: .default, handler: { _ in
+                                    self.localStore.exposureConfiguration = LocalStore.exposureConfigurationDefault
+                                }))
+                                UIApplication.shared.topViewController?.present(alertController, animated: true)
+                            }) {
+                                HStack {
+                                    Text("[Test] Set Exposure Configuration JSON")
+                                }.modifier(MenuTitleText())
+                            }
+                            
+                            Divider()
+                        }
                         
                         Button(action: {
                             self.isShowingPossibleExposures.toggle()

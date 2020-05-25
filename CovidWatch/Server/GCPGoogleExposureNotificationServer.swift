@@ -60,7 +60,7 @@ public class GCPGoogleExposureNotificationServer: GoogleExposureNotificationServ
     ) {
         os_log(
             "Posting %d diagnosis key(s) ...",
-            log: .cwen,
+            log: .en,
             diagnosisKeys.count
         )
 
@@ -68,7 +68,7 @@ public class GCPGoogleExposureNotificationServer: GoogleExposureNotificationServ
             if let error = error {
                 os_log(
                     "Posting %d diagnosis key(s) failed=%@",
-                    log: .cwen,
+                    log: .en,
                     type: .error,
                     diagnosisKeys.count,
                     error as CVarArg
@@ -124,7 +124,7 @@ public class GCPGoogleExposureNotificationServer: GoogleExposureNotificationServ
                     case .failure(let error):
                         os_log(
                             "Posting %d diagnosis key(s) failed=%@",
-                            log: .cwen,
+                            log: .en,
                             type: .error,
                             diagnosisKeys.count,
                             error as CVarArg
@@ -135,7 +135,7 @@ public class GCPGoogleExposureNotificationServer: GoogleExposureNotificationServ
                     case .success(_):
                         os_log(
                             "Posted %d diagnosis key(s)",
-                            log: .cwen,
+                            log: .en,
                             diagnosisKeys.count
                         )
                         completion(nil)
@@ -152,7 +152,7 @@ public class GCPGoogleExposureNotificationServer: GoogleExposureNotificationServ
     ) {
         os_log(
             "Getting diagnosis key file URLs starting at index=%d ...",
-            log: .cwen,
+            log: .en,
             index
         )
         
@@ -168,7 +168,7 @@ public class GCPGoogleExposureNotificationServer: GoogleExposureNotificationServ
                 case .failure(let error):
                     os_log(
                         "Getting diagnosis key file URLs starting at index=%d failed=%@ ...",
-                        log: .cwen,
+                        log: .en,
                         type: .error,
                         index,
                         error as CVarArg
@@ -190,7 +190,7 @@ public class GCPGoogleExposureNotificationServer: GoogleExposureNotificationServ
                         let result = keyFileURLs
                         os_log(
                             "Got diagnosis key file URLs starting at index=%d count=%d",
-                            log: .cwen,
+                            log: .en,
                             index,
                             result.count
                         )
@@ -199,7 +199,7 @@ public class GCPGoogleExposureNotificationServer: GoogleExposureNotificationServ
                     catch {
                         os_log(
                             "Getting diagnosis key file URLs starting at index=%d failed=%@ ...",
-                            log: .cwen,
+                            log: .en,
                             type: .error,
                             index,
                             error as CVarArg

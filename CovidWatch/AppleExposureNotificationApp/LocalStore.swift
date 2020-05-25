@@ -97,4 +97,28 @@ public class LocalStore: ObservableObject {
         willSet { objectWillChange.send() }
     }
     
+    // Data from: https://developer.apple.com/documentation/exposurenotification/enexposureconfiguration
+    static let exposureConfigurationDefault: String =
+    """
+    {"minimumRiskScore":0,
+    "attenuationDurationThresholds":[50, 70],
+    "attenuationLevelValues":[1, 1, 1, 8, 8, 8, 8, 8],
+    "daysSinceLastExposureLevelValues":[1, 2, 2, 4, 6, 8, 8, 8],
+    "durationLevelValues":[1, 1, 4, 7, 7, 8, 8, 8],
+    "transmissionRiskLevelValues":[1, 2, 3, 4, 5, 6, 7, 8]}
+    """
+//    """
+//    {"minimumRiskScore":0,
+//    "attenuationDurationThresholds":[50, 70],
+//    "attenuationLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
+//    "daysSinceLastExposureLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
+//    "durationLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
+//    "transmissionRiskLevelValues":[1, 2, 3, 4, 5, 6, 7, 8]}
+//    """
+    
+    @Persisted(userDefaultsKey: "exposureConfiguration", notificationName: .init("LocalStoreExposureConfigurationDidChange"), defaultValue:exposureConfigurationDefault)
+    public var exposureConfiguration: String {
+        willSet { objectWillChange.send() }
+    }
+    
 }

@@ -67,18 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Setup diagnosis server
         Server.shared.diagnosisServer = self.diagnosisServer
-        
-        // Testing: Detect exposures on app launch
-        if ENManager.authorizationStatus == .authorized {
-            _ = ExposureManager.shared.detectExposures { success in
-                os_log(
-                    "Detected exposures success=%d",
-                    log: .app,
-                    success
-                )
-            }
-        }
-        
+                
         _ = ExposureManager.shared
         _ = ApplicationController.shared
         
@@ -90,5 +79,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.requestUserNotificationAuthorization(provisional: true)
         
         return true
-    }    
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+
+        do {
+            guard let cachesDirectoryURL = FileManager.default.urls(
+                    for: .cachesDirectory,
+                    in: .userDomainMask
+                ).first else {
+                    throw(CocoaError(.fileNoSuchFile))
+            }
+            let unzipDestinationDirectory = cachesDirectoryURL.appendingPathComponent(UUID().uuidString)
+            try FileManager.default.createDirectory(at: unzipDestinationDirectory, withIntermediateDirectories: true, attributes: nil)
+            try FileManager.default.unzipItem(at: url, to: unzipDestinationDirectory)
+            try FileManager.default.removeItem(at: url)
+            let zipFileContentURLs = try FileManager.default.contentsOfDirectory(at: unzipDestinationDirectory, includingPropertiesForKeys: nil)
+            let filteredZIPFileContentURLs = zipFileContentURLs.filter { (url) -> Bool in
+                let size: UInt64 = (try? FileManager.default.attributesOfItem(atPath: url.path)[.size] as? UInt64) ?? 0
+                return size != 0
+            }
+            let result = filteredZIPFileContentURLs
+            
+            _ = ExposureManager.shared.detectExposures(importURLs: result, notifyUserOnError: true) { success in
+                os_log(
+                    "Detected exposures from file=%@ success=%d",
+                    log: .app,
+                    url.description,
+                    success
+                )
+            }
+        } catch {
+            UIApplication.shared.topViewController?.present(
+                error as NSError,
+                animated: true
+            )
+        }
+
+        return true
+    }
 }

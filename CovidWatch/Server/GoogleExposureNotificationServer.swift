@@ -28,7 +28,7 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
     ) {
 //        os_log(
 //            "Verifying unique test identifier=%@ ...",
-//            log: .cwen,
+//            log: .en,
 //            identifier
 //        )
 //
@@ -42,7 +42,7 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
 //                case .failure(let error):
 //                    os_log(
 //                        "Verifying unique test identifier=%@ failed=%@ ...",
-//                        log: .cwen,
+//                        log: .en,
 //                        type: .error,
 //                        identifier,
 //                        error as CVarArg
@@ -53,7 +53,7 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
 //                case .success(let (response, _)):
 //                    os_log(
 //                        "Verified unique test identifier=%@ response=%@",
-//                        log: .cwen,
+//                        log: .en,
 //                        identifier,
 //                        response.description
 //                    )
@@ -69,7 +69,7 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
     ) {
 //        os_log(
 //            "Posting %d diagnosis key(s) ...",
-//            log: .cwen,
+//            log: .en,
 //            diagnosisKeys.count
 //        )
 //
@@ -77,7 +77,7 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
 //            if let error = error {
 //                os_log(
 //                    "Posting %d diagnosis key(s) failed=%@",
-//                    log: .cwen,
+//                    log: .en,
 //                    type: .error,
 //                    diagnosisKeys.count,
 //                    error as CVarArg
@@ -119,7 +119,7 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
 //                    case .failure(let error):
 //                        os_log(
 //                            "Posting %d diagnosis key(s) failed=%@",
-//                            log: .cwen,
+//                            log: .en,
 //                            type: .error,
 //                            diagnosisKeys.count,
 //                            error as CVarArg
@@ -130,7 +130,7 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
 //                    case .success(_):
 //                        os_log(
 //                            "Posted %d diagnosis key(s)",
-//                            log: .cwen,
+//                            log: .en,
 //                            diagnosisKeys.count
 //                        )
 //                        completion(nil)
@@ -148,7 +148,7 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
     ) {
 //        os_log(
 //            "Getting diagnosis key file URLs starting at index=%d ...",
-//            log: .cwen,
+//            log: .en,
 //            index
 //        )
 //
@@ -162,7 +162,7 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
 //                case .failure(let error):
 //                    os_log(
 //                        "Getting diagnosis key file URLs starting at index=%d failed=%@ ...",
-//                        log: .cwen,
+//                        log: .en,
 //                        type: .error,
 //                        index,
 //                        error as CVarArg
@@ -179,7 +179,7 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
 //                        )
 //                        os_log(
 //                            "Got diagnosis key file URLs starting at index=%d response=%@",
-//                            log: .cwen,
+//                            log: .en,
 //                            index,
 //                            response.description
 //                        )
@@ -188,7 +188,7 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
 //                    catch {
 //                        os_log(
 //                            "Getting diagnosis key file URLs starting at index=%d failed=%@ ...",
-//                            log: .cwen,
+//                            log: .en,
 //                            type: .error,
 //                            index,
 //                            error as CVarArg
@@ -206,7 +206,7 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
     ) {
         os_log(
             "Downloading diagnosis key file at remote URL=%@ ...",
-            log: .cwen,
+            log: .en,
             remoteURL.description
         )
 
@@ -245,7 +245,7 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
 
                 os_log(
                     "Downloaded diagnosis key file at remote URL=%@ to local URL count=%d",
-                    log: .cwen,
+                    log: .en,
                     remoteURL.description,
                     result.count
                 )
@@ -253,7 +253,7 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
             } catch {
                 os_log(
                     "Downloading diagnosis key file at remote URL=%@ failed=%@ ...",
-                    log: .cwen,
+                    log: .en,
                     type: .error,
                     remoteURL.description,
                     error as CVarArg
@@ -265,25 +265,12 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
     
     // TODO
     public func getExposureConfiguration(completion: (Result<ENExposureConfiguration, Error>) -> Void) {
-        
-//        let dataFromServer = """
-//        {"minimumRiskScore":0,
-//        "attenuationDurationThresholds":[0, 140],
-//        "attenuationLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
-//        "daysSinceLastExposureLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
-//        "durationLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
-//        "transmissionRiskLevelValues":[1, 2, 3, 4, 5, 6, 7, 8]}
-//        """.data(using: .utf8)!
-        
-        // Data from: https://developer.apple.com/documentation/exposurenotification/enexposureconfiguration
-        let dataFromServer = """
-        {"minimumRiskScore":0,
-        "attenuationDurationThresholds":[0, 140],
-        "attenuationLevelValues":[1, 1, 1, 8, 8, 8, 8, 8],
-        "daysSinceLastExposureLevelValues":[1, 2, 2, 4, 6, 8, 8, 8],
-        "durationLevelValues":[1, 1, 4, 7, 7, 8, 8, 8],
-        "transmissionRiskLevelValues":[1, 2, 3, 4, 5, 6, 7, 8]}
-        """.data(using: .utf8)!
+        os_log(
+            "Getting exposure configuration from server ...",
+            log: .en
+        )
+
+        let dataFromServer = LocalStore.shared.exposureConfiguration.data(using: .utf8)!
 
         do {
             let codableExposureConfiguration = try JSONDecoder().decode(CodableExposureConfiguration.self, from: dataFromServer)
@@ -296,15 +283,27 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
             // This doesn't work
 //            exposureConfiguration.metadata = ["attenuationDurationThresholds": codableExposureConfiguration.attenuationDurationThresholds]
             // Setting it through KVC works
-            exposureConfiguration.setValue([0, 140], forKey: "attenuationDurationThresholds")
+            exposureConfiguration.setValue(codableExposureConfiguration.attenuationDurationThresholds, forKey: "attenuationDurationThresholds")
+            
+            os_log(
+                "Got exposure configuration=%@ from server",
+                log: .en,
+                exposureConfiguration.description
+            )
             completion(.success(exposureConfiguration))
         } catch {
+            os_log(
+                "Getting exposure configuration from server failed=%@",
+                log: .en,
+                type: .error,
+                error as CVarArg
+            )
             completion(.failure(error))
         }
         
 //        os_log(
 //            "Getting exposure configuration ...",
-//            log: .cwen
+//            log: .en
 //        )
 //        
 //        let fetchUrl = URL(string: "\(self.configuration.apiUrlString)/getExposureConfiguration") ??
@@ -317,7 +316,7 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
 //                case .failure(let error):
 //                    os_log(
 //                        "Getting exposure configuration failed=%@ ...",
-//                        log: .cwen,
+//                        log: .en,
 //                        type: .error,
 //                        error as CVarArg
 //                    )
@@ -333,7 +332,7 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
 //                        )
 //                        os_log(
 //                            "Got exposure configuration response=%@",
-//                            log: .cwen,
+//                            log: .en,
 //                            response.description
 //                        )
 //                        completion(.success(codableExposureConfiguration))
@@ -341,7 +340,7 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
 //                    catch {
 //                        os_log(
 //                            "Getting exposure configuration failed=%@ ...",
-//                            log: .cwen,
+//                            log: .en,
 //                            type: .error,
 //                            error as CVarArg
 //                        )
