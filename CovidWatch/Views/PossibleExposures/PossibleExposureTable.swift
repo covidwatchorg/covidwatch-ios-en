@@ -73,7 +73,7 @@ struct PossibleExposureTable: View {
                 
                 HStack {
                     Spacer(minLength: 20)
-                    Text(verbatim: DateFormatter.localizedString(from: exposure.date, dateStyle: .medium, timeStyle: .short))
+                    Text(verbatim: DateFormatter.localizedString(from: exposure.date, dateStyle: .medium, timeStyle: .none))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
                 }.frame(minHeight: 30, alignment: .leading)

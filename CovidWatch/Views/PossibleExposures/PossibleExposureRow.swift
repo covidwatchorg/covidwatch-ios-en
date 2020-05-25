@@ -12,7 +12,7 @@ struct PossibleExposureRow: View {
     var body: some View {
         HStack(spacing: 18) {
             Image("Exposure Row High Risk")
-            Text(verbatim: DateFormatter.localizedString(from: exposure.date, dateStyle: .medium, timeStyle: .short))
+            Text(verbatim: DateFormatter.localizedString(from: exposure.date, dateStyle: .medium, timeStyle: .none))
                 .font(.custom("Montserrat-Regular", size: 14))
                 .foregroundColor(Color("Title Text Color"))
             Spacer()
