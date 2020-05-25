@@ -103,16 +103,7 @@ public class Server {
         
         if let diagnosisServer = self.diagnosisServer {
             
-            diagnosisServer.getExposureConfiguration { (result) in
-                switch result {
-                    case .failure(let error):
-                        completion(.failure(error))
-                        return
-                    case .success(let result):
-                        completion(.success(ENExposureConfiguration(result)))
-                        return
-                }
-            }
+            diagnosisServer.getExposureConfiguration(completion: completion)
         }
         else {
             completion(.failure(CocoaError(.fileNoSuchFile)))

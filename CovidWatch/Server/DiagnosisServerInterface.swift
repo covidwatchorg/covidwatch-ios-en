@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import ExposureNotification
 
 public protocol DiagnosisServer {
         
@@ -27,6 +28,6 @@ public protocol DiagnosisServer {
     )
     
     func getExposureConfiguration(
-        completion: @escaping (Result<CodableExposureConfiguration, Error>) -> Void
+        completion: (Result<ENExposureConfiguration, Error>) -> Void
     )
 }

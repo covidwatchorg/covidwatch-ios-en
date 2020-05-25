@@ -264,21 +264,40 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
     }
     
     // TODO
-    public func getExposureConfiguration(
-        completion: @escaping (Result<CodableExposureConfiguration, Error>) -> Void
-    ) {
+    public func getExposureConfiguration(completion: (Result<ENExposureConfiguration, Error>) -> Void) {
+        
+//        let dataFromServer = """
+//        {"minimumRiskScore":0,
+//        "attenuationDurationThresholds":[0, 140],
+//        "attenuationLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
+//        "daysSinceLastExposureLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
+//        "durationLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
+//        "transmissionRiskLevelValues":[1, 2, 3, 4, 5, 6, 7, 8]}
+//        """.data(using: .utf8)!
+        
+        // Data from: https://developer.apple.com/documentation/exposurenotification/enexposureconfiguration
         let dataFromServer = """
         {"minimumRiskScore":0,
-        "attenuationDurationThresholds":[50, 70],
-        "attenuationLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
-        "daysSinceLastExposureLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
-        "durationLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
+        "attenuationDurationThresholds":[0, 140],
+        "attenuationLevelValues":[1, 1, 1, 8, 8, 8, 8, 8],
+        "daysSinceLastExposureLevelValues":[1, 2, 2, 4, 6, 8, 8, 8],
+        "durationLevelValues":[1, 1, 4, 7, 7, 8, 8, 8],
         "transmissionRiskLevelValues":[1, 2, 3, 4, 5, 6, 7, 8]}
         """.data(using: .utf8)!
-        
+
         do {
             let codableExposureConfiguration = try JSONDecoder().decode(CodableExposureConfiguration.self, from: dataFromServer)
-            completion(.success(codableExposureConfiguration))
+            let exposureConfiguration = ENExposureConfiguration()
+            exposureConfiguration.minimumRiskScore = codableExposureConfiguration.minimumRiskScore
+            exposureConfiguration.attenuationLevelValues = codableExposureConfiguration.attenuationLevelValues as [NSNumber]
+            exposureConfiguration.daysSinceLastExposureLevelValues = codableExposureConfiguration.daysSinceLastExposureLevelValues as [NSNumber]
+            exposureConfiguration.durationLevelValues = codableExposureConfiguration.durationLevelValues as [NSNumber]
+            exposureConfiguration.transmissionRiskLevelValues = codableExposureConfiguration.transmissionRiskLevelValues as [NSNumber]
+            // This doesn't work
+//            exposureConfiguration.metadata = ["attenuationDurationThresholds": codableExposureConfiguration.attenuationDurationThresholds]
+            // Setting it through KVC works
+            exposureConfiguration.setValue([0, 140], forKey: "attenuationDurationThresholds")
+            completion(.success(exposureConfiguration))
         } catch {
             completion(.failure(error))
         }

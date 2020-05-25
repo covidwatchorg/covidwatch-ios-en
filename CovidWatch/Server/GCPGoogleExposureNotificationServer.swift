@@ -76,9 +76,19 @@ public class GCPGoogleExposureNotificationServer: GoogleExposureNotificationServ
                 completion(error)
                 return
             }
+            
+//            let shiftedDiagnosisKeys: [CodableDiagnosisKey] = diagnosisKeys.map {
+//                CodableDiagnosisKey(
+//                    keyData: $0.keyData,
+//                    rollingPeriod: $0.rollingPeriod,
+//                    rollingStartNumber: $0.rollingStartNumber - 144,
+//                    transmissionRiskLevel: $0.transmissionRiskLevel
+//                )
+//            }
 
             let publishExposure = PublishExposure(
                 temporaryExposureKeys: diagnosisKeys,
+//                temporaryExposureKeys: shiftedDiagnosisKeys,
                 regions: self.appConfiguration.regions,
                 appPackageName: self.appConfiguration.appPackageName,
                 platform: self.appConfiguration.platform,

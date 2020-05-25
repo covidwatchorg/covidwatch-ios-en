@@ -8,6 +8,7 @@ A class that manages a singleton ENManager object.
 import Foundation
 import ExposureNotification
 import UserNotifications
+import os.log
 
 class ExposureManager {
     
@@ -110,6 +111,7 @@ class ExposureManager {
                 Server.shared.getExposureConfiguration { result in
                     switch result {
                     case let .success(configuration):
+                        print(configuration)
                         ExposureManager.shared.manager.detectExposures(configuration: configuration, diagnosisKeyURLs: localURLs) { summary, error in
                             if let error = error {
                                 finish(.failure(error))
@@ -127,6 +129,11 @@ class ExposureManager {
                                                  totalRiskScore: exposure.totalRiskScore,
                                                  transmissionRiskLevel: exposure.transmissionRiskLevel)
                                     }
+                                os_log(
+                                    "Detected exposures count=%d",
+                                    log: .cwen,
+                                    exposures!.count
+                                )
                                     finish(.success((newExposures, nextDiagnosisKeyFileIndex + localURLs.count)))
                             }
                         }
@@ -143,11 +150,13 @@ class ExposureManager {
     
     func getAndPostDiagnosisKeys(testResult: TestResult, completion: @escaping (Error?) -> Void) {
         manager.getDiagnosisKeys { temporaryExposureKeys, error in
+//        manager.getTestDiagnosisKeys { temporaryExposureKeys, error in
             if let error = error {
                 completion(error)
             } else {
                 // In this sample app, transmissionRiskLevel isn't set for any of the diagnosis keys. However, it is at this point that an app could
                 // use information accumulated in testResult to determine a transmissionRiskLevel for each diagnosis key.
+                temporaryExposureKeys?.forEach { $0.transmissionRiskLevel = 8 }
                 Server.shared.postDiagnosisKeys(temporaryExposureKeys!) { error in
                     completion(error)
                 }

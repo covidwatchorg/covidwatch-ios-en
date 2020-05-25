@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if ENManager.authorizationStatus == .authorized {
             _ = ExposureManager.shared.detectExposures { success in
                 os_log(
-                    "Detected exposures result=%d",
+                    "Detected exposures success=%d",
                     log: .app,
                     success
                 )
