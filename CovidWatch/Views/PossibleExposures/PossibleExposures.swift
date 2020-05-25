@@ -23,12 +23,13 @@ struct PossibleExposures: View {
                 
                 VStack(spacing: 0) {
                     
+                    Spacer(minLength: .headerHeight)
+                    
                     Text("Possible Exposures")
                         .font(.custom("Montserrat-SemiBold", size: 31))
                         .foregroundColor(Color("Title Text Color"))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.top, .headerHeight)
                         .padding(.horizontal, 2 * .standardSpacing)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
                     
                     Toggle(isOn: self.$userData.exposureNotificationEnabled) {
                         Text("Exposure Notifications")
@@ -37,14 +38,14 @@ struct PossibleExposures: View {
                     }
                     .padding(.horizontal, 2 * .standardSpacing)
                     .padding(.top, 2 * .standardSpacing)
-                    
-                    Spacer(minLength: .standardSpacing)
+                    .padding(.bottom, .standardSpacing)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     
                     Text(verbatim: self.userData.exposureNotificationStatusMessage)
                         .font(.custom("Montserrat-Regular", size: 16))
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                         .foregroundColor(Color("Title Text Color"))
                         .padding(.horizontal, 2 * .standardSpacing)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     
                     Spacer(minLength: 2 * .standardSpacing)
                     

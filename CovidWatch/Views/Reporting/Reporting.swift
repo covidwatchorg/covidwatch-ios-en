@@ -115,6 +115,7 @@ struct Reporting: View {
                     }
                     
                     Image("Doctors Security")
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
                     
                     VStack(spacing: 0) {
                         
