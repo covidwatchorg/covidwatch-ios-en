@@ -36,6 +36,9 @@ struct Setup1: View {
                     Spacer(minLength: 2 * .standardSpacing)
                     
                     Image("Web 01")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(.horizontal, 2 * .standardSpacing)
                     
                     Spacer(minLength: 2 * .standardSpacing)
                     

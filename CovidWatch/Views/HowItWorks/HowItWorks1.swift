@@ -26,7 +26,10 @@ struct HowItWorks1: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Image("How it Works 01")
-                
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding(.horizontal, 2 * .standardSpacing)
+
                 Spacer(minLength: .standardSpacing)
                 
                 Text("While Sam and Jane chat, their phones note each others’ anonymous signals and store them securely.")

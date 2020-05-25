@@ -9,10 +9,12 @@ import Foundation
 import ExposureNotification
 
 public struct Exposure: Codable {
-    public let date: Date
-    public let duration: TimeInterval
-    public let totalRiskScore: ENRiskScore
-    public let transmissionRiskLevel: ENRiskLevel
+    let attenuationDurations: [TimeInterval]
+    let attenuationValue: ENAttenuation
+    let date: Date
+    let duration: TimeInterval
+    let totalRiskScore: ENRiskScore
+    let transmissionRiskLevel: ENRiskLevel
 }
 
 public struct TestResult: Codable {

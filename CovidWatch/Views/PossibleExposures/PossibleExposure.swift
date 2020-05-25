@@ -109,8 +109,8 @@ struct PossibleExposure: View {
     }
 }
 
-struct PossibleExposure_Previews: PreviewProvider {
-    static var previews: some View {
-        PossibleExposure(exposure: Exposure(date: Date(), duration: 60*5, totalRiskScore: 1, transmissionRiskLevel: .max))
-    }
-}
+//struct PossibleExposure_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PossibleExposure(exposure: Exposure(date: Date(), duration: 60*5, totalRiskScore: 1, transmissionRiskLevel: .max))
+//    }
+//}

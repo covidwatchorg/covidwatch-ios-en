@@ -26,7 +26,10 @@ struct HowItWorks3: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Image("How it Works 03")
-                
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding(.horizontal, 2 * .standardSpacing)
+
                 Spacer(minLength: .standardSpacing)
                 
                 Text("Jane’s phone gets an alert that someone she’s seen has now tested positive. The app tells her how to take action.")

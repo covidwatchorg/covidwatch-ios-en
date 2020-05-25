@@ -35,7 +35,10 @@ struct HowItWorks4: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Image("How it Works 04")
-                
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding(.horizontal, 2 * .standardSpacing)
+
                 if self.showsSetupButton {
                     
                     Text("Jane and Sam help keep their communities safe. They share the app so that others can, too.")

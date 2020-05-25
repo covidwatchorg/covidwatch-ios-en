@@ -121,8 +121,8 @@ struct PossibleExposureTable: View {
     }
 }
 
-struct PossibleExposureTable_Previews: PreviewProvider {
-    static var previews: some View {
-        PossibleExposureTable(exposure: Exposure(date: Date(), duration: 60*5, totalRiskScore: 1, transmissionRiskLevel: .max))
-    }
-}
+//struct PossibleExposureTable_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PossibleExposureTable(exposure: Exposure(date: Date(), duration: 60*5, totalRiskScore: 1, transmissionRiskLevel: .max))
+//    }
+//}

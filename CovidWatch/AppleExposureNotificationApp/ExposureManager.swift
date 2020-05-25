@@ -123,12 +123,16 @@ class ExposureManager {
                                         finish(.failure(error))
                                         return
                                     }
-                                    let newExposures = exposures!.map { exposure in
-                                        Exposure(date: exposure.date,
-                                                 duration: exposure.duration,
-                                                 totalRiskScore: exposure.totalRiskScore,
-                                                 transmissionRiskLevel: exposure.transmissionRiskLevel)
-                                    }
+                                let newExposures = exposures!.map { exposure in
+                                    Exposure(
+                                        attenuationDurations: exposure.attenuationDurations.map({ $0.doubleValue }),
+                                        attenuationValue: exposure.attenuationValue,
+                                        date: exposure.date,
+                                        duration: exposure.duration,
+                                        totalRiskScore: exposure.totalRiskScore,
+                                        transmissionRiskLevel: exposure.transmissionRiskLevel
+                                    )
+                                }
                                 os_log(
                                     "Detected exposures count=%d",
                                     log: .cwen,
