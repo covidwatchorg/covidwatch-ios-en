@@ -163,7 +163,8 @@ class ApplicationController: NSObject {
     
     func handleTapShareAPositiveDiagnosisButton() {
         
-        ExposureManager.shared.manager.getDiagnosisKeys { (keys, error) in
+        ExposureManager.shared.manager.getTestDiagnosisKeys { (keys, error) in
+        //ExposureManager.shared.manager.getDiagnosisKeys { (keys, error) in
             if let error = error {
                 UIApplication.shared.topViewController?.present(
                     error,
@@ -201,7 +202,7 @@ class ApplicationController: NSObject {
         
         diagnosisKeys.forEach { $0.transmissionRiskLevel = transmissionRiskLevel }
         
-        Server.shared.postDiagnosisKeys(diagnosisKeys) { error in
+        Server.shared.postDiagnosisKeys(Array(diagnosisKeys.dropFirst())) { error in
             if let error = error {
                 UIApplication.shared.topViewController?.present(
                     error,
