@@ -174,33 +174,53 @@ class ApplicationController: NSObject {
                 return
             }
             
-            let actionSheet = UIAlertController(title: String.localizedStringWithFormat(NSLocalizedString("Choose transmission risk level for your %d TEK(s)", comment: ""), keys!.count), message: nil, preferredStyle: .actionSheet)
-            for index in 0...8 {
-                actionSheet.addAction(UIAlertAction(title: String(index), style: .default, handler: { [weak self] _ in
-                    //self?.post(diagnosisKeys: keys!, transmissionRiskLevel: UInt8(index))
-                    self?.handleTapTransmissionRiskLevel(UInt8(index), diagnosisKeys: keys!)
-                }))
+            guard let keys = keys, !keys.isEmpty else {
+                UIApplication.shared.topViewController?.present(
+                    ENError(.internal),
+                    animated: true,
+                    completion: nil
+                )
+                return
             }
-            actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
-            UIApplication.shared.topViewController?.present(actionSheet, animated: true)
+            
+            let alertController = UIAlertController(
+                title: String.localizedStringWithFormat(NSLocalizedString("Set transmission risk level for your %d TEK(s)", comment: ""), keys.count),
+                message: String.localizedStringWithFormat(NSLocalizedString("(%d space-separated values between 1 and 8)", comment: ""), keys.count),
+                preferredStyle: .alert
+            )
+            alertController.addTextField { (textField) in
+                textField.text = (0..<keys.count).map({ _ in "1" }).joined(separator: " ")
+            }
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("Continue", comment: ""), style: .default, handler: { _ in
+                guard let text = alertController.textFields?.first?.text else { return }
+                let stringValues = text.components(separatedBy: " ")
+                guard stringValues.count == keys.count else { return }
+                let values: [UInt8] = stringValues.compactMap({ UInt8($0) })
+                self.handleTapContinueTransmissionRiskLevels(values, diagnosisKeys: keys)
+            }))
+            UIApplication.shared.topViewController?.present(alertController, animated: true)
         }
     }
     
-    func handleTapTransmissionRiskLevel(_ tranmissionRiskLevel: UInt8, diagnosisKeys: [ENTemporaryExposureKey]) {
-        let actionSheet = UIAlertController(title: String.localizedStringWithFormat(NSLocalizedString("Share your %d TEK(s) with transmission risk level=%d with", comment: ""), diagnosisKeys.count, tranmissionRiskLevel), message: NSLocalizedString("Important: The TEK for the current day won't be shared. When sharing with the server, you can set the transmission risk level only at the first upload.", comment: ""), preferredStyle: .actionSheet)
+    func handleTapContinueTransmissionRiskLevels(_ transmissionRiskLevels: [UInt8], diagnosisKeys: [ENTemporaryExposureKey]) {
+        guard transmissionRiskLevels.count == diagnosisKeys.count else { return }
+        let actionSheet = UIAlertController(title: String.localizedStringWithFormat(NSLocalizedString("Share your %d TEK(s) with", comment: ""), diagnosisKeys.count), message: NSLocalizedString("Note: The TEK for the current day won't be shared with the server. When sharing with the server, you can set the transmission risk level only at the first upload.", comment: ""), preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Covid Watch Server", comment: ""), style: .default, handler: { [weak self] _ in
-            self?.handleTapServer(diagnosisKeys: diagnosisKeys, transmissionRiskLevel: tranmissionRiskLevel)
+            self?.handleTapServer(diagnosisKeys: diagnosisKeys, transmissionRiskLevels: transmissionRiskLevels)
         }))
         actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Other...", comment: ""), style: .default, handler: { [weak self] _ in
-            self?.handleTapOther(diagnosisKeys: diagnosisKeys, transmissionRiskLevel: tranmissionRiskLevel)
+            self?.handleTapOther(diagnosisKeys: diagnosisKeys, transmissionRiskLevels: transmissionRiskLevels)
         }))
         actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
         UIApplication.shared.topViewController?.present(actionSheet, animated: true)
     }
     
-    func handleTapServer(diagnosisKeys: [ENTemporaryExposureKey], transmissionRiskLevel: UInt8) {
-        
-        diagnosisKeys.forEach { $0.transmissionRiskLevel = transmissionRiskLevel }
+    func handleTapServer(diagnosisKeys: [ENTemporaryExposureKey], transmissionRiskLevels: [UInt8]) {
+        guard transmissionRiskLevels.count == diagnosisKeys.count else { return }
+        for index in 0..<diagnosisKeys.count {
+            diagnosisKeys[index].transmissionRiskLevel = transmissionRiskLevels[index]
+        }
         
         Server.shared.postDiagnosisKeys(Array(diagnosisKeys.dropFirst())) { error in
             if let error = error {
@@ -219,9 +239,11 @@ class ApplicationController: NSObject {
     RANCAASfuKEs4Z9gHY23AtuMv1PvDcp4Uiz6lTbA/p77if0yO2nXBL7th8TUbdHOsUridfBZ09JqNQYKtaU9BalkyodM
     """)!
     
-    func handleTapOther(diagnosisKeys: [ENTemporaryExposureKey], transmissionRiskLevel: UInt8) {
-        
-        diagnosisKeys.forEach { $0.transmissionRiskLevel = transmissionRiskLevel }
+    func handleTapOther(diagnosisKeys: [ENTemporaryExposureKey], transmissionRiskLevels: [UInt8]) {
+        guard transmissionRiskLevels.count == diagnosisKeys.count else { return }
+        for index in 0..<diagnosisKeys.count {
+            diagnosisKeys[index].transmissionRiskLevel = transmissionRiskLevels[index]
+        }
         
         do {
             let attributes = [
