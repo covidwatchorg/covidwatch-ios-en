@@ -64,7 +64,7 @@ struct Menu: View {
                                 self.localStore.dateLastPerformedExposureDetection = nil
                             }) {
                                 HStack {
-                                    Text("[Test] Reset Possible Exposures")
+                                    Text("[DEMO] Reset Possible Exposures")
                                 }.modifier(MenuTitleText())
                             }
                             
@@ -75,7 +75,7 @@ struct Menu: View {
                                 }
                             }) {
                                 HStack {
-                                    Text("[Test] Detect Exposures from Server")
+                                    Text("[DEMO] Detect Exposures from Server")
                                 }.modifier(MenuTitleText())
                             }
                             
@@ -97,7 +97,7 @@ struct Menu: View {
                                 UIApplication.shared.topViewController?.present(alertController, animated: true)
                             }) {
                                 HStack {
-                                    Text("[Test] Set Exposure Configuration JSON")
+                                    Text("[DEMO] Set Exposure Configuration JSON")
                                 }.modifier(MenuTitleText())
                             }
                             
@@ -124,7 +124,7 @@ struct Menu: View {
                                 }
                             }) {
                                 HStack {
-                                    Text("[Test] Export Possible Exposures")
+                                    Text("[DEMO] Export Possible Exposures")
                                 }.modifier(MenuTitleText())
                             }
                             

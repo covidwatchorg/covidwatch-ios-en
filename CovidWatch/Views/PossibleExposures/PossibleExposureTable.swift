@@ -12,9 +12,19 @@ struct PossibleExposureTable: View {
     let durationFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.minute]
-        formatter.unitsStyle = .short
+        formatter.unitsStyle = .abbreviated
         return formatter
     }()
+    
+    func duration(for timeInterval: TimeInterval) -> String {
+        guard let string = durationFormatter.string(from: timeInterval) else {
+            return ""
+        }
+        if timeInterval == 1800 {
+            return "≥"+string
+        }
+        return string
+    }
     
     var body: some View {
         
@@ -40,14 +50,14 @@ struct PossibleExposureTable: View {
                     .background(Color(UIColor.secondarySystemBackground))
                     .border(Color("Button Border Color"), width: 1)
                 
-                HStack {
-                    Spacer(minLength: 10)
-                    Text("Attenuation")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Spacer(minLength: 10)
-                }.frame(minHeight: 30, alignment: .leading)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .border(Color("Button Border Color"), width: 1)
+//                HStack {
+//                    Spacer(minLength: 10)
+//                    Text("Attenuation")
+//                        .frame(maxWidth: .infinity, alignment: .leading)
+//                    Spacer(minLength: 10)
+//                }.frame(minHeight: 30, alignment: .leading)
+//                    .background(Color(UIColor.secondarySystemBackground))
+//                    .border(Color("Button Border Color"), width: 1)
                 
                 HStack {
                     Spacer(minLength: 10)
@@ -58,18 +68,9 @@ struct PossibleExposureTable: View {
                     .background(Color(UIColor.secondarySystemBackground))
                     .border(Color("Button Border Color"), width: 1)
                 
-//                HStack {
-//                    Spacer(minLength: 10)
-//                    Text("Attenuation")
-//                        .frame(maxWidth: .infinity, alignment: .leading)
-//                    Spacer(minLength: 10)
-//                }.frame(minHeight: 30, alignment: .leading)
-//                    .background(Color(UIColor.secondarySystemBackground))
-//                    .border(Color("Button Border Color"), width: 1)
-                                
                 HStack {
                     Spacer(minLength: 10)
-                    Text("Transmission Risk")
+                    Text("Transmission Risk Level")
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
                 }.frame(minHeight: 30, alignment: .leading)
@@ -78,7 +79,7 @@ struct PossibleExposureTable: View {
                 
                 HStack {
                     Spacer(minLength: 10)
-                    Text("Total Risk")
+                    Text("Total Risk Score")
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
                 }.frame(minHeight: 30, alignment: .leading)
@@ -100,25 +101,8 @@ struct PossibleExposureTable: View {
                 
                 HStack {
                     Spacer(minLength: 20)
-                    Text(verbatim: durationFormatter.string(from: exposure.duration) ?? "")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Spacer(minLength: 10)
-                }.frame(minHeight: 30, alignment: .leading)
-                    .background(Color(UIColor.systemBackground))
-                    .border(Color("Button Border Color"), width: 1)
-                
-                HStack {
-                    Spacer(minLength: 20)
-                    Text(verbatim: String(exposure.attenuationValue))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Spacer(minLength: 10)
-                }.frame(minHeight: 30, alignment: .leading)
-                    .background(Color(UIColor.systemBackground))
-                    .border(Color("Button Border Color"), width: 1)
-                
-                HStack {
-                    Spacer(minLength: 20)
-                    Text(verbatim: "[\(exposure.attenuationDurations.map({String($0/60)}).joined(separator: ", "))]")
+                    //Text(verbatim: durationFormatter.string(from: exposure.duration) ?? "")
+                    Text(verbatim: duration(for: exposure.duration))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
                 }.frame(minHeight: 30, alignment: .leading)
@@ -127,7 +111,7 @@ struct PossibleExposureTable: View {
                 
 //                HStack {
 //                    Spacer(minLength: 20)
-//                    //Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("%@ db", comment: ""), exposure.) )
+//                    Text(verbatim: String(exposure.attenuationValue))
 //                        .frame(maxWidth: .infinity, alignment: .leading)
 //                    Spacer(minLength: 10)
 //                }.frame(minHeight: 30, alignment: .leading)
@@ -136,7 +120,7 @@ struct PossibleExposureTable: View {
                 
                 HStack {
                     Spacer(minLength: 20)
-                    Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("Level %@ of 8", comment: ""), NSNumber(value: exposure.transmissionRiskLevel)))
+                    Text(verbatim: "[ \(exposure.attenuationDurations.map({ duration(for: $0)}).joined(separator: ", ")) ]")
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
                 }.frame(minHeight: 30, alignment: .leading)
@@ -145,7 +129,16 @@ struct PossibleExposureTable: View {
                 
                 HStack {
                     Spacer(minLength: 20)
-                    Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("Score %@ of 8", comment: ""), NSNumber(value: exposure.totalRiskScore)))
+                    Text(verbatim: exposure.transmissionRiskLevel.localizedTransmissionRiskLevelDescription)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer(minLength: 10)
+                }.frame(minHeight: 30, alignment: .leading)
+                    .background(Color(UIColor.systemBackground))
+                    .border(Color("Button Border Color"), width: 1)
+                
+                HStack {
+                    Spacer(minLength: 20)
+                    Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("%@ of 8", comment: ""), NSNumber(value: exposure.totalRiskScore)))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
                 }.frame(minHeight: 30, alignment: .leading)

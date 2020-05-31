@@ -71,7 +71,7 @@ struct PossibleExposure: View {
                         
                         Spacer(minLength: 2 * .standardSpacing)
                         
-                        Text("Got a positive diagnosis? Share it anonymously to help your community stay safe.")
+                        Text("Have a positive diagnosis? Share it anonymously to help your community stay safe.")
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .modifier(SubCallToAction())
                             .padding(.horizontal, 2 * .standardSpacing)

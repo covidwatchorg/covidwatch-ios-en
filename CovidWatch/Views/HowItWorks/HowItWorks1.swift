@@ -25,6 +25,8 @@ struct HowItWorks1: View {
                     .padding(.horizontal, 2 * .standardSpacing)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
+                Spacer(minLength: .standardSpacing)
+                
                 Image("How it Works 01")
                     .resizable()
                     .aspectRatio(contentMode: .fit)

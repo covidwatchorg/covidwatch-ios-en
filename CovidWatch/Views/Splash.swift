@@ -31,7 +31,7 @@ struct Splash: View {
                 
                 VStack(spacing: 0) {
                     
-                    Image("California Bear")
+                    Image("Public Health Department Generic")
                         .padding(.top, 2 * .standardSpacing)
                     
                     Spacer(minLength: 2 * .standardSpacing)

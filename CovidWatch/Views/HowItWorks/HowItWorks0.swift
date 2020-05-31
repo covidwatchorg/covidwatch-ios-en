@@ -17,14 +17,14 @@ struct HowItWorks0: View {
                     .padding(.top, .headerHeight)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                 
-                Text("Welcome to the {UCSF Health Covid Watch} App")
+                Text("Welcome to the Covid Watch DEMO app")
                     .modifier(HowItWorksTitleText())
                     .padding(.horizontal, 2 * .standardSpacing)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Spacer(minLength: 2 * .standardSpacing)
                 
-                Text("Welcome Text. Aliquet urna feugiat donec dictum. Massa dignissim commodo ut et. Massa dignissim commodo ut et.")
+                Text("Protect yourself, your family, and community with anonymous mobile alerts. Together, we have the power to stop COVID-19.")
                     .modifier(HowItWorksSubtitleText())
                     .padding(.horizontal, 2 * .standardSpacing)
                     .frame(maxWidth: .infinity, alignment: .leading)

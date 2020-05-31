@@ -16,11 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="California Bear" translatesAutoresizingMaskIntoConstraints="NO" id="45X-eI-c8t">
-                                <rect key="frame" x="49.5" y="69" width="315" height="45"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Public Health Department Generic" translatesAutoresizingMaskIntoConstraints="NO" id="45X-eI-c8t">
+                                <rect key="frame" x="49.5" y="69" width="315" height="76"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="315" id="JwA-OH-i6W"/>
-                                    <constraint firstAttribute="height" constant="45" id="pAK-Ht-5h1"/>
+                                    <constraint firstAttribute="height" constant="76" id="pAK-Ht-5h1"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -38,7 +38,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="California Bear" width="315" height="46"/>
+        <image name="Public Health Department Generic" width="278" height="77"/>
         <namedColor name="Tint Color">
             <color red="0.17254901960784313" green="0.34509803921568627" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

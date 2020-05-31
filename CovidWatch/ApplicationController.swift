@@ -185,11 +185,11 @@ class ApplicationController: NSObject {
             
             let alertController = UIAlertController(
                 title: String.localizedStringWithFormat(NSLocalizedString("Set transmission risk level for your %d TEK(s)", comment: ""), keys.count),
-                message: String.localizedStringWithFormat(NSLocalizedString("(%d space-separated values between 1 and 8)", comment: ""), keys.count),
+                message: String.localizedStringWithFormat(NSLocalizedString("%d space-separated values of\n%@", comment: ""), keys.count, (0...7).map({ ENRiskLevel($0).localizedTransmissionRiskLevelDescription}).joined(separator: "\n")),
                 preferredStyle: .alert
             )
             alertController.addTextField { (textField) in
-                textField.text = (0..<keys.count).map({ _ in "1" }).joined(separator: " ")
+                textField.text = (0..<keys.count).map({ _ in "3" }).joined(separator: " ")
             }
             alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
             alertController.addAction(UIAlertAction(title: NSLocalizedString("Continue", comment: ""), style: .default, handler: { _ in

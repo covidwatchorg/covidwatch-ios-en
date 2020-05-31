@@ -21,7 +21,7 @@ struct HeaderBar: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    init(showMenu: Bool = true, showDismissButton: Bool = false, logoImage: Image = Image("Bear")) {
+    init(showMenu: Bool = true, showDismissButton: Bool = false, logoImage: Image = Image("Public Health Authority Generic")) {
         self.showMenu = showMenu
         self.showDismissButton = showDismissButton
         self.logoImage = logoImage
@@ -40,27 +40,41 @@ struct HeaderBar: View {
                 
                 Spacer()
                 
-                if self.showMenu {
-                    Button(action: {
-                        self.isShowingMenu.toggle()
-                    }) {
-                        Image("Menu Button").frame(minWidth: 44, minHeight: 44)
-                    }.sheet(isPresented: self.$isShowingMenu) {
-                        Menu()
-                            .environmentObject(self.userData)
-                            .environmentObject(self.localStore)
-                    }
+                VStack {
+                    Text("DEMO")
+                        .font(.custom("Montserrat-Black", size: 14))
+                        .foregroundColor(Color("Subtitle Text Color"))
+                    Text("Sandbox Mode")
+                        .font(.custom("Montserrat-Regular", size: 14))
+                        .foregroundColor(Color("Subtitle Text Color"))
                 }
                 
-                if self.showDismissButton {
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Image("Dismiss Button")
-                            .frame(minWidth: 44, minHeight: 44)
-                    }
-                }
+                Spacer()
                 
+                if self.showMenu || self.showDismissButton {
+                    if self.showMenu {
+                        Button(action: {
+                            self.isShowingMenu.toggle()
+                        }) {
+                            Image("Menu Button").frame(minWidth: 44, minHeight: 44)
+                        }.sheet(isPresented: self.$isShowingMenu) {
+                            Menu()
+                                .environmentObject(self.userData)
+                                .environmentObject(self.localStore)
+                        }
+                    }                
+                    if self.showDismissButton {
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image("Dismiss Button")
+                                .frame(minWidth: 44, minHeight: 44)
+                        }
+                    }
+                } else {
+                    Spacer()
+                }
+                                
             }
             .padding(.top, 2 * .standardSpacing)
             .padding(.horizontal, 2 * .standardSpacing)

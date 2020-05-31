@@ -28,7 +28,7 @@ struct Setup1: View {
                 
                     Spacer(minLength: .headerHeight)
                     
-                    Text("Enable Exposures")
+                    Text("Enable Exposure Notifications")
                         .modifier(TitleText())
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 2 * .standardSpacing)

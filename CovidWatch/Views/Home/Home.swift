@@ -108,7 +108,7 @@ struct Home: View {
                             
                             Spacer(minLength: 2 * .standardSpacing)
                             
-                            Text("Got a positive diagnosis? Share it anonymously to help your community stay safe.")
+                            Text("Have a positive diagnosis? Share it anonymously to help your community stay safe.")
                                 .modifier(SubCallToAction())
                                 .frame(maxWidth: .infinity)
                                 .padding(.horizontal, 2 * .standardSpacing)

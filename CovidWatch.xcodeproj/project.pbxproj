@@ -31,6 +31,8 @@
 		2D46AA5F2465E69E0003936C /* PossibleExposures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA5E2465E69E0003936C /* PossibleExposures.swift */; };
 		2D46AA622466ADFE0003936C /* HowItWorks0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA612466ADFD0003936C /* HowItWorks0.swift */; };
 		2D48BF7A245AE51800012E79 /* AppDelegate+BackgroundTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D48BF79245AE51800012E79 /* AppDelegate+BackgroundTasks.swift */; };
+		2D5149E5248384F000702A60 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D5149E4248384F000702A60 /* Localizable.strings */; };
+		2D5149E72483918400702A60 /* ENRiskLevel+LocalizedDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5149E62483918400702A60 /* ENRiskLevel+LocalizedDescription.swift */; };
 		2D5D9402245FF85C00718412 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D9401245FF85C00718412 /* UserData.swift */; };
 		2D5D9405245FF88800718412 /* UserDefaultPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D9404245FF88800718412 /* UserDefaultPropertyWrapper.swift */; };
 		2D5D94072460000A00718412 /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94062460000A00718412 /* ApplicationController.swift */; };
@@ -158,6 +160,8 @@
 		2D46AA5E2465E69E0003936C /* PossibleExposures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleExposures.swift; sourceTree = "<group>"; };
 		2D46AA612466ADFD0003936C /* HowItWorks0.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowItWorks0.swift; sourceTree = "<group>"; };
 		2D48BF79245AE51800012E79 /* AppDelegate+BackgroundTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+BackgroundTasks.swift"; sourceTree = "<group>"; };
+		2D5149E4248384F000702A60 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		2D5149E62483918400702A60 /* ENRiskLevel+LocalizedDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ENRiskLevel+LocalizedDescription.swift"; sourceTree = "<group>"; };
 		2D5D9401245FF85C00718412 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		2D5D9404245FF88800718412 /* UserDefaultPropertyWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultPropertyWrapper.swift; sourceTree = "<group>"; };
 		2D5D94062460000A00718412 /* ApplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationController.swift; sourceTree = "<group>"; };
@@ -185,7 +189,7 @@
 		2D9034C42460498A00351C3C /* Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
 		2D9034C6246049EC00351C3C /* Setup1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup1.swift; sourceTree = "<group>"; };
 		2D9034C824604BB000351C3C /* Setup2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup2.swift; sourceTree = "<group>"; };
-		2D9CF3CA2455B9F1005B085E /* Covid Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Covid Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D9CF3CA2455B9F1005B085E /* CW DEMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CW DEMO.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D9CF3CD2455B9F1005B085E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D9CF3D92455B9F4005B085E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D9CF3DC2455B9F4005B085E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -308,6 +312,7 @@
 				2D46AA462465E10E0003936C /* GoogleExposureNotificationServer.swift */,
 				2DFEED0F24792CF300D2C620 /* LocalGoogleExposureNotificationServer.swift */,
 				2DFEED0D24792C1600D2C620 /* GCPGoogleExposureNotificationServer.swift */,
+				2D5149E62483918400702A60 /* ENRiskLevel+LocalizedDescription.swift */,
 			);
 			path = Server;
 			sourceTree = "<group>";
@@ -443,7 +448,7 @@
 		2D9CF3CB2455B9F1005B085E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2D9CF3CA2455B9F1005B085E /* Covid Watch.app */,
+				2D9CF3CA2455B9F1005B085E /* CW DEMO.app */,
 				2D9CF3E32455B9F5005B085E /* CovidWatchTests.xctest */,
 				2D9CF3EE2455B9F5005B085E /* CovidWatchUITests.xctest */,
 			);
@@ -467,6 +472,7 @@
 				2D46AA492465E1190003936C /* Utility */,
 				2DD7B443245F4439001B30F0 /* Views */,
 				2D9CF3D92455B9F4005B085E /* Assets.xcassets */,
+				2D5149E4248384F000702A60 /* Localizable.strings */,
 				2D9CF3DB2455B9F4005B085E /* LaunchScreen.storyboard */,
 				2D9CF3DE2455B9F4005B085E /* Info.plist */,
 				2DFEED05247695CA00D2C620 /* CovidWatch.entitlements */,
@@ -577,7 +583,7 @@
 				2DFEED092476BD0400D2C620 /* ZIPFoundation */,
 			);
 			productName = CovidWatch;
-			productReference = 2D9CF3CA2455B9F1005B085E /* Covid Watch.app */;
+			productReference = 2D9CF3CA2455B9F1005B085E /* CW DEMO.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2D9CF3E22455B9F5005B085E /* CovidWatchTests */ = {
@@ -673,6 +679,7 @@
 				2DD7B475245F50A0001B30F0 /* Montserrat-Light.ttf in Resources */,
 				2DD7B487245F50A0001B30F0 /* Roboto-LightItalic.ttf in Resources */,
 				2DD7B48E245F50A0001B30F0 /* Roboto-Black.ttf in Resources */,
+				2D5149E5248384F000702A60 /* Localizable.strings in Resources */,
 				2DD7B489245F50A0001B30F0 /* Montserrat-Italic.ttf in Resources */,
 				2DD7B47F245F50A0001B30F0 /* RobotoCondensed-LightItalic.ttf in Resources */,
 				2D9CF3DD2455B9F4005B085E /* LaunchScreen.storyboard in Resources */,
@@ -812,6 +819,7 @@
 				2DD7B49A245F66F2001B30F0 /* Constants.swift in Sources */,
 				2D46AA3F2465E1010003936C /* UserDefaults+Shared.swift in Sources */,
 				2D9034B824603D6200351C3C /* HowItWorks2.swift in Sources */,
+				2D5149E72483918400702A60 /* ENRiskLevel+LocalizedDescription.swift in Sources */,
 				2D46AA422465E1010003936C /* ENTemporaryExposureKey+CodableDiagnosisKey.swift in Sources */,
 				2D29BAE9246060B400E8BEC4 /* Alert.swift in Sources */,
 				2D46AA4F2465E1190003936C /* UIViewController+ErrorPresenting.swift in Sources */,
@@ -993,7 +1001,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.california.ios;
-				PRODUCT_NAME = "Covid Watch";
+				PRODUCT_NAME = "CW DEMO";
 				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch EN Dev";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_VERSION = 5.0;
@@ -1018,7 +1026,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.california.ios;
-				PRODUCT_NAME = "Covid Watch";
+				PRODUCT_NAME = "CW DEMO";
 				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch EN Dev";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_VERSION = 5.0;

@@ -27,7 +27,7 @@ struct Setup2: View {
                     
                     Spacer(minLength: .headerHeight)
                     
-                    Text("Enable Notifications")
+                    Text("Enable Push Notifications")
                         .modifier(TitleText())
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 2 * .standardSpacing)
@@ -41,7 +41,7 @@ struct Setup2: View {
 
                     Spacer(minLength: 2 * .standardSpacing)
                     
-                    Text("Enable notifications to receive alerts if you have come into contact with a confirmed case of COVID-19 even when you are not using the app.")
+                    Text("Enable push notifications to receive alerts if you have come into contact with a confirmed case of COVID-19 even when you are not using the app.")
                         .modifier(SubtitleText())
                         .padding(.horizontal, 2 * .standardSpacing)
                     

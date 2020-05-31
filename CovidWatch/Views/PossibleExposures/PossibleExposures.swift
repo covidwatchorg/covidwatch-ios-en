@@ -31,15 +31,17 @@ struct PossibleExposures: View {
                         .padding(.horizontal, 2 * .standardSpacing)
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
                     
+                    Spacer(minLength: 2 * .standardSpacing)
+                    
                     Toggle(isOn: self.$userData.exposureNotificationEnabled) {
                         Text("Exposure Notifications")
                             .font(.custom("Montserrat-SemiBold", size: 18))
                             .foregroundColor(Color("Title Text Color"))
                     }
                     .padding(.horizontal, 2 * .standardSpacing)
-                    .padding(.top, 2 * .standardSpacing)
-                    .padding(.bottom, .standardSpacing)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                    
+                    Spacer(minLength: .standardSpacing)
                     
                     Text(verbatim: self.userData.exposureNotificationStatusMessage)
                         .font(.custom("Montserrat-Regular", size: 16))
@@ -59,32 +61,34 @@ struct PossibleExposures: View {
                         .padding(.horizontal, 2 * .standardSpacing)
                         .background(Color("Possible Exposures Last Check Background Color"))
                     
-                    ForEach(0..<self.localStore.exposures.count) { index in
-
-                        Button(action: {
-                            self.selectedExposure = self.localStore.exposures[index]
-                            self.isShowingExposureDetail.toggle()
-                        }) {
-                            PossibleExposureRow(exposure: self.localStore.exposures[index])
-                                .padding(.horizontal, 2 * .standardSpacing)
+                    VStack(spacing: 0) {
+                        ForEach(0..<self.localStore.exposures.count) { index in
+                            
+                            Button(action: {
+                                self.selectedExposure = self.localStore.exposures[index]
+                                self.isShowingExposureDetail.toggle()
+                            }) {
+                                PossibleExposureRow(exposure: self.localStore.exposures[index])
+                                    .padding(.horizontal, 2 * .standardSpacing)
+                            }
+                            .background(index % 2 == 0 ? Color(UIColor.secondarySystemBackground) : Color(UIColor.systemBackground))
+                            .frame(minHeight: 54)
+                            .sheet(isPresented: self.$isShowingExposureDetail) {
+                                PossibleExposure(exposure: self.selectedExposure!)
+                                    .environmentObject(self.localStore)
+                            }
                         }
-                        .background(index % 2 == 0 ? Color(UIColor.secondarySystemBackground) : Color(UIColor.systemBackground))
-                        .frame(minHeight: 54)
-                        .sheet(isPresented: self.$isShowingExposureDetail) {
-                            PossibleExposure(exposure: self.selectedExposure!)
-                                .environmentObject(self.localStore)
-                        }
-                    }
-                    
-                    Spacer(minLength: 2 * .standardSpacing)
-                    
-                    Text("Exposure notifications are saved in this app and you can access them any time in the future.")
-                        .modifier(SubCallToAction())
-                        .padding(.horizontal, 2 * .standardSpacing)
                         
-                    Image("Powered By CW Grey")
-                        .padding(.top, 2 * .standardSpacing)
-                        .padding(.bottom, .standardSpacing)
+                        Spacer(minLength: 2 * .standardSpacing)
+                        
+                        Text("Exposure notifications are saved in this app and you can access them any time in the future.")
+                            .modifier(SubCallToAction())
+                            .padding(.horizontal, 2 * .standardSpacing)
+                        
+                        Image("Powered By CW Grey")
+                            .padding(.top, 2 * .standardSpacing)
+                            .padding(.bottom, .standardSpacing)
+                    }
                 }
             }
             

@@ -34,6 +34,8 @@ struct HowItWorks4: View {
                     .padding(.horizontal, 2 * .standardSpacing)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
+                Spacer(minLength: .standardSpacing)
+                
                 Image("How it Works 04")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
