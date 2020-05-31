@@ -65,7 +65,7 @@ class ExposureManager {
                 case let .success((newExposures, nextDiagnosisKeyFileIndex)):
                     LocalStore.shared.nextDiagnosisKeyFileIndex = nextDiagnosisKeyFileIndex
                     LocalStore.shared.exposures.append(contentsOf: newExposures)
-                    LocalStore.shared.exposures.sort { $0.date < $1.date }
+                    LocalStore.shared.exposures.sort { $0.date > $1.date }
                     LocalStore.shared.dateLastPerformedExposureDetection = Date()
                     LocalStore.shared.exposureDetectionErrorLocalizedDescription = nil
                     success = true
@@ -118,7 +118,7 @@ class ExposureManager {
                                 log: .en,
                                 exposures!.count
                             )
-                                finish(.success((newExposures, nextDiagnosisKeyFileIndex + localURLs.count)))
+                            finish(.success((newExposures, nextDiagnosisKeyFileIndex + localURLs.count)))
                         }
                     }
                     
