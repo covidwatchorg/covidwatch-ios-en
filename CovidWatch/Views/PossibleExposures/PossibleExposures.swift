@@ -29,7 +29,7 @@ struct PossibleExposures: View {
                         .font(.custom("Montserrat-SemiBold", size: 31))
                         .foregroundColor(Color("Title Text Color"))
                         .padding(.horizontal, 2 * .standardSpacing)
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Spacer(minLength: 2 * .standardSpacing)
                     
@@ -39,7 +39,7 @@ struct PossibleExposures: View {
                             .foregroundColor(Color("Title Text Color"))
                     }
                     .padding(.horizontal, 2 * .standardSpacing)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Spacer(minLength: .standardSpacing)
                     
@@ -47,7 +47,7 @@ struct PossibleExposures: View {
                         .font(.custom("Montserrat-Regular", size: 16))
                         .foregroundColor(Color("Title Text Color"))
                         .padding(.horizontal, 2 * .standardSpacing)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Spacer(minLength: 2 * .standardSpacing)
                     
@@ -84,6 +84,7 @@ struct PossibleExposures: View {
                         Text("Exposure notifications are saved in this app and you can access them any time in the future.")
                             .modifier(SubCallToAction())
                             .padding(.horizontal, 2 * .standardSpacing)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                         
                         Image("Powered By CW Grey")
                             .padding(.top, 2 * .standardSpacing)
