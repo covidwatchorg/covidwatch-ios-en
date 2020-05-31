@@ -99,13 +99,17 @@ class ExposureManager {
                                     finish(.failure(error))
                                     return
                                 }
-                            let newExposures = exposures!.map { exposure in
-                                Exposure(
+                            let newExposures: [Exposure] = exposures!.map { exposure in
+                                var totalRiskScore = Double(exposure.totalRiskScore) * 8.0 / 255.0 // Map score between 0 and 8
+                                if let totalRiskScoreFullRange = exposure.metadata?["totalRiskScoreFullRange"] as? Double {
+                                    totalRiskScore = totalRiskScoreFullRange * 8.0 / 4096 // Map score between 0 and 8
+                                }
+                                return Exposure(
                                     attenuationDurations: exposure.attenuationDurations.map({ $0.doubleValue }),
                                     attenuationValue: exposure.attenuationValue,
                                     date: exposure.date,
                                     duration: exposure.duration,
-                                    totalRiskScore: ENRiskScore(Double(exposure.totalRiskScore) * 8.0 / 255.0), // Map score between 0 and 8
+                                    totalRiskScore: ENRiskScore(totalRiskScore.rounded()),
                                     transmissionRiskLevel: exposure.transmissionRiskLevel
                                 )
                             }
