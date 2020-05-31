@@ -12,22 +12,24 @@ struct HowItWorks0: View {
             
             VStack(spacing: 0) {
                 
+                Spacer(minLength: .headerHeight)
+                
                 Image("Family Dancing 02")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .background(Image("Rectangle 33").resizable().aspectRatio(contentMode: .fill))
-                    .padding(.top, .headerHeight)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                
+                Spacer(minLength: .standardSpacing)
                 
                 Text("Welcome to the Covid Watch DEMO app")
                     .modifier(HowItWorksTitleText())
                     .padding(.horizontal, 2 * .standardSpacing)
-                    .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Spacer(minLength: 2 * .standardSpacing)
                 
                 Text("Protect yourself, your family, and community with anonymous mobile alerts. Together, we have the power to stop COVID-19.")
                     .modifier(HowItWorksSubtitleText())
                     .padding(.horizontal, 2 * .standardSpacing)
-                    .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Spacer(minLength: 32 + .standardSpacing)
             }
