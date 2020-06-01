@@ -110,6 +110,7 @@ class ExposureManager {
                                     date: exposure.date,
                                     duration: exposure.duration,
                                     totalRiskScore: ENRiskScore(totalRiskScore.rounded()),
+                                    totalRiskScoreFullRange: (exposure.metadata?["totalRiskScoreFullRange"] as? Int) ?? Int(totalRiskScore.rounded()),
                                     transmissionRiskLevel: exposure.transmissionRiskLevel
                                 )
                             }
