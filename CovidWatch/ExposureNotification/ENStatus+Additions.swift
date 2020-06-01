@@ -6,39 +6,22 @@
 import Foundation
 import ExposureNotification
 
-extension ENStatus: CustomStringConvertible {
+extension ENStatus {
     
-    public var description: String {
+    public var localizedDetailDescription: String {
         switch self {
             case .unknown:
-                return NSLocalizedString("EN Unkown Status", comment: "")
+                return NSLocalizedString("EXPOSURE_NOTIFICATION_STATUS_UNKOWN_MESSAGE", comment: "")
             case .active:
-                return NSLocalizedString("EN Active", comment: "")
+                return NSLocalizedString("EXPOSURE_NOTIFICATION_STATUS_ACTIVE_MESSAGE", comment: "")
             case .disabled:
-                return NSLocalizedString("EN Disabled", comment: "")
+                return NSLocalizedString("EXPOSURE_NOTIFICATION_STATUS_DISABLED_MESSAGE", comment: "")
             case .bluetoothOff:
-                return NSLocalizedString("Bluetooth is Off", comment: "")
+                return NSLocalizedString("EXPOSURE_NOTIFICATION_STATUS_BLUETOOTH_OFF_MESSAGE", comment: "")
             case .restricted:
-                return NSLocalizedString("EN Restricted", comment: "")
+                return NSLocalizedString("EXPOSURE_NOTIFICATION_STATUS_RESTRICTED_MESSAGE", comment: "")
             @unknown default:
                 return ""
         }
     }
-    
-    public var detailedDescription: String {
-        switch self {
-            case .unknown:
-                return NSLocalizedString("Status of Exposure Notification is unknown.", comment: "")
-            case .active:
-                return NSLocalizedString("Exposure Notification is active on the system.", comment: "")
-            case .disabled:
-                return NSLocalizedString("Exposure Notification is disabled.", comment: "")
-            case .bluetoothOff:
-                return NSLocalizedString("Bluetooth has been turned off on the system. Bluetooth is required for Exposure Notification.", comment: "")
-            case .restricted:
-                return NSLocalizedString("Exposure Notification is not active due to system restrictions, such as parental controls.", comment: "")
-            @unknown default:
-                return ""
-        }
-    }    
 }

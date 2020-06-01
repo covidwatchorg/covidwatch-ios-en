@@ -25,16 +25,13 @@ struct PossibleExposures: View {
                     
                     Spacer(minLength: .headerHeight)
                     
-                    Text("Possible Exposures")
-                        .font(.custom("Montserrat-SemiBold", size: 31))
-                        .foregroundColor(Color("Title Text Color"))
-                        .padding(.horizontal, 2 * .standardSpacing)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("POSSIBLE_EXPOSURES_TITLE")
+                        .modifier(StandardTitleTextViewModifier())
                     
                     Spacer(minLength: 2 * .standardSpacing)
                     
                     Toggle(isOn: self.$userData.exposureNotificationEnabled) {
-                        Text("Exposure Notifications")
+                        Text("EXPOSURE_NOTIFICATIONS_TITLE")
                             .font(.custom("Montserrat-SemiBold", size: 18))
                             .foregroundColor(Color("Title Text Color"))
                     }
@@ -52,8 +49,8 @@ struct PossibleExposures: View {
                     Spacer(minLength: 2 * .standardSpacing)
                     
                     Text(verbatim: self.localStore.dateLastPerformedExposureDetection == nil ?
-                        NSLocalizedString("Exposures last checked: Never", comment: "") :
-                        String.localizedStringWithFormat(NSLocalizedString("Exposures last checked: %@", comment: ""), DateFormatter.localizedString(from: self.localStore.dateLastPerformedExposureDetection!, dateStyle: .short, timeStyle: .short))
+                        NSLocalizedString("EXPOSURES_LAST_CHECKED_NEVER_MESSAGE", comment: "") :
+                        String.localizedStringWithFormat(NSLocalizedString("EXPOSURES_LAST_CHECKED_DATE_MESSAGE", comment: ""), DateFormatter.localizedString(from: self.localStore.dateLastPerformedExposureDetection!, dateStyle: .medium, timeStyle: .short))
                     )
                         .font(.custom("Montserrat-Bold", size: 16))
                         .foregroundColor(Color.white)
@@ -71,6 +68,7 @@ struct PossibleExposures: View {
                                 PossibleExposureRow(exposure: self.localStore.exposures[index])
                                     .padding(.horizontal, 2 * .standardSpacing)
                             }
+                            .accessibility(hint: Text("SHOWS_MORE_INFO_ACCESSIBILITY_HINT"))
                             .background(index % 2 == 0 ? Color(UIColor.secondarySystemBackground) : Color(UIColor.systemBackground))
                             .frame(minHeight: 54)
                             .sheet(isPresented: self.$isShowingExposureDetail) {
@@ -81,12 +79,13 @@ struct PossibleExposures: View {
                         
                         Spacer(minLength: 2 * .standardSpacing)
                         
-                        Text("Exposure notifications are saved in this app and you can access them any time in the future.")
+                        Text("EXPOSURES_ARE_SAVED_MESSAGE")
                             .modifier(SubCallToAction())
                             .padding(.horizontal, 2 * .standardSpacing)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         
                         Image("Powered By CW Grey")
+                            .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
                             .padding(.top, 2 * .standardSpacing)
                             .padding(.bottom, .standardSpacing)
                     }

@@ -28,22 +28,23 @@ struct Setup1: View {
                 
                     Spacer(minLength: .headerHeight)
                     
-                    Text("Enable Exposure Notifications")
-                        .modifier(TitleText())
+                    Text("ENABLE_EXPOSURE_NOTIFICATIONS_TITLE")
+                        .modifier(SetupTitleTextViewModifier())
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 2 * .standardSpacing)
                     
                     Spacer(minLength: 2 * .standardSpacing)
                     
-                    Image("Web 01")
+                    Image("Setup 1")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .accessibility(label: Text("ENABLE_EXPOSURE_NOTIFICATIONS_IMAGE_ACCESSIBILITY_LABEL"))
                         .padding(.horizontal, 2 * .standardSpacing)
                     
                     Spacer(minLength: 2 * .standardSpacing)
                     
-                    Text("These notifications are designed to notify you if you’ve been exposed to a user who later reports themselves as testing positive for COVID-19. You can choose to turn off these notifications at any time.\n\nExposure notifications rely on the sharing and collection of random IDs. These IDs are a random string of numbers that won’t identify you to other users and change many times a day to protect your privacy.")
-                        .modifier(SubtitleText())
+                    Text("ENABLE_EXPOSURE_NOTIFICATIONS_MESSAGE")
+                        .modifier(SetupMessageTextViewModifier())
                         .padding(.horizontal, 2 * .standardSpacing)
                     
                     Spacer(minLength: .stickyFooterHeight + .standardSpacing)
@@ -73,7 +74,8 @@ struct Setup1: View {
                     
                 }) {
                     
-                    Text("Enable").modifier(SmallCallToAction())
+                    Text("ENABLE")
+                        .modifier(SmallCallToAction())
                     
                 }
                 .padding(.top, .standardSpacing)
@@ -90,7 +92,7 @@ struct Setup1: View {
                     }
                 }) {
                     
-                    Text("Not Now")
+                    Text("NOT_NOW")
                         .font(.custom("Montserrat-Medium", size: 16))
                         .frame(maxWidth: .infinity)
                         .padding()

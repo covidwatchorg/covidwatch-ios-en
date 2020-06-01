@@ -112,17 +112,17 @@ class ApplicationController: NSObject {
         let nsError = error as NSError
         if nsError.domain == ENErrorDomain, nsError.code == ENError.notAuthorized.rawValue {
             let alertController = UIAlertController(
-                title: NSLocalizedString("Error", comment: ""),
-                message: NSLocalizedString("Access to Exposure Notification denied.", comment: ""),
+                title: NSLocalizedString("ERROR", comment: ""),
+                message: NSLocalizedString("ACCES_TO_EN_DENIED", comment: "Error"),
                 preferredStyle: .alert
             )
             alertController.addAction(UIAlertAction(
-                title: NSLocalizedString("Cancel", comment: ""),
+                title: NSLocalizedString("CANCEL", comment: ""),
                 style: .cancel,
                 handler: nil)
             )
             alertController.addAction(UIAlertAction(
-                title: NSLocalizedString("Settings", comment: ""),
+                title: NSLocalizedString("SETTINGS", comment: ""),
                 style: .default,
                 handler: { (action) in
                     ApplicationController.shared.openSettings()
@@ -185,14 +185,14 @@ class ApplicationController: NSObject {
             
             let alertController = UIAlertController(
                 title: String.localizedStringWithFormat(NSLocalizedString("Set transmission risk level for your %d TEK(s)", comment: ""), keys.count),
-                message: String.localizedStringWithFormat(NSLocalizedString("%d space-separated values of\n%@", comment: ""), keys.count, (0...7).map({ ENRiskLevel($0).localizedTransmissionRiskLevelDescription}).joined(separator: "\n")),
+                message: String.localizedStringWithFormat(NSLocalizedString("%d space-separated values of\n%@\nNote: The values can be different.", comment: ""), keys.count, (0...7).map({ ENRiskLevel($0).localizedTransmissionRiskLevelDescription}).joined(separator: "\n")),
                 preferredStyle: .alert
             )
             alertController.addTextField { (textField) in
                 textField.text = (0..<keys.count).map({ _ in "3" }).joined(separator: " ")
             }
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("Continue", comment: ""), style: .default, handler: { _ in
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""), style: .cancel, handler: nil))
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("CONTINUE", comment: ""), style: .default, handler: { _ in
                 guard let text = alertController.textFields?.first?.text else { return }
                 let stringValues = text.components(separatedBy: " ")
                 guard stringValues.count == keys.count else { return }
@@ -212,7 +212,7 @@ class ApplicationController: NSObject {
         actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Other...", comment: ""), style: .default, handler: { [weak self] _ in
             self?.handleTapOther(diagnosisKeys: diagnosisKeys, transmissionRiskLevels: transmissionRiskLevels)
         }))
-        actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""), style: .cancel, handler: nil))
         UIApplication.shared.topViewController?.present(actionSheet, animated: true)
     }
     

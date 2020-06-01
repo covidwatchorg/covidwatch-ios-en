@@ -11,6 +11,8 @@ struct HeaderBar: View {
     
     let showDismissButton: Bool
     
+    let showDemoMode: Bool
+    
     let logoImage: Image
     
     @State var isShowingMenu: Bool = false
@@ -21,9 +23,15 @@ struct HeaderBar: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    init(showMenu: Bool = true, showDismissButton: Bool = false, logoImage: Image = Image("Public Health Authority Generic")) {
+    init(
+        showMenu: Bool = true,
+        showDismissButton: Bool = false,
+        showDemoMode: Bool = true,
+        logoImage: Image = Image("Public Health Authority Generic")
+    ) {
         self.showMenu = showMenu
         self.showDismissButton = showDismissButton
+        self.showDemoMode = showDemoMode
         self.logoImage = logoImage
     }
     
@@ -36,27 +44,34 @@ struct HeaderBar: View {
             
             HStack {
                 
-                logoImage
+                self.logoImage
+                    .accessibility(label: Text("GENERIC_PUBLIC_HEALTH_DEPARTMENT_IMAGE_ACCESSIBILITY_LABEL"))
                 
                 Spacer()
                 
-                VStack {
-                    Text("DEMO")
-                        .font(.custom("Montserrat-Black", size: 14))
-                        .foregroundColor(Color("Subtitle Text Color"))
-                    Text("Sandbox Mode")
-                        .font(.custom("Montserrat-Regular", size: 14))
-                        .foregroundColor(Color("Subtitle Text Color"))
+                if self.showDemoMode {
+                    VStack {
+                        Text("DEMO_TITLE")
+                            .font(.custom("Montserrat-Black", size: 14))
+                            .foregroundColor(Color("Subtitle Text Color"))
+                        Text("DEMO_SUBTITLE")
+                            .font(.custom("Montserrat-Regular", size: 14))
+                            .foregroundColor(Color("Subtitle Text Color"))
+                    }
+                    .accessibilityElement(children: .combine)
+                    
+                    Spacer()
                 }
-                
-                Spacer()
                 
                 if self.showMenu || self.showDismissButton {
                     if self.showMenu {
                         Button(action: {
                             self.isShowingMenu.toggle()
                         }) {
-                            Image("Menu Button").frame(minWidth: 44, minHeight: 44)
+                            Image("Menu Button")
+                                .frame(minWidth: 44, minHeight: 44)
+                                .accessibility(label: Text("MENU"))
+                                .accessibility(hint: Text("MENU_ACCESSIBILITY_HINT"))
                         }.sheet(isPresented: self.$isShowingMenu) {
                             Menu()
                                 .environmentObject(self.userData)
@@ -69,6 +84,8 @@ struct HeaderBar: View {
                         }) {
                             Image("Dismiss Button")
                                 .frame(minWidth: 44, minHeight: 44)
+                                .accessibility(label: Text("DISMISS"))
+                                .accessibility(hint: Text("DISMISS_ACCESSIBILITY_HINT"))
                         }
                     }
                 } else {

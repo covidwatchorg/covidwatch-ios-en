@@ -16,7 +16,8 @@ struct PossibleExposureTable: View {
         return formatter
     }()
     
-    func duration(for timeInterval: TimeInterval) -> String {
+    func duration(for timeInterval: TimeInterval, unitStyle: DateComponentsFormatter.UnitsStyle = .abbreviated) -> String {
+        durationFormatter.unitsStyle = unitStyle
         guard let string = durationFormatter.string(from: timeInterval) else {
             return ""
         }
@@ -28,124 +29,111 @@ struct PossibleExposureTable: View {
     
     var body: some View {
         
-        HStack(spacing: 0) {
+        VStack(spacing: 0) {
             
-            VStack(spacing: 0) {
-                
+            HStack(spacing: 0) {
                 HStack {
                     Spacer(minLength: 10)
-                    Text("Date")
+                    Text("DATE_TITLE")
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
-                }.frame(minHeight: 30, alignment: .leading)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .border(Color("Button Border Color"), width: 1)
-                
-                HStack {
-                    Spacer(minLength: 10)
-                    Text("Duration")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Spacer(minLength: 10)
-                }.frame(minHeight: 30, alignment: .leading)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .border(Color("Button Border Color"), width: 1)
-                
-                HStack {
-                    Spacer(minLength: 10)
-                    Text("Attenuation")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Spacer(minLength: 10)
-                }.frame(minHeight: 30, alignment: .leading)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .border(Color("Button Border Color"), width: 1)
-                
-                HStack {
-                    Spacer(minLength: 10)
-                    Text("Attenuation Durations")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Spacer(minLength: 10)
-                }.frame(minHeight: 30, alignment: .leading)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .border(Color("Button Border Color"), width: 1)
-                
-                HStack {
-                    Spacer(minLength: 10)
-                    Text("Transmission Risk Level")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Spacer(minLength: 10)
-                }.frame(minHeight: 30, alignment: .leading)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .border(Color("Button Border Color"), width: 1)
-                
-                HStack {
-                    Spacer(minLength: 10)
-                    Text("Total Risk Score")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Spacer(minLength: 10)
-                }.frame(minHeight: 30, alignment: .leading)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .border(Color("Button Border Color"), width: 1)
-                
-            }.font(.custom("Montserrat-Bold", size: 14))
-            
-            VStack(spacing: 0) {
-                
+                }.modifier(PossibleExposureTableColumnA())
+             
                 HStack {
                     Spacer(minLength: 20)
                     Text(verbatim: DateFormatter.localizedString(from: exposure.date, dateStyle: .medium, timeStyle: .none))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
-                }.frame(minHeight: 30, alignment: .leading)
-                    .background(Color(UIColor.systemBackground))
-                    .border(Color("Button Border Color"), width: 1)
+                }.modifier(PossibleExposureTableColumnB())
+            }
+            .accessibilityElement(children: .combine)
+            
+            HStack(spacing: 0) {
+                HStack {
+                    Spacer(minLength: 10)
+                    Text("DURATION_TITLE")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer(minLength: 10)
+                }.modifier(PossibleExposureTableColumnA())
                 
                 HStack {
                     Spacer(minLength: 20)
-                    //Text(verbatim: durationFormatter.string(from: exposure.duration) ?? "")
                     Text(verbatim: duration(for: exposure.duration))
+                        .accessibility(label: Text(verbatim: duration(for: exposure.duration, unitStyle: .spellOut)))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
-                }.frame(minHeight: 30, alignment: .leading)
-                    .background(Color(UIColor.systemBackground))
-                    .border(Color("Button Border Color"), width: 1)
+                }.modifier(PossibleExposureTableColumnB())
+            }
+            .accessibilityElement(children: .combine)
+            
+            HStack(spacing: 0) {
+                HStack {
+                    Spacer(minLength: 10)
+                    Text("ATTENUATION_TITLE")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer(minLength: 10)
+                }.modifier(PossibleExposureTableColumnA())
                 
                 HStack {
                     Spacer(minLength: 20)
-                    Text(verbatim: String(exposure.attenuationValue))
+                    Text(verbatim: "\(exposure.attenuationValue) dBm")
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
-                }.frame(minHeight: 30, alignment: .leading)
-                    .background(Color(UIColor.systemBackground))
-                    .border(Color("Button Border Color"), width: 1)
+                }.modifier(PossibleExposureTableColumnB())
+            }
+            .accessibilityElement(children: .combine)
+            
+            HStack(spacing: 0) {
+                HStack {
+                    Spacer(minLength: 10)
+                    Text("ATTENUATION_DURATIONS_TITLE")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer(minLength: 10)
+                }.modifier(PossibleExposureTableColumnA())
                 
                 HStack {
                     Spacer(minLength: 20)
                     Text(verbatim: "[ \(exposure.attenuationDurations.map({ duration(for: $0)}).joined(separator: ", ")) ]")
+                        .accessibility(label: Text(verbatim: exposure.attenuationDurations.map({ duration(for: $0, unitStyle: .spellOut)}).joined(separator: ", ")))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
-                }.frame(minHeight: 30, alignment: .leading)
-                    .background(Color(UIColor.systemBackground))
-                    .border(Color("Button Border Color"), width: 1)
+                }.modifier(PossibleExposureTableColumnB())
+            }
+            .accessibilityElement(children: .combine)
+            
+            HStack(spacing: 0) {
+                HStack {
+                    Spacer(minLength: 10)
+                    Text("TRANSMISSION_RISK_LEVEL_TITLE")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer(minLength: 10)
+                }.modifier(PossibleExposureTableColumnA())
                 
                 HStack {
                     Spacer(minLength: 20)
                     Text(verbatim: exposure.transmissionRiskLevel.localizedTransmissionRiskLevelDescription)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
-                }.frame(minHeight: 30, alignment: .leading)
-                    .background(Color(UIColor.systemBackground))
-                    .border(Color("Button Border Color"), width: 1)
+                }.modifier(PossibleExposureTableColumnB())
+            }
+            .accessibilityElement(children: .combine)
+            
+            HStack(spacing: 0) {
+                HStack {
+                    Spacer(minLength: 10)
+                    Text("TOTAL_RISK_SCORE_TITLE")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer(minLength: 10)
+                }.modifier(PossibleExposureTableColumnA())
                 
                 HStack {
                     Spacer(minLength: 20)
-                    Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("%@ of 8", comment: ""), NSNumber(value: exposure.totalRiskScore)))
+                    Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("TOTAL_RISK_SCORE_VALUE", comment: ""), NSNumber(value: exposure.totalRiskScore)))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
-                }.frame(minHeight: 30, alignment: .leading)
-                    .background(Color(UIColor.systemBackground))
-                    .border(Color("Button Border Color"), width: 1)
-                                
-            }.font(.custom("Montserrat-Regular", size: 14))
+                }.modifier(PossibleExposureTableColumnB())
+            }
+            .accessibilityElement(children: .combine)
         }
     }
 }

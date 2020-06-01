@@ -25,14 +25,12 @@ struct PossibleExposure: View {
                 
                 VStack(spacing: 0) {
                     
-                    Text("Possible Exposure")
-                        .font(.custom("Montserrat-SemiBold", size: 31))
+                    Text("POSSIBLE_EXPOSURE_TITLE")
+                        .modifier(StandardTitleTextViewModifier())
                         .foregroundColor(Color("Alert Critical Color"))
-                        .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.top, .headerHeight)
-                        .padding(.horizontal, 2 * .standardSpacing)
                     
-                    Text("Details")
+                    Text("DETAILS_TITLE")
                         .font(.custom("Montserrat-SemiBold", size: 18))
                         .foregroundColor(Color("Title Text Color"))
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -41,7 +39,7 @@ struct PossibleExposure: View {
                     
                     Spacer(minLength: .standardSpacing)
                     
-                    Text("You were near someone who has shared a positive and verified diagnosis of COVID-19.")
+                    Text("POSSIBLE_EXPOSURE_MESSAGE")
                         .font(.custom("Montserrat-Regular", size: 16))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(Color("Title Text Color"))
@@ -53,7 +51,7 @@ struct PossibleExposure: View {
                     
                     Spacer(minLength: 2 * .standardSpacing)
                     
-                    Text("Next Steps")
+                    Text("NEXT_STEPS_TITLE")
                         .font(.custom("Montserrat-SemiBold", size: 18))
                         .foregroundColor(Color("Title Text Color"))
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -61,7 +59,7 @@ struct PossibleExposure: View {
                     
                     Spacer(minLength: .standardSpacing)
                     
-                    Text("• Varius non, quis fermentum, feugiat maecenas eu.")
+                    Text("NEXT_STEPS_MESSAGE")
                         .font(.custom("Montserrat-Regular", size: 16))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(Color("Title Text Color"))
@@ -71,7 +69,7 @@ struct PossibleExposure: View {
                         
                         Spacer(minLength: 2 * .standardSpacing)
                         
-                        Text("Have a positive diagnosis? Share it anonymously to help your community stay safe.")
+                        Text("NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE")
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .modifier(SubCallToAction())
                             .padding(.horizontal, 2 * .standardSpacing)
@@ -79,7 +77,7 @@ struct PossibleExposure: View {
                         Button(action: {
                             self.isShowingReporting.toggle()
                         }) {
-                            Text("Notify Others").modifier(SmallCallToAction())
+                            Text("NOTIFY_OTHERS").modifier(SmallCallToAction())
                         }
                         .padding(.top, .standardSpacing)
                         .padding(.bottom, .standardSpacing)
@@ -91,13 +89,14 @@ struct PossibleExposure: View {
                         Button(action: {
                             // TODO
                         }) {
-                            Text("Find COVID-19 Test Site")
+                            Text("FIND_TEST_SITE_TITLE")
                                 .modifier(SmallCallToAction())
                         }
                         .padding(.top, 2 * .standardSpacing)
                         .padding(.horizontal, 2 * .standardSpacing)
                         
                         Image("Powered By CW Grey")
+                            .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
                             .padding(.top, 2 * .standardSpacing)
                             .padding(.bottom, .standardSpacing)
                     }

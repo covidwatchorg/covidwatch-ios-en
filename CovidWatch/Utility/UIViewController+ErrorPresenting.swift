@@ -9,7 +9,7 @@ extension UIViewController {
     
     public func present(
         nsError: NSError,
-        title: String? = NSLocalizedString("Error", comment: ""),
+        title: String? = NSLocalizedString("ERROR", comment: ""),
         swapTitleAndMessage swapFlag: Bool = false,
         animated flag: Bool,
         completion: (() -> Swift.Void)? = nil
@@ -41,7 +41,7 @@ extension UIViewController {
                 alertController.addAction(action)
             }
             alertController.addAction(UIAlertAction(
-                title: NSLocalizedString("Cancel", comment: ""),
+                title: NSLocalizedString("CANCEL", comment: ""),
                 style: .cancel,
                 handler: nil)
             )
@@ -79,7 +79,7 @@ extension UIViewController {
     }
     
     public func present(
-        title: String? = NSLocalizedString("Error", comment: ""),
+        title: String? = NSLocalizedString("ERROR", comment: ""),
         message: String? = nil,
         recoveryAction: UIAlertAction? = nil,
         animated flag: Bool,

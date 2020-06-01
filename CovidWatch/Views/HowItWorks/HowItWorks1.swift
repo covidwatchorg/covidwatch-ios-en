@@ -14,29 +14,21 @@ struct HowItWorks1: View {
                 
                 Spacer(minLength: .headerHeight)
                 
-                Text("How It Works".uppercased())
-                    .font(.custom("Montserrat-Regular", size: 14))
-                    .foregroundColor(Color("Title Text Color"))
-                    .padding(.horizontal, 2 * .standardSpacing)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                HowItWorksTitleText()
                 
-                Text("Always Anonymous")
-                    .modifier(HowItWorksTitleText())
-                    .padding(.horizontal, 2 * .standardSpacing)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                HowItWorksSubtitleText(text: Text("HOW_IT_WORKS_1_SUBTITLE"))
                 
                 Spacer(minLength: .standardSpacing)
                 
-                Image("How it Works 01")
+                Image("How it Works 1")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                    .accessibility(label: Text("HOW_IT_WORKS_1_IMAGE_ACCESSIBILITY_LABEL"))
                     .padding(.horizontal, 2 * .standardSpacing)
 
                 Spacer(minLength: .standardSpacing)
                 
-                Text("While Sam and Jane chat, their phones note each others’ anonymous signals and store them securely.")
-                    .modifier(HowItWorksSubtitleText())
-                    .padding(.horizontal, 2 * .standardSpacing)
+                HowItWorksMessageText(text: Text("HOW_IT_WORKS_1_MESSAGE"))
                 
                 Spacer(minLength: 3 * .standardSpacing)
             }

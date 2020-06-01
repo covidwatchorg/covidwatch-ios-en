@@ -18,9 +18,7 @@ struct ReportingFinish: View {
                     Spacer(minLength: .headerHeight)
                     
                     Text("Thank You for Sharing Your Positive Diagnosis")
-                        .font(.custom("Montserrat-SemiBold", size: 31))
-                        .foregroundColor(Color("Title Text Color"))
-                        .padding(.horizontal, 2 * .standardSpacing)
+                        .modifier(StandardTitleTextViewModifier())
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     
                     Image("Family Earth")
@@ -42,6 +40,7 @@ struct ReportingFinish: View {
                     .padding(.horizontal, 2 * .standardSpacing)
                     
                     Image("Powered By CW Grey")
+                        .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
                         .padding(.top, 2 * .standardSpacing)
                         .padding(.bottom, .standardSpacing)
                 }

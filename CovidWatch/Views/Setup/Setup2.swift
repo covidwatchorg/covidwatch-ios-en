@@ -27,22 +27,23 @@ struct Setup2: View {
                     
                     Spacer(minLength: .headerHeight)
                     
-                    Text("Enable Push Notifications")
-                        .modifier(TitleText())
+                    Text("ENABLE_PUSH_NOTIFICATIONS_TITLE")
+                        .modifier(SetupTitleTextViewModifier())
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 2 * .standardSpacing)
                     
                     Spacer(minLength: 2 * .standardSpacing)
                     
-                    Image("Phone Alerts")
+                    Image("Setup 2")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .accessibility(label: Text("ENABLE_PUSH_NOTIFICATIONS_IMAGE_ACCESSIBILITY_LABEL"))
                         .padding(.horizontal, 2 * .standardSpacing)
 
                     Spacer(minLength: 2 * .standardSpacing)
                     
-                    Text("Enable push notifications to receive alerts if you have come into contact with a confirmed case of COVID-19 even when you are not using the app.")
-                        .modifier(SubtitleText())
+                    Text("ENABLE_PUSH_NOTIFICATIONS_MESSAGE")
+                        .modifier(SetupMessageTextViewModifier())
                         .padding(.horizontal, 2 * .standardSpacing)
                     
                     Spacer(minLength: .stickyFooterHeight + .standardSpacing)
@@ -77,7 +78,7 @@ struct Setup2: View {
                     
                 }) {
                     
-                    Text("Enable").modifier(SmallCallToAction())
+                    Text("ENABLE").modifier(SmallCallToAction())
                     
                 }
                 .padding(.top, .standardSpacing)
@@ -95,7 +96,7 @@ struct Setup2: View {
                     }
                 }) {
                     
-                    Text("Not Now")
+                    Text("NOT_NOW")
                         .font(.custom("Montserrat-Medium", size: 16))
                         .frame(maxWidth: .infinity)
                         .padding()

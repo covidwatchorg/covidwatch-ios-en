@@ -9,15 +9,30 @@ struct PossibleExposureRow: View {
     
     let exposure: Exposure
     
+    func formattedDate() -> String {
+        return DateFormatter.localizedString(from: exposure.date, dateStyle: .medium, timeStyle: .none)
+    }
+    
+    func accessibilityLabel() -> String {
+        if exposure.totalRiskScore >= 6 {
+            return String.localizedStringWithFormat(NSLocalizedString("HIGH_RISK_EXPOSURE_DATE_MESSAGE", comment: ""), formattedDate())
+        } else if exposure.totalRiskScore < 6 && exposure.totalRiskScore >= 3 {
+            return String.localizedStringWithFormat(NSLocalizedString("STANDARD_RISK_EXPOSURE_DATE_MESSAGE", comment: ""), formattedDate())
+        } else {
+            return String.localizedStringWithFormat(NSLocalizedString("LOW_RISK_EXPOSURE_DATE_MESSAGE", comment: ""), formattedDate())
+        }
+    }
+    
     var body: some View {
         HStack(spacing: 18) {
             Image("Exposure Row High Risk")
-            Text(verbatim: DateFormatter.localizedString(from: exposure.date, dateStyle: .medium, timeStyle: .none))
+            Text(verbatim: formattedDate())
                 .font(.custom("Montserrat-Regular", size: 14))
                 .foregroundColor(Color("Title Text Color"))
             Spacer()
             Image("Exposure Row Right Arrow")
         }
+        .accessibility(label: Text(verbatim: accessibilityLabel()))
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
     }
 }

@@ -6,33 +6,18 @@
 import Foundation
 import UserNotifications
 
-extension UNAuthorizationStatus: CustomStringConvertible {
+extension UNAuthorizationStatus {
     
-    public var description: String {
+    public var localizedDetailDescription: String {
         switch self {
             case .notDetermined:
-                return NSLocalizedString("Notifications Not Determined", comment: "")
+                return NSLocalizedString("USER_NOTIFICATION_AUTHORIZATION_STATUS_NOT_DETERMINED_DESCRIPTION", comment: "")
             case .denied:
-                return NSLocalizedString("Notifications Denied", comment: "")
+                return NSLocalizedString("USER_NOTIFICATION_AUTHORIZATION_STATUS_DENIED_DESCRIPTION", comment: "")
             case .authorized:
-                return NSLocalizedString("Notifications Authorized", comment: "")
+                return NSLocalizedString("USER_NOTIFICATION_AUTHORIZATION_STATUS_AUTHORIZED_DESCRIPTION", comment: "")
             case .provisional:
-                return NSLocalizedString("Notifications Provisional", comment: "")
-            @unknown default:
-                return ""
-        }
-    }
-    
-    public var detailedDescription: String {
-        switch self {
-            case .notDetermined:
-                return NSLocalizedString("The user has not yet made a choice regarding whether the application may post user notifications.", comment: "")
-            case .denied:
-                return NSLocalizedString("The application is not authorized to post user notifications.", comment: "")
-            case .authorized:
-                return NSLocalizedString("The application is authorized to post user notifications.", comment: "")
-            case .provisional:
-                return NSLocalizedString("The application is authorized to post non-interruptive user notifications.", comment: "")
+                return NSLocalizedString("USER_NOTIFICATION_AUTHORIZATION_STATUS_PROVISIONAL_DESCRIPTION", comment: "")
             @unknown default:
                 return ""
         }

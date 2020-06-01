@@ -5,21 +5,21 @@
 
 import SwiftUI
 
-struct HowItWorksSubtitleText: View {
+struct HowItWorksMessageText: View {
     
     let text: Text
     
     var body: some View {
         self.text
-            .font(.custom("Montserrat-Medium", size: 33))
+            .font(.custom("Montserrat-Regular", size: 18))
             .foregroundColor(Color("Title Text Color"))
-            .padding(.horizontal, 2 * .standardSpacing)
             .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 2 * .standardSpacing)
     }
 }
 
-struct HowItWorksSubtitleText_Previews: PreviewProvider {
+struct HowItWorksMessageText_Previews: PreviewProvider {
     static var previews: some View {
-        HowItWorksSubtitleText(text: Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/))
+        HowItWorksMessageText(text: Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/))
     }
 }

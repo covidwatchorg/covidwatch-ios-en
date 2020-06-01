@@ -14,21 +14,31 @@ struct HowItWorks0: View {
                 
                 Spacer(minLength: .headerHeight)
                 
-                Image("Family Dancing 02")
+                Image("Family Dancing")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .background(Image("Rectangle 33").resizable().aspectRatio(contentMode: .fill))
+                    .accessibility(label: Text("WELCOME_IMAGE_ACCESSIBILITY_LABEL"))
+                    .background(
+                        Image("Rectangle 33")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .accessibility(hidden: true)
+                )
                 
                 Spacer(minLength: .standardSpacing)
                 
-                Text("Welcome to the Covid Watch DEMO app")
-                    .modifier(HowItWorksTitleText())
+                Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("WELCOME_TITLE", comment: ""), (Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String) ?? ""))
+                    .font(.custom("Montserrat-Medium", size: 33))
+                    .foregroundColor(Color("Title Text Color"))
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 2 * .standardSpacing)
                 
                 Spacer(minLength: 2 * .standardSpacing)
                 
-                Text("Protect yourself, your family, and community with anonymous mobile alerts. Together, we have the power to stop COVID-19.")
-                    .modifier(HowItWorksSubtitleText())
+                Text("WELCOME_MESSAGE")
+                    .font(.custom("Montserrat-Regular", size: 18))
+                    .foregroundColor(Color("Title Text Color"))
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 2 * .standardSpacing)
                 
                 Spacer(minLength: 32 + .standardSpacing)

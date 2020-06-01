@@ -22,16 +22,13 @@ struct Reporting: View {
                 
                 VStack(spacing: 0) {
                     
-                    Text("Notify Others")
-                        .font(.custom("Montserrat-SemiBold", size: 31))
-                        .foregroundColor(Color("Title Text Color"))
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("NOTIFY_OTHERS")
+                        .modifier(StandardTitleTextViewModifier())
                         .padding(.top, .headerHeight)
-                        .padding(.horizontal, 2 * .standardSpacing)
                     
                     Spacer(minLength: 2 * .standardSpacing)
                     
-                    Text("If you tested positive for the virus that causes COVID-19, you can choose to share your diagnosis. This will help others in your community contain the spread of the virus.")
+                    Text("NOTIFY_OTHERS_CALL_TO_ACTION_LONG_MESSAGE")
                         .font(.custom("Montserrat-Regular", size: 16))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(Color("Title Text Color"))
@@ -106,7 +103,7 @@ struct Reporting: View {
                         
                     }) {
                         
-                        Text("Share a Positive Diagnosis").modifier(SmallCallToAction())
+                        Text("SHARE_A_POSITIVE_DIAGNOSIS").modifier(SmallCallToAction())
                         
                     }
                     .padding(.top, 2 * .standardSpacing)
@@ -118,6 +115,7 @@ struct Reporting: View {
                     }
                     
                     Image("Doctors Security")
+                        .accessibility(hidden: true)
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
                     
                     VStack(spacing: 0) {
@@ -194,6 +192,7 @@ struct Reporting: View {
                         }
                         
                         Image("Powered By CW Grey")
+                            .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
                             .padding(.top, 2 * .standardSpacing)
                             .padding(.bottom, .standardSpacing)
                         

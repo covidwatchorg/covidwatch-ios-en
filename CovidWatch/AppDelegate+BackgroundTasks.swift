@@ -37,7 +37,7 @@ extension AppDelegate {
             // Handle running out of time
             task.expirationHandler = {
                 progress.cancel()
-                LocalStore.shared.exposureDetectionErrorLocalizedDescription = NSLocalizedString("BACKGROUND_TIMEOUT", comment: "Error")
+                LocalStore.shared.exposureDetectionErrorLocalizedDescription = NSLocalizedString("BACKGROUND_TIMEOUT", comment: "ERROR")
             }
             
             // Schedule the next background task

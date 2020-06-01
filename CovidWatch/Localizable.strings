@@ -1,310 +1,344 @@
 /*
-See LICENSE folder for this sample’s licensing information.
-
 Abstract:
 All strings for the project, separated for localization.
 */
 
-/* Title */
-"WELCOME_TITLE" = "Welcome to the Sample Public Health Authority App";
+// # SPLASH
 
-/* Text */
-"WELCOME_TEXT" = "{Actual copy to be provided by Public Health Authority}";
-
-/* Title */
-"ENABLE_EXPOSURE_TITLE" = "Enable Exposure Notifications";
-
-/* Text */
-"ENABLE_EXPOSURE_TEXT" = "{Actual copy to be provided by Public Health Authority}";
-
-/* Requirement text */
-"ENABLE_EXPOSURE_REQUIREMENT_TEXT" = "• Inform users that they can choose to enable Exposure Notifications, as well as that they can disable them at any time.
-
-• Explain that this only works with other devices that have Exposure Notifications turned on.
-
-• Explain the use of Random IDs, including what they are, how they’re shared and collected, and the privacy protections associated with them.
-
-• Explain how a user can be notified of an exposure event (including time), as well as the fact that exposure details (date, duration, and signal strength) will be shared with you.
-
-• Include an explanation of how a user may work with you to submit a positive diagnosis, with their consent.";
+/* Message */
+"SPLASH_MESSAGE" = "The power to stop COVID-19 in the palm of your hand.";
 
 /* Title */
-"RECOMMEND_EXPOSURE_TITLE" = "Exposure Notifications Are Strongly Recommended";
-
-/* Text */
-"RECOMMEND_EXPOSURE_TEXT" = "{Actual copy to be provided by Public Health Authority}";
-
-/* Onboarding title */
-"RECOMMEND_PUSH_TITLE" = "Push Notifications Are Strongly Recommended";
-
-/* Onboarding text */
-"RECOMMEND_PUSH_TEXT" = "{Actual copy to be provided by Public Health Authority}";
+"GENERIC_PUBLIC_HEALTH_DEPARTMENT_IMAGE_ACCESSIBILITY_LABEL" = "Generic Public Health Department";
 
 /* Title */
-"NOTIFYING_OTHERS_TITLE" = "It's Important To Your Community To Share A Positive Diagnosis";
-
-/* Text */
-"NOTIFYING_OTHERS_TEXT" = "{Actual copy to be provided by Public Health Authority}
-
-If you tested positive for the virus that causes COVID-19, you can choose to share your diagnosis. This will help others in your community contain the spread of the virus.";
-
-
-/* Header */
-"EXPOSURE_NOTIFICATION_OFF" = "Exposure Notifications Are Turned Off";
-
-/* Header */
-"EXPOSURE_NOTIFICATION_DISABLED_DIRECTIONS" = "You will not be notified if you are exposed to COVID-19 until Exposure Notifications are turned on.";
-
-/* Header */
-"EXPOSURE_NOTIFICATION_DENIED_DIRECTIONS" = "Go to Settings to turn on Exposure Notifications.";
-
-/* Header */
-"EXPOSURE_NOTIFICATION_BLUETOOTH_OFF_DIRECTIONS" = "You will not be notified if you are exposed to COVID-19 until Exposure Notifications are turned on. Go to Bluetooth in Settings to turn on Bluetooth, or tap the Bluetooth toggle in Control Center.";
+"SPLASH_IMAGE_ACCESSIBILITY_LABEL" = "People Network";
 
 /* Button */
-"EXPOSURE_NOTIFICATION_DISABLED_ACTION" = "Turn On Exposure Notifications";
-
-/* Value */
-"EXPOSURE_NOTIFICATION_STATE_ON" = "On";
-
-/* Value */
-"EXPOSURE_NOTIFICATION_STATE_OFF" = "Off";
-
-/* Value */
-"EXPOSURE_NOTIFICATION_STATE_BLUETOOTH_OFF" = "Bluetooth Off";
-
-/* Value */
-"EXPOSURE_NOTIFICATION_STATE_RESTRICTED" = "Restricted";
-
-/* Value */
-"EXPOSURE_NOTIFICATION_STATE_UNKNOWN" = "Unknown";
-
-/* Footer */
-"EXPOSURE_YOU_WILL_BE_NOTIFIED" = "You will be notified if you are exposed to COVID-19.";
-
-/* Footer */
-"EXPOSURE_YOU_WILL_NOT_BE_NOTIFIED" = "You will not be notified if you are exposed to COVID-19.";
-
-/* Footer */
-"EXPOSURE_DETECTION_ERROR" = "An error occurred during exposure detection: %@";
-
-/* Footer */
-"EXPOSURE_LAST_CHECKED" = "Exposure last checked %@.";
-
-/* Header */
-"EXPOSURE_PAST_14_DAYS" = "Exposures in Past 14 Days";
-
-/* Text */
-"POSSIBLE_EXPOSURE" = "Possible Exposure";
-
+"GET_STARTED" = "Get Started";
 
 /* Title */
-"EXPOSURE_INFO_TITLE" = "Exposure Notifications";
+"POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL" = "Powered by Covid Watch";
 
-/* Text */
-"EXPOSURE_INFO_TEXT" = "{Actual copy to be provided by Public Health Authority}
-
-You can manage Exposure Notifications in %@.
-
-%@";
-
-/* Requirement text */
-"EXPOSURE_INFO_REQUIREMENT_TEXT" = "• Inform users that they can choose to enable Exposure Notifications, as well as that they can disable them at any time.
-
-• Explain that this only works with other devices that have Exposure Notifications turned on.
-
-• Explain the use of Random IDs, including what they are, how they’re shared and collected, and the privacy protections associated with them.
-
-• Explain how a user can be notified of an exposure event (including time), as well as the fact that exposure details (date, duration, and signal strength) will be shared with you.
-
-• Include an explanation of how a user may work with you to submit a positive diagnosis, with their consent.";
+// # HEADER BAR
 
 /* Title */
-"EXPOSURE_ABOUT_TITLE" = "About Exposure Notifications";
-
-/* Text */
-"EXPOSURE_ABOUT_TEXT" = "{Actual copy to be provided by Public Health Authority}";
-
+"DEMO_TITLE" = "DEMO";
 
 /* Title */
-"EXPOSURE_DETAILS_TITLE" = "Possible Exposure";
-
-/* Text */
-"EXPOSURE_DETAILS_TEXT" = "{Actual copy to be provided by Public Health Authority}
-
-You were near someone %@ who has shared their positive diagnosis of COVID-19.";
-
-/* Header */
-"EXPOSURE_DETAILS_HEADER" = "Details";
-
-/* Text */
-"EXPOSURE_DETAILS_DIAGNOSIS_VERIFICATION" = "This person’s diagnosis was verified";
-
-/* Header */
-"EXPOSURE_NEXT_STEPS_HEADER" = "Next Steps";
-
-/* Text */
-"EXPOSURE_NEXT_STEPS_TEXT" = "{Actual copy to be provided by Public Health Authority}
-
-
-
-";
-
-/* Footnote */
-"EXPOSURE_FOOTNOTE" = "This report has been saved to this app and you can access it at any time in the future.";
-
-
-/* Text */
-"EXPOSURE_DETAILS_DATE_TEXT" = "You were near this person on %@";
-
-
-/* Title */
-"EXPOSURE_DETAILS_LEARN_TITLE" = "About Verified Test Results";
-
-/* Text */
-"EXPOSURE_DETAILS_LEARN_TEXT" = "{Actual copy to be provided by Public Health Authority}";
-
-
-/* Header */
-"NOTIFY_OTHERS_DESCRIPTION" = "If you tested positive for the virus that causes COVID-19, you can choose to share your diagnosis. This will help others in your community contain the spread of the virus.";
-
-/* Header */
-"NOTIFY_OTHERS_DISABLED_DIRECTIONS" = "You can’t share your positive diagnosis until Exposure Notifications are turned on.";
-
-/* Header */
-"NOTIFY_OTHERS_DENIED_DIRECTIONS" = "You can’t share your positive diagnosis until Exposure Notifications are turned on.
-
-Go to Settings to turn on Exposure Notifications.";
-
-/* Header */
-"NOTIFY_OTHERS_HEADER" = "Share a Positive Diagnosis";
+"DEMO_SUBTITLE" = "Sandbox Mode";
 
 /* Button */
-"NOTIFY_OTHERS_ACTION" = "Share a Positive Diagnosis";
+"MENU" = "Menu";
 
-/* Header */
-"POSITIVE_DIAGNOSES" = "Positive Diagnoses";
-
-
-/* Title */
-"VERIFICATION_START_TITLE" = "Before You Get Started";
-
-/* Text */
-"VERIFICATION_START_TEXT" = "{Actual copy to be provided by Public Health Authority
-
-This example flow assumes a test for the entirety of the flow, but could be confirmed by a diagnosis as well.}";
-
-/* Requirement text */
-"VERIFICATION_START_REQUIREMENT_TEXT" = "These points must be covered in this screen before asking the user for access:
-
-• Explain this is optional and can only be done with user’s consent.
-
-• Explain the value of notifying others of a positive diagnosis.
-
-• Explain how the Random IDs will be used to notify others of an exposure.
-
-• What will be shared and what will not be shared (random IDs). If you are calculating any sort of exposure risk value, explain clearly how your risk value is calculated.";
-
-/* Title */
-"VERIFICATION_IDENTIFIER_TITLE" = "Verify Your Positive Diagnosis";
-
-/* Text */
-"VERIFICATION_IDENTIFIER_TEXT" = "{Actual copy to be provided by Public Health Authority
-
-This example flow assumes a test for the entirety of the flow, but could be confirmed by a diagnosis as well.}
-
-The unique test identifier that came with your COVID-19 test can be used to verify your positive diagnosis.
-
-%@";
-
-/* Label */
-"VERIFICATION_IDENTIFIER_ENTRY_LABEL" = "Unique Test Identifier";
-
-/* Label */
-"VERIFICATION_IDENTIFIER_DEVELOPER" = "For Developers: Example code is 000000";
-
-/* Alert title */
-"VERIFICATION_IDENTIFIER_INVALID" = "Unable to Verify Identifier";
-
-/* Title */
-"VERIFICATION_IDENTIFIER_ABOUT_TITLE" = "About Test Identifiers";
-
-/* Text */
-"VERIFICATION_IDENTIFIER_ABOUT_TEXT" = "{Actual copy to be provided by Public Health Authority
-
-This example flow assumes a test for the entirety of the flow, but could be confirmed by a diagnosis as well.}";
-
-/* Title */
-"VERIFICATION_ADMINISTRATION_DATE_TITLE" = "When did you take the test?";
-
-/* Text */
-"VERIFICATION_ADMINISTRATION_DATE_TEXT" = "{Actual copy to be provided by Public Health Authority
-
-This example flow assumes a test for the entirety of the flow, but could be confirmed by a diagnosis as well.}
-
-The test date helps the app know when you may have been infectious and notify the right people of possible exposure.";
-
-/* Label */
-"VERIFICATION_ADMINISTRATION_DATE_LABEL" = "Date";
-
-/* Value */
-"VERIFICATION_ADMINISTRATION_DATE_NOT_SET" = "Tap to enter date";
-
-/* Title */
-"VERIFICATION_REVIEW_TITLE" = "Review your answers";
-
-/* Text */
-"VERIFICATION_REVIEW_TEXT" = "{Actual copy to be provided by Public Health Authority
-
-This example flow assumes a test for the entirety of the flow, but could be confirmed by a diagnosis as well.}";
-
-/* Title */
-"VERIFICATION_SHARED_TITLE" = "Your Positive Diagnosis Has Been Shared";
-
-/* Text */
-"VERIFICATION_SHARED_TEXT" = "{Actual copy to be provided by Public Health Authority
-
-This example flow assumes a test for the entirety of the flow, but could be confirmed by a diagnosis as well.}";
-
-/* Title */
-"VERIFICATION_NOT_SHARED_TITLE" = "Your Positive Diagnosis Has Been Saved to Your Phone. You Can Share This Diagnosis at Any Time.";
-
-/* Text */
-"VERIFICATION_NOT_SHARED_TEXT" = "{Actual copy to be provided by Public Health Authority
-
-This example flow assumes a test for the entirety of the flow, but could be confirmed by a diagnosis as well.}";
-
-
-/* Header */
-"TEST_RESULT_DETAILS" = "Details";
-
-/* Value */
-"TEST_RESULT_STATE_SHARED" = "Shared";
-
-/* Value */
-"TEST_RESULT_STATE_NOT_SHARED" = "Not Shared";
-
-/* Label */
-"TEST_RESULT_DIAGNOSIS" = "Diagnosis";
-
-/* Value */
-"TEST_RESULT_DIAGNOSIS_POSITIVE" = "COVID-19 Positive";
-
-/* Label */
-"TEST_RESULT_ADMINISTRATION_DATE" = "Test Administered On";
+/* Message */
+"MENU_ACCESSIBILITY_HINT" = "Shows the menu";
 
 /* Button */
-"TEST_RESULT_SHARE" = "Share Positive Diagnosis";
+"DISMISS" = "Dismiss";
 
-/* Disabled button */
-"TEST_RESULT_SHARED" = "Positive Diagnosis Shared";
+/* Message */
+"DISMISS_ACCESSIBILITY_HINT" = "Dismisses the current view";
+
+// # ONBOARDING
+
+/* Title */
+"HOW_IT_WORKS_TITLE" = "How It Works";
+
+// ## HOW IT WORKS 0
+
+/* Title */
+"WELCOME_IMAGE_ACCESSIBILITY_LABEL" = "Family Dancing";
+
+/* Title */
+"WELCOME_TITLE" = "Welcome to The %@ App";
+
+/* Message */
+"WELCOME_MESSAGE" = "Protect yourself, your family, and community with anonymous mobile alerts. Together, we have the power to stop COVID-19.";
+
+// ## HOW IT WORKS 1
+
+/* Title */
+"HOW_IT_WORKS_1_SUBTITLE" = "Always Anonymous";
+
+/* Title */
+"HOW_IT_WORKS_1_IMAGE_ACCESSIBILITY_LABEL" = "Sam and Jane Chat";
+
+/* Message */
+"HOW_IT_WORKS_1_MESSAGE" = "While Sam and Jane chat, their phones note each others’ anonymous signals and store them securely.";
+
+// ## HOW IT WORKS 2
+
+/* Title */
+"HOW_IT_WORKS_2_SUBTITLE" = "Diagnosis Reports";
+
+/* Title */
+"HOW_IT_WORKS_2_IMAGE_ACCESSIBILITY_LABEL" = "Sam Tests Positive";
+
+/* Message */
+"HOW_IT_WORKS_2_MESSAGE" = "A few days later, Sam tests positive for COVID-19. He enters the verified results into the app.";
+
+// ## HOW IT WORKS 3
+
+/* Title */
+"HOW_IT_WORKS_3_SUBTITLE" = "Exposure Alerts";
+
+/* Title */
+"HOW_IT_WORKS_3_IMAGE_ACCESSIBILITY_LABEL" = "Jane's Phone Gets an Alert";
+
+/* Message */
+"HOW_IT_WORKS_3_MESSAGE" = "Jane’s phone gets an alert that someone she’s seen has now tested positive. The app tells her how to take action.";
+
+// ## HOW IT WORKS 4
+
+/* Title */
+"HOW_IT_WORKS_4_SUBTITLE" = "Safe Communities";
+
+/* Title */
+"HOW_IT_WORKS_4_IMAGE_ACCESSIBILITY_LABEL" = "Jane and Sam Help Keep Their Communities Safe";
+
+/* Message */
+"HOW_IT_WORKS_4_MESSAGE" = "Jane and Sam help keep their communities safe. They share the app so that others can, too.";
 
 /* Button */
-"TEST_RESULT_DELETE" = "Delete Positive Diagnosis";
+"CONTINUE_SETUP" = "Continue Setup";
 
-/* Alert title */
-"TEST_RESULT_DELETE_ALERT" = "Are you sure you want to delete your positive diagnosis? This will permanently remove this diagnosis from your device.";
+// # SETUP
 
+/* Button */
+"ENABLE" = "Enable";
+
+/* Button */
+"NOT_NOW" = "Not Now";
+
+// ## SETUP 1
+
+/* Title */
+"ENABLE_EXPOSURE_NOTIFICATIONS_TITLE" = "Enable Exposure Notifications";
+
+/* Title */
+"ENABLE_EXPOSURE_NOTIFICATIONS_IMAGE_ACCESSIBILITY_LABEL" = "Enable Exposure Notifications";
+
+/* Message */
+"ENABLE_EXPOSURE_NOTIFICATIONS_MESSAGE" = "These notifications are designed to notify you if you’ve been exposed to a user who later reports themselves as testing positive for COVID-19. You can choose to turn off these notifications at any time.\n\nExposure notifications rely on the sharing and collection of random IDs. These IDs are a random string of numbers that won’t identify you to other users and change many times a day to protect your privacy.";
+
+// ## SETUP 2
+
+/* Title */
+"ENABLE_PUSH_NOTIFICATIONS_TITLE" = "Enable Push Notifications";
+
+/* Title */
+"ENABLE_PUSH_NOTIFICATIONS_IMAGE_ACCESSIBILITY_LABEL" = "Enable Push Notifications";
+
+/* Message */
+"ENABLE_PUSH_NOTIFICATIONS_MESSAGE" = "Enable push notifications to receive alerts if you have come into contact with a confirmed case of COVID-19 even when you are not using the app.";
+
+// # HOME
+
+/* Title */
+"HOME_IMAGE_ACCESSIBILITY_LABEL" = "Happy Family";
+
+/* Title */
+"HOME_POSSIBLE_EXPOSURES_TITLE" = "My Possible Exposures";
+
+/* Message */
+"NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE" = "Have a positive diagnosis? Share it anonymously to help your community stay safe.";
+
+/* Button */
+"NOTIFY_OTHERS" = "Notify Others";
+
+/* Button */
+"SHARE_THE_APP" = "Share the App";
+
+/* Message */
+"SHOWS_MORE_INFO_ACCESSIBILITY_HINT" = "Shows more info";
+
+/* Message */
+"UNKNOWN_DAYS_SINCE_LAST_EXPOSURE" = "Unknown days since last exposure";
+
+/* Message */
+"HOME_TOTAL_RISK_SCORE_ACCESSIBILITY_LABEL" = "%d total risk score (1-8 scale)";
+
+/* Special */
+"HOME_DAYS_ROW_1_LABEL" = "days";
+
+/* Special */
+"HOME_DAYS_ROW_2_LABEL" = "since last exposure";
+
+/* Special */
+"HOME_TOTAL_EXPOSURES_ROW_1_LABEL" = "total exposures";
+
+/* Special */
+"HOME_TOTAL_EXPOSURES_ROW_2_LABEL" = "in the last 14 days";
+
+/* Special */
+"HOME_TOTAL_RISK_SCORE_ROW_1_LABEL" = "total risk score";
+
+/* Special */
+"HOME_TOTAL_RISK_SCORE_ROW_2_LABEL" = "(1-8 scale)";
+
+// # MENU
+
+/* Title */
+"EXPOSURE_CONFIGURATION_JSON_TITLE" = "Exposure Configuration JSON";
+
+/* Title */
+"DEMO_RESET_POSSIBLE_EXPOSURES_TITLE" = "[DEMO] Reset Possible Exposures";
+
+/* Title */
+"DEMO_DETECT_EXPOSURES_FROM_SERVER_TITLE" = "[DEMO] Detect Exposures from Server";
+
+/* Title */
+"DEMO_SET_EXPOSURE_CONFIGURATION_JSON_TITLE" = "[DEMO] Set Exposure Configuration JSON";
+
+/* Title */
+"DEMO_EXPORT_POSSIBLE_EXPOSURES_TITLE" = "[DEMO] Export Possible Exposures";
+
+/* Title */
+"POSSIBLE_EXPOSURES_TITLE" = "Possible Exposures";
+
+/* Title */
+"HEALTH_GUIDELINES_TITLE" = "Health Guidelines";
+
+/* Title */
+"COVID_WATCH_WEBSITE_TITLE" = "Covid Watch Website";
+
+/* Title */
+"FAQ_TITLE" = "FAQ";
+
+/* Title */
+"TEMS_OF_USE_TITLE" = "Terms of Use";
+
+/* Title */
+"PRIVACY_POLICY_TITLE" = "Privacy Policy";
+
+/* Title */
+"GET_SUPPORT_TITLE" = "Get Support";
+
+// # POSSIBLE EXPOSURES
+
+/* Title */
+"EXPOSURE_NOTIFICATIONS_TITLE" = "Exposure Notifications";
+
+/* Message */
+"EXPOSURE_NOTIFICATION_STATUS_UNKOWN_MESSAGE" = "Status of Exposure Notification is unknown.";
+
+/* Message */
+"EXPOSURE_NOTIFICATION_STATUS_ACTIVE_MESSAGE" = "Exposure Notification is active on the system.";
+
+/* Message */
+"EXPOSURE_NOTIFICATION_STATUS_DISABLED_MESSAGE" = "Exposure Notification is disabled.";
+
+/* Message */
+"EXPOSURE_NOTIFICATION_STATUS_BLUETOOTH_OFF_MESSAGE" = "Bluetooth has been turned off on the system. Bluetooth is required for Exposure Notification.";
+
+/* Message */
+"EXPOSURE_NOTIFICATION_STATUS_RESTRICTED_MESSAGE" = "Exposure Notification is not active due to system restrictions, such as parental controls.";
+
+/* Message */
+"EXPOSURES_LAST_CHECKED_NEVER_MESSAGE" = "Exposures last checked: Never.";
+
+/* Message */
+"EXPOSURES_LAST_CHECKED_DATE_MESSAGE" = "Exposures last checked: %@.";
+
+/* Message */
+"EXPOSURES_ARE_SAVED_MESSAGE" = "Exposures are saved in this app and you can access them any time in the future.";
+
+/* Message */
+"HIGH_RISK_EXPOSURE_DATE_MESSAGE" = "High risk exposure on %@";
+
+/* Message */
+"STANDARD_RISK_EXPOSURE_DATE_MESSAGE" = "Standard risk exposure on %@";
+
+/* Message */
+"LOW_RISK_EXPOSURE_DATE_MESSAGE" = "Low risk exposure on %@";
+
+// # POSSIBLE EXPOSURE DETAIL
+
+/* Title */
+"POSSIBLE_EXPOSURE_TITLE" = "Possible Exposure";
+
+/* Title */
+"DETAILS_TITLE" = "Details";
+
+/* Message */
+"POSSIBLE_EXPOSURE_MESSAGE" = "You were near someone who has shared a positive and verified diagnosis of COVID-19.";
+
+/* Title */
+"DATE_TITLE" = "Date";
+
+/* Title */
+"DURATION_TITLE" = "Duration";
+
+/* Title */
+"ATTENUATION_TITLE" = "Attenuation";
+
+/* Title */
+"ATTENUATION_DURATIONS_TITLE" = "Attenuation Durations";
+
+/* Title */
+"TRANSMISSION_RISK_LEVEL_TITLE" = "Transmission Risk Level";
+
+/* Title */
+"TOTAL_RISK_SCORE_TITLE" = "Total Risk Score";
+
+/* Title */
+"TOTAL_RISK_SCORE_VALUE" = "%@ of 8";
+
+/* Title */
+"EN_RISK_LEVEL_0_TITLE" = "0: Unused";
+
+/* Title */
+"EN_RISK_LEVEL_1_TITLE" = "1: Confirmed test - Low";
+
+/* Title */
+"EN_RISK_LEVEL_2_TITLE" = "2: Confirmed test - Standard";
+
+/* Title */
+"EN_RISK_LEVEL_3_TITLE" = "3: Confirmed test - High";
+
+/* Title */
+"EN_RISK_LEVEL_4_TITLE" = "4: Confirmed clinical diagnosis";
+
+/* Title */
+"EN_RISK_LEVEL_5_TITLE" = "5: Self report";
+
+/* Title */
+"EN_RISK_LEVEL_6_TITLE" = "6: Negative case";
+
+/* Title */
+"EN_RISK_LEVEL_7_TITLE" = "7: Recursive case";
+
+/* Title */
+"EN_RISK_LEVEL_8_TITLE" = "8: Unused/custom";
+
+/* Title */
+"NEXT_STEPS_TITLE" = "Next Steps";
+
+/* Message */
+"NEXT_STEPS_MESSAGE" = "• Varius non, quis fermentum, feugiat maecenas eu.";
+
+/* Title */
+"FIND_TEST_SITE_TITLE" = "Find COVID-19 Test Site";
+
+// # NOTIFY OTHERS
+
+/* Message */
+"NOTIFY_OTHERS_CALL_TO_ACTION_LONG_MESSAGE" = "If you tested positive for the virus that causes COVID-19, you can choose to share your diagnosis. This will help others in your community contain the spread of the virus.";
+
+/* Button */
+"SHARE_A_POSITIVE_DIAGNOSIS" = "Share a Positive Diagnosis";
+
+// # GENERIC
+
+/* Button */
+"CANCEL" = "Cancel";
+
+/* Button */
+"SAVE" = "Save";
+
+/* Button */
+"RESET_TO_DEFAULT" = "Reset to Default";
 
 /* Title */
 "ERROR" = "Error";
@@ -313,41 +347,21 @@ This example flow assumes a test for the entirety of the flow, but could be conf
 "OK" = "OK";
 
 /* Button */
-"GET_STARTED" = "Get Started";
-
-/* Button */
 "CONTINUE" = "Continue";
 
 /* Button */
 "NEXT" = "Next";
 
 /* Button */
-"ENABLE" = "Enable";
-
-/* Button */
-"DONT_ENABLE" = "Don’t Enable";
-
-/* Button */
-"GO_TO_SETTINGS" = "Go to Settings";
-
-/* Button */
-"NOT_NOW" = "Not Now";
-
-/* Button */
-"CANCEL" = "Cancel";
-
-/* Button */
-"DONE" = "Done";
-
-/* Link */
-"LEARN_MORE" = "Learn more";
-
-/* Link */
 "SETTINGS" = "Settings";
-
 
 /* Error */
 "BACKGROUND_TIMEOUT" = "Ran out of background time.";
+
+/* Error */
+"ACCES_TO_EN_DENIED" = "Access to Exposure Notification denied.";
+
+// # USER NOTIFICATION
 
 /* User notification. Do NOT add period at the end. */
 "USER_NOTIFICATION_EXPLANATION" = "You were near someone who has shared a positive and verified diagnosis of COVID-19";
@@ -357,3 +371,15 @@ This example flow assumes a test for the entirety of the flow, but could be conf
 
 /* User notification */
 "USER_NOTIFICATION_BLUETOOTH_OFF_BODY" = "Turn on Bluetooth to continue using COVID-19 Exposure Logging and Notifications.";
+
+/* Message */
+"USER_NOTIFICATION_AUTHORIZATION_STATUS_NOT_DETERMINED_DESCRIPTION" = "The user has not yet made a choice regarding whether the application may post user notifications.";
+
+/* Message */
+"USER_NOTIFICATION_AUTHORIZATION_STATUS_DENIED_DESCRIPTION" = "The application is not authorized to post user notifications.";
+
+/* Message */
+"USER_NOTIFICATION_AUTHORIZATION_STATUS_AUTHORIZED_DESCRIPTION" = "The application is authorized to post user notifications.";
+
+/* Message */
+"USER_NOTIFICATION_AUTHORIZATION_STATUS_PROVISIONAL_DESCRIPTION" = "The application is authorized to post non-interruptive user notifications.";

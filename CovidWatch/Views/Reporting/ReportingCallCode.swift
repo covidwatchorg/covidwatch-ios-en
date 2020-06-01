@@ -37,11 +37,9 @@ struct ReportingCallCode: View {
                                 VStack(spacing: 0) {
                                     
                                     Text("Verify Your Positive Diagnosis")
-                                        .font(.custom("Montserrat-SemiBold", size: 31))
+                                        .modifier(StandardTitleTextViewModifier())
                                         .foregroundColor(Color(red: 0.294, green: 0.039, blue: 0.439))
-                                        .frame(maxWidth: .infinity, alignment: .leading)
                                         .padding(.top, .headerHeight)
-                                        .padding(.horizontal, 2 * .standardSpacing)
                                     
                                     Spacer(minLength: 2 * .standardSpacing)
                                     
@@ -105,6 +103,7 @@ struct ReportingCallCode: View {
                             .padding(.horizontal, 2 * .standardSpacing)
                             
                             Image("Powered By CW Grey")
+                                .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
                                 .padding(.top, 2 * .standardSpacing)
                                 .padding(.bottom, .standardSpacing)
                         }
@@ -124,7 +123,7 @@ struct ReportingCallCode: View {
             preferredStyle: .alert
         )
         alertController.addAction(UIAlertAction(
-            title: NSLocalizedString("Cancel", comment: ""),
+            title: NSLocalizedString("CANCEL", comment: ""),
             style: .cancel,
             handler: { _ in
                 ()

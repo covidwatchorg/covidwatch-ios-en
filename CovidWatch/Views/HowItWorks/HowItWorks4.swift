@@ -23,30 +23,24 @@ struct HowItWorks4: View {
                 
                 Spacer(minLength: .headerHeight)
                 
-                Text("How It Works".uppercased())
-                    .font(.custom("Montserrat-Regular", size: 14))
-                    .foregroundColor(Color("Title Text Color"))
-                    .padding(.horizontal, 2 * .standardSpacing)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                HowItWorksTitleText()
                 
-                Text("Safe Communities")
-                    .modifier(HowItWorksTitleText())
+                HowItWorksSubtitleText(text: Text("HOW_IT_WORKS_4_SUBTITLE"))
+                                
+                Spacer(minLength: .standardSpacing)
+                
+                Image("How it Works 4")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .accessibility(label: Text("HOW_IT_WORKS_4_IMAGE_ACCESSIBILITY_LABEL"))
                     .padding(.horizontal, 2 * .standardSpacing)
-                    .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Spacer(minLength: .standardSpacing)
                 
-                Image("How it Works 04")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding(.horizontal, 2 * .standardSpacing)
+                HowItWorksMessageText(text: Text("HOW_IT_WORKS_4_MESSAGE"))
 
                 if self.showsSetupButton {
-                    
-                    Text("Jane and Sam help keep their communities safe. They share the app so that others can, too.")
-                        .modifier(HowItWorksSubtitleText())
-                        .padding(.horizontal, 2 * .standardSpacing)
-                    
+                                        
                     Spacer(minLength: 2 * .standardSpacing)
                     
                     Button(action: {
@@ -55,17 +49,10 @@ struct HowItWorks4: View {
                         }
                     }) {
                         
-                        Text("Continue Setup").modifier(SmallCallToAction())
+                        Text("CONTINUE_SETUP").modifier(SmallCallToAction())
                         
                     }.padding(.horizontal, 2 * .standardSpacing)
                     
-                } else {
-                    
-                    Spacer(minLength: .standardSpacing)
-                    
-                    Text("Jane and Sam help keep their communities safe. They share the app so that others can, too.")
-                        .modifier(HowItWorksSubtitleText())
-                        .padding(.horizontal, 2 * .standardSpacing)
                 }
                 
                 Spacer(minLength: 4 * .standardSpacing)

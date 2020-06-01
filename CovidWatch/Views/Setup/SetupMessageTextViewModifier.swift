@@ -5,7 +5,7 @@
 
 import SwiftUI
 
-struct SubtitleText: ViewModifier {
+struct SetupMessageTextViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.custom("Montserrat-Regular", size: 18))

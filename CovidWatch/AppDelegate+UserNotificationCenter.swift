@@ -6,10 +6,7 @@ import UserNotifications
 import UIKit
 import os.log
 
-// TODO: Clean up this file
-extension UNNotificationCategory {
-    
-    public static let exposureDetectionSummary = "exposureDetectionSummary"
+extension UNNotificationCategory {    
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
@@ -18,34 +15,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     func configureCurrentUserNotificationCenter() {
         let center = UNUserNotificationCenter.current()
-        let exposureSummaryCategory = UNNotificationCategory(
-            identifier: UNNotificationCategory.exposureDetectionSummary,
-            actions: [],
-            intentIdentifiers: [],
-            hiddenPreviewsBodyPlaceholder: NSLocalizedString("Exposure Detection Summary", comment: ""),
-            categorySummaryFormat: nil, options: []
-        )
-        center.setNotificationCategories([exposureSummaryCategory])
         center.delegate = self
-    }
-    
-    public func showExposureDetectionSummaryUserNotification(daysSinceLastExposure: Int) {
-        let notificationContent = UNMutableNotificationContent()
-        notificationContent.categoryIdentifier = UNNotificationCategory.exposureDetectionSummary
-        notificationContent.sound = .defaultCritical
-        // When exporting for localizations Xcode doesn't look for
-        // NSString.localizedUserNotificationString(forKey:, arguments:))
-        _ = NSLocalizedString("%d day(s) since last exposure", comment: "")
-        notificationContent.body = NSString.localizedUserNotificationString(
-            forKey: "%d day(s) since last exposure",
-            arguments: [daysSinceLastExposure]
-        )
-        let notificationRequest = UNNotificationRequest(
-            identifier: UNNotificationCategory.exposureDetectionSummary,
-            content: notificationContent,
-            trigger: UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
-        )
-        addToCurrentUserNotificationCenterNotificationRequest(notificationRequest)
     }
     
     private func addToCurrentUserNotificationCenterNotificationRequest(

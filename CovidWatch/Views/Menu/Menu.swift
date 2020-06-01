@@ -64,7 +64,7 @@ struct Menu: View {
                                 self.localStore.dateLastPerformedExposureDetection = nil
                             }) {
                                 HStack {
-                                    Text("[DEMO] Reset Possible Exposures")
+                                    Text("DEMO_RESET_POSSIBLE_EXPOSURES_TITLE")
                                 }.modifier(MenuTitleText())
                             }
                             
@@ -75,29 +75,33 @@ struct Menu: View {
                                 }
                             }) {
                                 HStack {
-                                    Text("[DEMO] Detect Exposures from Server")
+                                    Text("DEMO_DETECT_EXPOSURES_FROM_SERVER_TITLE")
                                 }.modifier(MenuTitleText())
                             }
                             
                             Divider()
                             
                             Button(action: {
-                                let alertController = UIAlertController(title: NSLocalizedString("Exposure Configuration JSON", comment: ""), message: nil, preferredStyle: .alert)
+                                let alertController = UIAlertController(
+                                    title: NSLocalizedString("EXPOSURE_CONFIGURATION_JSON_TITLE", comment: ""),
+                                    message: nil,
+                                    preferredStyle: .alert
+                                )
                                 alertController.addTextField { (textField) in
                                     textField.text = self.localStore.exposureConfiguration
                                 }
-                                alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
-                                alertController.addAction(UIAlertAction(title: NSLocalizedString("Save", comment: ""), style: .default, handler: { _ in
+                                alertController.addAction(UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""), style: .cancel, handler: nil))
+                                alertController.addAction(UIAlertAction(title: NSLocalizedString("SAVE", comment: ""), style: .default, handler: { _ in
                                     guard let json = alertController.textFields?.first?.text else { return }
                                     self.localStore.exposureConfiguration = json
                                 }))
-                                alertController.addAction(UIAlertAction(title: NSLocalizedString("Reset to Default", comment: ""), style: .default, handler: { _ in
+                                alertController.addAction(UIAlertAction(title: NSLocalizedString("RESET_TO_DEFAULT", comment: ""), style: .default, handler: { _ in
                                     self.localStore.exposureConfiguration = LocalStore.exposureConfigurationDefault
                                 }))
                                 UIApplication.shared.topViewController?.present(alertController, animated: true)
                             }) {
                                 HStack {
-                                    Text("[DEMO] Set Exposure Configuration JSON")
+                                    Text("DEMO_SET_EXPOSURE_CONFIGURATION_JSON_TITLE")
                                 }.modifier(MenuTitleText())
                             }
                             
@@ -124,7 +128,7 @@ struct Menu: View {
                                 }
                             }) {
                                 HStack {
-                                    Text("[DEMO] Export Possible Exposures")
+                                    Text("DEMO_EXPORT_POSSIBLE_EXPOSURES_TITLE")
                                 }.modifier(MenuTitleText())
                             }
                             
@@ -135,10 +139,11 @@ struct Menu: View {
                             self.isShowingPossibleExposures.toggle()
                         }) {
                             HStack {
-                                Text("Possible Exposures")
+                                Text("POSSIBLE_EXPOSURES_TITLE")
                                 Spacer()
                                 if (self.localStore.exposures.max(by: { $0.totalRiskScore < $1.totalRiskScore })?.totalRiskScore ?? 0 > 6) {
                                     Image("Settings Alert")
+                                        .accessibility(hidden: true)
                                 }
                             }.modifier(MenuTitleText())
                         }
@@ -154,7 +159,7 @@ struct Menu: View {
                             self.isShowingNotifyOthers.toggle()
                         }) {
                             HStack {
-                                Text("Notify Others")
+                                Text("NOTIFY_OTHERS")
                             }.modifier(MenuTitleText())
                         }
                         .sheet(isPresented: $isShowingNotifyOthers) { Reporting().environmentObject(self.localStore) }
@@ -165,7 +170,7 @@ struct Menu: View {
                             self.isShowingHowItWorks.toggle()
                         }) {
                             HStack {
-                                Text("How it Works")
+                                Text("HOW_IT_WORKS_TITLE")
                             }.modifier(MenuTitleText())
                         }
                         .sheet(isPresented: $isShowingHowItWorks) { HowItWorks(showsSetupButton: false, showsDismissButton: true).environmentObject(self.userData) }
@@ -177,9 +182,10 @@ struct Menu: View {
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }) {
                             HStack {
-                                Text("Health Guidelines")
+                                Text("HEALTH_GUIDELINES_TITLE")
                                 Spacer()
                                 Image("Menu Action")
+                                    .accessibility(hidden: true)
                             }.modifier(MenuTitleText())
                         }
                     }
@@ -193,9 +199,10 @@ struct Menu: View {
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }) {
                             HStack {
-                                Text("Covid Watch Website")
+                                Text("COVID_WATCH_WEBSITE_TITLE")
                                 Spacer()
                                 Image("Menu Action")
+                                    .accessibility(hidden: true)
                             }.modifier(MenuTitleText())
                         }
                         
@@ -206,9 +213,10 @@ struct Menu: View {
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }) {
                             HStack {
-                                Text("FAQ")
+                                Text("FAQ_TITLE")
                                 Spacer()
                                 Image("Menu Action")
+                                    .accessibility(hidden: true)
                             }.modifier(MenuTitleText())
                         }
 
@@ -219,9 +227,10 @@ struct Menu: View {
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }) {
                             HStack {
-                                Text("Terms of Use")
+                                Text("TEMS_OF_USE_TITLE")
                                 Spacer()
                                 Image("Menu Action")
+                                    .accessibility(hidden: true)
                             }.modifier(MenuTitleText())
                         }
                         
@@ -232,9 +241,10 @@ struct Menu: View {
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }) {
                             HStack {
-                                Text("Privacy Policy")
+                                Text("PRIVACY_POLICY_TITLE")
                                 Spacer()
                                 Image("Menu Action")
+                                    .accessibility(hidden: true)
                             }.modifier(MenuTitleText())
                         }
                         
@@ -245,9 +255,10 @@ struct Menu: View {
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }) {
                             HStack {
-                                Text("Get Support")
+                                Text("GET_SUPPORT_TITLE")
                                 Spacer()
                                 Image("Menu Action")
+                                    .accessibility(hidden: true)
                             }.modifier(MenuTitleText())
                         }
                     }

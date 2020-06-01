@@ -5,7 +5,7 @@
 
 import SwiftUI
 
-struct TitleText: ViewModifier {
+struct SetupTitleTextViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.custom("Montserrat-SemiBold", size: 36))

@@ -70,7 +70,7 @@ final class UserData: ObservableObject  {
     
     func configureExposureNotificationStatusMessage() {
         self.exposureNotificationStatusMessage =
-            self.exposureNotificationStatus.detailedDescription
+            self.exposureNotificationStatus.localizedDetailDescription
     }
     
     @Published
