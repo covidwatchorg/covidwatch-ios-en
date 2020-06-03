@@ -15,7 +15,7 @@
                   <BuildableReference
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "2D9CF3C92455B9F1005B085E"
-                     BuildableName = "Covid Watch.app"
+                     BuildableName = "CW DEMO.app"
                      BlueprintName = "CovidWatch"
                      ReferencedContainer = "container:CovidWatch.xcodeproj">
                   </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D9CF3C92455B9F1005B085E"
-               BuildableName = "Covid Watch.app"
+               BuildableName = "CW DEMO.app"
                BlueprintName = "CovidWatch"
                ReferencedContainer = "container:CovidWatch.xcodeproj">
             </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D9CF3C92455B9F1005B085E"
-            BuildableName = "Covid Watch.app"
+            BuildableName = "CW DEMO.app"
             BlueprintName = "CovidWatch"
             ReferencedContainer = "container:CovidWatch.xcodeproj">
          </BuildableReference>
@@ -100,7 +100,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D9CF3C92455B9F1005B085E"
-            BuildableName = "Covid Watch.app"
+            BuildableName = "CW DEMO.app"
             BlueprintName = "CovidWatch"
             ReferencedContainer = "container:CovidWatch.xcodeproj">
          </BuildableReference>

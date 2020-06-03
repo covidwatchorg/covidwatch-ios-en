@@ -69,23 +69,6 @@ struct PossibleExposureTable: View {
             HStack(spacing: 0) {
                 HStack {
                     Spacer(minLength: 10)
-                    Text("ATTENUATION_TITLE")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Spacer(minLength: 10)
-                }.modifier(PossibleExposureTableColumnA())
-                
-                HStack {
-                    Spacer(minLength: 20)
-                    Text(verbatim: "\(exposure.attenuationValue) dBm")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Spacer(minLength: 10)
-                }.modifier(PossibleExposureTableColumnB())
-            }
-            .accessibilityElement(children: .combine)
-            
-            HStack(spacing: 0) {
-                HStack {
-                    Spacer(minLength: 10)
                     Text("ATTENUATION_DURATIONS_TITLE")
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
@@ -95,6 +78,25 @@ struct PossibleExposureTable: View {
                     Spacer(minLength: 20)
                     Text(verbatim: "[ \(exposure.attenuationDurations.map({ duration(for: $0)}).joined(separator: ", ")) ]")
                         .accessibility(label: Text(verbatim: exposure.attenuationDurations.map({ duration(for: $0, unitStyle: .spellOut)}).joined(separator: ", ")))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer(minLength: 10)
+                }.modifier(PossibleExposureTableColumnB())
+            }
+            .accessibilityElement(children: .combine)
+            
+            HStack(spacing: 0) {
+                HStack {
+                    Spacer(minLength: 10)
+                    Text("ATTENUATION_TITLE")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer(minLength: 10)
+                }.modifier(PossibleExposureTableColumnA())
+                
+                HStack {
+                    Spacer(minLength: 20)
+//                    Text(verbatim: "\(exposure.attenuationValue) of 8")
+//                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("ATTENUATION_VALUE", comment: ""), NSNumber(value: exposure.attenuationValue)))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
                 }.modifier(PossibleExposureTableColumnB())

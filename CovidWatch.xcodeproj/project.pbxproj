@@ -44,6 +44,9 @@
 		2D5D94132460232A00718412 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94122460232A00718412 /* PageControl.swift */; };
 		2D5D941624602FE100718412 /* HowItWorks1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D941524602FE100718412 /* HowItWorks1.swift */; };
 		2D63D592245CBCC10027D43B /* OSLog+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D63D591245CBCC00027D43B /* OSLog+Additions.swift */; };
+		2D743E8F24851FE500AA4D26 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 2D743E8E24851FE500AA4D26 /* Localizable.stringsdict */; };
+		2D743E912485425400AA4D26 /* PossibleExposureTableColumnA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D743E902485425400AA4D26 /* PossibleExposureTableColumnA.swift */; };
+		2D743E93248542FE00AA4D26 /* PossibleExposureTableColumnB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D743E92248542FD00AA4D26 /* PossibleExposureTableColumnB.swift */; };
 		2D74E4692465D429002057B9 /* PossibleExposureSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D74E4682465D428002057B9 /* PossibleExposureSummary.swift */; };
 		2D7942962466CEE1008AF148 /* SmallCallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7942952466CEE0008AF148 /* SmallCallToAction.swift */; };
 		2D79429824671F28008AF148 /* PossibleExposureRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79429724671F28008AF148 /* PossibleExposureRow.swift */; };
@@ -52,11 +55,12 @@
 		2D7942A02467E915008AF148 /* Reporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79429F2467E915008AF148 /* Reporting.swift */; };
 		2D7942A52467FB40008AF148 /* ReportingCallCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7942A42467FB40008AF148 /* ReportingCallCode.swift */; };
 		2D7942A724682EFA008AF148 /* ReportingFinish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7942A624682EF9008AF148 /* ReportingFinish.swift */; };
-		2D9034B62460396300351C3C /* HowItWorksTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034B52460396300351C3C /* HowItWorksTitleText.swift */; };
+		2D8516802484FA1C00F8E5BE /* HowItWorksTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D85167F2484FA1C00F8E5BE /* HowItWorksTitleText.swift */; };
+		2D8516822484FBE700F8E5BE /* HowItWorksSubtitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8516812484FBE700F8E5BE /* HowItWorksSubtitleText.swift */; };
+		2D8516842484FECA00F8E5BE /* HowItWorksMessageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8516832484FECA00F8E5BE /* HowItWorksMessageText.swift */; };
 		2D9034B824603D6200351C3C /* HowItWorks2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034B724603D6200351C3C /* HowItWorks2.swift */; };
 		2D9034BA24603E1A00351C3C /* HowItWorks3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034B924603E1A00351C3C /* HowItWorks3.swift */; };
 		2D9034BC24603EA600351C3C /* HowItWorks4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034BB24603EA600351C3C /* HowItWorks4.swift */; };
-		2D9034BE24603F4D00351C3C /* HowItWorksSubtitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034BD24603F4D00351C3C /* HowItWorksSubtitleText.swift */; };
 		2D9034C52460498A00351C3C /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034C42460498A00351C3C /* Setup.swift */; };
 		2D9034C7246049EC00351C3C /* Setup1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034C6246049EC00351C3C /* Setup1.swift */; };
 		2D9034C924604BB000351C3C /* Setup2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034C824604BB000351C3C /* Setup2.swift */; };
@@ -67,6 +71,7 @@
 		2D9CF3F32455B9F5005B085E /* CovidWatchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9CF3F22455B9F5005B085E /* CovidWatchUITests.swift */; };
 		2D9E6B2D2456E9A800150D1C /* AppDelegate+UserNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E6B2C2456E9A700150D1C /* AppDelegate+UserNotificationCenter.swift */; };
 		2DA839A32462FD5C004BD707 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA839A22462FD5B004BD707 /* Blur.swift */; };
+		2DBC07B3248552B4001304BB /* StandardTitleTextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBC07B2248552B4001304BB /* StandardTitleTextViewModifier.swift */; };
 		2DD7B442245F3FF2001B30F0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B441245F3FF1001B30F0 /* ContentView.swift */; };
 		2DD7B445245F4DE7001B30F0 /* HeaderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B444245F4DE7001B30F0 /* HeaderBar.swift */; };
 		2DD7B46C245F50A0001B30F0 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B447245F50A0001B30F0 /* Roboto-Medium.ttf */; };
@@ -106,8 +111,8 @@
 		2DD7B48E245F50A0001B30F0 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B469245F50A0001B30F0 /* Roboto-Black.ttf */; };
 		2DD7B48F245F50A0001B30F0 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B46A245F50A0001B30F0 /* Montserrat-SemiBoldItalic.ttf */; };
 		2DD7B490245F50A0001B30F0 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B46B245F50A0001B30F0 /* Montserrat-ExtraBoldItalic.ttf */; };
-		2DD7B492245F640C001B30F0 /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B491245F640C001B30F0 /* TitleText.swift */; };
-		2DD7B494245F646D001B30F0 /* SubtitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B493245F646D001B30F0 /* SubtitleText.swift */; };
+		2DD7B492245F640C001B30F0 /* SetupTitleTextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B491245F640C001B30F0 /* SetupTitleTextViewModifier.swift */; };
+		2DD7B494245F646D001B30F0 /* SetupMessageTextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B493245F646D001B30F0 /* SetupMessageTextViewModifier.swift */; };
 		2DD7B496245F64D8001B30F0 /* CallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B495245F64D8001B30F0 /* CallToAction.swift */; };
 		2DD7B498245F65E1001B30F0 /* SubCallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B497245F65E1001B30F0 /* SubCallToAction.swift */; };
 		2DD7B49A245F66F2001B30F0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B499245F66F2001B30F0 /* Constants.swift */; };
@@ -173,6 +178,9 @@
 		2D5D94122460232A00718412 /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		2D5D941524602FE100718412 /* HowItWorks1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorks1.swift; sourceTree = "<group>"; };
 		2D63D591245CBCC00027D43B /* OSLog+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OSLog+Additions.swift"; sourceTree = "<group>"; };
+		2D743E8E24851FE500AA4D26 /* Localizable.stringsdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
+		2D743E902485425400AA4D26 /* PossibleExposureTableColumnA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleExposureTableColumnA.swift; sourceTree = "<group>"; };
+		2D743E92248542FD00AA4D26 /* PossibleExposureTableColumnB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PossibleExposureTableColumnB.swift; sourceTree = "<group>"; };
 		2D74E4682465D428002057B9 /* PossibleExposureSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleExposureSummary.swift; sourceTree = "<group>"; };
 		2D7942952466CEE0008AF148 /* SmallCallToAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallCallToAction.swift; sourceTree = "<group>"; };
 		2D79429724671F28008AF148 /* PossibleExposureRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleExposureRow.swift; sourceTree = "<group>"; };
@@ -181,11 +189,12 @@
 		2D79429F2467E915008AF148 /* Reporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reporting.swift; sourceTree = "<group>"; };
 		2D7942A42467FB40008AF148 /* ReportingCallCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportingCallCode.swift; sourceTree = "<group>"; };
 		2D7942A624682EF9008AF148 /* ReportingFinish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportingFinish.swift; sourceTree = "<group>"; };
-		2D9034B52460396300351C3C /* HowItWorksTitleText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowItWorksTitleText.swift; sourceTree = "<group>"; };
+		2D85167F2484FA1C00F8E5BE /* HowItWorksTitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorksTitleText.swift; sourceTree = "<group>"; };
+		2D8516812484FBE700F8E5BE /* HowItWorksSubtitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorksSubtitleText.swift; sourceTree = "<group>"; };
+		2D8516832484FECA00F8E5BE /* HowItWorksMessageText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorksMessageText.swift; sourceTree = "<group>"; };
 		2D9034B724603D6200351C3C /* HowItWorks2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowItWorks2.swift; sourceTree = "<group>"; };
 		2D9034B924603E1A00351C3C /* HowItWorks3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowItWorks3.swift; sourceTree = "<group>"; };
 		2D9034BB24603EA600351C3C /* HowItWorks4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowItWorks4.swift; sourceTree = "<group>"; };
-		2D9034BD24603F4D00351C3C /* HowItWorksSubtitleText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowItWorksSubtitleText.swift; sourceTree = "<group>"; };
 		2D9034C42460498A00351C3C /* Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
 		2D9034C6246049EC00351C3C /* Setup1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup1.swift; sourceTree = "<group>"; };
 		2D9034C824604BB000351C3C /* Setup2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup2.swift; sourceTree = "<group>"; };
@@ -202,6 +211,7 @@
 		2D9CF3F42455B9F5005B085E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D9E6B2C2456E9A700150D1C /* AppDelegate+UserNotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+UserNotificationCenter.swift"; sourceTree = "<group>"; };
 		2DA839A22462FD5B004BD707 /* Blur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
+		2DBC07B2248552B4001304BB /* StandardTitleTextViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardTitleTextViewModifier.swift; sourceTree = "<group>"; };
 		2DD7B441245F3FF1001B30F0 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2DD7B444245F4DE7001B30F0 /* HeaderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderBar.swift; sourceTree = "<group>"; };
 		2DD7B447245F50A0001B30F0 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
@@ -241,8 +251,8 @@
 		2DD7B469245F50A0001B30F0 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		2DD7B46A245F50A0001B30F0 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		2DD7B46B245F50A0001B30F0 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		2DD7B491245F640C001B30F0 /* TitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
-		2DD7B493245F646D001B30F0 /* SubtitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleText.swift; sourceTree = "<group>"; };
+		2DD7B491245F640C001B30F0 /* SetupTitleTextViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTitleTextViewModifier.swift; sourceTree = "<group>"; };
+		2DD7B493245F646D001B30F0 /* SetupMessageTextViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupMessageTextViewModifier.swift; sourceTree = "<group>"; };
 		2DD7B495245F64D8001B30F0 /* CallToAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallToAction.swift; sourceTree = "<group>"; };
 		2DD7B497245F65E1001B30F0 /* SubCallToAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCallToAction.swift; sourceTree = "<group>"; };
 		2DD7B499245F66F2001B30F0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -347,6 +357,8 @@
 				2D79429724671F28008AF148 /* PossibleExposureRow.swift */,
 				2D79429B2467DB49008AF148 /* PossibleExposure.swift */,
 				2D79429D2467E34D008AF148 /* PossibleExposureTable.swift */,
+				2D743E902485425400AA4D26 /* PossibleExposureTableColumnA.swift */,
+				2D743E92248542FD00AA4D26 /* PossibleExposureTableColumnB.swift */,
 			);
 			path = PossibleExposures;
 			sourceTree = "<group>";
@@ -377,13 +389,14 @@
 			isa = PBXGroup;
 			children = (
 				2D5D940C246019D500718412 /* HowItWorks.swift */,
+				2D85167F2484FA1C00F8E5BE /* HowItWorksTitleText.swift */,
+				2D8516812484FBE700F8E5BE /* HowItWorksSubtitleText.swift */,
+				2D8516832484FECA00F8E5BE /* HowItWorksMessageText.swift */,
 				2D46AA612466ADFD0003936C /* HowItWorks0.swift */,
 				2D5D941524602FE100718412 /* HowItWorks1.swift */,
 				2D9034B724603D6200351C3C /* HowItWorks2.swift */,
 				2D9034B924603E1A00351C3C /* HowItWorks3.swift */,
 				2D9034BB24603EA600351C3C /* HowItWorks4.swift */,
-				2D9034B52460396300351C3C /* HowItWorksTitleText.swift */,
-				2D9034BD24603F4D00351C3C /* HowItWorksSubtitleText.swift */,
 			);
 			path = HowItWorks;
 			sourceTree = "<group>";
@@ -404,6 +417,8 @@
 				2D9034C42460498A00351C3C /* Setup.swift */,
 				2D9034C6246049EC00351C3C /* Setup1.swift */,
 				2D9034C824604BB000351C3C /* Setup2.swift */,
+				2DD7B491245F640C001B30F0 /* SetupTitleTextViewModifier.swift */,
+				2DD7B493245F646D001B30F0 /* SetupMessageTextViewModifier.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -424,11 +439,7 @@
 			children = (
 				2D5D940A2460118D00718412 /* Home.swift */,
 				2D29BAE8246060B400E8BEC4 /* Alert.swift */,
-				2DD7B495245F64D8001B30F0 /* CallToAction.swift */,
-				2D7942952466CEE0008AF148 /* SmallCallToAction.swift */,
 				2DD7B497245F65E1001B30F0 /* SubCallToAction.swift */,
-				2DD7B491245F640C001B30F0 /* TitleText.swift */,
-				2DD7B493245F646D001B30F0 /* SubtitleText.swift */,
 				2D74E4682465D428002057B9 /* PossibleExposureSummary.swift */,
 			);
 			path = Home;
@@ -473,6 +484,7 @@
 				2DD7B443245F4439001B30F0 /* Views */,
 				2D9CF3D92455B9F4005B085E /* Assets.xcassets */,
 				2D5149E4248384F000702A60 /* Localizable.strings */,
+				2D743E8E24851FE500AA4D26 /* Localizable.stringsdict */,
 				2D9CF3DB2455B9F4005B085E /* LaunchScreen.storyboard */,
 				2D9CF3DE2455B9F4005B085E /* Info.plist */,
 				2DFEED05247695CA00D2C620 /* CovidWatch.entitlements */,
@@ -506,6 +518,9 @@
 				2DD7B441245F3FF1001B30F0 /* ContentView.swift */,
 				2D5D94082460023900718412 /* Splash.swift */,
 				2DD7B444245F4DE7001B30F0 /* HeaderBar.swift */,
+				2DD7B495245F64D8001B30F0 /* CallToAction.swift */,
+				2D7942952466CEE0008AF148 /* SmallCallToAction.swift */,
+				2DBC07B2248552B4001304BB /* StandardTitleTextViewModifier.swift */,
 				2D5D9414246025EC00718412 /* HowItWorks */,
 				2D9034C32460497700351C3C /* Setup */,
 				2D9034CB2460525200351C3C /* Home */,
@@ -680,6 +695,7 @@
 				2DD7B487245F50A0001B30F0 /* Roboto-LightItalic.ttf in Resources */,
 				2DD7B48E245F50A0001B30F0 /* Roboto-Black.ttf in Resources */,
 				2D5149E5248384F000702A60 /* Localizable.strings in Resources */,
+				2D743E8F24851FE500AA4D26 /* Localizable.stringsdict in Resources */,
 				2DD7B489245F50A0001B30F0 /* Montserrat-Italic.ttf in Resources */,
 				2DD7B47F245F50A0001B30F0 /* RobotoCondensed-LightItalic.ttf in Resources */,
 				2D9CF3DD2455B9F4005B085E /* LaunchScreen.storyboard in Resources */,
@@ -760,10 +776,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D74E4692465D429002057B9 /* PossibleExposureSummary.swift in Sources */,
+				2DBC07B3248552B4001304BB /* StandardTitleTextViewModifier.swift in Sources */,
 				2D46AA622466ADFE0003936C /* HowItWorks0.swift in Sources */,
 				2DFEED072476AD4200D2C620 /* Data+Random.swift in Sources */,
 				2D5D9402245FF85C00718412 /* UserData.swift in Sources */,
 				2DD7B445245F4DE7001B30F0 /* HeaderBar.swift in Sources */,
+				2D8516842484FECA00F8E5BE /* HowItWorksMessageText.swift in Sources */,
 				2D46AA5F2465E69E0003936C /* PossibleExposures.swift in Sources */,
 				2D46AA592465E1240003936C /* Server.swift in Sources */,
 				2D7942A724682EFA008AF148 /* ReportingFinish.swift in Sources */,
@@ -771,12 +789,15 @@
 				2D5D9405245FF88800718412 /* UserDefaultPropertyWrapper.swift in Sources */,
 				2D46AA562465E1240003936C /* ExposureManager.swift in Sources */,
 				2D9034C52460498A00351C3C /* Setup.swift in Sources */,
+				2D8516802484FA1C00F8E5BE /* HowItWorksTitleText.swift in Sources */,
 				2D29BAF324607F2C00E8BEC4 /* UNAuthorizationStatus+Additions.swift in Sources */,
 				2D7942962466CEE1008AF148 /* SmallCallToAction.swift in Sources */,
+				2D8516822484FBE700F8E5BE /* HowItWorksSubtitleText.swift in Sources */,
+				2D743E912485425400AA4D26 /* PossibleExposureTableColumnA.swift in Sources */,
 				2D46AA412465E1010003936C /* PositiveDiagnosis+ExposureNotification.swift in Sources */,
 				2D46AA432465E1010003936C /* PositiveDiagnosis.swift in Sources */,
 				2D7942A52467FB40008AF148 /* ReportingCallCode.swift in Sources */,
-				2DD7B494245F646D001B30F0 /* SubtitleText.swift in Sources */,
+				2DD7B494245F646D001B30F0 /* SetupMessageTextViewModifier.swift in Sources */,
 				2D9034C924604BB000351C3C /* Setup2.swift in Sources */,
 				2D5D94112460231C00718412 /* PageView.swift in Sources */,
 				2D9CF3CE2455B9F1005B085E /* AppDelegate.swift in Sources */,
@@ -793,7 +814,6 @@
 				2DD7B442245F3FF2001B30F0 /* ContentView.swift in Sources */,
 				2D46AA4D2465E1190003936C /* URLSession+Additions.swift in Sources */,
 				2D46AA472465E10E0003936C /* DiagnosisServerInterface.swift in Sources */,
-				2D9034BE24603F4D00351C3C /* HowItWorksSubtitleText.swift in Sources */,
 				2D79429C2467DB49008AF148 /* PossibleExposure.swift in Sources */,
 				2DD7B498245F65E1001B30F0 /* SubCallToAction.swift in Sources */,
 				2D5D94072460000A00718412 /* ApplicationController.swift in Sources */,
@@ -801,7 +821,7 @@
 				2D79429E2467E34D008AF148 /* PossibleExposureTable.swift in Sources */,
 				2D46AA5A2465E1240003936C /* LocalStore.swift in Sources */,
 				2D9034BA24603E1A00351C3C /* HowItWorks3.swift in Sources */,
-				2D9034B62460396300351C3C /* HowItWorksTitleText.swift in Sources */,
+				2D743E93248542FE00AA4D26 /* PossibleExposureTableColumnB.swift in Sources */,
 				2D46AA582465E1240003936C /* DeveloperDiagnosisKeyFileProtobuf.pb.swift in Sources */,
 				2D5D941624602FE100718412 /* HowItWorks1.swift in Sources */,
 				2D46AA402465E1010003936C /* CodableDiagnosisKey+ExposureNotification.swift in Sources */,
@@ -812,7 +832,7 @@
 				2D5D940F2460231200718412 /* PageViewController.swift in Sources */,
 				2D46AA4E2465E1190003936C /* UIWindow+ViewControllerUtility.swift in Sources */,
 				2D29BAF924609F6100E8BEC4 /* MenuTitleText.swift in Sources */,
-				2DD7B492245F640C001B30F0 /* TitleText.swift in Sources */,
+				2DD7B492245F640C001B30F0 /* SetupTitleTextViewModifier.swift in Sources */,
 				2DFEED1024792CF300D2C620 /* LocalGoogleExposureNotificationServer.swift in Sources */,
 				2D63D592245CBCC10027D43B /* OSLog+Additions.swift in Sources */,
 				E2209580245BA49400819BD1 /* Environment.swift in Sources */,
@@ -991,7 +1011,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/CovidWatch.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 83;
+				CURRENT_PROJECT_VERSION = 84;
 				DEVELOPMENT_TEAM = GD7NMG67S7;
 				INFOPLIST_FILE = CovidWatch/Info.plist;
 				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
@@ -1016,7 +1036,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/CovidWatch.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 83;
+				CURRENT_PROJECT_VERSION = 84;
 				DEVELOPMENT_TEAM = GD7NMG67S7;
 				INFOPLIST_FILE = CovidWatch/Info.plist;
 				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
