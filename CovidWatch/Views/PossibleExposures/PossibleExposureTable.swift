@@ -48,23 +48,23 @@ struct PossibleExposureTable: View {
             }
             .accessibilityElement(children: .combine)
             
-            HStack(spacing: 0) {
-                HStack {
-                    Spacer(minLength: 10)
-                    Text("DURATION_TITLE")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Spacer(minLength: 10)
-                }.modifier(PossibleExposureTableColumnA())
-                
-                HStack {
-                    Spacer(minLength: 20)
-                    Text(verbatim: duration(for: exposure.duration))
-                        .accessibility(label: Text(verbatim: duration(for: exposure.duration, unitStyle: .spellOut)))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Spacer(minLength: 10)
-                }.modifier(PossibleExposureTableColumnB())
-            }
-            .accessibilityElement(children: .combine)
+//            HStack(spacing: 0) {
+//                HStack {
+//                    Spacer(minLength: 10)
+//                    Text("DURATION_TITLE")
+//                        .frame(maxWidth: .infinity, alignment: .leading)
+//                    Spacer(minLength: 10)
+//                }.modifier(PossibleExposureTableColumnA())
+//                
+//                HStack {
+//                    Spacer(minLength: 20)
+//                    Text(verbatim: duration(for: exposure.duration))
+//                        .accessibility(label: Text(verbatim: duration(for: exposure.duration, unitStyle: .spellOut)))
+//                        .frame(maxWidth: .infinity, alignment: .leading)
+//                    Spacer(minLength: 10)
+//                }.modifier(PossibleExposureTableColumnB())
+//            }
+//            .accessibilityElement(children: .combine)
             
             HStack(spacing: 0) {
                 HStack {
