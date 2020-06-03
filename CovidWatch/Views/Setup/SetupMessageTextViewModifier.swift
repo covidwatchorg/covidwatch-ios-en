@@ -8,7 +8,7 @@ import SwiftUI
 struct SetupMessageTextViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(.custom("Montserrat-Regular", size: 18))
+            .font(.custom("Montserrat-Regular", size: 16))
             .foregroundColor(Color("Subtitle Text Color"))
     }
 }

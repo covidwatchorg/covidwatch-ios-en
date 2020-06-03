@@ -28,7 +28,7 @@ struct HowItWorks0: View {
                 Spacer(minLength: .standardSpacing)
                 
                 Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("WELCOME_TITLE", comment: ""), (Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String) ?? ""))
-                    .font(.custom("Montserrat-Medium", size: 33))
+                    .font(.custom("Montserrat-Semibold", size: 26))
                     .foregroundColor(Color("Title Text Color"))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 2 * .standardSpacing)
