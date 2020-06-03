@@ -18,20 +18,20 @@
 			<string>%d days since last exposure</string>
 		</dict>
 	</dict>
-	<key>%u total exposures in the last 14 days</key>
+	<key>%u exposures in the last 14 days</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@total exposures@</string>
-		<key>total exposures</key>
+		<string>%#@exposures@</string>
+		<key>exposures</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>u</string>
 			<key>one</key>
-			<string>%u total exposure in the last 14 days</string>
+			<string>%u exposure in the last 14 days</string>
 			<key>other</key>
-			<string>%u total exposures in the last 14 days</string>
+			<string>%u exposures in the last 14 days</string>
 		</dict>
 	</dict>
 </dict>

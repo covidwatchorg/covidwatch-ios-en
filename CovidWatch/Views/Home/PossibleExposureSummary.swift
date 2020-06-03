@@ -25,6 +25,8 @@ struct PossibleExposureSummary: View {
         
         var components: [String] = []
         
+        components.append(NSLocalizedString("HOME_POSSIBLE_EXPOSURES_TITLE", comment: ""))
+        
         if let days = daysSinceLastExposure() {
             components.append(
                 String.localizedStringWithFormat(NSLocalizedString("%d days since last exposure", comment: ""), days)
@@ -34,7 +36,7 @@ struct PossibleExposureSummary: View {
             components.append(NSLocalizedString("UNKNOWN_DAYS_SINCE_LAST_EXPOSURE", comment: ""))
         }
         
-        components.append(String.localizedStringWithFormat(NSLocalizedString("%d total exposures in the last 14 days", comment: ""), self.localStore.exposures.count))
+        components.append(String.localizedStringWithFormat(NSLocalizedString("%d exposures in the last 14 days", comment: ""), self.localStore.exposures.count))
         
         components.append(String.localizedStringWithFormat(NSLocalizedString("HOME_TOTAL_RISK_SCORE_ACCESSIBILITY_LABEL", comment: ""), self.maxTotalRiscScore()))
                 
@@ -52,69 +54,70 @@ struct PossibleExposureSummary: View {
         
         VStack(spacing: 0) {
             
+            Text("HOME_POSSIBLE_EXPOSURES_TITLE")
+                .font(.custom("Montserrat-SemiBold", size: 16))
+                .foregroundColor(Color("Title Text Color"))
+                .padding(.horizontal, 2 * .standardSpacing)
+                .frame(maxWidth: .infinity, minHeight: 44, alignment: .center)
+                .background(Color.init(white: 0.949))
+            
             HStack {
                 
                 VStack(alignment: .leading, spacing: .standardSpacing) {
                     
-                    HStack(spacing: .standardSpacing) {
+                    HStack {
                         
                         Text(verbatim: self.localStore.exposures.isEmpty ? "-" :  String(Calendar.current.dateComponents([.day], from: self.localStore.exposures.first!.date, to: Date()).day ?? 0))
-                            .font(.custom("Montserrat-SemiBold", size: 48))
+                            .font(.custom("Montserrat-SemiBold", size: 40))
                             .foregroundColor(Color("Title Text Color"))
-                            .frame(minWidth: 6 * .standardSpacing, alignment: .trailing)
+                            .frame(minWidth: .standardSpacing, alignment: .trailing)
                         
-                        VStack(alignment: .leading) {
+                        Text("HOME_DAYS_ROW_1_LABEL")
+                            .font(.custom("Montserrat-Bold", size: 13))
+                            .foregroundColor(Color("Title Text Color"))
                             
-                            Text("HOME_DAYS_ROW_1_LABEL")
-                                .font(.custom("Montserrat-Bold", size: 16))
+                            + Text(verbatim: " ") +
+                            
+                            Text("HOME_DAYS_ROW_2_LABEL")
+                                .font(.custom("Montserrat-Regular", size: 13))
                                 .foregroundColor(Color("Title Text Color"))
-                            
-                             Text("HOME_DAYS_ROW_2_LABEL")
-                                .font(.custom("Montserrat-Regular", size: 14))
-                                .foregroundColor(Color("Title Text Color"))
-                            
-                        }
                     }
                     
-                    HStack(spacing: .standardSpacing) {
+                    HStack {
                         
                         Text(verbatim: NumberFormatter.localizedString(from: NSNumber(value: self.localStore.exposures.count), number: .decimal))
-                            .font(.custom("Montserrat-SemiBold", size: 48))
+                            .font(.custom("Montserrat-SemiBold", size: 40))
                             .foregroundColor(Color("Title Text Color"))
-                            .frame(minWidth: 6 * .standardSpacing, alignment: .trailing)
+                            .frame(minWidth: .standardSpacing, alignment: .trailing)
                         
-                        VStack(alignment: .leading) {
+                        Text("HOME_TOTAL_EXPOSURES_ROW_1_LABEL")
+                            .font(.custom("Montserrat-Bold", size: 13))
+                            .foregroundColor(Color("Title Text Color"))
                             
-                            Text("HOME_TOTAL_EXPOSURES_ROW_1_LABEL")
-                                .font(.custom("Montserrat-Bold", size: 16))
-                                .foregroundColor(Color("Title Text Color"))
+                            + Text(verbatim: " ") +
                             
                             Text("HOME_TOTAL_EXPOSURES_ROW_2_LABEL")
-                                .font(.custom("Montserrat-Regular", size: 14))
+                                .font(.custom("Montserrat-Regular", size: 13))
                                 .foregroundColor(Color("Title Text Color"))
-                            
-                        }
                     }
                     
-                    HStack(spacing: .standardSpacing) {
+                    HStack {
                         
                         Text(verbatim: String(maxTotalRiscScore()))
-                            .font(.custom("Montserrat-SemiBold", size: 48))
+                            .font(.custom("Montserrat-SemiBold", size: 40))
                             .foregroundColor( maxTotalRiscScore() > 6 ?
                                 Color("Alert Critical Color") : Color("Title Text Color"))
-                            .frame(minWidth: 6 * .standardSpacing, alignment: .trailing)
+                            .frame(minWidth: .standardSpacing, alignment: .trailing)
                         
-                        VStack(alignment: .leading) {
+                        Text("HOME_TOTAL_RISK_SCORE_ROW_1_LABEL")
+                            .font(.custom("Montserrat-Bold", size: 13))
+                            .foregroundColor(Color("Title Text Color"))
                             
-                            Text("HOME_TOTAL_RISK_SCORE_ROW_1_LABEL")
-                                .font(.custom("Montserrat-Bold", size: 16))
-                                .foregroundColor(Color("Title Text Color"))
+                            + Text(verbatim: " ") +
                             
                             Text("HOME_TOTAL_RISK_SCORE_ROW_2_LABEL")
-                                .font(.custom("Montserrat-Regular", size: 14))
+                                .font(.custom("Montserrat-Regular", size: 13))
                                 .foregroundColor(Color("Title Text Color"))
-                            
-                        }
                     }
                 }
                 

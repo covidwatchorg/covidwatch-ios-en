@@ -85,21 +85,13 @@ struct Home: View {
                                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 232, alignment: .top)
                                 .background(LinearGradient(gradient: Gradient(colors: [Color(red: 0.263, green: 0.769, blue: 0.851, opacity: 1), Color.white.opacity(0.4)]), startPoint: .top, endPoint: .bottom))
                                 .accessibility(label: Text("HOME_IMAGE_ACCESSIBILITY_LABEL"))
-                                .padding(.bottom, .standardSpacing)
-                            
-                            Text("HOME_POSSIBLE_EXPOSURES_TITLE")
-                                .font(.custom("Montserrat-SemiBold", size: 24))
-                                .foregroundColor(Color("Title Text Color"))
-                                .padding(.horizontal, 2 * .standardSpacing)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            
+                                                        
                             Button(action: {
                                 self.isShowingPossibleExposures.toggle()
                             }) {
                                 PossibleExposureSummary()
                                     .environmentObject(self.localStore)
                             }
-                            .padding(.top, 8)
                             .padding(.horizontal, 2 * .standardSpacing)
                             .sheet(isPresented: $isShowingPossibleExposures) {
                                 PossibleExposures()
@@ -107,7 +99,7 @@ struct Home: View {
                                     .environmentObject(self.localStore)
                             }
                             
-                            Spacer(minLength: 2 * .standardSpacing)
+                            Spacer(minLength: .standardSpacing)
                             
                             Text("NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE")
                                 .modifier(SubCallToAction())
@@ -131,7 +123,6 @@ struct Home: View {
                             }) {
                                 Text("SHARE_THE_APP").modifier(SmallCallToAction())
                             }
-                            .padding(.top, 2 * .standardSpacing)
                             .padding(.horizontal, 2 * .standardSpacing)
                             
                             Image("Powered By CW Grey")

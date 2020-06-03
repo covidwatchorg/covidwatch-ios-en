@@ -139,7 +139,7 @@ All strings for the project, separated for localization.
 "HOME_IMAGE_ACCESSIBILITY_LABEL" = "Happy Family";
 
 /* Title */
-"HOME_POSSIBLE_EXPOSURES_TITLE" = "My Possible Exposures";
+"HOME_POSSIBLE_EXPOSURES_TITLE" = "Possible COVID-19 Exposures";
 
 /* Message */
 "NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE" = "Have a positive diagnosis? Share it anonymously to help your community stay safe.";
@@ -157,7 +157,7 @@ All strings for the project, separated for localization.
 "UNKNOWN_DAYS_SINCE_LAST_EXPOSURE" = "Unknown days since last exposure";
 
 /* Message */
-"HOME_TOTAL_RISK_SCORE_ACCESSIBILITY_LABEL" = "%d total risk score (1-8 scale)";
+"HOME_TOTAL_RISK_SCORE_ACCESSIBILITY_LABEL" = "%d total risk score (0-8 scale)";
 
 /* Special */
 "HOME_DAYS_ROW_1_LABEL" = "days";
@@ -166,7 +166,7 @@ All strings for the project, separated for localization.
 "HOME_DAYS_ROW_2_LABEL" = "since last exposure";
 
 /* Special */
-"HOME_TOTAL_EXPOSURES_ROW_1_LABEL" = "total exposures";
+"HOME_TOTAL_EXPOSURES_ROW_1_LABEL" = "exposures";
 
 /* Special */
 "HOME_TOTAL_EXPOSURES_ROW_2_LABEL" = "in the last 14 days";
@@ -175,7 +175,7 @@ All strings for the project, separated for localization.
 "HOME_TOTAL_RISK_SCORE_ROW_1_LABEL" = "total risk score";
 
 /* Special */
-"HOME_TOTAL_RISK_SCORE_ROW_2_LABEL" = "(1-8 scale)";
+"HOME_TOTAL_RISK_SCORE_ROW_2_LABEL" = "(0-8 scale)";
 
 // # MENU
 
@@ -236,13 +236,13 @@ All strings for the project, separated for localization.
 "EXPOSURE_NOTIFICATION_STATUS_RESTRICTED_MESSAGE" = "Exposure Notification is not active due to system restrictions, such as parental controls.";
 
 /* Message */
-"EXPOSURES_LAST_CHECKED_NEVER_MESSAGE" = "Exposures last checked: Never.";
+"EXPOSURES_LAST_CHECKED_NEVER_MESSAGE" = "Last checked: Never.";
 
 /* Message */
-"EXPOSURES_LAST_CHECKED_DATE_MESSAGE" = "Exposures last checked: %@.";
+"EXPOSURES_LAST_CHECKED_DATE_MESSAGE" = "Last checked: %@.";
 
 /* Message */
-"EXPOSURES_ARE_SAVED_MESSAGE" = "Exposures are saved in this app and you can access them any time in the future.";
+"EXPOSURES_ARE_SAVED_MESSAGE" = "Each exposure notification is saved in this app and will be automatically deleted after 30 days.";
 
 /* Message */
 "HIGH_RISK_EXPOSURE_DATE_MESSAGE" = "High risk exposure on %@";
