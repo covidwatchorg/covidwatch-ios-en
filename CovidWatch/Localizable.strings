@@ -271,7 +271,7 @@ All strings for the project, separated for localization.
 "DURATION_TITLE" = "Duration";
 
 /* Title */
-"ATTENUATION_TITLE" = "Attenuation RLV";
+"ATTENUATION_TITLE" = "Time-weighted Attenuation RLV";
 
 /* Value */
 "ATTENUATION_VALUE" = "%@ of 8";
