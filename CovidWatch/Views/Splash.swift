@@ -36,6 +36,11 @@ struct Splash: View {
                         .padding(.top, 2 * .standardSpacing)
                     
                     Spacer(minLength: 2 * .standardSpacing)
+                                        
+                    Image("People Network")
+                        .accessibility(label: Text("SPLASH_IMAGE_ACCESSIBILITY_LABEL"))
+                    
+                    Spacer(minLength: 2 * .standardSpacing)
                     
                     Text("SPLASH_MESSAGE")
                         .font(.custom("Montserrat-SemiBold", size: 21))
@@ -43,10 +48,6 @@ struct Splash: View {
                         .multilineTextAlignment(.center)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .padding(.horizontal, 2 * .standardSpacing)
-                    
-                    Image("People Network")
-                        .accessibility(label: Text("SPLASH_IMAGE_ACCESSIBILITY_LABEL"))
-                        .padding(.top, 2 * .standardSpacing)
                     
                     Spacer(minLength: 2 * .standardSpacing)
                     
@@ -65,9 +66,10 @@ struct Splash: View {
                         
                     }.padding(.horizontal, 2 * .standardSpacing)
                     
+                    Spacer(minLength: 2 * .standardSpacing)
+                    
                     Image("Powered By CW")
                         .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
-                        .padding(.top, 2 * .standardSpacing)
                         .padding(.bottom, .standardSpacing)
                 }
             }
