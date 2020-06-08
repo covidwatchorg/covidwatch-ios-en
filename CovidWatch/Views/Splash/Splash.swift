@@ -8,12 +8,12 @@ struct Splash: View {
     
     @EnvironmentObject var userData: UserData
     
-    @State var showHowItWorks = false
+    @State var showWelcome = false
     
     var body: some View {
         VStack {
-            if self.showHowItWorks {
-                HowItWorks().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+            if self.showWelcome {
+                Welcome().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
             } else {
                 self.splash.transition(.slide)
             }
@@ -53,7 +53,7 @@ struct Splash: View {
                     
                     Button(action: {
                         withAnimation() {
-                            self.showHowItWorks = true
+                            self.showWelcome = true
                         }
                     }) {
                         

@@ -28,6 +28,8 @@ struct Setup1: View {
                 
                     Spacer(minLength: .headerHeight)
                     
+                    HowItWorksTitleText(text: Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("SETUP_PRE_TITLE", comment: ""), NSNumber(value: 1), NSNumber(value: 2)).uppercased()))
+                    
                     Text("ENABLE_EXPOSURE_NOTIFICATIONS_TITLE")
                         .modifier(SetupTitleTextViewModifier())
                         .frame(maxWidth: .infinity, alignment: .leading)

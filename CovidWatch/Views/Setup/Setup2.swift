@@ -27,6 +27,8 @@ struct Setup2: View {
                     
                     Spacer(minLength: .headerHeight)
                     
+                    HowItWorksTitleText(text: Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("SETUP_PRE_TITLE", comment: ""), NSNumber(value: 2), NSNumber(value: 2)).uppercased()))
+                    
                     Text("ENABLE_PUSH_NOTIFICATIONS_TITLE")
                         .modifier(SetupTitleTextViewModifier())
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -66,8 +68,7 @@ struct Setup2: View {
                                 }
                                 
                                 withAnimation {
-                                    self.userData.isUserNotificationsSetup = true
-                                    self.userData.isSetupCompleted = true
+                                    self.userData.isUserNotificationsSetup = true                                    
                                 }
                                 
                                 if self.dismissesAutomatically {
@@ -87,8 +88,7 @@ struct Setup2: View {
                 Button(action: {
                     
                     withAnimation {
-                        self.userData.isUserNotificationsSetup = true
-                        self.userData.isSetupCompleted = true
+                        self.userData.isUserNotificationsSetup = true                        
                     }
                     
                     if self.dismissesAutomatically {
