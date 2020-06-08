@@ -60,6 +60,7 @@ struct Setup3: View {
 
                     Button(action: {
                         withAnimation {
+                            self.userData.showHomeWelcomeMessage = true
                             self.userData.isSetupCompleted = true
                         }
                     }) {

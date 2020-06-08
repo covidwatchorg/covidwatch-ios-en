@@ -152,7 +152,7 @@ struct Reporting: View {
                                                 
                                                 Text("Needs Verification")
                                                     .font(.custom("Montserrat-Bold", size: 14))
-                                                    .foregroundColor(Color("Alert Critical Color"))
+                                                    .foregroundColor(Color("Alert High Color"))
                                                 
                                             } else {
                                                 

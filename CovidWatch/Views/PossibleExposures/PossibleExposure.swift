@@ -27,7 +27,7 @@ struct PossibleExposure: View {
                     
                     Text("POSSIBLE_EXPOSURE_TITLE")
                         .modifier(StandardTitleTextViewModifier())
-                        .foregroundColor(Color("Alert Critical Color"))
+                        .foregroundColor(Color("Alert High Color"))
                         .padding(.top, .headerHeight)
                     
                     Text("DETAILS_TITLE")

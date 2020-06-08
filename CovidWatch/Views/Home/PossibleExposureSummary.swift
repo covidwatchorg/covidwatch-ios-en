@@ -25,7 +25,7 @@ struct PossibleExposureSummary: View {
         
         var components: [String] = []
         
-        components.append(NSLocalizedString("HOME_POSSIBLE_EXPOSURES_TITLE", comment: ""))
+        components.append(NSLocalizedString("HOME_POSSIBLE_EXPOSURES_SUMMARY_TITLE", comment: ""))
         
         if let days = daysSinceLastExposure() {
             components.append(
@@ -54,12 +54,16 @@ struct PossibleExposureSummary: View {
         
         VStack(spacing: 0) {
             
-            Text("HOME_POSSIBLE_EXPOSURES_TITLE")
-                .font(.custom("Montserrat-SemiBold", size: 16))
+            Divider()
+            
+            Text("HOME_POSSIBLE_EXPOSURES_SUMMARY_TITLE")
+                .font(.custom("Montserrat-Bold", size: 16))
                 .foregroundColor(Color("Title Text Color"))
                 .padding(.horizontal, 2 * .standardSpacing)
                 .frame(maxWidth: .infinity, minHeight: 44, alignment: .center)
-                .background(Color.init(white: 0.949))
+                .background(Color(UIColor.systemGray6))
+            
+            Divider()
             
             HStack {
                 
@@ -68,9 +72,8 @@ struct PossibleExposureSummary: View {
                     HStack {
                         
                         Text(verbatim: self.localStore.exposures.isEmpty ? "-" :  String(Calendar.current.dateComponents([.day], from: self.localStore.exposures.first!.date, to: Date()).day ?? 0))
-                            .font(.custom("Montserrat-SemiBold", size: 40))
-                            .foregroundColor(Color("Title Text Color"))
-                            .frame(minWidth: .standardSpacing, alignment: .trailing)
+                            .modifier(PossibleExposureSummaryValueViewModifier())
+                            .background(Capsule(style: .circular).foregroundColor(Color(UIColor.systemGray2)))
                         
                         Text("HOME_DAYS_ROW_1_LABEL")
                             .font(.custom("Montserrat-Bold", size: 13))
@@ -86,9 +89,8 @@ struct PossibleExposureSummary: View {
                     HStack {
                         
                         Text(verbatim: NumberFormatter.localizedString(from: NSNumber(value: self.localStore.exposures.count), number: .decimal))
-                            .font(.custom("Montserrat-SemiBold", size: 40))
-                            .foregroundColor(Color("Title Text Color"))
-                            .frame(minWidth: .standardSpacing, alignment: .trailing)
+                            .modifier(PossibleExposureSummaryValueViewModifier())
+                            .background(Capsule(style: .circular).foregroundColor(Color(UIColor.systemGray2)))
                         
                         Text("HOME_TOTAL_EXPOSURES_ROW_1_LABEL")
                             .font(.custom("Montserrat-Bold", size: 13))
@@ -104,10 +106,9 @@ struct PossibleExposureSummary: View {
                     HStack {
                         
                         Text(verbatim: String(maxTotalRiscScore()))
-                            .font(.custom("Montserrat-SemiBold", size: 40))
-                            .foregroundColor( maxTotalRiscScore() > 6 ?
-                                Color("Alert Critical Color") : Color("Title Text Color"))
-                            .frame(minWidth: .standardSpacing, alignment: .trailing)
+                            .modifier(PossibleExposureSummaryValueViewModifier())
+                            .background(Capsule(style: .circular).foregroundColor(maxTotalRiscScore().level == .high ?
+                            Color("Alert High Color") : Color(UIColor.systemGray2)))
                         
                         Text("HOME_TOTAL_RISK_SCORE_ROW_1_LABEL")
                             .font(.custom("Montserrat-Bold", size: 13))
@@ -120,17 +121,18 @@ struct PossibleExposureSummary: View {
                                 .foregroundColor(Color("Title Text Color"))
                     }
                 }
+                .padding(.horizontal, 2 * .standardSpacing)
                 
                 Spacer()
                 
                 Image("Right Arrow-1")
+                    .padding(.trailing, 2 * .standardSpacing)
             }
             .padding(.vertical, .standardSpacing)
-            .padding(.leading, 2 * .standardSpacing)
-            .padding(.trailing, .standardSpacing)
+            
+            Divider()
             
         }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-            .border(Color("Button Border Color"), width: 1)
             .accessibilityElement(children: .combine)
             .accessibility(label: Text(verbatim: accessibilityLabel()))
             .accessibility(hint: Text("SHOWS_MORE_INFO_ACCESSIBILITY_HINT"))

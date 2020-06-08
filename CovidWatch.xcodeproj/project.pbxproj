@@ -13,6 +13,8 @@
 		2D29BAF62460951200E8BEC4 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF52460951200E8BEC4 /* Menu.swift */; };
 		2D29BAF924609F6100E8BEC4 /* MenuTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF824609F6100E8BEC4 /* MenuTitleText.swift */; };
 		2D39489E248E40A3001766A4 /* Setup3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39489D248E40A3001766A4 /* Setup3.swift */; };
+		2D3948A0248E548E001766A4 /* PossibleExposureSummaryValueViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39489F248E548E001766A4 /* PossibleExposureSummaryValueViewModifier.swift */; };
+		2D3948A2248E6354001766A4 /* ENRiskScore+Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A1248E6354001766A4 /* ENRiskScore+Levels.swift */; };
 		2D46AA3E2465E1010003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA382465E1000003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift */; };
 		2D46AA3F2465E1010003936C /* UserDefaults+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA392465E1000003936C /* UserDefaults+Shared.swift */; };
 		2D46AA402465E1010003936C /* CodableDiagnosisKey+ExposureNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3A2465E1010003936C /* CodableDiagnosisKey+ExposureNotification.swift */; };
@@ -148,6 +150,8 @@
 		2D29BAF52460951200E8BEC4 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		2D29BAF824609F6100E8BEC4 /* MenuTitleText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTitleText.swift; sourceTree = "<group>"; };
 		2D39489D248E40A3001766A4 /* Setup3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup3.swift; sourceTree = "<group>"; };
+		2D39489F248E548E001766A4 /* PossibleExposureSummaryValueViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleExposureSummaryValueViewModifier.swift; sourceTree = "<group>"; };
+		2D3948A1248E6354001766A4 /* ENRiskScore+Levels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ENRiskScore+Levels.swift"; sourceTree = "<group>"; };
 		2D46AA382465E1000003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ENExposureConfiguration+CodableExposureConfiguration.swift"; sourceTree = "<group>"; };
 		2D46AA392465E1000003936C /* UserDefaults+Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Shared.swift"; sourceTree = "<group>"; };
 		2D46AA3A2465E1010003936C /* CodableDiagnosisKey+ExposureNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CodableDiagnosisKey+ExposureNotification.swift"; sourceTree = "<group>"; };
@@ -296,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				2D29BAF024607DA100E8BEC4 /* ENStatus+Additions.swift */,
+				2D3948A1248E6354001766A4 /* ENRiskScore+Levels.swift */,
 			);
 			path = ExposureNotification;
 			sourceTree = "<group>";
@@ -459,6 +464,7 @@
 				2D29BAE8246060B400E8BEC4 /* Alert.swift */,
 				2DD7B497245F65E1001B30F0 /* SubCallToAction.swift */,
 				2D74E4682465D428002057B9 /* PossibleExposureSummary.swift */,
+				2D39489F248E548E001766A4 /* PossibleExposureSummaryValueViewModifier.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -795,6 +801,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D74E4692465D429002057B9 /* PossibleExposureSummary.swift in Sources */,
+				2D3948A2248E6354001766A4 /* ENRiskScore+Levels.swift in Sources */,
 				2DBC07B3248552B4001304BB /* StandardTitleTextViewModifier.swift in Sources */,
 				2D46AA622466ADFE0003936C /* Welcome.swift in Sources */,
 				2DFEED072476AD4200D2C620 /* Data+Random.swift in Sources */,
@@ -830,6 +837,7 @@
 				2D5D940B2460118D00718412 /* Home.swift in Sources */,
 				2D46AA482465E10E0003936C /* GoogleExposureNotificationServer.swift in Sources */,
 				2D48BF7A245AE51800012E79 /* AppDelegate+BackgroundTasks.swift in Sources */,
+				2D3948A0248E548E001766A4 /* PossibleExposureSummaryValueViewModifier.swift in Sources */,
 				2DD7B496245F64D8001B30F0 /* CallToAction.swift in Sources */,
 				2DD7B442245F3FF2001B30F0 /* ContentView.swift in Sources */,
 				2D46AA4D2465E1190003936C /* URLSession+Additions.swift in Sources */,

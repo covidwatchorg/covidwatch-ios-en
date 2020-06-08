@@ -29,6 +29,21 @@ struct Home: View {
                     
                     VStack(spacing: 1) {
                         
+                        if self.userData.showHomeWelcomeMessage {
+                            Button(action: {
+                                withAnimation {
+                                    self.userData.showHomeWelcomeMessage = false
+                                    ApplicationController.shared.shareApp()
+                                }                                
+                            }) {
+                                Alert(
+                                    message: NSLocalizedString("HOME_WELCOME_MESSAGE", comment: ""),
+                                    backgroundColor: Color("Alert Standard Color"),
+                                    showExclamation: false
+                                )
+                            }
+                        }
+                        
                         if userData.exposureNotificationStatus != .active {
                             Button(action: {
                                 
@@ -92,7 +107,6 @@ struct Home: View {
                                 PossibleExposureSummary()
                                     .environmentObject(self.localStore)
                             }
-                            .padding(.horizontal, 2 * .standardSpacing)
                             .sheet(isPresented: $isShowingPossibleExposures) {
                                 PossibleExposures()
                                     .environmentObject(self.userData)

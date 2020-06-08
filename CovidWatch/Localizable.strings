@@ -156,13 +156,16 @@ All strings for the project, separated for localization.
 // # HOME
 
 /* Title */
+"HOME_WELCOME_MESSAGE" = "Welcome! Click around to review the app to get a feel for how it works. Share it with friends and family to improve the accuracy of the COVID-19 exposure data.";
+
+/* Title */
 "HOME_IMAGE_ACCESSIBILITY_LABEL" = "Happy Family";
 
 /* Title */
-"HOME_POSSIBLE_EXPOSURES_TITLE" = "Possible COVID-19 Exposures";
+"HOME_POSSIBLE_EXPOSURES_SUMMARY_TITLE" = "Possible Exposure Summary";
 
 /* Message */
-"NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE" = "Have a positive diagnosis? Share it anonymously to help your community stay safe.";
+"NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE" = "Have a positive diagnosis? Anonymously notify others to help your community stay safe.";
 
 /* Button */
 "NOTIFY_OTHERS" = "Notify Others";
@@ -264,11 +267,26 @@ All strings for the project, separated for localization.
 /* Message */
 "EXPOSURES_ARE_SAVED_MESSAGE" = "Each exposure notification is saved in this app and will be automatically deleted after 30 days.";
 
+/* Title */
+"POSSIBLE_EXPOSURES_NO_EXPOSURES_TITLE" = "No Exposures Detected";
+
+/* Message */
+"POSSIBLE_EXPOSURES_NO_EXPOSURES_MESSAGE" = "Continue to follow the guidance of local health authorities and check back later for updates.";
+
+/* Title */
+"EXPOSURE_HIGH_RISK_TITLE" = "High Risk:";
+
+/* Title */
+"EXPOSURE_MEDIUM_RISK_TITLE" = "Med. Risk:";
+
+/* Title */
+"EXPOSURE_LOW_RISK_TITLE" = "Low Risk:";
+
 /* Message */
 "HIGH_RISK_EXPOSURE_DATE_MESSAGE" = "High risk exposure on %@";
 
 /* Message */
-"STANDARD_RISK_EXPOSURE_DATE_MESSAGE" = "Standard risk exposure on %@";
+"MEDIUM_RISK_EXPOSURE_DATE_MESSAGE" = "Medium risk exposure on %@";
 
 /* Message */
 "LOW_RISK_EXPOSURE_DATE_MESSAGE" = "Low risk exposure on %@";

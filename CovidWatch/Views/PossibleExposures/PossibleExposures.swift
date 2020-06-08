@@ -15,6 +15,14 @@ struct PossibleExposures: View {
     
     @State private var selectedExposure: Exposure?
     
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.doesRelativeDateFormatting = true
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        return dateFormatter
+    }()
+    
     var body: some View {
         
         ZStack(alignment: .top) {
@@ -41,7 +49,7 @@ struct PossibleExposures: View {
                     Spacer(minLength: .standardSpacing)
                     
                     Text(verbatim: self.userData.exposureNotificationStatusMessage)
-                        .font(.custom("Montserrat-Regular", size: 16))
+                        .font(.custom("Montserrat-Regular", size: 13))
                         .foregroundColor(Color("Title Text Color"))
                         .padding(.horizontal, 2 * .standardSpacing)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -50,7 +58,7 @@ struct PossibleExposures: View {
                     
                     Text(verbatim: self.localStore.dateLastPerformedExposureDetection == nil ?
                         NSLocalizedString("EXPOSURES_LAST_CHECKED_NEVER_MESSAGE", comment: "") :
-                        String.localizedStringWithFormat(NSLocalizedString("EXPOSURES_LAST_CHECKED_DATE_MESSAGE", comment: ""), DateFormatter.localizedString(from: self.localStore.dateLastPerformedExposureDetection!, dateStyle: .medium, timeStyle: .short))
+                        String.localizedStringWithFormat(NSLocalizedString("EXPOSURES_LAST_CHECKED_DATE_MESSAGE", comment: ""), self.dateFormatter.string(from: self.localStore.dateLastPerformedExposureDetection!))
                     )
                         .font(.custom("Montserrat-Bold", size: 16))
                         .foregroundColor(Color.white)
@@ -59,21 +67,50 @@ struct PossibleExposures: View {
                         .background(Color("Possible Exposures Last Check Background Color"))
                     
                     VStack(spacing: 0) {
-                        ForEach(0..<self.localStore.exposures.count) { index in
+                        if self.localStore.exposures.isEmpty {
                             
-                            Button(action: {
-                                self.selectedExposure = self.localStore.exposures[index]
-                                self.isShowingExposureDetail.toggle()
-                            }) {
-                                PossibleExposureRow(exposure: self.localStore.exposures[index])
-                                    .padding(.horizontal, 2 * .standardSpacing)
+                            ZStack {
+                                VStack(spacing: 0) {
+                                    
+                                    Text("POSSIBLE_EXPOSURES_NO_EXPOSURES_TITLE")
+                                        .font(.custom("Montserrat-Bold", size: 13))
+                                        .foregroundColor(Color("Title Text Color"))
+                                        .padding(.leading, 2 * .standardSpacing)
+                                        .padding(.trailing, 108)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                    
+                                    Text("POSSIBLE_EXPOSURES_NO_EXPOSURES_MESSAGE")
+                                        .font(.custom("Montserrat-Regular", size: 13))
+                                        .foregroundColor(Color("Title Text Color"))
+                                        .padding(.leading, 2 * .standardSpacing)
+                                        .padding(.trailing, 108)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                                Image("Doctors Security")
+                                    .accessibility(hidden: true)
+                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
                             }
-                            .accessibility(hint: Text("SHOWS_MORE_INFO_ACCESSIBILITY_HINT"))
-                            .background(index % 2 == 0 ? Color(UIColor.secondarySystemBackground) : Color(UIColor.systemBackground))
-                            .frame(minHeight: 54)
-                            .sheet(isPresented: self.$isShowingExposureDetail) {
-                                PossibleExposure(exposure: self.selectedExposure!)
-                                    .environmentObject(self.localStore)
+                        }
+                        else {
+                            ForEach(0..<self.localStore.exposures.count) { index in
+                                
+                                Button(action: {
+                                    self.selectedExposure = self.localStore.exposures[index]
+                                    self.isShowingExposureDetail.toggle()
+                                }) {
+                                    VStack(spacing: 0) {
+                                        Divider()
+                                        PossibleExposureRow(exposure: self.localStore.exposures[index])
+                                            .padding(.horizontal, 2 * .standardSpacing)
+                                        Divider()
+                                    }
+                                }
+                                .accessibility(hint: Text("SHOWS_MORE_INFO_ACCESSIBILITY_HINT"))
+                                .frame(minHeight: 54)
+                                .sheet(isPresented: self.$isShowingExposureDetail) {
+                                    PossibleExposure(exposure: self.selectedExposure!)
+                                        .environmentObject(self.localStore)
+                                }
                             }
                         }
                         
