@@ -99,7 +99,6 @@ struct PossibleExposures: View {
                                     self.isShowingExposureDetail.toggle()
                                 }) {
                                     VStack(spacing: 0) {
-                                        Divider()
                                         PossibleExposureRow(exposure: self.localStore.exposures[index])
                                             .padding(.horizontal, 2 * .standardSpacing)
                                         Divider()
