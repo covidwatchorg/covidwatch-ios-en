@@ -31,7 +31,7 @@ struct Welcome: View {
                     
                     Spacer(minLength: .headerHeight)
                     
-                    Image("Family Dancing")
+                    Image("Welcome")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .accessibility(label: Text("WELCOME_IMAGE_ACCESSIBILITY_LABEL"))

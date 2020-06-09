@@ -27,22 +27,16 @@ struct Setup3: View {
                     
                     Spacer(minLength: .headerHeight)
                     
-                    Image("Family Dancing")
+                    Image("Setup 3")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .accessibility(label: Text("WELCOME_IMAGE_ACCESSIBILITY_LABEL"))
-                        .background(
-                            Image("Rectangle 33")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .accessibility(hidden: true)
-                    )
+                        .accessibility(label: Text("SETUP_3_IMAGE_ACCESSIBILITY_LABEL"))
+                        .padding(.horizontal, 2 * .standardSpacing)
                     
                     Text("SETUP_3_1_MESSAGE")
-                        .modifier(SetupTitleTextViewModifier())
+                        .modifier(StandardTitleTextViewModifier())
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 2 * .standardSpacing)
-                        .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Spacer(minLength: .standardSpacing)
                     
@@ -57,7 +51,16 @@ struct Setup3: View {
                         .modifier(SetupMessageTextViewModifier())
                         .padding(.horizontal, 2 * .standardSpacing)
                         .frame(maxWidth: .infinity, alignment: .leading)
-
+                    
+                    Button(action: {
+                        ApplicationController.shared.shareApp()
+                    }) {
+                        Text("SHARE_THE_APP").modifier(SmallCallToAction())
+                    }
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .padding(.top, 2 * .standardSpacing)
+                    .padding(.bottom, .standardSpacing)
+                    
                     Button(action: {
                         withAnimation {
                             self.userData.showHomeWelcomeMessage = true
@@ -65,15 +68,6 @@ struct Setup3: View {
                         }
                     }) {
                         Text("SETUP_3_GO_TO_HOME").modifier(SmallCallToAction())
-                    }
-                    .padding(.top, .standardSpacing)
-                    .padding(.bottom, .standardSpacing)
-                    .padding(.horizontal, 2 * .standardSpacing)
-                    
-                    Button(action: {
-                        ApplicationController.shared.shareApp()
-                    }) {
-                        Text("SHARE_THE_APP").modifier(SmallCallToAction())
                     }
                     .padding(.horizontal, 2 * .standardSpacing)
                     

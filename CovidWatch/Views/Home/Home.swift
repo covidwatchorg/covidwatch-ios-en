@@ -33,13 +33,13 @@ struct Home: View {
                             Button(action: {
                                 withAnimation {
                                     self.userData.showHomeWelcomeMessage = false
-                                    ApplicationController.shared.shareApp()
                                 }                                
                             }) {
                                 Alert(
                                     message: NSLocalizedString("HOME_WELCOME_MESSAGE", comment: ""),
                                     backgroundColor: Color("Alert Standard Color"),
-                                    showExclamation: false
+                                    showExclamation: false,
+                                    detailImage: Image("Alert Dismiss")
                                 )
                             }
                         }
@@ -56,7 +56,7 @@ struct Home: View {
                                 Alert(
                                     message: userData.exposureNotificationStatus.localizedDetailDescription,
                                     backgroundColor: Color("Alert Standard Color"),
-                                    showArror: (self.userData.exposureNotificationStatus == .unknown || self.userData.exposureNotificationStatus == .disabled)
+                                    detailImage: (self.userData.exposureNotificationStatus == .unknown || self.userData.exposureNotificationStatus == .disabled) ? Image("Right Arrow") : nil
                                 )
                             }
                             .sheet(isPresented: $isShowingExposureSettings) {
@@ -97,8 +97,8 @@ struct Home: View {
                         VStack(spacing: 0) {
                             
                             Image("Home")
-                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 232, alignment: .top)
-                                .background(LinearGradient(gradient: Gradient(colors: [Color(red: 0.263, green: 0.769, blue: 0.851, opacity: 1), Color.white.opacity(0.4)]), startPoint: .top, endPoint: .bottom))
+//                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 232, alignment: .top)
+//                                .background(LinearGradient(gradient: Gradient(colors: [Color(red: 0.263, green: 0.769, blue: 0.851, opacity: 1), Color.white.opacity(0.4)]), startPoint: .top, endPoint: .bottom))
                                 .accessibility(label: Text("HOME_IMAGE_ACCESSIBILITY_LABEL"))
                                                         
                             Button(action: {
@@ -142,7 +142,7 @@ struct Home: View {
                             Image("Powered By CW Grey")
                                 .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
                                 .padding(.top, 2 * .standardSpacing)
-                                .padding(.bottom, 3 * .standardSpacing)
+                                .padding(.bottom, .standardSpacing)
                         }
                         
                         //                            LinearGradient(gradient: Gradient(colors: [.init(red: 0.263, green: 0.769, blue: 0.851), .init(red: 1, green: 1, blue: 1, opacity: 0.4)]), startPoint: .top, endPoint: .bottom)

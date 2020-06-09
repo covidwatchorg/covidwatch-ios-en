@@ -34,7 +34,7 @@ struct PossibleExposureRow: View {
                     + // "+" is important here. Otherwise the sheet can not be dismissed.
                     self.formattedDateText
             } else if exposure.totalRiskScore.level == .medium {
-                Image("Exposure Row High Risk")
+                Image("Exposure Row Medium Risk")
                     .padding(.trailing, .standardSpacing)
                 Text("EXPOSURE_MEDIUM_RISK_TITLE")
                     .font(.custom("Montserrat-Bold", size: 14))
@@ -42,7 +42,7 @@ struct PossibleExposureRow: View {
                     + // "+" is important here. Otherwise the sheet can not be dismissed.
                     self.formattedDateText
             } else {
-                Image("Exposure Row High Risk")
+                Image("Exposure Row Low Risk")
                     .padding(.trailing, .standardSpacing)
                 Text("EXPOSURE_LOW_RISK_TITLE")
                     .font(.custom("Montserrat-Bold", size: 14))

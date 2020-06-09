@@ -9,8 +9,7 @@ struct StandardTitleTextViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.custom("Montserrat-SemiBold", size: 31))
-            .foregroundColor(Color("Title Text Color"))
-            .padding(.horizontal, 2 * .standardSpacing)
+            .foregroundColor(Color("Title Text Color"))            
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

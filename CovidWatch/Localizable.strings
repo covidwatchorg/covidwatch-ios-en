@@ -48,7 +48,7 @@ All strings for the project, separated for localization.
 // ## HOW IT WORKS 0
 
 /* Title */
-"WELCOME_IMAGE_ACCESSIBILITY_LABEL" = "Family Dancing";
+"WELCOME_IMAGE_ACCESSIBILITY_LABEL" = "Welcome";
 
 /* Title */
 "WELCOME_TITLE" = "Welcome to the";
@@ -101,7 +101,7 @@ All strings for the project, separated for localization.
 "HOW_IT_WORKS_4_IMAGE_ACCESSIBILITY_LABEL" = "Jane and Sam Help Keep Their Communities Safe";
 
 /* Message */
-"HOW_IT_WORKS_4_MESSAGE" = "By opting in to share and receive exposure notifications, Jane and Sam help their communities stay safe. They share the app with others so that they can also help stop the spread.";
+"HOW_IT_WORKS_4_MESSAGE" = "By opting in to enable exposure notifications, Jane and Sam help their communities stay safe. They share the app with others so that they can also help stop the spread.";
 
 /* Button */
 "CONTINUE_SETUP" = "Continue Setup";
@@ -141,6 +141,9 @@ All strings for the project, separated for localization.
 
 // ## SETUP 3
 
+/* Title */
+"SETUP_3_IMAGE_ACCESSIBILITY_LABEL" = "3 People Looking at Phone";
+
 /* Message */
 "SETUP_3_1_MESSAGE" = "You’re all set!";
 
@@ -151,15 +154,15 @@ All strings for the project, separated for localization.
 "SETUP_3_3_MESSAGE" = "Share the app with others to improve the accuracy of your notifications.";
 
 /* Title */
-"SETUP_3_GO_TO_HOME" = "See Exposure Status";
+"SETUP_3_GO_TO_HOME" = "See Exposure Summary";
 
 // # HOME
 
 /* Title */
-"HOME_WELCOME_MESSAGE" = "Welcome! Click around to review the app to get a feel for how it works. Share it with friends and family to improve the accuracy of the COVID-19 exposure data.";
+"HOME_WELCOME_MESSAGE" = "Welcome! Tap around to get a feel for how the app works. Share it with friends and family to improve the accuracy of your exposure data.";
 
 /* Title */
-"HOME_IMAGE_ACCESSIBILITY_LABEL" = "Happy Family";
+"HOME_IMAGE_ACCESSIBILITY_LABEL" = "Love Earth";
 
 /* Title */
 "HOME_POSSIBLE_EXPOSURES_SUMMARY_TITLE" = "Possible Exposure Summary";
@@ -271,7 +274,7 @@ All strings for the project, separated for localization.
 "POSSIBLE_EXPOSURES_NO_EXPOSURES_TITLE" = "No Exposures Detected";
 
 /* Message */
-"POSSIBLE_EXPOSURES_NO_EXPOSURES_MESSAGE" = "Continue to follow the guidance of local health authorities and check back later for updates.";
+"POSSIBLE_EXPOSURES_NO_EXPOSURES_MESSAGE" = "Continue to follow the guidance of the Public Health Department and check back later for updates.";
 
 /* Title */
 "EXPOSURE_HIGH_RISK_TITLE" = "High Risk:";
@@ -364,8 +367,11 @@ All strings for the project, separated for localization.
 
 // # NOTIFY OTHERS
 
+/* Title */
+"STEP_X_OF_Y_TITLE" = "Step %@ of %@";
+
 /* Message */
-"NOTIFY_OTHERS_CALL_TO_ACTION_LONG_MESSAGE" = "If you tested positive for the virus that causes COVID-19, you can choose to share your diagnosis. This will help others in your community contain the spread of the virus.";
+"NOTIFY_OTHERS_CALL_TO_ACTION_LONG_MESSAGE" = "If you tested positive for COVID-19 by the Public Health Department, you can help stop the spread in your communities by anonymously notifying others.";
 
 /* Button */
 "SHARE_A_POSITIVE_DIAGNOSIS" = "Share a Positive Diagnosis";

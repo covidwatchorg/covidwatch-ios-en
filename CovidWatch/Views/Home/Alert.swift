@@ -10,13 +10,13 @@ struct Alert: View {
     var message: String
     var backgroundColor: Color
     var showExclamation: Bool
-    var showArror: Bool
+    var detailImage: Image?
     
-    init(message: String, backgroundColor: Color, showExclamation: Bool = true, showArror: Bool = true) {
+    init(message: String, backgroundColor: Color, showExclamation: Bool = true, detailImage: Image? = Image("Right Arrow")) {
         self.message = message
         self.backgroundColor = backgroundColor
         self.showExclamation = showExclamation
-        self.showArror = showArror
+        self.detailImage = detailImage
     }
     
     var body: some View {
@@ -29,8 +29,8 @@ struct Alert: View {
                 .foregroundColor(.white)
                 .multilineTextAlignment(.leading)
             Spacer()
-            if showArror {
-                Image("Right Arrow")
+            if detailImage != nil {
+                detailImage
             }
         }
         .padding(.vertical, .standardSpacing)

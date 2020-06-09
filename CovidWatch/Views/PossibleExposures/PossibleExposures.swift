@@ -26,7 +26,7 @@ struct PossibleExposures: View {
     var body: some View {
         
         ZStack(alignment: .top) {
-                        
+            
             ScrollView(.vertical, showsIndicators: false) {
                 
                 VStack(spacing: 0) {
@@ -35,6 +35,7 @@ struct PossibleExposures: View {
                     
                     Text("POSSIBLE_EXPOSURES_TITLE")
                         .modifier(StandardTitleTextViewModifier())
+                        .padding(.horizontal, 2 * .standardSpacing)
                     
                     Spacer(minLength: 2 * .standardSpacing)
                     
@@ -69,27 +70,26 @@ struct PossibleExposures: View {
                     VStack(spacing: 0) {
                         if self.localStore.exposures.isEmpty {
                             
-                            ZStack {
+                            HStack {
                                 VStack(spacing: 0) {
                                     
                                     Text("POSSIBLE_EXPOSURES_NO_EXPOSURES_TITLE")
                                         .font(.custom("Montserrat-Bold", size: 13))
                                         .foregroundColor(Color("Title Text Color"))
-                                        .padding(.leading, 2 * .standardSpacing)
-                                        .padding(.trailing, 108)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, alignment: .topLeading)
                                     
                                     Text("POSSIBLE_EXPOSURES_NO_EXPOSURES_MESSAGE")
                                         .font(.custom("Montserrat-Regular", size: 13))
                                         .foregroundColor(Color("Title Text Color"))
-                                        .padding(.leading, 2 * .standardSpacing)
-                                        .padding(.trailing, 108)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
                                 }
-                                Image("Doctors Security")
+                                Spacer()
+                                Image("Doctor with Heart")
                                     .accessibility(hidden: true)
-                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
                             }
+                            .padding(.top, .standardSpacing)
+                            .padding(.horizontal, 2 * .standardSpacing)
+                            .background(LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.4), Color(red: 0.263, green: 0.769, blue: 0.851, opacity: 1)]), startPoint: .top, endPoint: .bottom))
                         }
                         else {
                             ForEach(0..<self.localStore.exposures.count) { index in

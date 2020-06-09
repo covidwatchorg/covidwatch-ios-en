@@ -30,7 +30,7 @@ struct Setup2: View {
                     HowItWorksTitleText(text: Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("SETUP_PRE_TITLE", comment: ""), NSNumber(value: 2), NSNumber(value: 2)).uppercased()))
                     
                     Text("ENABLE_PUSH_NOTIFICATIONS_TITLE")
-                        .modifier(SetupTitleTextViewModifier())
+                        .modifier(StandardTitleTextViewModifier())
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 2 * .standardSpacing)
                     

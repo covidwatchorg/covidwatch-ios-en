@@ -117,7 +117,6 @@
 		2DD7B48E245F50A0001B30F0 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B469245F50A0001B30F0 /* Roboto-Black.ttf */; };
 		2DD7B48F245F50A0001B30F0 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B46A245F50A0001B30F0 /* Montserrat-SemiBoldItalic.ttf */; };
 		2DD7B490245F50A0001B30F0 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B46B245F50A0001B30F0 /* Montserrat-ExtraBoldItalic.ttf */; };
-		2DD7B492245F640C001B30F0 /* SetupTitleTextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B491245F640C001B30F0 /* SetupTitleTextViewModifier.swift */; };
 		2DD7B494245F646D001B30F0 /* SetupMessageTextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B493245F646D001B30F0 /* SetupMessageTextViewModifier.swift */; };
 		2DD7B496245F64D8001B30F0 /* CallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B495245F64D8001B30F0 /* CallToAction.swift */; };
 		2DD7B498245F65E1001B30F0 /* SubCallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B497245F65E1001B30F0 /* SubCallToAction.swift */; };
@@ -263,7 +262,6 @@
 		2DD7B469245F50A0001B30F0 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		2DD7B46A245F50A0001B30F0 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		2DD7B46B245F50A0001B30F0 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		2DD7B491245F640C001B30F0 /* SetupTitleTextViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTitleTextViewModifier.swift; sourceTree = "<group>"; };
 		2DD7B493245F646D001B30F0 /* SetupMessageTextViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupMessageTextViewModifier.swift; sourceTree = "<group>"; };
 		2DD7B495245F64D8001B30F0 /* CallToAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallToAction.swift; sourceTree = "<group>"; };
 		2DD7B497245F65E1001B30F0 /* SubCallToAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCallToAction.swift; sourceTree = "<group>"; };
@@ -448,7 +446,6 @@
 				2D9034C6246049EC00351C3C /* Setup1.swift */,
 				2D9034C824604BB000351C3C /* Setup2.swift */,
 				2D39489D248E40A3001766A4 /* Setup3.swift */,
-				2DD7B491245F640C001B30F0 /* SetupTitleTextViewModifier.swift */,
 				2DD7B493245F646D001B30F0 /* SetupMessageTextViewModifier.swift */,
 			);
 			path = Setup;
@@ -871,7 +868,6 @@
 				2D5D940F2460231200718412 /* PageViewController.swift in Sources */,
 				2D46AA4E2465E1190003936C /* UIWindow+ViewControllerUtility.swift in Sources */,
 				2D29BAF924609F6100E8BEC4 /* MenuTitleText.swift in Sources */,
-				2DD7B492245F640C001B30F0 /* SetupTitleTextViewModifier.swift in Sources */,
 				2DFEED1024792CF300D2C620 /* LocalGoogleExposureNotificationServer.swift in Sources */,
 				2D63D592245CBCC10027D43B /* OSLog+Additions.swift in Sources */,
 				E2209580245BA49400819BD1 /* Environment.swift in Sources */,
