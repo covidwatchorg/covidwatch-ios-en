@@ -15,6 +15,9 @@
 		2D39489E248E40A3001766A4 /* Setup3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39489D248E40A3001766A4 /* Setup3.swift */; };
 		2D3948A0248E548E001766A4 /* PossibleExposureSummaryValueViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39489F248E548E001766A4 /* PossibleExposureSummaryValueViewModifier.swift */; };
 		2D3948A2248E6354001766A4 /* ENRiskScore+Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A1248E6354001766A4 /* ENRiskScore+Levels.swift */; };
+		2D3948A6248E7DD1001766A4 /* AZExposureRiskScorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A5248E7DD1001766A4 /* AZExposureRiskScorer.swift */; };
+		2D3948A8248EA455001766A4 /* ExposureRiskScoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A7248EA454001766A4 /* ExposureRiskScoring.swift */; };
+		2D3948AA248EB954001766A4 /* ExposureRiskScoringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A9248EB954001766A4 /* ExposureRiskScoringTests.swift */; };
 		2D46AA3E2465E1010003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA382465E1000003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift */; };
 		2D46AA3F2465E1010003936C /* UserDefaults+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA392465E1000003936C /* UserDefaults+Shared.swift */; };
 		2D46AA402465E1010003936C /* CodableDiagnosisKey+ExposureNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3A2465E1010003936C /* CodableDiagnosisKey+ExposureNotification.swift */; };
@@ -152,6 +155,9 @@
 		2D39489D248E40A3001766A4 /* Setup3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup3.swift; sourceTree = "<group>"; };
 		2D39489F248E548E001766A4 /* PossibleExposureSummaryValueViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleExposureSummaryValueViewModifier.swift; sourceTree = "<group>"; };
 		2D3948A1248E6354001766A4 /* ENRiskScore+Levels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ENRiskScore+Levels.swift"; sourceTree = "<group>"; };
+		2D3948A5248E7DD1001766A4 /* AZExposureRiskScorer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AZExposureRiskScorer.swift; sourceTree = "<group>"; };
+		2D3948A7248EA454001766A4 /* ExposureRiskScoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureRiskScoring.swift; sourceTree = "<group>"; };
+		2D3948A9248EB954001766A4 /* ExposureRiskScoringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureRiskScoringTests.swift; sourceTree = "<group>"; };
 		2D46AA382465E1000003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ENExposureConfiguration+CodableExposureConfiguration.swift"; sourceTree = "<group>"; };
 		2D46AA392465E1000003936C /* UserDefaults+Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Shared.swift"; sourceTree = "<group>"; };
 		2D46AA3A2465E1010003936C /* CodableDiagnosisKey+ExposureNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CodableDiagnosisKey+ExposureNotification.swift"; sourceTree = "<group>"; };
@@ -300,6 +306,8 @@
 			isa = PBXGroup;
 			children = (
 				2D29BAF024607DA100E8BEC4 /* ENStatus+Additions.swift */,
+				2D3948A7248EA454001766A4 /* ExposureRiskScoring.swift */,
+				2D3948A5248E7DD1001766A4 /* AZExposureRiskScorer.swift */,
 				2D3948A1248E6354001766A4 /* ENRiskScore+Levels.swift */,
 			);
 			path = ExposureNotification;
@@ -520,6 +528,7 @@
 		2D9CF3E62455B9F5005B085E /* CovidWatchTests */ = {
 			isa = PBXGroup;
 			children = (
+				2D3948A9248EB954001766A4 /* ExposureRiskScoringTests.swift */,
 				2D9CF3E72455B9F5005B085E /* CovidWatchTests.swift */,
 				2D9CF3E92455B9F5005B085E /* Info.plist */,
 			);
@@ -831,6 +840,7 @@
 				2D46AA3E2465E1010003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift in Sources */,
 				2DFEED0E24792C1600D2C620 /* GCPGoogleExposureNotificationServer.swift in Sources */,
 				2D29BAF124607DA100E8BEC4 /* ENStatus+Additions.swift in Sources */,
+				2D3948A8248EA455001766A4 /* ExposureRiskScoring.swift in Sources */,
 				2D7942A02467E915008AF148 /* Reporting.swift in Sources */,
 				2D5D940D246019D500718412 /* HowItWorks.swift in Sources */,
 				2D5D94132460232A00718412 /* PageControl.swift in Sources */,
@@ -843,6 +853,7 @@
 				2D46AA4D2465E1190003936C /* URLSession+Additions.swift in Sources */,
 				2D46AA472465E10E0003936C /* DiagnosisServerInterface.swift in Sources */,
 				2D79429C2467DB49008AF148 /* PossibleExposure.swift in Sources */,
+				2D3948A6248E7DD1001766A4 /* AZExposureRiskScorer.swift in Sources */,
 				2DD7B498245F65E1001B30F0 /* SubCallToAction.swift in Sources */,
 				2D5D94072460000A00718412 /* ApplicationController.swift in Sources */,
 				2D9E6B2D2456E9A800150D1C /* AppDelegate+UserNotificationCenter.swift in Sources */,
@@ -879,6 +890,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D3948AA248EB954001766A4 /* ExposureRiskScoringTests.swift in Sources */,
 				2D9CF3E82455B9F5005B085E /* CovidWatchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1049,6 +1061,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.california.ios;
+				PRODUCT_MODULE_NAME = CovidWatch;
 				PRODUCT_NAME = "CW DEMO";
 				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch EN Dev";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
@@ -1074,6 +1087,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.california.ios;
+				PRODUCT_MODULE_NAME = CovidWatch;
 				PRODUCT_NAME = "CW DEMO";
 				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch EN Dev";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
@@ -1088,8 +1102,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GD7NMG67S7;
 				INFOPLIST_FILE = CovidWatchTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1099,7 +1114,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CovidWatch.app/CovidWatch";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CW DEMO.app/CW DEMO";
 			};
 			name = Debug;
 		};
@@ -1109,8 +1124,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GD7NMG67S7;
 				INFOPLIST_FILE = CovidWatchTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1120,7 +1136,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CovidWatch.app/CovidWatch";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CW DEMO.app/CW DEMO";
 			};
 			name = Release;
 		};
@@ -1130,6 +1146,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CovidWatchUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1149,6 +1166,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CovidWatchUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
