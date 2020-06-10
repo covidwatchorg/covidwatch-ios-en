@@ -33,6 +33,8 @@ struct Setup3: View {
                         .accessibility(label: Text("SETUP_3_IMAGE_ACCESSIBILITY_LABEL"))
                         .padding(.horizontal, 2 * .standardSpacing)
                     
+                    Spacer(minLength: .standardSpacing)
+                    
                     Text("SETUP_3_1_MESSAGE")
                         .modifier(StandardTitleTextViewModifier())
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -52,28 +54,30 @@ struct Setup3: View {
                         .padding(.horizontal, 2 * .standardSpacing)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    Button(action: {
-                        ApplicationController.shared.shareApp()
-                    }) {
-                        Text("SHARE_THE_APP").modifier(SmallCallToAction())
-                    }
-                    .padding(.horizontal, 2 * .standardSpacing)
-                    .padding(.top, 2 * .standardSpacing)
-                    .padding(.bottom, .standardSpacing)
-                    
-                    Button(action: {
-                        withAnimation {
-                            self.userData.showHomeWelcomeMessage = true
-                            self.userData.isSetupCompleted = true
+                    Group {
+                        Button(action: {
+                            ApplicationController.shared.shareApp()
+                        }) {
+                            Text("SHARE_THE_APP").modifier(SmallCallToAction())
                         }
-                    }) {
-                        Text("SETUP_3_GO_TO_HOME").modifier(SmallCallToAction())
-                    }
-                    .padding(.horizontal, 2 * .standardSpacing)
-                    
-                    Image("Powered By CW Grey")
-                        .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
+                        .padding(.horizontal, 2 * .standardSpacing)
                         .padding(.top, 2 * .standardSpacing)
+                        .padding(.bottom, .standardSpacing)
+                        
+                        Button(action: {
+                            withAnimation {
+                                self.userData.showHomeWelcomeMessage = true
+                                self.userData.isSetupCompleted = true
+                            }
+                        }) {
+                            Text("SETUP_3_GO_TO_HOME").modifier(SmallCallToAction())
+                        }
+                        .padding(.horizontal, 2 * .standardSpacing)
+                        
+                        Image("Powered By CW Grey")
+                            .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
+                            .padding(.top, 2 * .standardSpacing)
+                    }
                 }
             }
             
