@@ -30,4 +30,8 @@ public protocol DiagnosisServer {
     func getExposureConfiguration(
         completion: (Result<ENExposureConfiguration, Error>) -> Void
     )
+    
+    func getExposureConfigurationList(
+        completion: (Result<[ENExposureConfiguration], Error>) -> Void
+    )
 }

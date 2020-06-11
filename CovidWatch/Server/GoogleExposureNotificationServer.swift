@@ -275,21 +275,21 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
         do {
             let codableExposureConfiguration = try JSONDecoder().decode(CodableExposureConfiguration.self, from: dataFromServer)
             let exposureConfiguration = ENExposureConfiguration()
+            
             exposureConfiguration.minimumRiskScore = codableExposureConfiguration.minimumRiskScore
             exposureConfiguration.attenuationLevelValues = codableExposureConfiguration.attenuationLevelValues as [NSNumber]
             exposureConfiguration.daysSinceLastExposureLevelValues = codableExposureConfiguration.daysSinceLastExposureLevelValues as [NSNumber]
             exposureConfiguration.durationLevelValues = codableExposureConfiguration.durationLevelValues as [NSNumber]
             exposureConfiguration.transmissionRiskLevelValues = codableExposureConfiguration.transmissionRiskLevelValues as [NSNumber]
-            // This doesn't work
-//            exposureConfiguration.metadata = ["attenuationDurationThresholds": codableExposureConfiguration.attenuationDurationThresholds]
-            // Setting it through KVC works
-            exposureConfiguration.setValue(codableExposureConfiguration.attenuationDurationThresholds, forKey: "attenuationDurationThresholds")
+            exposureConfiguration.setValue(codableExposureConfiguration.attenuationDurationThresholdList[0], forKey: "attenuationDurationThresholds")
             
+                
             os_log(
                 "Got exposure configuration=%@ from server",
                 log: .en,
                 exposureConfiguration.description
             )
+
             completion(.success(exposureConfiguration))
         } catch {
             os_log(
@@ -349,5 +349,47 @@ public class GoogleExposureNotificationServer: DiagnosisServer {
 //                    return
 //            }
 //        }.resume()
+    }
+    
+    
+    public func getExposureConfigurationList(completion: (Result<[ENExposureConfiguration], Error>) -> Void) {
+        os_log(
+            "Getting exposure configuration from server ...",
+            log: .en
+        )
+
+        let dataFromServer = LocalStore.shared.exposureConfiguration.data(using: .utf8)!
+
+        do {
+            let codableExposureConfiguration = try JSONDecoder().decode(CodableExposureConfiguration.self, from: dataFromServer)
+            var exposureConfigurationList = [ENExposureConfiguration]()
+            for attenuationDurationThresholds in codableExposureConfiguration.attenuationDurationThresholdList {
+                let exposureConfiguration = ENExposureConfiguration()
+                exposureConfiguration.minimumRiskScore = codableExposureConfiguration.minimumRiskScore
+                exposureConfiguration.attenuationLevelValues = codableExposureConfiguration.attenuationLevelValues as [NSNumber]
+                exposureConfiguration.daysSinceLastExposureLevelValues = codableExposureConfiguration.daysSinceLastExposureLevelValues as [NSNumber]
+                exposureConfiguration.durationLevelValues = codableExposureConfiguration.durationLevelValues as [NSNumber]
+                exposureConfiguration.transmissionRiskLevelValues = codableExposureConfiguration.transmissionRiskLevelValues as [NSNumber]
+                exposureConfiguration.setValue(attenuationDurationThresholds, forKey: "attenuationDurationThresholds")
+                
+                exposureConfigurationList.append(exposureConfiguration)
+                
+                os_log(
+                    "Got exposure configuration=%@ from server",
+                    log: .en,
+                    exposureConfiguration.description
+                )
+            }
+
+            completion(.success(exposureConfigurationList))
+        } catch {
+            os_log(
+                "Getting exposure configuration from server failed=%@",
+                log: .en,
+                type: .error,
+                error as CVarArg
+            )
+            completion(.failure(error))
+        }
     }
 }

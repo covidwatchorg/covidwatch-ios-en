@@ -16,6 +16,7 @@ public struct Exposure: Codable {
     let totalRiskScore: ENRiskScore
     let totalRiskScoreFullRange: Int
     let transmissionRiskLevel: ENRiskLevel
+    let attenuationDurationThresholds: [Int]
 }
 
 public struct TestResult: Codable {
@@ -102,7 +103,7 @@ public class LocalStore: ObservableObject {
     static let exposureConfigurationDefault: String =
     """
     {"minimumRiskScore":0,
-    "attenuationDurationThresholds":[58, 73],
+    "attenuationDurationThresholds":[[58, 73]],
     "attenuationLevelValues":[2, 5, 8, 8, 8, 8, 8, 8],
     "daysSinceLastExposureLevelValues":[1, 2, 2, 4, 6, 8, 8, 8],
     "durationLevelValues":[1, 1, 4, 7, 7, 8, 8, 8],

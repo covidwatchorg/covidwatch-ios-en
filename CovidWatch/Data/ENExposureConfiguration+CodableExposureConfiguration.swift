@@ -18,6 +18,6 @@ extension ENExposureConfiguration {
         self.daysSinceLastExposureLevelValues = codableExposureConfiguration.daysSinceLastExposureLevelValues as [NSNumber]
         self.durationLevelValues = codableExposureConfiguration.durationLevelValues as [NSNumber]
         self.transmissionRiskLevelValues = codableExposureConfiguration.transmissionRiskLevelValues as [NSNumber]
-        self.metadata = ["attenuationDurationThresholds": codableExposureConfiguration.attenuationDurationThresholds]
+        self.metadata = ["attenuationDurationThresholdList": codableExposureConfiguration.attenuationDurationThresholdList]
     }
 }
