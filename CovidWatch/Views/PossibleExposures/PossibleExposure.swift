@@ -27,8 +27,9 @@ struct PossibleExposure: View {
                     
                     Text("POSSIBLE_EXPOSURE_TITLE")
                         .modifier(StandardTitleTextViewModifier())
-                        .foregroundColor(Color("Alert Critical Color"))
+                        .foregroundColor(Color("Alert High Color"))
                         .padding(.top, .headerHeight)
+                        .padding(.horizontal, 2 * .standardSpacing)
                     
                     Text("DETAILS_TITLE")
                         .font(.custom("Montserrat-SemiBold", size: 18))
@@ -92,7 +93,6 @@ struct PossibleExposure: View {
                             Text("FIND_TEST_SITE_TITLE")
                                 .modifier(SmallCallToAction())
                         }
-                        .padding(.top, 2 * .standardSpacing)
                         .padding(.horizontal, 2 * .standardSpacing)
                         
                         Image("Powered By CW Grey")

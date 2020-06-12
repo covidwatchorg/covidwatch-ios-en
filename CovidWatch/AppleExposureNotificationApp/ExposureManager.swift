@@ -84,61 +84,53 @@ class ExposureManager {
         }
         let nextDiagnosisKeyFileIndex = LocalStore.shared.nextDiagnosisKeyFileIndex
                 
-        
-        
         let actionAfterHasLocalURLs = {
-             Server.shared.getExposureConfigurationList { result in
+            Server.shared.getExposureConfiguration { result in
                 switch result {
-                case let .success(configurationList):
-                    os_log(
-                        "Input config count=%d",
-                        log: .en,
-                        configurationList.count
-                    )
-                    let semaphore = DispatchSemaphore(value: 0)
-                    for configuration in configurationList{
-                        os_log("running with new config")
-                        ExposureManager.shared.manager.detectExposures(configuration: configuration, diagnosisKeyURLs: localURLs) { summary, error in
-                            if let error = error {
-                                finish(.failure(error))
-                                semaphore.signal()
-                                return
-                            }
-                            let userExplanation = NSLocalizedString("USER_NOTIFICATION_EXPLANATION", comment: "User notification")
-                            ExposureManager.shared.manager.getExposureInfo(summary: summary!, userExplanation: userExplanation) { exposures, error in
-                                    if let error = error {
-                                        finish(.failure(error))
-                                        semaphore.signal()
-                                        return
-                                    }
-                                let newExposures: [Exposure] = exposures!.map { exposure in
-                                    var totalRiskScore = Double(exposure.totalRiskScore) * 8.0 / 255.0 // Map score between 0 and 8
-                                    if let totalRiskScoreFullRange = exposure.metadata?["totalRiskScoreFullRange"] as? Double {
-                                        totalRiskScore = totalRiskScoreFullRange * 8.0 / 4096 // Map score between 0 and 8
-                                    }
-                                    return Exposure(
-                                        attenuationDurations: exposure.attenuationDurations.map({ $0.doubleValue }),
-                                        attenuationValue: exposure.attenuationValue,
-                                        date: exposure.date,
-                                        duration: exposure.duration,
-                                        totalRiskScore: ENRiskScore(totalRiskScore.rounded()),
-                                        totalRiskScoreFullRange: (exposure.metadata?["totalRiskScoreFullRange"] as? Int) ?? Int(totalRiskScore.rounded()),
-                                        transmissionRiskLevel: exposure.transmissionRiskLevel,
-                                        attenuationDurationThresholds: configuration.value(forKey: "attenuationDurationThresholds") as! [Int]
-                                    )
-                                }
-                                os_log(
-                                    "Detected exposures count=%d",
-                                    log: .en,
-                                    exposures!.count
-                                )
-                                semaphore.signal()
-                                //finish(.success((newExposures, nextDiagnosisKeyFileIndex + localURLs.count)))
-                            }
+                case let .success(configuration):
+                    ExposureManager.shared.manager.detectExposures(configuration: configuration, diagnosisKeyURLs: localURLs) { summary, error in
+                        if let error = error {
+                            finish(.failure(error))
+                            return
                         }
-                        //semaphore.wait()
+                        let userExplanation = NSLocalizedString("USER_NOTIFICATION_EXPLANATION", comment: "User notification")
+                        ExposureManager.shared.manager.getExposureInfo(summary: summary!, userExplanation: userExplanation) { exposures, error in
+                                if let error = error {
+                                    finish(.failure(error))
+                                    return
+                                }
+                            let scorer = AZExposureRiskScorer()
+                            let newExposures: [Exposure] = exposures!.map { exposure in
+//                                var totalRiskScore = Double(exposure.totalRiskScore) * 8.0 / 255.0 // Map score between 0 and 8
+//                                if let totalRiskScoreFullRange = exposure.metadata?["totalRiskScoreFullRange"] as? Double {
+//                                    totalRiskScore = totalRiskScoreFullRange * 8.0 / 4096 // Map score between 0 and 8
+//                                }
+                                let recomputedTotalRiskScore = scorer.computeRiskScore(
+                                    forAttenuationDurations: exposure.attenuationDurations,
+                                    transmissionRiskLevel: exposure.transmissionRiskLevel
+                                )
+                                let e = Exposure(
+                                    attenuationDurations: exposure.attenuationDurations.map({ $0.doubleValue }),
+                                    attenuationValue: exposure.attenuationValue,
+                                    date: exposure.date,
+                                    duration: exposure.duration,
+//                                    totalRiskScore: ENRiskScore(totalRiskScore.rounded()),
+//                                    totalRiskScoreFullRange: (exposure.metadata?["totalRiskScoreFullRange"] as? Int) ?? Int(totalRiskScore.rounded()),
+                                    totalRiskScore: recomputedTotalRiskScore,
+                                    totalRiskScoreFullRange: Int(recomputedTotalRiskScore),
+                                    transmissionRiskLevel: exposure.transmissionRiskLevel,
+                                    attenuationDurationThresholds: configuration.metadata?["attenuationDurationThresholds"]
+                                )
+                                return e
+                            }
+                            os_log(
+                                "Detected exposures count=%d",
+                                log: .en,
+                                exposures!.count
+                            )
+                            finish(.success((newExposures, nextDiagnosisKeyFileIndex + localURLs.count)))
+                        }
                     }
-                    
                     
                 case let .failure(error):
                     finish(.failure(error))

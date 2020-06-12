@@ -40,6 +40,7 @@ struct ReportingCallCode: View {
                                         .modifier(StandardTitleTextViewModifier())
                                         .foregroundColor(Color(red: 0.294, green: 0.039, blue: 0.439))
                                         .padding(.top, .headerHeight)
+                                        .padding(.horizontal, 2 * .standardSpacing)
                                     
                                     Spacer(minLength: 2 * .standardSpacing)
                                     

@@ -21,7 +21,6 @@ struct HowItWorks: View {
         ZStack(alignment: .top) {
             
             PageView([
-                AnyView(HowItWorks0()).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading),
                 AnyView(HowItWorks1()).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading),
                 AnyView(HowItWorks2()).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading),
                 AnyView(HowItWorks3()).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading),

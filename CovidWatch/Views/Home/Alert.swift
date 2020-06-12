@@ -9,28 +9,33 @@ struct Alert: View {
     
     var message: String
     var backgroundColor: Color
-    var showArror: Bool
+    var showExclamation: Bool
+    var detailImage: Image?
     
-    init(message: String, backgroundColor: Color, showArror: Bool = true) {
+    init(message: String, backgroundColor: Color, showExclamation: Bool = true, detailImage: Image? = Image("Right Arrow")) {
         self.message = message
         self.backgroundColor = backgroundColor
-        self.showArror = showArror
+        self.showExclamation = showExclamation
+        self.detailImage = detailImage
     }
     
     var body: some View {
         HStack(spacing: 15) {
-            Image("Alert")
+            if showExclamation {
+                Image("Alert")
+            }
             Text(verbatim: self.message)
                 .font(.custom("Montserrat-SemiBold", size: 14))
                 .foregroundColor(.white)
                 .multilineTextAlignment(.leading)
             Spacer()
-            if showArror {
-                Image("Right Arrow")
+            if detailImage != nil {
+                detailImage
             }
         }
+        .padding(.vertical, .standardSpacing)
         .padding(.horizontal, 2 * .standardSpacing)  
-        .frame(height: 70, alignment: .center)
+        .frame(minHeight: 70, alignment: .center)
         .background(self.backgroundColor.shadow(color: .init(white: 0.5), radius: 2, x: 0, y: 2))
     }
 }

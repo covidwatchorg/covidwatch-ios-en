@@ -16,7 +16,12 @@ struct Setup: View {
             if !userData.isExposureNotificationSetup {
                 Setup1().transition(.slide)
             } else {
-                Setup2().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                if !userData.isUserNotificationsSetup {
+                    Setup2().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                }
+                else {
+                    Setup3().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                }
             }
             
             HeaderBar(showMenu: false)

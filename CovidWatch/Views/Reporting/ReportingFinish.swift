@@ -19,6 +19,7 @@ struct ReportingFinish: View {
                     
                     Text("Thank You for Sharing Your Positive Diagnosis")
                         .modifier(StandardTitleTextViewModifier())
+                        .padding(.horizontal, 2 * .standardSpacing)
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     
                     Image("Family Earth")

@@ -6,8 +6,11 @@
 import SwiftUI
 
 struct HowItWorksTitleText: View {
+    
+    let text: Text
+    
     var body: some View {
-        Text(verbatim: NSLocalizedString("HOW_IT_WORKS_TITLE", comment: "").uppercased())
+        self.text
             .font(.custom("Montserrat-Regular", size: 14))
             .foregroundColor(Color("Title Text Color"))
             .padding(.horizontal, 2 * .standardSpacing)
@@ -15,8 +18,8 @@ struct HowItWorksTitleText: View {
     }
 }
 
-struct HowItWorksTitleText_Previews: PreviewProvider {
-    static var previews: some View {
-        HowItWorksTitleText()
-    }
-}
+//struct HowItWorksTitleText_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HowItWorksTitleText()
+//    }
+//}

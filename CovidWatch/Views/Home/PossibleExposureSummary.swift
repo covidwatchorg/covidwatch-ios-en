@@ -25,6 +25,8 @@ struct PossibleExposureSummary: View {
         
         var components: [String] = []
         
+        components.append(NSLocalizedString("HOME_POSSIBLE_EXPOSURES_SUMMARY_TITLE", comment: ""))
+        
         if let days = daysSinceLastExposure() {
             components.append(
                 String.localizedStringWithFormat(NSLocalizedString("%d days since last exposure", comment: ""), days)
@@ -34,7 +36,7 @@ struct PossibleExposureSummary: View {
             components.append(NSLocalizedString("UNKNOWN_DAYS_SINCE_LAST_EXPOSURE", comment: ""))
         }
         
-        components.append(String.localizedStringWithFormat(NSLocalizedString("%d total exposures in the last 14 days", comment: ""), self.localStore.exposures.count))
+        components.append(String.localizedStringWithFormat(NSLocalizedString("%d exposures in the last 14 days", comment: ""), self.localStore.exposures.count))
         
         components.append(String.localizedStringWithFormat(NSLocalizedString("HOME_TOTAL_RISK_SCORE_ACCESSIBILITY_LABEL", comment: ""), self.maxTotalRiscScore()))
                 
@@ -52,82 +54,85 @@ struct PossibleExposureSummary: View {
         
         VStack(spacing: 0) {
             
+            Divider()
+            
+            Text("HOME_POSSIBLE_EXPOSURES_SUMMARY_TITLE")
+                .font(.custom("Montserrat-Bold", size: 16))
+                .foregroundColor(Color("Title Text Color"))
+                .padding(.horizontal, 2 * .standardSpacing)
+                .frame(maxWidth: .infinity, minHeight: 44, alignment: .center)
+                .background(Color(UIColor.systemGray6))
+            
+            Divider()
+            
             HStack {
                 
                 VStack(alignment: .leading, spacing: .standardSpacing) {
                     
-                    HStack(spacing: .standardSpacing) {
+                    HStack {
                         
                         Text(verbatim: self.localStore.exposures.isEmpty ? "-" :  String(Calendar.current.dateComponents([.day], from: self.localStore.exposures.first!.date, to: Date()).day ?? 0))
-                            .font(.custom("Montserrat-SemiBold", size: 48))
-                            .foregroundColor(Color("Title Text Color"))
-                            .frame(minWidth: 6 * .standardSpacing, alignment: .trailing)
+                            .modifier(PossibleExposureSummaryValueViewModifier())
+                            .background(Capsule(style: .circular).foregroundColor(Color(UIColor.systemGray2)))
                         
-                        VStack(alignment: .leading) {
+                        Text("HOME_DAYS_ROW_1_LABEL")
+                            .font(.custom("Montserrat-Bold", size: 13))
+                            .foregroundColor(Color("Title Text Color"))
                             
-                            Text("HOME_DAYS_ROW_1_LABEL")
-                                .font(.custom("Montserrat-Bold", size: 16))
+                            + Text(verbatim: " ") +
+                            
+                            Text("HOME_DAYS_ROW_2_LABEL")
+                                .font(.custom("Montserrat-Regular", size: 13))
                                 .foregroundColor(Color("Title Text Color"))
-                            
-                             Text("HOME_DAYS_ROW_2_LABEL")
-                                .font(.custom("Montserrat-Regular", size: 14))
-                                .foregroundColor(Color("Title Text Color"))
-                            
-                        }
                     }
                     
-                    HStack(spacing: .standardSpacing) {
+                    HStack {
                         
                         Text(verbatim: NumberFormatter.localizedString(from: NSNumber(value: self.localStore.exposures.count), number: .decimal))
-                            .font(.custom("Montserrat-SemiBold", size: 48))
-                            .foregroundColor(Color("Title Text Color"))
-                            .frame(minWidth: 6 * .standardSpacing, alignment: .trailing)
+                            .modifier(PossibleExposureSummaryValueViewModifier())
+                            .background(Capsule(style: .circular).foregroundColor(Color(UIColor.systemGray2)))
                         
-                        VStack(alignment: .leading) {
+                        Text("HOME_TOTAL_EXPOSURES_ROW_1_LABEL")
+                            .font(.custom("Montserrat-Bold", size: 13))
+                            .foregroundColor(Color("Title Text Color"))
                             
-                            Text("HOME_TOTAL_EXPOSURES_ROW_1_LABEL")
-                                .font(.custom("Montserrat-Bold", size: 16))
-                                .foregroundColor(Color("Title Text Color"))
+                            + Text(verbatim: " ") +
                             
                             Text("HOME_TOTAL_EXPOSURES_ROW_2_LABEL")
-                                .font(.custom("Montserrat-Regular", size: 14))
+                                .font(.custom("Montserrat-Regular", size: 13))
                                 .foregroundColor(Color("Title Text Color"))
-                            
-                        }
                     }
                     
-                    HStack(spacing: .standardSpacing) {
+                    HStack {
                         
                         Text(verbatim: String(maxTotalRiscScore()))
-                            .font(.custom("Montserrat-SemiBold", size: 48))
-                            .foregroundColor( maxTotalRiscScore() > 6 ?
-                                Color("Alert Critical Color") : Color("Title Text Color"))
-                            .frame(minWidth: 6 * .standardSpacing, alignment: .trailing)
+                            .modifier(PossibleExposureSummaryValueViewModifier())
+                            .background(Capsule(style: .circular).foregroundColor(maxTotalRiscScore().level == .high ?
+                            Color("Alert High Color") : Color(UIColor.systemGray2)))
                         
-                        VStack(alignment: .leading) {
+                        Text("HOME_TOTAL_RISK_SCORE_ROW_1_LABEL")
+                            .font(.custom("Montserrat-Bold", size: 13))
+                            .foregroundColor(Color("Title Text Color"))
                             
-                            Text("HOME_TOTAL_RISK_SCORE_ROW_1_LABEL")
-                                .font(.custom("Montserrat-Bold", size: 16))
-                                .foregroundColor(Color("Title Text Color"))
+                            + Text(verbatim: " ") +
                             
                             Text("HOME_TOTAL_RISK_SCORE_ROW_2_LABEL")
-                                .font(.custom("Montserrat-Regular", size: 14))
+                                .font(.custom("Montserrat-Regular", size: 13))
                                 .foregroundColor(Color("Title Text Color"))
-                            
-                        }
                     }
                 }
+                .padding(.horizontal, 2 * .standardSpacing)
                 
                 Spacer()
                 
                 Image("Right Arrow-1")
+                    .padding(.trailing, 2 * .standardSpacing)
             }
             .padding(.vertical, .standardSpacing)
-            .padding(.leading, 2 * .standardSpacing)
-            .padding(.trailing, .standardSpacing)
+            
+            Divider()
             
         }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-            .border(Color("Button Border Color"), width: 1)
             .accessibilityElement(children: .combine)
             .accessibility(label: Text(verbatim: accessibilityLabel()))
             .accessibility(hint: Text("SHOWS_MORE_INFO_ACCESSIBILITY_HINT"))

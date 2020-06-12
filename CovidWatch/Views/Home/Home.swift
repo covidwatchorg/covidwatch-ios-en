@@ -29,6 +29,21 @@ struct Home: View {
                     
                     VStack(spacing: 1) {
                         
+                        if self.userData.showHomeWelcomeMessage {
+                            Button(action: {
+                                withAnimation {
+                                    self.userData.showHomeWelcomeMessage = false
+                                }                                
+                            }) {
+                                Alert(
+                                    message: NSLocalizedString("HOME_WELCOME_MESSAGE", comment: ""),
+                                    backgroundColor: Color("Alert Standard Color"),
+                                    showExclamation: false,
+                                    detailImage: Image("Alert Dismiss")
+                                )
+                            }
+                        }
+                        
                         if userData.exposureNotificationStatus != .active {
                             Button(action: {
                                 
@@ -41,7 +56,7 @@ struct Home: View {
                                 Alert(
                                     message: userData.exposureNotificationStatus.localizedDetailDescription,
                                     backgroundColor: Color("Alert Standard Color"),
-                                    showArror: (self.userData.exposureNotificationStatus == .unknown || self.userData.exposureNotificationStatus == .disabled)
+                                    detailImage: (self.userData.exposureNotificationStatus == .unknown || self.userData.exposureNotificationStatus == .disabled) ? Image("Right Arrow") : nil
                                 )
                             }
                             .sheet(isPresented: $isShowingExposureSettings) {
@@ -82,32 +97,23 @@ struct Home: View {
                         VStack(spacing: 0) {
                             
                             Image("Home")
-                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 232, alignment: .top)
-                                .background(LinearGradient(gradient: Gradient(colors: [Color(red: 0.263, green: 0.769, blue: 0.851, opacity: 1), Color.white.opacity(0.4)]), startPoint: .top, endPoint: .bottom))
+//                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 232, alignment: .top)
+//                                .background(LinearGradient(gradient: Gradient(colors: [Color(red: 0.263, green: 0.769, blue: 0.851, opacity: 1), Color.white.opacity(0.4)]), startPoint: .top, endPoint: .bottom))
                                 .accessibility(label: Text("HOME_IMAGE_ACCESSIBILITY_LABEL"))
-                                .padding(.bottom, .standardSpacing)
-                            
-                            Text("HOME_POSSIBLE_EXPOSURES_TITLE")
-                                .font(.custom("Montserrat-SemiBold", size: 24))
-                                .foregroundColor(Color("Title Text Color"))
-                                .padding(.horizontal, 2 * .standardSpacing)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            
+                                                        
                             Button(action: {
                                 self.isShowingPossibleExposures.toggle()
                             }) {
                                 PossibleExposureSummary()
                                     .environmentObject(self.localStore)
                             }
-                            .padding(.top, 8)
-                            .padding(.horizontal, 2 * .standardSpacing)
                             .sheet(isPresented: $isShowingPossibleExposures) {
                                 PossibleExposures()
                                     .environmentObject(self.userData)
                                     .environmentObject(self.localStore)
                             }
                             
-                            Spacer(minLength: 2 * .standardSpacing)
+                            Spacer(minLength: .standardSpacing)
                             
                             Text("NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE")
                                 .modifier(SubCallToAction())
@@ -131,13 +137,12 @@ struct Home: View {
                             }) {
                                 Text("SHARE_THE_APP").modifier(SmallCallToAction())
                             }
-                            .padding(.top, 2 * .standardSpacing)
                             .padding(.horizontal, 2 * .standardSpacing)
                             
                             Image("Powered By CW Grey")
                                 .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
                                 .padding(.top, 2 * .standardSpacing)
-                                .padding(.bottom, 3 * .standardSpacing)
+                                .padding(.bottom, .standardSpacing)
                         }
                         
                         //                            LinearGradient(gradient: Gradient(colors: [.init(red: 0.263, green: 0.769, blue: 0.851), .init(red: 1, green: 1, blue: 1, opacity: 0.4)]), startPoint: .top, endPoint: .bottom)

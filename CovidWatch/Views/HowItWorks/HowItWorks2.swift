@@ -14,7 +14,7 @@ struct HowItWorks2: View {
                 
                 Spacer(minLength: .headerHeight)
                 
-                HowItWorksTitleText()
+                HowItWorksTitleText(text: Text(verbatim: NSLocalizedString("HOW_IT_WORKS_TITLE", comment: "").uppercased()))
                 
                 HowItWorksSubtitleText(text: Text("HOW_IT_WORKS_2_SUBTITLE"))
                                 

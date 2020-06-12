@@ -29,6 +29,9 @@ final class UserData: ObservableObject  {
     var isUserNotificationsSetup: Bool = false
     
     @Published
+    var showHomeWelcomeMessage: Bool = false
+    
+    @Published
     var exposureNotificationEnabled: Bool = ExposureManager.shared.manager.exposureNotificationEnabled {
         didSet {
             guard exposureNotificationEnabled != oldValue else { return }

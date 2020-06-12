@@ -104,6 +104,7 @@ public class LocalStore: ObservableObject {
     """
     {"minimumRiskScore":0,
     "attenuationDurationThresholdList":[[58, 73]],
+    "attenuationDurationThresholds":[50, 58],
     "attenuationLevelValues":[2, 5, 8, 8, 8, 8, 8, 8],
     "daysSinceLastExposureLevelValues":[1, 2, 2, 4, 6, 8, 8, 8],
     "durationLevelValues":[1, 1, 4, 7, 7, 8, 8, 8],
