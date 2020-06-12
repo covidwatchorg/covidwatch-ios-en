@@ -84,20 +84,31 @@ class ExposureManager {
         }
         let nextDiagnosisKeyFileIndex = LocalStore.shared.nextDiagnosisKeyFileIndex
                 
+        
+        
         let actionAfterHasLocalURLs = {
-            Server.shared.getExposureConfigurationList { result in
+             Server.shared.getExposureConfigurationList { result in
                 switch result {
                 case let .success(configurationList):
+                    os_log(
+                        "Input config count=%d",
+                        log: .en,
+                        configurationList.count
+                    )
+                    let semaphore = DispatchSemaphore(value: 0)
                     for configuration in configurationList{
+                        os_log("running with new config")
                         ExposureManager.shared.manager.detectExposures(configuration: configuration, diagnosisKeyURLs: localURLs) { summary, error in
                             if let error = error {
                                 finish(.failure(error))
+                                semaphore.signal()
                                 return
                             }
                             let userExplanation = NSLocalizedString("USER_NOTIFICATION_EXPLANATION", comment: "User notification")
                             ExposureManager.shared.manager.getExposureInfo(summary: summary!, userExplanation: userExplanation) { exposures, error in
                                     if let error = error {
                                         finish(.failure(error))
+                                        semaphore.signal()
                                         return
                                     }
                                 let newExposures: [Exposure] = exposures!.map { exposure in
@@ -121,10 +132,13 @@ class ExposureManager {
                                     log: .en,
                                     exposures!.count
                                 )
-                                finish(.success((newExposures, nextDiagnosisKeyFileIndex + localURLs.count)))
+                                semaphore.signal()
+                                //finish(.success((newExposures, nextDiagnosisKeyFileIndex + localURLs.count)))
                             }
                         }
+                        //semaphore.wait()
                     }
+                    
                     
                 case let .failure(error):
                     finish(.failure(error))
