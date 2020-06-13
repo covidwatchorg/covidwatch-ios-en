@@ -321,6 +321,9 @@ All strings for the project, separated for localization.
 "ATTENUATION_DURATIONS_TITLE" = "Attenuation Durations";
 
 /* Title */
+"ATTENUATION_DURATION_THRESHOLDS_TITLE" = "Attenuation Thresholds";
+
+/* Title */
 "TRANSMISSION_RISK_LEVEL_TITLE" = "Transmission Risk Level";
 
 /* Title */

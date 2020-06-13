@@ -84,6 +84,25 @@ struct PossibleExposureTable: View {
             }
             .accessibilityElement(children: .combine)
             
+            
+            HStack(spacing: 0) {
+                HStack {
+                    Spacer(minLength: 10)
+                    Text("ATTENUATION_DURATION_THRESHOLDS_TITLE")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer(minLength: 10)
+                }.modifier(PossibleExposureTableColumnA())
+                
+                HStack {
+                    Spacer(minLength: 20)
+                    Text(verbatim: "[ \(exposure.attenuationDurationThresholds.map({ String($0)}).joined(separator: ", ")) ]")
+                        .accessibility(label: Text(verbatim: exposure.attenuationDurationThresholds.map({ String($0)}).joined(separator: ", ")))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer(minLength: 10)
+                }.modifier(PossibleExposureTableColumnB())
+            }
+            .accessibilityElement(children: .combine)
+            
 //            HStack(spacing: 0) {
 //                HStack {
 //                    Spacer(minLength: 10)

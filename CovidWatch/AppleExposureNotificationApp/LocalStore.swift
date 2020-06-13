@@ -103,7 +103,7 @@ public class LocalStore: ObservableObject {
     static let exposureConfigurationDefault: String =
     """
     {"minimumRiskScore":0,
-    "attenuationDurationThresholdList":[[58, 73]],
+    "attenuationDurationThresholdList":[[40,42],[44,46], [48,50], [52,54], [56,58], [60,62], [64,66], [68,70]],
     "attenuationDurationThresholds":[50, 58],
     "attenuationLevelValues":[2, 5, 8, 8, 8, 8, 8, 8],
     "daysSinceLastExposureLevelValues":[1, 2, 2, 4, 6, 8, 8, 8],
