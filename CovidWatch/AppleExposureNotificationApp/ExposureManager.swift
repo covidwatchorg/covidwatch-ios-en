@@ -36,6 +36,13 @@ class ExposureManager {
         manager.invalidate()
     }
     
+    func updateSavedExposures(newExposures : [Exposure]) {
+        LocalStore.shared.exposures.append(contentsOf: newExposures)
+        LocalStore.shared.exposures.sort { $0.date > $1.date }
+        LocalStore.shared.dateLastPerformedExposureDetection = Date()
+        LocalStore.shared.exposureDetectionErrorLocalizedDescription = nil
+    }
+    
     static let authorizationStatusChangeNotification = Notification.Name("ExposureManagerAuthorizationStatusChangedNotification")
     
     var detectingExposures = false
@@ -55,21 +62,16 @@ class ExposureManager {
         var localURLs = importURLs
         let nextDiagnosisKeyFileIndex = LocalStore.shared.nextDiagnosisKeyFileIndex
         
-        func finish(_ result: Result<([Exposure], Int), Error>) {
-            //TODO: fix this
-            //try? Server.shared.deleteDiagnosisKeyFile(at: localURLs)
+        func finish(_ result: Result<Int, Error>) {
+            try? Server.shared.deleteDiagnosisKeyFile(at: localURLs)
             
             let success: Bool
             if progress.isCancelled {
                 success = false
             } else {
                 switch result {
-                case let .success((newExposures, nextDiagnosisKeyFileIndex)):
+                case let .success(nextDiagnosisKeyFileIndex):
                     LocalStore.shared.nextDiagnosisKeyFileIndex = nextDiagnosisKeyFileIndex
-                    LocalStore.shared.exposures.append(contentsOf: newExposures)
-                    LocalStore.shared.exposures.sort { $0.date > $1.date }
-                    LocalStore.shared.dateLastPerformedExposureDetection = Date()
-                    LocalStore.shared.exposureDetectionErrorLocalizedDescription = nil
                     success = true
                 case let .failure(error):
                     LocalStore.shared.exposureDetectionErrorLocalizedDescription = error.localizedDescription
@@ -127,7 +129,8 @@ class ExposureManager {
                                         totalRiskScore: recomputedTotalRiskScore,
                                         totalRiskScoreFullRange: Int(recomputedTotalRiskScore),
                                         transmissionRiskLevel: exposure.transmissionRiskLevel,
-                                        attenuationDurationThresholds: configuration.value(forKey: "attenuationDurationThresholds") as! [Int]
+                                        attenuationDurationThresholds: configuration.value(forKey: "attenuationDurationThresholds") as! [Int],
+                                        timeDetected : Date()
                                     )
                                     semaphore.signal()
                                     return e
@@ -137,11 +140,13 @@ class ExposureManager {
                                     log: .en,
                                     exposures!.count
                                 )
-                                finish(.success((newExposures, nextDiagnosisKeyFileIndex + localURLs.count)))
+                                //TODO: add check on progress.isCancelled here
+                                self.updateSavedExposures(newExposures : newExposures)
                             }
                         }
                         semaphore.wait()
                     }
+                    finish(.success(nextDiagnosisKeyFileIndex + localURLs.count))
                 }
             }
         }

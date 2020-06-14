@@ -17,6 +17,7 @@ public struct Exposure: Codable {
     let totalRiskScoreFullRange: Int
     let transmissionRiskLevel: ENRiskLevel
     let attenuationDurationThresholds: [Int]
+    let timeDetected: Date
 }
 
 public struct TestResult: Codable {
@@ -103,7 +104,7 @@ public class LocalStore: ObservableObject {
     static let exposureConfigurationDefault: String =
     """
     {"minimumRiskScore":0,
-    "attenuationDurationThresholdList":[[40,42],[44,46], [48,50], [52,54], [56,58], [60,62], [64,66], [68,70]],
+    "attenuationDurationThresholdList":[[40,42],[42,44],[44,46],[46,48],[48,50],[50,52], [52,54],[54,56], [56,58],[58,60], [60,63],[63,67], [67,72], [72,80]],
     "attenuationDurationThresholds":[50, 58],
     "attenuationLevelValues":[2, 5, 8, 8, 8, 8, 8, 8],
     "daysSinceLastExposureLevelValues":[1, 2, 2, 4, 6, 8, 8, 8],
@@ -118,6 +119,8 @@ public class LocalStore: ObservableObject {
 //    "durationLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
 //    "transmissionRiskLevelValues":[1, 2, 3, 4, 5, 6, 7, 8]}
 //    """
+    
+        //"attenuationDurationThresholdList":[[40,42],[44,46], [48,50], [52,54], [56,58], [60,62], [64,66], [68,70]],
     
     @Persisted(userDefaultsKey: "exposureConfiguration", notificationName: .init("LocalStoreExposureConfigurationDidChange"), defaultValue:exposureConfigurationDefault)
     public var exposureConfiguration: String {
