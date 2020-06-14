@@ -9,7 +9,7 @@ All strings for the project, separated for localization.
 "SPLASH_MESSAGE" = "The power to stop COVID-19 in the palm of your hand.";
 
 /* Title */
-"GENERIC_PUBLIC_HEALTH_DEPARTMENT_IMAGE_ACCESSIBILITY_LABEL" = "Generic Public Health Department";
+"GENERIC_PUBLIC_HEALTH_DEPARTMENT_IMAGE_ACCESSIBILITY_LABEL" = "Public Health Department Generic";
 
 /* Title */
 "SPLASH_IMAGE_ACCESSIBILITY_LABEL" = "People Network";
@@ -23,7 +23,7 @@ All strings for the project, separated for localization.
 // # HEADER BAR
 
 /* Title */
-"DEMO_TITLE" = "Demo";
+"DEMO_TITLE" = "Alpha";
 
 /* Title */
 "DEMO_SUBTITLE" = "Public Health Department";
@@ -54,10 +54,10 @@ All strings for the project, separated for localization.
 "WELCOME_TITLE" = "Welcome to the";
 
 /* Title */
-"WELCOME_APP_NAME" = "Public Health Department COVID-19 Notification App";
+"WELCOME_APP_NAME" = "University of Arizona COVID-19 Exposure Notification App";
 
 /* Message */
-"WELCOME_MESSAGE" = "Help protect those around you and prevent the spread of COVID-19 by using this privacy-preserving Bluetooth technology that enables anonymous exposure notifications.";
+"WELCOME_MESSAGE" = "Support the path back to campus and help prevent the spread of COVID-19 with safe, secure, and anonymous exposure notifications.";
 
 // ## HOW IT WORKS 1
 
