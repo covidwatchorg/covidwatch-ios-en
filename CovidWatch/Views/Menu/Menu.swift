@@ -5,6 +5,11 @@
 
 import SwiftUI
 
+struct ExposureConfigurationWithExposures: Encodable {
+    let exposureConfiguration: String
+    let possibleExposures: [Exposure]
+}
+
 struct Menu: View {
     
     @EnvironmentObject var userData: UserData
@@ -108,24 +113,7 @@ struct Menu: View {
                             Divider()
                             
                             Button(action: {
-                                let cachesDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
-                                let possibleExposuresPath = cachesDirectory.appendingPathComponent("Possible Exposures \(UIDevice.current.name) \(Date().timeIntervalSince1970).json")
-                                do {
-                                    let json = try JSONEncoder().encode(self.localStore.exposures)
-                                    try json.write(to: possibleExposuresPath)
-                                    let activityViewController = UIActivityViewController(activityItems: [possibleExposuresPath], applicationActivities: nil)
-                                    UIApplication.shared.topViewController?.present(
-                                        activityViewController,
-                                        animated: true,
-                                        completion: nil
-                                    )
-                                } catch {
-                                    UIApplication.shared.topViewController?.present(
-                                        error as NSError,
-                                        animated: true,
-                                        completion: nil
-                                    )
-                                }
+                                ApplicationController.shared.exportExposures()                                
                             }) {
                                 HStack {
                                     Text("DEMO_EXPORT_POSSIBLE_EXPOSURES_TITLE")

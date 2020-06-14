@@ -50,17 +50,18 @@ struct HeaderBar: View {
                 Spacer()
                 
                 if self.showDemoMode {
-                    VStack(alignment: .center) {
+//                    VStack(alignment: .center) {
                         Text(verbatim: NSLocalizedString("DEMO_TITLE", comment: "").uppercased())
                             .font(.custom("Montserrat-Black", size: 14))
                             .foregroundColor(Color(UIColor.systemGray4))
-                        Text(verbatim: NSLocalizedString("DEMO_SUBTITLE", comment: "").uppercased())
-                            .font(.custom("Montserrat-Regular", size: 12))
-                            .foregroundColor(Color("Subtitle Text Color"))
-                    }
-                    .accessibilityElement(children: .combine)
-                    
+//                        Text(verbatim: NSLocalizedString("DEMO_SUBTITLE", comment: "").uppercased())
+//                            .font(.custom("Montserrat-Regular", size: 12))
+//                            .foregroundColor(Color("Subtitle Text Color"))
+//                    }
+//                    .accessibilityElement(children: .combine)
+//
                     Spacer()
+
                 }
                 
                 if self.showMenu || self.showDismissButton {

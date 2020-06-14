@@ -336,4 +336,47 @@ class ApplicationController: NSObject {
             UIApplication.shared.topViewController?.present(error as NSError, animated: true)
         }
     }
+    
+    func exportExposures() {
+        let alertController = UIAlertController(
+            title: NSLocalizedString("Export Possible Exposures for Test Case", comment: ""),
+            message: nil,
+            preferredStyle: .alert
+        )
+        alertController.addTextField { (textField) in
+            textField.text = ""
+        }
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""), style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("CONTINUE", comment: ""), style: .default, handler: { _ in
+            guard let text = alertController.textFields?.first?.text else { return }
+            self.exportExposures(forTestCase: text)
+        }))
+        UIApplication.shared.topViewController?.present(alertController, animated: true)
+    }
+    
+    func exportExposures(forTestCase testCase: String) {        
+        let cachesDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+        let possibleExposuresPath = cachesDirectory.appendingPathComponent("\(UIDevice.current.name)_ \(ISO8601DateFormatter.string(from: Date(), timeZone: TimeZone.current, formatOptions: [.withInternetDateTime, .withFractionalSeconds]))_\(testCase).json")
+        do {
+            let json = try JSONEncoder().encode(
+                ExposureConfigurationWithExposures(
+                    exposureConfiguration: LocalStore.shared.exposureConfiguration,
+                    possibleExposures: LocalStore.shared.exposures
+                )
+            )
+            try json.write(to: possibleExposuresPath)
+            let activityViewController = UIActivityViewController(activityItems: [possibleExposuresPath], applicationActivities: nil)
+            UIApplication.shared.topViewController?.present(
+                activityViewController,
+                animated: true,
+                completion: nil
+            )
+        } catch {
+            UIApplication.shared.topViewController?.present(
+                error as NSError,
+                animated: true,
+                completion: nil
+            )
+        }
+    }
 }
