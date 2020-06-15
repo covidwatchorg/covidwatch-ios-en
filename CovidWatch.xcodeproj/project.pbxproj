@@ -209,7 +209,7 @@
 		2D9034C42460498A00351C3C /* Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
 		2D9034C6246049EC00351C3C /* Setup1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup1.swift; sourceTree = "<group>"; };
 		2D9034C824604BB000351C3C /* Setup2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup2.swift; sourceTree = "<group>"; };
-		2D9CF3CA2455B9F1005B085E /* CW ALPHA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CW ALPHA.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D9CF3CA2455B9F1005B085E /* CW DEMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CW DEMO.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D9CF3CD2455B9F1005B085E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D9CF3D92455B9F4005B085E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D9CF3DC2455B9F4005B085E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -488,7 +488,7 @@
 		2D9CF3CB2455B9F1005B085E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2D9CF3CA2455B9F1005B085E /* CW ALPHA.app */,
+				2D9CF3CA2455B9F1005B085E /* CW DEMO.app */,
 				2D9CF3E32455B9F5005B085E /* CovidWatchTests.xctest */,
 				2D9CF3EE2455B9F5005B085E /* CovidWatchUITests.xctest */,
 			);
@@ -629,7 +629,7 @@
 				2DFEED092476BD0400D2C620 /* ZIPFoundation */,
 			);
 			productName = CovidWatch;
-			productReference = 2D9CF3CA2455B9F1005B085E /* CW ALPHA.app */;
+			productReference = 2D9CF3CA2455B9F1005B085E /* CW DEMO.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2D9CF3E22455B9F5005B085E /* CovidWatchTests */ = {
@@ -1058,7 +1058,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.california.ios;
 				PRODUCT_MODULE_NAME = CovidWatch;
-				PRODUCT_NAME = "CW ALPHA";
+				PRODUCT_NAME = "CW DEMO";
 				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch EN Dev";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_VERSION = 5.0;
@@ -1084,7 +1084,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.california.ios;
 				PRODUCT_MODULE_NAME = CovidWatch;
-				PRODUCT_NAME = "CW ALPHA";
+				PRODUCT_NAME = "CW DEMO";
 				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch EN Dev";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_VERSION = 5.0;
