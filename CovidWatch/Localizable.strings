@@ -23,7 +23,7 @@ All strings for the project, separated for localization.
 // # HEADER BAR
 
 /* Title */
-"DEMO_TITLE" = "Alpha";
+"DEMO_TITLE" = "DEMO";
 
 /* Title */
 "DEMO_SUBTITLE" = "Public Health Department";

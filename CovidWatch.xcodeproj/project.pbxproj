@@ -1047,7 +1047,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/CovidWatch.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 90;
+				CURRENT_PROJECT_VERSION = 91;
 				DEVELOPMENT_TEAM = GD7NMG67S7;
 				INFOPLIST_FILE = CovidWatch/Info.plist;
 				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
@@ -1073,7 +1073,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/CovidWatch.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 90;
+				CURRENT_PROJECT_VERSION = 91;
 				DEVELOPMENT_TEAM = GD7NMG67S7;
 				INFOPLIST_FILE = CovidWatch/Info.plist;
 				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
