@@ -97,7 +97,7 @@ struct Home: View {
                         VStack(spacing: 0) {
                             
                             Image("Home")
-//                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 232, alignment: .top)
+                                .frame(minWidth: 0, maxWidth: .infinity, alignment: .top)
 //                                .background(LinearGradient(gradient: Gradient(colors: [Color(red: 0.263, green: 0.769, blue: 0.851, opacity: 1), Color.white.opacity(0.4)]), startPoint: .top, endPoint: .bottom))
                                 .accessibility(label: Text("HOME_IMAGE_ACCESSIBILITY_LABEL"))
                                                         
