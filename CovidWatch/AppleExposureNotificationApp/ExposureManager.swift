@@ -132,7 +132,6 @@ class ExposureManager {
                                         attenuationDurationThresholds: configuration.value(forKey: "attenuationDurationThresholds") as! [Int],
                                         timeDetected : Date()
                                     )
-                                    semaphore.signal()
                                     return e
                                 }
                                 os_log(
@@ -142,6 +141,7 @@ class ExposureManager {
                                 )
                                 //TODO: add check on progress.isCancelled here
                                 self.updateSavedExposures(newExposures : newExposures)
+                                semaphore.signal()
                             }
                         }
                         semaphore.wait()
