@@ -106,10 +106,10 @@ public class LocalStore: ObservableObject {
     {"minimumRiskScore":0,
     "attenuationDurationThresholdList":[[40,42],[42,44],[44,46],[46,48],[48,50],[50,52], [52,54],[54,56], [56,58],[58,60], [60,63],[63,67], [67,72], [72,80]],
     "attenuationDurationThresholds":[50, 58],
-    "attenuationLevelValues":[2, 5, 8, 8, 8, 8, 8, 8],
-    "daysSinceLastExposureLevelValues":[1, 2, 2, 4, 6, 8, 8, 8],
-    "durationLevelValues":[1, 1, 4, 7, 7, 8, 8, 8],
-    "transmissionRiskLevelValues":[0, 3, 6, 8, 8, 6, 0, 6]}
+    "attenuationLevelValues":[8, 7, 6, 5, 4, 3, 2, 1],
+    "daysSinceLastExposureLevelValues":[1, 1, 1, 1, 1, 1, 1, 1],
+    "durationLevelValues":[0, 1, 2, 3, 4, 5, 6, 7],
+    "transmissionRiskLevelValues":[1, 1, 1, 1, 1, 1, 1, 1]}
     """
 //    """
 //    {"minimumRiskScore":0,
