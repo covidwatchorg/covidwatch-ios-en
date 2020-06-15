@@ -53,7 +53,7 @@
 		<true/>
 	</dict>
 	<key>SchemeName</key>
-	<string>CovidWatch-dev</string>
+	<string>CovidWatch-prod</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Black.ttf</string>
