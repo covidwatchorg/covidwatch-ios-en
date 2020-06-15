@@ -46,7 +46,7 @@
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<false/>
 	<key>LocalIP</key>
-	<string>192.168.0.103</string>
+	<string>192.168.0.100</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsLocalNetworking</key>
