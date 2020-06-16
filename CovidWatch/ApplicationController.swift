@@ -314,8 +314,10 @@ class ApplicationController: NSObject {
             let localSigURL = cachesDirectory.appendingPathComponent("export.sig")
             try tekSignatureList.serializedData().write(to: localSigURL)
 
+            let fileName = "\(UIDevice.current.name)_\(ISO8601DateFormatter.string(from: Date(), timeZone: TimeZone.current, formatOptions: [.withInternetDateTime, .withFractionalSeconds]))"
+            
             var destinationURL = URL(fileURLWithPath: cachesDirectory.path)
-            destinationURL.appendPathComponent("export.zip")
+            destinationURL.appendPathComponent("\(fileName).zip")
             if FileManager.default.fileExists(atPath: destinationURL.path) {
                 try FileManager.default.removeItem(at: destinationURL)
             }
@@ -326,6 +328,7 @@ class ApplicationController: NSObject {
             try archive.addEntry(with: localSigURL.lastPathComponent, relativeTo: localSigURL.deletingLastPathComponent())
             
             let activityViewController = UIActivityViewController(activityItems: [destinationURL], applicationActivities: nil)
+            activityViewController.setValue(fileName, forKey: "Subject")
             
             UIApplication.shared.topViewController?.present(
                 activityViewController,
@@ -356,7 +359,8 @@ class ApplicationController: NSObject {
     
     func exportExposures(forTestCase testCase: String) {        
         let cachesDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
-        let possibleExposuresPath = cachesDirectory.appendingPathComponent("\(UIDevice.current.name)_ \(ISO8601DateFormatter.string(from: Date(), timeZone: TimeZone.current, formatOptions: [.withInternetDateTime, .withFractionalSeconds]))_\(testCase).json")
+        let fileName = "\(UIDevice.current.name)_\(ISO8601DateFormatter.string(from: Date(), timeZone: TimeZone.current, formatOptions: [.withInternetDateTime, .withFractionalSeconds]))_\(testCase)"
+        let possibleExposuresPath = cachesDirectory.appendingPathComponent("\(fileName).json")
         do {
             let json = try JSONEncoder().encode(
                 ExposureConfigurationWithExposures(
@@ -366,6 +370,7 @@ class ApplicationController: NSObject {
             )
             try json.write(to: possibleExposuresPath)
             let activityViewController = UIActivityViewController(activityItems: [possibleExposuresPath], applicationActivities: nil)
+            activityViewController.setValue(fileName, forKey: "Subject")
             UIApplication.shared.topViewController?.present(
                 activityViewController,
                 animated: true,
