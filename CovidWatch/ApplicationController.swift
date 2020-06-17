@@ -314,7 +314,7 @@ class ApplicationController: NSObject {
             let localSigURL = cachesDirectory.appendingPathComponent("export.sig")
             try tekSignatureList.serializedData().write(to: localSigURL)
 
-            let fileName = "\(UIDevice.current.name)_\(ISO8601DateFormatter.string(from: Date(), timeZone: TimeZone.current, formatOptions: [.withInternetDateTime, .withFractionalSeconds]))"
+            let fileName = "\(UIDevice.current.name)_\(ISO8601DateFormatter.string(from: Date(), timeZone: TimeZone.current, formatOptions: [.withInternetDateTime]))"
             
             var destinationURL = URL(fileURLWithPath: cachesDirectory.path)
             destinationURL.appendPathComponent("\(fileName).zip")
@@ -359,7 +359,7 @@ class ApplicationController: NSObject {
     
     func exportExposures(forTestCase testCase: String) {        
         let cachesDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
-        let fileName = "\(UIDevice.current.name)_\(ISO8601DateFormatter.string(from: Date(), timeZone: TimeZone.current, formatOptions: [.withInternetDateTime, .withFractionalSeconds]))_\(testCase)"
+        let fileName = "\(UIDevice.current.name)_\(ISO8601DateFormatter.string(from: Date(), timeZone: TimeZone.current, formatOptions: [.withInternetDateTime]))_\(testCase)"
         let possibleExposuresPath = cachesDirectory.appendingPathComponent("\(fileName).json")
         do {
             let json = try JSONEncoder().encode(
