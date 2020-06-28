@@ -1,10 +1,10 @@
 /*
 See LICENSE folder for this sample’s licensing information.
 
-Abstract:
+/Abstract:
 A view for bridging a UIPageViewController.
 */
-
+//
 import SwiftUI
 
 struct PageView<Page: View>: View {
@@ -16,9 +16,49 @@ struct PageView<Page: View>: View {
     }
 
     var body: some View {
-        ZStack(alignment: .bottom) {
+        VStack{
+       
+            
             PageViewController(controllers: viewControllers, currentPage: $currentPage)
-            PageControl(numberOfPages: viewControllers.count, currentPage: $currentPage)                
+            
+       
+              ZStack(alignment: .bottom){
+            PageControl(numberOfPages: viewControllers.count, currentPage: $currentPage)
+            
+            
+            HStack(spacing: .standardSpacing * 20){
+                              Button(action: {
+                                 
+                                 if self.currentPage != 0 {
+                                self.currentPage -= 1
+                                }
+                                 
+                               
+                                  
+                                
+                               
+                              }) {
+                               
+                                  Image("Left Arrow PageView")
+                                  
+                              }
+                              
+                              Button(action: {
+                               
+                                  if self.currentPage != 3 {
+                                  self.currentPage += 1
+                                }
+                                  
+                              }) {
+                                                 Image("Right Arrow PageView")
+                                             }
+                   }
+                 .frame(minWidth: 0, maxWidth: .standardSpacing * 3, minHeight: 0, maxHeight: .standardSpacing * 3, alignment: .center)
+                
+           
+           
+        
         }
     }
+}
 }
