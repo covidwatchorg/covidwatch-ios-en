@@ -1,10 +1,10 @@
 /*
 See LICENSE folder for this sample’s licensing information.
 
-/Abstract:
+Abstract:
 A view for bridging a UIPageViewController.
 */
-//
+
 import SwiftUI
 
 struct PageView<Page: View>: View {
@@ -28,11 +28,11 @@ struct PageView<Page: View>: View {
             
             HStack(spacing: .standardSpacing * 20){
                               Button(action: {
-                                 
+                                  print("CW")
                                  if self.currentPage != 0 {
                                 self.currentPage -= 1
                                 }
-                                 
+                                  print(self.currentPage)
                                
                                   
                                 
@@ -44,21 +44,21 @@ struct PageView<Page: View>: View {
                               }
                               
                               Button(action: {
-                               
+                                print("CW")
                                   if self.currentPage != 3 {
                                   self.currentPage += 1
                                 }
-                                  
+                                   print(self.currentPage)
                               }) {
                                                  Image("Right Arrow PageView")
                                              }
                    }
                  .frame(minWidth: 0, maxWidth: .standardSpacing * 3, minHeight: 0, maxHeight: .standardSpacing * 3, alignment: .center)
                 
-           
+            
            
         
-        }
+        }.padding(.bottom, .standardSpacing * 6)
     }
 }
 }
