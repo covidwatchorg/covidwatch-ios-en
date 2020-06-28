@@ -73,7 +73,7 @@ struct PossibleExposureTable: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
                 }.modifier(PossibleExposureTableColumnA())
-                
+
                 HStack {
                     Spacer(minLength: 20)
                     Text(verbatim: "[ \(exposure.attenuationDurations.map({ duration(for: $0)}).joined(separator: ", ")) ]")
@@ -83,8 +83,8 @@ struct PossibleExposureTable: View {
                 }.modifier(PossibleExposureTableColumnB())
             }
             .accessibilityElement(children: .combine)
-            
-            
+
+            #if DEBUG_CALIBRATION
             HStack(spacing: 0) {
                 HStack {
                     Spacer(minLength: 10)
@@ -92,7 +92,7 @@ struct PossibleExposureTable: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
                 }.modifier(PossibleExposureTableColumnA())
-                
+
                 HStack {
                     Spacer(minLength: 20)
                     Text(verbatim: "[ \(exposure.attenuationDurationThresholds.map({ String($0)}).joined(separator: ", ")) ]")
@@ -102,7 +102,8 @@ struct PossibleExposureTable: View {
                 }.modifier(PossibleExposureTableColumnB())
             }
             .accessibilityElement(children: .combine)
-            
+            #endif
+
 //            HStack(spacing: 0) {
 //                HStack {
 //                    Spacer(minLength: 10)
@@ -110,7 +111,7 @@ struct PossibleExposureTable: View {
 //                        .frame(maxWidth: .infinity, alignment: .leading)
 //                    Spacer(minLength: 10)
 //                }.modifier(PossibleExposureTableColumnA())
-//                
+//
 //                HStack {
 //                    Spacer(minLength: 20)
 ////                    Text(verbatim: "\(exposure.attenuationValue) of 8")
@@ -121,7 +122,7 @@ struct PossibleExposureTable: View {
 //                }.modifier(PossibleExposureTableColumnB())
 //            }
 //            .accessibilityElement(children: .combine)
-            
+
             HStack(spacing: 0) {
                 HStack {
                     Spacer(minLength: 10)
@@ -129,7 +130,7 @@ struct PossibleExposureTable: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
                 }.modifier(PossibleExposureTableColumnA())
-                
+
                 HStack {
                     Spacer(minLength: 20)
                     //Text(verbatim: exposure.transmissionRiskLevel.localizedTransmissionRiskLevelDescription)
@@ -139,7 +140,7 @@ struct PossibleExposureTable: View {
                 }.modifier(PossibleExposureTableColumnB())
             }
             .accessibilityElement(children: .combine)
-            
+
             HStack(spacing: 0) {
                 HStack {
                     Spacer(minLength: 10)
@@ -147,7 +148,7 @@ struct PossibleExposureTable: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
                 }.modifier(PossibleExposureTableColumnA())
-                
+
                 HStack {
                     Spacer(minLength: 20)
                     Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("TOTAL_RISK_SCORE_VALUE", comment: ""), NSNumber(value: exposure.totalRiskScore)))

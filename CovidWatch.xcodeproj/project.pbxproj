@@ -41,7 +41,6 @@
 		2D5149E72483918400702A60 /* ENRiskLevel+LocalizedDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5149E62483918400702A60 /* ENRiskLevel+LocalizedDescription.swift */; };
 		2D5D9402245FF85C00718412 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D9401245FF85C00718412 /* UserData.swift */; };
 		2D5D9405245FF88800718412 /* UserDefaultPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D9404245FF88800718412 /* UserDefaultPropertyWrapper.swift */; };
-		2D5D94072460000A00718412 /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94062460000A00718412 /* ApplicationController.swift */; };
 		2D5D94092460023900718412 /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94082460023900718412 /* Splash.swift */; };
 		2D5D940B2460118D00718412 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D940A2460118D00718412 /* Home.swift */; };
 		2D5D940D246019D500718412 /* HowItWorks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D940C246019D500718412 /* HowItWorks.swift */; };
@@ -50,6 +49,112 @@
 		2D5D94132460232A00718412 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94122460232A00718412 /* PageControl.swift */; };
 		2D5D941624602FE100718412 /* HowItWorks1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D941524602FE100718412 /* HowItWorks1.swift */; };
 		2D63D592245CBCC10027D43B /* OSLog+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D63D591245CBCC00027D43B /* OSLog+Additions.swift */; };
+		2D72542E24A353C9003E5914 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D9CF3DB2455B9F4005B085E /* LaunchScreen.storyboard */; };
+		2D72542F24A353F4003E5914 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D9CF3DB2455B9F4005B085E /* LaunchScreen.storyboard */; };
+		2D72543724A35E92003E5914 /* PossibleExposureSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D74E4682465D428002057B9 /* PossibleExposureSummary.swift */; };
+		2D72543824A35E92003E5914 /* ENRiskScore+Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A1248E6354001766A4 /* ENRiskScore+Levels.swift */; };
+		2D72543924A35E92003E5914 /* StandardTitleTextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBC07B2248552B4001304BB /* StandardTitleTextViewModifier.swift */; };
+		2D72543A24A35E92003E5914 /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA612466ADFD0003936C /* Welcome.swift */; };
+		2D72543B24A35E92003E5914 /* Data+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFEED062476AD4200D2C620 /* Data+Random.swift */; };
+		2D72543C24A35E92003E5914 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D9401245FF85C00718412 /* UserData.swift */; };
+		2D72543D24A35E92003E5914 /* HeaderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B444245F4DE7001B30F0 /* HeaderBar.swift */; };
+		2D72543E24A35E92003E5914 /* HowItWorksMessageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8516832484FECA00F8E5BE /* HowItWorksMessageText.swift */; };
+		2D72543F24A35E92003E5914 /* PossibleExposures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA5E2465E69E0003936C /* PossibleExposures.swift */; };
+		2D72544024A35E92003E5914 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA542465E1240003936C /* Server.swift */; };
+		2D72544124A35E92003E5914 /* ReportingFinish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7942A624682EF9008AF148 /* ReportingFinish.swift */; };
+		2D72544224A35E92003E5914 /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94082460023900718412 /* Splash.swift */; };
+		2D72544324A35E92003E5914 /* UserDefaultPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D9404245FF88800718412 /* UserDefaultPropertyWrapper.swift */; };
+		2D72544424A35E92003E5914 /* ExposureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA512465E1240003936C /* ExposureManager.swift */; };
+		2D72544524A35E92003E5914 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034C42460498A00351C3C /* Setup.swift */; };
+		2D72544624A35E92003E5914 /* HowItWorksTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D85167F2484FA1C00F8E5BE /* HowItWorksTitleText.swift */; };
+		2D72544724A35E92003E5914 /* UNAuthorizationStatus+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF224607F2C00E8BEC4 /* UNAuthorizationStatus+Additions.swift */; };
+		2D72544824A35E92003E5914 /* SmallCallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7942952466CEE0008AF148 /* SmallCallToAction.swift */; };
+		2D72544924A35E92003E5914 /* HowItWorksSubtitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8516812484FBE700F8E5BE /* HowItWorksSubtitleText.swift */; };
+		2D72544A24A35E92003E5914 /* PossibleExposureTableColumnA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D743E902485425400AA4D26 /* PossibleExposureTableColumnA.swift */; };
+		2D72544B24A35E92003E5914 /* Setup3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39489D248E40A3001766A4 /* Setup3.swift */; };
+		2D72544C24A35E92003E5914 /* PositiveDiagnosis+ExposureNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3B2465E1010003936C /* PositiveDiagnosis+ExposureNotification.swift */; };
+		2D72544D24A35E92003E5914 /* PositiveDiagnosis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3D2465E1010003936C /* PositiveDiagnosis.swift */; };
+		2D72544E24A35E92003E5914 /* ReportingCallCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7942A42467FB40008AF148 /* ReportingCallCode.swift */; };
+		2D72544F24A35E92003E5914 /* SetupMessageTextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B493245F646D001B30F0 /* SetupMessageTextViewModifier.swift */; };
+		2D72545024A35E92003E5914 /* Setup2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034C824604BB000351C3C /* Setup2.swift */; };
+		2D72545124A35E92003E5914 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94102460231C00718412 /* PageView.swift */; };
+		2D72545224A35E92003E5914 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9CF3CD2455B9F1005B085E /* AppDelegate.swift */; };
+		2D72545324A35E92003E5914 /* ENExposureConfiguration+CodableExposureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA382465E1000003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift */; };
+		2D72545424A35E92003E5914 /* GCPGoogleExposureNotificationServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFEED0D24792C1600D2C620 /* GCPGoogleExposureNotificationServer.swift */; };
+		2D72545524A35E92003E5914 /* ENStatus+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF024607DA100E8BEC4 /* ENStatus+Additions.swift */; };
+		2D72545624A35E92003E5914 /* ExposureRiskScoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A7248EA454001766A4 /* ExposureRiskScoring.swift */; };
+		2D72545724A35E92003E5914 /* Reporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79429F2467E915008AF148 /* Reporting.swift */; };
+		2D72545824A35E92003E5914 /* HowItWorks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D940C246019D500718412 /* HowItWorks.swift */; };
+		2D72545924A35E92003E5914 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94122460232A00718412 /* PageControl.swift */; };
+		2D72545A24A35E92003E5914 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D940A2460118D00718412 /* Home.swift */; };
+		2D72545B24A35E92003E5914 /* GoogleExposureNotificationServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA462465E10E0003936C /* GoogleExposureNotificationServer.swift */; };
+		2D72545C24A35E92003E5914 /* AppDelegate+BackgroundTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D48BF79245AE51800012E79 /* AppDelegate+BackgroundTasks.swift */; };
+		2D72545D24A35E92003E5914 /* PossibleExposureSummaryValueViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39489F248E548E001766A4 /* PossibleExposureSummaryValueViewModifier.swift */; };
+		2D72545E24A35E92003E5914 /* CallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B495245F64D8001B30F0 /* CallToAction.swift */; };
+		2D72545F24A35E92003E5914 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B441245F3FF1001B30F0 /* ContentView.swift */; };
+		2D72546024A35E92003E5914 /* URLSession+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA4A2465E1190003936C /* URLSession+Additions.swift */; };
+		2D72546124A35E92003E5914 /* DiagnosisServerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA452465E10E0003936C /* DiagnosisServerInterface.swift */; };
+		2D72546224A35E92003E5914 /* PossibleExposure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79429B2467DB49008AF148 /* PossibleExposure.swift */; };
+		2D72546324A35E92003E5914 /* AZExposureRiskScorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A5248E7DD1001766A4 /* AZExposureRiskScorer.swift */; };
+		2D72546424A35E92003E5914 /* SubCallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B497245F65E1001B30F0 /* SubCallToAction.swift */; };
+		2D72546524A35E92003E5914 /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94062460000A00718412 /* ApplicationController.swift */; };
+		2D72546624A35E92003E5914 /* AppDelegate+UserNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E6B2C2456E9A700150D1C /* AppDelegate+UserNotificationCenter.swift */; };
+		2D72546724A35E92003E5914 /* PossibleExposureTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79429D2467E34D008AF148 /* PossibleExposureTable.swift */; };
+		2D72546824A35E92003E5914 /* LocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA552465E1240003936C /* LocalStore.swift */; };
+		2D72546924A35E92003E5914 /* HowItWorks3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034B924603E1A00351C3C /* HowItWorks3.swift */; };
+		2D72546A24A35E92003E5914 /* PossibleExposureTableColumnB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D743E92248542FD00AA4D26 /* PossibleExposureTableColumnB.swift */; };
+		2D72546B24A35E92003E5914 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA532465E1240003936C /* DeveloperDiagnosisKeyFileProtobuf.pb.swift */; };
+		2D72546C24A35E92003E5914 /* HowItWorks1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D941524602FE100718412 /* HowItWorks1.swift */; };
+		2D72546D24A35E92003E5914 /* CodableDiagnosisKey+ExposureNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3A2465E1010003936C /* CodableDiagnosisKey+ExposureNotification.swift */; };
+		2D72546E24A35E92003E5914 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF52460951200E8BEC4 /* Menu.swift */; };
+		2D72546F24A35E92003E5914 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA839A22462FD5B004BD707 /* Blur.swift */; };
+		2D72547024A35E92003E5914 /* PossibleExposureRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79429724671F28008AF148 /* PossibleExposureRow.swift */; };
+		2D72547124A35E92003E5914 /* HowItWorks4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034BB24603EA600351C3C /* HowItWorks4.swift */; };
+		2D72547224A35E92003E5914 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D940E2460231200718412 /* PageViewController.swift */; };
+		2D72547324A35E92003E5914 /* UIWindow+ViewControllerUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA4B2465E1190003936C /* UIWindow+ViewControllerUtility.swift */; };
+		2D72547424A35E92003E5914 /* MenuTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF824609F6100E8BEC4 /* MenuTitleText.swift */; };
+		2D72547524A35E92003E5914 /* LocalGoogleExposureNotificationServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFEED0F24792CF300D2C620 /* LocalGoogleExposureNotificationServer.swift */; };
+		2D72547624A35E92003E5914 /* OSLog+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D63D591245CBCC00027D43B /* OSLog+Additions.swift */; };
+		2D72547724A35E92003E5914 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E220957F245BA49400819BD1 /* Environment.swift */; };
+		2D72547824A35E92003E5914 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B499245F66F2001B30F0 /* Constants.swift */; };
+		2D72547924A35E92003E5914 /* UserDefaults+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA392465E1000003936C /* UserDefaults+Shared.swift */; };
+		2D72547A24A35E92003E5914 /* HowItWorks2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034B724603D6200351C3C /* HowItWorks2.swift */; };
+		2D72547B24A35E92003E5914 /* ENRiskLevel+LocalizedDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5149E62483918400702A60 /* ENRiskLevel+LocalizedDescription.swift */; };
+		2D72547C24A35E92003E5914 /* ENTemporaryExposureKey+CodableDiagnosisKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3C2465E1010003936C /* ENTemporaryExposureKey+CodableDiagnosisKey.swift */; };
+		2D72547D24A35E92003E5914 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAE8246060B400E8BEC4 /* Alert.swift */; };
+		2D72547E24A35E92003E5914 /* UIViewController+ErrorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA4C2465E1190003936C /* UIViewController+ErrorPresenting.swift */; };
+		2D72547F24A35E92003E5914 /* Setup1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034C6246049EC00351C3C /* Setup1.swift */; };
+		2D72548124A35E92003E5914 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 2D72543124A35E92003E5914 /* SwiftProtobuf */; };
+		2D72548224A35E92003E5914 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 2D72543324A35E92003E5914 /* ZIPFoundation */; };
+		2D72548424A35E92003E5914 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B46A245F50A0001B30F0 /* Montserrat-SemiBoldItalic.ttf */; };
+		2D72548524A35E92003E5914 /* Montserrat-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B457245F50A0001B30F0 /* Montserrat-MediumItalic.ttf */; };
+		2D72548624A35E92003E5914 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B450245F50A0001B30F0 /* Montserrat-Light.ttf */; };
+		2D72548724A35E92003E5914 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D9CF3D92455B9F4005B085E /* Assets.xcassets */; };
+		2D72548824A35E92003E5914 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D5149E4248384F000702A60 /* Localizable.strings */; };
+		2D72548924A35E92003E5914 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 2D743E8E24851FE500AA4D26 /* Localizable.stringsdict */; };
+		2D72548A24A35E92003E5914 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B464245F50A0001B30F0 /* Montserrat-Italic.ttf */; };
+		2D72548B24A35E92003E5914 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B463245F50A0001B30F0 /* Montserrat-Regular.ttf */; };
+		2D72548C24A35E92003E5914 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B46B245F50A0001B30F0 /* Montserrat-ExtraBoldItalic.ttf */; };
+		2D72548D24A35E92003E5914 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D9CF3DB2455B9F4005B085E /* LaunchScreen.storyboard */; };
+		2D72548E24A35E92003E5914 /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B453245F50A0001B30F0 /* Montserrat-ExtraLight.ttf */; };
+		2D72548F24A35E92003E5914 /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B44F245F50A0001B30F0 /* Montserrat-BoldItalic.ttf */; };
+		2D72549024A35E92003E5914 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B461245F50A0001B30F0 /* Montserrat-Black.ttf */; };
+		2D72549124A35E92003E5914 /* Assets-Arizona.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D8FE71724A3431800456875 /* Assets-Arizona.xcassets */; };
+		2D72549224A35E92003E5914 /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B449245F50A0001B30F0 /* Montserrat-LightItalic.ttf */; };
+		2D72549324A35E92003E5914 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B451245F50A0001B30F0 /* Montserrat-ThinItalic.ttf */; };
+		2D72549424A35E92003E5914 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B459245F50A0001B30F0 /* Montserrat-BlackItalic.ttf */; };
+		2D72549524A35E92003E5914 /* Montserrat-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B45C245F50A0001B30F0 /* Montserrat-ExtraLightItalic.ttf */; };
+		2D72549624A35E92003E5914 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B456245F50A0001B30F0 /* Montserrat-Bold.ttf */; };
+		2D72549724A35E92003E5914 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B44A245F50A0001B30F0 /* Montserrat-Medium.ttf */; };
+		2D72549824A35E92003E5914 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B45D245F50A0001B30F0 /* Montserrat-ExtraBold.ttf */; };
+		2D72549924A35E92003E5914 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B458245F50A0001B30F0 /* Apache License.txt */; };
+		2D72549A24A35E92003E5914 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B45B245F50A0001B30F0 /* Montserrat-SemiBold.ttf */; };
+		2D72549B24A35E92003E5914 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B454245F50A0001B30F0 /* Montserrat-Thin.ttf */; };
+		2D7254A624A37779003E5914 /* ApplicationController+Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7254A424A3765A003E5914 /* ApplicationController+Calibration.swift */; };
+		2D7254A924A37D6D003E5914 /* ExposureManager+Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7254A724A37D62003E5914 /* ExposureManager+Calibration.swift */; };
+		2D7254AA24A38225003E5914 /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94062460000A00718412 /* ApplicationController.swift */; };
+		2D7254AD24A384CD003E5914 /* GoogleExposureNotificationServer+Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7254AB24A384BA003E5914 /* GoogleExposureNotificationServer+Calibration.swift */; };
+		2D7254AF24A3A519003E5914 /* DeviceVerificationPayloadProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7254AE24A3A519003E5914 /* DeviceVerificationPayloadProviding.swift */; };
 		2D743E8F24851FE500AA4D26 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 2D743E8E24851FE500AA4D26 /* Localizable.stringsdict */; };
 		2D743E912485425400AA4D26 /* PossibleExposureTableColumnA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D743E902485425400AA4D26 /* PossibleExposureTableColumnA.swift */; };
 		2D743E93248542FE00AA4D26 /* PossibleExposureTableColumnB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D743E92248542FD00AA4D26 /* PossibleExposureTableColumnB.swift */; };
@@ -64,6 +169,104 @@
 		2D8516802484FA1C00F8E5BE /* HowItWorksTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D85167F2484FA1C00F8E5BE /* HowItWorksTitleText.swift */; };
 		2D8516822484FBE700F8E5BE /* HowItWorksSubtitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8516812484FBE700F8E5BE /* HowItWorksSubtitleText.swift */; };
 		2D8516842484FECA00F8E5BE /* HowItWorksMessageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8516832484FECA00F8E5BE /* HowItWorksMessageText.swift */; };
+		2D8FE69C24A33B0100456875 /* PossibleExposureSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D74E4682465D428002057B9 /* PossibleExposureSummary.swift */; };
+		2D8FE69D24A33B0100456875 /* ENRiskScore+Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A1248E6354001766A4 /* ENRiskScore+Levels.swift */; };
+		2D8FE69E24A33B0100456875 /* StandardTitleTextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBC07B2248552B4001304BB /* StandardTitleTextViewModifier.swift */; };
+		2D8FE69F24A33B0100456875 /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA612466ADFD0003936C /* Welcome.swift */; };
+		2D8FE6A024A33B0100456875 /* Data+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFEED062476AD4200D2C620 /* Data+Random.swift */; };
+		2D8FE6A124A33B0100456875 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D9401245FF85C00718412 /* UserData.swift */; };
+		2D8FE6A224A33B0100456875 /* HeaderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B444245F4DE7001B30F0 /* HeaderBar.swift */; };
+		2D8FE6A324A33B0100456875 /* HowItWorksMessageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8516832484FECA00F8E5BE /* HowItWorksMessageText.swift */; };
+		2D8FE6A424A33B0100456875 /* PossibleExposures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA5E2465E69E0003936C /* PossibleExposures.swift */; };
+		2D8FE6A524A33B0100456875 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA542465E1240003936C /* Server.swift */; };
+		2D8FE6A624A33B0100456875 /* ReportingFinish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7942A624682EF9008AF148 /* ReportingFinish.swift */; };
+		2D8FE6A724A33B0100456875 /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94082460023900718412 /* Splash.swift */; };
+		2D8FE6A824A33B0100456875 /* UserDefaultPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D9404245FF88800718412 /* UserDefaultPropertyWrapper.swift */; };
+		2D8FE6A924A33B0100456875 /* ExposureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA512465E1240003936C /* ExposureManager.swift */; };
+		2D8FE6AA24A33B0100456875 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034C42460498A00351C3C /* Setup.swift */; };
+		2D8FE6AB24A33B0100456875 /* HowItWorksTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D85167F2484FA1C00F8E5BE /* HowItWorksTitleText.swift */; };
+		2D8FE6AC24A33B0100456875 /* UNAuthorizationStatus+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF224607F2C00E8BEC4 /* UNAuthorizationStatus+Additions.swift */; };
+		2D8FE6AD24A33B0100456875 /* SmallCallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7942952466CEE0008AF148 /* SmallCallToAction.swift */; };
+		2D8FE6AE24A33B0100456875 /* HowItWorksSubtitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8516812484FBE700F8E5BE /* HowItWorksSubtitleText.swift */; };
+		2D8FE6AF24A33B0100456875 /* PossibleExposureTableColumnA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D743E902485425400AA4D26 /* PossibleExposureTableColumnA.swift */; };
+		2D8FE6B024A33B0100456875 /* Setup3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39489D248E40A3001766A4 /* Setup3.swift */; };
+		2D8FE6B124A33B0100456875 /* PositiveDiagnosis+ExposureNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3B2465E1010003936C /* PositiveDiagnosis+ExposureNotification.swift */; };
+		2D8FE6B224A33B0100456875 /* PositiveDiagnosis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3D2465E1010003936C /* PositiveDiagnosis.swift */; };
+		2D8FE6B324A33B0100456875 /* ReportingCallCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7942A42467FB40008AF148 /* ReportingCallCode.swift */; };
+		2D8FE6B424A33B0100456875 /* SetupMessageTextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B493245F646D001B30F0 /* SetupMessageTextViewModifier.swift */; };
+		2D8FE6B524A33B0100456875 /* Setup2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034C824604BB000351C3C /* Setup2.swift */; };
+		2D8FE6B624A33B0100456875 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94102460231C00718412 /* PageView.swift */; };
+		2D8FE6B724A33B0100456875 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9CF3CD2455B9F1005B085E /* AppDelegate.swift */; };
+		2D8FE6B824A33B0100456875 /* ENExposureConfiguration+CodableExposureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA382465E1000003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift */; };
+		2D8FE6B924A33B0100456875 /* GCPGoogleExposureNotificationServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFEED0D24792C1600D2C620 /* GCPGoogleExposureNotificationServer.swift */; };
+		2D8FE6BA24A33B0100456875 /* ENStatus+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF024607DA100E8BEC4 /* ENStatus+Additions.swift */; };
+		2D8FE6BB24A33B0100456875 /* ExposureRiskScoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A7248EA454001766A4 /* ExposureRiskScoring.swift */; };
+		2D8FE6BC24A33B0100456875 /* Reporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79429F2467E915008AF148 /* Reporting.swift */; };
+		2D8FE6BD24A33B0100456875 /* HowItWorks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D940C246019D500718412 /* HowItWorks.swift */; };
+		2D8FE6BE24A33B0100456875 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94122460232A00718412 /* PageControl.swift */; };
+		2D8FE6BF24A33B0100456875 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D940A2460118D00718412 /* Home.swift */; };
+		2D8FE6C024A33B0100456875 /* GoogleExposureNotificationServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA462465E10E0003936C /* GoogleExposureNotificationServer.swift */; };
+		2D8FE6C124A33B0100456875 /* AppDelegate+BackgroundTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D48BF79245AE51800012E79 /* AppDelegate+BackgroundTasks.swift */; };
+		2D8FE6C224A33B0100456875 /* PossibleExposureSummaryValueViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39489F248E548E001766A4 /* PossibleExposureSummaryValueViewModifier.swift */; };
+		2D8FE6C324A33B0100456875 /* CallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B495245F64D8001B30F0 /* CallToAction.swift */; };
+		2D8FE6C424A33B0100456875 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B441245F3FF1001B30F0 /* ContentView.swift */; };
+		2D8FE6C524A33B0100456875 /* URLSession+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA4A2465E1190003936C /* URLSession+Additions.swift */; };
+		2D8FE6C624A33B0100456875 /* DiagnosisServerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA452465E10E0003936C /* DiagnosisServerInterface.swift */; };
+		2D8FE6C724A33B0100456875 /* PossibleExposure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79429B2467DB49008AF148 /* PossibleExposure.swift */; };
+		2D8FE6C824A33B0100456875 /* AZExposureRiskScorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A5248E7DD1001766A4 /* AZExposureRiskScorer.swift */; };
+		2D8FE6C924A33B0100456875 /* SubCallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B497245F65E1001B30F0 /* SubCallToAction.swift */; };
+		2D8FE6CB24A33B0100456875 /* AppDelegate+UserNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E6B2C2456E9A700150D1C /* AppDelegate+UserNotificationCenter.swift */; };
+		2D8FE6CC24A33B0100456875 /* PossibleExposureTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79429D2467E34D008AF148 /* PossibleExposureTable.swift */; };
+		2D8FE6CD24A33B0100456875 /* LocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA552465E1240003936C /* LocalStore.swift */; };
+		2D8FE6CE24A33B0100456875 /* HowItWorks3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034B924603E1A00351C3C /* HowItWorks3.swift */; };
+		2D8FE6CF24A33B0100456875 /* PossibleExposureTableColumnB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D743E92248542FD00AA4D26 /* PossibleExposureTableColumnB.swift */; };
+		2D8FE6D024A33B0100456875 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA532465E1240003936C /* DeveloperDiagnosisKeyFileProtobuf.pb.swift */; };
+		2D8FE6D124A33B0100456875 /* HowItWorks1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D941524602FE100718412 /* HowItWorks1.swift */; };
+		2D8FE6D224A33B0100456875 /* CodableDiagnosisKey+ExposureNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3A2465E1010003936C /* CodableDiagnosisKey+ExposureNotification.swift */; };
+		2D8FE6D324A33B0100456875 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF52460951200E8BEC4 /* Menu.swift */; };
+		2D8FE6D424A33B0100456875 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA839A22462FD5B004BD707 /* Blur.swift */; };
+		2D8FE6D524A33B0100456875 /* PossibleExposureRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79429724671F28008AF148 /* PossibleExposureRow.swift */; };
+		2D8FE6D624A33B0100456875 /* HowItWorks4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034BB24603EA600351C3C /* HowItWorks4.swift */; };
+		2D8FE6D724A33B0100456875 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D940E2460231200718412 /* PageViewController.swift */; };
+		2D8FE6D824A33B0100456875 /* UIWindow+ViewControllerUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA4B2465E1190003936C /* UIWindow+ViewControllerUtility.swift */; };
+		2D8FE6D924A33B0100456875 /* MenuTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF824609F6100E8BEC4 /* MenuTitleText.swift */; };
+		2D8FE6DA24A33B0100456875 /* LocalGoogleExposureNotificationServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFEED0F24792CF300D2C620 /* LocalGoogleExposureNotificationServer.swift */; };
+		2D8FE6DB24A33B0100456875 /* OSLog+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D63D591245CBCC00027D43B /* OSLog+Additions.swift */; };
+		2D8FE6DC24A33B0100456875 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E220957F245BA49400819BD1 /* Environment.swift */; };
+		2D8FE6DD24A33B0100456875 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B499245F66F2001B30F0 /* Constants.swift */; };
+		2D8FE6DE24A33B0100456875 /* UserDefaults+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA392465E1000003936C /* UserDefaults+Shared.swift */; };
+		2D8FE6DF24A33B0100456875 /* HowItWorks2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034B724603D6200351C3C /* HowItWorks2.swift */; };
+		2D8FE6E024A33B0100456875 /* ENRiskLevel+LocalizedDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5149E62483918400702A60 /* ENRiskLevel+LocalizedDescription.swift */; };
+		2D8FE6E124A33B0100456875 /* ENTemporaryExposureKey+CodableDiagnosisKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3C2465E1010003936C /* ENTemporaryExposureKey+CodableDiagnosisKey.swift */; };
+		2D8FE6E224A33B0100456875 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAE8246060B400E8BEC4 /* Alert.swift */; };
+		2D8FE6E324A33B0100456875 /* UIViewController+ErrorPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA4C2465E1190003936C /* UIViewController+ErrorPresenting.swift */; };
+		2D8FE6E424A33B0100456875 /* Setup1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034C6246049EC00351C3C /* Setup1.swift */; };
+		2D8FE6E624A33B0100456875 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 2D8FE69624A33B0100456875 /* SwiftProtobuf */; };
+		2D8FE6E724A33B0100456875 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 2D8FE69824A33B0100456875 /* ZIPFoundation */; };
+		2D8FE6E924A33B0100456875 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B46A245F50A0001B30F0 /* Montserrat-SemiBoldItalic.ttf */; };
+		2D8FE6EA24A33B0100456875 /* Montserrat-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B457245F50A0001B30F0 /* Montserrat-MediumItalic.ttf */; };
+		2D8FE6EB24A33B0100456875 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B450245F50A0001B30F0 /* Montserrat-Light.ttf */; };
+		2D8FE6EE24A33B0100456875 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D5149E4248384F000702A60 /* Localizable.strings */; };
+		2D8FE6EF24A33B0100456875 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 2D743E8E24851FE500AA4D26 /* Localizable.stringsdict */; };
+		2D8FE6F024A33B0100456875 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B464245F50A0001B30F0 /* Montserrat-Italic.ttf */; };
+		2D8FE6F624A33B0100456875 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B463245F50A0001B30F0 /* Montserrat-Regular.ttf */; };
+		2D8FE6F724A33B0100456875 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B46B245F50A0001B30F0 /* Montserrat-ExtraBoldItalic.ttf */; };
+		2D8FE6FB24A33B0100456875 /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B453245F50A0001B30F0 /* Montserrat-ExtraLight.ttf */; };
+		2D8FE6FE24A33B0100456875 /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B44F245F50A0001B30F0 /* Montserrat-BoldItalic.ttf */; };
+		2D8FE6FF24A33B0100456875 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B461245F50A0001B30F0 /* Montserrat-Black.ttf */; };
+		2D8FE70024A33B0100456875 /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B449245F50A0001B30F0 /* Montserrat-LightItalic.ttf */; };
+		2D8FE70624A33B0100456875 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B451245F50A0001B30F0 /* Montserrat-ThinItalic.ttf */; };
+		2D8FE70724A33B0100456875 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B459245F50A0001B30F0 /* Montserrat-BlackItalic.ttf */; };
+		2D8FE70824A33B0100456875 /* Montserrat-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B45C245F50A0001B30F0 /* Montserrat-ExtraLightItalic.ttf */; };
+		2D8FE70924A33B0100456875 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B456245F50A0001B30F0 /* Montserrat-Bold.ttf */; };
+		2D8FE70A24A33B0100456875 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B44A245F50A0001B30F0 /* Montserrat-Medium.ttf */; };
+		2D8FE70B24A33B0100456875 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B45D245F50A0001B30F0 /* Montserrat-ExtraBold.ttf */; };
+		2D8FE70C24A33B0100456875 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B458245F50A0001B30F0 /* Apache License.txt */; };
+		2D8FE70D24A33B0100456875 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B45B245F50A0001B30F0 /* Montserrat-SemiBold.ttf */; };
+		2D8FE70E24A33B0100456875 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B454245F50A0001B30F0 /* Montserrat-Thin.ttf */; };
+		2D8FE71824A3431800456875 /* Assets-Arizona.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D8FE71724A3431800456875 /* Assets-Arizona.xcassets */; };
+		2D8FE71A24A346AF00456875 /* Assets-California.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D8FE71924A346AF00456875 /* Assets-California.xcassets */; };
+		2D8FE71C24A347D500456875 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D9CF3D92455B9F4005B085E /* Assets.xcassets */; };
 		2D9034B824603D6200351C3C /* HowItWorks2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034B724603D6200351C3C /* HowItWorks2.swift */; };
 		2D9034BA24603E1A00351C3C /* HowItWorks3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034B924603E1A00351C3C /* HowItWorks3.swift */; };
 		2D9034BC24603EA600351C3C /* HowItWorks4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034BB24603EA600351C3C /* HowItWorks4.swift */; };
@@ -72,7 +275,6 @@
 		2D9034C924604BB000351C3C /* Setup2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034C824604BB000351C3C /* Setup2.swift */; };
 		2D9CF3CE2455B9F1005B085E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9CF3CD2455B9F1005B085E /* AppDelegate.swift */; };
 		2D9CF3DA2455B9F4005B085E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D9CF3D92455B9F4005B085E /* Assets.xcassets */; };
-		2D9CF3DD2455B9F4005B085E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D9CF3DB2455B9F4005B085E /* LaunchScreen.storyboard */; };
 		2D9CF3E82455B9F5005B085E /* CovidWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9CF3E72455B9F5005B085E /* CovidWatchTests.swift */; };
 		2D9CF3F32455B9F5005B085E /* CovidWatchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9CF3F22455B9F5005B085E /* CovidWatchUITests.swift */; };
 		2D9E6B2D2456E9A800150D1C /* AppDelegate+UserNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E6B2C2456E9A700150D1C /* AppDelegate+UserNotificationCenter.swift */; };
@@ -80,41 +282,23 @@
 		2DBC07B3248552B4001304BB /* StandardTitleTextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBC07B2248552B4001304BB /* StandardTitleTextViewModifier.swift */; };
 		2DD7B442245F3FF2001B30F0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B441245F3FF1001B30F0 /* ContentView.swift */; };
 		2DD7B445245F4DE7001B30F0 /* HeaderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B444245F4DE7001B30F0 /* HeaderBar.swift */; };
-		2DD7B46C245F50A0001B30F0 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B447245F50A0001B30F0 /* Roboto-Medium.ttf */; };
-		2DD7B46D245F50A0001B30F0 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B448245F50A0001B30F0 /* Roboto-Light.ttf */; };
 		2DD7B46E245F50A0001B30F0 /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B449245F50A0001B30F0 /* Montserrat-LightItalic.ttf */; };
 		2DD7B46F245F50A0001B30F0 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B44A245F50A0001B30F0 /* Montserrat-Medium.ttf */; };
-		2DD7B470245F50A0001B30F0 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B44B245F50A0001B30F0 /* RobotoCondensed-Bold.ttf */; };
-		2DD7B471245F50A0001B30F0 /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B44C245F50A0001B30F0 /* RobotoCondensed-Light.ttf */; };
-		2DD7B472245F50A0001B30F0 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B44D245F50A0001B30F0 /* Roboto-Regular.ttf */; };
-		2DD7B473245F50A0001B30F0 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B44E245F50A0001B30F0 /* Roboto-MediumItalic.ttf */; };
 		2DD7B474245F50A0001B30F0 /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B44F245F50A0001B30F0 /* Montserrat-BoldItalic.ttf */; };
 		2DD7B475245F50A0001B30F0 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B450245F50A0001B30F0 /* Montserrat-Light.ttf */; };
 		2DD7B476245F50A0001B30F0 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B451245F50A0001B30F0 /* Montserrat-ThinItalic.ttf */; };
-		2DD7B477245F50A0001B30F0 /* RobotoCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B452245F50A0001B30F0 /* RobotoCondensed-Italic.ttf */; };
 		2DD7B478245F50A0001B30F0 /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B453245F50A0001B30F0 /* Montserrat-ExtraLight.ttf */; };
 		2DD7B479245F50A0001B30F0 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B454245F50A0001B30F0 /* Montserrat-Thin.ttf */; };
-		2DD7B47A245F50A0001B30F0 /* RobotoCondensed-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B455245F50A0001B30F0 /* RobotoCondensed-BoldItalic.ttf */; };
 		2DD7B47B245F50A0001B30F0 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B456245F50A0001B30F0 /* Montserrat-Bold.ttf */; };
 		2DD7B47C245F50A0001B30F0 /* Montserrat-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B457245F50A0001B30F0 /* Montserrat-MediumItalic.ttf */; };
 		2DD7B47D245F50A0001B30F0 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B458245F50A0001B30F0 /* Apache License.txt */; };
 		2DD7B47E245F50A0001B30F0 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B459245F50A0001B30F0 /* Montserrat-BlackItalic.ttf */; };
-		2DD7B47F245F50A0001B30F0 /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B45A245F50A0001B30F0 /* RobotoCondensed-LightItalic.ttf */; };
 		2DD7B480245F50A0001B30F0 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B45B245F50A0001B30F0 /* Montserrat-SemiBold.ttf */; };
 		2DD7B481245F50A0001B30F0 /* Montserrat-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B45C245F50A0001B30F0 /* Montserrat-ExtraLightItalic.ttf */; };
 		2DD7B482245F50A0001B30F0 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B45D245F50A0001B30F0 /* Montserrat-ExtraBold.ttf */; };
-		2DD7B483245F50A0001B30F0 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B45E245F50A0001B30F0 /* Roboto-ThinItalic.ttf */; };
-		2DD7B484245F50A0001B30F0 /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B45F245F50A0001B30F0 /* RobotoCondensed-Regular.ttf */; };
-		2DD7B485245F50A0001B30F0 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B460245F50A0001B30F0 /* Roboto-BoldItalic.ttf */; };
 		2DD7B486245F50A0001B30F0 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B461245F50A0001B30F0 /* Montserrat-Black.ttf */; };
-		2DD7B487245F50A0001B30F0 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B462245F50A0001B30F0 /* Roboto-LightItalic.ttf */; };
 		2DD7B488245F50A0001B30F0 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B463245F50A0001B30F0 /* Montserrat-Regular.ttf */; };
 		2DD7B489245F50A0001B30F0 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B464245F50A0001B30F0 /* Montserrat-Italic.ttf */; };
-		2DD7B48A245F50A0001B30F0 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B465245F50A0001B30F0 /* Roboto-Italic.ttf */; };
-		2DD7B48B245F50A0001B30F0 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B466245F50A0001B30F0 /* Roboto-BlackItalic.ttf */; };
-		2DD7B48C245F50A0001B30F0 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B467245F50A0001B30F0 /* Roboto-Bold.ttf */; };
-		2DD7B48D245F50A0001B30F0 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B468245F50A0001B30F0 /* Roboto-Thin.ttf */; };
-		2DD7B48E245F50A0001B30F0 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B469245F50A0001B30F0 /* Roboto-Black.ttf */; };
 		2DD7B48F245F50A0001B30F0 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B46A245F50A0001B30F0 /* Montserrat-SemiBoldItalic.ttf */; };
 		2DD7B490245F50A0001B30F0 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B46B245F50A0001B30F0 /* Montserrat-ExtraBoldItalic.ttf */; };
 		2DD7B494245F646D001B30F0 /* SetupMessageTextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B493245F646D001B30F0 /* SetupMessageTextViewModifier.swift */; };
@@ -189,6 +373,13 @@
 		2D5D94122460232A00718412 /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		2D5D941524602FE100718412 /* HowItWorks1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorks1.swift; sourceTree = "<group>"; };
 		2D63D591245CBCC00027D43B /* OSLog+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OSLog+Additions.swift"; sourceTree = "<group>"; };
+		2D72549F24A35E92003E5914 /* CW DEMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CW DEMO.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D7254A224A36BDC003E5914 /* CovidWatch-AppStore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CovidWatch-AppStore.entitlements"; sourceTree = "<group>"; };
+		2D7254A324A37280003E5914 /* Dev-Calibration-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dev-Calibration-Info.plist"; sourceTree = "<group>"; };
+		2D7254A424A3765A003E5914 /* ApplicationController+Calibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApplicationController+Calibration.swift"; sourceTree = "<group>"; };
+		2D7254A724A37D62003E5914 /* ExposureManager+Calibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExposureManager+Calibration.swift"; sourceTree = "<group>"; };
+		2D7254AB24A384BA003E5914 /* GoogleExposureNotificationServer+Calibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoogleExposureNotificationServer+Calibration.swift"; sourceTree = "<group>"; };
+		2D7254AE24A3A519003E5914 /* DeviceVerificationPayloadProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceVerificationPayloadProviding.swift; sourceTree = "<group>"; };
 		2D743E8E24851FE500AA4D26 /* Localizable.stringsdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
 		2D743E902485425400AA4D26 /* PossibleExposureTableColumnA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleExposureTableColumnA.swift; sourceTree = "<group>"; };
 		2D743E92248542FD00AA4D26 /* PossibleExposureTableColumnB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PossibleExposureTableColumnB.swift; sourceTree = "<group>"; };
@@ -203,6 +394,9 @@
 		2D85167F2484FA1C00F8E5BE /* HowItWorksTitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorksTitleText.swift; sourceTree = "<group>"; };
 		2D8516812484FBE700F8E5BE /* HowItWorksSubtitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorksSubtitleText.swift; sourceTree = "<group>"; };
 		2D8516832484FECA00F8E5BE /* HowItWorksMessageText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorksMessageText.swift; sourceTree = "<group>"; };
+		2D8FE71524A33B0100456875 /* Covid Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Covid Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D8FE71724A3431800456875 /* Assets-Arizona.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-Arizona.xcassets"; sourceTree = "<group>"; };
+		2D8FE71924A346AF00456875 /* Assets-California.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-California.xcassets"; sourceTree = "<group>"; };
 		2D9034B724603D6200351C3C /* HowItWorks2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowItWorks2.swift; sourceTree = "<group>"; };
 		2D9034B924603E1A00351C3C /* HowItWorks3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowItWorks3.swift; sourceTree = "<group>"; };
 		2D9034BB24603EA600351C3C /* HowItWorks4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowItWorks4.swift; sourceTree = "<group>"; };
@@ -213,7 +407,7 @@
 		2D9CF3CD2455B9F1005B085E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D9CF3D92455B9F4005B085E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D9CF3DC2455B9F4005B085E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		2D9CF3DE2455B9F4005B085E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D9CF3DE2455B9F4005B085E /* Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dev-Info.plist"; sourceTree = "<group>"; };
 		2D9CF3E32455B9F5005B085E /* CovidWatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CovidWatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D9CF3E72455B9F5005B085E /* CovidWatchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidWatchTests.swift; sourceTree = "<group>"; };
 		2D9CF3E92455B9F5005B085E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -225,48 +419,30 @@
 		2DBC07B2248552B4001304BB /* StandardTitleTextViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardTitleTextViewModifier.swift; sourceTree = "<group>"; };
 		2DD7B441245F3FF1001B30F0 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2DD7B444245F4DE7001B30F0 /* HeaderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderBar.swift; sourceTree = "<group>"; };
-		2DD7B447245F50A0001B30F0 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
-		2DD7B448245F50A0001B30F0 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		2DD7B449245F50A0001B30F0 /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
 		2DD7B44A245F50A0001B30F0 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
-		2DD7B44B245F50A0001B30F0 /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
-		2DD7B44C245F50A0001B30F0 /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
-		2DD7B44D245F50A0001B30F0 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
-		2DD7B44E245F50A0001B30F0 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
 		2DD7B44F245F50A0001B30F0 /* Montserrat-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BoldItalic.ttf"; sourceTree = "<group>"; };
 		2DD7B450245F50A0001B30F0 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
 		2DD7B451245F50A0001B30F0 /* Montserrat-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ThinItalic.ttf"; sourceTree = "<group>"; };
-		2DD7B452245F50A0001B30F0 /* RobotoCondensed-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Italic.ttf"; sourceTree = "<group>"; };
 		2DD7B453245F50A0001B30F0 /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
 		2DD7B454245F50A0001B30F0 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
-		2DD7B455245F50A0001B30F0 /* RobotoCondensed-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-BoldItalic.ttf"; sourceTree = "<group>"; };
 		2DD7B456245F50A0001B30F0 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		2DD7B457245F50A0001B30F0 /* Montserrat-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-MediumItalic.ttf"; sourceTree = "<group>"; };
 		2DD7B458245F50A0001B30F0 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
 		2DD7B459245F50A0001B30F0 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BlackItalic.ttf"; sourceTree = "<group>"; };
-		2DD7B45A245F50A0001B30F0 /* RobotoCondensed-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-LightItalic.ttf"; sourceTree = "<group>"; };
 		2DD7B45B245F50A0001B30F0 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		2DD7B45C245F50A0001B30F0 /* Montserrat-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		2DD7B45D245F50A0001B30F0 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
-		2DD7B45E245F50A0001B30F0 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
-		2DD7B45F245F50A0001B30F0 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
-		2DD7B460245F50A0001B30F0 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
 		2DD7B461245F50A0001B30F0 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
-		2DD7B462245F50A0001B30F0 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		2DD7B463245F50A0001B30F0 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		2DD7B464245F50A0001B30F0 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
-		2DD7B465245F50A0001B30F0 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
-		2DD7B466245F50A0001B30F0 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
-		2DD7B467245F50A0001B30F0 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
-		2DD7B468245F50A0001B30F0 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
-		2DD7B469245F50A0001B30F0 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		2DD7B46A245F50A0001B30F0 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		2DD7B46B245F50A0001B30F0 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		2DD7B493245F646D001B30F0 /* SetupMessageTextViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupMessageTextViewModifier.swift; sourceTree = "<group>"; };
 		2DD7B495245F64D8001B30F0 /* CallToAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallToAction.swift; sourceTree = "<group>"; };
 		2DD7B497245F65E1001B30F0 /* SubCallToAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCallToAction.swift; sourceTree = "<group>"; };
 		2DD7B499245F66F2001B30F0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		2DFEED05247695CA00D2C620 /* CovidWatch.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = CovidWatch.entitlements; sourceTree = "<group>"; };
+		2DFEED05247695CA00D2C620 /* CovidWatch-Dev.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "CovidWatch-Dev.entitlements"; sourceTree = "<group>"; };
 		2DFEED062476AD4200D2C620 /* Data+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Random.swift"; sourceTree = "<group>"; };
 		2DFEED0D24792C1600D2C620 /* GCPGoogleExposureNotificationServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCPGoogleExposureNotificationServer.swift; sourceTree = "<group>"; };
 		2DFEED0F24792CF300D2C620 /* LocalGoogleExposureNotificationServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalGoogleExposureNotificationServer.swift; sourceTree = "<group>"; };
@@ -274,6 +450,24 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2D72548024A35E92003E5914 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D72548124A35E92003E5914 /* SwiftProtobuf in Frameworks */,
+				2D72548224A35E92003E5914 /* ZIPFoundation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D8FE6E524A33B0100456875 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D8FE6E624A33B0100456875 /* SwiftProtobuf in Frameworks */,
+				2D8FE6E724A33B0100456875 /* ZIPFoundation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2D9CF3C72455B9F1005B085E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -349,9 +543,11 @@
 			children = (
 				2D46AA452465E10E0003936C /* DiagnosisServerInterface.swift */,
 				2D46AA462465E10E0003936C /* GoogleExposureNotificationServer.swift */,
+				2D7254AB24A384BA003E5914 /* GoogleExposureNotificationServer+Calibration.swift */,
 				2DFEED0F24792CF300D2C620 /* LocalGoogleExposureNotificationServer.swift */,
 				2DFEED0D24792C1600D2C620 /* GCPGoogleExposureNotificationServer.swift */,
 				2D5149E62483918400702A60 /* ENRiskLevel+LocalizedDescription.swift */,
+				2D7254AE24A3A519003E5914 /* DeviceVerificationPayloadProviding.swift */,
 			);
 			path = Server;
 			sourceTree = "<group>";
@@ -371,6 +567,7 @@
 			isa = PBXGroup;
 			children = (
 				2D46AA512465E1240003936C /* ExposureManager.swift */,
+				2D7254A724A37D62003E5914 /* ExposureManager+Calibration.swift */,
 				2D46AA522465E1240003936C /* DeveloperDiagnosisKeyFileProtobuf.proto */,
 				2D46AA532465E1240003936C /* DeveloperDiagnosisKeyFileProtobuf.pb.swift */,
 				2D46AA542465E1240003936C /* Server.swift */,
@@ -491,6 +688,8 @@
 				2D9CF3CA2455B9F1005B085E /* CW DEMO.app */,
 				2D9CF3E32455B9F5005B085E /* CovidWatchTests.xctest */,
 				2D9CF3EE2455B9F5005B085E /* CovidWatchUITests.xctest */,
+				2D8FE71524A33B0100456875 /* Covid Watch.app */,
+				2D72549F24A35E92003E5914 /* CW DEMO.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -504,6 +703,7 @@
 				2D48BF79245AE51800012E79 /* AppDelegate+BackgroundTasks.swift */,
 				2D9E6B2C2456E9A700150D1C /* AppDelegate+UserNotificationCenter.swift */,
 				2D5D94062460000A00718412 /* ApplicationController.swift */,
+				2D7254A424A3765A003E5914 /* ApplicationController+Calibration.swift */,
 				2D46AA502465E1240003936C /* AppleExposureNotificationApp */,
 				2D46AA442465E10E0003936C /* Server */,
 				2D29BAF42460921B00E8BEC4 /* UserNotifications */,
@@ -512,11 +712,15 @@
 				2D46AA492465E1190003936C /* Utility */,
 				2DD7B443245F4439001B30F0 /* Views */,
 				2D9CF3D92455B9F4005B085E /* Assets.xcassets */,
+				2D8FE71924A346AF00456875 /* Assets-California.xcassets */,
+				2D8FE71724A3431800456875 /* Assets-Arizona.xcassets */,
 				2D5149E4248384F000702A60 /* Localizable.strings */,
 				2D743E8E24851FE500AA4D26 /* Localizable.stringsdict */,
 				2D9CF3DB2455B9F4005B085E /* LaunchScreen.storyboard */,
-				2D9CF3DE2455B9F4005B085E /* Info.plist */,
-				2DFEED05247695CA00D2C620 /* CovidWatch.entitlements */,
+				2D7254A324A37280003E5914 /* Dev-Calibration-Info.plist */,
+				2D9CF3DE2455B9F4005B085E /* Dev-Info.plist */,
+				2D7254A224A36BDC003E5914 /* CovidWatch-AppStore.entitlements */,
+				2DFEED05247695CA00D2C620 /* CovidWatch-Dev.entitlements */,
 				2DD7B446245F50A0001B30F0 /* Montserrat */,
 			);
 			path = CovidWatch;
@@ -566,41 +770,23 @@
 		2DD7B446245F50A0001B30F0 /* Montserrat */ = {
 			isa = PBXGroup;
 			children = (
-				2DD7B447245F50A0001B30F0 /* Roboto-Medium.ttf */,
-				2DD7B448245F50A0001B30F0 /* Roboto-Light.ttf */,
 				2DD7B449245F50A0001B30F0 /* Montserrat-LightItalic.ttf */,
 				2DD7B44A245F50A0001B30F0 /* Montserrat-Medium.ttf */,
-				2DD7B44B245F50A0001B30F0 /* RobotoCondensed-Bold.ttf */,
-				2DD7B44C245F50A0001B30F0 /* RobotoCondensed-Light.ttf */,
-				2DD7B44D245F50A0001B30F0 /* Roboto-Regular.ttf */,
-				2DD7B44E245F50A0001B30F0 /* Roboto-MediumItalic.ttf */,
 				2DD7B44F245F50A0001B30F0 /* Montserrat-BoldItalic.ttf */,
 				2DD7B450245F50A0001B30F0 /* Montserrat-Light.ttf */,
 				2DD7B451245F50A0001B30F0 /* Montserrat-ThinItalic.ttf */,
-				2DD7B452245F50A0001B30F0 /* RobotoCondensed-Italic.ttf */,
 				2DD7B453245F50A0001B30F0 /* Montserrat-ExtraLight.ttf */,
 				2DD7B454245F50A0001B30F0 /* Montserrat-Thin.ttf */,
-				2DD7B455245F50A0001B30F0 /* RobotoCondensed-BoldItalic.ttf */,
 				2DD7B456245F50A0001B30F0 /* Montserrat-Bold.ttf */,
 				2DD7B457245F50A0001B30F0 /* Montserrat-MediumItalic.ttf */,
 				2DD7B458245F50A0001B30F0 /* Apache License.txt */,
 				2DD7B459245F50A0001B30F0 /* Montserrat-BlackItalic.ttf */,
-				2DD7B45A245F50A0001B30F0 /* RobotoCondensed-LightItalic.ttf */,
 				2DD7B45B245F50A0001B30F0 /* Montserrat-SemiBold.ttf */,
 				2DD7B45C245F50A0001B30F0 /* Montserrat-ExtraLightItalic.ttf */,
 				2DD7B45D245F50A0001B30F0 /* Montserrat-ExtraBold.ttf */,
-				2DD7B45E245F50A0001B30F0 /* Roboto-ThinItalic.ttf */,
-				2DD7B45F245F50A0001B30F0 /* RobotoCondensed-Regular.ttf */,
-				2DD7B460245F50A0001B30F0 /* Roboto-BoldItalic.ttf */,
 				2DD7B461245F50A0001B30F0 /* Montserrat-Black.ttf */,
-				2DD7B462245F50A0001B30F0 /* Roboto-LightItalic.ttf */,
 				2DD7B463245F50A0001B30F0 /* Montserrat-Regular.ttf */,
 				2DD7B464245F50A0001B30F0 /* Montserrat-Italic.ttf */,
-				2DD7B465245F50A0001B30F0 /* Roboto-Italic.ttf */,
-				2DD7B466245F50A0001B30F0 /* Roboto-BlackItalic.ttf */,
-				2DD7B467245F50A0001B30F0 /* Roboto-Bold.ttf */,
-				2DD7B468245F50A0001B30F0 /* Roboto-Thin.ttf */,
-				2DD7B469245F50A0001B30F0 /* Roboto-Black.ttf */,
 				2DD7B46A245F50A0001B30F0 /* Montserrat-SemiBoldItalic.ttf */,
 				2DD7B46B245F50A0001B30F0 /* Montserrat-ExtraBoldItalic.ttf */,
 			);
@@ -610,9 +796,53 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2D9CF3C92455B9F1005B085E /* CovidWatch */ = {
+		2D72543024A35E92003E5914 /* CovidWatch-Arizona-Dev-Calibration */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D9CF3F72455B9F5005B085E /* Build configuration list for PBXNativeTarget "CovidWatch" */;
+			buildConfigurationList = 2D72549C24A35E92003E5914 /* Build configuration list for PBXNativeTarget "CovidWatch-Arizona-Dev-Calibration" */;
+			buildPhases = (
+				2D72543524A35E92003E5914 /* Environment */,
+				2D72543624A35E92003E5914 /* Sources */,
+				2D72548024A35E92003E5914 /* Frameworks */,
+				2D72548324A35E92003E5914 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CovidWatch-Arizona-Dev-Calibration";
+			packageProductDependencies = (
+				2D72543124A35E92003E5914 /* SwiftProtobuf */,
+				2D72543324A35E92003E5914 /* ZIPFoundation */,
+			);
+			productName = CovidWatch;
+			productReference = 2D72549F24A35E92003E5914 /* CW DEMO.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2D8FE69524A33B0100456875 /* CovidWatch-Arizona-Dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D8FE71224A33B0100456875 /* Build configuration list for PBXNativeTarget "CovidWatch-Arizona-Dev" */;
+			buildPhases = (
+				2D8FE69A24A33B0100456875 /* Environment */,
+				2D8FE69B24A33B0100456875 /* Sources */,
+				2D8FE6E524A33B0100456875 /* Frameworks */,
+				2D8FE6E824A33B0100456875 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CovidWatch-Arizona-Dev";
+			packageProductDependencies = (
+				2D8FE69624A33B0100456875 /* SwiftProtobuf */,
+				2D8FE69824A33B0100456875 /* ZIPFoundation */,
+			);
+			productName = CovidWatch;
+			productReference = 2D8FE71524A33B0100456875 /* Covid Watch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2D9CF3C92455B9F1005B085E /* CovidWatch-California-Dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D9CF3F72455B9F5005B085E /* Build configuration list for PBXNativeTarget "CovidWatch-California-Dev" */;
 			buildPhases = (
 				E20D4F06245B9B0000B97B4B /* Environment */,
 				2D9CF3C62455B9F1005B085E /* Sources */,
@@ -623,7 +853,7 @@
 			);
 			dependencies = (
 			);
-			name = CovidWatch;
+			name = "CovidWatch-California-Dev";
 			packageProductDependencies = (
 				2D46AA5C2465E1710003936C /* SwiftProtobuf */,
 				2DFEED092476BD0400D2C620 /* ZIPFoundation */,
@@ -708,7 +938,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2D9CF3C92455B9F1005B085E /* CovidWatch */,
+				2D9CF3C92455B9F1005B085E /* CovidWatch-California-Dev */,
+				2D8FE69524A33B0100456875 /* CovidWatch-Arizona-Dev */,
+				2D72543024A35E92003E5914 /* CovidWatch-Arizona-Dev-Calibration */,
 				2D9CF3E22455B9F5005B085E /* CovidWatchTests */,
 				2D9CF3ED2455B9F5005B085E /* CovidWatchUITests */,
 			);
@@ -716,39 +948,86 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2D72548324A35E92003E5914 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D72548424A35E92003E5914 /* Montserrat-SemiBoldItalic.ttf in Resources */,
+				2D72548524A35E92003E5914 /* Montserrat-MediumItalic.ttf in Resources */,
+				2D72548624A35E92003E5914 /* Montserrat-Light.ttf in Resources */,
+				2D72548724A35E92003E5914 /* Assets.xcassets in Resources */,
+				2D72548824A35E92003E5914 /* Localizable.strings in Resources */,
+				2D72548924A35E92003E5914 /* Localizable.stringsdict in Resources */,
+				2D72548A24A35E92003E5914 /* Montserrat-Italic.ttf in Resources */,
+				2D72548B24A35E92003E5914 /* Montserrat-Regular.ttf in Resources */,
+				2D72548C24A35E92003E5914 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
+				2D72548D24A35E92003E5914 /* LaunchScreen.storyboard in Resources */,
+				2D72548E24A35E92003E5914 /* Montserrat-ExtraLight.ttf in Resources */,
+				2D72548F24A35E92003E5914 /* Montserrat-BoldItalic.ttf in Resources */,
+				2D72549024A35E92003E5914 /* Montserrat-Black.ttf in Resources */,
+				2D72549124A35E92003E5914 /* Assets-Arizona.xcassets in Resources */,
+				2D72549224A35E92003E5914 /* Montserrat-LightItalic.ttf in Resources */,
+				2D72549324A35E92003E5914 /* Montserrat-ThinItalic.ttf in Resources */,
+				2D72549424A35E92003E5914 /* Montserrat-BlackItalic.ttf in Resources */,
+				2D72549524A35E92003E5914 /* Montserrat-ExtraLightItalic.ttf in Resources */,
+				2D72549624A35E92003E5914 /* Montserrat-Bold.ttf in Resources */,
+				2D72549724A35E92003E5914 /* Montserrat-Medium.ttf in Resources */,
+				2D72549824A35E92003E5914 /* Montserrat-ExtraBold.ttf in Resources */,
+				2D72549924A35E92003E5914 /* Apache License.txt in Resources */,
+				2D72549A24A35E92003E5914 /* Montserrat-SemiBold.ttf in Resources */,
+				2D72549B24A35E92003E5914 /* Montserrat-Thin.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D8FE6E824A33B0100456875 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D8FE6E924A33B0100456875 /* Montserrat-SemiBoldItalic.ttf in Resources */,
+				2D8FE6EA24A33B0100456875 /* Montserrat-MediumItalic.ttf in Resources */,
+				2D8FE6EB24A33B0100456875 /* Montserrat-Light.ttf in Resources */,
+				2D8FE71C24A347D500456875 /* Assets.xcassets in Resources */,
+				2D8FE6EE24A33B0100456875 /* Localizable.strings in Resources */,
+				2D8FE6EF24A33B0100456875 /* Localizable.stringsdict in Resources */,
+				2D8FE6F024A33B0100456875 /* Montserrat-Italic.ttf in Resources */,
+				2D8FE6F624A33B0100456875 /* Montserrat-Regular.ttf in Resources */,
+				2D8FE6F724A33B0100456875 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
+				2D72542F24A353F4003E5914 /* LaunchScreen.storyboard in Resources */,
+				2D8FE6FB24A33B0100456875 /* Montserrat-ExtraLight.ttf in Resources */,
+				2D8FE6FE24A33B0100456875 /* Montserrat-BoldItalic.ttf in Resources */,
+				2D8FE6FF24A33B0100456875 /* Montserrat-Black.ttf in Resources */,
+				2D8FE71824A3431800456875 /* Assets-Arizona.xcassets in Resources */,
+				2D8FE70024A33B0100456875 /* Montserrat-LightItalic.ttf in Resources */,
+				2D8FE70624A33B0100456875 /* Montserrat-ThinItalic.ttf in Resources */,
+				2D8FE70724A33B0100456875 /* Montserrat-BlackItalic.ttf in Resources */,
+				2D8FE70824A33B0100456875 /* Montserrat-ExtraLightItalic.ttf in Resources */,
+				2D8FE70924A33B0100456875 /* Montserrat-Bold.ttf in Resources */,
+				2D8FE70A24A33B0100456875 /* Montserrat-Medium.ttf in Resources */,
+				2D8FE70B24A33B0100456875 /* Montserrat-ExtraBold.ttf in Resources */,
+				2D8FE70C24A33B0100456875 /* Apache License.txt in Resources */,
+				2D8FE70D24A33B0100456875 /* Montserrat-SemiBold.ttf in Resources */,
+				2D8FE70E24A33B0100456875 /* Montserrat-Thin.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2D9CF3C82455B9F1005B085E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D8FE71A24A346AF00456875 /* Assets-California.xcassets in Resources */,
 				2DD7B48F245F50A0001B30F0 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				2DD7B47C245F50A0001B30F0 /* Montserrat-MediumItalic.ttf in Resources */,
 				2DD7B475245F50A0001B30F0 /* Montserrat-Light.ttf in Resources */,
-				2DD7B487245F50A0001B30F0 /* Roboto-LightItalic.ttf in Resources */,
-				2DD7B48E245F50A0001B30F0 /* Roboto-Black.ttf in Resources */,
 				2D5149E5248384F000702A60 /* Localizable.strings in Resources */,
 				2D743E8F24851FE500AA4D26 /* Localizable.stringsdict in Resources */,
 				2DD7B489245F50A0001B30F0 /* Montserrat-Italic.ttf in Resources */,
-				2DD7B47F245F50A0001B30F0 /* RobotoCondensed-LightItalic.ttf in Resources */,
-				2D9CF3DD2455B9F4005B085E /* LaunchScreen.storyboard in Resources */,
 				2D9CF3DA2455B9F4005B085E /* Assets.xcassets in Resources */,
-				2DD7B48C245F50A0001B30F0 /* Roboto-Bold.ttf in Resources */,
-				2DD7B48D245F50A0001B30F0 /* Roboto-Thin.ttf in Resources */,
 				2DD7B488245F50A0001B30F0 /* Montserrat-Regular.ttf in Resources */,
 				2DD7B490245F50A0001B30F0 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
-				2DD7B477245F50A0001B30F0 /* RobotoCondensed-Italic.ttf in Resources */,
-				2DD7B484245F50A0001B30F0 /* RobotoCondensed-Regular.ttf in Resources */,
-				2DD7B47A245F50A0001B30F0 /* RobotoCondensed-BoldItalic.ttf in Resources */,
 				2DD7B478245F50A0001B30F0 /* Montserrat-ExtraLight.ttf in Resources */,
-				2DD7B471245F50A0001B30F0 /* RobotoCondensed-Light.ttf in Resources */,
-				2DD7B46D245F50A0001B30F0 /* Roboto-Light.ttf in Resources */,
 				2DD7B474245F50A0001B30F0 /* Montserrat-BoldItalic.ttf in Resources */,
 				2DD7B486245F50A0001B30F0 /* Montserrat-Black.ttf in Resources */,
 				2DD7B46E245F50A0001B30F0 /* Montserrat-LightItalic.ttf in Resources */,
-				2DD7B483245F50A0001B30F0 /* Roboto-ThinItalic.ttf in Resources */,
-				2DD7B470245F50A0001B30F0 /* RobotoCondensed-Bold.ttf in Resources */,
-				2DD7B48B245F50A0001B30F0 /* Roboto-BlackItalic.ttf in Resources */,
-				2DD7B473245F50A0001B30F0 /* Roboto-MediumItalic.ttf in Resources */,
-				2DD7B472245F50A0001B30F0 /* Roboto-Regular.ttf in Resources */,
 				2DD7B476245F50A0001B30F0 /* Montserrat-ThinItalic.ttf in Resources */,
 				2DD7B47E245F50A0001B30F0 /* Montserrat-BlackItalic.ttf in Resources */,
 				2DD7B481245F50A0001B30F0 /* Montserrat-ExtraLightItalic.ttf in Resources */,
@@ -756,11 +1035,9 @@
 				2DD7B46F245F50A0001B30F0 /* Montserrat-Medium.ttf in Resources */,
 				2DD7B482245F50A0001B30F0 /* Montserrat-ExtraBold.ttf in Resources */,
 				2DD7B47D245F50A0001B30F0 /* Apache License.txt in Resources */,
+				2D72542E24A353C9003E5914 /* LaunchScreen.storyboard in Resources */,
 				2DD7B480245F50A0001B30F0 /* Montserrat-SemiBold.ttf in Resources */,
 				2DD7B479245F50A0001B30F0 /* Montserrat-Thin.ttf in Resources */,
-				2DD7B485245F50A0001B30F0 /* Roboto-BoldItalic.ttf in Resources */,
-				2DD7B48A245F50A0001B30F0 /* Roboto-Italic.ttf in Resources */,
-				2DD7B46C245F50A0001B30F0 /* Roboto-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -781,6 +1058,42 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2D72543524A35E92003E5914 /* Environment */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Environment;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# contents of SCHEME_FILE is definied in the scheme > build > pre action\n# SCHEME_FILE path is definied in Target Build Settings User Defined ENV vars\necho \"Running Scheme and IP Sniffer\"\nSCHEME_NAME=`cat ${SCHEME_FILE}`\necho $SCHEME_NAME\necho $INFOPLIST_FILE\n/usr/libexec/PlistBuddy -c \"Set :SchemeName \\\"$SCHEME_NAME\\\"\" \"$INFOPLIST_FILE\"\n\nif [ \"$SCHEME_NAME\" = \"CovidWatch-dev\" ]; then\nLOCAL_IP=$(LANG=C /sbin/ifconfig  | sed -ne $'/127.0.0.1/ ! { s/^[ \\t]*inet[ \\t]\\\\{1,99\\\\}\\\\(addr:\\\\)\\\\{0,1\\\\}\\\\([0-9.]*\\\\)[ \\t\\/].*$/\\\\2/p; }' | head -n 1)\nelse\nLOCAL_IP=\"\"\nfi;\n/usr/libexec/PlistBuddy -c \"Set :LocalIP \\\"$LOCAL_IP\\\"\" \"$INFOPLIST_FILE\"\n";
+		};
+		2D8FE69A24A33B0100456875 /* Environment */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Environment;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# contents of SCHEME_FILE is definied in the scheme > build > pre action\n# SCHEME_FILE path is definied in Target Build Settings User Defined ENV vars\necho \"Running Scheme and IP Sniffer\"\nSCHEME_NAME=`cat ${SCHEME_FILE}`\necho $SCHEME_NAME\necho $INFOPLIST_FILE\n/usr/libexec/PlistBuddy -c \"Set :SchemeName \\\"$SCHEME_NAME\\\"\" \"$INFOPLIST_FILE\"\n\nif [ \"$SCHEME_NAME\" = \"CovidWatch-dev\" ]; then\nLOCAL_IP=$(LANG=C /sbin/ifconfig  | sed -ne $'/127.0.0.1/ ! { s/^[ \\t]*inet[ \\t]\\\\{1,99\\\\}\\\\(addr:\\\\)\\\\{0,1\\\\}\\\\([0-9.]*\\\\)[ \\t\\/].*$/\\\\2/p; }' | head -n 1)\nelse\nLOCAL_IP=\"\"\nfi;\n/usr/libexec/PlistBuddy -c \"Set :LocalIP \\\"$LOCAL_IP\\\"\" \"$INFOPLIST_FILE\"\n";
+		};
 		E20D4F06245B9B0000B97B4B /* Environment */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -802,10 +1115,174 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2D72543624A35E92003E5914 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D72543724A35E92003E5914 /* PossibleExposureSummary.swift in Sources */,
+				2D72543824A35E92003E5914 /* ENRiskScore+Levels.swift in Sources */,
+				2D72543924A35E92003E5914 /* StandardTitleTextViewModifier.swift in Sources */,
+				2D72543A24A35E92003E5914 /* Welcome.swift in Sources */,
+				2D72543B24A35E92003E5914 /* Data+Random.swift in Sources */,
+				2D72543C24A35E92003E5914 /* UserData.swift in Sources */,
+				2D72543D24A35E92003E5914 /* HeaderBar.swift in Sources */,
+				2D72543E24A35E92003E5914 /* HowItWorksMessageText.swift in Sources */,
+				2D72543F24A35E92003E5914 /* PossibleExposures.swift in Sources */,
+				2D72544024A35E92003E5914 /* Server.swift in Sources */,
+				2D72544124A35E92003E5914 /* ReportingFinish.swift in Sources */,
+				2D72544224A35E92003E5914 /* Splash.swift in Sources */,
+				2D72544324A35E92003E5914 /* UserDefaultPropertyWrapper.swift in Sources */,
+				2D72544424A35E92003E5914 /* ExposureManager.swift in Sources */,
+				2D72544524A35E92003E5914 /* Setup.swift in Sources */,
+				2D72544624A35E92003E5914 /* HowItWorksTitleText.swift in Sources */,
+				2D72544724A35E92003E5914 /* UNAuthorizationStatus+Additions.swift in Sources */,
+				2D72544824A35E92003E5914 /* SmallCallToAction.swift in Sources */,
+				2D72544924A35E92003E5914 /* HowItWorksSubtitleText.swift in Sources */,
+				2D72544A24A35E92003E5914 /* PossibleExposureTableColumnA.swift in Sources */,
+				2D72544B24A35E92003E5914 /* Setup3.swift in Sources */,
+				2D72544C24A35E92003E5914 /* PositiveDiagnosis+ExposureNotification.swift in Sources */,
+				2D72544D24A35E92003E5914 /* PositiveDiagnosis.swift in Sources */,
+				2D72544E24A35E92003E5914 /* ReportingCallCode.swift in Sources */,
+				2D72544F24A35E92003E5914 /* SetupMessageTextViewModifier.swift in Sources */,
+				2D72545024A35E92003E5914 /* Setup2.swift in Sources */,
+				2D72545124A35E92003E5914 /* PageView.swift in Sources */,
+				2D72545224A35E92003E5914 /* AppDelegate.swift in Sources */,
+				2D72545324A35E92003E5914 /* ENExposureConfiguration+CodableExposureConfiguration.swift in Sources */,
+				2D72545424A35E92003E5914 /* GCPGoogleExposureNotificationServer.swift in Sources */,
+				2D72545524A35E92003E5914 /* ENStatus+Additions.swift in Sources */,
+				2D72545624A35E92003E5914 /* ExposureRiskScoring.swift in Sources */,
+				2D72545724A35E92003E5914 /* Reporting.swift in Sources */,
+				2D72545824A35E92003E5914 /* HowItWorks.swift in Sources */,
+				2D72545924A35E92003E5914 /* PageControl.swift in Sources */,
+				2D7254A624A37779003E5914 /* ApplicationController+Calibration.swift in Sources */,
+				2D72545A24A35E92003E5914 /* Home.swift in Sources */,
+				2D72545B24A35E92003E5914 /* GoogleExposureNotificationServer.swift in Sources */,
+				2D7254AD24A384CD003E5914 /* GoogleExposureNotificationServer+Calibration.swift in Sources */,
+				2D72545C24A35E92003E5914 /* AppDelegate+BackgroundTasks.swift in Sources */,
+				2D72545D24A35E92003E5914 /* PossibleExposureSummaryValueViewModifier.swift in Sources */,
+				2D72545E24A35E92003E5914 /* CallToAction.swift in Sources */,
+				2D72545F24A35E92003E5914 /* ContentView.swift in Sources */,
+				2D72546024A35E92003E5914 /* URLSession+Additions.swift in Sources */,
+				2D72546124A35E92003E5914 /* DiagnosisServerInterface.swift in Sources */,
+				2D72546224A35E92003E5914 /* PossibleExposure.swift in Sources */,
+				2D72546324A35E92003E5914 /* AZExposureRiskScorer.swift in Sources */,
+				2D72546424A35E92003E5914 /* SubCallToAction.swift in Sources */,
+				2D72546524A35E92003E5914 /* ApplicationController.swift in Sources */,
+				2D72546624A35E92003E5914 /* AppDelegate+UserNotificationCenter.swift in Sources */,
+				2D72546724A35E92003E5914 /* PossibleExposureTable.swift in Sources */,
+				2D72546824A35E92003E5914 /* LocalStore.swift in Sources */,
+				2D72546924A35E92003E5914 /* HowItWorks3.swift in Sources */,
+				2D72546A24A35E92003E5914 /* PossibleExposureTableColumnB.swift in Sources */,
+				2D72546B24A35E92003E5914 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift in Sources */,
+				2D72546C24A35E92003E5914 /* HowItWorks1.swift in Sources */,
+				2D72546D24A35E92003E5914 /* CodableDiagnosisKey+ExposureNotification.swift in Sources */,
+				2D72546E24A35E92003E5914 /* Menu.swift in Sources */,
+				2D72546F24A35E92003E5914 /* Blur.swift in Sources */,
+				2D72547024A35E92003E5914 /* PossibleExposureRow.swift in Sources */,
+				2D72547124A35E92003E5914 /* HowItWorks4.swift in Sources */,
+				2D72547224A35E92003E5914 /* PageViewController.swift in Sources */,
+				2D72547324A35E92003E5914 /* UIWindow+ViewControllerUtility.swift in Sources */,
+				2D72547424A35E92003E5914 /* MenuTitleText.swift in Sources */,
+				2D72547524A35E92003E5914 /* LocalGoogleExposureNotificationServer.swift in Sources */,
+				2D72547624A35E92003E5914 /* OSLog+Additions.swift in Sources */,
+				2D72547724A35E92003E5914 /* Environment.swift in Sources */,
+				2D72547824A35E92003E5914 /* Constants.swift in Sources */,
+				2D72547924A35E92003E5914 /* UserDefaults+Shared.swift in Sources */,
+				2D72547A24A35E92003E5914 /* HowItWorks2.swift in Sources */,
+				2D72547B24A35E92003E5914 /* ENRiskLevel+LocalizedDescription.swift in Sources */,
+				2D72547C24A35E92003E5914 /* ENTemporaryExposureKey+CodableDiagnosisKey.swift in Sources */,
+				2D72547D24A35E92003E5914 /* Alert.swift in Sources */,
+				2D72547E24A35E92003E5914 /* UIViewController+ErrorPresenting.swift in Sources */,
+				2D7254A924A37D6D003E5914 /* ExposureManager+Calibration.swift in Sources */,
+				2D72547F24A35E92003E5914 /* Setup1.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D8FE69B24A33B0100456875 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D8FE69C24A33B0100456875 /* PossibleExposureSummary.swift in Sources */,
+				2D8FE69D24A33B0100456875 /* ENRiskScore+Levels.swift in Sources */,
+				2D8FE69E24A33B0100456875 /* StandardTitleTextViewModifier.swift in Sources */,
+				2D8FE69F24A33B0100456875 /* Welcome.swift in Sources */,
+				2D8FE6A024A33B0100456875 /* Data+Random.swift in Sources */,
+				2D8FE6A124A33B0100456875 /* UserData.swift in Sources */,
+				2D8FE6A224A33B0100456875 /* HeaderBar.swift in Sources */,
+				2D8FE6A324A33B0100456875 /* HowItWorksMessageText.swift in Sources */,
+				2D8FE6A424A33B0100456875 /* PossibleExposures.swift in Sources */,
+				2D8FE6A524A33B0100456875 /* Server.swift in Sources */,
+				2D8FE6A624A33B0100456875 /* ReportingFinish.swift in Sources */,
+				2D8FE6A724A33B0100456875 /* Splash.swift in Sources */,
+				2D8FE6A824A33B0100456875 /* UserDefaultPropertyWrapper.swift in Sources */,
+				2D8FE6A924A33B0100456875 /* ExposureManager.swift in Sources */,
+				2D8FE6AA24A33B0100456875 /* Setup.swift in Sources */,
+				2D8FE6AB24A33B0100456875 /* HowItWorksTitleText.swift in Sources */,
+				2D8FE6AC24A33B0100456875 /* UNAuthorizationStatus+Additions.swift in Sources */,
+				2D8FE6AD24A33B0100456875 /* SmallCallToAction.swift in Sources */,
+				2D8FE6AE24A33B0100456875 /* HowItWorksSubtitleText.swift in Sources */,
+				2D8FE6AF24A33B0100456875 /* PossibleExposureTableColumnA.swift in Sources */,
+				2D8FE6B024A33B0100456875 /* Setup3.swift in Sources */,
+				2D8FE6B124A33B0100456875 /* PositiveDiagnosis+ExposureNotification.swift in Sources */,
+				2D8FE6B224A33B0100456875 /* PositiveDiagnosis.swift in Sources */,
+				2D8FE6B324A33B0100456875 /* ReportingCallCode.swift in Sources */,
+				2D8FE6B424A33B0100456875 /* SetupMessageTextViewModifier.swift in Sources */,
+				2D8FE6B524A33B0100456875 /* Setup2.swift in Sources */,
+				2D8FE6B624A33B0100456875 /* PageView.swift in Sources */,
+				2D8FE6B724A33B0100456875 /* AppDelegate.swift in Sources */,
+				2D8FE6B824A33B0100456875 /* ENExposureConfiguration+CodableExposureConfiguration.swift in Sources */,
+				2D8FE6B924A33B0100456875 /* GCPGoogleExposureNotificationServer.swift in Sources */,
+				2D8FE6BA24A33B0100456875 /* ENStatus+Additions.swift in Sources */,
+				2D8FE6BB24A33B0100456875 /* ExposureRiskScoring.swift in Sources */,
+				2D7254AA24A38225003E5914 /* ApplicationController.swift in Sources */,
+				2D8FE6BC24A33B0100456875 /* Reporting.swift in Sources */,
+				2D8FE6BD24A33B0100456875 /* HowItWorks.swift in Sources */,
+				2D8FE6BE24A33B0100456875 /* PageControl.swift in Sources */,
+				2D8FE6BF24A33B0100456875 /* Home.swift in Sources */,
+				2D8FE6C024A33B0100456875 /* GoogleExposureNotificationServer.swift in Sources */,
+				2D8FE6C124A33B0100456875 /* AppDelegate+BackgroundTasks.swift in Sources */,
+				2D8FE6C224A33B0100456875 /* PossibleExposureSummaryValueViewModifier.swift in Sources */,
+				2D8FE6C324A33B0100456875 /* CallToAction.swift in Sources */,
+				2D8FE6C424A33B0100456875 /* ContentView.swift in Sources */,
+				2D8FE6C524A33B0100456875 /* URLSession+Additions.swift in Sources */,
+				2D8FE6C624A33B0100456875 /* DiagnosisServerInterface.swift in Sources */,
+				2D8FE6C724A33B0100456875 /* PossibleExposure.swift in Sources */,
+				2D8FE6C824A33B0100456875 /* AZExposureRiskScorer.swift in Sources */,
+				2D8FE6C924A33B0100456875 /* SubCallToAction.swift in Sources */,
+				2D8FE6CB24A33B0100456875 /* AppDelegate+UserNotificationCenter.swift in Sources */,
+				2D8FE6CC24A33B0100456875 /* PossibleExposureTable.swift in Sources */,
+				2D8FE6CD24A33B0100456875 /* LocalStore.swift in Sources */,
+				2D8FE6CE24A33B0100456875 /* HowItWorks3.swift in Sources */,
+				2D8FE6CF24A33B0100456875 /* PossibleExposureTableColumnB.swift in Sources */,
+				2D8FE6D024A33B0100456875 /* DeveloperDiagnosisKeyFileProtobuf.pb.swift in Sources */,
+				2D8FE6D124A33B0100456875 /* HowItWorks1.swift in Sources */,
+				2D8FE6D224A33B0100456875 /* CodableDiagnosisKey+ExposureNotification.swift in Sources */,
+				2D8FE6D324A33B0100456875 /* Menu.swift in Sources */,
+				2D8FE6D424A33B0100456875 /* Blur.swift in Sources */,
+				2D8FE6D524A33B0100456875 /* PossibleExposureRow.swift in Sources */,
+				2D8FE6D624A33B0100456875 /* HowItWorks4.swift in Sources */,
+				2D8FE6D724A33B0100456875 /* PageViewController.swift in Sources */,
+				2D8FE6D824A33B0100456875 /* UIWindow+ViewControllerUtility.swift in Sources */,
+				2D8FE6D924A33B0100456875 /* MenuTitleText.swift in Sources */,
+				2D8FE6DA24A33B0100456875 /* LocalGoogleExposureNotificationServer.swift in Sources */,
+				2D8FE6DB24A33B0100456875 /* OSLog+Additions.swift in Sources */,
+				2D8FE6DC24A33B0100456875 /* Environment.swift in Sources */,
+				2D8FE6DD24A33B0100456875 /* Constants.swift in Sources */,
+				2D8FE6DE24A33B0100456875 /* UserDefaults+Shared.swift in Sources */,
+				2D8FE6DF24A33B0100456875 /* HowItWorks2.swift in Sources */,
+				2D8FE6E024A33B0100456875 /* ENRiskLevel+LocalizedDescription.swift in Sources */,
+				2D8FE6E124A33B0100456875 /* ENTemporaryExposureKey+CodableDiagnosisKey.swift in Sources */,
+				2D8FE6E224A33B0100456875 /* Alert.swift in Sources */,
+				2D8FE6E324A33B0100456875 /* UIViewController+ErrorPresenting.swift in Sources */,
+				2D8FE6E424A33B0100456875 /* Setup1.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2D9CF3C62455B9F1005B085E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D7254AF24A3A519003E5914 /* DeviceVerificationPayloadProviding.swift in Sources */,
 				2D74E4692465D429002057B9 /* PossibleExposureSummary.swift in Sources */,
 				2D3948A2248E6354001766A4 /* ENRiskScore+Levels.swift in Sources */,
 				2DBC07B3248552B4001304BB /* StandardTitleTextViewModifier.swift in Sources */,
@@ -852,7 +1329,6 @@
 				2D79429C2467DB49008AF148 /* PossibleExposure.swift in Sources */,
 				2D3948A6248E7DD1001766A4 /* AZExposureRiskScorer.swift in Sources */,
 				2DD7B498245F65E1001B30F0 /* SubCallToAction.swift in Sources */,
-				2D5D94072460000A00718412 /* ApplicationController.swift in Sources */,
 				2D9E6B2D2456E9A800150D1C /* AppDelegate+UserNotificationCenter.swift in Sources */,
 				2D79429E2467E34D008AF148 /* PossibleExposureTable.swift in Sources */,
 				2D46AA5A2465E1240003936C /* LocalStore.swift in Sources */,
@@ -904,12 +1380,12 @@
 /* Begin PBXTargetDependency section */
 		2D9CF3E52455B9F5005B085E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D9CF3C92455B9F1005B085E /* CovidWatch */;
+			target = 2D9CF3C92455B9F1005B085E /* CovidWatch-California-Dev */;
 			targetProxy = 2D9CF3E42455B9F5005B085E /* PBXContainerItemProxy */;
 		};
 		2D9CF3F02455B9F5005B085E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D9CF3C92455B9F1005B085E /* CovidWatch */;
+			target = 2D9CF3C92455B9F1005B085E /* CovidWatch-California-Dev */;
 			targetProxy = 2D9CF3EF2455B9F5005B085E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -926,6 +1402,120 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2D72549D24A35E92003E5914 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "CovidWatch/CovidWatch-Dev.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 97;
+				DEVELOPMENT_TEAM = GD7NMG67S7;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG_CALIBRATION=1",
+					"DEBUG=1",
+				);
+				INFOPLIST_FILE = "CovidWatch/Dev-Calibration-Info.plist";
+				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.ios.arizona;
+				PRODUCT_MODULE_NAME = CovidWatch;
+				PRODUCT_NAME = "CW DEMO";
+				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch iOS Arizona Dev";
+				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG_CALIBRATION DEBUG";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		2D72549E24A35E92003E5914 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "CovidWatch/CovidWatch-Dev.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 97;
+				DEVELOPMENT_TEAM = GD7NMG67S7;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG_CALIBRATION=1",
+					"DEBUG=1",
+				);
+				INFOPLIST_FILE = "CovidWatch/Dev-Calibration-Info.plist";
+				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.ios.arizona;
+				PRODUCT_MODULE_NAME = CovidWatch;
+				PRODUCT_NAME = "CW DEMO";
+				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch iOS Arizona Dev";
+				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG_CALIBRATION DEBUG";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		2D8FE71324A33B0100456875 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "CovidWatch/CovidWatch-Dev.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 97;
+				DEVELOPMENT_TEAM = GD7NMG67S7;
+				INFOPLIST_FILE = "CovidWatch/Dev-Info.plist";
+				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.ios.arizona;
+				PRODUCT_MODULE_NAME = CovidWatch;
+				PRODUCT_NAME = "Covid Watch";
+				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch iOS Arizona Dev";
+				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		2D8FE71424A33B0100456875 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "CovidWatch/CovidWatch-Dev.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 97;
+				DEVELOPMENT_TEAM = GD7NMG67S7;
+				INFOPLIST_FILE = "CovidWatch/Dev-Info.plist";
+				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.ios.arizona;
+				PRODUCT_MODULE_NAME = CovidWatch;
+				PRODUCT_NAME = "Covid Watch";
+				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch iOS Arizona Dev";
+				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		2D9CF3F52455B9F5005B085E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1044,22 +1634,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = CovidWatch/CovidWatch.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "CovidWatch/CovidWatch-Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 97;
 				DEVELOPMENT_TEAM = GD7NMG67S7;
-				INFOPLIST_FILE = CovidWatch/Info.plist;
+				INFOPLIST_FILE = "CovidWatch/Dev-Info.plist";
 				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.california.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.ios.california;
 				PRODUCT_MODULE_NAME = CovidWatch;
 				PRODUCT_NAME = "CW DEMO";
-				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch EN Dev";
+				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch iOS California Dev";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1070,22 +1660,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = CovidWatch/CovidWatch.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "CovidWatch/CovidWatch-Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 97;
 				DEVELOPMENT_TEAM = GD7NMG67S7;
-				INFOPLIST_FILE = CovidWatch/Info.plist;
+				INFOPLIST_FILE = "CovidWatch/Dev-Info.plist";
 				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.california.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.ios.california;
 				PRODUCT_MODULE_NAME = CovidWatch;
 				PRODUCT_NAME = "CW DEMO";
-				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch EN Dev";
+				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch iOS California Dev";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1179,6 +1769,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2D72549C24A35E92003E5914 /* Build configuration list for PBXNativeTarget "CovidWatch-Arizona-Dev-Calibration" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D72549D24A35E92003E5914 /* Debug */,
+				2D72549E24A35E92003E5914 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8FE71224A33B0100456875 /* Build configuration list for PBXNativeTarget "CovidWatch-Arizona-Dev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D8FE71324A33B0100456875 /* Debug */,
+				2D8FE71424A33B0100456875 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D9CF3C52455B9F1005B085E /* Build configuration list for PBXProject "CovidWatch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1188,7 +1796,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D9CF3F72455B9F5005B085E /* Build configuration list for PBXNativeTarget "CovidWatch" */ = {
+		2D9CF3F72455B9F5005B085E /* Build configuration list for PBXNativeTarget "CovidWatch-California-Dev" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D9CF3F82455B9F5005B085E /* Debug */,
@@ -1226,6 +1834,38 @@
 				minimumVersion = 1.8.0;
 			};
 		};
+		2D72543224A35E92003E5914 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-protobuf.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.0;
+			};
+		};
+		2D72543424A35E92003E5914 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.11;
+			};
+		};
+		2D8FE69724A33B0100456875 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-protobuf.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.0;
+			};
+		};
+		2D8FE69924A33B0100456875 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.11;
+			};
+		};
 		2DFEED082476BD0400D2C620 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
@@ -1241,6 +1881,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2D46AA5B2465E1710003936C /* XCRemoteSwiftPackageReference "swift-protobuf" */;
 			productName = SwiftProtobuf;
+		};
+		2D72543124A35E92003E5914 /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D72543224A35E92003E5914 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+		2D72543324A35E92003E5914 /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D72543424A35E92003E5914 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+		2D8FE69624A33B0100456875 /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D8FE69724A33B0100456875 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+		2D8FE69824A33B0100456875 /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D8FE69924A33B0100456875 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
 		};
 		2DFEED092476BD0400D2C620 /* ZIPFoundation */ = {
 			isa = XCSwiftPackageProductDependency;

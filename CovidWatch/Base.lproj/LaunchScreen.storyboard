@@ -15,29 +15,7 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Public Health Department Generic" translatesAutoresizingMaskIntoConstraints="NO" id="45X-eI-c8t">
-                                <rect key="frame" x="61" y="69" width="292" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="292" id="JwA-OH-i6W"/>
-                                    <constraint firstAttribute="height" constant="70" id="pAK-Ht-5h1"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="People Network" translatesAutoresizingMaskIntoConstraints="NO" id="nIY-ZI-kWo">
-                                <rect key="frame" x="69.5" y="163" width="275" height="285"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="285" id="BAn-rq-6DJ"/>
-                                    <constraint firstAttribute="width" constant="275" id="ZJ4-5G-Zzl"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" name="Tint Color"/>
-                        <constraints>
-                            <constraint firstItem="45X-eI-c8t" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="3Yb-2F-9N4"/>
-                            <constraint firstItem="nIY-ZI-kWo" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Frx-LY-uPv"/>
-                            <constraint firstItem="45X-eI-c8t" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="QcF-yM-8uG"/>
-                            <constraint firstItem="nIY-ZI-kWo" firstAttribute="top" secondItem="45X-eI-c8t" secondAttribute="bottom" constant="24" id="X7u-GM-hSX"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -47,8 +25,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="People Network" width="275" height="286"/>
-        <image name="Public Health Department Generic" width="292" height="70"/>
         <namedColor name="Tint Color">
             <color red="0.17254901960784313" green="0.34509803921568627" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

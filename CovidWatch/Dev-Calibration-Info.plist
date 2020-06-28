@@ -46,14 +46,12 @@
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<false/>
 	<key>LocalIP</key>
-	<string></string>
+	<string>192.168.1.6</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
-	<key>SchemeName</key>
-	<string>CovidWatch-prod</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Black.ttf</string>

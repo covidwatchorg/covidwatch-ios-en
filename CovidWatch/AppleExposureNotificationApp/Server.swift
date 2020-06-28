@@ -25,7 +25,11 @@ public struct CodableDiagnosisKey: Codable, Equatable {
 
 public struct CodableExposureConfiguration: Codable {
     let minimumRiskScore: ENRiskScore
+    #if DEBUG_CALIBRATION
     let attenuationDurationThresholdList: [[Int]]
+    #else
+    let attenuationDurationThresholds: [Int]
+    #endif
     let attenuationLevelValues: [ENRiskLevelValue]
     let daysSinceLastExposureLevelValues: [ENRiskLevelValue]
     let durationLevelValues: [ENRiskLevelValue]
@@ -110,6 +114,7 @@ public class Server {
         }
     }
     
+    #if DEBUG_CALIBRATION
     func getExposureConfigurationList(completion: @escaping (Result<[ENExposureConfiguration], Error>) -> Void) {
         
         if let diagnosisServer = self.diagnosisServer {
@@ -120,7 +125,7 @@ public class Server {
             completion(.failure(CocoaError(.fileNoSuchFile)))
         }
     }
-    
+    #endif
     
     func verifyUniqueTestIdentifier(_ identifier: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         

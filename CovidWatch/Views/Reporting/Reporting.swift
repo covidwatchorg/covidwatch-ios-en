@@ -40,7 +40,7 @@ struct Reporting: View {
                     Button(action: {
                         
                         ApplicationController.shared.handleTapShareAPositiveDiagnosisButton()
-//                        return
+                        return
 //
 //                        let verificationCode = String(Int.random(in: 10000..<99999))
 //                        let testResult = TestResult(id: UUID(), isAdded: false, dateAdministered: Date(), isShared: true, verificationCode: verificationCode, isVerified: true)

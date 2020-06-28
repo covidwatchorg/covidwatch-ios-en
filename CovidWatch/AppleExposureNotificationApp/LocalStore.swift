@@ -16,8 +16,10 @@ public struct Exposure: Codable {
     let totalRiskScore: ENRiskScore
     let totalRiskScoreFullRange: Int
     let transmissionRiskLevel: ENRiskLevel
+    #if DEBUG_CALIBRATION
     let attenuationDurationThresholds: [Int]
     let timeDetected: Date
+    #endif    
 }
 
 public struct TestResult: Codable {
@@ -100,7 +102,7 @@ public class LocalStore: ObservableObject {
         willSet { objectWillChange.send() }
     }
     
-    // Data from: https://developer.apple.com/documentation/exposurenotification/enexposureconfiguration
+    #if DEBUG_CALIBRATION
     static let exposureConfigurationDefault: String =
     """
     {"minimumRiskScore":0,
@@ -111,16 +113,18 @@ public class LocalStore: ObservableObject {
     "durationLevelValues":[0, 1, 2, 3, 4, 5, 6, 7],
     "transmissionRiskLevelValues":[1, 1, 1, 1, 1, 1, 1, 1]}
     """
-//    """
-//    {"minimumRiskScore":0,
-//    "attenuationDurationThresholds":[50, 70],
-//    "attenuationLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
-//    "daysSinceLastExposureLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
-//    "durationLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
-//    "transmissionRiskLevelValues":[1, 2, 3, 4, 5, 6, 7, 8]}
-//    """
-    
-        //"attenuationDurationThresholdList":[[40,42],[44,46], [48,50], [52,54], [56,58], [60,62], [64,66], [68,70]],
+    #else
+    // Data from: https://developer.apple.com/documentation/exposurenotification/enexposureconfiguration
+    static let exposureConfigurationDefault: String =
+    """
+    {"minimumRiskScore":0,
+    "attenuationDurationThresholds":[50, 70],
+    "attenuationLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
+    "daysSinceLastExposureLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
+    "durationLevelValues":[1, 2, 3, 4, 5, 6, 7, 8],
+    "transmissionRiskLevelValues":[1, 2, 3, 4, 5, 6, 7, 8]}
+    """
+    #endif
     
     @Persisted(userDefaultsKey: "exposureConfiguration", notificationName: .init("LocalStoreExposureConfigurationDidChange"), defaultValue:exposureConfigurationDefault)
     public var exposureConfiguration: String {

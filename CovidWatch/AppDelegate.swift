@@ -19,29 +19,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Diagnosis server
     lazy var diagnosisServer: DiagnosisServer = {
-        let appScheme = getAppScheme()
-        switch appScheme {
-            case .development:
-                // TODO
+//        let appScheme = getAppScheme()
+//        switch appScheme {
+//            case .development:
+//                // TODO
+//                return GCPGoogleExposureNotificationServer(
+//                    exposureURLString: getAPIUrl(appScheme) + "/publish",
+//                    appConfiguration: AppConfiguration(regions: ["US"]),
+//                    exportConfiguration: ExportConfiguration(
+//                        filenameRoot: "exposureKeyExport-US",
+//                        bucketName: "exposure-notification-export-ibznj"
+//                    )
+//            )
+//            case .production:
+//                // This returns the configuration for the sandbox CW EN server
                 return GCPGoogleExposureNotificationServer(
-                    exposureURLString: getAPIUrl(appScheme) + "/publish",
+                    exposureURLString: "https://exposure-3horfxouua-uc.a.run.app/",
                     appConfiguration: AppConfiguration(regions: ["US"]),
                     exportConfiguration: ExportConfiguration(
                         filenameRoot: "exposureKeyExport-US",
-                        bucketName: "exposure-notification-export-ibznj"
+                        bucketName: "exposure-notification-export-fxega"
                     )
             )
-            case .production:
-                // This returns the configuration for the sandbox CW EN server
-                return GCPGoogleExposureNotificationServer(
-                    exposureURLString: "https://exposure-2sav64smma-uc.a.run.app/",
-                    appConfiguration: AppConfiguration(regions: ["US"]),
-                    exportConfiguration: ExportConfiguration(
-                        filenameRoot: "exposureKeyExport-US",
-                        bucketName: "exposure-notification-export-ibznj"
-                    )
-            )
-        }
+//        }
     }()
     
     func application(

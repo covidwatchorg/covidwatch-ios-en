@@ -12,19 +12,8 @@ public struct GCP {
     static let storageBaseURLString = "https://storage.googleapis.com"
 }
 
-public protocol DeviceVerificationPayloadProviding {
-    func generatePayload(completionHandler completion: @escaping (Data?, Error?) -> Void)
-}
-
-extension DCDevice : DeviceVerificationPayloadProviding {
-    public func generatePayload(completionHandler completion: @escaping (Data?, Error?) -> Void) {
-        return self.generateToken(completionHandler: completion)
-    }
-}
-
 public struct AppConfiguration {
     let appPackageName: String = Bundle.main.bundleIdentifier ?? ""
-    let platform: String = "iOS"
     let regions: [String]
 }
 
@@ -42,7 +31,6 @@ public class GCPGoogleExposureNotificationServer: GoogleExposureNotificationServ
     public var exposureURLString: String
     public var appConfiguration: AppConfiguration
     public var exportConfiguration: ExportConfiguration
-    public var deviceVerificationPayloadProvider = DCDevice.current
     
     init(
         exposureURLString: String,
@@ -64,86 +52,61 @@ public class GCPGoogleExposureNotificationServer: GoogleExposureNotificationServ
             diagnosisKeys.count
         )
 
-        self.deviceVerificationPayloadProvider.generatePayload { (token, error) in
-            if let error = error {
-                os_log(
-                    "Posting %d diagnosis key(s) failed=%@",
-                    log: .en,
-                    type: .error,
-                    diagnosisKeys.count,
-                    error as CVarArg
-                )
-                completion(error)
-                return
-            }
-            
-//            let shiftedDiagnosisKeys: [CodableDiagnosisKey] = diagnosisKeys.map {
-//                CodableDiagnosisKey(
-//                    keyData: $0.keyData,
-//                    rollingPeriod: $0.rollingPeriod,
-//                    rollingStartNumber: $0.rollingStartNumber - 144,
-//                    transmissionRiskLevel: $0.transmissionRiskLevel
-//                )
-//            }
-
-            let publishExposure = PublishExposure(
-                temporaryExposureKeys: diagnosisKeys,
-//                temporaryExposureKeys: shiftedDiagnosisKeys,
-                regions: self.appConfiguration.regions,
-                appPackageName: self.appConfiguration.appPackageName,
-                platform: self.appConfiguration.platform,
-                deviceVerificationPayload: token!.base64EncodedString(),
-                verificationPayload: "signature /code from  of verifying authority",
-                padding: Data.random(count: Int.random(in: 1024..<2048)).base64EncodedString()
-            )
-
-            guard let requestURL = URL(string: self.exposureURLString) else {
-                completion(URLError(.badURL))
-                return
-            }
-            
-            var uploadData: Data!
-            do {
-                let encoder = JSONEncoder()
-                encoder.dataEncodingStrategy = .base64
-                uploadData = try encoder.encode(publishExposure)
-            } catch {
-                completion(error)
-                return
-            }
-
-            var request = URLRequest(url: requestURL)
-            request.httpMethod = "POST"
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-            let task = URLSession.shared.uploadTask(
-                with: request,
-                from: uploadData
-            ) { (result) in
-                switch result {
-                    case .failure(let error):
-                        os_log(
-                            "Posting %d diagnosis key(s) failed=%@",
-                            log: .en,
-                            type: .error,
-                            diagnosisKeys.count,
-                            error as CVarArg
-                        )
-                        completion(error)
-                        return
-
-                    case .success(_):
-                        os_log(
-                            "Posted %d diagnosis key(s)",
-                            log: .en,
-                            diagnosisKeys.count
-                        )
-                        completion(nil)
-                        return
-                }
-            }
-            task.resume()
+        let publishExposure = PublishExposure(
+            temporaryExposureKeys: diagnosisKeys,
+            regions: self.appConfiguration.regions,
+            appPackageName: self.appConfiguration.appPackageName,
+            verificationPayload: "signature /code from  of verifying authority",
+            hmackey: "base64 encoded HMAC key used in preparing the data for the verification server",
+            padding: Data.random(count: Int.random(in: 1024..<2048)).base64EncodedString()
+        )
+        
+        guard let requestURL = URL(string: self.exposureURLString) else {
+            completion(URLError(.badURL))
+            return
         }
+        
+        var uploadData: Data!
+        do {
+            let encoder = JSONEncoder()
+            encoder.dataEncodingStrategy = .base64
+            uploadData = try encoder.encode(publishExposure)
+        } catch {
+            completion(error)
+            return
+        }
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.uploadTask(
+            with: request,
+            from: uploadData
+        ) { (result) in
+            switch result {
+                case .failure(let error):
+                    os_log(
+                        "Posting %d diagnosis key(s) failed=%@",
+                        log: .en,
+                        type: .error,
+                        diagnosisKeys.count,
+                        error as CVarArg
+                    )
+                    completion(error)
+                    return
+                
+                case .success(_):
+                    os_log(
+                        "Posted %d diagnosis key(s)",
+                        log: .en,
+                        diagnosisKeys.count
+                    )
+                    completion(nil)
+                    return
+            }
+        }
+        task.resume()
     }
     
     public override func getDiagnosisKeyFileURLs(

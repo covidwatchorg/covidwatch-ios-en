@@ -39,27 +39,7 @@ struct Menu: View {
                     
                     VStack(spacing: 0) {
                         
-//                        Divider()
-//                        
-//                        Button(action: {
-//                            
-////                            let exposures = (0...Int.random(in: 1...10)).map { _ -> Exposure in
-////                                Exposure(date: Date(), duration: TimeInterval(Int.random(in: 1...6) * 5 * 60), totalRiskScore: UInt8.random(in: 1...8), transmissionRiskLevel: UInt8.random(in: 1...8))
-////                            }
-////                            self.localStore.exposures.insert(contentsOf: exposures, at: 0)
-//                            self.localStore.exposures.insert(
-//                                Exposure(date: Date(), duration: TimeInterval(Int.random(in: 1...6) * 5 * 60), totalRiskScore: UInt8.random(in: 1...8), transmissionRiskLevel: UInt8.random(in: 1...8)),
-//                                at: 0
-//                            )
-//                            self.localStore.dateLastPerformedExposureDetection = Date()
-//                            
-//                        }) {
-//                            HStack {
-//                                Text("(Testing) Generate Random Exposure")
-//                                Spacer()
-//                                Image("Settings Button Checkmark")
-//                            }.modifier(MenuTitleText())
-//                        }
+                        #if DEBUG_CALIBRATION
                         VStack(spacing: 0) {
                             
                             Divider()
@@ -122,6 +102,7 @@ struct Menu: View {
                             
                             Divider()
                         }
+                        #endif
                         
                         Button(action: {
                             self.isShowingPossibleExposures.toggle()
@@ -183,7 +164,7 @@ struct Menu: View {
                         Divider()
                         
                         Button(action: {
-                            guard let url = URL(string: "https://www.covid-watch.org") else { return }
+                            guard let url = URL(string: "https://www.covidwatch.org") else { return }
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }) {
                             HStack {
@@ -197,7 +178,7 @@ struct Menu: View {
                         Divider()
                         
                         Button(action: {
-                            guard let url = URL(string: "https://www.covid-watch.org/faq") else { return }
+                            guard let url = URL(string: "https://www.covidwatch.org/faq") else { return }
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }) {
                             HStack {
@@ -211,7 +192,7 @@ struct Menu: View {
                         Divider()
                         
                         Button(action: {
-                            guard let url = URL(string: "https://www.covid-watch.org/privacy") else { return }
+                            guard let url = URL(string: "https://www.covidwatch.org/privacy") else { return }
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }) {
                             HStack {
@@ -225,7 +206,7 @@ struct Menu: View {
                         Divider()
                         
                         Button(action: {
-                            guard let url = URL(string: "https://www.covid-watch.org/privacy") else { return }
+                            guard let url = URL(string: "https://www.covidwatch.org/privacy") else { return }
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }) {
                             HStack {
@@ -239,7 +220,7 @@ struct Menu: View {
                         Divider()
                         
                         Button(action: {
-                            guard let url = URL(string: "https://www.covid-watch.org/support") else { return }
+                            guard let url = URL(string: "https://www.covidwatch.org/support") else { return }
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }) {
                             HStack {

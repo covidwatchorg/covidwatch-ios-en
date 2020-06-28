@@ -31,7 +31,7 @@ struct Splash: View {
                 
                 VStack(spacing: 0) {
                     
-                    Image("Public Health Department Generic")
+                    Image("Public Health Authority Logotype")
                         .accessibility(label: Text("GENERIC_PUBLIC_HEALTH_DEPARTMENT_IMAGE_ACCESSIBILITY_LABEL"))
                         .padding(.top, 2 * .standardSpacing)
                     

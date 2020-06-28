@@ -31,7 +31,9 @@ public protocol DiagnosisServer {
         completion: (Result<ENExposureConfiguration, Error>) -> Void
     )
     
+    #if DEBUG_CALIBRATION
     func getExposureConfigurationList(
         completion: (Result<[ENExposureConfiguration], Error>) -> Void
     )
+    #endif
 }

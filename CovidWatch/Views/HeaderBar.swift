@@ -27,7 +27,7 @@ struct HeaderBar: View {
         showMenu: Bool = true,
         showDismissButton: Bool = false,
         showDemoMode: Bool = true,
-        logoImage: Image = Image("Public Health Authority Generic")
+        logoImage: Image = Image("Public Health Authority Logo")
     ) {
         self.showMenu = showMenu
         self.showDismissButton = showDismissButton
@@ -49,20 +49,12 @@ struct HeaderBar: View {
                 
                 Spacer()
                 
-                if self.showDemoMode {
-//                    VStack(alignment: .center) {
-                        Text(verbatim: NSLocalizedString("DEMO_TITLE", comment: "").uppercased())
-                            .font(.custom("Montserrat-Black", size: 14))
-                            .foregroundColor(Color(UIColor.systemGray4))
-//                        Text(verbatim: NSLocalizedString("DEMO_SUBTITLE", comment: "").uppercased())
-//                            .font(.custom("Montserrat-Regular", size: 12))
-//                            .foregroundColor(Color("Subtitle Text Color"))
-//                    }
-//                    .accessibilityElement(children: .combine)
-//
-                    Spacer()
-
-                }
+                #if DEBUG_CALIBRATION
+                Text(verbatim: NSLocalizedString("DEMO_TITLE", comment: "").uppercased())
+                    .font(.custom("Montserrat-Black", size: 14))
+                    .foregroundColor(Color(UIColor.systemGray4))
+                Spacer()
+                #endif
                 
                 if self.showMenu || self.showDismissButton {
                     if self.showMenu {

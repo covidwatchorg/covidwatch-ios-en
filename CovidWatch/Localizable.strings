@@ -9,7 +9,7 @@ All strings for the project, separated for localization.
 "SPLASH_MESSAGE" = "The power to stop COVID-19 in the palm of your hand.";
 
 /* Title */
-"GENERIC_PUBLIC_HEALTH_DEPARTMENT_IMAGE_ACCESSIBILITY_LABEL" = "Public Health Department Generic";
+"GENERIC_PUBLIC_HEALTH_DEPARTMENT_IMAGE_ACCESSIBILITY_LABEL" = "Public Health Authority";
 
 /* Title */
 "SPLASH_IMAGE_ACCESSIBILITY_LABEL" = "People Network";
@@ -26,7 +26,7 @@ All strings for the project, separated for localization.
 "DEMO_TITLE" = "DEMO";
 
 /* Title */
-"DEMO_SUBTITLE" = "Public Health Department";
+"DEMO_SUBTITLE" = "Public Health Authority";
 
 /* Button */
 "MENU" = "Menu";
@@ -177,6 +177,9 @@ All strings for the project, separated for localization.
 "SHARE_THE_APP" = "Share the App";
 
 /* Message */
+"SHARE_THE_APP_SHEET_MESSAGE" = "Become a Covid Watcher and help your community stay safe.";
+
+/* Message */
 "SHOWS_MORE_INFO_ACCESSIBILITY_HINT" = "Shows more info";
 
 /* Message */
@@ -274,7 +277,7 @@ All strings for the project, separated for localization.
 "POSSIBLE_EXPOSURES_NO_EXPOSURES_TITLE" = "No Exposures Detected";
 
 /* Message */
-"POSSIBLE_EXPOSURES_NO_EXPOSURES_MESSAGE" = "Continue to follow the guidance of the Public Health Department and check back later for updates.";
+"POSSIBLE_EXPOSURES_NO_EXPOSURES_MESSAGE" = "Continue to follow the guidance of the public health authority and check back later for updates.";
 
 /* Title */
 "EXPOSURE_HIGH_RISK_TITLE" = "High Risk:";
@@ -374,7 +377,7 @@ All strings for the project, separated for localization.
 "STEP_X_OF_Y_TITLE" = "Step %@ of %@";
 
 /* Message */
-"NOTIFY_OTHERS_CALL_TO_ACTION_LONG_MESSAGE" = "If you tested positive for COVID-19 by the Public Health Department, you can help stop the spread in your communities by anonymously notifying others.";
+"NOTIFY_OTHERS_CALL_TO_ACTION_LONG_MESSAGE" = "If you tested positive for COVID-19 by the public health authority, you can help stop the spread in your communities by anonymously notifying others.";
 
 /* Button */
 "SHARE_A_POSITIVE_DIAGNOSIS" = "Share a Positive Diagnosis";
