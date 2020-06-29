@@ -14,18 +14,11 @@ struct PageView<Page: View>: View {
     init(_ views: [Page]) {
         self.viewControllers = views.map { UIHostingController(rootView: $0) }
     }
-    
     var body: some View {
         VStack{
-            
-            
             PageViewController(controllers: viewControllers, currentPage: $currentPage)
-            
-            
             ZStack(alignment: .bottom){
                 PageControl(numberOfPages: viewControllers.count, currentPage: $currentPage)
-                
-                
                 HStack(spacing: .standardSpacing * 20){
                     Button(action: {
                         
@@ -34,20 +27,10 @@ struct PageView<Page: View>: View {
                         } else {
                             self.currentPage = self.viewControllers.count - 1
                         }
-                        
-                        
-                        
-                        
-                        
                     }) {
-                        
                         Image("Left Arrow PageView")
-                        
                     }
-                    
                     Button(action: {
-                        
-                        
                         if self.currentPage != self.viewControllers.count - 1{
                             self.currentPage += 1
                         } else{
@@ -58,10 +41,6 @@ struct PageView<Page: View>: View {
                     }
                 }
                 .frame(minWidth: 0, maxWidth: .standardSpacing * 3, minHeight: 0, maxHeight: .standardSpacing * 3, alignment: .center)
-                
-                
-                
-                
             }.padding(.vertical, .standardSpacing )
         }
     }
