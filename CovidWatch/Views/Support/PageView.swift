@@ -10,16 +10,17 @@ import SwiftUI
 struct PageView<Page: View>: View {
     var viewControllers: [UIHostingController<Page>]
     @State var currentPage = 0
-    
     init(_ views: [Page]) {
         self.viewControllers = views.map { UIHostingController(rootView: $0) }
     }
     var body: some View {
-        VStack{
+        VStack {
+            
             PageViewController(controllers: viewControllers, currentPage: $currentPage)
-            ZStack(alignment: .bottom){
+            ZStack(alignment: .bottom) {
+                
                 PageControl(numberOfPages: viewControllers.count, currentPage: $currentPage)
-                HStack(spacing: .standardSpacing * 20){
+                HStack(spacing: .standardSpacing * 20) {
                     Button(action: {
                         
                         if self.currentPage != 0 {
@@ -28,19 +29,24 @@ struct PageView<Page: View>: View {
                             self.currentPage = self.viewControllers.count - 1
                         }
                     }) {
+                        
                         Image("Left Arrow PageView")
                     }
                     Button(action: {
-                        if self.currentPage != self.viewControllers.count - 1{
+                        
+                        if self.currentPage != self.viewControllers.count - 1 {
                             self.currentPage += 1
-                        } else{
+                        } else {
+                            
                             self.currentPage = 0
                         }
                     }) {
+                        
                         Image("Right Arrow PageView")
                     }
                 }
-                .frame(minWidth: 0, maxWidth: .standardSpacing * 3, minHeight: 0, maxHeight: .standardSpacing * 3, alignment: .center)
+                    // swiftlint:disable:next line_length
+                    .frame(minWidth: 0, maxWidth: .standardSpacing * 3, minHeight: 0, maxHeight: .standardSpacing * 3, alignment: .center)
             }.padding(.vertical, .standardSpacing )
         }
     }

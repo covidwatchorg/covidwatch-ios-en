@@ -804,6 +804,7 @@
 				2D72543624A35E92003E5914 /* Sources */,
 				2D72548024A35E92003E5914 /* Frameworks */,
 				2D72548324A35E92003E5914 /* Resources */,
+				E1212A8624AA5A2C0075533F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -826,6 +827,7 @@
 				2D8FE69B24A33B0100456875 /* Sources */,
 				2D8FE6E524A33B0100456875 /* Frameworks */,
 				2D8FE6E824A33B0100456875 /* Resources */,
+				E1212A8524AA5A270075533F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -848,6 +850,7 @@
 				2D9CF3C62455B9F1005B085E /* Sources */,
 				2D9CF3C72455B9F1005B085E /* Frameworks */,
 				2D9CF3C82455B9F1005B085E /* Resources */,
+				E1212A8424AA59DD0075533F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1093,6 +1096,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# contents of SCHEME_FILE is definied in the scheme > build > pre action\n# SCHEME_FILE path is definied in Target Build Settings User Defined ENV vars\necho \"Running Scheme and IP Sniffer\"\nSCHEME_NAME=`cat ${SCHEME_FILE}`\necho $SCHEME_NAME\necho $INFOPLIST_FILE\n/usr/libexec/PlistBuddy -c \"Set :SchemeName \\\"$SCHEME_NAME\\\"\" \"$INFOPLIST_FILE\"\n\nif [ \"$SCHEME_NAME\" = \"CovidWatch-dev\" ]; then\nLOCAL_IP=$(LANG=C /sbin/ifconfig  | sed -ne $'/127.0.0.1/ ! { s/^[ \\t]*inet[ \\t]\\\\{1,99\\\\}\\\\(addr:\\\\)\\\\{0,1\\\\}\\\\([0-9.]*\\\\)[ \\t\\/].*$/\\\\2/p; }' | head -n 1)\nelse\nLOCAL_IP=\"\"\nfi;\n/usr/libexec/PlistBuddy -c \"Set :LocalIP \\\"$LOCAL_IP\\\"\" \"$INFOPLIST_FILE\"\n";
+		};
+		E1212A8424AA59DD0075533F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		E1212A8524AA5A270075533F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		E1212A8624AA5A2C0075533F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		E20D4F06245B9B0000B97B4B /* Environment */ = {
 			isa = PBXShellScriptBuildPhase;
