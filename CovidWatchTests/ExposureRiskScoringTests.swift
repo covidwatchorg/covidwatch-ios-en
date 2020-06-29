@@ -21,27 +21,37 @@ class ExposureRiskScoringTests: XCTestCase {
         let scoring = AZExposureRiskScorer()
         let message = "Computed risk score does not match expected risk score"
         
-        // Scenario: "Sufficiently risky individual, 30 minutes at 6 ft"
+        // Scenario: "Sufficiently risky individual, 30 minutes close contact"
+        XCTAssertEqual(
+            scoring.computeRiskScore(
+                forAttenuationDurations: [NSNumber(value: 30 * 60), NSNumber(value: 0), NSNumber(value: 0)],
+                transmissionRiskLevel: 4
+            ),
+            8, // Expected
+            message
+        )
+
+        // Scenario: "Sufficiently risky individual, 30 minutes at med. attenuation"
         XCTAssertEqual(
             scoring.computeRiskScore(
                 forAttenuationDurations: [NSNumber(value: 0), NSNumber(value: 30 * 60), NSNumber(value: 0)],
                 transmissionRiskLevel: 4
             ),
-            5, // Expected
+            4, // Expected
             message
         )
-
+        
         // Scenario: "Sufficiently risky individual, 5 minutes close contact"
         XCTAssertEqual(
             scoring.computeRiskScore(
-                forAttenuationDurations: [NSNumber(value: 15 * 60), NSNumber(value: 0), NSNumber(value: 0)],
+                forAttenuationDurations: [NSNumber(value: 5 * 60), NSNumber(value: 0), NSNumber(value: 0)],
                 transmissionRiskLevel: 4
             ),
-            6, // Expected
+            0, // Expected
             message
         )
 
-        // Scenario: "Highest risk individual, 30 minutes at 6 ft"
+        // Scenario: "Highest risk individual, 30 minutes at med. attenuation"
         XCTAssertEqual(
             scoring.computeRiskScore(
                 forAttenuationDurations: [NSNumber(value: 0), NSNumber(value: 30 * 60), NSNumber(value: 0)],
@@ -57,57 +67,117 @@ class ExposureRiskScoringTests: XCTestCase {
                 forAttenuationDurations: [NSNumber(value: 5 * 60), NSNumber(value: 0), NSNumber(value: 0)],
                 transmissionRiskLevel: 6
             ),
-            8, // Expected
+            2, // Expected
             message
         )
 
-        // Scenario: "Highest risk individual, 5 minutes at 6 ft"
+        // Scenario: "Highest risk individual, 5 minutes at med attenuation"
         XCTAssertEqual(
             scoring.computeRiskScore(
                 forAttenuationDurations: [NSNumber(value: 0), NSNumber(value: 5 * 60), NSNumber(value: 0)],
                 transmissionRiskLevel: 6
             ),
-            7, // Expected
+            0, // Expected
             message
         )
-        
+
         // Scenario: "Highest risk individual, 30 minutes at long distance"
         XCTAssertEqual(
             scoring.computeRiskScore(
                 forAttenuationDurations: [NSNumber(value: 0), NSNumber(value: 0), NSNumber(value: 30 * 60)],
                 transmissionRiskLevel: 6
             ),
-            4, // Expected
+            5, // Expected
             message
         )
-        
-        // Scenario: "Asymptomatic shedder at peak risk, 30 min at 6 ft"
+
+        // Scenario: "Asymptomatic shedder at peak risk, 30 min at med. attenuation"
         XCTAssertEqual(
             scoring.computeRiskScore(
                 forAttenuationDurations: [NSNumber(value: 0), NSNumber(value: 30 * 60), NSNumber(value: 0)],
                 transmissionRiskLevel: 3
             ),
-            4, // Expected
+            2, // Expected
             message
         )
-        
-        // Scenario: "Low shedder, 30 min at 6 ft"
+
+        // Scenario: "Low shedder, 30 min at medium attenuation"
         XCTAssertEqual(
             scoring.computeRiskScore(
                 forAttenuationDurations: [NSNumber(value: 0), NSNumber(value: 30 * 60), NSNumber(value: 0)],
                 transmissionRiskLevel: 2
             ),
-            2, // Expected
+            1, // Expected
             message
         )
-        
-        // Scenario: "Low shedder, 5 min at 6 ft"
+
+        // Scenario: "Low shedder, 5 min at med. attenuation"
         XCTAssertEqual(
             scoring.computeRiskScore(
                 forAttenuationDurations: [NSNumber(value: 0), NSNumber(value: 5 * 60), NSNumber(value: 0)],
                 transmissionRiskLevel: 2
             ),
-            1, // Expected
+            0, // Expected
+            message
+        )
+        
+        // Scenario: "Highest risk individual, 30 min in each bucket"
+        XCTAssertEqual(
+            scoring.computeRiskScore(
+                forAttenuationDurations: [NSNumber(value: 30 * 60), NSNumber(value: 30 * 60), NSNumber(value: 30 * 60)],
+                transmissionRiskLevel: 6
+            ),
+            8, // Expected
+            message
+        )
+        
+        // Scenario: "Highest risk individual, 30 min in each bucket"
+        XCTAssertEqual(
+            scoring.computeRiskScore(
+                forAttenuationDurations: [NSNumber(value: 30 * 60), NSNumber(value: 30 * 60), NSNumber(value: 30 * 60)],
+                transmissionRiskLevel: 1
+            ),
+            2, // Expected
+            message
+        )
+        
+        // Scenario: "Highest risk individual 15 minutes close contact"
+        XCTAssertEqual(
+            scoring.computeRiskScore(
+                forAttenuationDurations: [NSNumber(value: 15 * 60), NSNumber(value: 0), NSNumber(value: 0)],
+                transmissionRiskLevel: 6
+            ),
+            8, // Expected
+            message
+        )
+        
+        // Scenario: "Lowest risk individual 15 minutes close contact"
+        XCTAssertEqual(
+            scoring.computeRiskScore(
+                forAttenuationDurations: [NSNumber(value: 15 * 60), NSNumber(value: 0), NSNumber(value: 0)],
+                transmissionRiskLevel: 1
+            ),
+            0, // Expected
+            message
+        )
+        
+        // Scenario: "Highest risk individual 15 minutes long distance"
+        XCTAssertEqual(
+            scoring.computeRiskScore(
+                forAttenuationDurations: [NSNumber(value: 0), NSNumber(value: 0), NSNumber(value: 15 * 60)],
+                transmissionRiskLevel: 6
+            ),
+            2, // Expected
+            message
+        )
+        
+        // Scenario: "Lowest risk individual 15 minutes long distance"
+        XCTAssertEqual(
+            scoring.computeRiskScore(
+                forAttenuationDurations: [NSNumber(value: 0), NSNumber(value: 0), NSNumber(value: 15 * 60)],
+                transmissionRiskLevel: 1
+            ),
+            0, // Expected
             message
         )
     }

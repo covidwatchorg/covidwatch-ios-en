@@ -154,7 +154,7 @@
 		2D7254A924A37D6D003E5914 /* ExposureManager+Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7254A724A37D62003E5914 /* ExposureManager+Calibration.swift */; };
 		2D7254AA24A38225003E5914 /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94062460000A00718412 /* ApplicationController.swift */; };
 		2D7254AD24A384CD003E5914 /* GoogleExposureNotificationServer+Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7254AB24A384BA003E5914 /* GoogleExposureNotificationServer+Calibration.swift */; };
-		2D7254AF24A3A519003E5914 /* DeviceVerificationPayloadProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7254AE24A3A519003E5914 /* DeviceVerificationPayloadProviding.swift */; };
+		2D7254B024A90DD6003E5914 /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94062460000A00718412 /* ApplicationController.swift */; };
 		2D743E8F24851FE500AA4D26 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 2D743E8E24851FE500AA4D26 /* Localizable.stringsdict */; };
 		2D743E912485425400AA4D26 /* PossibleExposureTableColumnA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D743E902485425400AA4D26 /* PossibleExposureTableColumnA.swift */; };
 		2D743E93248542FE00AA4D26 /* PossibleExposureTableColumnB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D743E92248542FD00AA4D26 /* PossibleExposureTableColumnB.swift */; };
@@ -373,7 +373,7 @@
 		2D5D94122460232A00718412 /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		2D5D941524602FE100718412 /* HowItWorks1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorks1.swift; sourceTree = "<group>"; };
 		2D63D591245CBCC00027D43B /* OSLog+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OSLog+Additions.swift"; sourceTree = "<group>"; };
-		2D72549F24A35E92003E5914 /* CW DEMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CW DEMO.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D72549F24A35E92003E5914 /* CW DEMO AZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CW DEMO AZ.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D7254A224A36BDC003E5914 /* CovidWatch-AppStore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CovidWatch-AppStore.entitlements"; sourceTree = "<group>"; };
 		2D7254A324A37280003E5914 /* Dev-Calibration-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dev-Calibration-Info.plist"; sourceTree = "<group>"; };
 		2D7254A424A3765A003E5914 /* ApplicationController+Calibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApplicationController+Calibration.swift"; sourceTree = "<group>"; };
@@ -403,7 +403,7 @@
 		2D9034C42460498A00351C3C /* Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
 		2D9034C6246049EC00351C3C /* Setup1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup1.swift; sourceTree = "<group>"; };
 		2D9034C824604BB000351C3C /* Setup2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup2.swift; sourceTree = "<group>"; };
-		2D9CF3CA2455B9F1005B085E /* CW DEMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CW DEMO.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D9CF3CA2455B9F1005B085E /* CW DEMO CA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CW DEMO CA.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D9CF3CD2455B9F1005B085E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D9CF3D92455B9F4005B085E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D9CF3DC2455B9F4005B085E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -685,11 +685,11 @@
 		2D9CF3CB2455B9F1005B085E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2D9CF3CA2455B9F1005B085E /* CW DEMO.app */,
+				2D9CF3CA2455B9F1005B085E /* CW DEMO CA.app */,
 				2D9CF3E32455B9F5005B085E /* CovidWatchTests.xctest */,
 				2D9CF3EE2455B9F5005B085E /* CovidWatchUITests.xctest */,
 				2D8FE71524A33B0100456875 /* Covid Watch.app */,
-				2D72549F24A35E92003E5914 /* CW DEMO.app */,
+				2D72549F24A35E92003E5914 /* CW DEMO AZ.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -815,7 +815,7 @@
 				2D72543324A35E92003E5914 /* ZIPFoundation */,
 			);
 			productName = CovidWatch;
-			productReference = 2D72549F24A35E92003E5914 /* CW DEMO.app */;
+			productReference = 2D72549F24A35E92003E5914 /* CW DEMO AZ.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2D8FE69524A33B0100456875 /* CovidWatch-Arizona-Dev */ = {
@@ -859,7 +859,7 @@
 				2DFEED092476BD0400D2C620 /* ZIPFoundation */,
 			);
 			productName = CovidWatch;
-			productReference = 2D9CF3CA2455B9F1005B085E /* CW DEMO.app */;
+			productReference = 2D9CF3CA2455B9F1005B085E /* CW DEMO CA.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2D9CF3E22455B9F5005B085E /* CovidWatchTests */ = {
@@ -1282,8 +1282,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D7254AF24A3A519003E5914 /* DeviceVerificationPayloadProviding.swift in Sources */,
 				2D74E4692465D429002057B9 /* PossibleExposureSummary.swift in Sources */,
+				2D7254B024A90DD6003E5914 /* ApplicationController.swift in Sources */,
 				2D3948A2248E6354001766A4 /* ENRiskScore+Levels.swift in Sources */,
 				2DBC07B3248552B4001304BB /* StandardTitleTextViewModifier.swift in Sources */,
 				2D46AA622466ADFE0003936C /* Welcome.swift in Sources */,
@@ -1414,6 +1414,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG_CALIBRATION=1",
 					"DEBUG=1",
+					"RISK_SCORING_AZ=1",
 				);
 				INFOPLIST_FILE = "CovidWatch/Dev-Calibration-Info.plist";
 				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
@@ -1424,10 +1425,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.ios.arizona;
 				PRODUCT_MODULE_NAME = CovidWatch;
-				PRODUCT_NAME = "CW DEMO";
+				PRODUCT_NAME = "CW DEMO AZ";
 				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch iOS Arizona Dev";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG_CALIBRATION DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG_CALIBRATION DEBUG RISK_SCORING_AZ";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1445,6 +1446,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG_CALIBRATION=1",
 					"DEBUG=1",
+					"RISK_SCORING_AZ=1",
 				);
 				INFOPLIST_FILE = "CovidWatch/Dev-Calibration-Info.plist";
 				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
@@ -1455,10 +1457,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.ios.arizona;
 				PRODUCT_MODULE_NAME = CovidWatch;
-				PRODUCT_NAME = "CW DEMO";
+				PRODUCT_NAME = "CW DEMO AZ";
 				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch iOS Arizona Dev";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG_CALIBRATION DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG_CALIBRATION DEBUG RISK_SCORING_AZ";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1473,6 +1475,10 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 97;
 				DEVELOPMENT_TEAM = GD7NMG67S7;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"RISK_SCORING_AZ=1",
+					"DEBUG=1",
+				);
 				INFOPLIST_FILE = "CovidWatch/Dev-Info.plist";
 				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1485,6 +1491,7 @@
 				PRODUCT_NAME = "Covid Watch";
 				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch iOS Arizona Dev";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "RISK_SCORING_AZ DEBUG";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1499,6 +1506,7 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 97;
 				DEVELOPMENT_TEAM = GD7NMG67S7;
+				GCC_PREPROCESSOR_DEFINITIONS = "RISK_SCORING_AZ=1";
 				INFOPLIST_FILE = "CovidWatch/Dev-Info.plist";
 				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -1511,6 +1519,7 @@
 				PRODUCT_NAME = "Covid Watch";
 				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch iOS Arizona Dev";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = RISK_SCORING_AZ;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1648,7 +1657,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.ios.california;
 				PRODUCT_MODULE_NAME = CovidWatch;
-				PRODUCT_NAME = "CW DEMO";
+				PRODUCT_NAME = "CW DEMO CA";
 				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch iOS California Dev";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_VERSION = 5.0;
@@ -1674,7 +1683,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.ios.california;
 				PRODUCT_MODULE_NAME = CovidWatch;
-				PRODUCT_NAME = "CW DEMO";
+				PRODUCT_NAME = "CW DEMO CA";
 				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch iOS California Dev";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_VERSION = 5.0;
@@ -1700,7 +1709,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CW DEMO.app/CW DEMO";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CW DEMO CA.app/CW DEMO CA";
 			};
 			name = Debug;
 		};
@@ -1722,7 +1731,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CW DEMO.app/CW DEMO";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CW DEMO CA.app/CW DEMO CA";
 			};
 			name = Release;
 		};
@@ -1731,6 +1740,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VWPFSV28W6;
 				INFOPLIST_FILE = CovidWatchUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1751,6 +1761,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VWPFSV28W6;
 				INFOPLIST_FILE = CovidWatchUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (

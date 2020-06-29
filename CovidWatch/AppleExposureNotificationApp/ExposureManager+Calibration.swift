@@ -74,25 +74,17 @@ extension ExposureManager {
                                         semaphore.signal()
                                         return
                                     }
-                                let scorer = AZExposureRiskScorer()
                                 let newExposures: [Exposure] = exposures!.map { exposure in
-    //                                var totalRiskScore = Double(exposure.totalRiskScore) * 8.0 / 255.0 // Map score between 0 and 8
-    //                                if let totalRiskScoreFullRange = exposure.metadata?["totalRiskScoreFullRange"] as? Double {
-    //                                    totalRiskScore = totalRiskScoreFullRange * 8.0 / 4096 // Map score between 0 and 8
-    //                                }
-                                    let recomputedTotalRiskScore = scorer.computeRiskScore(
-                                        forAttenuationDurations: exposure.attenuationDurations,
-                                        transmissionRiskLevel: exposure.transmissionRiskLevel
-                                    )
+                                    var totalRiskScore: ENRiskScore = ENRiskScore(exposure.totalRiskScoreFullRange * 8.0 / pow(8, 4))
+                                    if let riskScorer = self.riskScorer {
+                                        totalRiskScore = riskScorer.computeRiskScore(forExposure: exposure)
+                                    }
                                     let e = Exposure(
                                         attenuationDurations: exposure.attenuationDurations.map({ $0.doubleValue }),
                                         attenuationValue: exposure.attenuationValue,
                                         date: exposure.date,
                                         duration: exposure.duration,
-    //                                    totalRiskScore: ENRiskScore(totalRiskScore.rounded()),
-    //                                    totalRiskScoreFullRange: (exposure.metadata?["totalRiskScoreFullRange"] as? Int) ?? Int(totalRiskScore.rounded()),
-                                        totalRiskScore: recomputedTotalRiskScore,
-                                        totalRiskScoreFullRange: Int(recomputedTotalRiskScore),
+                                        totalRiskScore: totalRiskScore,
                                         transmissionRiskLevel: exposure.transmissionRiskLevel,
                                         attenuationDurationThresholds: configuration.value(forKey: "attenuationDurationThresholds") as! [Int],
                                         timeDetected : Date()

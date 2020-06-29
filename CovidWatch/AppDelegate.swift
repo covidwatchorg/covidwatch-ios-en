@@ -69,6 +69,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Server.shared.diagnosisServer = self.diagnosisServer
                 
         _ = ExposureManager.shared
+        #if RISK_SCORING_AZ
+        ExposureManager.shared.riskScorer = AZExposureRiskScorer()
+        #endif
         _ = ApplicationController.shared
         
         // Setup Background tasks
