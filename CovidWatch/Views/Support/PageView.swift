@@ -62,7 +62,7 @@ struct PageView<Page: View>: View {
                 
                 
                 
-            }.padding(.bottom, .standardSpacing * 6)
+            }.padding(.vertical, .standardSpacing )
         }
     }
 }
