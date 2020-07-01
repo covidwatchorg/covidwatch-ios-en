@@ -1,6 +1,6 @@
 //
 //  Created by Zsombor Szabo on 04/05/2020.
-//  
+//
 //
 
 import SwiftUI
@@ -23,7 +23,6 @@ struct Setup: View {
                     Setup3().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                 }
             }
-            
             HeaderBar(showMenu: false)
         }
     }

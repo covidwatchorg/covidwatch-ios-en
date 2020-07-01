@@ -62,7 +62,7 @@ struct PageViewController: UIViewControllerRepresentable {
             }
             return parent.controllers[index + 1]
         }
-
+ // swiftlint:disable:next line_length
         func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
             if completed,
                 let visibleViewController = pageViewController.viewControllers?.first,

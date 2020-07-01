@@ -1,6 +1,6 @@
 //
 //  Created by Zsombor Szabo on 04/05/2020.
-//  
+//
 //
 
 import SwiftUI
@@ -13,9 +13,7 @@ struct HowItWorks1: View {
             VStack(spacing: 0) {
                 
                 Spacer(minLength: .headerHeight)
-                
                 HowItWorksTitleText(text: Text(verbatim: NSLocalizedString("HOW_IT_WORKS_TITLE", comment: "").uppercased()))
-                
                 HowItWorksSubtitleText(text: Text("HOW_IT_WORKS_1_SUBTITLE"))
                 
                 Spacer(minLength: .standardSpacing)
@@ -27,9 +25,7 @@ struct HowItWorks1: View {
                     .padding(.horizontal, 2 * .standardSpacing)
 
                 Spacer(minLength: .standardSpacing)
-                
                 HowItWorksMessageText(text: Text("HOW_IT_WORKS_1_MESSAGE"))
-                
                 Spacer(minLength: 3 * .standardSpacing)
             }
         }

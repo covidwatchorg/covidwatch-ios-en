@@ -1,6 +1,6 @@
 //
 //  Created by Zsombor Szabo on 04/05/2020.
-//  
+//
 //
 
 import SwiftUI
