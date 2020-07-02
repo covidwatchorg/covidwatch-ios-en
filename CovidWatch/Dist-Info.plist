@@ -8,19 +8,6 @@
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>CFBundleDocumentTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeIconFiles</key>
-			<array/>
-			<key>CFBundleTypeName</key>
-			<string>EN Export ZIP Archive</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.pkware.zip-archive</string>
-			</array>
-		</dict>
-	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -35,6 +22,8 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>CWKeyServerExposureBaseURL</key>
+	<string>https://exposure-3horfxouua-uc.a.run.app</string>
 	<key>CWKeyServerAppConfigurationRegions</key>
 	<array>
 		<string>US</string>
@@ -43,12 +32,10 @@
 	<string>exposure-notification-export-fxega</string>
 	<key>CWKeyServerExportConfigurationFilenameRoot</key>
 	<string>exposureKeyExport-US</string>
-	<key>CWKeyServerExposureBaseURL</key>
-	<string>https://exposure-3horfxouua-uc.a.run.app</string>
-	<key>CWVerificationServerApiKey</key>
-	<string>L2bUqnUXZiT1d4xZoMS5JydDfYmHKByicEPGZhrs7dDf2nHeCMGAvPbT0w586UFbxx7uuR4MoqP30BzpYfy2YQ</string>
 	<key>CWVerificationServerApiServerBaseURL</key>
 	<string>https://apiserver-p74lg75vsa-uc.a.run.app</string>
+	<key>CWVerificationServerApiKey</key>
+	<string>L2bUqnUXZiT1d4xZoMS5JydDfYmHKByicEPGZhrs7dDf2nHeCMGAvPbT0w586UFbxx7uuR4MoqP30BzpYfy2YQ</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
@@ -57,15 +44,6 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>LSSupportsOpeningDocumentsInPlace</key>
-	<false/>
-	<key>LocalIP</key>
-	<string>192.168.1.6</string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsLocalNetworking</key>
-		<true/>
-	</dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Black.ttf</string>

@@ -139,7 +139,7 @@ class ApplicationController: NSObject {
         }
     }
     
-    @objc func shareApp() {
+    @objc func handleTapShareApp() {
         let text = NSLocalizedString("SHARE_THE_APP_SHEET_MESSAGE", comment: "")
         let url = URL(string: "https://www.covidwatch.org")
         
@@ -160,11 +160,5 @@ class ApplicationController: NSObject {
             completion: nil
         )
     }
-    
-    public func handleTapShareAPositiveDiagnosisButton() {
-        #if DEBUG_CALIBRATION
-        self.handleTapCalibrationShareAPositiveDiagnosisButton()        
-        #endif
-    }
-    
+        
 }

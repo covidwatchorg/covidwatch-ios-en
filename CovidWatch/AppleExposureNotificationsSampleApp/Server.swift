@@ -9,33 +9,6 @@ import Foundation
 import ExposureNotification
 import SwiftProtobuf
 
-public struct CodableDiagnosisKey: Codable, Equatable {
-    let keyData: Data
-    let rollingPeriod: ENIntervalNumber
-    let rollingStartNumber: ENIntervalNumber
-    let transmissionRiskLevel: ENRiskLevel
-    
-    enum CodingKeys: String, CodingKey {
-        case keyData = "key"
-        case rollingPeriod
-        case rollingStartNumber
-        case transmissionRiskLevel = "transmissionRisk"
-    }
-}
-
-public struct CodableExposureConfiguration: Codable {
-    let minimumRiskScore: ENRiskScore
-    #if DEBUG_CALIBRATION
-    let attenuationDurationThresholdList: [[Int]]
-    #else
-    let attenuationDurationThresholds: [Int]
-    #endif
-    let attenuationLevelValues: [ENRiskLevelValue]
-    let daysSinceLastExposureLevelValues: [ENRiskLevelValue]
-    let durationLevelValues: [ENRiskLevelValue]
-    let transmissionRiskLevelValues: [ENRiskLevelValue]
-}
-
 @available(iOS 13.5, *)
 public class Server {
     
@@ -43,23 +16,15 @@ public class Server {
     
     public static let shared = Server()
     
-    public var diagnosisServer: DiagnosisServer?
+    public var keyServer: ExposureNotificationsDiagnosisKeyServing?
+    public var verificationServer: ExposureNotificationsDiagnosisVerificationProviding?
     
     func postDiagnosisKeys(_ diagnosisKeys: [ENTemporaryExposureKey], completion: @escaping (Error?) -> Void) {
-        
-        // Convert keys to something that can be encoded to JSON and upload them.
-        let codableDiagnosisKeys = diagnosisKeys.compactMap { diagnosisKey -> CodableDiagnosisKey? in
-            return CodableDiagnosisKey(keyData: diagnosisKey.keyData,
-                                       rollingPeriod: diagnosisKey.rollingPeriod,
-                                       rollingStartNumber: diagnosisKey.rollingStartNumber,
-                                       transmissionRiskLevel: diagnosisKey.transmissionRiskLevel)            
-        }
-        
-        // Your server needs to handle de-duplicating keys.
-        if let diagnosisServer = self.diagnosisServer {
+                        
+        if let diagnosisServer = self.keyServer {
             
             diagnosisServer.postDiagnosisKeys(
-                codableDiagnosisKeys,
+                diagnosisKeys,
                 completion: completion
             )
         }
@@ -70,7 +35,7 @@ public class Server {
     
     func getDiagnosisKeyFileURLs(startingAt index: Int, completion: @escaping (Result<[URL], Error>) -> Void) {
         
-        if let diagnosisServer = self.diagnosisServer {
+        if let diagnosisServer = self.keyServer {
             
             diagnosisServer.getDiagnosisKeyFileURLs(
                 startingAt: index,
@@ -85,7 +50,7 @@ public class Server {
     // The URL passed to the completion is the local URL of the downloaded diagnosis key file
     func downloadDiagnosisKeyFile(at remoteURL: URL, completion: @escaping (Result<[URL], Error>) -> Void) {
         
-        if let diagnosisServer = self.diagnosisServer {
+        if let diagnosisServer = self.keyServer {
             
             diagnosisServer.downloadDiagnosisKeyFile(
                 at: remoteURL,
@@ -105,7 +70,7 @@ public class Server {
 
     func getExposureConfiguration(completion: @escaping (Result<ENExposureConfiguration, Error>) -> Void) {
         
-        if let diagnosisServer = self.diagnosisServer {
+        if let diagnosisServer = self.keyServer {
             
             diagnosisServer.getExposureConfiguration(completion: completion)
         }
@@ -117,9 +82,9 @@ public class Server {
     #if DEBUG_CALIBRATION
     func getExposureConfigurationList(completion: @escaping (Result<[ENExposureConfiguration], Error>) -> Void) {
         
-        if let diagnosisServer = self.diagnosisServer {
+        if let keyServer = self.keyServer {
             
-            diagnosisServer.getExposureConfigurationList(completion: completion)
+            keyServer.getExposureConfigurationList(completion: completion)
         }
         else {
             completion(.failure(CocoaError(.fileNoSuchFile)))
@@ -127,12 +92,12 @@ public class Server {
     }
     #endif
     
-    func verifyUniqueTestIdentifier(_ identifier: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+    func verifyUniqueTestIdentifier(_ identifier: String, completion: @escaping (Result<String, Error>) -> Void) {
         
         // In a real implementation, this identifer would be validated on a server
-        if let diagnosisServer = self.diagnosisServer {
+        if let verificationServer = self.verificationServer {
             
-            diagnosisServer.verifyUniqueTestIdentifier(
+            verificationServer.verifyUniqueTestIdentifier(
                 identifier,
                 completion: completion
             )

@@ -8,195 +8,177 @@ import ExposureNotification
 import DeviceCheck
 import ZIPFoundation
 
-public struct PublishExposure: Codable {
-    let temporaryExposureKeys: [CodableDiagnosisKey]
-    let regions: [String]
-    let appPackageName: String
-    let verificationPayload: String
-    let hmackey: String
-    let padding: String
+public struct GoogleCloudPlatform {
+    static let cloudStorageBaseURLString = "https://storage.googleapis.com"
 }
 
 @available(iOS 13.5, *)
-public class GoogleExposureNotificationServer: DiagnosisServer {
+public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotificationsDiagnosisKeyServing {
     
-    // TODO
-    public func verifyUniqueTestIdentifier(
-        _ identifier: String,
-        completion: @escaping (Result<Bool, Error>) -> Void
-    ) {
-//        os_log(
-//            "Verifying unique test identifier=%@ ...",
-//            log: .en,
-//            identifier
-//        )
-//
-//        let fetchUrl = URL(string: "\(self.configuration.apiUrlString)/verifyUniqueTestIdentifier") ??
-//            URL(fileURLWithPath: "")
-//
-//        let request = URLRequest(url: fetchUrl)
-//
-//        URLSession.shared.dataTask(with: request) { (result) in
-//            switch result {
-//                case .failure(let error):
-//                    os_log(
-//                        "Verifying unique test identifier=%@ failed=%@ ...",
-//                        log: .en,
-//                        type: .error,
-//                        identifier,
-//                        error as CVarArg
-//                    )
-//                    completion(.failure(error))
-//                    return
-//
-//                case .success(let (response, _)):
-//                    os_log(
-//                        "Verified unique test identifier=%@ response=%@",
-//                        log: .en,
-//                        identifier,
-//                        response.description
-//                    )
-//                    completion(.success(true))
-//                    return
-//            }
-//        }.resume()
+    public struct Configuration {
+        let exposureBaseURLString: String
+        let appConfiguration: AppConfiguration
+        let exportConfiguration: ExportConfiguration
+    }
+    
+    public struct AppConfiguration {
+        let appPackageName: String = Bundle.main.bundleIdentifier ?? ""
+        let regions: [String]
+    }
+
+    public struct ExportConfiguration {
+        let cloudStorageBucketName: String
+        let filenameRoot: String
+        var indexURLString: String {
+            return "\(GoogleCloudPlatform.cloudStorageBaseURLString)/\(cloudStorageBucketName)/\(filenameRoot)/index.txt"
+        }
+    }
+    
+    public var configuration: Configuration
+    
+    init(configuration: Configuration) {
+        self.configuration = configuration
     }
     
     public func postDiagnosisKeys(
-        _ diagnosisKeys: [CodableDiagnosisKey],
+        _ diagnosisKeys: [ENTemporaryExposureKey],
         completion: @escaping (Error?) -> Void
     ) {
-//        os_log(
-//            "Posting %d diagnosis key(s) ...",
-//            log: .en,
-//            diagnosisKeys.count
-//        )
-//
-//        DCDevice.current.generateToken { (token, error) in
-//            if let error = error {
-//                os_log(
-//                    "Posting %d diagnosis key(s) failed=%@",
-//                    log: .en,
-//                    type: .error,
-//                    diagnosisKeys.count,
-//                    error as CVarArg
-//                )
-//                completion(error)
-//                return
-//            }
-//
-//            let publishExposure = PublishExposure(
-//                temporaryExposureKeys: diagnosisKeys,
-//                regions: self.configuration.regions,
-//                appPackageName: Bundle.main.bundleIdentifier!,
-//                platform: "ios",
-//                deviceVerificationPayload: token!.base64EncodedString(),
-//                verificationPayload: "signature /code from  of verifying authority",
-//                padding: Data.random(count: Int.random(in: 1024..<2048)).base64EncodedString()
-//            )
-//
-//            let requestURL = URL(string: self.configuration.apiExposureURLString) ?? URL(fileURLWithPath: "")
-//
-//            let encoder = JSONEncoder()
-//            encoder.dataEncodingStrategy = .base64
-//
-//            var uploadData: Data! = try? encoder.encode(publishExposure)
-//            if uploadData == nil {
-//                uploadData = Data()
-//            }
-//
-//            var request = URLRequest(url: requestURL)
-//            request.httpMethod = "POST"
-//
-//            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//            let task = URLSession.shared.uploadTask(
-//                with: request,
-//                from: uploadData
-//            ) { (result) in
-//                switch result {
-//                    case .failure(let error):
-//                        os_log(
-//                            "Posting %d diagnosis key(s) failed=%@",
-//                            log: .en,
-//                            type: .error,
-//                            diagnosisKeys.count,
-//                            error as CVarArg
-//                        )
-//                        completion(error)
-//                        return
-//
-//                    case .success(_):
-//                        os_log(
-//                            "Posted %d diagnosis key(s)",
-//                            log: .en,
-//                            diagnosisKeys.count
-//                        )
-//                        completion(nil)
-//                        return
-//                }
-//            }
-//            task.resume()
-//        }
+        os_log(
+            "Posting %d diagnosis key(s) ...",
+            log: .en,
+            diagnosisKeys.count
+        )
+
+        let codableDiagnosisKeys = diagnosisKeys.compactMap { diagnosisKey -> CodableDiagnosisKey? in
+            return CodableDiagnosisKey(
+                keyData: diagnosisKey.keyData,
+                rollingPeriod: diagnosisKey.rollingPeriod,
+                rollingStartNumber: diagnosisKey.rollingStartNumber,
+                transmissionRiskLevel: diagnosisKey.transmissionRiskLevel
+            )
+        }
+
+        let publishExposure = CodablePublishExposure(
+            temporaryExposureKeys: codableDiagnosisKeys,
+            regions: self.configuration.appConfiguration.regions,
+            appPackageName: self.configuration.appConfiguration.appPackageName,
+            verificationPayload: "signed JWT issued by public health authority",
+            hmackey: "base64 encoded HMAC key used in preparing the data for the verification server",
+            padding: Data.random(count: Int.random(in: 1024..<2048)).base64EncodedString()
+        )
+        
+        guard let requestURL = URL(string: self.configuration.exposureBaseURLString) else {
+            completion(URLError(.badURL))
+            return
+        }
+        
+        var uploadData: Data!
+        do {
+            let encoder = JSONEncoder()
+            encoder.dataEncodingStrategy = .base64
+            uploadData = try encoder.encode(publishExposure)
+        } catch {
+            completion(error)
+            return
+        }
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.uploadTask(
+            with: request,
+            from: uploadData
+        ) { (result) in
+            switch result {
+                case .failure(let error):
+                    os_log(
+                        "Posting %d diagnosis key(s) failed=%@",
+                        log: .en,
+                        type: .error,
+                        diagnosisKeys.count,
+                        error as CVarArg
+                    )
+                    completion(error)
+                    return
+                
+                case .success(_):
+                    os_log(
+                        "Posted %d diagnosis key(s)",
+                        log: .en,
+                        diagnosisKeys.count
+                    )
+                    completion(nil)
+                    return
+            }
+        }
+        task.resume()
     }
     
-    // TODO
     public func getDiagnosisKeyFileURLs(
         startingAt index: Int,
         completion: @escaping (Result<[URL], Error>) -> Void
     ) {
-//        os_log(
-//            "Getting diagnosis key file URLs starting at index=%d ...",
-//            log: .en,
-//            index
-//        )
-//
-//        let fetchUrl = URL(string: "\(self.configuration.apiUrlString)/getDiagnosisKeyFileURLs?startingAt=\(index)") ??
-//            URL(fileURLWithPath: "")
-//
-//        let request = URLRequest(url: fetchUrl)
-//
-//        URLSession.shared.dataTask(with: request) { (result) in
-//            switch result {
-//                case .failure(let error):
-//                    os_log(
-//                        "Getting diagnosis key file URLs starting at index=%d failed=%@ ...",
-//                        log: .en,
-//                        type: .error,
-//                        index,
-//                        error as CVarArg
-//                    )
-//                    completion(.failure(error))
-//                    return
-//
-//                case .success(let (response, data)):
-//                    do {
-//                        let decoder = JSONDecoder()
-//                        let diagnosisKeyFileURLs = try decoder.decode(
-//                            [URL].self,
-//                            from: data
-//                        )
-//                        os_log(
-//                            "Got diagnosis key file URLs starting at index=%d response=%@",
-//                            log: .en,
-//                            index,
-//                            response.description
-//                        )
-//                        completion(.success(diagnosisKeyFileURLs))
-//                    }
-//                    catch {
-//                        os_log(
-//                            "Getting diagnosis key file URLs starting at index=%d failed=%@ ...",
-//                            log: .en,
-//                            type: .error,
-//                            index,
-//                            error as CVarArg
-//                        )
-//                        completion(.failure(error))
-//                    }
-//                    return
-//            }
-//        }.resume()
+        os_log(
+            "Getting diagnosis key file URLs starting at index=%d ...",
+            log: .en,
+            index
+        )
+        
+        guard let requestURL = URL(string: self.configuration.exportConfiguration.indexURLString) else {
+            completion(.failure(URLError(.badURL)))
+            return
+        }
+        
+        let request = URLRequest(url: requestURL)
+
+        URLSession.shared.dataTask(with: request) { (result) in
+            switch result {
+                case .failure(let error):
+                    os_log(
+                        "Getting diagnosis key file URLs starting at index=%d failed=%@ ...",
+                        log: .en,
+                        type: .error,
+                        index,
+                        error as CVarArg
+                    )
+                    completion(.failure(error))
+                    return
+
+                case .success(let (_, data)):
+                    do {
+                        guard let dataString = String(bytes: data, encoding: .utf8) else {
+                            throw CocoaError(.coderInvalidValue)
+                        }
+                        let entries = dataString.split(separator: "\n")
+                        let keyFileURLs: [URL] = entries.compactMap {
+                            URL(string: "\(GoogleCloudPlatform.cloudStorageBaseURLString)/\(self.configuration.exportConfiguration.cloudStorageBucketName)/\($0)")
+                        }
+                        // TODO: Figure out if dropping the first index results is the way to go. Returning everything, for now.
+                        //let result = Array(keyFileURLs.dropFirst(index))
+                        let result = keyFileURLs
+                        os_log(
+                            "Got diagnosis key file URLs starting at index=%d count=%d",
+                            log: .en,
+                            index,
+                            result.count
+                        )
+                        completion(.success(result))
+                    }
+                    catch {
+                        os_log(
+                            "Getting diagnosis key file URLs starting at index=%d failed=%@ ...",
+                            log: .en,
+                            type: .error,
+                            index,
+                            error as CVarArg
+                        )
+                        completion(.failure(error))
+                    }
+                    return
+            }
+        }.resume()
     }
     
     public func downloadDiagnosisKeyFile(

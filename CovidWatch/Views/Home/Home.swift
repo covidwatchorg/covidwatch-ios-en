@@ -133,7 +133,7 @@ struct Home: View {
                             }
                             
                             Button(action: {
-                                ApplicationController.shared.shareApp()
+                                ApplicationController.shared.handleTapShareApp()
                             }) {
                                 Text("SHARE_THE_APP").modifier(SmallCallToAction())
                             }

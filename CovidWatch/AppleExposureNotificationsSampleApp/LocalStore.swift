@@ -28,6 +28,7 @@ public struct TestResult: Codable {
     public var isShared: Bool          // Whether diagnosis keys were shared with the Health Authority for the purpose of notifying others
     public var verificationCode: String
     public var isVerified: Bool
+    public var longTermToken: String?
 }
 
 @propertyWrapper

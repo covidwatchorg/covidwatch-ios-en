@@ -224,7 +224,12 @@ class ExposureManager {
             UNUserNotificationCenter.current().add(request) { error in
                 DispatchQueue.main.async {
                     if let error = error {
-                        print("Error showing error user notification: \(error)")
+                        os_log(
+                            "Showing error user notification failed=%@ ...",
+                            log: .app,
+                            type: .error,
+                            error as CVarArg
+                        )
                     }
                 }
             }

@@ -1,6 +1,6 @@
 //
 //  Created by Zsombor Szabo on 08/06/2020.
-//  Copyright © 2020 Covid Watch. All rights reserved.
+//  
 //
 
 import XCTest

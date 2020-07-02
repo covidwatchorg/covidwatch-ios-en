@@ -10,7 +10,7 @@ struct Reporting: View {
     
     @EnvironmentObject var localStore: LocalStore
     
-    @State var isShowingCallCode = false
+    @State var isShowingVerify = false
     
     @State var selectedTestResultIndex = 0
     
@@ -39,8 +39,25 @@ struct Reporting: View {
                     
                     Button(action: {
                         
-                        ApplicationController.shared.handleTapShareAPositiveDiagnosisButton()
-                        return
+                        #if DEBUG_CALIBRATION
+                        
+                        ApplicationController.shared.handleTapCalibrationShareAPositiveDiagnosisButton()
+                        
+                        #else
+                        
+                        let testResult = TestResult(
+                            id: UUID(),
+                            isAdded: false,
+                            dateAdministered: Date(),
+                            isShared: false,
+                            verificationCode: "",
+                            isVerified: false
+                        )
+                        self.localStore.testResults.insert(testResult, at: 0)
+                        self.selectedTestResultIndex = 0
+                        self.isShowingVerify = true
+                        
+                        #endif
 //
 //                        let verificationCode = String(Int.random(in: 10000..<99999))
 //                        let testResult = TestResult(id: UUID(), isAdded: false, dateAdministered: Date(), isShared: true, verificationCode: verificationCode, isVerified: true)
@@ -112,8 +129,8 @@ struct Reporting: View {
                     .padding(.top, 2 * .standardSpacing)
                     .padding(.horizontal, 2 * .standardSpacing)
                     .padding(.bottom, .standardSpacing)
-                    .sheet(isPresented: self.$isShowingCallCode) {
-                        ReportingCallCode(selectedTestResultIndex: self.selectedTestResultIndex)
+                    .sheet(isPresented: self.$isShowingVerify) {
+                        ReportingVerify(selectedTestResultIndex: self.selectedTestResultIndex)
                             .environmentObject(self.localStore)
                     }
                     

@@ -1,6 +1,6 @@
 //
 //  Created by Zsombor Szabo on 24/06/2020.
-//  Copyright © 2020 Covid Watch. All rights reserved.
+//  
 //
 
 import Foundation
@@ -10,7 +10,7 @@ import DeviceCheck
 import ZIPFoundation
 
 #if DEBUG_CALIBRATION
-extension GoogleExposureNotificationServer {
+extension GoogleExposureNotificationsDiagnosisKeyServer {
     
     public func getExposureConfigurationList(completion: (Result<[ENExposureConfiguration], Error>) -> Void) {
         os_log(

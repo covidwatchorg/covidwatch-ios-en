@@ -15,7 +15,6 @@ extension UIViewController {
         completion: (() -> Swift.Void)? = nil
     ) {
         var messages = [String]()
-        print(nsError)
         messages.append(nsError.localizedDescription)
         if let suggestion = nsError.localizedRecoverySuggestion {
             messages.append(suggestion)

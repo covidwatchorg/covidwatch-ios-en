@@ -11,12 +11,7 @@ import UIKit
 
 extension String {
     
-    public static let exposureNotificationBackgroundTaskIdentifier = "org.covidwatch.ios.exposure-notification"
-}
-
-extension TimeInterval {
-    
-    public static let minimumBackgroundFetchTimeInterval: TimeInterval = 60*60*6
+    public static let exposureNotificationBackgroundTaskIdentifier = Bundle.main.bundleIdentifier! + ".exposure-notification"
 }
 
 @available(iOS 13.0, *)
@@ -54,7 +49,12 @@ extension AppDelegate {
         do {
             try BGTaskScheduler.shared.submit(taskRequest)
         } catch {
-            print("Unable to schedule background task: \(error)")
+            os_log(
+                "Scheduling background task failed=%@ ...",
+                log: .app,
+                type: .error,
+                error as CVarArg
+            )
         }
     }
 }

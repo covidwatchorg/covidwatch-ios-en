@@ -382,6 +382,27 @@ All strings for the project, separated for localization.
 /* Button */
 "SHARE_A_POSITIVE_DIAGNOSIS" = "Share a Positive Diagnosis";
 
+/* Title */
+"REPORTING_VERIFY_TITLE" = "Anonymously Share a Positive Diagnosis";
+
+/* Message */
+"REPORTING_VERIFY_MESSAGE" = "To share a positive diagnosis, enter your Test Verification Code below.";
+
+/* Button */
+"REPORTING_VERIFY_NOTIFY_OTHERS" = "Anonymously Notify Others";
+
+/* Title */
+"TEST_VERIFICATION_CODE_TITLE" = "Test Verification Code";
+
+/* Message */
+"SYMPTOMS_START_DATE_QUESTION" = "When did your symptoms start?";
+
+/* Message */
+"TEST_DATE_QUESTION" = "When did you get tested?";
+
+/* Title */
+"SELECT_DATE" = "Select Date";
+
 // # GENERIC
 
 /* Button */

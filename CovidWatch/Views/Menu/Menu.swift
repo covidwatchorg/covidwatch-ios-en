@@ -38,21 +38,10 @@ struct Menu: View {
                     Spacer(minLength: .headerHeight)
                     
                     VStack(spacing: 0) {
-                        
-                        #if DEBUG_CALIBRATION
-                        VStack(spacing: 0) {
+                                                
+                        Group {
                             
-                            Divider()
-                            
-                            Button(action: {
-                                self.localStore.exposures = []
-                                self.localStore.dateLastPerformedExposureDetection = nil
-                            }) {
-                                HStack {
-                                    Text("DEMO_RESET_POSSIBLE_EXPOSURES_TITLE")
-                                }.modifier(MenuTitleText())
-                            }
-                            
+                            #if DEBUG
                             Divider()
                             
                             Button(action: {
@@ -66,6 +55,21 @@ struct Menu: View {
                             
                             Divider()
                             
+                            #endif
+                            
+                            #if DEBUG_CALIBRATION
+                            
+                            Button(action: {
+                                self.localStore.exposures = []
+                                self.localStore.dateLastPerformedExposureDetection = nil
+                            }) {
+                                HStack {
+                                    Text("DEMO_RESET_POSSIBLE_EXPOSURES_TITLE")
+                                }.modifier(MenuTitleText())
+                            }
+                            
+                            Divider()
+                                                        
                             Button(action: {
                                 let alertController = UIAlertController(
                                     title: NSLocalizedString("EXPOSURE_CONFIGURATION_JSON_TITLE", comment: ""),
@@ -101,8 +105,8 @@ struct Menu: View {
                             }
                             
                             Divider()
+                            #endif
                         }
-                        #endif
                         
                         Button(action: {
                             self.isShowingPossibleExposures.toggle()

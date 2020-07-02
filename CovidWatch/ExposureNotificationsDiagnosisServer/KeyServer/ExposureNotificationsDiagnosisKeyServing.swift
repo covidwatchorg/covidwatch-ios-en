@@ -5,15 +5,10 @@
 import Foundation
 import ExposureNotification
 
-public protocol DiagnosisServer {
+public protocol ExposureNotificationsDiagnosisKeyServing {
         
-    func verifyUniqueTestIdentifier(
-        _ identifier: String,
-        completion: @escaping (Result<Bool, Error>) -> Void
-    )
-    
     func postDiagnosisKeys(
-        _ diagnosisKeys: [CodableDiagnosisKey],
+        _ diagnosisKeys: [ENTemporaryExposureKey],
         completion: @escaping (Error?) -> Void
     ) -> Void
     
