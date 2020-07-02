@@ -6,11 +6,11 @@
 import ExposureNotification
 
 extension ENRiskScore {
-    
+
     public enum Level {
         case low, medium, high
     }
-    
+
     var level: Level {
         switch self {
             case 0...2:

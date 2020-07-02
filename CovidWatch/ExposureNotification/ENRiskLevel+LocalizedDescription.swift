@@ -7,9 +7,9 @@ import Foundation
 import ExposureNotification
 
 extension ENRiskLevel {
-    
+
     var localizedTransmissionRiskLevelDescription: String {
         return NSLocalizedString("EN_RISK_LEVEL_\(self)_TITLE", comment: "")
     }
-    
+
 }

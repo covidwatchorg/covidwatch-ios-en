@@ -10,14 +10,14 @@ import SwiftUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+
     var window: UIWindow?
-    
+
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        
+
         // Setup window
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
@@ -27,26 +27,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .environmentObject(UserData.shared)
             .environmentObject(LocalStore.shared)
         self.window?.rootViewController = UIHostingController(rootView: contentView)
-        
+
         // Setup exposure notification key and diagnosis servers
         Server.shared.keyServer = GoogleExposureNotificationsDiagnosisKeyServer(configuration: .shared)
         Server.shared.verificationServer = GoogleExposureNotificationsDiagnosisVerificationServer(configuration: .shared)
-        
+
         // Setup exposure notification manager
         _ = ExposureManager.shared
         #if RISK_SCORING_AZ
         ExposureManager.shared.riskScorer = AZExposureRiskScorer()
         #endif
         _ = ApplicationController.shared
-        
+
         // Setup background tasks
         self.setupBackgroundTask()
-        
+
         // Setup user notifications
         self.configureCurrentUserNotificationCenter()
         self.requestUserNotificationAuthorization(provisional: true)
-        
+
         return true
     }
-    
+
 }

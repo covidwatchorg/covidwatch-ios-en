@@ -6,9 +6,9 @@
 import SwiftUI
 
 struct HowItWorksSubtitleText: View {
-    
+
     let text: Text
-    
+
     var body: some View {
         self.text
             .font(.custom("Montserrat-SemiBold", size: 31))

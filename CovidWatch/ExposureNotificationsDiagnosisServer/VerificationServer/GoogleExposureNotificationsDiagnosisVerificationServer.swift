@@ -8,18 +8,18 @@ import os.log
 
 @available(iOS 13.5, *)
 public class GoogleExposureNotificationsDiagnosisVerificationServer: ExposureNotificationsDiagnosisVerificationProviding {
-    
+
     public struct Configuration {
         let apiServerBaseURLString: String
-        let apiKey: String        
+        let apiKey: String
     }
-    
+
     public var configuration: Configuration
-    
+
     init(configuration: Configuration) {
         self.configuration = configuration
     }
-    
+
     public func verifyUniqueTestIdentifier(
         _ identifier: String,
         completion: @escaping (Result<String, Error>) -> Void
@@ -29,19 +29,19 @@ public class GoogleExposureNotificationsDiagnosisVerificationServer: ExposureNot
             log: .en,
             identifier
         )
-        
+
         guard let url = URL(string: "\(self.configuration.apiServerBaseURLString)/api/verify") else {
             completion(.failure(URLError(.badURL)))
             return
         }
-        
+
         let codableVerifyCodeRequest = CodableVerifyCodeRequest(code: identifier)
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue(self.configuration.apiKey, forHTTPHeaderField: "X-API-Key")
-        
+
         var uploadData: Data!
         do {
             let encoder = JSONEncoder()
@@ -51,7 +51,7 @@ public class GoogleExposureNotificationsDiagnosisVerificationServer: ExposureNot
             completion(.failure(error))
             return
         }
-        
+
         URLSession.shared.uploadTask(
             with: request,
             from: uploadData
@@ -67,7 +67,7 @@ public class GoogleExposureNotificationsDiagnosisVerificationServer: ExposureNot
                     )
                     completion(.failure(error))
                     return
-                
+
                 case .success(let (response, _)):
                     os_log(
                         "Verified unique test identifier=%@ response=%@",
@@ -80,5 +80,5 @@ public class GoogleExposureNotificationsDiagnosisVerificationServer: ExposureNot
             }
         }.resume()
     }
-    
+
 }

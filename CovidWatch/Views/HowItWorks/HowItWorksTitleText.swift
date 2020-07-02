@@ -6,9 +6,9 @@
 import SwiftUI
 
 struct HowItWorksTitleText: View {
-    
+
     let text: Text
-    
+
     var body: some View {
         self.text
             .font(.custom("Montserrat-Regular", size: 14))

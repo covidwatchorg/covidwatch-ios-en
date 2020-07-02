@@ -6,11 +6,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+
     @EnvironmentObject var userData: UserData
-    
+
     @EnvironmentObject var localStore: LocalStore
-    
+
     var body: some View {
         VStack {
             if !userData.isOnboardingCompleted {
@@ -23,7 +23,7 @@ struct ContentView: View {
                 }
             }
         }
-    }        
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {

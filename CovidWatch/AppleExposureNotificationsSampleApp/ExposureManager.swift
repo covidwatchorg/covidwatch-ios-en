@@ -12,13 +12,13 @@ import os.log
 import UIKit
 
 class ExposureManager {
-    
+
     static let shared = ExposureManager()
-    
+
     let manager = ENManager()
-    
+
     var riskScorer: ExposureRiskScoring?
-    
+
     init() {
         manager.activate { _ in
             // Ensure exposure notifications are enabled if the app is authorized. The app
@@ -33,41 +33,41 @@ class ExposureManager {
 //            }
         }
     }
-    
+
     deinit {
         manager.invalidate()
     }
-    
-    func updateSavedExposures(newExposures : [Exposure]) {
+
+    func updateSavedExposures(newExposures: [Exposure]) {
         LocalStore.shared.exposures.append(contentsOf: newExposures)
         LocalStore.shared.exposures.sort { $0.date > $1.date }
         LocalStore.shared.dateLastPerformedExposureDetection = Date()
         LocalStore.shared.exposureDetectionErrorLocalizedDescription = nil
     }
-    
+
     static let authorizationStatusChangeNotification = Notification.Name("ExposureManagerAuthorizationStatusChangedNotification")
-    
+
     var detectingExposures = false
-    
+
     func detectExposures(importURLs: [URL] = [], notifyUserOnError: Bool = false, completionHandler: ((Bool) -> Void)? = nil) -> Progress {
         #if DEBUG_CALIBRATION
         return calibrationDetectExposures(importURLs: importURLs, notifyUserOnError: notifyUserOnError, completionHandler: completionHandler)
         #else
         let progress = Progress()
-        
+
         // Disallow concurrent exposure detection, because if allowed we might try to detect the same diagnosis keys more than once
         guard !detectingExposures else {
             completionHandler?(false)
             return progress
         }
         detectingExposures = true
-        
+
         var localURLs = importURLs
-        
+
         func finish(_ result: Result<([Exposure], Int), Error>) {
-            
+
             try? Server.shared.deleteDiagnosisKeyFile(at: localURLs)
-            
+
             let success: Bool
             if progress.isCancelled {
                 success = false
@@ -89,12 +89,12 @@ class ExposureManager {
                     }
                 }
             }
-            
+
             detectingExposures = false
             completionHandler?(success)
         }
         let nextDiagnosisKeyFileIndex = LocalStore.shared.nextDiagnosisKeyFileIndex
-        
+
         let actionAfterHasLocalURLs = {
             Server.shared.getExposureConfiguration { result in
                 switch result {
@@ -116,7 +116,7 @@ class ExposureManager {
                                     if let riskScorer = self.riskScorer {
                                         totalRiskScore = riskScorer.computeRiskScore(forExposure: exposure)
                                     }
-                                    
+
                                     let e = Exposure(
                                         attenuationDurations: exposure.attenuationDurations.map({ $0.doubleValue }),
                                         attenuationValue: exposure.attenuationValue,
@@ -135,19 +135,19 @@ class ExposureManager {
                                 finish(.success((newExposures, nextDiagnosisKeyFileIndex + localURLs.count)))
                             }
                     }
-                    
+
                     case let .failure(error):
                         finish(.failure(error))
                 }
             }
         }
-        
+
         if localURLs.isEmpty {
             Server.shared.getDiagnosisKeyFileURLs(startingAt: nextDiagnosisKeyFileIndex) { result in
-                
+
                 let dispatchGroup = DispatchGroup()
                 var localURLResults = [Result<[URL], Error>]()
-                
+
                 switch result {
                     case let .success(remoteURLs):
                         for remoteURL in remoteURLs {
@@ -157,7 +157,7 @@ class ExposureManager {
                                 dispatchGroup.leave()
                             }
                     }
-                    
+
                     case let .failure(error):
                         finish(.failure(error))
                 }
@@ -171,19 +171,18 @@ class ExposureManager {
                                 return
                         }
                     }
-                    
+
                     actionAfterHasLocalURLs()
                 }
             }
-        }
-        else {
+        } else {
             actionAfterHasLocalURLs()
         }
-        
+
         return progress
         #endif
     }
-    
+
     func getAndPostDiagnosisKeys(testResult: TestResult, transmissionRiskLevel: ENRiskLevel = 8, completion: @escaping (Error?) -> Void) {
         manager.getDiagnosisKeys { temporaryExposureKeys, error in
 //        manager.getTestDiagnosisKeys { temporaryExposureKeys, error in
@@ -199,7 +198,7 @@ class ExposureManager {
             }
         }
     }
-    
+
     // Includes today's key, requires com.apple.developer.exposure-notification-test entitlement
     func getAndPostTestDiagnosisKeys(completion: @escaping (Error?) -> Void) {
         manager.getTestDiagnosisKeys { temporaryExposureKeys, error in
@@ -212,7 +211,7 @@ class ExposureManager {
             }
         }
     }
-    
+
     func showBluetoothOffUserNotificationIfNeeded() {
         let identifier = "bluetooth-off"
         if ENManager.authorizationStatus == .authorized && manager.exposureNotificationStatus == .bluetoothOff {

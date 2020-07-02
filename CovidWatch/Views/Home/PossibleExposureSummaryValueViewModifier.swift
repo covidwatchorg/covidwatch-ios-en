@@ -10,6 +10,6 @@ struct PossibleExposureSummaryValueViewModifier: ViewModifier {
         content
             .font(.custom("Montserrat-ExtraBold", size: 18))
             .foregroundColor(.white)
-            .frame(minWidth: 54, minHeight: 33, alignment: .center)            
+            .frame(minWidth: 54, minHeight: 33, alignment: .center)
     }
 }

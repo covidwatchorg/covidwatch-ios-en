@@ -5,12 +5,12 @@
 import Foundation
 import CryptoKit
 
-extension UserDefaults {        
-    
+extension UserDefaults {
+
     public struct Key {
-        public static let lastFetchDate = "lastFetchDate"            
+        public static let lastFetchDate = "lastFetchDate"
     }
-    
+
     @objc dynamic public var lastFetchDate: Date? {
         return object(forKey: Key.lastFetchDate) as? Date
     }

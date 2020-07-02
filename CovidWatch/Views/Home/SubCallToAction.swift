@@ -10,6 +10,6 @@ struct SubCallToAction: ViewModifier {
         content
             .font(.custom("Montserrat-Regular", size: 14))
             .foregroundColor(Color("Title Text Color"))
-            .multilineTextAlignment(.center)            
+            .multilineTextAlignment(.center)
     }
 }

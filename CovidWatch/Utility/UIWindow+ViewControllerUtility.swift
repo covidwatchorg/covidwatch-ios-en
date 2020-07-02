@@ -5,7 +5,7 @@
 import UIKit
 
 extension UIApplication {
-    
+
     public func topViewController(_ inWindow: UIWindow?) -> UIViewController? {
         if var viewController = inWindow?.rootViewController {
             while viewController.presentedViewController != nil {
@@ -15,7 +15,7 @@ extension UIApplication {
         }
         return nil
     }
-    
+
     public var topViewController: UIViewController? {
         #if AppExtension
             return nil
@@ -23,7 +23,7 @@ extension UIApplication {
             return topViewController(keyWindow)
         #endif
     }
-    
+
     public var visibleViewControllers: [UIViewController]? {
         #if AppExtension
             return nil
@@ -37,25 +37,25 @@ extension UIApplication {
 }
 
 extension UIViewController {
-    
+
     public var visibleViewControllers: [UIViewController] {
-        
+
         // Special case when self is navigation controller
         if let navigationController = self as? UINavigationController {
             if let lastViewController = navigationController.viewControllers.last {
                 return [lastViewController]
             }
         }
-        
+
         // Recursion part
-        if children.count > 0 {
+        if !children.isEmpty {
             var result = [UIViewController]()
             for childViewController in children {
                 result.append(contentsOf: childViewController.visibleViewControllers)
             }
             return result
         }
-        
+
         return [self]
     }
 }

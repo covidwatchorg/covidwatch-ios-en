@@ -6,23 +6,23 @@
 import SwiftUI
 
 struct HeaderBar: View {
-    
+
     let showMenu: Bool
-    
+
     let showDismissButton: Bool
-    
+
     let showDemoMode: Bool
-    
+
     let logoImage: Image
-    
+
     @State var isShowingMenu: Bool = false
-    
+
     @EnvironmentObject var userData: UserData
-    
+
     @EnvironmentObject var localStore: LocalStore
-    
+
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
+
     init(
         showMenu: Bool = true,
         showDismissButton: Bool = false,
@@ -34,28 +34,28 @@ struct HeaderBar: View {
         self.showDemoMode = showDemoMode
         self.logoImage = logoImage
     }
-    
+
     var body: some View {
-        
+
         ZStack(alignment: .top) {
-            
+
             BlurView(style: .systemChromeMaterial)
                 .edgesIgnoringSafeArea(.all)
-            
+
             HStack {
-                
+
                 self.logoImage
                     .accessibility(label: Text("GENERIC_PUBLIC_HEALTH_DEPARTMENT_IMAGE_ACCESSIBILITY_LABEL"))
-                
+
                 Spacer()
-                
+
                 #if DEBUG_CALIBRATION
                 Text(verbatim: NSLocalizedString("DEMO_TITLE", comment: "").uppercased())
                     .font(.custom("Montserrat-Black", size: 14))
                     .foregroundColor(Color(UIColor.systemGray4))
                 Spacer()
                 #endif
-                
+
                 if self.showMenu || self.showDismissButton {
                     if self.showMenu {
                         Button(action: {
@@ -70,7 +70,7 @@ struct HeaderBar: View {
                                 .environmentObject(self.userData)
                                 .environmentObject(self.localStore)
                         }
-                    }                
+                    }
                     if self.showDismissButton {
                         Button(action: {
                             self.presentationMode.wrappedValue.dismiss()
@@ -84,11 +84,11 @@ struct HeaderBar: View {
                 } else {
                     Spacer()
                 }
-                                
+
             }
             .padding(.top, 2 * .standardSpacing)
             .padding(.horizontal, 2 * .standardSpacing)
-            
+
         }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .headerHeight, alignment: .topLeading)
     }
 }

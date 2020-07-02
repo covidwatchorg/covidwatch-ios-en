@@ -7,7 +7,7 @@ import Foundation
 import ExposureNotification
 
 extension ENStatus {
-    
+
     public var localizedDetailDescription: String {
         switch self {
             case .unknown:

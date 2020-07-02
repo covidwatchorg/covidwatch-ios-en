@@ -35,8 +35,6 @@
 		2D2359F924AC651300C8FD56 /* HowItWorksSubtitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8516812484FBE700F8E5BE /* HowItWorksSubtitleText.swift */; };
 		2D2359FA24AC651300C8FD56 /* PossibleExposureTableColumnA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D743E902485425400AA4D26 /* PossibleExposureTableColumnA.swift */; };
 		2D2359FB24AC651300C8FD56 /* Setup3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39489D248E40A3001766A4 /* Setup3.swift */; };
-		2D2359FC24AC651300C8FD56 /* PositiveDiagnosis+ExposureNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3B2465E1010003936C /* PositiveDiagnosis+ExposureNotification.swift */; };
-		2D2359FD24AC651300C8FD56 /* PositiveDiagnosis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3D2465E1010003936C /* PositiveDiagnosis.swift */; };
 		2D2359FE24AC651300C8FD56 /* ReportingVerify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7942A42467FB40008AF148 /* ReportingVerify.swift */; };
 		2D2359FF24AC651300C8FD56 /* SetupMessageTextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B493245F646D001B30F0 /* SetupMessageTextViewModifier.swift */; };
 		2D235A0024AC651300C8FD56 /* Setup2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034C824604BB000351C3C /* Setup2.swift */; };
@@ -134,9 +132,7 @@
 		2D46AA3E2465E1010003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA382465E1000003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift */; };
 		2D46AA3F2465E1010003936C /* UserDefaults+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA392465E1000003936C /* UserDefaults+Shared.swift */; };
 		2D46AA402465E1010003936C /* CodableDiagnosisKey+ExposureNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3A2465E1010003936C /* CodableDiagnosisKey+ExposureNotification.swift */; };
-		2D46AA412465E1010003936C /* PositiveDiagnosis+ExposureNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3B2465E1010003936C /* PositiveDiagnosis+ExposureNotification.swift */; };
 		2D46AA422465E1010003936C /* ENTemporaryExposureKey+CodableDiagnosisKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3C2465E1010003936C /* ENTemporaryExposureKey+CodableDiagnosisKey.swift */; };
-		2D46AA432465E1010003936C /* PositiveDiagnosis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3D2465E1010003936C /* PositiveDiagnosis.swift */; };
 		2D46AA472465E10E0003936C /* ExposureNotificationsDiagnosisKeyServing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA452465E10E0003936C /* ExposureNotificationsDiagnosisKeyServing.swift */; };
 		2D46AA482465E10E0003936C /* GoogleExposureNotificationsDiagnosisKeyServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA462465E10E0003936C /* GoogleExposureNotificationsDiagnosisKeyServer.swift */; };
 		2D46AA4D2465E1190003936C /* URLSession+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA4A2465E1190003936C /* URLSession+Additions.swift */; };
@@ -185,8 +181,6 @@
 		2D72544924A35E92003E5914 /* HowItWorksSubtitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8516812484FBE700F8E5BE /* HowItWorksSubtitleText.swift */; };
 		2D72544A24A35E92003E5914 /* PossibleExposureTableColumnA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D743E902485425400AA4D26 /* PossibleExposureTableColumnA.swift */; };
 		2D72544B24A35E92003E5914 /* Setup3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39489D248E40A3001766A4 /* Setup3.swift */; };
-		2D72544C24A35E92003E5914 /* PositiveDiagnosis+ExposureNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3B2465E1010003936C /* PositiveDiagnosis+ExposureNotification.swift */; };
-		2D72544D24A35E92003E5914 /* PositiveDiagnosis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3D2465E1010003936C /* PositiveDiagnosis.swift */; };
 		2D72544E24A35E92003E5914 /* ReportingVerify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7942A42467FB40008AF148 /* ReportingVerify.swift */; };
 		2D72544F24A35E92003E5914 /* SetupMessageTextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B493245F646D001B30F0 /* SetupMessageTextViewModifier.swift */; };
 		2D72545024A35E92003E5914 /* Setup2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034C824604BB000351C3C /* Setup2.swift */; };
@@ -303,8 +297,6 @@
 		2D8FE6AE24A33B0100456875 /* HowItWorksSubtitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8516812484FBE700F8E5BE /* HowItWorksSubtitleText.swift */; };
 		2D8FE6AF24A33B0100456875 /* PossibleExposureTableColumnA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D743E902485425400AA4D26 /* PossibleExposureTableColumnA.swift */; };
 		2D8FE6B024A33B0100456875 /* Setup3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39489D248E40A3001766A4 /* Setup3.swift */; };
-		2D8FE6B124A33B0100456875 /* PositiveDiagnosis+ExposureNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3B2465E1010003936C /* PositiveDiagnosis+ExposureNotification.swift */; };
-		2D8FE6B224A33B0100456875 /* PositiveDiagnosis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3D2465E1010003936C /* PositiveDiagnosis.swift */; };
 		2D8FE6B324A33B0100456875 /* ReportingVerify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7942A42467FB40008AF148 /* ReportingVerify.swift */; };
 		2D8FE6B424A33B0100456875 /* SetupMessageTextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B493245F646D001B30F0 /* SetupMessageTextViewModifier.swift */; };
 		2D8FE6B524A33B0100456875 /* Setup2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034C824604BB000351C3C /* Setup2.swift */; };
@@ -465,9 +457,7 @@
 		2D46AA382465E1000003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ENExposureConfiguration+CodableExposureConfiguration.swift"; sourceTree = "<group>"; };
 		2D46AA392465E1000003936C /* UserDefaults+Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Shared.swift"; sourceTree = "<group>"; };
 		2D46AA3A2465E1010003936C /* CodableDiagnosisKey+ExposureNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CodableDiagnosisKey+ExposureNotification.swift"; sourceTree = "<group>"; };
-		2D46AA3B2465E1010003936C /* PositiveDiagnosis+ExposureNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PositiveDiagnosis+ExposureNotification.swift"; sourceTree = "<group>"; };
 		2D46AA3C2465E1010003936C /* ENTemporaryExposureKey+CodableDiagnosisKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ENTemporaryExposureKey+CodableDiagnosisKey.swift"; sourceTree = "<group>"; };
-		2D46AA3D2465E1010003936C /* PositiveDiagnosis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositiveDiagnosis.swift; sourceTree = "<group>"; };
 		2D46AA452465E10E0003936C /* ExposureNotificationsDiagnosisKeyServing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExposureNotificationsDiagnosisKeyServing.swift; sourceTree = "<group>"; };
 		2D46AA462465E10E0003936C /* GoogleExposureNotificationsDiagnosisKeyServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleExposureNotificationsDiagnosisKeyServer.swift; sourceTree = "<group>"; };
 		2D46AA4A2465E1190003936C /* URLSession+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSession+Additions.swift"; sourceTree = "<group>"; };
@@ -751,8 +741,6 @@
 				2D46AA3A2465E1010003936C /* CodableDiagnosisKey+ExposureNotification.swift */,
 				2D46AA382465E1000003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift */,
 				2D46AA3C2465E1010003936C /* ENTemporaryExposureKey+CodableDiagnosisKey.swift */,
-				2D46AA3D2465E1010003936C /* PositiveDiagnosis.swift */,
-				2D46AA3B2465E1010003936C /* PositiveDiagnosis+ExposureNotification.swift */,
 				2D46AA392465E1000003936C /* UserDefaults+Shared.swift */,
 				2D5D9404245FF88800718412 /* UserDefaultPropertyWrapper.swift */,
 				2D5D9401245FF85C00718412 /* UserData.swift */,
@@ -952,6 +940,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D235A4D24AC651300C8FD56 /* Build configuration list for PBXNativeTarget "CovidWatch-Arizona-Dist" */;
 			buildPhases = (
+				2D415F6924AE355700870EF2 /* SwiftLint */,
 				2D2359E524AC651300C8FD56 /* Sources */,
 				2D235A3124AC651300C8FD56 /* Frameworks */,
 				2D235A3424AC651300C8FD56 /* Resources */,
@@ -973,7 +962,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D72549C24A35E92003E5914 /* Build configuration list for PBXNativeTarget "CovidWatch-Arizona-Dev-Calibration" */;
 			buildPhases = (
-				2D72543524A35E92003E5914 /* Environment */,
+				2D415F6824AE266A00870EF2 /* SwiftLint */,
 				2D72543624A35E92003E5914 /* Sources */,
 				2D72548024A35E92003E5914 /* Frameworks */,
 				2D72548324A35E92003E5914 /* Resources */,
@@ -995,7 +984,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D8FE71224A33B0100456875 /* Build configuration list for PBXNativeTarget "CovidWatch-Arizona-Dev" */;
 			buildPhases = (
-				2D8FE69A24A33B0100456875 /* Environment */,
+				2D415F6A24AE3BE300870EF2 /* SwiftLint */,
 				2D8FE69B24A33B0100456875 /* Sources */,
 				2D8FE6E524A33B0100456875 /* Frameworks */,
 				2D8FE6E824A33B0100456875 /* Resources */,
@@ -1017,7 +1006,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D9CF3F72455B9F5005B085E /* Build configuration list for PBXNativeTarget "CovidWatch-California-Dev" */;
 			buildPhases = (
-				E20D4F06245B9B0000B97B4B /* Environment */,
+				E20D4F06245B9B0000B97B4B /* SwiftLint */,
 				2D9CF3C62455B9F1005B085E /* Sources */,
 				2D9CF3C72455B9F1005B085E /* Frameworks */,
 				2D9CF3C82455B9F1005B085E /* Resources */,
@@ -1263,7 +1252,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2D72543524A35E92003E5914 /* Environment */ = {
+		2D415F6824AE266A00870EF2 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1272,16 +1261,16 @@
 			);
 			inputPaths = (
 			);
-			name = Environment;
+			name = SwiftLint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# contents of SCHEME_FILE is definied in the scheme > build > pre action\n# SCHEME_FILE path is definied in Target Build Settings User Defined ENV vars\necho \"Running Scheme and IP Sniffer\"\nSCHEME_NAME=`cat ${SCHEME_FILE}`\necho $SCHEME_NAME\necho $INFOPLIST_FILE\n/usr/libexec/PlistBuddy -c \"Set :SchemeName \\\"$SCHEME_NAME\\\"\" \"$INFOPLIST_FILE\"\n\nif [ \"$SCHEME_NAME\" = \"CovidWatch-dev\" ]; then\nLOCAL_IP=$(LANG=C /sbin/ifconfig  | sed -ne $'/127.0.0.1/ ! { s/^[ \\t]*inet[ \\t]\\\\{1,99\\\\}\\\\(addr:\\\\)\\\\{0,1\\\\}\\\\([0-9.]*\\\\)[ \\t\\/].*$/\\\\2/p; }' | head -n 1)\nelse\nLOCAL_IP=\"\"\nfi;\n/usr/libexec/PlistBuddy -c \"Set :LocalIP \\\"$LOCAL_IP\\\"\" \"$INFOPLIST_FILE\"\n";
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		2D8FE69A24A33B0100456875 /* Environment */ = {
+		2D415F6924AE355700870EF2 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1290,16 +1279,16 @@
 			);
 			inputPaths = (
 			);
-			name = Environment;
+			name = SwiftLint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# contents of SCHEME_FILE is definied in the scheme > build > pre action\n# SCHEME_FILE path is definied in Target Build Settings User Defined ENV vars\necho \"Running Scheme and IP Sniffer\"\nSCHEME_NAME=`cat ${SCHEME_FILE}`\necho $SCHEME_NAME\necho $INFOPLIST_FILE\n/usr/libexec/PlistBuddy -c \"Set :SchemeName \\\"$SCHEME_NAME\\\"\" \"$INFOPLIST_FILE\"\n\nif [ \"$SCHEME_NAME\" = \"CovidWatch-dev\" ]; then\nLOCAL_IP=$(LANG=C /sbin/ifconfig  | sed -ne $'/127.0.0.1/ ! { s/^[ \\t]*inet[ \\t]\\\\{1,99\\\\}\\\\(addr:\\\\)\\\\{0,1\\\\}\\\\([0-9.]*\\\\)[ \\t\\/].*$/\\\\2/p; }' | head -n 1)\nelse\nLOCAL_IP=\"\"\nfi;\n/usr/libexec/PlistBuddy -c \"Set :LocalIP \\\"$LOCAL_IP\\\"\" \"$INFOPLIST_FILE\"\n";
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		E20D4F06245B9B0000B97B4B /* Environment */ = {
+		2D415F6A24AE3BE300870EF2 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1308,14 +1297,32 @@
 			);
 			inputPaths = (
 			);
-			name = Environment;
+			name = SwiftLint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# contents of SCHEME_FILE is definied in the scheme > build > pre action\n# SCHEME_FILE path is definied in Target Build Settings User Defined ENV vars\necho \"Running Scheme and IP Sniffer\"\nSCHEME_NAME=`cat ${SCHEME_FILE}`\necho $SCHEME_NAME\necho $INFOPLIST_FILE\n/usr/libexec/PlistBuddy -c \"Set :SchemeName \\\"$SCHEME_NAME\\\"\" \"$INFOPLIST_FILE\"\n\nif [ \"$SCHEME_NAME\" = \"CovidWatch-dev\" ]; then\nLOCAL_IP=$(LANG=C /sbin/ifconfig  | sed -ne $'/127.0.0.1/ ! { s/^[ \\t]*inet[ \\t]\\\\{1,99\\\\}\\\\(addr:\\\\)\\\\{0,1\\\\}\\\\([0-9.]*\\\\)[ \\t\\/].*$/\\\\2/p; }' | head -n 1)\nelse\nLOCAL_IP=\"\"\nfi;\n/usr/libexec/PlistBuddy -c \"Set :LocalIP \\\"$LOCAL_IP\\\"\" \"$INFOPLIST_FILE\"\n";
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		E20D4F06245B9B0000B97B4B /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1348,8 +1355,6 @@
 				2D2359FA24AC651300C8FD56 /* PossibleExposureTableColumnA.swift in Sources */,
 				2D2359FB24AC651300C8FD56 /* Setup3.swift in Sources */,
 				2D26096C24ADE535009CDBCE /* CovidWatchInfoDictionaryKeys.swift in Sources */,
-				2D2359FC24AC651300C8FD56 /* PositiveDiagnosis+ExposureNotification.swift in Sources */,
-				2D2359FD24AC651300C8FD56 /* PositiveDiagnosis.swift in Sources */,
 				2D2359FE24AC651300C8FD56 /* ReportingVerify.swift in Sources */,
 				2D2359FF24AC651300C8FD56 /* SetupMessageTextViewModifier.swift in Sources */,
 				2D235A0024AC651300C8FD56 /* Setup2.swift in Sources */,
@@ -1430,8 +1435,6 @@
 				2D72544924A35E92003E5914 /* HowItWorksSubtitleText.swift in Sources */,
 				2D72544A24A35E92003E5914 /* PossibleExposureTableColumnA.swift in Sources */,
 				2D72544B24A35E92003E5914 /* Setup3.swift in Sources */,
-				2D72544C24A35E92003E5914 /* PositiveDiagnosis+ExposureNotification.swift in Sources */,
-				2D72544D24A35E92003E5914 /* PositiveDiagnosis.swift in Sources */,
 				2D72544E24A35E92003E5914 /* ReportingVerify.swift in Sources */,
 				2D72544F24A35E92003E5914 /* SetupMessageTextViewModifier.swift in Sources */,
 				2D72545024A35E92003E5914 /* Setup2.swift in Sources */,
@@ -1518,8 +1521,6 @@
 				2D8FE6AE24A33B0100456875 /* HowItWorksSubtitleText.swift in Sources */,
 				2D8FE6AF24A33B0100456875 /* PossibleExposureTableColumnA.swift in Sources */,
 				2D8FE6B024A33B0100456875 /* Setup3.swift in Sources */,
-				2D8FE6B124A33B0100456875 /* PositiveDiagnosis+ExposureNotification.swift in Sources */,
-				2D8FE6B224A33B0100456875 /* PositiveDiagnosis.swift in Sources */,
 				2D8FE6B324A33B0100456875 /* ReportingVerify.swift in Sources */,
 				2D8FE6B424A33B0100456875 /* SetupMessageTextViewModifier.swift in Sources */,
 				2D8FE6B524A33B0100456875 /* Setup2.swift in Sources */,
@@ -1603,8 +1604,6 @@
 				2D8516822484FBE700F8E5BE /* HowItWorksSubtitleText.swift in Sources */,
 				2D743E912485425400AA4D26 /* PossibleExposureTableColumnA.swift in Sources */,
 				2D39489E248E40A3001766A4 /* Setup3.swift in Sources */,
-				2D46AA412465E1010003936C /* PositiveDiagnosis+ExposureNotification.swift in Sources */,
-				2D46AA432465E1010003936C /* PositiveDiagnosis.swift in Sources */,
 				2D7942A52467FB40008AF148 /* ReportingVerify.swift in Sources */,
 				2DD7B494245F646D001B30F0 /* SetupMessageTextViewModifier.swift in Sources */,
 				2D7ED94724AD3B0900120653 /* CovidWatchGoogleExposureNotificationsDiagnosisKeyServerConfiguration.swift in Sources */,

@@ -6,7 +6,7 @@ import Foundation
 import CoreGraphics
 
 extension CGFloat {
-    
+
     public static let standardSpacing: CGFloat = 12
     public static let headerHeight: CGFloat = 80
     public static let stickyFooterHeight: CGFloat = .standardSpacing + .callToActionSmallButtonHeight + 5 + .callToActionSmallButtonHeight + .standardSpacing

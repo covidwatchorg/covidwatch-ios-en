@@ -7,7 +7,7 @@ import Foundation
 import UserNotifications
 
 extension UNAuthorizationStatus {
-    
+
     public var localizedDetailDescription: String {
         switch self {
             case .notDetermined:

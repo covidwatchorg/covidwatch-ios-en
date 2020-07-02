@@ -6,11 +6,11 @@ import Foundation
 import os.log
 
 extension URLSession {
-    
+
     public enum HTTPError: Error, LocalizedError {
         case transportError(Error)
         case serverSideError(Int)
-        
+
         public var errorDescription: String? {
             switch self {
                 case .transportError(let error):
@@ -23,9 +23,9 @@ extension URLSession {
             }
         }
     }
-    
+
     public typealias HTTPResult = Result<(URLResponse, Data), Error>
-    
+
     public func dataTask(
         with request: URLRequest,
         completionHandler: @escaping (HTTPResult) -> Void
@@ -35,7 +35,9 @@ extension URLSession {
                 completionHandler(.failure(HTTPError.transportError(error)))
                 return
             }
-            let response = response as! HTTPURLResponse
+            guard let response = response as? HTTPURLResponse else {
+                return
+            }
             let status = response.statusCode
             guard (200...299).contains(status) else {
                 os_log(
@@ -51,7 +53,7 @@ extension URLSession {
             completionHandler(.success((response, data!)))
         }
     }
-    
+
     public func uploadTask(
         with request: URLRequest,
         from bodyData: Data,
@@ -65,7 +67,9 @@ extension URLSession {
                 completionHandler(.failure(HTTPError.transportError(error)))
                 return
             }
-            let response = response as! HTTPURLResponse
+            guard let response = response as? HTTPURLResponse else {
+                return
+            }
             let status = response.statusCode
             guard (200...299).contains(response.statusCode), let data = data else {
                 os_log(

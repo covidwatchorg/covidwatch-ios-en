@@ -6,7 +6,7 @@
 import Foundation
 
 extension Data {
-    
+
     public static func random(count: Int) -> Data {
         var result = Data(count: count)
         _ = result.withUnsafeMutableBytes {
@@ -14,5 +14,5 @@ extension Data {
         }
         return result
     }
-    
+
 }

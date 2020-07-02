@@ -18,7 +18,7 @@ public struct Exposure: Codable {
     #if DEBUG_CALIBRATION
     let attenuationDurationThresholds: [Int]
     let timeDetected: Date
-    #endif    
+    #endif
 }
 
 public struct TestResult: Codable {
@@ -33,7 +33,7 @@ public struct TestResult: Codable {
 
 @propertyWrapper
 public class Persisted<Value: Codable> {
-    
+
     init(userDefaultsKey: String, notificationName: Notification.Name, defaultValue: Value) {
         self.userDefaultsKey = userDefaultsKey
         self.notificationName = notificationName
@@ -47,19 +47,19 @@ public class Persisted<Value: Codable> {
             wrappedValue = defaultValue
         }
     }
-    
+
     let userDefaultsKey: String
     let notificationName: Notification.Name
-    
+
     public var wrappedValue: Value {
         didSet {
-            UserDefaults.standard.set(try! JSONEncoder().encode(wrappedValue), forKey: userDefaultsKey)
+            UserDefaults.standard.set(try? JSONEncoder().encode(wrappedValue), forKey: userDefaultsKey)
             NotificationCenter.default.post(name: notificationName, object: nil)
         }
     }
-    
+
     public var projectedValue: Persisted<Value> { self }
-    
+
     func addObserver(using block: @escaping () -> Void) -> NSObjectProtocol {
         return NotificationCenter.default.addObserver(forName: notificationName, object: nil, queue: nil) { _ in
             block()
@@ -67,41 +67,41 @@ public class Persisted<Value: Codable> {
     }
 }
 public class LocalStore: ObservableObject {
-    
+
     public static let shared = LocalStore()
-    
+
     @Persisted(userDefaultsKey: "isOnboarded", notificationName: .init("LocalStoreIsOnboardedDidChange"), defaultValue: false)
     public var isOnboarded: Bool {
         willSet { objectWillChange.send() }
     }
-    
+
     @Persisted(userDefaultsKey: "nextDiagnosisKeyFileIndex", notificationName: .init("LocalStoreNextDiagnosisKeyFileIndexDidChange"), defaultValue: 0)
     public var nextDiagnosisKeyFileIndex: Int {
         willSet { objectWillChange.send() }
     }
-    
+
     @Persisted(userDefaultsKey: "exposures", notificationName: .init("LocalStoreExposuresDidChange"), defaultValue: [])
     public var exposures: [Exposure] {
         willSet { objectWillChange.send() }
     }
-    
+
     @Persisted(userDefaultsKey: "dateLastPerformedExposureDetection",
                notificationName: .init("LocalStoreDateLastPerformedExposureDetectionDidChange"), defaultValue: nil)
     public var dateLastPerformedExposureDetection: Date? {
         willSet { objectWillChange.send() }
     }
-    
+
     @Persisted(userDefaultsKey: "exposureDetectionErrorLocalizedDescription", notificationName:
         .init("LocalStoreExposureDetectionErrorLocalizedDescriptionDidChange"), defaultValue: nil)
     public var exposureDetectionErrorLocalizedDescription: String? {
         willSet { objectWillChange.send() }
     }
-    
+
     @Persisted(userDefaultsKey: "testResults", notificationName: .init("LocalStoreTestResultsDidChange"), defaultValue: [])
     public var testResults: [TestResult] {
         willSet { objectWillChange.send() }
     }
-    
+
     #if DEBUG_CALIBRATION
     static let exposureConfigurationDefault: String =
     """
@@ -125,10 +125,10 @@ public class LocalStore: ObservableObject {
     "transmissionRiskLevelValues":[1, 2, 3, 4, 5, 6, 7, 8]}
     """
     #endif
-    
+
     @Persisted(userDefaultsKey: "exposureConfiguration", notificationName: .init("LocalStoreExposureConfigurationDidChange"), defaultValue:exposureConfigurationDefault)
     public var exposureConfiguration: String {
         willSet { objectWillChange.send() }
     }
-    
+
 }

@@ -14,7 +14,7 @@ public struct CodableVerifyCodeResponse: Codable {
     let testDate: String
     let token: String
     let error: String
-    
+
     enum CodingKeys: String, CodingKey {
         case testType = "testtype"
         case testDate = "testdate"

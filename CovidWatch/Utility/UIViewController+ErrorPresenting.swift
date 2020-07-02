@@ -6,7 +6,7 @@ import UIKit
 import ExposureNotification
 
 extension UIViewController {
-    
+
     public func present(
         nsError: NSError,
         title: String? = NSLocalizedString("ERROR", comment: ""),
@@ -20,7 +20,7 @@ extension UIViewController {
             messages.append(suggestion)
         }
         let message = messages.joined(separator: "\n")
-        
+
         let alertController = UIAlertController(
             title: swapFlag ? message : title,
             message: swapFlag ? title : message,
@@ -32,7 +32,7 @@ extension UIViewController {
                 let action = UIAlertAction(
                     title: option,
                     style: .default,
-                    handler: { (action) in
+                    handler: { (_) in
                         _ = (recoveryAttempter as AnyObject).attemptRecovery(
                             fromError: nsError,
                             optionIndex: index
@@ -45,17 +45,16 @@ extension UIViewController {
                 style: .cancel,
                 handler: nil)
             )
-        }
-        else {
+        } else {
             alertController.addAction(UIAlertAction(
                 title: NSLocalizedString("OK", comment: ""),
                 style: .default,
                 handler: nil)
             )
-        }        
+        }
         present(alertController, animated: flag, completion: completion)
     }
-    
+
     public func present(
         _ error: Error,
         animated: Bool,
@@ -68,8 +67,7 @@ extension UIViewController {
                 animated: animated,
                 completion: completion
             )
-        }
-        else {
+        } else {
             self.present(
                 nsError: error as NSError,
                 animated: animated,
@@ -77,7 +75,7 @@ extension UIViewController {
             )
         }
     }
-    
+
     public func present(
         title: String? = NSLocalizedString("ERROR", comment: ""),
         message: String? = nil,
@@ -90,7 +88,7 @@ extension UIViewController {
             message: message,
             preferredStyle: .alert
         )
-        
+
         alertController.addAction(UIAlertAction(
             title: NSLocalizedString("OK", comment: ""),
             style: .default,

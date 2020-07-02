@@ -20,7 +20,7 @@ class ExposureRiskScoringTests: XCTestCase {
     func testAZExposureRiskScorer() {
         let scoring = AZExposureRiskScorer()
         let message = "Computed risk score does not match expected risk score"
-        
+
         // Scenario: "Sufficiently risky individual, 30 minutes close contact"
         XCTAssertEqual(
             scoring.computeRiskScore(
@@ -40,7 +40,7 @@ class ExposureRiskScoringTests: XCTestCase {
             4, // Expected
             message
         )
-        
+
         // Scenario: "Sufficiently risky individual, 5 minutes close contact"
         XCTAssertEqual(
             scoring.computeRiskScore(
@@ -120,7 +120,7 @@ class ExposureRiskScoringTests: XCTestCase {
             0, // Expected
             message
         )
-        
+
         // Scenario: "Highest risk individual, 30 min in each bucket"
         XCTAssertEqual(
             scoring.computeRiskScore(
@@ -130,7 +130,7 @@ class ExposureRiskScoringTests: XCTestCase {
             8, // Expected
             message
         )
-        
+
         // Scenario: "Highest risk individual, 30 min in each bucket"
         XCTAssertEqual(
             scoring.computeRiskScore(
@@ -140,7 +140,7 @@ class ExposureRiskScoringTests: XCTestCase {
             2, // Expected
             message
         )
-        
+
         // Scenario: "Highest risk individual 15 minutes close contact"
         XCTAssertEqual(
             scoring.computeRiskScore(
@@ -150,7 +150,7 @@ class ExposureRiskScoringTests: XCTestCase {
             8, // Expected
             message
         )
-        
+
         // Scenario: "Lowest risk individual 15 minutes close contact"
         XCTAssertEqual(
             scoring.computeRiskScore(
@@ -160,7 +160,7 @@ class ExposureRiskScoringTests: XCTestCase {
             0, // Expected
             message
         )
-        
+
         // Scenario: "Highest risk individual 15 minutes long distance"
         XCTAssertEqual(
             scoring.computeRiskScore(
@@ -170,7 +170,7 @@ class ExposureRiskScoringTests: XCTestCase {
             2, // Expected
             message
         )
-        
+
         // Scenario: "Lowest risk individual 15 minutes long distance"
         XCTAssertEqual(
             scoring.computeRiskScore(

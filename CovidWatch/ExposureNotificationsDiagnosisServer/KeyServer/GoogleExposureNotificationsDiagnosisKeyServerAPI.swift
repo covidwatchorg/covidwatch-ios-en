@@ -20,7 +20,7 @@ public struct CodableDiagnosisKey: Codable, Equatable {
     let rollingPeriod: ENIntervalNumber
     let rollingStartNumber: ENIntervalNumber
     let transmissionRiskLevel: ENRiskLevel
-    
+
     enum CodingKeys: String, CodingKey {
         case keyData = "key"
         case rollingPeriod

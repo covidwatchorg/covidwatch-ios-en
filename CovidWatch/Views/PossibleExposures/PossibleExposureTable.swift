@@ -6,16 +6,16 @@
 import SwiftUI
 
 struct PossibleExposureTable: View {
-    
+
     let exposure: Exposure
-    
+
     let durationFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.minute]
         formatter.unitsStyle = .abbreviated
         return formatter
     }()
-    
+
     func duration(for timeInterval: TimeInterval, unitStyle: DateComponentsFormatter.UnitsStyle = .abbreviated) -> String {
         durationFormatter.unitsStyle = unitStyle
         guard let string = durationFormatter.string(from: timeInterval) else {
@@ -26,11 +26,11 @@ struct PossibleExposureTable: View {
         }
         return string
     }
-    
+
     var body: some View {
-        
+
         VStack(spacing: 0) {
-            
+
             HStack(spacing: 0) {
                 HStack {
                     Spacer(minLength: 10)
@@ -38,7 +38,7 @@ struct PossibleExposureTable: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
                 }.modifier(PossibleExposureTableColumnA())
-             
+
                 HStack {
                     Spacer(minLength: 20)
                     Text(verbatim: DateFormatter.localizedString(from: exposure.date, dateStyle: .medium, timeStyle: .none))
@@ -47,7 +47,7 @@ struct PossibleExposureTable: View {
                 }.modifier(PossibleExposureTableColumnB())
             }
             .accessibilityElement(children: .combine)
-            
+
 //            HStack(spacing: 0) {
 //                HStack {
 //                    Spacer(minLength: 10)
@@ -65,7 +65,7 @@ struct PossibleExposureTable: View {
 //                }.modifier(PossibleExposureTableColumnB())
 //            }
 //            .accessibilityElement(children: .combine)
-            
+
             HStack(spacing: 0) {
                 HStack {
                     Spacer(minLength: 10)
@@ -114,8 +114,6 @@ struct PossibleExposureTable: View {
 //
 //                HStack {
 //                    Spacer(minLength: 20)
-////                    Text(verbatim: "\(exposure.attenuationValue) of 8")
-////                        .frame(maxWidth: .infinity, alignment: .leading)
 //                    Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("ATTENUATION_VALUE", comment: ""), NSNumber(value: exposure.attenuationValue)))
 //                        .frame(maxWidth: .infinity, alignment: .leading)
 //                    Spacer(minLength: 10)

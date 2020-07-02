@@ -6,19 +6,19 @@
 import SwiftUI
 
 struct Alert: View {
-    
+
     var message: String
     var backgroundColor: Color
     var showExclamation: Bool
     var detailImage: Image?
-    
+
     init(message: String, backgroundColor: Color, showExclamation: Bool = true, detailImage: Image? = Image("Right Arrow")) {
         self.message = message
         self.backgroundColor = backgroundColor
         self.showExclamation = showExclamation
         self.detailImage = detailImage
     }
-    
+
     var body: some View {
         HStack(spacing: 15) {
             if showExclamation {
@@ -34,7 +34,7 @@ struct Alert: View {
             }
         }
         .padding(.vertical, .standardSpacing)
-        .padding(.horizontal, 2 * .standardSpacing)  
+        .padding(.horizontal, 2 * .standardSpacing)
         .frame(minHeight: 70, alignment: .center)
         .background(self.backgroundColor.shadow(color: .init(white: 0.5), radius: 2, x: 0, y: 2))
     }

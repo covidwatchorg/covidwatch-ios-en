@@ -6,13 +6,13 @@
 import SwiftUI
 
 struct PossibleExposureRow: View {
-    
+
     let exposure: Exposure
-    
+
     func formattedDate() -> String {
         return DateFormatter.localizedString(from: exposure.date, dateStyle: .medium, timeStyle: .none)
     }
-    
+
     func accessibilityLabel() -> String {
         if exposure.totalRiskScore.level == .high {
             return String.localizedStringWithFormat(NSLocalizedString("HIGH_RISK_EXPOSURE_DATE_MESSAGE", comment: ""), formattedDate())
@@ -22,7 +22,7 @@ struct PossibleExposureRow: View {
             return String.localizedStringWithFormat(NSLocalizedString("LOW_RISK_EXPOSURE_DATE_MESSAGE", comment: ""), formattedDate())
         }
     }
-    
+
     var body: some View {
         HStack(spacing: 0) {
             if exposure.totalRiskScore.level == .high {
@@ -56,7 +56,7 @@ struct PossibleExposureRow: View {
         .accessibility(label: Text(verbatim: accessibilityLabel()))
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
     }
-    
+
     var formattedDateText: Text {
         Text(" ") +
         Text(verbatim: formattedDate())

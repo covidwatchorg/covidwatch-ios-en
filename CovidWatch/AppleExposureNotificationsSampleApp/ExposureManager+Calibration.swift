@@ -11,25 +11,25 @@ import UIKit
 
 #if DEBUG_CALIBRATION
 extension ExposureManager {
-        
+
     private static let goDeeperQueue = DispatchQueue(label: "com.ninjamonkeycoders.gaen.goDeeper", attributes: .concurrent)
-    
+
     func calibrationDetectExposures(importURLs: [URL] = [], notifyUserOnError: Bool = false, completionHandler: ((Bool) -> Void)? = nil) -> Progress {
         let progress = Progress()
-        
+
         // Disallow concurrent exposure detection, because if allowed we might try to detect the same diagnosis keys more than once
         guard !detectingExposures else {
             completionHandler?(false)
             return progress
         }
         detectingExposures = true
-        
+
         var localURLs = importURLs
         let nextDiagnosisKeyFileIndex = LocalStore.shared.nextDiagnosisKeyFileIndex
-        
+
         func finish(_ result: Result<Int, Error>) {
             try? Server.shared.deleteDiagnosisKeyFile(at: localURLs)
-            
+
             let success: Bool
             if progress.isCancelled {
                 success = false
@@ -47,12 +47,11 @@ extension ExposureManager {
                     }
                 }
             }
-            
+
             self.detectingExposures = false
             completionHandler?(success)
         }
-        
-        
+
         let actionAfterHasLocalURLs = {
             Server.shared.getExposureConfigurationList { result in
                 switch result {
@@ -60,7 +59,7 @@ extension ExposureManager {
                     finish(.failure(error))
                 case let .success(configurationList):
                     let semaphore = DispatchSemaphore(value: 0)
-                    for configuration in configurationList{
+                    for configuration in configurationList {
                     ExposureManager.shared.manager.detectExposures(configuration: configuration, diagnosisKeyURLs: localURLs) { summary, error in
                             if let error = error {
                                 finish(.failure(error))
@@ -86,8 +85,8 @@ extension ExposureManager {
                                         duration: exposure.duration,
                                         totalRiskScore: totalRiskScore,
                                         transmissionRiskLevel: exposure.transmissionRiskLevel,
-                                        attenuationDurationThresholds: configuration.value(forKey: "attenuationDurationThresholds") as! [Int],
-                                        timeDetected : Date()
+                                        attenuationDurationThresholds: configuration.value(forKey: "attenuationDurationThresholds") as? [Int] ?? [],
+                                        timeDetected: Date()
                                     )
                                     return e
                                 }
@@ -97,7 +96,7 @@ extension ExposureManager {
                                     exposures!.count
                                 )
                                 //TODO: add check on progress.isCancelled here
-                                self.updateSavedExposures(newExposures : newExposures)
+                                self.updateSavedExposures(newExposures: newExposures)
                                 semaphore.signal()
                             }
                         }
@@ -107,14 +106,14 @@ extension ExposureManager {
                 }
             }
         }
-        
+
         ExposureManager.goDeeperQueue.async {
             if localURLs.isEmpty {
                 Server.shared.getDiagnosisKeyFileURLs(startingAt: nextDiagnosisKeyFileIndex) { result in
-                    
+
                     let dispatchGroup = DispatchGroup()
                     var localURLResults = [Result<[URL], Error>]()
-                    
+
                     switch result {
                     case let .success(remoteURLs):
                         for remoteURL in remoteURLs {
@@ -124,7 +123,7 @@ extension ExposureManager {
                                 dispatchGroup.leave()
                             }
                         }
-                        
+
                     case let .failure(error):
                         finish(.failure(error))
                     }
@@ -138,16 +137,14 @@ extension ExposureManager {
                                 return
                             }
                         }
-                        
+
                         actionAfterHasLocalURLs()
                     }
                 }
-            }
-            else {
+            } else {
                 actionAfterHasLocalURLs()
             }
-            
-            
+
         }
         return progress
     }

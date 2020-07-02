@@ -14,13 +14,13 @@ public struct GoogleCloudPlatform {
 
 @available(iOS 13.5, *)
 public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotificationsDiagnosisKeyServing {
-    
+
     public struct Configuration {
         let exposureBaseURLString: String
         let appConfiguration: AppConfiguration
         let exportConfiguration: ExportConfiguration
     }
-    
+
     public struct AppConfiguration {
         let appPackageName: String = Bundle.main.bundleIdentifier ?? ""
         let regions: [String]
@@ -33,13 +33,13 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
             return "\(GoogleCloudPlatform.cloudStorageBaseURLString)/\(cloudStorageBucketName)/\(filenameRoot)/index.txt"
         }
     }
-    
+
     public var configuration: Configuration
-    
+
     init(configuration: Configuration) {
         self.configuration = configuration
     }
-    
+
     public func postDiagnosisKeys(
         _ diagnosisKeys: [ENTemporaryExposureKey],
         completion: @escaping (Error?) -> Void
@@ -67,12 +67,12 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
             hmackey: "base64 encoded HMAC key used in preparing the data for the verification server",
             padding: Data.random(count: Int.random(in: 1024..<2048)).base64EncodedString()
         )
-        
+
         guard let requestURL = URL(string: self.configuration.exposureBaseURLString) else {
             completion(URLError(.badURL))
             return
         }
-        
+
         var uploadData: Data!
         do {
             let encoder = JSONEncoder()
@@ -82,11 +82,11 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
             completion(error)
             return
         }
-        
+
         var request = URLRequest(url: requestURL)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+
         let task = URLSession.shared.uploadTask(
             with: request,
             from: uploadData
@@ -102,8 +102,8 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
                     )
                     completion(error)
                     return
-                
-                case .success(_):
+
+                case .success:
                     os_log(
                         "Posted %d diagnosis key(s)",
                         log: .en,
@@ -115,7 +115,7 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
         }
         task.resume()
     }
-    
+
     public func getDiagnosisKeyFileURLs(
         startingAt index: Int,
         completion: @escaping (Result<[URL], Error>) -> Void
@@ -125,12 +125,12 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
             log: .en,
             index
         )
-        
+
         guard let requestURL = URL(string: self.configuration.exportConfiguration.indexURLString) else {
             completion(.failure(URLError(.badURL)))
             return
         }
-        
+
         let request = URLRequest(url: requestURL)
 
         URLSession.shared.dataTask(with: request) { (result) in
@@ -165,8 +165,7 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
                             result.count
                         )
                         completion(.success(result))
-                    }
-                    catch {
+                    } catch {
                         os_log(
                             "Getting diagnosis key file URLs starting at index=%d failed=%@ ...",
                             log: .en,
@@ -180,7 +179,7 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
             }
         }.resume()
     }
-    
+
     public func downloadDiagnosisKeyFile(
         at remoteURL: URL,
         completion: @escaping (Result<[URL], Error>) -> Void
@@ -193,7 +192,7 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
 
         let request = URLRequest(url: remoteURL)
 
-        URLSession.shared.downloadTask(with: request) { (url, response, error) in
+        URLSession.shared.downloadTask(with: request) { (url, _, error) in
             do {
                 if let error = error {
                     throw(error)
@@ -243,7 +242,7 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
             }
         }.resume()
     }
-    
+
     // TODO
     public func getExposureConfiguration(completion: (Result<ENExposureConfiguration, Error>) -> Void) {
         os_log(
@@ -256,7 +255,7 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
         do {
             let codableExposureConfiguration = try JSONDecoder().decode(CodableExposureConfiguration.self, from: dataFromServer)
             let exposureConfiguration = ENExposureConfiguration()
-            
+
             exposureConfiguration.minimumRiskScore = codableExposureConfiguration.minimumRiskScore
             exposureConfiguration.attenuationLevelValues = codableExposureConfiguration.attenuationLevelValues as [NSNumber]
             exposureConfiguration.daysSinceLastExposureLevelValues = codableExposureConfiguration.daysSinceLastExposureLevelValues as [NSNumber]
@@ -267,8 +266,7 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
             #else
             exposureConfiguration.setValue(codableExposureConfiguration.attenuationDurationThresholds, forKey: "attenuationDurationThresholds")
             #endif
-            
-                
+
             os_log(
                 "Got exposure configuration=%@ from server",
                 log: .en,
@@ -285,7 +283,7 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
             )
             completion(.failure(error))
         }
-        
+
 //        os_log(
 //            "Getting exposure configuration ...",
 //            log: .en
@@ -335,5 +333,5 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
 //            }
 //        }.resume()
     }
-    
+
 }

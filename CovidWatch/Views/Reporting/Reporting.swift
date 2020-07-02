@@ -7,44 +7,44 @@ import SwiftUI
 import ExposureNotification
 
 struct Reporting: View {
-    
+
     @EnvironmentObject var localStore: LocalStore
-    
+
     @State var isShowingVerify = false
-    
+
     @State var selectedTestResultIndex = 0
-    
+
     var body: some View {
-        
+
         ZStack(alignment: .top) {
-            
+
             ScrollView(.vertical, showsIndicators: false) {
-                
+
                 VStack(spacing: 0) {
-                    
+
                     HowItWorksTitleText(text: Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("STEP_X_OF_Y_TITLE", comment: ""), NSNumber(value: 1), NSNumber(value: 3)).uppercased()))
                         .padding(.top, .headerHeight)
 
                     Text("NOTIFY_OTHERS")
                         .modifier(StandardTitleTextViewModifier())
                         .padding(.horizontal, 2 * .standardSpacing)
-                    
+
                     Spacer(minLength: 2 * .standardSpacing)
-                    
+
                     Text("NOTIFY_OTHERS_CALL_TO_ACTION_LONG_MESSAGE")
                         .font(.custom("Montserrat-Regular", size: 16))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(Color("Title Text Color"))
                         .padding(.horizontal, 2 * .standardSpacing)
-                    
+
                     Button(action: {
-                        
+
                         #if DEBUG_CALIBRATION
-                        
+
                         ApplicationController.shared.handleTapCalibrationShareAPositiveDiagnosisButton()
-                        
+
                         #else
-                        
+
                         let testResult = TestResult(
                             id: UUID(),
                             isAdded: false,
@@ -56,75 +56,13 @@ struct Reporting: View {
                         self.localStore.testResults.insert(testResult, at: 0)
                         self.selectedTestResultIndex = 0
                         self.isShowingVerify = true
-                        
+
                         #endif
-//
-//                        let verificationCode = String(Int.random(in: 10000..<99999))
-//                        let testResult = TestResult(id: UUID(), isAdded: false, dateAdministered: Date(), isShared: true, verificationCode: verificationCode, isVerified: true)
-//                        self.localStore.testResults.insert(testResult, at: 0)
-//                        self.selectedTestResultIndex = 0
-//                        
-//                        func afterGetAndPostDiagnosisKeys(result: String) {
-////                            self.isShowingCallCode = true
-//                        }
-//                        
-////                        afterGetAndPostDiagnosisKeys(result: String(Int.random(in: 10000..<99999)))
-//                        
-//                        ExposureManager.shared.getAndPostDiagnosisKeys(testResult: testResult) { (error) in
-////                        ExposureManager.shared.getAndPostTestDiagnosisKeys { (result) in
-//                            DispatchQueue.main.async {
-//
-//                                if let error = error {
-//                                    UIApplication.shared.topViewController?.present(
-//                                        error,
-//                                        animated: true,
-//                                        completion: nil
-//                                    )
-//                                }
-//                                else {
-//                                    afterGetAndPostDiagnosisKeys(result: String(Int.random(in: 10000..<99999)))
-//                                }
-//
-////                                switch result {
-////                                    case let .success(verificationCode):
-////
-////                                        afterGetAndPostDiagnosisKeys(result: verificationCode ?? "123456789")
-////
-////                                    case let .failure(error):
-////                                        if let error = error as? ENError, error.code == .notAuthorized {
-////                                            UIApplication.shared.topViewController?.present(
-////                                                error,
-////                                                animated: true,
-////                                                completion: nil
-////                                            )
-////                                        }
-////                                        else {
-////                                            afterGetAndPostDiagnosisKeys(result: String(Int.random(in: 10000..<99999)))
-////                                        }
-////                                        return
-////                                }
-//
-//                                
-////                                switch result {
-////                                    case let .success(verificationCode):
-////
-////                                        afterGetAndPostDiagnosisKeys(result: verificationCode ?? "123456789")
-////
-////                                    case let .failure(error):
-////                                        UIApplication.shared.topViewController?.present(
-////                                            error,
-////                                            animated: true,
-////                                            completion: nil
-////                                        )
-////                                        return
-////                                }
-//                            }
-//                        }
-                        
+
                     }) {
-                        
+
                         Text("SHARE_A_POSITIVE_DIAGNOSIS").modifier(SmallCallToAction())
-                        
+
                     }
                     .padding(.top, 2 * .standardSpacing)
                     .padding(.horizontal, 2 * .standardSpacing)
@@ -133,16 +71,15 @@ struct Reporting: View {
                         ReportingVerify(selectedTestResultIndex: self.selectedTestResultIndex)
                             .environmentObject(self.localStore)
                     }
-                    
+
                     Image("Notify Others Footer")
                         .accessibility(hidden: true)
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
 
-                    
 //                    Image("Doctors Security")
 //                        .accessibility(hidden: true)
 //                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
-                    
+
 //                    VStack(spacing: 0) {
 //
 //                        if !self.localStore.testResults.isEmpty {
@@ -216,17 +153,13 @@ struct Reporting: View {
 //                            }
 //                        }
 //
-////                        Image("Powered By CW Grey")
-////                            .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
-////                            .padding(.top, 2 * .standardSpacing)
-////                            .padding(.bottom, .standardSpacing)
 //
 //                    }
 //                    .padding(.horizontal, 2 * .standardSpacing)
-                    
+
                 }
             }
-            
+
             HeaderBar(showMenu: false, showDismissButton: true)
         }
     }

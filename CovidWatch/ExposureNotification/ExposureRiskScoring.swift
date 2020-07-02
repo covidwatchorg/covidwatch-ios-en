@@ -7,7 +7,7 @@ import Foundation
 import ExposureNotification
 
 public protocol ExposureRiskScoring {
-    
+
     func computeRiskScore(forExposure exposure: ENExposureInfo) -> ENRiskScore
 
     func computeRiskScore(
