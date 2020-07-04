@@ -11,7 +11,7 @@ import UIKit
 extension String {
 
     public static let exposureNotificationBackgroundTaskIdentifier =
-        Bundle.main.bundleIdentifier! + ".exposure-notification"
+        "org.covidwatch.ios.exposure-notification"
 }
 
 @available(iOS 13.0, *)
