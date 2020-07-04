@@ -116,6 +116,7 @@ class ExposureManager {
                                     return
                                 }
                                 let newExposures: [Exposure] = exposures!.map { exposure in
+
                                     // Map score between 0 and 8
                                     var totalRiskScore: ENRiskScore = ENRiskScore(exposure.totalRiskScoreFullRange * 8.0 / pow(8, 4))
                                     if let riskScorer = self.riskScorer {
@@ -158,6 +159,8 @@ class ExposureManager {
 
                         let previousDiagnosisKeyFileURLs = Set(LocalStore.shared.previousDiagnosisKeyFileURLs)
                         let currentDiagnosisKeyFileURLs = Set(remoteURLs)
+                        // Avoid local store to grow endlessly
+                        LocalStore.shared.previousDiagnosisKeyFileURLs = Array(previousDiagnosisKeyFileURLs.intersection(currentDiagnosisKeyFileURLs))
                         let newRemoteURLs = currentDiagnosisKeyFileURLs.subtracting(previousDiagnosisKeyFileURLs)
                         newDiagnosisKeyFileURLs = Array(newRemoteURLs)
 
