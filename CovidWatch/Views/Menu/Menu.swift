@@ -59,6 +59,7 @@ struct Menu: View {
                             Button(action: {
                                 self.localStore.exposures = []
                                 self.localStore.dateLastPerformedExposureDetection = nil
+                                self.localStore.previousDiagnosisKeyFileURLs = []
                             }) {
                                 HStack {
                                     MenuDemoCapsule()

@@ -63,8 +63,9 @@ class ExposureManager {
         detectingExposures = true
 
         var localURLs = importURLs
+        var newDiagnosisKeyFileURLs = [URL]()
 
-        func finish(_ result: Result<([Exposure], Int), Error>) {
+        func finish(_ result: Result<([Exposure], [URL]), Error>) {
 
             try? Server.shared.deleteDiagnosisKeyFile(at: localURLs)
 
@@ -73,8 +74,8 @@ class ExposureManager {
                 success = false
             } else {
                 switch result {
-                    case let .success((newExposures, nextDiagnosisKeyFileIndex)):
-                        LocalStore.shared.nextDiagnosisKeyFileIndex = nextDiagnosisKeyFileIndex
+                    case let .success((newExposures, newDiagnosisKeyFileURLs)):
+                        LocalStore.shared.previousDiagnosisKeyFileURLs += newDiagnosisKeyFileURLs
                         LocalStore.shared.exposures.append(contentsOf: newExposures)
                         LocalStore.shared.exposures.sort { $0.date > $1.date }
                         LocalStore.shared.dateLastPerformedExposureDetection = Date()
@@ -93,9 +94,13 @@ class ExposureManager {
             detectingExposures = false
             completionHandler?(success)
         }
-        let nextDiagnosisKeyFileIndex = LocalStore.shared.nextDiagnosisKeyFileIndex
 
         let actionAfterHasLocalURLs = {
+            guard !localURLs.isEmpty else {
+                self.detectingExposures = false
+                completionHandler?(true)
+                return
+            }
             Server.shared.getExposureConfiguration { result in
                 switch result {
                     case let .success(configuration):
@@ -132,7 +137,7 @@ class ExposureManager {
                                     log: .en,
                                     exposures!.count
                                 )
-                                finish(.success((newExposures, nextDiagnosisKeyFileIndex + localURLs.count)))
+                                finish(.success((newExposures, newDiagnosisKeyFileURLs)))
                             }
                     }
 
@@ -143,14 +148,20 @@ class ExposureManager {
         }
 
         if localURLs.isEmpty {
-            Server.shared.getDiagnosisKeyFileURLs(startingAt: nextDiagnosisKeyFileIndex) { result in
+            Server.shared.getDiagnosisKeyFileURLs { result in
 
                 let dispatchGroup = DispatchGroup()
                 var localURLResults = [Result<[URL], Error>]()
 
                 switch result {
                     case let .success(remoteURLs):
-                        for remoteURL in remoteURLs {
+
+                        let previousDiagnosisKeyFileURLs = Set(LocalStore.shared.previousDiagnosisKeyFileURLs)
+                        let currentDiagnosisKeyFileURLs = Set(remoteURLs)
+                        let newRemoteURLs = currentDiagnosisKeyFileURLs.subtracting(previousDiagnosisKeyFileURLs)
+                        newDiagnosisKeyFileURLs = Array(newRemoteURLs)
+
+                        for remoteURL in newRemoteURLs {
                             dispatchGroup.enter()
                             Server.shared.downloadDiagnosisKeyFile(at: remoteURL) { result in
                                 localURLResults.append(result)

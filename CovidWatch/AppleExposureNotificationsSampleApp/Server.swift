@@ -32,12 +32,11 @@ public class Server {
         }
     }
 
-    func getDiagnosisKeyFileURLs(startingAt index: Int, completion: @escaping (Result<[URL], Error>) -> Void) {
+    func getDiagnosisKeyFileURLs(completion: @escaping (Result<[URL], Error>) -> Void) {
 
         if let diagnosisServer = self.keyServer {
 
             diagnosisServer.getDiagnosisKeyFileURLs(
-                startingAt: index,
                 completion: completion
             )
         } else {

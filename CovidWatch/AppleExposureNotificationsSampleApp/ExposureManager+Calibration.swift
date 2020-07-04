@@ -108,7 +108,7 @@ extension ExposureManager {
 
         ExposureManager.goDeeperQueue.async {
             if localURLs.isEmpty {
-                Server.shared.getDiagnosisKeyFileURLs(startingAt: nextDiagnosisKeyFileIndex) { result in
+                Server.shared.getDiagnosisKeyFileURLs { result in
 
                     let dispatchGroup = DispatchGroup()
                     var localURLResults = [Result<[URL], Error>]()

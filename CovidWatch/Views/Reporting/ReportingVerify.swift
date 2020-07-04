@@ -143,7 +143,7 @@ struct ReportingVerify: View {
                                             return
                                         }
 
-                                        // TODO: set tranmission risk level for the diagnosis keys before sharing them with the server
+                                        // TODO: Set tranmission risk level for the diagnosis keys before sharing them with the server.
                                         keys.forEach { $0.transmissionRiskLevel = 6 }
 
                                         Server.shared.postDiagnosisKeys(keys) { error in

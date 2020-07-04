@@ -75,8 +75,8 @@ public class LocalStore: ObservableObject {
         willSet { objectWillChange.send() }
     }
 
-    @Persisted(userDefaultsKey: "nextDiagnosisKeyFileIndex", notificationName: .init("LocalStoreNextDiagnosisKeyFileIndexDidChange"), defaultValue: 0)
-    public var nextDiagnosisKeyFileIndex: Int {
+    @Persisted(userDefaultsKey: "previousDiagnosisKeyFileURLs", notificationName: .init("LocalStorePreviousDiagnosisKeyFileURLsDidChange"), defaultValue: [])
+    public var previousDiagnosisKeyFileURLs: [URL] {
         willSet { objectWillChange.send() }
     }
 

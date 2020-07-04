@@ -13,7 +13,6 @@ public protocol ExposureNotificationsDiagnosisKeyServing {
     )
 
     func getDiagnosisKeyFileURLs(
-        startingAt index: Int,
         completion: @escaping (Result<[URL], Error>) -> Void
     )
 

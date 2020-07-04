@@ -7,6 +7,7 @@ import os.log
 import ExposureNotification
 import DeviceCheck
 import ZIPFoundation
+import Combine
 
 public struct GoogleCloudPlatform {
     static let cloudStorageBaseURLString = "https://storage.googleapis.com"
@@ -117,7 +118,6 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
     }
 
     public func getDiagnosisKeyFileURLs(
-        startingAt index: Int,
         completion: @escaping (Result<[URL], Error>) -> Void
     ) {
         guard let requestURL = URL(string: self.configuration.exportConfiguration.indexURLString) else {
@@ -126,70 +126,46 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
         }
 
         os_log(
-            "Getting diagnosis key file URLs starting at index=%d URL=%@...",
+            "Getting diagnosis key file URLs from URL=%@...",
             log: .en,
-            index,
             requestURL.absoluteString
         )
 
         let request = URLRequest(url: requestURL, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData)
 
-        let config = URLSessionConfiguration.default
-        config.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
-        config.urlCache = nil
-        let session = URLSession.init(configuration: config)
-
-        session.dataTask(with: request) { (result) in
-            switch result {
-                case .failure(let error):
-                    os_log(
-                        "Getting diagnosis key file URLs starting at index=%d failed=%@ ...",
-                        log: .en,
-                        type: .error,
-                        index,
-                        error as CVarArg
-                    )
-                    DispatchQueue.main.async {
-                        completion(.failure(error))
-                    }
-                    return
-
-                case .success(let (_, data)):
-                    do {
-                        guard let dataString = String(bytes: data, encoding: .utf8) else {
-                            throw CocoaError(.coderInvalidValue)
-                        }
-                        let entries = dataString.split(separator: "\n")
-                        let keyFileURLs: [URL] = entries.compactMap {
-                            URL(string: "\(GoogleCloudPlatform.cloudStorageBaseURLString)/\(self.configuration.exportConfiguration.cloudStorageBucketName)/\($0)")
-                        }
-                        // TODO: Figure out if dropping the first index results is the way to go. Returning everything, for now.
-                        //let result = Array(keyFileURLs.dropFirst(index))
-                        let result = keyFileURLs
+        URLSession.shared.dataTaskPublisher(for: request)
+            .tryMap { (data, _) -> [URL] in
+                // Data is a plain text file and each line contains an entry for a ZIP file stored in the bucket
+                guard let dataString = String(bytes: data, encoding: .utf8) else {
+                    throw URLError(.badServerResponse)
+                }
+                let entries = dataString.split(separator: "\n")
+                let keyFileURLs: [URL] = entries.compactMap {
+                    URL(string: "\(GoogleCloudPlatform.cloudStorageBaseURLString)/\(self.configuration.exportConfiguration.cloudStorageBucketName)/\($0)")
+                }
+                return keyFileURLs
+            }
+            .receive(on: DispatchQueue.main)
+            .receive(subscriber: Subscribers.Sink(receiveCompletion: { (sinkCompletion) in
+                switch sinkCompletion {
+                    case .failure(let error):
                         os_log(
-                            "Got diagnosis key file URLs starting at index=%d count=%d",
-                            log: .en,
-                            index,
-                            result.count
-                        )
-                        DispatchQueue.main.async {
-                            completion(.success(result))
-                        }
-                    } catch {
-                        os_log(
-                            "Getting diagnosis key file URLs starting at index=%d failed=%@ ...",
+                            "Getting diagnosis key file URLs failed=%@ ...",
                             log: .en,
                             type: .error,
-                            index,
                             error as CVarArg
                         )
-                        DispatchQueue.main.async {
-                            completion(.failure(error))
-                        }
-                    }
-                    return
-            }
-        }.resume()
+                        completion(.failure(error))
+                    case .finished: ()
+                }
+            }, receiveValue: { (value) in
+                os_log(
+                    "Got diagnosis key file URLs count=%d",
+                    log: .en,
+                    value.count
+                )
+                completion(.success(value))
+            }))
     }
 
     public func downloadDiagnosisKeyFile(
@@ -229,11 +205,7 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
                 try FileManager.default.unzipItem(at: savedURL, to: unzipDestinationDirectory)
                 try FileManager.default.removeItem(at: savedURL)
                 let zipFileContentURLs = try FileManager.default.contentsOfDirectory(at: unzipDestinationDirectory, includingPropertiesForKeys: nil)
-                let filteredZIPFileContentURLs = zipFileContentURLs.filter { (url) -> Bool in
-                    let size: UInt64 = (try? FileManager.default.attributesOfItem(atPath: url.path)[.size] as? UInt64) ?? 0
-                    return size != 0
-                }
-                let result = filteredZIPFileContentURLs
+                let result = zipFileContentURLs
 
                 os_log(
                     "Downloaded diagnosis key file at remote URL=%@ to local URL count=%d",
