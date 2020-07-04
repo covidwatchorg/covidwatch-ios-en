@@ -28,15 +28,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .environmentObject(LocalStore.shared)
         self.window?.rootViewController = UIHostingController(rootView: contentView)
 
-        // Setup exposure notification key and diagnosis servers
+        // Setup exposure notification key and verification servers
         Server.shared.keyServer = GoogleExposureNotificationsDiagnosisKeyServer(configuration: .shared)
         Server.shared.verificationServer = GoogleExposureNotificationsDiagnosisVerificationServer(configuration: .shared)
 
         // Setup exposure notification manager
         _ = ExposureManager.shared
-        #if RISK_SCORING_AZ
-        ExposureManager.shared.riskScorer = AZExposureRiskScorer()
-        #endif
+        let useAZRiscoring = Bundle.main.infoDictionary?[.useAZRiskScoring] as? Bool ?? false
+        if useAZRiscoring {
+            ExposureManager.shared.riskScorer = AZExposureRiskScorer()
+        }
+
+        // Setup application controller
         _ = ApplicationController.shared
 
         // Setup background tasks

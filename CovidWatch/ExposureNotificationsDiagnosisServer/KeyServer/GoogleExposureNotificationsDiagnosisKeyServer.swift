@@ -120,20 +120,26 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
         startingAt index: Int,
         completion: @escaping (Result<[URL], Error>) -> Void
     ) {
-        os_log(
-            "Getting diagnosis key file URLs starting at index=%d ...",
-            log: .en,
-            index
-        )
-
         guard let requestURL = URL(string: self.configuration.exportConfiguration.indexURLString) else {
             completion(.failure(URLError(.badURL)))
             return
         }
 
-        let request = URLRequest(url: requestURL)
+        os_log(
+            "Getting diagnosis key file URLs starting at index=%d URL=%@...",
+            log: .en,
+            index,
+            requestURL.absoluteString
+        )
 
-        URLSession.shared.dataTask(with: request) { (result) in
+        let request = URLRequest(url: requestURL, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData)
+
+        let config = URLSessionConfiguration.default
+        config.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        config.urlCache = nil
+        let session = URLSession.init(configuration: config)
+
+        session.dataTask(with: request) { (result) in
             switch result {
                 case .failure(let error):
                     os_log(
@@ -143,7 +149,9 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
                         index,
                         error as CVarArg
                     )
-                    completion(.failure(error))
+                    DispatchQueue.main.async {
+                        completion(.failure(error))
+                    }
                     return
 
                 case .success(let (_, data)):
@@ -164,7 +172,9 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
                             index,
                             result.count
                         )
-                        completion(.success(result))
+                        DispatchQueue.main.async {
+                            completion(.success(result))
+                        }
                     } catch {
                         os_log(
                             "Getting diagnosis key file URLs starting at index=%d failed=%@ ...",
@@ -173,7 +183,9 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
                             index,
                             error as CVarArg
                         )
-                        completion(.failure(error))
+                        DispatchQueue.main.async {
+                            completion(.failure(error))
+                        }
                     }
                     return
             }

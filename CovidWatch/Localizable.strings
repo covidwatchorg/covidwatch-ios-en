@@ -212,16 +212,16 @@ All strings for the project, separated for localization.
 "EXPOSURE_CONFIGURATION_JSON_TITLE" = "Exposure Configuration JSON";
 
 /* Title */
-"DEMO_RESET_POSSIBLE_EXPOSURES_TITLE" = "[DEMO] Reset Possible Exposures";
+"DEMO_RESET_POSSIBLE_EXPOSURES_TITLE" = "Reset Possible Exposures";
 
 /* Title */
-"DEMO_DETECT_EXPOSURES_FROM_SERVER_TITLE" = "[DEMO] Detect Exposures from Server";
+"DEMO_DETECT_EXPOSURES_FROM_SERVER_TITLE" = "Detect Exposures from Server";
 
 /* Title */
-"DEMO_SET_EXPOSURE_CONFIGURATION_JSON_TITLE" = "[DEMO] Set Exposure Configuration JSON";
+"DEMO_SET_EXPOSURE_CONFIGURATION_JSON_TITLE" = "Set Exposure Configuration JSON";
 
 /* Title */
-"DEMO_EXPORT_POSSIBLE_EXPOSURES_TITLE" = "[DEMO] Export Possible Exposures";
+"DEMO_EXPORT_POSSIBLE_EXPOSURES_TITLE" = "Export Possible Exposures";
 
 /* Title */
 "POSSIBLE_EXPOSURES_TITLE" = "Possible Exposures";

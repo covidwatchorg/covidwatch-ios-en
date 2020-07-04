@@ -4,6 +4,7 @@
 //
 
 import SwiftUI
+import ExposureNotification
 
 struct ReportingVerify: View {
 
@@ -16,6 +17,8 @@ struct ReportingVerify: View {
     @State var symptomsStartDate: String = ""
 
     @State var testDate: String = ""
+
+    @State var isSubmittingDiagnosis = false
 
     let selectedTestResultIndex: Int
 
@@ -113,36 +116,101 @@ struct ReportingVerify: View {
 
                             Button(action: {
 
+                                self.isSubmittingDiagnosis = true
+
                                 self.localStore.testResults[self.selectedTestResultIndex].verificationCode = self.verificationCode
 
                                 let actionAfterVerification = {
 
-                                }
+                                    ExposureManager.shared.getDiagnosisKeys { (keys, error) in
+                                        if let error = error {
+                                            self.isSubmittingDiagnosis = false
+                                            UIApplication.shared.topViewController?.present(
+                                                error,
+                                                animated: true,
+                                                completion: nil
+                                            )
+                                            return
+                                        }
 
-                                if !self.localStore.testResults[self.selectedTestResultIndex].isVerified {
-                                    Server.shared.verifyUniqueTestIdentifier(self.verificationCode) { result in
-                                        DispatchQueue.main.async {
-                                            switch result {
-                                                case let .success(verificationCode):
-                                                    self.localStore.testResults[self.selectedTestResultIndex].isVerified = true
+                                        guard let keys = keys, !keys.isEmpty else {
+                                            self.isSubmittingDiagnosis = false
+                                            UIApplication.shared.topViewController?.present(
+                                                ENError(.internal),
+                                                animated: true,
+                                                completion: nil
+                                            )
+                                            return
+                                        }
 
-                                                    actionAfterVerification()
-                                                case let .failure(error):
-                                                    UIApplication.shared.topViewController?.present(
-                                                        error,
-                                                        animated: true,
-                                                        completion: nil
+                                        // TODO: set tranmission risk level for the diagnosis keys before sharing them with the server
+                                        keys.forEach { $0.transmissionRiskLevel = 6 }
+
+                                        Server.shared.postDiagnosisKeys(keys) { error in
+                                            defer {
+                                                self.isSubmittingDiagnosis = false
+                                            }
+
+                                            if let error = error {
+                                                UIApplication.shared.topViewController?.present(
+                                                    error,
+                                                    animated: true,
+                                                    completion: nil
                                                 )
+                                                return
+                                            }
+
+                                            withAnimation {
+                                                self.isShowingFinish = true
                                             }
                                         }
                                     }
+                                }
+
+                                if !self.localStore.testResults[self.selectedTestResultIndex].isVerified {
+
+                                    let bypassVerification = Bundle.main.infoDictionary?[.bypassPublicHealthAuthorityVerification] as? Bool ?? false
+
+                                    if bypassVerification {
+
+                                        actionAfterVerification()
+
+                                    } else {
+                                        Server.shared.verifyUniqueTestIdentifier(self.verificationCode) { result in
+                                            DispatchQueue.main.async {
+                                                switch result {
+                                                    case let .success(longTermToken):
+                                                        self.localStore.testResults[self.selectedTestResultIndex].longTermToken = longTermToken
+                                                        self.localStore.testResults[self.selectedTestResultIndex].isVerified = true
+                                                        actionAfterVerification()
+                                                    case let .failure(error):
+                                                        self.isSubmittingDiagnosis = false
+                                                        UIApplication.shared.topViewController?.present(
+                                                            error,
+                                                            animated: true,
+                                                            completion: nil
+                                                    )
+                                                }
+                                            }
+                                        }
+                                    }
+
                                 } else {
                                     actionAfterVerification()
                                 }
 
                             }) {
-                                Text("REPORTING_VERIFY_NOTIFY_OTHERS").modifier(SmallCallToAction())
+                                Group {
+                                    if !isSubmittingDiagnosis {
+                                        Text("REPORTING_VERIFY_NOTIFY_OTHERS")
+                                    } else {
+                                        ActivityIndicator(isAnimating: $isSubmittingDiagnosis) {
+                                            $0.color = .white
+                                        }
+                                    }
+                                }.modifier(SmallCallToAction())
                             }
+                            .disabled(isSubmittingDiagnosis)
                             .padding(.top, 2 * .standardSpacing)
                             .padding(.horizontal, 2 * .standardSpacing)
                             .padding(.bottom, .standardSpacing)

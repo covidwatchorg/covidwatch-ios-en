@@ -49,26 +49,26 @@ struct Menu: View {
                                 }
                             }) {
                                 HStack {
+                                    MenuDemoCapsule()
                                     Text("DEMO_DETECT_EXPOSURES_FROM_SERVER_TITLE")
                                 }.modifier(MenuTitleText())
                             }
 
                             Divider()
 
-                            #endif
-
-                            #if DEBUG_CALIBRATION
-
                             Button(action: {
                                 self.localStore.exposures = []
                                 self.localStore.dateLastPerformedExposureDetection = nil
                             }) {
                                 HStack {
+                                    MenuDemoCapsule()
                                     Text("DEMO_RESET_POSSIBLE_EXPOSURES_TITLE")
                                 }.modifier(MenuTitleText())
                             }
 
-                            Divider()
+                            #endif
+
+                            #if DEBUG_CALIBRATION
 
                             Button(action: {
                                 let alertController = UIAlertController(
@@ -90,6 +90,7 @@ struct Menu: View {
                                 UIApplication.shared.topViewController?.present(alertController, animated: true)
                             }) {
                                 HStack {
+                                    MenuDemoCapsule()
                                     Text("DEMO_SET_EXPOSURE_CONFIGURATION_JSON_TITLE")
                                 }.modifier(MenuTitleText())
                             }
@@ -100,6 +101,7 @@ struct Menu: View {
                                 ApplicationController.shared.exportExposures()
                             }) {
                                 HStack {
+                                    MenuDemoCapsule()
                                     Text("DEMO_EXPORT_POSSIBLE_EXPOSURES_TITLE")
                                 }.modifier(MenuTitleText())
                             }
@@ -107,6 +109,8 @@ struct Menu: View {
                             Divider()
                             #endif
                         }
+
+                        Divider()
 
                         Button(action: {
                             self.isShowingPossibleExposures.toggle()

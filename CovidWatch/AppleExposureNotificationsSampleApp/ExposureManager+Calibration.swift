@@ -95,7 +95,6 @@ extension ExposureManager {
                                     log: .en,
                                     exposures!.count
                                 )
-                                //TODO: add check on progress.isCancelled here
                                 self.updateSavedExposures(newExposures: newExposures)
                                 semaphore.signal()
                             }

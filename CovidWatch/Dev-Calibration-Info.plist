@@ -35,6 +35,8 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>CWKeyServerExposureBaseURL</key>
+	<string>https://exposure-3horfxouua-uc.a.run.app</string>
 	<key>CWKeyServerAppConfigurationRegions</key>
 	<array>
 		<string>US</string>
@@ -43,12 +45,16 @@
 	<string>exposure-notification-export-fxega</string>
 	<key>CWKeyServerExportConfigurationFilenameRoot</key>
 	<string>exposureKeyExport-US</string>
-	<key>CWKeyServerExposureBaseURL</key>
-	<string>https://exposure-3horfxouua-uc.a.run.app</string>
 	<key>CWVerificationServerApiKey</key>
 	<string>L2bUqnUXZiT1d4xZoMS5JydDfYmHKByicEPGZhrs7dDf2nHeCMGAvPbT0w586UFbxx7uuR4MoqP30BzpYfy2YQ</string>
 	<key>CWVerificationServerApiServerBaseURL</key>
 	<string>https://apiserver-p74lg75vsa-uc.a.run.app</string>
+	<key>CWReleaseSameDayKeys</key>
+	<true/>
+	<key>CWBypassPublicHealthAuthorityVerification</key>
+	<true/>
+	<key>CWUseAZRiskScoring</key>
+	<true/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
@@ -59,13 +65,6 @@
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<false/>
-	<key>LocalIP</key>
-	<string></string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsLocalNetworking</key>
-		<true/>
-	</dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Black.ttf</string>

@@ -32,10 +32,16 @@
 	<string>exposure-notification-export-fxega</string>
 	<key>CWKeyServerExportConfigurationFilenameRoot</key>
 	<string>exposureKeyExport-US</string>
-	<key>CWVerificationServerApiServerBaseURL</key>
-	<string>https://apiserver-p74lg75vsa-uc.a.run.app</string>
 	<key>CWVerificationServerApiKey</key>
 	<string>L2bUqnUXZiT1d4xZoMS5JydDfYmHKByicEPGZhrs7dDf2nHeCMGAvPbT0w586UFbxx7uuR4MoqP30BzpYfy2YQ</string>
+	<key>CWVerificationServerApiServerBaseURL</key>
+	<string>https://apiserver-p74lg75vsa-uc.a.run.app</string>
+	<key>CWReleaseSameDayKeys</key>
+	<false/>
+	<key>CWBypassPublicHealthAuthorityVerification</key>
+	<false/>
+	<key>CWUseAZRiskScoring</key>
+	<true/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>

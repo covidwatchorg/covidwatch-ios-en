@@ -15,7 +15,7 @@ import ZIPFoundation
 extension ApplicationController {
 
     public func handleTapCalibrationShareAPositiveDiagnosisButton() {
-        ExposureManager.shared.manager.getTestDiagnosisKeys { (keys, error) in
+        ExposureManager.shared.getDiagnosisKeys { (keys, error) in
             if let error = error {
                 UIApplication.shared.topViewController?.present(
                     error,
@@ -74,13 +74,15 @@ extension ApplicationController {
             diagnosisKeys[index].transmissionRiskLevel = transmissionRiskLevels[index]
         }
 
-        Server.shared.postDiagnosisKeys(Array(diagnosisKeys.dropFirst())) { error in
+        Server.shared.postDiagnosisKeys(diagnosisKeys) { error in
             if let error = error {
-                UIApplication.shared.topViewController?.present(
-                    error,
-                    animated: true,
-                    completion: nil
-                )
+                DispatchQueue.main.async {
+                    UIApplication.shared.topViewController?.present(
+                        error,
+                        animated: true,
+                        completion: nil
+                    )
+                }
                 return
             }
         }

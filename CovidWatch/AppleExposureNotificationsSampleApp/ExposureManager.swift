@@ -183,32 +183,12 @@ class ExposureManager {
         #endif
     }
 
-    func getAndPostDiagnosisKeys(testResult: TestResult, transmissionRiskLevel: ENRiskLevel = 8, completion: @escaping (Error?) -> Void) {
-        manager.getDiagnosisKeys { temporaryExposureKeys, error in
-//        manager.getTestDiagnosisKeys { temporaryExposureKeys, error in
-            if let error = error {
-                completion(error)
-            } else {
-                // In this sample app, transmissionRiskLevel isn't set for any of the diagnosis keys. However, it is at this point that an app could
-                // use information accumulated in testResult to determine a transmissionRiskLevel for each diagnosis key.
-                temporaryExposureKeys?.forEach { $0.transmissionRiskLevel = transmissionRiskLevel }
-                Server.shared.postDiagnosisKeys(temporaryExposureKeys!) { error in
-                    completion(error)
-                }
-            }
-        }
-    }
-
-    // Includes today's key, requires com.apple.developer.exposure-notification-test entitlement
-    func getAndPostTestDiagnosisKeys(completion: @escaping (Error?) -> Void) {
-        manager.getTestDiagnosisKeys { temporaryExposureKeys, error in
-            if let error = error {
-                completion(error)
-            } else {
-                Server.shared.postDiagnosisKeys(temporaryExposureKeys!) { error in
-                    completion(error)
-                }
-            }
+    func getDiagnosisKeys(completionHandler: @escaping ENGetDiagnosisKeysHandler) {
+        let releaseSameDayKeys = Bundle.main.infoDictionary?[.releaseSameDayKeys] as? Bool ?? false
+        if releaseSameDayKeys {
+            manager.getTestDiagnosisKeys(completionHandler: completionHandler)
+        } else {
+            manager.getDiagnosisKeys(completionHandler: completionHandler)
         }
     }
 

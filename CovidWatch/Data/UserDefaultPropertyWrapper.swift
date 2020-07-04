@@ -17,5 +17,5 @@ extension Published {
             UserDefaults.standard.set(value, forKey: key)
         }))
     }
-    
+
 }
