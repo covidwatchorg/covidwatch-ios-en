@@ -50,8 +50,8 @@ struct Reporting: View {
                             isAdded: false,
                             dateAdministered: Date(),
                             isShared: false,
-                            verificationCode: "",
-                            isVerified: false
+                            isVerified: false,
+                            testType: "confirmed"
                         )
                         self.localStore.testResults.insert(testResult, at: 0)
                         self.selectedTestResultIndex = 0

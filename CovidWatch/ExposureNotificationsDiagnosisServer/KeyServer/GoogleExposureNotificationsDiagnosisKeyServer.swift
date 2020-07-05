@@ -35,6 +35,18 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
         }
     }
 
+    public enum ServerError: Error, LocalizedError {
+
+        case serverSideError(String)
+
+        public var errorDescription: String? {
+            switch self {
+                case .serverSideError(let errorMessage):
+                    return errorMessage
+            }
+        }
+    }
+
     public var configuration: Configuration
 
     init(configuration: Configuration) {
@@ -43,6 +55,8 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
 
     public func postDiagnosisKeys(
         _ diagnosisKeys: [ENTemporaryExposureKey],
+        verificationPayload: String? = nil,
+        hmacKey: Data? = nil,
         completion: @escaping (Error?) -> Void
     ) {
         os_log(
@@ -64,8 +78,8 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
             temporaryExposureKeys: codableDiagnosisKeys,
             regions: self.configuration.appConfiguration.regions,
             appPackageName: self.configuration.appConfiguration.appPackageName,
-            verificationPayload: "signed JWT issued by public health authority",
-            hmackey: "base64 encoded HMAC key used in preparing the data for the verification server",
+            verificationPayload: verificationPayload ?? "",
+            hmackey: hmacKey?.base64EncodedString() ?? "",
             padding: Data.random(count: Int.random(in: 1024..<2048)).base64EncodedString()
         )
 
@@ -88,11 +102,19 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
-        let task = URLSession.shared.uploadTask(
-            with: request,
-            from: uploadData
-        ) { (result) in
-            switch result {
+        request.httpBody = uploadData
+
+        URLSession.shared.dataTaskPublisher(for: request)
+            .tryMap { element -> Data in
+                guard let httpResponse = element.response as? HTTPURLResponse,
+                    httpResponse.statusCode == 200 else {
+                        throw ServerError.serverSideError(String(bytes: element.data, encoding: .utf8) ?? "")
+                }
+                return element.data
+        }
+        .receive(on: DispatchQueue.main)
+        .receive(subscriber: Subscribers.Sink(receiveCompletion: { (sinkCompletion) in
+            switch sinkCompletion {
                 case .failure(let error):
                     os_log(
                         "Posting %d diagnosis key(s) failed=%@",
@@ -102,19 +124,16 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
                         error as CVarArg
                     )
                     completion(error)
-                    return
-
-                case .success:
-                    os_log(
-                        "Posted %d diagnosis key(s)",
-                        log: .en,
-                        diagnosisKeys.count
-                    )
-                    completion(nil)
-                    return
+                case .finished: ()
             }
-        }
-        task.resume()
+        }, receiveValue: { (_) in
+            os_log(
+                "Posted %d diagnosis key(s)",
+                log: .en,
+                diagnosisKeys.count
+            )
+            completion(nil)
+        }))
     }
 
     public func getDiagnosisKeyFileURLs(

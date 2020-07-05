@@ -5,6 +5,7 @@
 
 import Foundation
 import os.log
+import Combine
 
 @available(iOS 13.5, *)
 public class GoogleExposureNotificationsDiagnosisVerificationServer: ExposureNotificationsDiagnosisVerificationProviding {
@@ -20,14 +21,26 @@ public class GoogleExposureNotificationsDiagnosisVerificationServer: ExposureNot
         self.configuration = configuration
     }
 
-    public func verifyUniqueTestIdentifier(
-        _ identifier: String,
-        completion: @escaping (Result<String, Error>) -> Void
+    public enum ServerError: Error, LocalizedError {
+
+        case serverSideError(String)
+
+        public var errorDescription: String? {
+            switch self {
+                case .serverSideError(let errorMessage):
+                    return errorMessage
+            }
+        }
+    }
+
+    public func verifyCode(
+        _ code: String,
+        completion: @escaping (Result<CodableVerifyCodeResponse, Error>) -> Void
     ) {
         os_log(
-            "Verifying unique test identifier=%@ ...",
+            "Verifying code=%@ ...",
             log: .en,
-            identifier
+            code
         )
 
         guard let url = URL(string: "\(self.configuration.apiServerBaseURLString)/api/verify") else {
@@ -35,7 +48,7 @@ public class GoogleExposureNotificationsDiagnosisVerificationServer: ExposureNot
             return
         }
 
-        let codableVerifyCodeRequest = CodableVerifyCodeRequest(code: identifier)
+        let codableVerifyCodeRequest = CodableVerifyCodeRequest(code: code)
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -52,33 +65,118 @@ public class GoogleExposureNotificationsDiagnosisVerificationServer: ExposureNot
             return
         }
 
-        URLSession.shared.uploadTask(
-            with: request,
-            from: uploadData
-        ) { (result) in
-            switch result {
+        request.httpBody = uploadData
+
+        URLSession.shared.dataTaskPublisher(for: request)
+            .tryMap { element -> Data in
+                guard let httpResponse = element.response as? HTTPURLResponse,
+                    httpResponse.statusCode == 200 else {
+                        if let errorResponse = try? JSONDecoder().decode(CodableErrorReturn.self, from: element.data) {
+                            throw ServerError.serverSideError(errorResponse.error)
+                        }
+                        throw URLError(.badServerResponse)
+                }
+                return element.data
+        }
+        .decode(type: CodableVerifyCodeResponse.self, decoder: JSONDecoder())
+        .receive(on: DispatchQueue.main)
+        .receive(subscriber: Subscribers.Sink(receiveCompletion: { (sinkCompletion) in
+            switch sinkCompletion {
                 case .failure(let error):
                     os_log(
-                        "Verifying unique test identifier=%@ failed=%@ ...",
+                        "Verifying code=%@ failed=%@",
                         log: .en,
                         type: .error,
-                        identifier,
+                        code,
                         error as CVarArg
                     )
                     completion(.failure(error))
-                    return
-
-                case .success(let (response, _)):
-                    os_log(
-                        "Verified unique test identifier=%@ response=%@",
-                        log: .en,
-                        identifier,
-                        response.description
-                    )
-                    //                    completion(.success(true))
-                    return
+                case .finished: ()
             }
-        }.resume()
+        }, receiveValue: { (value) in
+            os_log(
+                "Verified code=%@ response=%@",
+                log: .en,
+                code,
+                String(describing: value)
+            )
+            completion(.success(value))
+        }))
+    }
+
+    public func getVerificationCertificate(
+        forLongTermToken longTermToken: String,
+        hmac: String,
+        completion: @escaping (Result<CodableVerificationCertificateResponse, Error>) -> Void
+    ) {
+        os_log(
+            "Requesting verification certificate for long-term token=%@ hmac=%@ ...",
+            log: .en,
+            longTermToken,
+            hmac
+        )
+
+        guard let url = URL(string: "\(self.configuration.apiServerBaseURLString)/api/certificate") else {
+            completion(.failure(URLError(.badURL)))
+            return
+        }
+
+        let codableRequest = CodableVerificationCertificateRequest(token: longTermToken, hmac: hmac)
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(self.configuration.apiKey, forHTTPHeaderField: "X-API-Key")
+
+        var uploadData: Data!
+        do {
+            let encoder = JSONEncoder()
+            encoder.dataEncodingStrategy = .base64
+            uploadData = try encoder.encode(codableRequest)
+        } catch {
+            completion(.failure(error))
+            return
+        }
+
+        request.httpBody = uploadData
+
+        URLSession.shared.dataTaskPublisher(for: request)
+            .tryMap { element -> Data in
+                guard let httpResponse = element.response as? HTTPURLResponse,
+                    httpResponse.statusCode == 200 else {
+                        if let errorResponse = try? JSONDecoder().decode(CodableErrorReturn.self, from: element.data) {
+                            throw ServerError.serverSideError(errorResponse.error)
+                        }
+                        throw URLError(.badServerResponse)
+                }
+                return element.data
+        }
+        .decode(type: CodableVerificationCertificateResponse.self, decoder: JSONDecoder())
+        .receive(on: DispatchQueue.main)
+        .receive(subscriber: Subscribers.Sink(receiveCompletion: { (sinkCompletion) in
+            switch sinkCompletion {
+                case .failure(let error):
+                    os_log(
+                        "Requesting verification certificate for long-term token=%@ hmac=%@ failed=%@...",
+                        log: .en,
+                        type: .error,
+                        longTermToken,
+                        hmac,
+                        error as CVarArg
+                    )
+                    completion(.failure(error))
+                case .finished: ()
+            }
+        }, receiveValue: { (value) in
+            os_log(
+                "Requested verification certificate for long-term token=%@ hmac=%@ response=%@",
+                log: .en,
+                longTermToken,
+                hmac,
+                String(describing: value)
+            )
+            completion(.success(value))
+        }))
     }
 
 }

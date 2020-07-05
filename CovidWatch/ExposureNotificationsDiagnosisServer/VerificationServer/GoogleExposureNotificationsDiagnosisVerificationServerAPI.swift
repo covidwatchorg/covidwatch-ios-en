@@ -5,6 +5,10 @@
 
 import Foundation
 
+public struct CodableErrorReturn: Codable {
+    let error: String
+}
+
 public struct CodableVerifyCodeRequest: Codable {
     let code: String
 }
@@ -21,4 +25,19 @@ public struct CodableVerifyCodeResponse: Codable {
         case token
         case error
     }
+}
+
+public struct CodableVerificationCertificateRequest: Codable {
+    let token: String
+    let hmac: String
+
+    enum CodingKeys: String, CodingKey {
+        case token
+        case hmac = "ekeyhmac"
+    }
+}
+
+public struct CodableVerificationCertificateResponse: Codable {
+    let certificate: String
+    let error: String
 }

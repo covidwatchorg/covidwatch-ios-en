@@ -52,7 +52,7 @@
 	<key>CWReleaseSameDayKeys</key>
 	<true/>
 	<key>CWBypassPublicHealthAuthorityVerification</key>
-	<true/>
+	<false/>
 	<key>CWUseAZRiskScoring </key>
 	<true/>
 	<key>ITSAppUsesNonExemptEncryption</key>

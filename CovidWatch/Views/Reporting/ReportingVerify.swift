@@ -108,7 +108,7 @@ struct ReportingVerify: View {
 
                                 Spacer(minLength: .standardSpacing)
 
-                                TextField(NSLocalizedString("TEST_VERIFICATION_CODE_TITLE", comment: ""), text: $testDate)
+                                TextField(NSLocalizedString("SELECT_DATE", comment: ""), text: $testDate)
                                     .padding(.horizontal, 2 * .standardSpacing)
                                     .keyboardType(.numberPad)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -116,87 +116,144 @@ struct ReportingVerify: View {
 
                             Button(action: {
 
+                                // Bypassing public health authority verification can be done:
+                                // - on the app side, by configuring the app's info plist.
+                                // - on the key server side, by configuring its database / authorizedapp table for this particular app.
+                                let bypassPublicHealthAuthorityVerification = Bundle.main.infoDictionary?[.bypassPublicHealthAuthorityVerification] as? Bool ?? false
+
                                 self.isSubmittingDiagnosis = true
 
+                                let errorHandler: (Error) -> Void = { error in
+                                    self.isSubmittingDiagnosis = false
+                                    UIApplication.shared.topViewController?.present(
+                                        error,
+                                        animated: true,
+                                        completion: nil
+                                    )
+                                }
+
+                                if self.localStore.testResults[self.selectedTestResultIndex].verificationCode != self.verificationCode {
+                                    self.localStore.testResults[self.selectedTestResultIndex].isVerified = false
+                                }
                                 self.localStore.testResults[self.selectedTestResultIndex].verificationCode = self.verificationCode
+                                self.localStore.testResults[self.selectedTestResultIndex].isAdded = true
 
-                                let actionAfterVerification = {
+                                let actionAfterCodeVerification = {
 
+                                    // To be able to calculate the hmac for the diagnosis keys, we need to request them now.
                                     ExposureManager.shared.getDiagnosisKeys { (keys, error) in
                                         if let error = error {
-                                            self.isSubmittingDiagnosis = false
-                                            UIApplication.shared.topViewController?.present(
-                                                error,
-                                                animated: true,
-                                                completion: nil
-                                            )
+                                            errorHandler(error)
                                             return
                                         }
 
                                         guard let keys = keys, !keys.isEmpty else {
-                                            self.isSubmittingDiagnosis = false
-                                            UIApplication.shared.topViewController?.present(
-                                                ENError(.internal),
-                                                animated: true,
-                                                completion: nil
-                                            )
+                                            errorHandler(ENError(.internal))
                                             return
                                         }
 
-                                        // TODO: Set tranmission risk level for the diagnosis keys before sharing them with the server.
+                                        // TODO: Set tranmission risk level for the diagnosis keys based on questions *before* sharing them with the key server.
                                         keys.forEach { $0.transmissionRiskLevel = 6 }
 
-                                        Server.shared.postDiagnosisKeys(keys) { error in
-                                            defer {
-                                                self.isSubmittingDiagnosis = false
-                                            }
+                                        let actionAfterVerificationCertificateRequest = {
 
-                                            if let error = error {
-                                                UIApplication.shared.topViewController?.present(
-                                                    error,
-                                                    animated: true,
-                                                    completion: nil
-                                                )
-                                                return
-                                            }
+                                            // Step 8 of https://developers.google.com/android/exposure-notifications/verification-system
+                                            Server.shared.postDiagnosisKeys(
+                                                keys,
+                                                verificationPayload: self.localStore.testResults[self.selectedTestResultIndex].verificationCertificate,
+                                                hmacKey: self.localStore.testResults[self.selectedTestResultIndex].hmacKey
+                                            ) { error in
+                                                // Step 9
+                                                // Since this is the last step, ensure `isSubmittingDiagnosis` is set to false.
+                                                defer {
+                                                    self.isSubmittingDiagnosis = false
+                                                }
 
-                                            withAnimation {
-                                                self.isShowingFinish = true
+                                                if let error = error {
+                                                    errorHandler(error)
+                                                    return
+                                                }
+
+                                                self.localStore.testResults[self.selectedTestResultIndex].isShared = true
+
+                                                withAnimation {
+                                                    self.isShowingFinish = true
+                                                }
                                             }
                                         }
+
+                                        if !bypassPublicHealthAuthorityVerification {
+
+                                            do {
+                                                let hmac = try ENVerificationUtils.calculateExposureKeyHMAC(
+                                                    forTemporaryExposureKeys: keys,
+                                                    secret: self.localStore.testResults[self.selectedTestResultIndex].hmacKey
+                                                ).base64EncodedString()
+                                                guard let longTermToken = self.localStore.testResults[self.selectedTestResultIndex].longTermToken else {
+                                                    // Shouldn't get here...
+                                                    self.isSubmittingDiagnosis = false
+                                                    return
+                                                }
+                                                // Step 6 of https://developers.google.com/android/exposure-notifications/verification-system
+                                                Server.shared.getVerificationCertificate(forLongTermToken: longTermToken, hmac: hmac) { result in
+                                                    // Step 7
+                                                    switch result {
+                                                        case let .success(codableVerificationCertificateResponse):
+
+                                                            self.localStore.testResults[self.selectedTestResultIndex].verificationCertificate = codableVerificationCertificateResponse.certificate
+
+                                                            actionAfterVerificationCertificateRequest()
+
+                                                        case let .failure(error):
+                                                            // Something went wrong. Maybe the long-term token is not valid anymore?
+                                                            self.localStore.testResults[self.selectedTestResultIndex].isVerified = false
+                                                            errorHandler(error)
+                                                            return
+                                                    }
+                                                }
+
+                                            } catch {
+                                                errorHandler(error)
+                                                return
+                                            }
+                                        } else {
+                                            actionAfterVerificationCertificateRequest()
+                                        }
+
                                     }
                                 }
 
                                 if !self.localStore.testResults[self.selectedTestResultIndex].isVerified {
 
-                                    let bypassVerification = Bundle.main.infoDictionary?[.bypassPublicHealthAuthorityVerification] as? Bool ?? false
+                                    if bypassPublicHealthAuthorityVerification {
 
-                                    if bypassVerification {
-
-                                        actionAfterVerification()
+                                        actionAfterCodeVerification()
 
                                     } else {
-                                        Server.shared.verifyUniqueTestIdentifier(self.verificationCode) { result in
-                                            DispatchQueue.main.async {
-                                                switch result {
-                                                    case let .success(longTermToken):
-                                                        self.localStore.testResults[self.selectedTestResultIndex].longTermToken = longTermToken
-                                                        self.localStore.testResults[self.selectedTestResultIndex].isVerified = true
-                                                        actionAfterVerification()
-                                                    case let .failure(error):
-                                                        self.isSubmittingDiagnosis = false
-                                                        UIApplication.shared.topViewController?.present(
-                                                            error,
-                                                            animated: true,
-                                                            completion: nil
-                                                    )
-                                                }
+                                        // Step 4 of https://developers.google.com/android/exposure-notifications/verification-system
+                                        Server.shared.verifyCode(self.verificationCode) { result in
+                                            // Step 5
+                                            switch result {
+                                                case let .success(codableVerifyCodeResponse):
+
+                                                    self.localStore.testResults[self.selectedTestResultIndex].isVerified = true
+                                                    self.localStore.testResults[self.selectedTestResultIndex].longTermToken = codableVerifyCodeResponse.token
+                                                    let formatter = ISO8601DateFormatter()
+                                                    formatter.formatOptions = [.withFullDate]
+                                                    self.localStore.testResults[self.selectedTestResultIndex].dateAdministered = formatter.date(from: codableVerifyCodeResponse.testDate) ?? Date()
+                                                    self.localStore.testResults[self.selectedTestResultIndex].testType = codableVerifyCodeResponse.testType
+
+                                                    actionAfterCodeVerification()
+
+                                                case let .failure(error):
+                                                    errorHandler(error)
+                                                    return
                                             }
                                         }
                                     }
 
                                 } else {
-                                    actionAfterVerification()
+                                    actionAfterCodeVerification()
                                 }
 
                             }) {

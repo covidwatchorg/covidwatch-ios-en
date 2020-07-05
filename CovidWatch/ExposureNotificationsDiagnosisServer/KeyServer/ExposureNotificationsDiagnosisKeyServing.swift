@@ -9,6 +9,8 @@ public protocol ExposureNotificationsDiagnosisKeyServing {
 
     func postDiagnosisKeys(
         _ diagnosisKeys: [ENTemporaryExposureKey],
+        verificationPayload: String?,
+        hmacKey: Data?,
         completion: @escaping (Error?) -> Void
     )
 

@@ -7,9 +7,15 @@ import Foundation
 
 public protocol ExposureNotificationsDiagnosisVerificationProviding {
 
-    func verifyUniqueTestIdentifier(
-        _ identifier: String,
-        completion: @escaping (Result<String, Error>) -> Void
+    func verifyCode(
+        _ code: String,
+        completion: @escaping (Result<CodableVerifyCodeResponse, Error>) -> Void
+    )
+
+    func getVerificationCertificate(
+        forLongTermToken longTermToken: String,
+        hmac: String,
+        completion: @escaping (Result<CodableVerificationCertificateResponse, Error>) -> Void
     )
 
 }

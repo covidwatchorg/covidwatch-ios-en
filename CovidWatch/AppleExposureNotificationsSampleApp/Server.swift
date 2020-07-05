@@ -19,12 +19,19 @@ public class Server {
     public var keyServer: ExposureNotificationsDiagnosisKeyServing?
     public var verificationServer: ExposureNotificationsDiagnosisVerificationProviding?
 
-    func postDiagnosisKeys(_ diagnosisKeys: [ENTemporaryExposureKey], completion: @escaping (Error?) -> Void) {
+    func postDiagnosisKeys(
+        _ diagnosisKeys: [ENTemporaryExposureKey],
+        verificationPayload: String? = nil,
+        hmacKey: Data? = nil,
+        completion: @escaping (Error?
+        ) -> Void) {
 
         if let diagnosisServer = self.keyServer {
 
             diagnosisServer.postDiagnosisKeys(
                 diagnosisKeys,
+                verificationPayload: verificationPayload,
+                hmacKey: hmacKey,
                 completion: completion
             )
         } else {
@@ -86,13 +93,30 @@ public class Server {
     }
     #endif
 
-    func verifyUniqueTestIdentifier(_ identifier: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func verifyCode(_ code: String, completion: @escaping (Result<CodableVerifyCodeResponse, Error>) -> Void) {
 
         // In a real implementation, this identifer would be validated on a server
         if let verificationServer = self.verificationServer {
 
-            verificationServer.verifyUniqueTestIdentifier(
-                identifier,
+            verificationServer.verifyCode(
+                code,
+                completion: completion
+            )
+        } else {
+            completion(.failure(CocoaError(.fileNoSuchFile)))
+        }
+    }
+
+    func getVerificationCertificate(
+        forLongTermToken longTermToken: String,
+        hmac: String,
+        completion: @escaping (Result<CodableVerificationCertificateResponse, Error>) -> Void
+    ) {
+        if let verificationServer = self.verificationServer {
+
+            verificationServer.getVerificationCertificate(
+                forLongTermToken: longTermToken,
+                hmac: hmac,
                 completion: completion
             )
         } else {
