@@ -32,7 +32,10 @@ class ENVerificationUtilsTests: XCTestCase {
         key2.rollingPeriod = 144
         key2.transmissionRiskLevel = 5
 
-        let got = try? ENVerificationUtils.calculateExposureKeyHMAC(forTemporaryExposureKeys: [key1, key2], secret: secret).base64EncodedString()
+        let got = try? ENVerificationUtils.calculateExposureKeyHMAC(
+            forTemporaryExposureKeys: [key1, key2],
+            secret: secret
+        ).base64EncodedString()
         let want = "2u1nHt5WWurJytFLF3xitNzM99oNrad2y4YGOL53AeY="
         XCTAssertEqual(got, want)
     }
