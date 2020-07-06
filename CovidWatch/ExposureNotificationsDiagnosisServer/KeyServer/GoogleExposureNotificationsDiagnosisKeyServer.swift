@@ -219,12 +219,20 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
 
                 try FileManager.default.moveItem(at: url, to: savedURL)
 
-                let unzipDestinationDirectory = cachesDirectoryURL.appendingPathComponent(UUID().uuidString)
+                let uuidString = UUID().uuidString
+                let unzipDestinationDirectory = cachesDirectoryURL.appendingPathComponent(uuidString)
                 try FileManager.default.createDirectory(at: unzipDestinationDirectory, withIntermediateDirectories: true, attributes: nil)
                 try FileManager.default.unzipItem(at: savedURL, to: unzipDestinationDirectory)
                 try FileManager.default.removeItem(at: savedURL)
                 let zipFileContentURLs = try FileManager.default.contentsOfDirectory(at: unzipDestinationDirectory, includingPropertiesForKeys: nil)
-                let result = zipFileContentURLs
+                var uniqueNameZipFileContentURLs = [URL]()
+                for url in zipFileContentURLs {
+                    let newUrlLastPathComponent = uuidString + "-" + url.lastPathComponent
+                    let newUrl = unzipDestinationDirectory.appendingPathComponent(newUrlLastPathComponent)
+                    try FileManager.default.moveItem(at: url, to: newUrl)
+                    uniqueNameZipFileContentURLs.append(newUrl)
+                }
+                let result = uniqueNameZipFileContentURLs
 
                 os_log(
                     "Downloaded diagnosis key file at remote URL=%@ to local URL count=%d",
