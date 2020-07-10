@@ -8,7 +8,7 @@ import ExposureNotification
 
 @available(iOS 13.5, *)
 extension ENExposureConfiguration {
-    
+
     convenience init(
         _ codableExposureConfiguration: CodableExposureConfiguration
     ) {

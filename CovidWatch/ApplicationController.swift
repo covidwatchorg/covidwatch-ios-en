@@ -11,30 +11,30 @@ import SwiftUI
 import ZIPFoundation
 
 class ApplicationController: NSObject {
-    
+
     static let shared = ApplicationController()
-    
+
     var userNotificationsObserver: NSObjectProtocol?
-    var exposureNotificationEnabledObservation: NSKeyValueObservation? = nil
-    var exposureNotificationStatusObservation: NSKeyValueObservation? = nil
-    
+    var exposureNotificationEnabledObservation: NSKeyValueObservation?
+    var exposureNotificationStatusObservation: NSKeyValueObservation?
+
     override init() {
         super.init()
-        
+
         if UserData.shared.firstRun {
             UserData.shared.firstRun = false
         }
-        
+
         self.configureExposureNotificationStatusObserver()
         self.configureExposureNotificationEnabledObserver()
         self.configureUserNotificationStatusObserver()
     }
-    
+
     func configureExposureNotificationStatusObserver() {
         self.exposureNotificationStatusObservation = ExposureManager.shared.manager.observe(
             \.exposureNotificationStatus, options: [.initial, .new]
-        ) { (_, change) in
-            
+        ) { (_, _) in
+
             DispatchQueue.main.async {
                 withAnimation {
                     if self.checkENManagerAuthorizationStatus() {
@@ -44,12 +44,12 @@ class ApplicationController: NSObject {
             }
         }
     }
-    
+
     func configureExposureNotificationEnabledObserver() {
         self.exposureNotificationEnabledObservation = ExposureManager.shared.manager.observe(
             \.exposureNotificationEnabled, options: [.initial, .new]
-        ) { (_, change) in
-            
+        ) { (_, _) in
+
             DispatchQueue.main.async {
                 withAnimation {
                     if self.checkENManagerAuthorizationStatus() {
@@ -60,7 +60,7 @@ class ApplicationController: NSObject {
             }
         }
     }
-    
+
     func checkENManagerAuthorizationStatus() -> Bool {
         switch ENManager.authorizationStatus {
             case .restricted:
@@ -76,21 +76,21 @@ class ApplicationController: NSObject {
         }
         return true
     }
-    
+
     func configureUserNotificationStatusObserver() {
         self.userNotificationsObserver = NotificationCenter.default.addObserver(
             forName: UIApplication.didBecomeActiveNotification,
             object: nil, queue: .main
         ) { [weak self] _ in
-            
+
             self?.checkNotificationPersmission()
         }
     }
-    
+
     func checkNotificationPersmission() {
         UNUserNotificationCenter.current().getNotificationSettings(
             completionHandler: { (settings) in
-                
+
                 DispatchQueue.main.async {
                     withAnimation {
                         UserData.shared.notificationsAuthorizationStatus =
@@ -99,7 +99,7 @@ class ApplicationController: NSObject {
                 }
         })
     }
-    
+
     func openSettings() {
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString),
             UIApplication.shared.canOpenURL(settingsUrl) else {
@@ -107,7 +107,7 @@ class ApplicationController: NSObject {
         }
         UIApplication.shared.open(settingsUrl, completionHandler: nil)
     }
-    
+
     func handleExposureNotificationEnabled(error: Error) {
         let nsError = error as NSError
         if nsError.domain == ENErrorDomain, nsError.code == ENError.notAuthorized.rawValue {
@@ -124,13 +124,12 @@ class ApplicationController: NSObject {
             alertController.addAction(UIAlertAction(
                 title: NSLocalizedString("SETTINGS", comment: ""),
                 style: .default,
-                handler: { (action) in
+                handler: { (_) in
                     ApplicationController.shared.openSettings()
                 })
             )
             UIApplication.shared.topViewController?.present(alertController, animated: true)
-        }
-        else {
+        } else {
             UIApplication.shared.topViewController?.present(
                 error,
                 animated: true,
@@ -138,21 +137,21 @@ class ApplicationController: NSObject {
             )
         }
     }
-    
-    @objc func shareApp() {
+
+    @objc func handleTapShareApp() {
         let text = NSLocalizedString("SHARE_THE_APP_SHEET_MESSAGE", comment: "")
         let url = URL(string: "https://www.covidwatch.org")
-        
+
         let itemsToShare: [Any] = [text, url as Any]
         let activityViewController = UIActivityViewController(
             activityItems: itemsToShare,
             applicationActivities: nil
         )
-        
+
         // so that iPads won't crash
         activityViewController.popoverPresentationController?.sourceView =
             UIApplication.shared.topViewController?.view
-        
+
         // present the view controller
         UIApplication.shared.topViewController?.present(
             activityViewController,
@@ -160,11 +159,5 @@ class ApplicationController: NSObject {
             completion: nil
         )
     }
-    
-    public func handleTapShareAPositiveDiagnosisButton() {
-        #if DEBUG_CALIBRATION
-        self.handleTapCalibrationShareAPositiveDiagnosisButton()        
-        #endif
-    }
-    
+
 }

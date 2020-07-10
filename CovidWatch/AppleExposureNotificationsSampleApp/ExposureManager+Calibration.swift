@@ -1,6 +1,6 @@
 //
 //  Created by Zsombor Szabo on 24/06/2020.
-//  Copyright © 2020 Covid Watch. All rights reserved.
+//  
 //
 
 import Foundation
@@ -11,25 +11,25 @@ import UIKit
 
 #if DEBUG_CALIBRATION
 extension ExposureManager {
-        
+
     private static let goDeeperQueue = DispatchQueue(label: "com.ninjamonkeycoders.gaen.goDeeper", attributes: .concurrent)
-    
+
     func calibrationDetectExposures(importURLs: [URL] = [], notifyUserOnError: Bool = false, completionHandler: ((Bool) -> Void)? = nil) -> Progress {
         let progress = Progress()
-        
+
         // Disallow concurrent exposure detection, because if allowed we might try to detect the same diagnosis keys more than once
         guard !detectingExposures else {
             completionHandler?(false)
             return progress
         }
         detectingExposures = true
-        
+
         var localURLs = importURLs
         let nextDiagnosisKeyFileIndex = LocalStore.shared.nextDiagnosisKeyFileIndex
-        
+
         func finish(_ result: Result<Int, Error>) {
             try? Server.shared.deleteDiagnosisKeyFile(at: localURLs)
-            
+
             let success: Bool
             if progress.isCancelled {
                 success = false
@@ -47,12 +47,11 @@ extension ExposureManager {
                     }
                 }
             }
-            
+
             self.detectingExposures = false
             completionHandler?(success)
         }
-        
-        
+
         let actionAfterHasLocalURLs = {
             Server.shared.getExposureConfigurationList { result in
                 switch result {
@@ -60,7 +59,7 @@ extension ExposureManager {
                     finish(.failure(error))
                 case let .success(configurationList):
                     let semaphore = DispatchSemaphore(value: 0)
-                    for configuration in configurationList{
+                    for configuration in configurationList {
                     ExposureManager.shared.manager.detectExposures(configuration: configuration, diagnosisKeyURLs: localURLs) { summary, error in
                             if let error = error {
                                 finish(.failure(error))
@@ -74,28 +73,20 @@ extension ExposureManager {
                                         semaphore.signal()
                                         return
                                     }
-                                let scorer = AZExposureRiskScorer()
                                 let newExposures: [Exposure] = exposures!.map { exposure in
-    //                                var totalRiskScore = Double(exposure.totalRiskScore) * 8.0 / 255.0 // Map score between 0 and 8
-    //                                if let totalRiskScoreFullRange = exposure.metadata?["totalRiskScoreFullRange"] as? Double {
-    //                                    totalRiskScore = totalRiskScoreFullRange * 8.0 / 4096 // Map score between 0 and 8
-    //                                }
-                                    let recomputedTotalRiskScore = scorer.computeRiskScore(
-                                        forAttenuationDurations: exposure.attenuationDurations,
-                                        transmissionRiskLevel: exposure.transmissionRiskLevel
-                                    )
+                                    var totalRiskScore: ENRiskScore = ENRiskScore(exposure.totalRiskScoreFullRange * 8.0 / pow(8, 4))
+                                    if let riskScorer = self.riskScorer {
+                                        totalRiskScore = riskScorer.computeRiskScore(forExposure: exposure)
+                                    }
                                     let e = Exposure(
                                         attenuationDurations: exposure.attenuationDurations.map({ $0.doubleValue }),
                                         attenuationValue: exposure.attenuationValue,
                                         date: exposure.date,
                                         duration: exposure.duration,
-    //                                    totalRiskScore: ENRiskScore(totalRiskScore.rounded()),
-    //                                    totalRiskScoreFullRange: (exposure.metadata?["totalRiskScoreFullRange"] as? Int) ?? Int(totalRiskScore.rounded()),
-                                        totalRiskScore: recomputedTotalRiskScore,
-                                        totalRiskScoreFullRange: Int(recomputedTotalRiskScore),
+                                        totalRiskScore: totalRiskScore,
                                         transmissionRiskLevel: exposure.transmissionRiskLevel,
-                                        attenuationDurationThresholds: configuration.value(forKey: "attenuationDurationThresholds") as! [Int],
-                                        timeDetected : Date()
+                                        attenuationDurationThresholds: configuration.value(forKey: "attenuationDurationThresholds") as? [Int] ?? [],
+                                        timeDetected: Date()
                                     )
                                     return e
                                 }
@@ -104,8 +95,7 @@ extension ExposureManager {
                                     log: .en,
                                     exposures!.count
                                 )
-                                //TODO: add check on progress.isCancelled here
-                                self.updateSavedExposures(newExposures : newExposures)
+                                self.updateSavedExposures(newExposures: newExposures)
                                 semaphore.signal()
                             }
                         }
@@ -115,14 +105,14 @@ extension ExposureManager {
                 }
             }
         }
-        
+
         ExposureManager.goDeeperQueue.async {
             if localURLs.isEmpty {
-                Server.shared.getDiagnosisKeyFileURLs(startingAt: nextDiagnosisKeyFileIndex) { result in
-                    
+                Server.shared.getDiagnosisKeyFileURLs { result in
+
                     let dispatchGroup = DispatchGroup()
                     var localURLResults = [Result<[URL], Error>]()
-                    
+
                     switch result {
                     case let .success(remoteURLs):
                         for remoteURL in remoteURLs {
@@ -132,7 +122,7 @@ extension ExposureManager {
                                 dispatchGroup.leave()
                             }
                         }
-                        
+
                     case let .failure(error):
                         finish(.failure(error))
                     }
@@ -146,16 +136,14 @@ extension ExposureManager {
                                 return
                             }
                         }
-                        
+
                         actionAfterHasLocalURLs()
                     }
                 }
-            }
-            else {
+            } else {
                 actionAfterHasLocalURLs()
             }
-            
-            
+
         }
         return progress
     }

@@ -7,19 +7,19 @@ import SwiftUI
 
 struct HowItWorks3: View {
     var body: some View {
-        
+
         ScrollView(.vertical, showsIndicators: false) {
-            
+
             VStack(spacing: 0) {
-                
+
                 Spacer(minLength: .headerHeight)
-                
+
                 HowItWorksTitleText(text: Text(verbatim: NSLocalizedString("HOW_IT_WORKS_TITLE", comment: "").uppercased()))
-                
+
                 HowItWorksSubtitleText(text: Text("HOW_IT_WORKS_3_SUBTITLE"))
-                
+
                 Spacer(minLength: .standardSpacing)
-                
+
                 Image("How it Works 3")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -27,9 +27,9 @@ struct HowItWorks3: View {
                     .padding(.horizontal, 2 * .standardSpacing)
 
                 Spacer(minLength: .standardSpacing)
-                
+
                 HowItWorksMessageText(text: Text("HOW_IT_WORKS_3_MESSAGE"))
-                
+
                 Spacer(minLength: 3 * .standardSpacing)
             }
         }

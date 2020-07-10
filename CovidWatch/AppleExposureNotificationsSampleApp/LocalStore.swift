@@ -14,26 +14,29 @@ public struct Exposure: Codable {
     let date: Date
     let duration: TimeInterval
     let totalRiskScore: ENRiskScore
-    let totalRiskScoreFullRange: Int
     let transmissionRiskLevel: ENRiskLevel
     #if DEBUG_CALIBRATION
     let attenuationDurationThresholds: [Int]
     let timeDetected: Date
-    #endif    
+    #endif
 }
 
 public struct TestResult: Codable {
-    public var id: UUID                // A unique identifier for this test result
-    public var isAdded: Bool           // Whether the user completed the add positive diagnosis flow for this test result
-    public var dateAdministered: Date  // The date the test was administered
-    public var isShared: Bool          // Whether diagnosis keys were shared with the Health Authority for the purpose of notifying others
-    public var verificationCode: String
-    public var isVerified: Bool
+    public var id = UUID()                // A unique identifier for this test result used internally
+    public var isAdded = false            // Whether the user completed the add positive diagnosis flow for this test result
+    public var dateAdministered = Date()  // The date the test was administered
+    public var isShared = false           // Whether diagnosis keys were shared with the Health Authority for the purpose of notifying others
+    public var isVerified = false         // Whether the diagnosis was verified by the Health Authority for the purpose of notifying others
+    public var verificationCode: String?  // The 8-digit verification code issued by the Verification Server
+    public var longTermToken: String?     // The 24h long-term token issued by the Verification Server
+    public var testType: String?          // The test type. Can be `confirmed`, `negative`, `likely`
+    public var hmacKey: Data = Data.random(count: 16) // The secret key used for hmac calculation of the diagnosis keys
+    public var verificationCertificate: String? // The verification certificate issued by the Verification Server
 }
 
 @propertyWrapper
 public class Persisted<Value: Codable> {
-    
+
     init(userDefaultsKey: String, notificationName: Notification.Name, defaultValue: Value) {
         self.userDefaultsKey = userDefaultsKey
         self.notificationName = notificationName
@@ -47,19 +50,19 @@ public class Persisted<Value: Codable> {
             wrappedValue = defaultValue
         }
     }
-    
+
     let userDefaultsKey: String
     let notificationName: Notification.Name
-    
+
     public var wrappedValue: Value {
         didSet {
-            UserDefaults.standard.set(try! JSONEncoder().encode(wrappedValue), forKey: userDefaultsKey)
+            UserDefaults.standard.set(try? JSONEncoder().encode(wrappedValue), forKey: userDefaultsKey)
             NotificationCenter.default.post(name: notificationName, object: nil)
         }
     }
-    
+
     public var projectedValue: Persisted<Value> { self }
-    
+
     func addObserver(using block: @escaping () -> Void) -> NSObjectProtocol {
         return NotificationCenter.default.addObserver(forName: notificationName, object: nil, queue: nil) { _ in
             block()
@@ -67,41 +70,41 @@ public class Persisted<Value: Codable> {
     }
 }
 public class LocalStore: ObservableObject {
-    
+
     public static let shared = LocalStore()
-    
+
     @Persisted(userDefaultsKey: "isOnboarded", notificationName: .init("LocalStoreIsOnboardedDidChange"), defaultValue: false)
     public var isOnboarded: Bool {
         willSet { objectWillChange.send() }
     }
-    
-    @Persisted(userDefaultsKey: "nextDiagnosisKeyFileIndex", notificationName: .init("LocalStoreNextDiagnosisKeyFileIndexDidChange"), defaultValue: 0)
-    public var nextDiagnosisKeyFileIndex: Int {
+
+    @Persisted(userDefaultsKey: "previousDiagnosisKeyFileURLs", notificationName: .init("LocalStorePreviousDiagnosisKeyFileURLsDidChange"), defaultValue: [])
+    public var previousDiagnosisKeyFileURLs: [URL] {
         willSet { objectWillChange.send() }
     }
-    
+
     @Persisted(userDefaultsKey: "exposures", notificationName: .init("LocalStoreExposuresDidChange"), defaultValue: [])
     public var exposures: [Exposure] {
         willSet { objectWillChange.send() }
     }
-    
+
     @Persisted(userDefaultsKey: "dateLastPerformedExposureDetection",
                notificationName: .init("LocalStoreDateLastPerformedExposureDetectionDidChange"), defaultValue: nil)
     public var dateLastPerformedExposureDetection: Date? {
         willSet { objectWillChange.send() }
     }
-    
+
     @Persisted(userDefaultsKey: "exposureDetectionErrorLocalizedDescription", notificationName:
         .init("LocalStoreExposureDetectionErrorLocalizedDescriptionDidChange"), defaultValue: nil)
     public var exposureDetectionErrorLocalizedDescription: String? {
         willSet { objectWillChange.send() }
     }
-    
+
     @Persisted(userDefaultsKey: "testResults", notificationName: .init("LocalStoreTestResultsDidChange"), defaultValue: [])
     public var testResults: [TestResult] {
         willSet { objectWillChange.send() }
     }
-    
+
     #if DEBUG_CALIBRATION
     static let exposureConfigurationDefault: String =
     """
@@ -125,10 +128,10 @@ public class LocalStore: ObservableObject {
     "transmissionRiskLevelValues":[1, 2, 3, 4, 5, 6, 7, 8]}
     """
     #endif
-    
+
     @Persisted(userDefaultsKey: "exposureConfiguration", notificationName: .init("LocalStoreExposureConfigurationDidChange"), defaultValue:exposureConfigurationDefault)
     public var exposureConfiguration: String {
         willSet { objectWillChange.send() }
     }
-    
+
 }

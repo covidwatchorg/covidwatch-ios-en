@@ -12,6 +12,6 @@ struct MenuTitleText: ViewModifier {
             .foregroundColor(Color("Title Text Color"))
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.top, 22)
-            .padding(.bottom, 16)            
+            .padding(.bottom, 16)
     }
 }

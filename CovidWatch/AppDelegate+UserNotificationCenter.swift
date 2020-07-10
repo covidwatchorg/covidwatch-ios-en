@@ -6,24 +6,24 @@ import UserNotifications
 import UIKit
 import os.log
 
-extension UNNotificationCategory {    
+extension UNNotificationCategory {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
-    
+
     // MARK: User Notification Center
-    
+
     func configureCurrentUserNotificationCenter() {
         let center = UNUserNotificationCenter.current()
         center.delegate = self
     }
-    
+
     private func addToCurrentUserNotificationCenterNotificationRequest(
         _ notificationRequest: UNNotificationRequest
     ) {
         UNUserNotificationCenter.current().getNotificationSettings(
             completionHandler: { (settings) in
-                
+
                 guard settings.authorizationStatus == .authorized ||
                     settings.authorizationStatus == .provisional else {
                         return
@@ -41,7 +41,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                 )
         })
     }
-    
+
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         willPresent notification: UNNotification,
@@ -49,7 +49,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     ) {
         completionHandler([.alert, .sound])
     }
-    
+
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse,
@@ -57,16 +57,16 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     ) {
         completionHandler()
     }
-    
+
     func requestUserNotificationAuthorization(provisional: Bool = true) {
         let options: UNAuthorizationOptions = provisional ?
             [.alert, .sound, .badge, .providesAppNotificationSettings, .provisional] :
             [.alert, .sound, .badge, .providesAppNotificationSettings]
-        
+
         UNUserNotificationCenter.current().requestAuthorization(
             options: options,
-            completionHandler: { (granted, error) in
-                
+            completionHandler: { (_, error) in
+
                 DispatchQueue.main.async {
                     if let error = error {
                         UIApplication.shared.topViewController?.present(error, animated: true)
@@ -75,7 +75,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                 }
         })
     }
-    
+
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         openSettingsFor notification: UNNotification?

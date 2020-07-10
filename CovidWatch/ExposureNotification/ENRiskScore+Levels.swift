@@ -1,16 +1,16 @@
 //
 //  Created by Zsombor Szabo on 08/06/2020.
-//  Copyright © 2020 Covid Watch. All rights reserved.
+//  
 //
 
 import ExposureNotification
 
 extension ENRiskScore {
-    
+
     public enum Level {
         case low, medium, high
     }
-    
+
     var level: Level {
         switch self {
             case 0...2:

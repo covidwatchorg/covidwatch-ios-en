@@ -6,24 +6,23 @@
 import SwiftUI
 
 struct Setup: View {
-    
+
     @EnvironmentObject var userData: UserData
-    
+
     var body: some View {
-        
+
         ZStack(alignment: .top) {
-            
+
             if !userData.isExposureNotificationSetup {
                 Setup1().transition(.slide)
             } else {
                 if !userData.isUserNotificationsSetup {
                     Setup2().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
-                }
-                else {
+                } else {
                     Setup3().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                 }
             }
-            
+
             HeaderBar(showMenu: false)
         }
     }

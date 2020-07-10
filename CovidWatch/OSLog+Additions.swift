@@ -6,9 +6,12 @@ import Foundation
 import os.log
 
 extension OSLog {
-    
-    public static let app = OSLog(subsystem: "org.covidwatch", category: "App")
-    
+
+    public static let app = OSLog(
+        subsystem: "org.covidwatch",
+        category: "App"
+    )
+
     public static let en = OSLog(
         subsystem: "org.covidwatch",
         category: "EN"

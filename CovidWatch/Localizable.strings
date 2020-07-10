@@ -212,16 +212,16 @@ All strings for the project, separated for localization.
 "EXPOSURE_CONFIGURATION_JSON_TITLE" = "Exposure Configuration JSON";
 
 /* Title */
-"DEMO_RESET_POSSIBLE_EXPOSURES_TITLE" = "[DEMO] Reset Possible Exposures";
+"DEMO_RESET_POSSIBLE_EXPOSURES_TITLE" = "Reset Possible Exposures";
 
 /* Title */
-"DEMO_DETECT_EXPOSURES_FROM_SERVER_TITLE" = "[DEMO] Detect Exposures from Server";
+"DEMO_DETECT_EXPOSURES_FROM_SERVER_TITLE" = "Detect Exposures from Server";
 
 /* Title */
-"DEMO_SET_EXPOSURE_CONFIGURATION_JSON_TITLE" = "[DEMO] Set Exposure Configuration JSON";
+"DEMO_SET_EXPOSURE_CONFIGURATION_JSON_TITLE" = "Set Exposure Configuration JSON";
 
 /* Title */
-"DEMO_EXPORT_POSSIBLE_EXPOSURES_TITLE" = "[DEMO] Export Possible Exposures";
+"DEMO_EXPORT_POSSIBLE_EXPOSURES_TITLE" = "Export Possible Exposures";
 
 /* Title */
 "POSSIBLE_EXPOSURES_TITLE" = "Possible Exposures";
@@ -381,6 +381,27 @@ All strings for the project, separated for localization.
 
 /* Button */
 "SHARE_A_POSITIVE_DIAGNOSIS" = "Share a Positive Diagnosis";
+
+/* Title */
+"REPORTING_VERIFY_TITLE" = "Anonymously Share a Positive Diagnosis";
+
+/* Message */
+"REPORTING_VERIFY_MESSAGE" = "To share a positive diagnosis, enter your Test Verification Code below.";
+
+/* Button */
+"REPORTING_VERIFY_NOTIFY_OTHERS" = "Anonymously Notify Others";
+
+/* Title */
+"TEST_VERIFICATION_CODE_TITLE" = "Test Verification Code";
+
+/* Message */
+"SYMPTOMS_START_DATE_QUESTION" = "When did your symptoms start?";
+
+/* Message */
+"TEST_DATE_QUESTION" = "When did you get tested?";
+
+/* Title */
+"SELECT_DATE" = "Select Date";
 
 // # GENERIC
 
