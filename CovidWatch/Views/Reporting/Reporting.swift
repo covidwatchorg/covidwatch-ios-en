@@ -72,9 +72,10 @@ struct Reporting: View {
                             .environmentObject(self.localStore)
                     }
 
-                    Image("Notify Others Footer")
-                        .accessibility(hidden: true)
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
+                   Spacer(minLength: 1.75 * .headerHeight)
+                                      Image("Notify Others Footer")
+                                          .accessibility(hidden: true)
+                                          .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
 
 //                    Image("Doctors Security")
 //                        .accessibility(hidden: true)
