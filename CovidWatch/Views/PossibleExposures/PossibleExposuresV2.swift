@@ -195,6 +195,7 @@ struct PossibleExposureRow: View {
                     }) {
                         Image("down")
                             .padding(.horizontal, .standardSpacing)
+                            .foregroundColor(.black)
                     }
                 }
                 if self.isOpen {
