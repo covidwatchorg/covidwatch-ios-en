@@ -427,6 +427,7 @@
 		2DD7B49A245F66F2001B30F0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B499245F66F2001B30F0 /* Constants.swift */; };
 		2DFEED072476AD4200D2C620 /* Data+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFEED062476AD4200D2C620 /* Data+Random.swift */; };
 		2DFEED0A2476BD0400D2C620 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 2DFEED092476BD0400D2C620 /* ZIPFoundation */; };
+		E14EB0C024B968B1005388F3 /* PossibleExposuresV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14EB0BF24B968B1005388F3 /* PossibleExposuresV2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -571,6 +572,7 @@
 		2DD7B499245F66F2001B30F0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2DFEED05247695CA00D2C620 /* Dev.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Dev.entitlements; sourceTree = "<group>"; };
 		2DFEED062476AD4200D2C620 /* Data+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Random.swift"; sourceTree = "<group>"; };
+		E14EB0BF24B968B1005388F3 /* PossibleExposuresV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleExposuresV2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -733,6 +735,7 @@
 			isa = PBXGroup;
 			children = (
 				2D46AA5E2465E69E0003936C /* PossibleExposures.swift */,
+				E14EB0BF24B968B1005388F3 /* PossibleExposuresV2.swift */,
 				2D79429724671F28008AF148 /* PossibleExposureRow.swift */,
 				2D79429B2467DB49008AF148 /* PossibleExposure.swift */,
 				2D79429D2467E34D008AF148 /* PossibleExposureTable.swift */,
@@ -1656,6 +1659,7 @@
 				2D9E6B2D2456E9A800150D1C /* AppDelegate+UserNotificationCenter.swift in Sources */,
 				2D79429E2467E34D008AF148 /* PossibleExposureTable.swift in Sources */,
 				2D46AA5A2465E1240003936C /* LocalStore.swift in Sources */,
+				E14EB0C024B968B1005388F3 /* PossibleExposuresV2.swift in Sources */,
 				2D9034BA24603E1A00351C3C /* HowItWorks3.swift in Sources */,
 				2D743E93248542FE00AA4D26 /* PossibleExposureTableColumnB.swift in Sources */,
 				2D26096424ADDBBA009CDBCE /* CovidWatchGoogleExposureNotificationsDiagnosisVerificationServerConfiguration.swift in Sources */,
@@ -2029,10 +2033,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/Dev.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 97;
-				DEVELOPMENT_TEAM = GD7NMG67S7;
+				DEVELOPMENT_TEAM = MC27HKM86M;
 				INFOPLIST_FILE = "CovidWatch/Dev-Info.plist";
 				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -2043,7 +2047,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.ios.california;
 				PRODUCT_MODULE_NAME = CovidWatch;
 				PRODUCT_NAME = "Covid Watch";
-				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch iOS California Dev";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2055,10 +2059,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/Dev.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 97;
-				DEVELOPMENT_TEAM = GD7NMG67S7;
+				DEVELOPMENT_TEAM = MC27HKM86M;
 				INFOPLIST_FILE = "CovidWatch/Dev-Info.plist";
 				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -2069,7 +2073,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.ios.california;
 				PRODUCT_MODULE_NAME = CovidWatch;
 				PRODUCT_NAME = "Covid Watch";
-				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch iOS California Dev";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
