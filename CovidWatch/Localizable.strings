@@ -9,7 +9,19 @@ All strings for the project, separated for localization.
 "SPLASH_MESSAGE" = "The power to stop COVID-19 in the palm of your hand.";
 
 /* Title */
+"COVID_WATCH_LOGO_STACKED_IMAGE_ACCESSIBILITY_LABEL" = "Cool-looking Covid Watch Logo";
+
+/* Title */
 "GENERIC_PUBLIC_HEALTH_DEPARTMENT_IMAGE_ACCESSIBILITY_LABEL" = "Public Health Authority";
+
+/* Title */
+"SELECT_REGION" = "Select Region";
+
+/* Button */
+"CONTINUE" = "Continue";
+
+/* Button */
+"BACK" = "Back";
 
 /* Title */
 "SPLASH_IMAGE_ACCESSIBILITY_LABEL" = "People Network";

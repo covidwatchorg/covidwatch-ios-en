@@ -8,5 +8,10 @@ import Foundation
 public struct CodableRegion: Codable {
 
     let name: String
+    var logoTypeImageName: String = ""
+    var logoImageName: String = ""
 
+    enum CodingKeys: String, CodingKey {
+        case name
+    }
 }
