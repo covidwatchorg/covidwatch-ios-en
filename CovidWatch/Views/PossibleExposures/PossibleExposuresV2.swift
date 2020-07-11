@@ -13,8 +13,17 @@ struct Test2: View {
     @State var isOpened: [Bool] = [false]
     @State var isToggled = false
     @State var hasLoaded = false
+    @EnvironmentObject var userData: UserData
+    @EnvironmentObject var localStore: LocalStore
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.doesRelativeDateFormatting = true
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        return dateFormatter
+    }()
     // swiftlint:disable:next line_length
-    @State private var exposures = [Exposure(attenuationDurations: [1], attenuationValue: 0, date: Date(), duration: 15, totalRiskScore: 1, transmissionRiskLevel: 1, attenuationDurationThresholds: [1, 2], timeDetected: Date()), Exposure(attenuationDurations: [10], attenuationValue: 10, date: Date(), duration: 15, totalRiskScore: 8, transmissionRiskLevel: 10, attenuationDurationThresholds: [1, 2], timeDetected: Date()), Exposure(attenuationDurations: [10], attenuationValue: 10, date: Date(), duration: 15, totalRiskScore: 5, transmissionRiskLevel: 5,attenuationDurationThresholds: [1, 2], timeDetected: Date())]
+    @State private var exposures = [Exposure(attenuationDurations: [1], attenuationValue: 0, date: Date(), duration: 15, totalRiskScore: 1, transmissionRiskLevel: 1, attenuationDurationThresholds: [1, 2], timeDetected: Date()), Exposure(attenuationDurations: [10], attenuationValue: 10, date: Date(), duration: 15, totalRiskScore: 8, transmissionRiskLevel: 10, attenuationDurationThresholds: [1, 2], timeDetected: Date()), Exposure(attenuationDurations: [10], attenuationValue: 10, date: Date(), duration: 15, totalRiskScore: 5, transmissionRiskLevel: 5, attenuationDurationThresholds: [1, 2], timeDetected: Date())]
     @State private var selectedExposure: Exposure?
     let durationFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
@@ -35,7 +44,6 @@ struct Test2: View {
     }
     var body: some View {
         ZStack(alignment: .top) {
-            
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
                     Text("Possible Exposures")
@@ -63,11 +71,20 @@ struct Test2: View {
                     ZStack(alignment: .center) {
                         Color("Last Checked Header Color")
                             .frame(height: .headerHeight)
-                        Text("Last checked: July 9, 2020 at 5:00pm")
+                        if self.localStore.dateLastPerformedExposureDetection == nil {
+                            Text("Has not recently checked for exposure")
+                            .font(.custom("Montserrat-Bold", size: 14))
+                                                       .foregroundColor(Color(.white))
+                                                       .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+                                                       .padding(.horizontal, .standardSpacing)
+                        } else {
+                            // swiftlint:disable:next line_length
+                        Text("Last checked: " + String(self.dateFormatter.string(from: self.localStore.dateLastPerformedExposureDetection ?? Date())))
                             .font(.custom("Montserrat-Bold", size: 14))
                             .foregroundColor(Color(.white))
                             .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
                             .padding(.horizontal, .standardSpacing)
+                    }
                     }
                     .edgesIgnoringSafeArea(.horizontal)
                     .onAppear() {
@@ -82,18 +99,19 @@ struct Test2: View {
                         }
                     }
                 }
+                ZStack {
+                             Color(.white)
+                                 .frame(height: .headerHeight, alignment: .bottom)
+                                 .edgesIgnoringSafeArea(.bottom)
+                     // swiftlint:disable:next line_length
+                             Text("Each exposure notification is saved in this app and will be automatically deleted after 30 days.")
+                                 .font(.custom("Montserrat-Regular", size: 13))
+                                 .multilineTextAlignment(.center)
+                                 .foregroundColor(Color(.black))
+                                 .frame(maxWidth: .infinity, minHeight: 44, alignment: .center)
+                                 .padding(.horizontal, .standardSpacing)
+                         }
             }  .padding(.top, .standardSpacing)
-            ZStack {
-                Color(.white)
-                    .frame(height: .headerHeight, alignment: .bottom)
-                    .edgesIgnoringSafeArea(.bottom)
-                Text("Each exposure notification is saved in this app and will be automatically deleted after 30 days.")
-                    .font(.custom("Montserrat-Regular", size: 13))
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(Color(.black))
-                    .frame(maxWidth: .infinity, minHeight: 44, alignment: .center)
-                    .padding(.horizontal, .standardSpacing)
-            }.padding(.top, 7.5 * .headerHeight)
         }
     }
     func buttonAction(index: Int) {
@@ -102,6 +120,7 @@ struct Test2: View {
             print(index)
         }
     }
+
 }
 struct PossibleExposureRow: View {
     @EnvironmentObject var row: Row
@@ -129,6 +148,8 @@ struct PossibleExposureRow: View {
     }
     var body: some View {
         ZStack {
+            Color(.white)
+                .frame(height: .headerHeight / 1.5)
             VStack {
                 HStack {
                     HStack(spacing: 0) {
@@ -193,7 +214,6 @@ struct PossibleExposureRow: View {
                                         .font(.custom("Montserrat-Regular", size: 13))
                                         .foregroundColor(Color(.black))
                                 }
-                                
                             }  .frame(maxWidth: .infinity, minHeight: 20, alignment: .leading)
                                 .padding(.horizontal, .standardSpacing)
                             HStack {
@@ -216,7 +236,6 @@ struct PossibleExposureRow: View {
                                     Text("Transmission Risk Level:")
                                         .font(.custom("Montserrat-Medium", size: 13))
                                         .frame(alignment: .leading)
-                                    // swiftlint:disable:next line_length
                                     Text(String(row.exposure[rowNumber].transmissionRiskLevel))
                                         .frame(alignment: .leading)
                                         .font(.custom("Montserrat-Regular", size: 13))
