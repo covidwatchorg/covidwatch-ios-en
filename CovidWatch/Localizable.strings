@@ -69,7 +69,7 @@ All strings for the project, separated for localization.
 "WELCOME_TITLE" = "Welcome to the";
 
 /* Title */
-"WELCOME_APP_NAME" = "University of Arizona COVID-19 Exposure Notification App";
+"WELCOME_APP_NAME" = "COVID-19 Exposure Notification App";
 
 /* Message */
 "WELCOME_MESSAGE" = "Support the path back to campus and help prevent the spread of COVID-19 with safe, secure, and anonymous exposure notifications.";
@@ -77,7 +77,7 @@ All strings for the project, separated for localization.
 // ## HOW IT WORKS 1
 
 /* Title */
-"HOW_IT_WORKS_1_SUBTITLE" = "Stay Anonymous";
+"HOW_IT_WORKS_1_SUBTITLE" = "Always Anonymous";
 
 /* Title */
 "HOW_IT_WORKS_1_IMAGE_ACCESSIBILITY_LABEL" = "Sam and Jane Chat";
@@ -88,13 +88,13 @@ All strings for the project, separated for localization.
 // ## HOW IT WORKS 2
 
 /* Title */
-"HOW_IT_WORKS_2_SUBTITLE" = "Volunteer Diagnosis";
+"HOW_IT_WORKS_2_SUBTITLE" = "Notify Others";
 
 /* Title */
 "HOW_IT_WORKS_2_IMAGE_ACCESSIBILITY_LABEL" = "Sam Tests Positive";
 
 /* Message */
-"HOW_IT_WORKS_2_MESSAGE" = "A few days later, Sam tests positive for COVID-19. He helps stop the spread by opting in to anonymously share his positive results in the app.";
+"HOW_IT_WORKS_2_MESSAGE" = "Days later, Sam tests positive for COVID-19. He decides to share his test results with the app, which then notifes others of possible exposure to the virus.";
 
 // ## HOW IT WORKS 3
 
@@ -102,10 +102,10 @@ All strings for the project, separated for localization.
 "HOW_IT_WORKS_3_SUBTITLE" = "Get Notifications";
 
 /* Title */
-"HOW_IT_WORKS_3_IMAGE_ACCESSIBILITY_LABEL" = "Jane's Phone Gets an Alert";
+"HOW_IT_WORKS_3_IMAGE_ACCESSIBILITY_LABEL" = "Jane's Phone Gets a Notification";
 
 /* Message */
-"HOW_IT_WORKS_3_MESSAGE" = "Jane’s gets a notification saying she was near a person who tested positive. The app explains what to do next and how to find public health resources.";
+"HOW_IT_WORKS_3_MESSAGE" = "Jane gets a notification saying she was near a person who tested positive. The app explains what to do next and how to find healthcare resources nearby.";
 
 // ## HOW IT WORKS 4
 
@@ -116,7 +116,7 @@ All strings for the project, separated for localization.
 "HOW_IT_WORKS_4_IMAGE_ACCESSIBILITY_LABEL" = "Jane and Sam Help Keep Their Communities Safe";
 
 /* Message */
-"HOW_IT_WORKS_4_MESSAGE" = "By opting in to enable exposure notifications, Jane and Sam help their communities stay safe. They share the app with others so that they can also help stop the spread.";
+"HOW_IT_WORKS_4_MESSAGE" = "By opting in to enable exposure notifications and stay home while asymptomatic or sick, they help others stay safe. They share the app with family and friends so that they can help too.";
 
 /* Button */
 "CONTINUE_SETUP" = "Continue Setup";
@@ -141,7 +141,7 @@ All strings for the project, separated for localization.
 "ENABLE_EXPOSURE_NOTIFICATIONS_IMAGE_ACCESSIBILITY_LABEL" = "Enable Exposure Notifications";
 
 /* Message */
-"ENABLE_EXPOSURE_NOTIFICATIONS_MESSAGE" = "These notifications are designed to let you know if you’ve been exposed to a person who later reports themselves as testing positive for COVID-19. You can choose to turn off this off at any time.";
+"ENABLE_EXPOSURE_NOTIFICATIONS_MESSAGE" = "These notifications are designed to let you know if you’ve been exposed to a person who later reports themselves as testing positive for COVID-19. It can be turned off at any time.";
 
 // ## SETUP 2
 
@@ -163,13 +163,10 @@ All strings for the project, separated for localization.
 "SETUP_3_1_MESSAGE" = "You’re all set!";
 
 /* Message */
-"SETUP_3_2_MESSAGE" = "The app is active. You will be notified of possible exposures to COVID-19 from people who share their anonymous and verified test results in the app.";
-
-/* Message */
-"SETUP_3_3_MESSAGE" = "Share the app with others to improve the accuracy of your notifications.";
+"SETUP_3_2_MESSAGE" = "You can now receive exposure notifications and get tips on what to do next if people you were near shared verified positive COVID-19 test results in the app.";
 
 /* Title */
-"SETUP_3_GO_TO_HOME" = "See Exposure Summary";
+"SETUP_3_GO_TO_HOME" = "Continue";
 
 // # HOME
 

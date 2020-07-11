@@ -49,21 +49,7 @@ struct Setup3: View {
 
                     Spacer(minLength: .standardSpacing)
 
-                    Text("SETUP_3_3_MESSAGE")
-                        .modifier(SetupMessageTextViewModifier())
-                        .padding(.horizontal, 2 * .standardSpacing)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
                     Group {
-                        Button(action: {
-                            ApplicationController.shared.handleTapShareApp()
-                        }) {
-                            Text("SHARE_THE_APP").modifier(SmallCallToAction())
-                        }
-                        .padding(.horizontal, 2 * .standardSpacing)
-                        .padding(.top, 2 * .standardSpacing)
-                        .padding(.bottom, .standardSpacing)
-
                         Button(action: {
                             withAnimation {
                                 self.userData.showHomeWelcomeMessage = true
@@ -73,10 +59,6 @@ struct Setup3: View {
                             Text("SETUP_3_GO_TO_HOME").modifier(SmallCallToAction())
                         }
                         .padding(.horizontal, 2 * .standardSpacing)
-
-                        Image("Powered By CW Grey")
-                            .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
-                            .padding(.top, 2 * .standardSpacing)
                     }
                 }
             }

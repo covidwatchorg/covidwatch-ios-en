@@ -46,11 +46,13 @@ struct Welcome: View {
 
                     HowItWorksTitleText(text: Text(verbatim: NSLocalizedString("WELCOME_TITLE", comment: "").uppercased()))
 
-                    Text("WELCOME_APP_NAME")
-                        .font(.custom("Montserrat-SemiBold", size: 23))
-                        .foregroundColor(Color("Title Text Color"))
-                        .padding(.horizontal, 2 * .standardSpacing)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Group {
+                        Text(self.userData.region.name) + Text(verbatim: " ") + Text("WELCOME_APP_NAME")
+                    }
+                    .font(.custom("Montserrat-SemiBold", size: 23))
+                    .foregroundColor(Color("Title Text Color"))
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
                     Spacer(minLength: .standardSpacing)
 
