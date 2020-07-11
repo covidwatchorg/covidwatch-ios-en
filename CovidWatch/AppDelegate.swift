@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let contentView = ContentView()
             .environmentObject(UserData.shared)
             .environmentObject(LocalStore.shared)
+            .environmentObject(Row.init())
         self.window?.rootViewController = UIHostingController(rootView: contentView)
 
         // Setup exposure notification key and verification servers
