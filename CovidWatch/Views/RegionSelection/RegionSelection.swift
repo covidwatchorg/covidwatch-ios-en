@@ -37,10 +37,6 @@ struct RegionSelection: View {
 
             ScrollView(.vertical, showsIndicators: false) {
 
-                if !self.userData.firstRun {
-                    Text("first")
-                }
-
                 VStack(spacing: 0) {
 
                     Image("Covid Watch Logo Stacked White")
@@ -70,6 +66,16 @@ struct RegionSelection: View {
                         .labelsHidden()
                     }
                     .padding(.horizontal, 2 * .standardSpacing)
+
+                    Spacer(minLength: 2 * .standardSpacing)
+
+                    Text("REGION_SELECTION_PRIVACY_DISCLAIMER")
+                        .font(.custom("Montserrat-SemiBold", size: 13))
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 2 * .standardSpacing)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+                    Spacer(minLength: 2 * .standardSpacing)
 
                     Button(action: {
                         self.userData.region = self.regions[self.selectedRegionIndex]

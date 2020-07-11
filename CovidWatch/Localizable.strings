@@ -17,6 +17,9 @@ All strings for the project, separated for localization.
 /* Title */
 "SELECT_REGION" = "Select Region";
 
+/* Message */
+"REGION_SELECTION_PRIVACY_DISCLAIMER" = "We value your privacy. This application is always anonymous and your location is never collected or stored. Selecting a region will allow you to receive information on available healthcare resources without ever having to share a location. Your region can be changed at any time.";
+
 /* Button */
 "CONTINUE" = "Continue";
 
