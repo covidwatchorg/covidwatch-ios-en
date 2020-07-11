@@ -10,8 +10,9 @@ public struct CodableRegion: Codable {
     let name: String
     var logoTypeImageName: String = ""
     var logoImageName: String = ""
+    let website: String
 
     enum CodingKeys: String, CodingKey {
-        case name
+        case name, website
     }
 }

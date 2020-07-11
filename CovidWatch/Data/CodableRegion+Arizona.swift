@@ -15,13 +15,15 @@ extension CodableRegion {
     static let `default`: Self = .init(
         name: "Arizona State",
         logoTypeImageName: "Public Health Authority Logotype - Arizona State",
-        logoImageName: "Public Health Authority Logo - Arizona State"
+        logoImageName: "Public Health Authority Logo - Arizona State",
+        website: "https://www.azdhs.gov"
     )
 
     static let universityOfArizona: Self = .init(
         name: "University of Arizona",
         logoTypeImageName: "Public Health Authority Logotype - University of Arizona",
-        logoImageName: "Public Health Authority Logo - University of Arizona"
+        logoImageName: "Public Health Authority Logo - University of Arizona",
+        website: "https://www.arizona.edu"
     )
 
 }

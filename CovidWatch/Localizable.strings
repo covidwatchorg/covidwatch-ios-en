@@ -239,6 +239,12 @@ All strings for the project, separated for localization.
 "POSSIBLE_EXPOSURES_TITLE" = "Possible Exposures";
 
 /* Title */
+"MENU_POSSIBLE_EXPOSURES_TITLE" = "Possible COVID-19 Exposures";
+
+/* Title */
+"MENU_NOTIFY_OTHERS" = "Have a Diagnosis?";
+
+/* Title */
 "HEALTH_GUIDELINES_TITLE" = "Health Guidelines";
 
 /* Title */
