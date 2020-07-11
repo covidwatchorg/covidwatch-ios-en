@@ -60,31 +60,36 @@ struct Test2: View {
                         .padding(.vertical, .standardSpacing)
                         .padding(.horizontal, .standardSpacing)
                     HStack {
-                        Toggle(isOn: $isToggled) {
+                        Toggle(isOn: $isToggled)
+                        {
                             Text("Exposure Notifications")
                                 .font(.custom("Montserrat-SemiBold", size: 18))
                                 .foregroundColor(Color("Subtitle Text Color"))
                                 .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
                         }
-                        Text("on")
-                    } .padding(.horizontal, .standardSpacing)
+                        .toggleStyle(
+                            ColoredToggleStyle(label: "Exposure Notifications",
+                                               onColor: Color("Tint Color"),
+                                               offColor: Color("Last Checked Header Color"),
+                                               thumbColor: Color(.white)))
+                    }
                     ZStack(alignment: .center) {
                         Color("Last Checked Header Color")
                             .frame(height: .headerHeight)
                         if self.localStore.dateLastPerformedExposureDetection == nil {
                             Text("Has not recently checked for exposure")
-                            .font(.custom("Montserrat-Bold", size: 14))
-                                                       .foregroundColor(Color(.white))
-                                                       .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
-                                                       .padding(.horizontal, .standardSpacing)
+                                .font(.custom("Montserrat-Bold", size: 14))
+                                .foregroundColor(Color(.white))
+                                .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+                                .padding(.horizontal, .standardSpacing)
                         } else {
                             // swiftlint:disable:next line_length
-                        Text("Last checked: " + String(self.dateFormatter.string(from: self.localStore.dateLastPerformedExposureDetection ?? Date())))
-                            .font(.custom("Montserrat-Bold", size: 14))
-                            .foregroundColor(Color(.white))
-                            .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
-                            .padding(.horizontal, .standardSpacing)
-                    }
+                            Text("Last checked: " + String(self.dateFormatter.string(from: self.localStore.dateLastPerformedExposureDetection ?? Date())))
+                                .font(.custom("Montserrat-Bold", size: 14))
+                                .foregroundColor(Color(.white))
+                                .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+                                .padding(.horizontal, .standardSpacing)
+                        }
                     }
                     .edgesIgnoringSafeArea(.horizontal)
                     .onAppear() {
@@ -100,18 +105,19 @@ struct Test2: View {
                     }
                 }
                 ZStack {
-                             Color(.white)
-                                 .frame(height: .headerHeight, alignment: .bottom)
-                                 .edgesIgnoringSafeArea(.bottom)
-                     // swiftlint:disable:next line_length
-                             Text("Each exposure notification is saved in this app and will be automatically deleted after 30 days.")
-                                 .font(.custom("Montserrat-Regular", size: 13))
-                                 .multilineTextAlignment(.center)
-                                 .foregroundColor(Color(.black))
-                                 .frame(maxWidth: .infinity, minHeight: 44, alignment: .center)
-                                 .padding(.horizontal, .standardSpacing)
-                         }
-            }  .padding(.top, .standardSpacing)
+                    Color(.white)
+                        .frame(height: .headerHeight, alignment: .bottom)
+                        .edgesIgnoringSafeArea(.bottom)
+                    // swiftlint:disable:next line_length
+                    Text("Each exposure notification is saved in this app and will be automatically deleted after 30 days.")
+                        .font(.custom("Montserrat-Regular", size: 13))
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Color(.black))
+                        .frame(maxWidth: .infinity, minHeight: 44, alignment: .center)
+                        .padding(.horizontal, .standardSpacing)
+                }
+            }  .padding(.top, .headerHeight)
+            HeaderBar(showMenu: false, showDismissButton: true)
         }
     }
     func buttonAction(index: Int) {
@@ -120,7 +126,6 @@ struct Test2: View {
             print(index)
         }
     }
-
 }
 struct PossibleExposureRow: View {
     @EnvironmentObject var row: Row
@@ -251,7 +256,8 @@ struct PossibleExposureRow: View {
                                     .frame(maxWidth: .infinity, minHeight: 20, alignment: .leading)
                                     .padding(.horizontal, 2.2 * .standardSpacing)
                             }
-                        } .padding(.leading, .standardSpacing)
+                        } .animation(.easeInOut(duration: 2))
+                            .padding(.leading, .standardSpacing)
                     }
                 }
             }
@@ -272,4 +278,41 @@ class Row: ObservableObject {
     @Published var rowNumber = 0
     // swiftlint:disable:next line_length
     @Published var exposure = [Exposure(attenuationDurations: [1], attenuationValue: 0, date: Date(), duration: 15, totalRiskScore: 1, transmissionRiskLevel: 1, attenuationDurationThresholds: [1, 2], timeDetected: Date())]
+}
+struct ColoredToggleStyle: ToggleStyle {
+    var label = ""
+    var onColor = Color(UIColor.green)
+    var offColor = Color(UIColor.systemGray5)
+    var thumbColor = Color.white
+    func makeBody(configuration: Self.Configuration) -> some View {
+        HStack {
+            Text(label)
+                .font(.custom("Montserrat-SemiBold", size: 18))
+                .foregroundColor(Color("Subtitle Text Color"))
+                .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+                .padding(.leading, .standardSpacing)
+            Spacer(minLength: 4 * .standardSpacing)
+            Text("Off")
+                .font(.custom("Montserrat-Regular", size: 12))
+                .foregroundColor(Color("Subtitle Text Color"))
+            Button(action: { configuration.isOn.toggle() } )
+            {
+                RoundedRectangle(cornerRadius: 16, style: .circular)
+                    .fill(configuration.isOn ? onColor : offColor)
+                    .frame(width: 50, height: 29)
+                    .overlay(
+                        Circle()
+                            .fill(thumbColor)
+                            .shadow(radius: 1, x: 0, y: 1)
+                            .padding(1.5)
+                            .offset(x: configuration.isOn ? 10 : -10))
+                    .animation(Animation.easeInOut(duration: 0.1))
+            }
+            Text("On")
+                .font(.custom("Montserrat-Regular", size: 12))
+                .foregroundColor(Color("Subtitle Text Color"))
+                .padding(.trailing, .standardSpacing)
+        }
+        .font(.title)
+    }
 }
