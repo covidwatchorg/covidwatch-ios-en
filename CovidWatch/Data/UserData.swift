@@ -21,6 +21,9 @@ final class UserData: ObservableObject {
 
     @Published(key: "isSetupCompleted")
     var isSetupCompleted: Bool = false
+    
+    @Published
+    var isMenuOpened: Bool = false
 
     @Published(key: "isExposureNotificationSetup")
     var isExposureNotificationSetup: Bool = false
@@ -32,7 +35,7 @@ final class UserData: ObservableObject {
     var showHomeWelcomeMessage: Bool = false
 
     @Published
-    var exposureNotificationEnabled: Bool = ExposureManager.shared.manager.exposureNotificationEnabled {
+    var exposureNotificationEnabled: Bool = false {
         didSet {
             guard exposureNotificationEnabled != oldValue else { return }
 
@@ -44,23 +47,14 @@ final class UserData: ObservableObject {
                 if ENManager.authorizationStatus != .unknown {
                     if self.exposureNotificationEnabled {
                         withAnimation {
-                            ApplicationController.shared.handleExposureNotificationEnabled(error: ENError(.notAuthorized))
+                            
                             self.exposureNotificationEnabled = false
                         }
                     }
                 }
                 return
             }
-
-            ExposureManager.shared.manager.setExposureNotificationEnabled(
-                self.exposureNotificationEnabled
-            ) { (error) in
-
-                if let error = error {
-                    ApplicationController.shared.handleExposureNotificationEnabled(error: error)
-                    return
-                }
-            }
+ 
         }
     }
 
@@ -82,3 +76,4 @@ final class UserData: ObservableObject {
     @Published
     var notificationsAuthorizationStatus: UNAuthorizationStatus = .authorized
 }
+
