@@ -12,7 +12,7 @@ struct HowItWorksSubtitleText: View {
     var body: some View {
         self.text
             .font(.custom("Montserrat-SemiBold", size: 31))
-            .foregroundColor(Color("Title Text Color"))
+            .foregroundColor(Color.secondary)
             .padding(.horizontal, 2 * .standardSpacing)
             .frame(maxWidth: .infinity, alignment: .leading)
     }

@@ -15,7 +15,7 @@ struct NextSteps: View {
         VStack(spacing: 0) {
             Text("HOME_NEXT_STEPS_MESSAGE")
                 .font(.custom("Montserrat-Semibold", size: 14))
-                .foregroundColor(Color("Title Text Color"))
+                .foregroundColor(Color.primary)
                 .padding(.horizontal, 2 * .standardSpacing)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -69,13 +69,13 @@ struct NextSteps: View {
                                 .foregroundColor(self.localStore.riskLevelColor)
 
                             Text(verbatim: nextStep.description)
-                                .foregroundColor(Color.primary)
+                                .foregroundColor(Color.secondary)
                                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 64, maxHeight: .infinity, alignment: .leading)
                                 .font(.custom("Montserrat-Regular", size: 14))
                         }
                         .padding(.standardSpacing)
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 64, maxHeight: .infinity, alignment: .leading)
-                        .background(Color.white)
+                        .background(Color(UIColor.systemBackground))
                     }
 
                     Spacer().frame(height: 3)

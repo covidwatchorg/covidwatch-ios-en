@@ -36,7 +36,7 @@ struct Reporting: View {
                     Text("NOTIFY_OTHERS_CALL_TO_ACTION_LONG_MESSAGE")
                         .font(.custom("Montserrat-Regular", size: 16))
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(Color("Title Text Color"))
+                        .foregroundColor(Color.secondary)
                         .padding(.horizontal, 2 * .standardSpacing)
 
                     Button(action: {
@@ -88,7 +88,7 @@ struct Reporting: View {
 //
 //                            Text("Past Positive Diagnoses")
 //                                .font(.custom("Montserrat-SemiBold", size: 18))
-//                                .foregroundColor(Color("Title Text Color"))
+//                                .foregroundColor(Color.secondary)
 //                                .frame(maxWidth: .infinity, alignment: .leading)
 //                                .padding(.top, 2 * .standardSpacing)
 //                                .padding(.bottom, .standardSpacing)
@@ -128,11 +128,11 @@ struct Reporting: View {
 //
 //                                            Text("COVID-19 Positive")
 //                                                .font(.custom("Montserrat-Bold", size: 14))
-//                                                .foregroundColor(Color("Title Text Color"))
+//                                                .foregroundColor(Color.secondary)
 //
 //                                            Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("Test Date: %@", comment: ""), DateFormatter.localizedString(from: testResult.dateAdministered, dateStyle: .short, timeStyle: .none)))
 //                                                .font(.custom("Montserrat-Regular", size: 14))
-//                                                .foregroundColor(Color("Title Text Color"))
+//                                                .foregroundColor(Color.secondary)
 //
 //                                        }
 //

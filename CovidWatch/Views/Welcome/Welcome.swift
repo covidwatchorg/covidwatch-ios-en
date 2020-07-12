@@ -50,7 +50,7 @@ struct Welcome: View {
                         Text(self.userData.region.name) + Text(verbatim: " ") + Text("WELCOME_APP_NAME")
                     }
                     .font(.custom("Montserrat-SemiBold", size: 23))
-                    .foregroundColor(Color("Title Text Color"))
+                    .foregroundColor(Color.secondary)
                     .padding(.horizontal, 2 * .standardSpacing)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -58,7 +58,7 @@ struct Welcome: View {
 
                     Text("WELCOME_MESSAGE")
                         .font(.custom("Montserrat-Regular", size: 18))
-                        .foregroundColor(Color("Title Text Color"))
+                        .foregroundColor(Color.secondary)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 2 * .standardSpacing)
 

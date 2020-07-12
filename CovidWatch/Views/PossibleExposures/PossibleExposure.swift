@@ -33,7 +33,7 @@ struct PossibleExposure: View {
 
                     Text("DETAILS_TITLE")
                         .font(.custom("Montserrat-SemiBold", size: 18))
-                        .foregroundColor(Color("Title Text Color"))
+                        .foregroundColor(Color.secondary)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 2 * .standardSpacing)
                         .padding(.top, 2 * .standardSpacing)
@@ -43,7 +43,7 @@ struct PossibleExposure: View {
                     Text("POSSIBLE_EXPOSURE_MESSAGE")
                         .font(.custom("Montserrat-Regular", size: 16))
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(Color("Title Text Color"))
+                        .foregroundColor(Color.secondary)
                         .padding(.horizontal, 2 * .standardSpacing)
 
                     PossibleExposureTable(exposure: self.exposure)
@@ -54,7 +54,7 @@ struct PossibleExposure: View {
 
                     Text("NEXT_STEPS_TITLE")
                         .font(.custom("Montserrat-SemiBold", size: 18))
-                        .foregroundColor(Color("Title Text Color"))
+                        .foregroundColor(Color.secondary)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 2 * .standardSpacing)
 
@@ -63,7 +63,7 @@ struct PossibleExposure: View {
                     Text("NEXT_STEPS_MESSAGE")
                         .font(.custom("Montserrat-Regular", size: 16))
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(Color("Title Text Color"))
+                        .foregroundColor(Color.secondary)
                         .padding(.horizontal, 2 * .standardSpacing)
 
                     VStack(spacing: 0) {

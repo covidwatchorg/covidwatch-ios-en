@@ -96,13 +96,13 @@ struct HeaderBar: View {
                     HStack {
                         Text("SELECTED_REGION")
                             .font(.custom("Montserrat-Semibold", size: 12))
-                            .foregroundColor(Color("Title Text Color"))
+                            .foregroundColor(Color.secondary)
                         Button(action: {
                             self.isShowingRegionSelection.toggle()
                         }) {
                             Text(self.userData.region.name)
                                 .font(.custom("Montserrat-Semibold", size: 12))
-                                .foregroundColor(Color("Title Text Color"))
+                                .foregroundColor(Color.secondary)
                                 .underline()
                         }.sheet(isPresented: self.$isShowingRegionSelection) {
                             RegionSelection(

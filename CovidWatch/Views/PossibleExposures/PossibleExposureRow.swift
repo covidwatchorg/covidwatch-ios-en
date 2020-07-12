@@ -30,7 +30,7 @@ struct PossibleExposureRow: View {
                     .padding(.trailing, .standardSpacing)
                 Text("EXPOSURE_HIGH_RISK_TITLE")
                     .font(.custom("Montserrat-Bold", size: 14))
-                    .foregroundColor(Color("Title Text Color"))
+                    .foregroundColor(Color.secondary)
                     + // "+" is important here. Otherwise the sheet can not be dismissed.
                     self.formattedDateText
             } else if exposure.totalRiskScore.level == .medium {
@@ -38,7 +38,7 @@ struct PossibleExposureRow: View {
                     .padding(.trailing, .standardSpacing)
                 Text("EXPOSURE_MEDIUM_RISK_TITLE")
                     .font(.custom("Montserrat-Bold", size: 14))
-                    .foregroundColor(Color("Title Text Color"))
+                    .foregroundColor(Color.secondary)
                     + // "+" is important here. Otherwise the sheet can not be dismissed.
                     self.formattedDateText
             } else {
@@ -46,7 +46,7 @@ struct PossibleExposureRow: View {
                     .padding(.trailing, .standardSpacing)
                 Text("EXPOSURE_LOW_RISK_TITLE")
                     .font(.custom("Montserrat-Bold", size: 14))
-                    .foregroundColor(Color("Title Text Color"))
+                    .foregroundColor(Color.secondary)
                     + // "+" is important here. Otherwise the sheet can not be dismissed.
                     self.formattedDateText
             }
@@ -61,7 +61,7 @@ struct PossibleExposureRow: View {
         Text(" ") +
         Text(verbatim: formattedDate())
             .font(.custom("Montserrat-Regular", size: 14))
-            .foregroundColor(Color("Title Text Color"))
+            .foregroundColor(Color.secondary)
     }
 }
 

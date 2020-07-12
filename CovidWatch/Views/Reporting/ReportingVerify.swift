@@ -60,7 +60,7 @@ struct ReportingVerify: View {
                             Text("REPORTING_VERIFY_MESSAGE")
                                 .font(.custom("Montserrat-Regular", size: 16))
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .foregroundColor(Color("Title Text Color"))
+                                .foregroundColor(Color.secondary)
                                 .padding(.horizontal, 2 * .standardSpacing)
 
                             Group {
@@ -68,7 +68,7 @@ struct ReportingVerify: View {
 
                                 Text("TEST_VERIFICATION_CODE_TITLE")
                                     .font(.custom("Montserrat-SemiBold", size: 18))
-                                    .foregroundColor(Color("Title Text Color"))
+                                    .foregroundColor(Color.secondary)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding(.horizontal, 2 * .standardSpacing)
 
@@ -85,7 +85,7 @@ struct ReportingVerify: View {
 
                                 Text("SYMPTOMS_START_DATE_QUESTION")
                                     .font(.custom("Montserrat-SemiBold", size: 18))
-                                    .foregroundColor(Color("Title Text Color"))
+                                    .foregroundColor(Color.secondary)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding(.horizontal, 2 * .standardSpacing)
 
@@ -102,7 +102,7 @@ struct ReportingVerify: View {
 
                                 Text("TEST_DATE_QUESTION")
                                     .font(.custom("Montserrat-SemiBold", size: 18))
-                                    .foregroundColor(Color("Title Text Color"))
+                                    .foregroundColor(Color.secondary)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding(.horizontal, 2 * .standardSpacing)
 

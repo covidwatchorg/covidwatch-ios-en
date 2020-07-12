@@ -48,16 +48,27 @@ struct RegionSelection: View {
                         .accessibility(label: Text("COVID_WATCH_LOGO_STACKED_IMAGE_ACCESSIBILITY_LABEL"))
                         .padding(.top, 2 * .standardSpacing)
 
-                    Spacer().frame(height: .standardSpacing)
+                    Spacer().frame(height: 4 * .standardSpacing)
 
-                    Text("SPLASH_MESSAGE")
-                        .font(.custom("Montserrat-SemiBold", size: 21))
-                        .foregroundColor(.white)
-                        .multilineTextAlignment(.center)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding(.horizontal, 2 * .standardSpacing)
+//                    Text("SPLASH_MESSAGE")
+//                        .font(.custom("Montserrat-SemiBold", size: 21))
+//                        .foregroundColor(.white)
+//                        .multilineTextAlignment(.center)
+//                        .frame(maxWidth: .infinity, alignment: .center)
+//                        .padding(.horizontal, 2 * .standardSpacing)
+//
+//                    Spacer().frame(height: .standardSpacing)
 
-                    Spacer().frame(height: .standardSpacing)
+                    Group {
+                        Text("SELECT_REGION")
+                            .font(.custom("Montserrat-SemiBold", size: 21))
+                            .foregroundColor(.white)
+                            .multilineTextAlignment(.center)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .padding(.horizontal, 2 * .standardSpacing)
+
+                        Spacer().frame(height: .standardSpacing)
+                    }
 
                     VStack(spacing: 0) {
                         Picker("SELECT_REGION", selection: $selectedRegionIndex) {
