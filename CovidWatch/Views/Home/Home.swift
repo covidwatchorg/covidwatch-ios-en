@@ -14,21 +14,13 @@ struct Home: View {
     @State var isShowingExposureSettings: Bool = false
     
     @State var isShowingNotificationSettings: Bool = false
-    
     @State var isShowingPossibleExposures: Bool = false
-    
     @State var isShowingReporting: Bool = false
-    
     var body: some View {
-        
         ZStack(alignment: .top) {
-            
             ScrollView(.vertical, showsIndicators: false) {
-                
                 VStack(spacing: 0) {
-                    
                     VStack(spacing: 1) {
-                        
                         if self.userData.showHomeWelcomeMessage {
                             Button(action: {
                                 withAnimation {
@@ -43,10 +35,8 @@ struct Home: View {
                                 )
                             }
                         }
-                        
                         if userData.exposureNotificationStatus != .active {
                             Button(action: {
-                                
                                 if self.userData.exposureNotificationStatus == .unknown ||
                                     self.userData.exposureNotificationStatus == .disabled {
                                     self.isShowingExposureSettings.toggle()
@@ -78,7 +68,7 @@ struct Home: View {
                                 Alert(
                                     // swiftlint:disable:next line_length
                                     message: userData.notificationsAuthorizationStatus.localizedDetailDescription,
-                                     // swiftlint:disable:next line_length
+                                    // swiftlint:disable:next line_length
                                     backgroundColor: Color("Alert Standard Color")
                                 )
                             }
@@ -124,7 +114,7 @@ struct Home: View {
                                 Reporting().environmentObject(self.localStore)
                             }
                             Button(action: {
-                                ApplicationController.shared.handleTapShareApp()
+                                 ApplicationController.shared.handleTapShareApp()
                             }) {
                                 Text("SHARE_THE_APP").modifier(SmallCallToAction())
                             }
@@ -140,8 +130,23 @@ struct Home: View {
                         //                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 10, alignment: .top)
                     }
                 }
+            } .padding(.top, .headerHeight / 2)
+            VStack(spacing: 0) {
+                HeaderBarV2()
+                ZStack {
+                    BlurView(style: .systemChromeMaterial)
+                        .frame(minWidth: 0, maxWidth: .infinity, maxHeight: .headerHeight / 2, alignment: .top)
+                    HStack {
+                        Text("Region: ")
+                            .font(.custom("Montserrat-Bold", size: 14))
+                            .foregroundColor(Color("Title Text Color"))
+                            + // "+" is important here. Otherwise the sheet can not be dismissed.
+                            Text("University of Arizona")
+                                .font(.custom("Montserrat-Medium", size: 14))
+                        Spacer()
+                    } .padding(.leading, .standardSpacing)
+                }
             }
-            HeaderBarV2()
             if userData.isMenuOpened {
                 BlurView(style: .dark)
                     .opacity(0.5)
