@@ -283,9 +283,12 @@ struct Menu: View {
                 .padding(.horizontal, 2 * .standardSpacing)
                 
             }
-            
             HeaderBarV2(showMenu: false, showDismissButton: true, logoImage: Image(""))
         }  .frame(width: 26 * .standardSpacing)
+            HeaderBar(showMenu: false, showDismissButton: true)
+                .environmentObject(self.localStore)
+                .environmentObject(self.userData)
+        }
     }
 }
 

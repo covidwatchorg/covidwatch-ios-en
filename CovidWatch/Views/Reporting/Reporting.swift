@@ -10,6 +10,8 @@ struct Reporting: View {
 
     @EnvironmentObject var localStore: LocalStore
 
+    @EnvironmentObject var userData: UserData
+
     @State var isShowingVerify = false
 
     @State var selectedTestResultIndex = 0
@@ -162,6 +164,8 @@ struct Reporting: View {
             }
 
             HeaderBar(showMenu: false, showDismissButton: true)
+                .environmentObject(self.localStore)
+                .environmentObject(self.userData)
         }
     }
 }

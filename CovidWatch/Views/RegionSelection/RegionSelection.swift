@@ -7,12 +7,16 @@ import SwiftUI
 
 struct RegionSelection: View {
 
+    let dismissOnFinish: Bool
+
     @EnvironmentObject var userData: UserData
 
     @State var showSplashRegion = false
 
     var regions = CodableRegion.all
     @State private var selectedRegionIndex: Int
+
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var body: some View {
         VStack {
@@ -24,8 +28,9 @@ struct RegionSelection: View {
         }
     }
 
-    init(selectedRegionIndex: Int = 0) {
-        _selectedRegionIndex = .init(initialValue: selectedRegionIndex)
+    init(selectedRegionIndex: Int, dismissOnFinish: Bool = false) {
+        self._selectedRegionIndex = .init(initialValue: selectedRegionIndex)
+        self.dismissOnFinish = dismissOnFinish
     }
 
     var splash: some View {
@@ -80,7 +85,11 @@ struct RegionSelection: View {
                     Button(action: {
                         self.userData.region = self.regions[self.selectedRegionIndex]
                         withAnimation {
-                            self.showSplashRegion = true
+                            if self.dismissOnFinish {
+                                self.presentationMode.wrappedValue.dismiss()
+                            } else {
+                                self.showSplashRegion = true
+                            }
                         }
                     }) {
 
