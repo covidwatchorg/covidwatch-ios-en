@@ -16,6 +16,11 @@ final class UserData: ObservableObject {
     @Published(key: "firstRun")
     var firstRun: Bool = true
 
+    @Persisted(userDefaultsKey: "regions", notificationName: .init("UserDataRegionsDidChange"), defaultValue: CodableRegion.all)
+    public var regions: [CodableRegion] {
+        willSet { objectWillChange.send() }
+    }
+
     @Persisted(userDefaultsKey: "region", notificationName: .init("UserDataRegionDidChange"), defaultValue: CodableRegion.default)
     public var region: CodableRegion {
         willSet { objectWillChange.send() }

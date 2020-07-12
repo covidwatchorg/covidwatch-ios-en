@@ -16,4 +16,5 @@ extension String {
     static let releaseSameDayKeys = "CWReleaseSameDayKeys"
     static let bypassPublicHealthAuthorityVerification = "CWBypassPublicHealthAuthorityVerification"
     static let useAZRiskScoring = "CWUseAZRiskScoring"
+    static let appRegionsJSONURL = "CWAppRegionsJSONURL"
 }

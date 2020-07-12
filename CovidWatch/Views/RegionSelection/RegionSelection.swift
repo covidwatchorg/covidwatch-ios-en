@@ -106,6 +106,9 @@ struct RegionSelection: View {
                 }
             }
         }
+        .onAppear {
+            ApplicationController.shared.refreshRegions(notifyUserOnError: true)
+        }
     }
 }
 

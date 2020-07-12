@@ -21,6 +21,7 @@ public struct CodableRegion: Codable {
         let url: String?
     }
 
+    let id: Int
     let name: String
     var logoTypeImageName: String
     var logoImageName: String

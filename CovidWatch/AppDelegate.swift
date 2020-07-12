@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Setup application controller
         _ = ApplicationController.shared
+        ApplicationController.shared.refreshRegions()
 
         // Setup background tasks
         self.setupBackgroundTask()

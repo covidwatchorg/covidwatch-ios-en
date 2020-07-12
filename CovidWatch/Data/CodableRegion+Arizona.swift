@@ -35,6 +35,7 @@ extension CodableRegion {
     ]
 
     static let `default`: Self = .init(
+        id: 0,
         name: "Arizona State",
         logoTypeImageName: "Public Health Authority Logotype - Arizona State",
         logoImageName: "Public Health Authority Logo - Arizona State",
@@ -65,6 +66,7 @@ extension CodableRegion {
     )
 
     static let universityOfArizona: Self = .init(
+        id: 1,
         name: "University of Arizona",
         logoTypeImageName: "Public Health Authority Logotype - University of Arizona",
         logoImageName: "Public Health Authority Logo - University of Arizona",

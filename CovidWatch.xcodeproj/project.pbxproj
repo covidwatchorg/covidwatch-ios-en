@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D049D2E24BB87760060B422 /* ApplicationController+Regions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D049D2D24BB87760060B422 /* ApplicationController+Regions.swift */; };
+		2D049D2F24BB87760060B422 /* ApplicationController+Regions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D049D2D24BB87760060B422 /* ApplicationController+Regions.swift */; };
+		2D049D3024BB87760060B422 /* ApplicationController+Regions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D049D2D24BB87760060B422 /* ApplicationController+Regions.swift */; };
+		2D049D3124BB87760060B422 /* ApplicationController+Regions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D049D2D24BB87760060B422 /* ApplicationController+Regions.swift */; };
 		2D081A2E24B8A55200506164 /* CodableRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D081A2D24B8A55200506164 /* CodableRegion.swift */; };
 		2D081A2F24B8A55200506164 /* CodableRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D081A2D24B8A55200506164 /* CodableRegion.swift */; };
 		2D081A3024B8A55200506164 /* CodableRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D081A2D24B8A55200506164 /* CodableRegion.swift */; };
@@ -470,6 +474,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D049D2D24BB87760060B422 /* ApplicationController+Regions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApplicationController+Regions.swift"; sourceTree = "<group>"; };
 		2D081A2D24B8A55200506164 /* CodableRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableRegion.swift; sourceTree = "<group>"; };
 		2D081A3224B8AA8400506164 /* CodableRegion+Arizona.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableRegion+Arizona.swift"; sourceTree = "<group>"; };
 		2D081A3724B8B2CD00506164 /* RegionSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelection.swift; sourceTree = "<group>"; };
@@ -899,6 +904,7 @@
 				2D9E6B2C2456E9A700150D1C /* AppDelegate+UserNotificationCenter.swift */,
 				2D5D94062460000A00718412 /* ApplicationController.swift */,
 				2D7254A424A3765A003E5914 /* ApplicationController+Calibration.swift */,
+				2D049D2D24BB87760060B422 /* ApplicationController+Regions.swift */,
 				2D46AA502465E1240003936C /* AppleExposureNotificationsSampleApp */,
 				2D235A5524AC7B3B00C8FD56 /* ExposureNotificationsDiagnosisServer */,
 				2D29BAEF24607D8500E8BEC4 /* ExposureNotification */,
@@ -1454,6 +1460,7 @@
 				2D235A1C24AC651300C8FD56 /* HowItWorks1.swift in Sources */,
 				2D235A1D24AC651300C8FD56 /* CodableDiagnosisKey+ExposureNotification.swift in Sources */,
 				2D235A1E24AC651300C8FD56 /* Menu.swift in Sources */,
+				2D049D3124BB87760060B422 /* ApplicationController+Regions.swift in Sources */,
 				2D081A3124B8A55200506164 /* CodableRegion.swift in Sources */,
 				2D235A1F24AC651300C8FD56 /* Blur.swift in Sources */,
 				2D235A2024AC651300C8FD56 /* PossibleExposureRow.swift in Sources */,
@@ -1480,6 +1487,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D049D3024BB87760060B422 /* ApplicationController+Regions.swift in Sources */,
 				2D72543724A35E92003E5914 /* PossibleExposureSummary.swift in Sources */,
 				2D72543824A35E92003E5914 /* ENRiskScore+Levels.swift in Sources */,
 				2D927E3524AC86F90029A323 /* GoogleExposureNotificationsDiagnosisVerificationServer.swift in Sources */,
@@ -1638,6 +1646,7 @@
 				2D26096A24ADE535009CDBCE /* CovidWatchInfoDictionaryKeys.swift in Sources */,
 				2D8FE6D124A33B0100456875 /* HowItWorks1.swift in Sources */,
 				2D8FE6D224A33B0100456875 /* CodableDiagnosisKey+ExposureNotification.swift in Sources */,
+				2D049D2F24BB87760060B422 /* ApplicationController+Regions.swift in Sources */,
 				2D081A2F24B8A55200506164 /* CodableRegion.swift in Sources */,
 				2D8FE6D324A33B0100456875 /* Menu.swift in Sources */,
 				2D8FE6D424A33B0100456875 /* Blur.swift in Sources */,
@@ -1728,6 +1737,7 @@
 				2D081A3D24B8C45900506164 /* SplashRegion.swift in Sources */,
 				2D46AA402465E1010003936C /* CodableDiagnosisKey+ExposureNotification.swift in Sources */,
 				2D081A2E24B8A55200506164 /* CodableRegion.swift in Sources */,
+				2D049D2E24BB87760060B422 /* ApplicationController+Regions.swift in Sources */,
 				2D29BAF62460951200E8BEC4 /* Menu.swift in Sources */,
 				2DA839A32462FD5C004BD707 /* Blur.swift in Sources */,
 				2D79429824671F28008AF148 /* PossibleExposureRow.swift in Sources */,
