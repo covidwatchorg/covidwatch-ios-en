@@ -25,7 +25,6 @@ extension ExposureManager {
         detectingExposures = true
 
         var localURLs = importURLs
-        let nextDiagnosisKeyFileIndex = LocalStore.shared.nextDiagnosisKeyFileIndex
 
         func finish(_ result: Result<Int, Error>) {
             try? Server.shared.deleteDiagnosisKeyFile(at: localURLs)
@@ -35,8 +34,8 @@ extension ExposureManager {
                 success = false
             } else {
                 switch result {
-                case let .success(nextDiagnosisKeyFileIndex):
-                    LocalStore.shared.nextDiagnosisKeyFileIndex = nextDiagnosisKeyFileIndex
+                // swiftlint:disable empty_enum_arguments
+                case .success(_):
                     success = true
                 case let .failure(error):
                     LocalStore.shared.exposureDetectionErrorLocalizedDescription = error.localizedDescription
@@ -101,7 +100,7 @@ extension ExposureManager {
                         }
                         semaphore.wait()
                     }
-                    finish(.success(nextDiagnosisKeyFileIndex + localURLs.count))
+                    finish(.success(localURLs.count))
                 }
             }
         }

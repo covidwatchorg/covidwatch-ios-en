@@ -14,20 +14,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2D9CF3C92455B9F1005B085E"
-               BuildableName = "Covid Watch.app"
-               BlueprintName = "CovidWatch-California-Dev"
-               ReferencedContainer = "container:CovidWatch.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D9CF3E22455B9F5005B085E"
                BuildableName = "CovidWatchTests.xctest"
                BlueprintName = "CovidWatchTests"
@@ -71,15 +57,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2D9CF3C92455B9F1005B085E"
-            BuildableName = "Covid Watch.app"
-            BlueprintName = "CovidWatch-California-Dev"
-            ReferencedContainer = "container:CovidWatch.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

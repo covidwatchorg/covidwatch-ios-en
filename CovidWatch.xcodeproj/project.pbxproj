@@ -11,6 +11,7 @@
 		2D049D2F24BB87760060B422 /* ApplicationController+Regions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D049D2D24BB87760060B422 /* ApplicationController+Regions.swift */; };
 		2D049D3024BB87760060B422 /* ApplicationController+Regions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D049D2D24BB87760060B422 /* ApplicationController+Regions.swift */; };
 		2D049D3124BB87760060B422 /* ApplicationController+Regions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D049D2D24BB87760060B422 /* ApplicationController+Regions.swift */; };
+		2D049D3224BB98130060B422 /* CodableRegion+Arizona.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D081A3224B8AA8400506164 /* CodableRegion+Arizona.swift */; };
 		2D081A2E24B8A55200506164 /* CodableRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D081A2D24B8A55200506164 /* CodableRegion.swift */; };
 		2D081A2F24B8A55200506164 /* CodableRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D081A2D24B8A55200506164 /* CodableRegion.swift */; };
 		2D081A3024B8A55200506164 /* CodableRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D081A2D24B8A55200506164 /* CodableRegion.swift */; };
@@ -1724,6 +1725,7 @@
 				2D46AA472465E10E0003936C /* ExposureNotificationsDiagnosisKeyServing.swift in Sources */,
 				2D79429C2467DB49008AF148 /* PossibleExposure.swift in Sources */,
 				2D3948A6248E7DD1001766A4 /* AZExposureRiskScorer.swift in Sources */,
+				2D049D3224BB98130060B422 /* CodableRegion+Arizona.swift in Sources */,
 				2DD7B498245F65E1001B30F0 /* SubCallToAction.swift in Sources */,
 				2D9E6B2D2456E9A800150D1C /* AppDelegate+UserNotificationCenter.swift in Sources */,
 				2D79429E2467E34D008AF148 /* PossibleExposureTable.swift in Sources */,
