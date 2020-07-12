@@ -182,11 +182,14 @@ All strings for the project, separated for localization.
 /* Title */
 "HOME_POSSIBLE_EXPOSURES_SUMMARY_TITLE" = "Possible Exposure Summary";
 
+/* Title */
+"NOTIFY_OTHERS_CALL_TO_ACTION_TITLE" = "Tested Positive?";
+
 /* Message */
-"NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE" = "Have a positive diagnosis? Anonymously notify others to help your community stay safe.";
+"NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE" = "If you tested positive for COVID-19 by the Public Health Department, you can help stop the spread in your communities by notifying others.";
 
 /* Button */
-"NOTIFY_OTHERS" = "Notify Others";
+"NOTIFY_OTHERS" = "Anonymously Notify Others";
 
 /* Button */
 "SHARE_THE_APP" = "Share the App";
@@ -202,6 +205,9 @@ All strings for the project, separated for localization.
 
 /* Message */
 "HOME_TOTAL_RISK_SCORE_ACCESSIBILITY_LABEL" = "%d total risk score (0-8 scale)";
+
+/* Message */
+"HOME_NEXT_STEPS_MESSAGE" = "Next steps based on risk level and region:";
 
 /* Special */
 "HOME_DAYS_ROW_1_LABEL" = "days";
@@ -220,6 +226,24 @@ All strings for the project, separated for localization.
 
 /* Special */
 "HOME_TOTAL_RISK_SCORE_ROW_2_LABEL" = "(0-8 scale)";
+
+/* Title */
+"MY_RISK_LEVEL_TITLE" = "My Risk Level Today: %@";
+
+/* Title */
+"RISK_LEVEL_UNKNOWN" = "Unknown";
+
+/* Title */
+"RISK_LEVEL_LOW" = "Low";
+
+/* Title */
+"RISK_LEVEL_MEDIUM" = "Medium";
+
+/* Title */
+"RISK_LEVEL_HIGH" = "High";
+
+/* Title */
+"RISK_LEVEL_VERIFIED_POSITIVE" = "Verified Positive";
 
 // # MENU
 

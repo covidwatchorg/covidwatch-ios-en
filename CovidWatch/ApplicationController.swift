@@ -138,9 +138,8 @@ class ApplicationController: NSObject {
         }
     }
 
-    @objc func handleTapShareApp() {
+    @objc func handleTapShareApp(url: URL = URL(string: "https://www.covidwatch.org")!) {
         let text = NSLocalizedString("SHARE_THE_APP_SHEET_MESSAGE", comment: "")
-        let url = URL(string: "https://www.covidwatch.org")
 
         let itemsToShare: [Any] = [text, url as Any]
         let activityViewController = UIActivityViewController(

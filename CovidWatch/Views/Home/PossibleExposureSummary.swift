@@ -58,7 +58,7 @@ struct PossibleExposureSummary: View {
                 .font(.custom("Montserrat-Bold", size: 16))
                 .foregroundColor(Color("Title Text Color"))
                 .padding(.horizontal, 2 * .standardSpacing)
-                .frame(maxWidth: .infinity, minHeight: 44, alignment: .center)
+                .frame(maxWidth: .infinity, minHeight: .minTappableTargetDimension, alignment: .center)
                 .background(Color(UIColor.systemGray6))
 
             Divider()

@@ -99,14 +99,22 @@ struct Home: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .top)
-//                                .background(LinearGradient(gradient: Gradient(colors: [Color(red: 0.263, green: 0.769, blue: 0.851, opacity: 1), Color.white.opacity(0.4)]), startPoint: .top, endPoint: .bottom))
                                 .accessibility(label: Text("HOME_IMAGE_ACCESSIBILITY_LABEL"))
 
                             Button(action: {
                                 self.isShowingPossibleExposures.toggle()
                             }) {
-                                PossibleExposureSummary()
-                                    .environmentObject(self.localStore)
+                                HStack {
+                                    Image(self.localStore.riskLevelImageName)
+
+                                    Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("MY_RISK_LEVEL_TITLE", comment: ""), self.localStore.riskLevelDescription))
+                                        .font(.custom("Montserrat-Medium", size: 18))
+                                        .foregroundColor(Color.white)
+                                }
+                                .padding(.vertical, .standardSpacing)
+                                .frame(maxWidth: .infinity, minHeight: .minTappableTargetDimension, alignment: .leading)
+                                .padding(.horizontal, 2 * .standardSpacing)
+                                .background(self.localStore.riskLevelColor)
                             }
                             .sheet(isPresented: $isShowingPossibleExposures) {
                                 PossibleExposures()
@@ -114,11 +122,23 @@ struct Home: View {
                                     .environmentObject(self.localStore)
                             }
 
+                            NextSteps()
+                                .padding(.vertical, 2 * .standardSpacing)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .background(Color(UIColor.systemGray6))
+
+                            Spacer(minLength: 2 * .standardSpacing)
+
+                            Text("NOTIFY_OTHERS_CALL_TO_ACTION_TITLE")
+                                .font(.custom("Montserrat-Semibold", size: 18))
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal, 2 * .standardSpacing)
+
                             Spacer(minLength: .standardSpacing)
 
                             Text("NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE")
                                 .modifier(SubCallToAction())
-                                .frame(maxWidth: .infinity)
+                                .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(.horizontal, 2 * .standardSpacing)
 
                             Button(action: {
@@ -126,7 +146,7 @@ struct Home: View {
                             }) {
                                 Text("NOTIFY_OTHERS").modifier(SmallCallToAction())
                             }
-                            .padding(.top, .standardSpacing)
+                            .padding(.top, 2 * .standardSpacing)
                             .padding(.bottom, .standardSpacing)
                             .padding(.horizontal, 2 * .standardSpacing)
                             .sheet(isPresented: $isShowingReporting) {
@@ -135,16 +155,9 @@ struct Home: View {
                                     .environmentObject(self.userData)
                             }
 
-                            Button(action: {
-                                ApplicationController.shared.handleTapShareApp()
-                            }) {
-                                Text("SHARE_THE_APP").modifier(SmallCallToAction())
-                            }
-                            .padding(.horizontal, 2 * .standardSpacing)
-
                             Image("Powered By CW Grey")
                                 .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
-                                .padding(.top, 2 * .standardSpacing)
+                                .padding(.top, .standardSpacing)
                                 .padding(.bottom, .standardSpacing)
                         }
 

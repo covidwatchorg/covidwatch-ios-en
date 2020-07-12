@@ -66,7 +66,7 @@ struct HeaderBar: View {
                                 self.isShowingMenu.toggle()
                             }) {
                                 Image("Menu Button")
-                                    .frame(minWidth: 44, minHeight: 44)
+                                    .frame(minWidth: .minTappableTargetDimension, minHeight: .minTappableTargetDimension)
                                     .accessibility(label: Text("MENU"))
                                     .accessibility(hint: Text("MENU_ACCESSIBILITY_HINT"))
                             }.sheet(isPresented: self.$isShowingMenu) {
@@ -80,7 +80,7 @@ struct HeaderBar: View {
                                 self.presentationMode.wrappedValue.dismiss()
                             }) {
                                 Image("Dismiss Button")
-                                    .frame(minWidth: 44, minHeight: 44)
+                                    .frame(minWidth: .minTappableTargetDimension, minHeight: .minTappableTargetDimension)
                                     .accessibility(label: Text("DISMISS"))
                                     .accessibility(hint: Text("DISMISS_ACCESSIBILITY_HINT"))
                             }

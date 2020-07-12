@@ -48,18 +48,18 @@ struct RegionSelection: View {
                         .accessibility(label: Text("COVID_WATCH_LOGO_STACKED_IMAGE_ACCESSIBILITY_LABEL"))
                         .padding(.top, 2 * .standardSpacing)
 
-                    Spacer(minLength: 2 * .standardSpacing)
+                    Spacer().frame(height: .standardSpacing)
 
                     Text("SPLASH_MESSAGE")
                         .font(.custom("Montserrat-SemiBold", size: 21))
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .frame(maxWidth: .infinity, alignment: .center)
                         .padding(.horizontal, 2 * .standardSpacing)
 
-                    Spacer(minLength: 2 * .standardSpacing)
+                    Spacer().frame(height: .standardSpacing)
 
-                    VStack {
+                    VStack(spacing: 0) {
                         Picker("SELECT_REGION", selection: $selectedRegionIndex) {
                             ForEach(0 ..< self.regions.count) {
                                 Text(verbatim: self.regions[$0].name)
@@ -72,7 +72,7 @@ struct RegionSelection: View {
                     }
                     .padding(.horizontal, 2 * .standardSpacing)
 
-                    Spacer(minLength: 2 * .standardSpacing)
+                    Spacer().frame(height: .standardSpacing)
 
                     Text("REGION_SELECTION_PRIVACY_DISCLAIMER")
                         .font(.custom("Montserrat-SemiBold", size: 13))
@@ -80,7 +80,7 @@ struct RegionSelection: View {
                         .padding(.horizontal, 2 * .standardSpacing)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-                    Spacer(minLength: 2 * .standardSpacing)
+                    Spacer().frame(height: .standardSpacing)
 
                     Button(action: {
                         self.userData.region = self.regions[self.selectedRegionIndex]
@@ -100,7 +100,9 @@ struct RegionSelection: View {
                             .background(Color.white)
                             .cornerRadius(.callToActionSmallButtonCornerRadius, antialiased: true)
 
-                    }.padding(.horizontal, 2 * .standardSpacing)
+                    }
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .padding(.bottom, .standardSpacing)
                 }
             }
         }

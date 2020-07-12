@@ -11,8 +11,9 @@ extension CGFloat {
     public static let headerHeight: CGFloat = 56
     public static let largeHeaderHeight: CGFloat = 86
     public static let stickyFooterHeight: CGFloat = .standardSpacing + .callToActionSmallButtonHeight + 5 + .callToActionSmallButtonHeight + .standardSpacing
+    public static let minTappableTargetDimension: CGFloat = 44
     public static let callToActionButtonHeight: CGFloat = 58
     public static let callToActionButtonCornerRadius: CGFloat = 5
-    public static let callToActionSmallButtonHeight: CGFloat = 44
+    public static let callToActionSmallButtonHeight: CGFloat = minTappableTargetDimension
     public static let callToActionSmallButtonCornerRadius: CGFloat = 5
 }
