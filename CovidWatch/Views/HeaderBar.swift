@@ -1,30 +1,29 @@
 //
 //  Created by Zsombor Szabo on 03/05/2020.
-//  
 //
-
+//
 import SwiftUI
 
 struct HeaderBar: View {
-
+    
     let showMenu: Bool
-
+    
     let showDismissButton: Bool
-
+    
     let showDemoMode: Bool
-
+    
     let showRegionSelection: Bool
-
+    
     @State var isShowingMenu: Bool = false
-
+    
     @State var isShowingRegionSelection: Bool = false
-
+    
     @EnvironmentObject var userData: UserData
-
+    
     @EnvironmentObject var localStore: LocalStore
-
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
+    
     init(
         showMenu: Bool = true,
         showDismissButton: Bool = false,
@@ -36,62 +35,44 @@ struct HeaderBar: View {
         self.showDemoMode = showDemoMode
         self.showRegionSelection = showRegionSelection
     }
-
+    
     var body: some View {
-
+        
         ZStack(alignment: .center) {
-
+            
             BlurView(style: .systemChromeMaterial)
                 .edgesIgnoringSafeArea(.all)
-
             VStack(alignment: .leading) {
-
+                
                 HStack {
-
                     Image(self.userData.region.logoImageName)
                         .accessibility(label: Text("GENERIC_PUBLIC_HEALTH_DEPARTMENT_IMAGE_ACCESSIBILITY_LABEL"))
-
                     Spacer()
-                if self.showMenu || self.showDismissButton {
-                    if self.showMenu {
-                        Button(action: {
-                              withAnimation {
-                            self.isShowingMenu.toggle()
-                            }
-                        }) {
-                            Image("Menu Button")
-                                .frame(minWidth: 44, minHeight: 44)
-                                .accessibility(label: Text("MENU"))
-                                .accessibility(hint: Text("MENU_ACCESSIBILITY_HINT"))
-                        }.sheet(isPresented: self.$isShowingMenu) {
-                            Menu()
-                                .environmentObject(self.userData)
-                                .environmentObject(self.localStore)
                     #if DEBUG_CALIBRATION
                     Text(verbatim: NSLocalizedString("DEMO_TITLE", comment: "").uppercased())
                         .font(.custom("Montserrat-Black", size: 14))
                         .foregroundColor(Color(UIColor.systemGray4))
                     Spacer()
                     #endif
-
+                    
                     if self.showMenu || self.showDismissButton {
                         if self.showMenu {
                             Button(action: {
-                                self.isShowingMenu.toggle()
+                                withAnimation(.easeInOut(duration: 0.8)) {
+                                    self.userData.isMenuOpened.toggle()
+                                }
                             }) {
                                 Image("Menu Button")
                                     .frame(minWidth: 44, minHeight: 44)
                                     .accessibility(label: Text("MENU"))
                                     .accessibility(hint: Text("MENU_ACCESSIBILITY_HINT"))
-                            }.sheet(isPresented: self.$isShowingMenu) {
-                                Menu()
-                                    .environmentObject(self.userData)
-                                    .environmentObject(self.localStore)
                             }
                         }
                         if self.showDismissButton {
                             Button(action: {
-                                self.presentationMode.wrappedValue.dismiss()
+                                withAnimation(.easeInOut(duration: 0.8)) {
+                                    self.userData.isMenuOpened.toggle()
+                                }
                             }) {
                                 Image("Dismiss Button")
                                     .frame(minWidth: 44, minHeight: 44)
@@ -102,10 +83,8 @@ struct HeaderBar: View {
                     } else {
                         Spacer()
                     }
-
                 }
                 .padding(.horizontal, 2 * .standardSpacing)
-
                 if self.showRegionSelection {
                     HStack {
                         Text("SELECTED_REGION")
@@ -130,8 +109,8 @@ struct HeaderBar: View {
                     .padding(.horizontal, 2 * .standardSpacing)
                     .padding(.bottom, .standardSpacing)
                 }
+                
             }
-
         }.frame(
             minWidth: 0,
             maxWidth: .infinity,
