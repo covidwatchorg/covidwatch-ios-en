@@ -16,6 +16,17 @@ final class UserData: ObservableObject {
     @Published(key: "firstRun")
     var firstRun: Bool = true
 
+    @Persisted(userDefaultsKey: "region", notificationName: .init("UserDataRegionDidChange"), defaultValue: CodableRegion.default)
+    public var region: CodableRegion {
+        willSet { objectWillChange.send() }
+    }
+
+    public var selectedRegionIndex: Int {
+        CodableRegion.all.firstIndex(where: {
+            $0.name == self.region.name
+        }) ?? 0
+    }
+
     @Published(key: "isOnboardingCompleted")
     var isOnboardingCompleted: Bool = false
 

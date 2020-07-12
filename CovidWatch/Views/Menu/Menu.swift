@@ -119,6 +119,7 @@ struct Menu: View {
                         }) {
                             HStack {
                                 Text("Possible COVID-19 Exposures")
+                                Text("MENU_POSSIBLE_EXPOSURES_TITLE")
                                 Spacer()
                                 if (self.localStore.exposures.max(by: { $0.totalRiskScore < $1.totalRiskScore })?.totalRiskScore ?? 0 > 6) {
                                     Image("Settings Alert")
@@ -143,7 +144,24 @@ struct Menu: View {
                             }.modifier(MenuTitleText())
                         }
                         .sheet(isPresented: $isShowingNotifyOthers) { Reporting().environmentObject(self.localStore) }
-                        
+                                Text("MENU_NOTIFY_OTHERS")
+                            }.modifier(MenuTitleText())
+                        }
+                        .sheet(isPresented: $isShowingNotifyOthers) { Reporting().environmentObject(self.localStore) }
+
+                        if !self.localStore.testResults.isEmpty {
+                            // TODO
+//                            Divider()
+//
+//                            Button(action: {
+//                                self.isShowingNotifyOthers.toggle()
+//                            }) {
+//                                HStack {
+//                                    Text("MENU_NOTIFY_OTHERS")
+//                                }.modifier(MenuTitleText())
+//                            }
+//                            .sheet(isPresented: $isShowingNotifyOthers) { Reporting().environmentObject(self.localStore) }
+                        }
                         Divider()
                         
                         Button(action: {

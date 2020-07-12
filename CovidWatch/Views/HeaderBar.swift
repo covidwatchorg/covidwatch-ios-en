@@ -13,8 +13,6 @@ struct HeaderBar: View {
 
     let showDemoMode: Bool
 
-    let logoImage: Image
-
     @State var isShowingMenu: Bool = false
 
     @EnvironmentObject var userData: UserData
@@ -26,25 +24,23 @@ struct HeaderBar: View {
     init(
         showMenu: Bool = true,
         showDismissButton: Bool = false,
-        showDemoMode: Bool = true,
-        logoImage: Image = Image("Public Health Authority Logo")
+        showDemoMode: Bool = true
     ) {
         self.showMenu = showMenu
         self.showDismissButton = showDismissButton
         self.showDemoMode = showDemoMode
-        self.logoImage = logoImage
     }
 
     var body: some View {
 
-        ZStack(alignment: .top) {
+        ZStack(alignment: .center) {
 
             BlurView(style: .systemChromeMaterial)
                 .edgesIgnoringSafeArea(.all)
 
             HStack {
 
-                self.logoImage
+                Image(self.userData.region.logoImageName)
                     .accessibility(label: Text("GENERIC_PUBLIC_HEALTH_DEPARTMENT_IMAGE_ACCESSIBILITY_LABEL"))
 
                 Spacer()
@@ -89,7 +85,6 @@ struct HeaderBar: View {
                 }
 
             }
-            .padding(.top, 2 * .standardSpacing)
             .padding(.horizontal, 2 * .standardSpacing)
 
         }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .headerHeight, alignment: .topLeading)

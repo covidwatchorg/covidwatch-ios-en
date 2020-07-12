@@ -8,12 +8,13 @@ struct Splash: View {
 
     @EnvironmentObject var userData: UserData
 
-    @State var showWelcome = false
+    @State var showRegionSelection = false
 
     var body: some View {
         VStack {
-            if self.showWelcome {
-                Welcome().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+            if self.showRegionSelection {
+                RegionSelection(selectedRegionIndex: self.userData.selectedRegionIndex)
+                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
             } else {
                 self.splash.transition(.slide)
             }
@@ -31,8 +32,8 @@ struct Splash: View {
 
                 VStack(spacing: 0) {
 
-                    Image("Public Health Authority Logotype")
-                        .accessibility(label: Text("GENERIC_PUBLIC_HEALTH_DEPARTMENT_IMAGE_ACCESSIBILITY_LABEL"))
+                    Image("Covid Watch Logo Stacked White")
+                        .accessibility(label: Text("COVID_WATCH_LOGO_STACKED_IMAGE_ACCESSIBILITY_LABEL"))
                         .padding(.top, 2 * .standardSpacing)
 
                     Spacer(minLength: 2 * .standardSpacing)
@@ -53,7 +54,7 @@ struct Splash: View {
 
                     Button(action: {
                         withAnimation {
-                            self.showWelcome = true
+                            self.showRegionSelection = true
                         }
                     }) {
 
