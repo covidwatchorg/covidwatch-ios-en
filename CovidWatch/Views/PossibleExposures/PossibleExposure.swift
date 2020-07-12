@@ -104,6 +104,7 @@ struct PossibleExposure: View {
             }
 
             HeaderBar(showMenu: false, showDismissButton: true)
+                .environmentObject(self.localStore)
         }
     }
 }

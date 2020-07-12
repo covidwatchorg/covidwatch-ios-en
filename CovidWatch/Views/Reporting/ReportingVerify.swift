@@ -279,6 +279,7 @@ struct ReportingVerify: View {
                     }
 
                     HeaderBar(showMenu: false, showDismissButton: true)
+                        .environmentObject(self.localStore)
                 }
                 .transition(.opacity)
             }

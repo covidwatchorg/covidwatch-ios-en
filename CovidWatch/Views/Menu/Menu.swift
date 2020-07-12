@@ -259,6 +259,8 @@ struct Menu: View {
             }
 
             HeaderBar(showMenu: false, showDismissButton: true)
+                .environmentObject(self.localStore)
+                .environmentObject(self.userData)
         }
     }
 }

@@ -88,7 +88,7 @@ struct Home: View {
                             }
                         }
 
-                    }.padding(.top, .headerHeight)
+                    }.padding(.top, .largeHeaderHeight)
                         .zIndex(1) // Required for the shadow effect to be visible. Otherwise the content the follows below covers it.
 
                     ZStack(alignment: .top) {
@@ -128,7 +128,9 @@ struct Home: View {
                             .padding(.bottom, .standardSpacing)
                             .padding(.horizontal, 2 * .standardSpacing)
                             .sheet(isPresented: $isShowingReporting) {
-                                Reporting().environmentObject(self.localStore)
+                                Reporting()
+                                    .environmentObject(self.localStore)
+                                    .environmentObject(self.userData)
                             }
 
                             Button(action: {
@@ -150,7 +152,9 @@ struct Home: View {
                 }
             }
 
-            HeaderBar()
+            HeaderBar(showRegionSelection: true)
+                .environmentObject(self.localStore)
+                .environmentObject(self.userData)
         }
     }
 }
