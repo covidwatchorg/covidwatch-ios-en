@@ -20,18 +20,10 @@ public struct CodableRegion: Codable {
     }
 
     let name: String
-    var logoTypeImageName: String = ""
-    var logoImageName: String = ""
+    var logoTypeImageName: String
+    var logoImageName: String
     let website: String
     let riskLowThreshold: Float = 0.14
     let riskHighThreshold: Float = 3.00
     let nextStepsRiskLow: [NextStep]
-
-    enum CodingKeys: String, CodingKey {
-        case name
-        case website
-        case riskLowThreshold
-        case riskHighThreshold
-        case nextStepsRiskLow
-    }
 }
