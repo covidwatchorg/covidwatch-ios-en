@@ -1,11 +1,11 @@
 //
 //  Created by Zsombor Szabo on 03/05/2020.
-//  
+//
 //
 
 import SwiftUI
 
-struct HeaderBar: View {
+struct HeaderBarV2: View {
 
     let showMenu: Bool
 
@@ -59,24 +59,22 @@ struct HeaderBar: View {
                 if self.showMenu || self.showDismissButton {
                     if self.showMenu {
                         Button(action: {
-                              withAnimation {
-                            self.isShowingMenu.toggle()
+                              withAnimation(.easeInOut(duration: 0.8)) {
+                                self.userData.isMenuOpened.toggle()
                             }
                         }) {
                             Image("Menu Button")
                                 .frame(minWidth: 44, minHeight: 44)
                                 .accessibility(label: Text("MENU"))
                                 .accessibility(hint: Text("MENU_ACCESSIBILITY_HINT"))
-                        }.sheet(isPresented: self.$isShowingMenu) {
-                            Menu()
-                                .environmentObject(self.userData)
-                                .environmentObject(self.localStore)
-                                
                         }
+                                         
                     }
                     if self.showDismissButton {
                         Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
+                            withAnimation(.easeInOut(duration: 1.25)) {
+                           self.userData.isMenuOpened.toggle()
+                            }
                         }) {
                             Image("Dismiss Button")
                                 .frame(minWidth: 44, minHeight: 44)
@@ -96,8 +94,9 @@ struct HeaderBar: View {
     }
 }
 
-struct TopBar_Previews: PreviewProvider {
+struct TopBarV2_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderBar()
+        HeaderBarV2()
     }
 }
+
