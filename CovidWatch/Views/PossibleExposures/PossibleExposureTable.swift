@@ -125,7 +125,7 @@ struct PossibleExposureTable: View {
                 HStack {
                     Spacer(minLength: 10)
                     Text("TRANSMISSION_RISK_LEVEL_TITLE")
-                        .frame(maxWidth: .infinity, alignment: .leading)                        
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
                 }.modifier(PossibleExposureTableColumnA())
 

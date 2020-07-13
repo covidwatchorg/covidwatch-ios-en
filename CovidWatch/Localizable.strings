@@ -183,13 +183,16 @@ All strings for the project, separated for localization.
 "HOME_POSSIBLE_EXPOSURES_SUMMARY_TITLE" = "Possible Exposure Summary";
 
 /* Title */
-"NOTIFY_OTHERS_CALL_TO_ACTION_TITLE" = "Tested Positive?";
+"NOTIFY_OTHERS_CALL_TO_ACTION_TITLE" = "Have a Diagnosis?";
 
 /* Message */
-"NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE" = "If you tested positive for COVID-19 by the Public Health Department, you can help stop the spread in your communities by notifying others.";
+"NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE" = "If you have a diagnosis for COVID-19, you can help stop the spread in your communities by sharing it.";
+
+/* Title */
+"NOTIFY_OTHERS_TITLE" = "Anonymously Share Diagnosis";
 
 /* Button */
-"NOTIFY_OTHERS" = "Anonymously Notify Others";
+"NOTIFY_OTHERS" = "Anonymously Share Diagnosis";
 
 /* Button */
 "SHARE_THE_APP" = "Share the App";
@@ -416,28 +419,31 @@ All strings for the project, separated for localization.
 /* Title */
 "FIND_TEST_SITE_TITLE" = "Find COVID-19 Test Site";
 
-// # NOTIFY OTHERS
+// # REPORTING
 
 /* Title */
 "STEP_X_OF_Y_TITLE" = "Step %@ of %@";
 
 /* Message */
-"NOTIFY_OTHERS_CALL_TO_ACTION_LONG_MESSAGE" = "If you tested positive for COVID-19 by the public health authority, you can help stop the spread in your communities by anonymously notifying others.";
+"NOTIFY_OTHERS_CALL_TO_ACTION_LONG_MESSAGE" = "If you have a diagnosis for COVID-19, you can help stop the spread in your communities by anonymously sharing it.";
 
 /* Button */
-"SHARE_A_POSITIVE_DIAGNOSIS" = "Share a Positive Diagnosis";
+"SHARE_A_POSITIVE_DIAGNOSIS" = "Continue";
 
 /* Title */
-"REPORTING_VERIFY_TITLE" = "Anonymously Share a Positive Diagnosis";
+"REPORTING_VERIFY_TITLE" = "Anonymously Share Diagnosis";
 
 /* Message */
-"REPORTING_VERIFY_MESSAGE" = "To share a positive diagnosis, enter your Test Verification Code below.";
+"REPORTING_VERIFY_MESSAGE" = "To anonymously share a diagnosis, enter your Verification Code below.";
 
 /* Button */
-"REPORTING_VERIFY_NOTIFY_OTHERS" = "Anonymously Notify Others";
+"REPORTING_VERIFY_NOTIFY_OTHERS" = "Continue";
+
+/* Question */
+"VERIFICATION_CODE_QUESTION" = "What is your Verification Code?";
 
 /* Title */
-"TEST_VERIFICATION_CODE_TITLE" = "Test Verification Code";
+"VERIFICATION_CODE_TITLE" = "Verification Code";
 
 /* Message */
 "SYMPTOMS_START_DATE_QUESTION" = "When did your symptoms start?";
@@ -447,6 +453,21 @@ All strings for the project, separated for localization.
 
 /* Title */
 "SELECT_DATE" = "Select Date";
+
+/* Title */
+"REPORTING_FINISH_TITLE" = "Diagnosis Sent Anonymously";
+
+/* Message */
+"REPORTING_FINISH_SUBTITLE_MESSAGE" = "Thank you for helping slow the spread of COVID-19 within your communities!";
+
+/* Message */
+"REPORTING_FINISH_MESSAGE_1" = "To continue helping others:";
+
+/* Message */
+"REPORTING_FINISH_MESSAGE_2" = "• Please keep the app running until the pandemic is over.";
+
+/* Message */
+"REPORTING_FINISH_MESSAGE_3" = "• Share it with others so that they can help too. The more people use it, the more accurate everyone’s exposure notifications will be.";
 
 // # GENERIC
 
