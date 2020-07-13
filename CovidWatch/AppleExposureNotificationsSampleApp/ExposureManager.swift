@@ -98,6 +98,7 @@ class ExposureManager {
         let actionAfterHasLocalURLs = {
             guard !localURLs.isEmpty else {
                 self.detectingExposures = false
+                LocalStore.shared.dateLastPerformedExposureDetection = Date()
                 completionHandler?(true)
                 return
             }

@@ -11,8 +11,6 @@ struct PossibleExposures: View {
 
     @EnvironmentObject var localStore: LocalStore
 
-    @State private var isShowingExposureDetail = false
-
     @State private var selectedExposure: Exposure?
 
     let dateFormatter: DateFormatter = {
@@ -75,7 +73,7 @@ struct PossibleExposures: View {
 
                                     Text("POSSIBLE_EXPOSURES_NO_EXPOSURES_TITLE")
                                         .font(.custom("Montserrat-Bold", size: 13))
-                                        .foregroundColor(Color.secondary)
+                                        .foregroundColor(Color.primary)
                                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, alignment: .topLeading)
 
                                     Text("POSSIBLE_EXPOSURES_NO_EXPOSURES_MESSAGE")
@@ -93,21 +91,39 @@ struct PossibleExposures: View {
                         } else {
                             ForEach(0..<self.localStore.exposures.count) { index in
 
-                                Button(action: {
-                                    self.selectedExposure = self.localStore.exposures[index]
-                                    self.isShowingExposureDetail.toggle()
-                                }) {
-                                    VStack(spacing: 0) {
-                                        PossibleExposureRow(exposure: self.localStore.exposures[index])
-                                            .padding(.horizontal, 2 * .standardSpacing)
-                                        Divider()
+                                Group {
+                                    Button(action: {
+                                        if self.selectedExposure == self.localStore.exposures[index] {
+                                            self.selectedExposure = nil
+                                        } else {
+                                            self.selectedExposure = self.localStore.exposures[index]
+                                        }
+                                    }) {
+                                        VStack(spacing: 0) {
+
+                                            PossibleExposureRow(
+                                                exposure: self.localStore.exposures[index],
+                                                isExpanded: self.localStore.exposures[index] == self.selectedExposure
+                                            ).frame(minHeight: 54)
+                                                .padding(.horizontal, 2 * .standardSpacing)
+
+                                            Divider()
+
+                                            // Is Expanded?
+                                            if self.localStore.exposures[index] == self.selectedExposure {
+
+                                                HStack {
+                                                    PossibleExposureTable(exposure: self.localStore.exposures[index])
+                                                }
+                                                .frame(maxWidth: .infinity, alignment: .leading)
+                                                .background(Color(UIColor.systemGray6))
+
+                                                Divider()
+                                            }
+                                        }
                                     }
-                                }
-                                .accessibility(hint: Text("SHOWS_MORE_INFO_ACCESSIBILITY_HINT"))
-                                .frame(minHeight: 54)
-                                .sheet(isPresented: self.$isShowingExposureDetail) {
-                                    PossibleExposure(exposure: self.selectedExposure!)
-                                        .environmentObject(self.localStore)
+                                    .accessibility(hint: Text("SHOWS_MORE_INFO_ACCESSIBILITY_HINT"))
+                                    .frame(minHeight: 54)
                                 }
                             }
                         }

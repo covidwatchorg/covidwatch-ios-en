@@ -316,7 +316,7 @@ All strings for the project, separated for localization.
 "EXPOSURES_LAST_CHECKED_DATE_MESSAGE" = "Last checked: %@.";
 
 /* Message */
-"EXPOSURES_ARE_SAVED_MESSAGE" = "Each exposure notification is saved in this app and will be automatically deleted after 30 days.";
+"EXPOSURES_ARE_SAVED_MESSAGE" = "Each possible exposure is saved in this app and will be automatically deleted after 30 days.";
 
 /* Title */
 "POSSIBLE_EXPOSURES_NO_EXPOSURES_TITLE" = "No Exposures Detected";

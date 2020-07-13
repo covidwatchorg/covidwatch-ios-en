@@ -8,7 +8,7 @@ A class that contains and manages locally stored app data.
 import Foundation
 import ExposureNotification
 
-public struct Exposure: Codable {
+public struct Exposure: Codable, Equatable {
     let attenuationDurations: [TimeInterval]
     let attenuationValue: ENAttenuation
     let date: Date
