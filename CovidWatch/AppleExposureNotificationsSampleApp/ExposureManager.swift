@@ -44,6 +44,12 @@ class ExposureManager {
         LocalStore.shared.dateLastPerformedExposureDetection = Date()
         LocalStore.shared.exposureDetectionErrorLocalizedDescription = nil
     }
+    
+    func updateRiskLevel(){
+        if let riskScorer = self.riskScorer {
+            LocalStore.shared.riskLevelValue = riskScorer.computeDateRiskLevel(forExposures : LocalStore.shared.exposures, forDate : Date())
+        }
+    }
 
     static let authorizationStatusChangeNotification = Notification.Name("ExposureManagerAuthorizationStatusChangedNotification")
 
@@ -76,14 +82,9 @@ class ExposureManager {
                 switch result {
                     case let .success((newExposures, newDiagnosisKeyFileURLs)):
                         LocalStore.shared.previousDiagnosisKeyFileURLs += newDiagnosisKeyFileURLs
-                        LocalStore.shared.exposures.append(contentsOf: newExposures)
-                        LocalStore.shared.exposures.sort { $0.date > $1.date }
-                        LocalStore.shared.dateLastPerformedExposureDetection = Date()
-                        LocalStore.shared.exposureDetectionErrorLocalizedDescription = nil
                         
-                        if let riskScorer = self.riskScorer {
-                            LocalStore.shared.riskLevelValue = riskScorer.computeCurrentRiskLevel(forExposures : LocalStore.shared.exposures)
-                        }
+                        updateSavedExposures(newExposures: newExposures)
+                        updateRiskLevel()
                         
                         success = true
                     case let .failure(error):

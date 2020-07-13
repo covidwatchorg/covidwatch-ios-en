@@ -97,28 +97,27 @@ public class AZExposureRiskScorer: ExposureRiskScoring {
         return(1.0 - inverseProduct)
     }
     
-    public func computeCurrentRiskLevel(forExposures exposures: [Exposure]) -> Double{
-        var dayTransmissionRisks : [Date:Double] = [:]
+    public func computeDateRiskLevel(forExposures exposures: [Exposure], forDate computeDate : Date) -> Double{
+        var dateTransmissionRisks : [Date:Double] = [:]
         for exposure in exposures{
             let newRisk = computeRisk(forExposure: exposure)
-            if let prevRisk = dayTransmissionRisks[exposure.date]{
+            if let prevRisk = dateTransmissionRisks[exposure.date]{
                 let combinedRisk = combineRisks(forRisks : [prevRisk, newRisk])
-                dayTransmissionRisks[exposure.date] = combinedRisk
+                dateTransmissionRisks[exposure.date] = combinedRisk
             }else{
-                dayTransmissionRisks[exposure.date] = newRisk
+                dateTransmissionRisks[exposure.date] = newRisk
             }
         }
         var infectedRisk = 0.0
-        let currentDate = Date()
-        for (date, transmissionRisk) in dayTransmissionRisks{
-            let diffComponents = Calendar.current.dateComponents([.day], from: date, to: currentDate)
+        for (exposureDate, transmissionRisk) in dateTransmissionRisks{
+            let diffComponents = Calendar.current.dateComponents([.day], from: exposureDate, to: computeDate)
             let days = diffComponents.day!
             if (days >= 0 && days < discountSchedule.count) {
                 let discountedRisk = transmissionRisk * discountSchedule[days]
                 infectedRisk = combineRisks(forRisks: [infectedRisk, discountedRisk])
             }
         }
-        let riskLevel : Double = (infectedRisk * 100.0)
+        let riskLevel = (infectedRisk * 100.0)
         return(riskLevel)
     }
 }

@@ -15,5 +15,5 @@ public protocol ExposureRiskScoring {
         transmissionRiskLevel: ENRiskLevel
     ) -> ENRiskScore
     
-    func computeCurrentRiskLevel(forExposures exposures: [Exposure]) -> Double
+    func computeDateRiskLevel(forExposures exposures: [Exposure], forDate computeDate : Date) -> Double
 }
