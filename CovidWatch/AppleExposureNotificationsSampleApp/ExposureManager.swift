@@ -80,6 +80,11 @@ class ExposureManager {
                         LocalStore.shared.exposures.sort { $0.date > $1.date }
                         LocalStore.shared.dateLastPerformedExposureDetection = Date()
                         LocalStore.shared.exposureDetectionErrorLocalizedDescription = nil
+                        
+                        if let riskScorer = self.riskScorer {
+                            LocalStore.shared.riskLevelValue = riskScorer.computeCurrentRiskLevel(forExposures : LocalStore.shared.exposures)
+                        }
+                        
                         success = true
                     case let .failure(error):
                         LocalStore.shared.exposureDetectionErrorLocalizedDescription = error.localizedDescription
@@ -118,7 +123,7 @@ class ExposureManager {
                                 let newExposures: [Exposure] = exposures!.map { exposure in
 
                                     // Map score between 0 and 8
-                                    var totalRiskScore: ENRiskScore = ENRiskScore(exposure.totalRiskScoreFullRange * 8.0 / pow(8, 4))
+                                    var totalRiskScore: ENRiskScore = ENRiskScore( 8.0 / pow(8, 4))
                                     if let riskScorer = self.riskScorer {
                                         totalRiskScore = riskScorer.computeRiskScore(forExposure: exposure)
                                     }

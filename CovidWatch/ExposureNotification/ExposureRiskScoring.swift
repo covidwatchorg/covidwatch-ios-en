@@ -14,4 +14,6 @@ public protocol ExposureRiskScoring {
         forAttenuationDurations attenuationDurations: [NSNumber],
         transmissionRiskLevel: ENRiskLevel
     ) -> ENRiskScore
+    
+    func computeCurrentRiskLevel(forExposures exposures: [Exposure]) -> Double
 }
