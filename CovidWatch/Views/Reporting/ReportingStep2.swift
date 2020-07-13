@@ -165,6 +165,7 @@ struct ReportingStep2: View {
                                     self.localStore.testResults[self.selectedTestResultIndex].isShared = true
 
                                     withAnimation {
+                                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                                         self.isShowingNextStep = true
                                     }
                                 }
