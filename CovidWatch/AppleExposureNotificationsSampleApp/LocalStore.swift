@@ -93,7 +93,6 @@ public class LocalStore: ObservableObject {
     public var riskLevelValue: Double? {
         willSet { objectWillChange.send() }
     }
-    
 
     @Persisted(userDefaultsKey: "dateLastPerformedExposureDetection",
                notificationName: .init("LocalStoreDateLastPerformedExposureDetectionDidChange"), defaultValue: nil)

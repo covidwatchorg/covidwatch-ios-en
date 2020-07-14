@@ -8,11 +8,11 @@ import ExposureNotification
 
 public class AZExposureRiskScorer: ExposureRiskScoring {
 
-    var discountSchedule : [Double] = [ 1,0.99998,0.994059,0.9497885,0.858806,0.755134,0.660103392,0.586894919,0.533407703,0.494373128,0.463039432,0.438587189,0.416241392,
-            0.393207216,0.367287169,0.340932595,0.313997176,0.286927378,0.265554932,0.240765331,0.217746365,0.201059905,0.185435372,0.172969757,
-            0.156689676,0.141405162,0.124388311,0.108319101,0.094752304,0.081300662,0.070016527,0.056302622,0.044703284,0.036214683,0.030309399,
-            0.024554527,0.018833743,0.014769669]
-    
+    var discountSchedule: [Double] = [ 1, 0.99998, 0.994059, 0.9497885, 0.858806, 0.755134, 0.660103392, 0.586894919, 0.533407703, 0.494373128, 0.463039432, 0.438587189, 0.416241392,
+            0.393207216, 0.367287169, 0.340932595, 0.313997176, 0.286927378, 0.265554932, 0.240765331, 0.217746365, 0.201059905, 0.185435372, 0.172969757,
+            0.156689676, 0.141405162, 0.124388311, 0.108319101, 0.094752304, 0.081300662, 0.070016527, 0.056302622, 0.044703284, 0.036214683, 0.030309399,
+            0.024554527, 0.018833743, 0.014769669]
+
     var attenuationDurationWeights = [
         2.0182978, // High attenuation: D < 0.5m
         1.1507629, // Medium attenuation: 0.5m < D < 2m
@@ -43,7 +43,7 @@ public class AZExposureRiskScorer: ExposureRiskScoring {
             attenuationDurations[1].doubleValue / 60 * attenuationDurationWeights[1] +
             attenuationDurations[2].doubleValue / 60 * attenuationDurationWeights[2]
     }
-    
+
     // Same function as above but of input type [Double]. Will consolidate later
     private func computeAttenuationDurationRiskScore(
         forAttenuationDurations attenuationDurations: [Double]
@@ -72,11 +72,11 @@ public class AZExposureRiskScorer: ExposureRiskScoring {
         let totalRiskScore: AZRiskScoreValue = (1 - exp(-doseResponseLambda * tranmissionRiskValue * attenuationDurationRiskScore)) * 100
         return totalRiskScore.riskScore
     }
-    
+
     private func computeRisk(forExposure exposure: Exposure) -> Double {
         return computeRisk(forAttenuationDurations: exposure.attenuationDurations, transmissionRiskLevel: exposure.transmissionRiskLevel)
     }
-    
+
     private func computeRisk(
          forAttenuationDurations attenuationDurations: [Double],
          transmissionRiskLevel: ENRiskLevel
@@ -89,30 +89,30 @@ public class AZExposureRiskScorer: ExposureRiskScoring {
          return totalRiskScore
      }
 
-    private func combineRisks(forRisks risks : [Double]) -> Double{
+    private func combineRisks(forRisks risks: [Double]) -> Double {
         var inverseProduct = 1.0
-        for risk in risks{
+        for risk in risks {
             inverseProduct = inverseProduct*(1.0 - risk)
         }
         return(1.0 - inverseProduct)
     }
-    
-    public func computeDateRiskLevel(forExposures exposures: [Exposure], forDate computeDate : Date) -> Double{
-        var dateTransmissionRisks : [Date:Double] = [:]
-        for exposure in exposures{
+
+    public func computeDateRiskLevel(forExposures exposures: [Exposure], forDate computeDate: Date) -> Double {
+        var dateTransmissionRisks: [Date: Double] = [:]
+        for exposure in exposures {
             let newRisk = computeRisk(forExposure: exposure)
-            if let prevRisk = dateTransmissionRisks[exposure.date]{
-                let combinedRisk = combineRisks(forRisks : [prevRisk, newRisk])
+            if let prevRisk = dateTransmissionRisks[exposure.date] {
+                let combinedRisk = combineRisks(forRisks: [prevRisk, newRisk])
                 dateTransmissionRisks[exposure.date] = combinedRisk
-            }else{
+            } else {
                 dateTransmissionRisks[exposure.date] = newRisk
             }
         }
         var infectedRisk = 0.0
-        for (exposureDate, transmissionRisk) in dateTransmissionRisks{
+        for (exposureDate, transmissionRisk) in dateTransmissionRisks {
             let diffComponents = Calendar.current.dateComponents([.day], from: exposureDate, to: computeDate)
             let days = diffComponents.day!
-            if (days >= 0 && days < discountSchedule.count) {
+            if days >= 0 && days < discountSchedule.count {
                 let discountedRisk = transmissionRisk * discountSchedule[days]
                 infectedRisk = combineRisks(forRisks: [infectedRisk, discountedRisk])
             }
