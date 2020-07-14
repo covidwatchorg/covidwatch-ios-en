@@ -183,13 +183,16 @@ All strings for the project, separated for localization.
 "HOME_POSSIBLE_EXPOSURES_SUMMARY_TITLE" = "Possible Exposure Summary";
 
 /* Title */
-"NOTIFY_OTHERS_CALL_TO_ACTION_TITLE" = "Have a Diagnosis?";
+"NOTIFY_OTHERS_CALL_TO_ACTION_TITLE" = "Have a diagnosis?";
 
 /* Message */
-"NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE" = "If you have a diagnosis for COVID-19, you can help stop the spread in your communities by sharing it.";
+"NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE" = "Anonymously share it with others to help stop the spread in your region.";
 
 /* Title */
-"NOTIFY_OTHERS_TITLE" = "Anonymously Share Diagnosis";
+"NOTIFY_OTHERS_TITLE" = "Anonymously Share a Diagnosis";
+
+/* Button */
+"HOME_NOTIFY_OTHERS_BUTTON" = "Learn How";
 
 /* Button */
 "NOTIFY_OTHERS" = "Anonymously Share Diagnosis";
@@ -210,7 +213,7 @@ All strings for the project, separated for localization.
 "HOME_TOTAL_RISK_SCORE_ACCESSIBILITY_LABEL" = "%d total risk score (0-8 scale)";
 
 /* Message */
-"HOME_NEXT_STEPS_MESSAGE" = "Next steps based on risk level and region:";
+"HOME_NEXT_STEPS_MESSAGE" = "Next steps based on your possible COVID-19 exposures and selected region:";
 
 /* Special */
 "HOME_DAYS_ROW_1_LABEL" = "days";
@@ -231,7 +234,7 @@ All strings for the project, separated for localization.
 "HOME_TOTAL_RISK_SCORE_ROW_2_LABEL" = "(0-8 scale)";
 
 /* Title */
-"MY_RISK_LEVEL_TITLE" = "My Risk Level Today: %@";
+"HOME_RISK_SUMMARY_TITLE" = "Possible Risk Today: %@";
 
 /* Title */
 "RISK_LEVEL_UNKNOWN" = "Unknown";
@@ -434,7 +437,7 @@ All strings for the project, separated for localization.
 "SHARE_A_POSITIVE_DIAGNOSIS" = "Continue";
 
 /* Title */
-"REPORTING_VERIFY_TITLE" = "Anonymously Share Diagnosis";
+"REPORTING_VERIFY_TITLE" = "Anonymously Share a Diagnosis";
 
 /* Message */
 "REPORTING_VERIFY_MESSAGE" = "To anonymously share a diagnosis, enter your Verification Code below.";

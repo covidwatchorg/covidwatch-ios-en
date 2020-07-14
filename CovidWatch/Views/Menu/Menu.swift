@@ -148,7 +148,7 @@ struct Menu: View {
                                 .environmentObject(self.userData)
                         }
 
-                        if !self.localStore.testResults.isEmpty {
+                        if !self.localStore.diagnoses.isEmpty {
                             // TODO
                             //                            Divider()
                             //

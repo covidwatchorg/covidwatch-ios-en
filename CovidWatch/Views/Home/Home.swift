@@ -107,7 +107,7 @@ struct Home: View {
                                 HStack {
                                     Image(self.localStore.riskLevelImageName)
 
-                                    Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("MY_RISK_LEVEL_TITLE", comment: ""), self.localStore.riskLevelDescription))
+                                    Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("HOME_RISK_SUMMARY_TITLE", comment: ""), self.localStore.riskLevelDescription))
                                         .font(.custom("Montserrat-Medium", size: 18))
                                         .foregroundColor(Color.white)
                                 }
@@ -144,7 +144,7 @@ struct Home: View {
                             Button(action: {
                                 self.isShowingReporting.toggle()
                             }) {
-                                Text("NOTIFY_OTHERS").modifier(SmallCallToAction())
+                                Text("HOME_NOTIFY_OTHERS_BUTTON").modifier(SmallCallToAction())
                             }
                             .padding(.top, 2 * .standardSpacing)
                             .padding(.bottom, .standardSpacing)

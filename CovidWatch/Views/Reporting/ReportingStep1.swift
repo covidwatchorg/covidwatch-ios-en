@@ -14,7 +14,7 @@ struct ReportingStep1: View {
 
     @State var isShowingNextStep = false
 
-    @State var selectedTestResultIndex = 0
+    @State var selectedDiagnosisIndex = 0
 
     var body: some View {
 
@@ -58,16 +58,16 @@ struct ReportingStep1: View {
 
                     #else
 
-                    let testResult = TestResult(
+                    let diagnosis = Diagnosis(
                         id: UUID(),
                         isAdded: false,
-                        dateAdministered: Date(),
+                        testDate: Date(),
                         isShared: false,
                         isVerified: false,
-                        testType: "confirmed"
+                        testType: .testTypeConfirmed
                     )
-                    self.localStore.testResults.insert(testResult, at: 0)
-                    self.selectedTestResultIndex = 0
+                    self.localStore.diagnoses.insert(diagnosis, at: 0)
+                    self.selectedDiagnosisIndex = 0
 
                     withAnimation {
                         self.isShowingNextStep = true
@@ -87,88 +87,6 @@ struct ReportingStep1: View {
                 Image("Notify Others Footer")
                     .accessibility(hidden: true)
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
-
-                //                    Image("Doctors Security")
-                //                        .accessibility(hidden: true)
-                //                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
-
-                //                    VStack(spacing: 0) {
-                //
-                //                        if !self.localStore.testResults.isEmpty {
-                //
-                //                            Text("Past Positive Diagnoses")
-                //                                .font(.custom("Montserrat-SemiBold", size: 18))
-                //                                .foregroundColor(Color.secondary)
-                //                                .frame(maxWidth: .infinity, alignment: .leading)
-                //                                .padding(.top, 2 * .standardSpacing)
-                //                                .padding(.bottom, .standardSpacing)
-                //
-                //                            ForEach(self.localStore.testResults, id:\.id) { testResult in
-                //
-                //                                Button(action: {
-                //
-                //                                    self.selectedTestResultIndex = self.localStore.testResults.firstIndex { testResult.id == $0.id } ?? 0
-                //                                    self.isShowingCallCode.toggle()
-                //
-                //                                }) {
-                //
-                //                                    HStack(spacing: .standardSpacing) {
-                //
-                //                                        if !testResult.isVerified {
-                //                                            Image("Past Diagnosis Row Alert")
-                //                                        } else {
-                //                                            Image("Past Diagnosis Row Checkmark")
-                //                                        }
-                //
-                //                                        VStack(alignment: .leading, spacing: 0) {
-                //
-                //                                            if !testResult.isVerified {
-                //
-                //                                                Text("Needs Verification")
-                //                                                    .font(.custom("Montserrat-Bold", size: 14))
-                //                                                    .foregroundColor(Color("Alert High Color"))
-                //
-                //                                            } else {
-                //
-                //                                                Text("Verified")
-                //                                                    .font(.custom("Montserrat-Bold", size: 14))
-                //                                                    .foregroundColor(Color.init(red: 75.0/255.0, green: 10.0/255.0, blue: 112.0/255.0))
-                //
-                //                                            }
-                //
-                //                                            Text("COVID-19 Positive")
-                //                                                .font(.custom("Montserrat-Bold", size: 14))
-                //                                                .foregroundColor(Color.secondary)
-                //
-                //                                            Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("Test Date: %@", comment: ""), DateFormatter.localizedString(from: testResult.dateAdministered, dateStyle: .short, timeStyle: .none)))
-                //                                                .font(.custom("Montserrat-Regular", size: 14))
-                //                                                .foregroundColor(Color.secondary)
-                //
-                //                                        }
-                //
-                //                                        Spacer()
-                //
-                //                                        if !testResult.isVerified {
-                //                                            Image("Exposure Row Right Arrow")
-                //                                        }
-                //
-                //                                    }
-                //                                    .padding(.horizontal, 2 * .standardSpacing)
-                //                                    .frame(minHeight: 84, alignment: .leading)
-                //                                    .background(Color(UIColor.secondarySystemBackground))
-                //                                    .border(Color("Button Border Color"), width: 1)
-                //                                }
-                //                                .disabled(testResult.isVerified)
-                //                                .sheet(isPresented: self.$isShowingCallCode) {
-                //                                    ReportingCallCode(selectedTestResultIndex: self.selectedTestResultIndex).environmentObject(self.localStore)
-                //                                }
-                //                            }
-                //                        }
-                //
-                //
-                //                    }
-                //                    .padding(.horizontal, 2 * .standardSpacing)
-
             }
         }
     }

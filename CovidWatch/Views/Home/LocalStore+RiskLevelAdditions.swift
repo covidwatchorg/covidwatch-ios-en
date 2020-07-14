@@ -16,7 +16,7 @@ extension LocalStore {
 
         if let riskLevelValue = riskLevelValue {
 
-            if testResults.contains(where: { $0.isVerified && $0.testType == "confirmed" }) {
+            if diagnoses.contains(where: { $0.isVerified && $0.testType == .testTypeConfirmed }) {
                 return .verifiedPositive
             }
 
