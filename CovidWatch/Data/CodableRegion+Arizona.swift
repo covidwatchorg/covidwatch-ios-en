@@ -85,18 +85,8 @@ extension CodableRegion {
         nextStepsRiskLow: [
             .init(
                 type: .website,
-                description: "Monitor yourself for COVID-19 symtoms.",
-                url: "http://covid19.arizona.edu/prevention-health/protect-yourself-others?utm_source=covid_watch_ios_app&utm_medium=referral&utm_campaign=covid_symptoms"
-            ),
-            .init(
-                type: .phone,
-                description: "If you have COVID-19 symptoms, call Campus Health at (520) 621-9202.",
-                url: "tel:1-520-621-9202"
-            ),
-            .init(
-                type: .website,
-                description: "Protect yourself and others.",
-                url: "http://covid19.arizona.edu/prevention-health/protect-yourself-others?utm_source=covid_watch_ios_app&utm_medium=referral&utm_campaign=covid_watch_protect_yourself"
+                description: "Learn how to protect yourself and others.",
+                url: "http://covid19.arizona.edu/prevention-health/protect-yourself-others?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_protect_yourself"
             ),
             .shareTheApp
         ],
@@ -109,7 +99,7 @@ extension CodableRegion {
             .init(
                 type: .website,
                 description: "Monitor yourself for COVID-19 symtoms.",
-                url: "http://covid19.arizona.edu/prevention-health/protect-yourself-others?utm_source=covid_watch_ios_app&utm_medium=referral&utm_campaign=covid_symptoms"
+                url: "https://covid19.arizona.edu/prevention-health/covid-19-symptoms?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_covid19_symptoms_mediium"
                 ),
             .shareTheApp
         ],
@@ -126,8 +116,8 @@ extension CodableRegion {
             ),
             .init(
                 type: .website,
-                description: "Monitor COVID-19 symptoms and get tested ASAP if symptoms appear.",
-                url: "http://covid19.arizona.edu/prevention-health/protect-yourself-others?utm_source=covid_watch_ios_app&utm_medium=referral&utm_campaign=covid_symptoms"
+                description: "Monitor yourself for COVID-19 symtoms.",
+                url: "https://covid19.arizona.edu/prevention-health/covid-19-symptoms?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_covid19_symptoms_high"
             ),
             .init(
                 type: .website,
