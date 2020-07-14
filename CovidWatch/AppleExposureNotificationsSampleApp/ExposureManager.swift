@@ -68,6 +68,8 @@ class ExposureManager {
         }
         detectingExposures = true
 
+        self.updateRiskLevel()
+
         var localURLs = importURLs
         var newDiagnosisKeyFileURLs = [URL]()
 
