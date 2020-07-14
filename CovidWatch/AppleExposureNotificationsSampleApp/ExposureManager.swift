@@ -44,6 +44,12 @@ class ExposureManager {
         LocalStore.shared.dateLastPerformedExposureDetection = Date()
         LocalStore.shared.exposureDetectionErrorLocalizedDescription = nil
     }
+    
+    func updateRiskLevel(){
+        if let riskScorer = self.riskScorer {
+            LocalStore.shared.riskLevelValue = riskScorer.computeDateRiskLevel(forExposures : LocalStore.shared.exposures, forDate : Date())
+        }
+    }
 
     static let authorizationStatusChangeNotification = Notification.Name("ExposureManagerAuthorizationStatusChangedNotification")
 
@@ -76,10 +82,10 @@ class ExposureManager {
                 switch result {
                     case let .success((newExposures, newDiagnosisKeyFileURLs)):
                         LocalStore.shared.previousDiagnosisKeyFileURLs += newDiagnosisKeyFileURLs
-                        LocalStore.shared.exposures.append(contentsOf: newExposures)
-                        LocalStore.shared.exposures.sort { $0.date > $1.date }
-                        LocalStore.shared.dateLastPerformedExposureDetection = Date()
-                        LocalStore.shared.exposureDetectionErrorLocalizedDescription = nil
+                        
+                        updateSavedExposures(newExposures: newExposures)
+                        updateRiskLevel()
+                        
                         success = true
                     case let .failure(error):
                         LocalStore.shared.exposureDetectionErrorLocalizedDescription = error.localizedDescription
@@ -119,7 +125,7 @@ class ExposureManager {
                                 let newExposures: [Exposure] = exposures!.map { exposure in
 
                                     // Map score between 0 and 8
-                                    var totalRiskScore: ENRiskScore = ENRiskScore(exposure.totalRiskScoreFullRange * 8.0 / pow(8, 4))
+                                    var totalRiskScore: ENRiskScore = ENRiskScore( 8.0 / pow(8, 4))
                                     if let riskScorer = self.riskScorer {
                                         totalRiskScore = riskScorer.computeRiskScore(forExposure: exposure)
                                     }

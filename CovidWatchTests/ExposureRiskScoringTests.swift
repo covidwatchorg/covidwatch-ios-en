@@ -180,6 +180,104 @@ class ExposureRiskScoringTests: XCTestCase {
             0, // Expected
             message
         )
+        
+        
+        
+        // Current date
+        let day0 = Date()
+        let day2 = Calendar.current.date(byAdding: .day, value: 2, to: day0)!
+        let day3 = Calendar.current.date(byAdding: .day, value: 3, to: day0)!
+        let day4 = Calendar.current.date(byAdding: .day, value: 4, to: day0)!
+        let day18 = Calendar.current.date(byAdding: .day, value: 18, to:  day0)!
+        
+        var exposures = [Exposure(
+                            attenuationDurations: [5 * 60.0, 10 * 60.0, 5 * 60.0],
+                              attenuationValue: 0,
+                              date: day0,
+                              duration: 0,
+                              totalRiskScore: 0,
+                              transmissionRiskLevel: 6
+                            ),
+                         Exposure(
+                            attenuationDurations: [10 * 60.0, 0.0, 0.0],
+                           attenuationValue: 0,
+                           date: day3,
+                           duration: 0,
+                           totalRiskScore: 0,
+                           transmissionRiskLevel: 6
+                         )
+            ]
+                         
+        XCTAssertEqual(
+            scoring.computeDateRiskLevel(forExposures: exposures, forDate: day2
+            ),
+            4.147819, // Expected
+            accuracy : 0.0001,
+            message
+        )
+        XCTAssertEqual(
+            scoring.computeDateRiskLevel(forExposures: exposures, forDate: day3
+            ),
+            7.221063, // Expected
+            accuracy : 0.0001,
+            message
+        )
+        XCTAssertEqual(
+            scoring.computeDateRiskLevel(forExposures: exposures, forDate: day18
+            ),
+            2.251825, // Expected
+            accuracy : 0.0001,
+            message
+        )
+        
+        exposures = [Exposure(
+                        attenuationDurations: [0.0, 0.0, 25 * 60.0],
+                          attenuationValue: 0,
+                          date: day3,
+                          duration: 0,
+                          totalRiskScore: 0,
+                          transmissionRiskLevel: 6
+                        ),
+                     Exposure(
+                        attenuationDurations: [5 * 60.0, 20 * 60.0, 5 * 60.0],
+                       attenuationValue: 0,
+                       date: day3,
+                       duration: 0,
+                       totalRiskScore: 0,
+                       transmissionRiskLevel: 6
+                     ),
+                     Exposure(
+                        attenuationDurations:  [5 * 60.0, 0.0, 0.0],
+                       attenuationValue: 0,
+                       date: day3,
+                       duration: 0,
+                       totalRiskScore: 0,
+                       transmissionRiskLevel: 6
+                     )
+        ]
+        
+                         
+        XCTAssertEqual(
+            scoring.computeDateRiskLevel(forExposures: exposures, forDate: day2
+            ),
+            0.0, // Expected
+            accuracy : 0.0001,
+            message
+        )
+        XCTAssertEqual(
+            scoring.computeDateRiskLevel(forExposures: exposures, forDate: day4
+            ),
+            10.2363, // Expected
+            accuracy : 0.0001,
+            message
+        )
+        XCTAssertEqual(
+            scoring.computeDateRiskLevel(forExposures: exposures, forDate: day18
+            ),
+            3.489957, // Expected
+            accuracy : 0.0001,
+            message
+        )
     }
 
 }

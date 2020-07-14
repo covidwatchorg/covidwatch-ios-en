@@ -25,8 +25,8 @@ public struct CodableRegion: Codable {
     let name: String
     var logoTypeImageName: String
     var logoImageName: String
-    let riskLowThreshold: Float
-    let riskHighThreshold: Float
+    let riskLowThreshold: Double
+    let riskHighThreshold: Double
     let nextStepsRiskUnknown: [NextStep]
     let nextStepsRiskLow: [NextStep]
     let nextStepsRiskMedium: [NextStep]
