@@ -11,7 +11,6 @@ struct MenuTitleText: ViewModifier {
             .font(.custom("Montserrat-SemiBold", size: 18))
             .foregroundColor(Color.secondary)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.top, 22)
-            .padding(.bottom, 16)
+            .padding(.vertical, .standardSpacing)
     }
 }

@@ -275,7 +275,10 @@ All strings for the project, separated for localization.
 "MENU_NOTIFY_OTHERS" = "Have a Diagnosis?";
 
 /* Title */
-"HEALTH_GUIDELINES_TITLE" = "Health Guidelines";
+"MENU_CHANGE_REGION_TITLE" = "Change Region";
+
+/* Title */
+"HEALTH_GUIDELINES_TITLE" = "CDC Health Guidelines";
 
 /* Title */
 "COVID_WATCH_WEBSITE_TITLE" = "Covid Watch Website";

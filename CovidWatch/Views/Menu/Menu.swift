@@ -24,6 +24,8 @@ struct Menu: View {
 
     @State var isShowingHowItWorks: Bool = false
 
+    @State var isShowingRegionSelection: Bool = false
+
     init() {
         UITableView.appearance().backgroundColor = .systemBackground
     }
@@ -140,32 +142,50 @@ struct Menu: View {
                                 Text("MENU_NOTIFY_OTHERS")
                             }.modifier(MenuTitleText())
                         }
-                        .sheet(isPresented: $isShowingNotifyOthers) { ReportingStep1().environmentObject(self.localStore) }
+                        .sheet(isPresented: $isShowingNotifyOthers) {
+                            ReportingStep1()
+                                .environmentObject(self.localStore)
+                                .environmentObject(self.userData)
+                        }
 
                         if !self.localStore.testResults.isEmpty {
                             // TODO
-//                            Divider()
-//
-//                            Button(action: {
-//                                self.isShowingNotifyOthers.toggle()
-//                            }) {
-//                                HStack {
-//                                    Text("MENU_NOTIFY_OTHERS")
-//                                }.modifier(MenuTitleText())
-//                            }
-//                            .sheet(isPresented: $isShowingNotifyOthers) { Reporting().environmentObject(self.localStore) }
+                            //                            Divider()
+                            //
+                            //                            Button(action: {
+                            //                                self.isShowingNotifyOthers.toggle()
+                            //                            }) {
+                            //                                HStack {
+                            //                                    Text("MENU_NOTIFY_OTHERS")
+                            //                                }.modifier(MenuTitleText())
+                            //                            }
+                            //                            .sheet(isPresented: $isShowingNotifyOthers) { Reporting().environmentObject(self.localStore) }
+                        }
+                        Group {
+                            Divider()
+
+                            Button(action: {
+                                self.isShowingRegionSelection.toggle()
+                            }) {
+                                HStack {
+                                    Text("MENU_CHANGE_REGION_TITLE")
+                                }.modifier(MenuTitleText())
+                            }
+                            .sheet(isPresented: $isShowingRegionSelection) { RegionSelection(selectedRegionIndex: self.userData.selectedRegionIndex) }
                         }
 
-                        Divider()
+                        Group {
+                            Divider()
 
-                        Button(action: {
-                            self.isShowingHowItWorks.toggle()
-                        }) {
-                            HStack {
-                                Text("HOW_IT_WORKS_TITLE")
-                            }.modifier(MenuTitleText())
+                            Button(action: {
+                                self.isShowingHowItWorks.toggle()
+                            }) {
+                                HStack {
+                                    Text("HOW_IT_WORKS_TITLE")
+                                }.modifier(MenuTitleText())
+                            }
+                            .sheet(isPresented: $isShowingHowItWorks) { HowItWorks(showsSetupButton: false, showsDismissButton: true).environmentObject(self.userData) }
                         }
-                        .sheet(isPresented: $isShowingHowItWorks) { HowItWorks(showsSetupButton: false, showsDismissButton: true).environmentObject(self.userData) }
 
                         Divider()
 
@@ -186,72 +206,68 @@ struct Menu: View {
 
                         Divider()
 
-                        Button(action: {
-                            guard let url = URL(string: "https://www.covidwatch.org") else { return }
-                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                        }) {
-                            HStack {
-                                Text("COVID_WATCH_WEBSITE_TITLE")
-                                Spacer()
-                                Image("Menu Action")
-                                    .accessibility(hidden: true)
-                            }.modifier(MenuTitleText())
+                        Group {
+                            Button(action: {
+                                guard let url = URL(string: "https://www.covidwatch.org") else { return }
+                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                            }) {
+                                HStack {
+                                    Text("COVID_WATCH_WEBSITE_TITLE")
+                                    Spacer()
+                                    Image("Menu Action")
+                                        .accessibility(hidden: true)
+                                }.modifier(MenuTitleText())
+                            }
+
+                            Divider()
                         }
 
-                        Divider()
+                        Group {
+                            Button(action: {
+                                guard let url = URL(string: "https://www.covidwatch.org/privacy") else { return }
+                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                            }) {
+                                HStack {
+                                    Text("PRIVACY_POLICY_TITLE")
+                                    Spacer()
+                                    Image("Menu Action")
+                                        .accessibility(hidden: true)
+                                }.modifier(MenuTitleText())
+                            }
 
-                        Button(action: {
-                            guard let url = URL(string: "https://www.covidwatch.org/faq") else { return }
-                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                        }) {
-                            HStack {
-                                Text("FAQ_TITLE")
-                                Spacer()
-                                Image("Menu Action")
-                                    .accessibility(hidden: true)
-                            }.modifier(MenuTitleText())
+                            Divider()
                         }
 
-                        Divider()
+                        Group {
+                            Button(action: {
+                                guard let url = URL(string: "https://www.covidwatch.org/privacy") else { return }
+                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                            }) {
+                                HStack {
+                                    Text("TEMS_OF_USE_TITLE")
+                                    Spacer()
+                                    Image("Menu Action")
+                                        .accessibility(hidden: true)
+                                }.modifier(MenuTitleText())
+                            }
 
-                        Button(action: {
-                            guard let url = URL(string: "https://www.covidwatch.org/privacy") else { return }
-                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                        }) {
-                            HStack {
-                                Text("TEMS_OF_USE_TITLE")
-                                Spacer()
-                                Image("Menu Action")
-                                    .accessibility(hidden: true)
-                            }.modifier(MenuTitleText())
+                            Divider()
                         }
 
-                        Divider()
+                        Group {
+                            Button(action: {
+                                guard let url = URL(string: "https://covidwatch.zendesk.com/hc/en-us/requests/new") else { return }
+                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                            }) {
+                                HStack {
+                                    Text("GET_SUPPORT_TITLE")
+                                    Spacer()
+                                    Image("Menu Action")
+                                        .accessibility(hidden: true)
+                                }.modifier(MenuTitleText())
+                            }
 
-                        Button(action: {
-                            guard let url = URL(string: "https://www.covidwatch.org/privacy") else { return }
-                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                        }) {
-                            HStack {
-                                Text("PRIVACY_POLICY_TITLE")
-                                Spacer()
-                                Image("Menu Action")
-                                    .accessibility(hidden: true)
-                            }.modifier(MenuTitleText())
-                        }
-
-                        Divider()
-
-                        Button(action: {
-                            guard let url = URL(string: "https://www.covidwatch.org/support") else { return }
-                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                        }) {
-                            HStack {
-                                Text("GET_SUPPORT_TITLE")
-                                Spacer()
-                                Image("Menu Action")
-                                    .accessibility(hidden: true)
-                            }.modifier(MenuTitleText())
+                            Divider()
                         }
                     }
                 }
