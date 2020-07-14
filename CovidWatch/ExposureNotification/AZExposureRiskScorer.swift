@@ -85,7 +85,7 @@ public class AZExposureRiskScorer: ExposureRiskScoring {
          let attenuationDurationRiskScore = computeAttenuationDurationRiskScore(
              forAttenuationDurations: attenuationDurations
          )
-         let totalRiskScore = (1 - exp(-tranmissionRiskValue * attenuationDurationRiskScore))
+         let totalRiskScore = (1 - exp(-doseResponseLambda * tranmissionRiskValue * attenuationDurationRiskScore))
          return totalRiskScore
      }
 
