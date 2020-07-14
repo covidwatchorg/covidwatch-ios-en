@@ -140,7 +140,7 @@ struct Menu: View {
                                 Text("MENU_NOTIFY_OTHERS")
                             }.modifier(MenuTitleText())
                         }
-                        .sheet(isPresented: $isShowingNotifyOthers) { Reporting().environmentObject(self.localStore) }
+                        .sheet(isPresented: $isShowingNotifyOthers) { ReportingStep1().environmentObject(self.localStore) }
 
                         if !self.localStore.testResults.isEmpty {
                             // TODO

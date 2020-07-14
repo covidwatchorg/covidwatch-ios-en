@@ -31,22 +31,22 @@ struct PossibleExposureTable: View {
 
         VStack(spacing: 0) {
 
-            HStack(spacing: 0) {
-                HStack {
-                    Spacer(minLength: 10)
-                    Text("DATE_TITLE")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Spacer(minLength: 10)
-                }.modifier(PossibleExposureTableColumnA())
-
-                HStack {
-                    Spacer(minLength: 20)
-                    Text(verbatim: DateFormatter.localizedString(from: exposure.date, dateStyle: .medium, timeStyle: .none))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Spacer(minLength: 10)
-                }.modifier(PossibleExposureTableColumnB())
-            }
-            .accessibilityElement(children: .combine)
+//            HStack(spacing: 0) {
+//                HStack {
+//                    Spacer(minLength: 10)
+//                    Text("DATE_TITLE")
+//                        .frame(maxWidth: .infinity, alignment: .leading)
+//                    Spacer(minLength: 10)
+//                }.modifier(PossibleExposureTableColumnA())
+//
+//                HStack {
+//                    Spacer(minLength: 20)
+//                    Text(verbatim: DateFormatter.localizedString(from: exposure.date, dateStyle: .medium, timeStyle: .none))
+//                        .frame(maxWidth: .infinity, alignment: .leading)
+//                    Spacer(minLength: 10)
+//                }.modifier(PossibleExposureTableColumnB())
+//            }
+//            .accessibilityElement(children: .combine)
 
 //            HStack(spacing: 0) {
 //                HStack {
@@ -76,7 +76,7 @@ struct PossibleExposureTable: View {
 
                 HStack {
                     Spacer(minLength: 20)
-                    Text(verbatim: "[ \(exposure.attenuationDurations.map({ duration(for: $0)}).joined(separator: ", ")) ]")
+                    Text(verbatim: "\(exposure.attenuationDurations.map({ duration(for: $0)}).joined(separator: ", "))")
                         .accessibility(label: Text(verbatim: exposure.attenuationDurations.map({ duration(for: $0, unitStyle: .spellOut)}).joined(separator: ", ")))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)
@@ -95,7 +95,7 @@ struct PossibleExposureTable: View {
 
                 HStack {
                     Spacer(minLength: 20)
-                    Text(verbatim: "[ \(exposure.attenuationDurationThresholds.map({ String($0)}).joined(separator: ", ")) ]")
+                    Text(verbatim: "\(exposure.attenuationDurationThresholds.map({ String($0)}).joined(separator: ", "))")
                         .accessibility(label: Text(verbatim: exposure.attenuationDurationThresholds.map({ String($0)}).joined(separator: ", ")))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer(minLength: 10)

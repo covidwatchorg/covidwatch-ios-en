@@ -84,7 +84,7 @@ struct PossibleExposure: View {
                         .padding(.bottom, .standardSpacing)
                         .padding(.horizontal, 2 * .standardSpacing)
                         .sheet(isPresented: $isShowingReporting) {
-                            Reporting().environmentObject(self.localStore)
+                            ReportingStep1().environmentObject(self.localStore)
                         }
 
                         Button(action: {
