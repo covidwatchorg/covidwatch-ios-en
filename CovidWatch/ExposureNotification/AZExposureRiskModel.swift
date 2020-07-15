@@ -6,43 +6,65 @@
 import Foundation
 import ExposureNotification
 
-public struct AZExposureRiskConfiguration {
+extension AZExposureRiskModel {
 
-    var discountSchedule: [Double] = [
-        1, 0.99998, 0.994059, 0.9497885, 0.858806, 0.755134, 0.660103392, 0.586894919, 0.533407703, 0.494373128, 0.463039432, 0.438587189, 0.416241392, 0.393207216, 0.367287169, 0.340932595, 0.313997176, 0.286927378, 0.265554932, 0.240765331, 0.217746365, 0.201059905, 0.185435372, 0.172969757, 0.156689676, 0.141405162, 0.124388311, 0.108319101, 0.094752304, 0.081300662, 0.070016527, 0.056302622, 0.044703284, 0.036214683, 0.030309399, 0.024554527, 0.018833743, 0.014769669
-    ]
+    public struct Configuration {
 
-    var attenuationDurationWeights = [
-        2.0182978, // High attenuation: D < 0.5m
-        1.1507629, // Medium attenuation: 0.5m < D < 2m
-        0.6651614 // Low attenuation: 2m < D
-    ]
+        var discountSchedule: [Double] = [
+            1, 0.99998, 0.994059, 0.9497885, 0.858806, 0.755134, 0.660103392, 0.586894919, 0.533407703, 0.494373128, 0.463039432, 0.438587189, 0.416241392, 0.393207216, 0.367287169, 0.340932595, 0.313997176, 0.286927378, 0.265554932, 0.240765331, 0.217746365, 0.201059905, 0.185435372, 0.172969757, 0.156689676, 0.141405162, 0.124388311, 0.108319101, 0.094752304, 0.081300662, 0.070016527, 0.056302622, 0.044703284, 0.036214683, 0.030309399, 0.024554527, 0.018833743, 0.014769669
+        ]
 
-    var doseResponseLambda = 0.0000171
+        var attenuationDurationWeights = [
+            2.0182978, // High attenuation: D < 0.5m
+            1.1507629, // Medium attenuation: 0.5m < D < 2m
+            0.6651614 // Low attenuation: 2m < D
+        ]
 
-    var transmissionRiskValuesForLevels: [Double] = [
-        0, // Level 0
-        10, // Level 1
-        21.5443469, // Level 2
-        31.6227766, // Level 3
-        46.4158883, // Level 4
-        68.1292069, // Level 5
-        100, // Level 6
-        100 // Level 7 (unused)
-    ]
+        var doseResponseLambda = 0.0000171
 
-    var riskLevelsForDaysIncludingAndBeforeSymptomsStartDay: [ENRiskLevel] = [
-        6, 6, 5, 3, 2, 1, 1,
-    ]
+        var transmissionRiskValuesForLevels: [Double] = [
+            0, // Level 0
+            10, // Level 1
+            21.5443469, // Level 2
+            31.6227766, // Level 3
+            46.4158883, // Level 4
+            68.1292069, // Level 5
+            100, // Level 6
+            100 // Level 7 (unused)
+        ]
 
-    var riskLevelsForDaysIncludingAndAfterSymptomsStartDay: [ENRiskLevel] = [
-        6, 6, 6, 5, 4, 3, 2, 1, 1, 1, 1, 1,
-    ]
+        var riskLevelsForDaysIncludingAndBeforeSymptomsStartDay: [ENRiskLevel] = [
+            6, 6, 5, 3, 2, 1, 1,
+        ]
+
+        var riskLevelsForDaysIncludingAndAfterSymptomsStartDay: [ENRiskLevel] = [
+            6, 6, 6, 5, 4, 3, 2, 1, 1, 1, 1, 1,
+        ]
+    }
+}
+
+public typealias AZRiskScoreValue = Double
+
+extension AZRiskScoreValue {
+
+    var riskScore: ENRiskScore {
+        switch self {
+            case -Double.greatestFiniteMagnitude..<1: return 0
+            case 1..<1.5: return 1
+            case 1.5..<2: return 2
+            case 2..<2.5: return 3
+            case 2.5..<3: return 4
+            case 3..<3.5: return 5
+            case 3.5..<4: return 6
+            case 4..<4.5: return 7
+            default: return 8
+        }
+    }
 }
 
 public class AZExposureRiskModel: ExposureRiskModeling {
 
-    let configuration = AZExposureRiskConfiguration()
+    let configuration = AZExposureRiskModel.Configuration()
 
     private func computeAttenuationDurationRiskScore(
         forAttenuationDurations attenuationDurations: [Double]
@@ -157,24 +179,5 @@ public class AZExposureRiskModel: ExposureRiskModeling {
         }
 
         return 0
-    }
-}
-
-public typealias AZRiskScoreValue = Double
-
-extension AZRiskScoreValue {
-
-    var riskScore: ENRiskScore {
-        switch self {
-            case -Double.greatestFiniteMagnitude..<1: return 0
-            case 1..<1.5: return 1
-            case 1.5..<2: return 2
-            case 2..<2.5: return 3
-            case 2.5..<3: return 4
-            case 3..<3.5: return 5
-            case 3.5..<4: return 6
-            case 4..<4.5: return 7
-            default: return 8
-        }
     }
 }
