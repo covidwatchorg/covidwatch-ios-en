@@ -173,7 +173,7 @@
 		2D3948A2248E6354001766A4 /* ENRiskScore+QualitativeLevels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A1248E6354001766A4 /* ENRiskScore+QualitativeLevels.swift */; };
 		2D3948A6248E7DD1001766A4 /* AZExposureRiskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A5248E7DD1001766A4 /* AZExposureRiskModel.swift */; };
 		2D3948A8248EA455001766A4 /* ExposureRiskModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A7248EA454001766A4 /* ExposureRiskModeling.swift */; };
-		2D3948AA248EB954001766A4 /* ExposureRiskScoringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A9248EB954001766A4 /* ExposureRiskScoringTests.swift */; };
+		2D3948AA248EB954001766A4 /* ExposureRiskModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A9248EB954001766A4 /* ExposureRiskModelTests.swift */; };
 		2D415F6B24AF142A00870EF2 /* CovidWatchGoogleExposureNotificationsDiagnosisKeyServerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7ED94624AD3B0900120653 /* CovidWatchGoogleExposureNotificationsDiagnosisKeyServerConfiguration.swift */; };
 		2D46AA3E2465E1010003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA382465E1000003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift */; };
 		2D46AA402465E1010003936C /* CodableDiagnosisKey+ENTemporaryExposureKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3A2465E1010003936C /* CodableDiagnosisKey+ENTemporaryExposureKey.swift */; };
@@ -547,7 +547,7 @@
 		2D3948A1248E6354001766A4 /* ENRiskScore+QualitativeLevels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ENRiskScore+QualitativeLevels.swift"; sourceTree = "<group>"; };
 		2D3948A5248E7DD1001766A4 /* AZExposureRiskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AZExposureRiskModel.swift; sourceTree = "<group>"; };
 		2D3948A7248EA454001766A4 /* ExposureRiskModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureRiskModeling.swift; sourceTree = "<group>"; };
-		2D3948A9248EB954001766A4 /* ExposureRiskScoringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureRiskScoringTests.swift; sourceTree = "<group>"; };
+		2D3948A9248EB954001766A4 /* ExposureRiskModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureRiskModelTests.swift; sourceTree = "<group>"; };
 		2D46AA382465E1000003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ENExposureConfiguration+CodableExposureConfiguration.swift"; sourceTree = "<group>"; };
 		2D46AA3A2465E1010003936C /* CodableDiagnosisKey+ENTemporaryExposureKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CodableDiagnosisKey+ENTemporaryExposureKey.swift"; sourceTree = "<group>"; };
 		2D46AA3C2465E1010003936C /* ENTemporaryExposureKey+CodableDiagnosisKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ENTemporaryExposureKey+CodableDiagnosisKey.swift"; sourceTree = "<group>"; };
@@ -1007,7 +1007,7 @@
 		2D9CF3E62455B9F5005B085E /* CovidWatchTests */ = {
 			isa = PBXGroup;
 			children = (
-				2D3948A9248EB954001766A4 /* ExposureRiskScoringTests.swift */,
+				2D3948A9248EB954001766A4 /* ExposureRiskModelTests.swift */,
 				2D78880024B1C7C5005D25BB /* ENVerificationUtilsTests.swift */,
 				2D9CF3E72455B9F5005B085E /* CovidWatchTests.swift */,
 				2D9CF3E92455B9F5005B085E /* Info.plist */,
@@ -1883,7 +1883,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D3948AA248EB954001766A4 /* ExposureRiskScoringTests.swift in Sources */,
+				2D3948AA248EB954001766A4 /* ExposureRiskModelTests.swift in Sources */,
 				2D9CF3E82455B9F5005B085E /* CovidWatchTests.swift in Sources */,
 				2D78880124B1C7C5005D25BB /* ENVerificationUtilsTests.swift in Sources */,
 			);

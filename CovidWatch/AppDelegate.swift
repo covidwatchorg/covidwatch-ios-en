@@ -34,8 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Setup exposure notification manager
         _ = ExposureManager.shared
-        let useAZRiscoring = Bundle.main.infoDictionary?[.useAZRiskScoring] as? Bool ?? false
-        if useAZRiscoring {
+        let useAZRiskModel = Bundle.main.infoDictionary?[.useAZRiskModel] as? Bool ?? false
+        if useAZRiskModel {
             ExposureManager.shared.riskModel = AZExposureRiskModel()
         }
 

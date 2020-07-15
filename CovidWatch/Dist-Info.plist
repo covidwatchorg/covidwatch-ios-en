@@ -40,7 +40,7 @@
 	<false/>
 	<key>CWBypassPublicHealthAuthorityVerification</key>
 	<false/>
-	<key>CWUseAZRiskScoring</key>
+	<key>CWUseAZRiskModel</key>
 	<true/>
 	<key>CWAppRegionsJSONURL</key>
 	<string>https://storage.googleapis.com/covid-watch-arizona-app-regions/arizona.json</string>
