@@ -8,7 +8,7 @@ A class that contains and manages locally stored app data.
 import Foundation
 import ExposureNotification
 
-public struct Exposure: Codable, Equatable {
+public struct CodableExposureInfo: Codable, Equatable {
     let attenuationDurations: [TimeInterval]
     let attenuationValue: ENAttenuation
     let date: Date
@@ -33,6 +33,7 @@ public struct Diagnosis: Codable {
     public var testType: String          // The test type. Can be `confirmed`, `negative`, `likely`
     public var hmacKey: Data = Data.random(count: 16) // The secret key used for hmac calculation of the diagnosis keys
     public var verificationCertificate: String? // The verification certificate issued by the Verification Server
+    public var shareZeroTranmissionRiskLevelDiagnosisKeys: Bool = false
 }
 
 @propertyWrapper
@@ -84,8 +85,8 @@ public class LocalStore: ObservableObject {
         willSet { objectWillChange.send() }
     }
 
-    @Persisted(userDefaultsKey: "exposures", notificationName: .init("LocalStoreExposuresDidChange"), defaultValue: [])
-    public var exposures: [Exposure] {
+    @Persisted(userDefaultsKey: "exposureInfos", notificationName: .init("LocalStoreExposureInfosDidChange"), defaultValue: [])
+    public var exposuresInfos: [CodableExposureInfo] {
         willSet { objectWillChange.send() }
     }
 

@@ -38,16 +38,16 @@ class ExposureManager {
         manager.invalidate()
     }
 
-    func updateSavedExposures(newExposures: [Exposure]) {
-        LocalStore.shared.exposures.append(contentsOf: newExposures)
-        LocalStore.shared.exposures.sort { $0.date > $1.date }
+    func updateSavedExposures(newExposures: [CodableExposureInfo]) {
+        LocalStore.shared.exposuresInfos.append(contentsOf: newExposures)
+        LocalStore.shared.exposuresInfos.sort { $0.date > $1.date }
         LocalStore.shared.dateLastPerformedExposureDetection = Date()
         LocalStore.shared.exposureDetectionErrorLocalizedDescription = nil
     }
 
     func updateRiskLevel() {
         if let riskScorer = self.riskScorer {
-            LocalStore.shared.riskLevelValue = riskScorer.computeDateRiskLevel(forExposures: LocalStore.shared.exposures, forDate: Date())
+            LocalStore.shared.riskLevelValue = riskScorer.computeDateRiskLevel(forExposures: LocalStore.shared.exposuresInfos.map({ ENExposureInfo($0) }), computeDate: Date())
         }
     }
 
@@ -73,7 +73,7 @@ class ExposureManager {
         var localURLs = importURLs
         var newDiagnosisKeyFileURLs = [URL]()
 
-        func finish(_ result: Result<([Exposure], [URL]), Error>) {
+        func finish(_ result: Result<([CodableExposureInfo], [URL]), Error>) {
 
             try? Server.shared.deleteDiagnosisKeyFile(at: localURLs)
 
@@ -124,15 +124,15 @@ class ExposureManager {
                                     finish(.failure(error))
                                     return
                                 }
-                                let newExposures: [Exposure] = exposures!.map { exposure in
+                                let newExposures: [CodableExposureInfo] = exposures!.map { exposure in
 
                                     // Map score between 0 and 8
                                     var totalRiskScore: ENRiskScore = ENRiskScore( 8.0 / pow(8, 4))
                                     if let riskScorer = self.riskScorer {
-                                        totalRiskScore = riskScorer.computeRiskScore(forExposure: exposure)
+                                        totalRiskScore = riskScorer.computeRiskScore(forExposureInfo: exposure)
                                     }
 
-                                    let e = Exposure(
+                                    let e = CodableExposureInfo(
                                         attenuationDurations: exposure.attenuationDurations.map({ $0.doubleValue }),
                                         attenuationValue: exposure.attenuationValue,
                                         date: exposure.date,

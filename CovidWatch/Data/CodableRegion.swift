@@ -50,5 +50,4 @@ extension CodableRegion.NextStepType {
                 return "square.and.arrow.up.fill"
         }
     }
-
 }

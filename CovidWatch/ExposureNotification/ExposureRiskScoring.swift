@@ -8,12 +8,22 @@ import ExposureNotification
 
 public protocol ExposureRiskScoring {
 
-    func computeRiskScore(forExposure exposure: ENExposureInfo) -> ENRiskScore
+    func computeRiskScore(
+        forExposureInfo exposureInfo: ENExposureInfo
+    ) -> ENRiskScore
 
     func computeRiskScore(
-        forAttenuationDurations attenuationDurations: [NSNumber],
+        forAttenuationDurations attenuationDurations: [Double],
         transmissionRiskLevel: ENRiskLevel
     ) -> ENRiskScore
 
-    func computeDateRiskLevel(forExposures exposures: [Exposure], forDate computeDate: Date) -> Double
+    func computeDateRiskLevel(
+        forExposures exposures: [ENExposureInfo],
+        computeDate: Date
+    ) -> Double
+
+    func computeTransmissionRiskLevel(
+        forTemporaryExposureKey key: ENTemporaryExposureKey,
+        symptomsStartDate: Date?
+    ) -> ENRiskLevel
 }

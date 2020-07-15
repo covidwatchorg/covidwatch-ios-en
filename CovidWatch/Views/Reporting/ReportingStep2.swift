@@ -191,13 +191,33 @@ struct ReportingStep2: View {
                                 return
                             }
 
-                            guard let keys = keys, !keys.isEmpty else {
+                            guard var keys = keys, !keys.isEmpty else {
                                 errorHandler(ENError(.internal))
                                 return
                             }
 
-                            // TODO: Set tranmission risk level for the diagnosis keys based on questions *before* sharing them with the key server.
-                            keys.forEach { $0.transmissionRiskLevel = 6 }
+                            // Before uploading the diagnosis keys to the key server, set their:
+                            // - Tranmission Risk Level (v1.0 and above)
+                            // - Days Since Onset (v1.5 and above)
+                            // - Report Type (v1.5 and above)
+
+                            // Set tranmission risk level based on symptoms start date
+                            keys.forEach({ $0.transmissionRiskLevel = 6 })
+
+                            if let riskScorer = ExposureManager.shared.riskScorer {
+
+                                keys.forEach {
+                                    $0.transmissionRiskLevel = riskScorer.computeTransmissionRiskLevel(
+                                        forTemporaryExposureKey: $0,
+                                        symptomsStartDate: self.localStore.diagnoses[self.selectedDiagnosisIndex].symptomsStartDate
+                                    )
+                                }
+
+                                // Filter out keys if needed, to optimize server storage.
+                                if !self.localStore.diagnoses[self.selectedDiagnosisIndex].shareZeroTranmissionRiskLevelDiagnosisKeys {
+                                    keys = keys.filter({ $0.transmissionRiskLevel != 0 })
+                                }
+                            }
 
                             let actionAfterVerificationCertificateRequest = {
 

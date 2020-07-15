@@ -5,11 +5,6 @@
 
 import SwiftUI
 
-struct ExposureConfigurationWithExposures: Encodable {
-    let exposureConfiguration: String
-    let possibleExposures: [Exposure]
-}
-
 struct Menu: View {
 
     @EnvironmentObject var userData: UserData
@@ -59,7 +54,7 @@ struct Menu: View {
                             Divider()
 
                             Button(action: {
-                                self.localStore.exposures = []
+                                self.localStore.exposuresInfos = []
                                 self.localStore.dateLastPerformedExposureDetection = nil
                                 self.localStore.previousDiagnosisKeyFileURLs = []
                             }) {
@@ -68,6 +63,19 @@ struct Menu: View {
                                     Text("DEMO_RESET_POSSIBLE_EXPOSURES_TITLE")
                                 }.modifier(MenuTitleText())
                             }
+
+                            Divider()
+
+                            Button(action: {
+                                ApplicationController.shared.exportExposures()
+                            }) {
+                                HStack {
+                                    MenuDemoCapsule()
+                                    Text("DEMO_EXPORT_POSSIBLE_EXPOSURES_TITLE")
+                                }.modifier(MenuTitleText())
+                            }
+
+                            Divider()
 
                             #endif
 
@@ -100,16 +108,6 @@ struct Menu: View {
 
                             Divider()
 
-                            Button(action: {
-                                ApplicationController.shared.exportExposures()
-                            }) {
-                                HStack {
-                                    MenuDemoCapsule()
-                                    Text("DEMO_EXPORT_POSSIBLE_EXPOSURES_TITLE")
-                                }.modifier(MenuTitleText())
-                            }
-
-                            Divider()
                             #endif
                         }
 
@@ -121,7 +119,7 @@ struct Menu: View {
                             HStack {
                                 Text("MENU_POSSIBLE_EXPOSURES_TITLE")
                                 Spacer()
-                                if (self.localStore.exposures.max(by: { $0.totalRiskScore < $1.totalRiskScore })?.totalRiskScore ?? 0 > 6) {
+                                if (self.localStore.exposuresInfos.max(by: { $0.totalRiskScore < $1.totalRiskScore })?.totalRiskScore ?? 0 > 6) {
                                     Image("Settings Alert")
                                         .accessibility(hidden: true)
                                 }
