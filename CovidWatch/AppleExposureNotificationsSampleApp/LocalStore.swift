@@ -85,9 +85,15 @@ public class LocalStore: ObservableObject {
         willSet { objectWillChange.send() }
     }
 
+    @Persisted(userDefaultsKey: "riskLevel", notificationName: .init("LocalStoreHomeRiskLevelDidChange"), defaultValue: .unknown)
+    public var homeRiskLevel: HomeRiskLevel {
+        willSet { objectWillChange.send() }
+    }
+
     @Persisted(userDefaultsKey: "exposureInfos", notificationName: .init("LocalStoreExposureInfosDidChange"), defaultValue: [])
     public var exposuresInfos: [CodableExposureInfo] {
         willSet { objectWillChange.send() }
+        didSet { self.updateHomeRiskLevel() }
     }
 
     @Persisted(userDefaultsKey: "riskLevelValue", notificationName: .init("LocalStoreRiskLevelValueDidChange"), defaultValue: nil)
@@ -110,6 +116,7 @@ public class LocalStore: ObservableObject {
     @Persisted(userDefaultsKey: "diagnoses", notificationName: .init("LocalStoreDiagnosesDidChange"), defaultValue: [])
     public var diagnoses: [Diagnosis] {
         willSet { objectWillChange.send() }
+        didSet { self.updateHomeRiskLevel() }
     }
 
     #if DEBUG_CALIBRATION

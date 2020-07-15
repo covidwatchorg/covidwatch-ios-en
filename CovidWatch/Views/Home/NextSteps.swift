@@ -21,7 +21,7 @@ struct NextSteps: View {
 
             Spacer(minLength: .standardSpacing)
 
-            ForEach(self.localStore.riskLevelNextSteps, id: \.self) { nextStep in
+            ForEach(self.localStore.homeRiskLevelNextSteps, id: \.self) { nextStep in
 
                 VStack(spacing: 0) {
 

@@ -8,34 +8,33 @@ import SwiftUI
 
 extension LocalStore {
 
-    public enum RiskLevel {
+    public enum HomeRiskLevel: Int, Codable {
         case unknown, low, medium, high, verifiedPositive
     }
 
-    var riskLevel: RiskLevel {
-
+    public func updateHomeRiskLevel() {
         if let riskLevelValue = riskLevelValue {
 
             if diagnoses.contains(where: { $0.isVerified && $0.testType == .testTypeConfirmed }) {
-                return .verifiedPositive
+                self.homeRiskLevel = .verifiedPositive
             }
 
             if riskLevelValue < UserData.shared.region.riskLowThreshold {
-                return .low
+                self.homeRiskLevel = .low
             } else if riskLevelValue >= UserData.shared.region.riskLowThreshold && riskLevelValue < UserData.shared.region.riskHighThreshold {
-                return .medium
+                self.homeRiskLevel = .medium
             } else {
-                return .high
+                self.homeRiskLevel = .high
             }
 
         } else {
-            return .unknown
+            self.homeRiskLevel = .unknown
         }
     }
 
-    var riskLevelColor: Color {
+    var homeRiskLevelColor: Color {
 
-        switch riskLevel {
+        switch homeRiskLevel {
             case .unknown:
                 return Color(UIColor.systemGray2)
             case .low:
@@ -48,9 +47,9 @@ extension LocalStore {
 
     }
 
-    var riskLevelDescription: String {
+    var homeRiskLevelDescription: String {
 
-        switch riskLevel {
+        switch homeRiskLevel {
             case .unknown:
                 return NSLocalizedString("RISK_LEVEL_UNKNOWN", comment: "")
             case .low:
@@ -65,9 +64,9 @@ extension LocalStore {
 
     }
 
-    var riskLevelNextSteps: [CodableRegion.NextStep] {
+    var homeRiskLevelNextSteps: [CodableRegion.NextStep] {
 
-        switch riskLevel {
+        switch homeRiskLevel {
             case .unknown:
                 return UserData.shared.region.nextStepsRiskUnknown
             case .low:
@@ -82,8 +81,8 @@ extension LocalStore {
 
     }
 
-    var riskLevelImageName: String {
-        switch riskLevel {
+    var homeRiskLevelImageName: String {
+        switch homeRiskLevel {
             case .unknown:
                 return "Risk Level Unknown"
             default:

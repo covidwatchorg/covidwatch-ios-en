@@ -134,6 +134,7 @@ public class AZExposureRiskScorer: ExposureRiskScoring {
         return(riskLevel)
     }
 
+    // TODO: Handle the case when `symptomsStartDate` is unknown according to Joanna's spreadsheet
     public func computeTransmissionRiskLevel(
         forTemporaryExposureKey key: ENTemporaryExposureKey,
         symptomsStartDate: Date?
