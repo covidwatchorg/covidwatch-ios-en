@@ -74,8 +74,8 @@ extension ExposureManager {
                                     }
                                 let newExposures: [Exposure] = exposuresInfos!.map { exposure in
                                     var totalRiskScore: ENRiskScore = ENRiskScore(exposure.totalRiskScoreFullRange * 8.0 / pow(8, 4))
-                                    if let riskScorer = self.riskScorer {
-                                        totalRiskScore = riskScorer.computeRiskScore(forExposureInfo: exposure)
+                                    if let riskModel = self.riskModel {
+                                        totalRiskScore = riskModel.computeRiskScore(forExposureInfo: exposure)
                                     }
                                     let e = Exposure(
                                         attenuationDurations: exposure.attenuationDurations.map({ $0.doubleValue }),

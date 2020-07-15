@@ -90,7 +90,7 @@
 		2D235A0224AC651300C8FD56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9CF3CD2455B9F1005B085E /* AppDelegate.swift */; };
 		2D235A0324AC651300C8FD56 /* ENExposureConfiguration+CodableExposureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA382465E1000003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift */; };
 		2D235A0524AC651300C8FD56 /* ENStatus+LocalizedDetailDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF024607DA100E8BEC4 /* ENStatus+LocalizedDetailDescription.swift */; };
-		2D235A0624AC651300C8FD56 /* ExposureRiskScoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A7248EA454001766A4 /* ExposureRiskScoring.swift */; };
+		2D235A0624AC651300C8FD56 /* ExposureRiskModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A7248EA454001766A4 /* ExposureRiskModeling.swift */; };
 		2D235A0724AC651300C8FD56 /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94062460000A00718412 /* ApplicationController.swift */; };
 		2D235A0824AC651300C8FD56 /* ReportingStep1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79429F2467E915008AF148 /* ReportingStep1.swift */; };
 		2D235A0924AC651300C8FD56 /* HowItWorks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D940C246019D500718412 /* HowItWorks.swift */; };
@@ -102,7 +102,7 @@
 		2D235A0F24AC651300C8FD56 /* CallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B495245F64D8001B30F0 /* CallToAction.swift */; };
 		2D235A1024AC651300C8FD56 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B441245F3FF1001B30F0 /* ContentView.swift */; };
 		2D235A1224AC651300C8FD56 /* ExposureNotificationsDiagnosisKeyServing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA452465E10E0003936C /* ExposureNotificationsDiagnosisKeyServing.swift */; };
-		2D235A1424AC651300C8FD56 /* AZExposureRiskScorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A5248E7DD1001766A4 /* AZExposureRiskScorer.swift */; };
+		2D235A1424AC651300C8FD56 /* AZExposureRiskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A5248E7DD1001766A4 /* AZExposureRiskModel.swift */; };
 		2D235A1524AC651300C8FD56 /* SubCallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B497245F65E1001B30F0 /* SubCallToAction.swift */; };
 		2D235A1624AC651300C8FD56 /* AppDelegate+UserNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E6B2C2456E9A700150D1C /* AppDelegate+UserNotificationCenter.swift */; };
 		2D235A1724AC651300C8FD56 /* PossibleExposureTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79429D2467E34D008AF148 /* PossibleExposureTable.swift */; };
@@ -171,8 +171,8 @@
 		2D39489E248E40A3001766A4 /* Setup3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39489D248E40A3001766A4 /* Setup3.swift */; };
 		2D3948A0248E548E001766A4 /* PossibleExposureSummaryValueViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39489F248E548E001766A4 /* PossibleExposureSummaryValueViewModifier.swift */; };
 		2D3948A2248E6354001766A4 /* ENRiskScore+QualitativeLevels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A1248E6354001766A4 /* ENRiskScore+QualitativeLevels.swift */; };
-		2D3948A6248E7DD1001766A4 /* AZExposureRiskScorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A5248E7DD1001766A4 /* AZExposureRiskScorer.swift */; };
-		2D3948A8248EA455001766A4 /* ExposureRiskScoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A7248EA454001766A4 /* ExposureRiskScoring.swift */; };
+		2D3948A6248E7DD1001766A4 /* AZExposureRiskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A5248E7DD1001766A4 /* AZExposureRiskModel.swift */; };
+		2D3948A8248EA455001766A4 /* ExposureRiskModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A7248EA454001766A4 /* ExposureRiskModeling.swift */; };
 		2D3948AA248EB954001766A4 /* ExposureRiskScoringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A9248EB954001766A4 /* ExposureRiskScoringTests.swift */; };
 		2D415F6B24AF142A00870EF2 /* CovidWatchGoogleExposureNotificationsDiagnosisKeyServerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7ED94624AD3B0900120653 /* CovidWatchGoogleExposureNotificationsDiagnosisKeyServerConfiguration.swift */; };
 		2D46AA3E2465E1010003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA382465E1000003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift */; };
@@ -232,7 +232,7 @@
 		2D72545224A35E92003E5914 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9CF3CD2455B9F1005B085E /* AppDelegate.swift */; };
 		2D72545324A35E92003E5914 /* ENExposureConfiguration+CodableExposureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA382465E1000003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift */; };
 		2D72545524A35E92003E5914 /* ENStatus+LocalizedDetailDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF024607DA100E8BEC4 /* ENStatus+LocalizedDetailDescription.swift */; };
-		2D72545624A35E92003E5914 /* ExposureRiskScoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A7248EA454001766A4 /* ExposureRiskScoring.swift */; };
+		2D72545624A35E92003E5914 /* ExposureRiskModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A7248EA454001766A4 /* ExposureRiskModeling.swift */; };
 		2D72545724A35E92003E5914 /* ReportingStep1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79429F2467E915008AF148 /* ReportingStep1.swift */; };
 		2D72545824A35E92003E5914 /* HowItWorks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D940C246019D500718412 /* HowItWorks.swift */; };
 		2D72545924A35E92003E5914 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94122460232A00718412 /* PageControl.swift */; };
@@ -243,7 +243,7 @@
 		2D72545E24A35E92003E5914 /* CallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B495245F64D8001B30F0 /* CallToAction.swift */; };
 		2D72545F24A35E92003E5914 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B441245F3FF1001B30F0 /* ContentView.swift */; };
 		2D72546124A35E92003E5914 /* ExposureNotificationsDiagnosisKeyServing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA452465E10E0003936C /* ExposureNotificationsDiagnosisKeyServing.swift */; };
-		2D72546324A35E92003E5914 /* AZExposureRiskScorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A5248E7DD1001766A4 /* AZExposureRiskScorer.swift */; };
+		2D72546324A35E92003E5914 /* AZExposureRiskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A5248E7DD1001766A4 /* AZExposureRiskModel.swift */; };
 		2D72546424A35E92003E5914 /* SubCallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B497245F65E1001B30F0 /* SubCallToAction.swift */; };
 		2D72546524A35E92003E5914 /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94062460000A00718412 /* ApplicationController.swift */; };
 		2D72546624A35E92003E5914 /* AppDelegate+UserNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E6B2C2456E9A700150D1C /* AppDelegate+UserNotificationCenter.swift */; };
@@ -357,7 +357,7 @@
 		2D8FE6B724A33B0100456875 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9CF3CD2455B9F1005B085E /* AppDelegate.swift */; };
 		2D8FE6B824A33B0100456875 /* ENExposureConfiguration+CodableExposureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA382465E1000003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift */; };
 		2D8FE6BA24A33B0100456875 /* ENStatus+LocalizedDetailDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF024607DA100E8BEC4 /* ENStatus+LocalizedDetailDescription.swift */; };
-		2D8FE6BB24A33B0100456875 /* ExposureRiskScoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A7248EA454001766A4 /* ExposureRiskScoring.swift */; };
+		2D8FE6BB24A33B0100456875 /* ExposureRiskModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A7248EA454001766A4 /* ExposureRiskModeling.swift */; };
 		2D8FE6BC24A33B0100456875 /* ReportingStep1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79429F2467E915008AF148 /* ReportingStep1.swift */; };
 		2D8FE6BD24A33B0100456875 /* HowItWorks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D940C246019D500718412 /* HowItWorks.swift */; };
 		2D8FE6BE24A33B0100456875 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94122460232A00718412 /* PageControl.swift */; };
@@ -368,7 +368,7 @@
 		2D8FE6C324A33B0100456875 /* CallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B495245F64D8001B30F0 /* CallToAction.swift */; };
 		2D8FE6C424A33B0100456875 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B441245F3FF1001B30F0 /* ContentView.swift */; };
 		2D8FE6C624A33B0100456875 /* ExposureNotificationsDiagnosisKeyServing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA452465E10E0003936C /* ExposureNotificationsDiagnosisKeyServing.swift */; };
-		2D8FE6C824A33B0100456875 /* AZExposureRiskScorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A5248E7DD1001766A4 /* AZExposureRiskScorer.swift */; };
+		2D8FE6C824A33B0100456875 /* AZExposureRiskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A5248E7DD1001766A4 /* AZExposureRiskModel.swift */; };
 		2D8FE6C924A33B0100456875 /* SubCallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B497245F65E1001B30F0 /* SubCallToAction.swift */; };
 		2D8FE6CB24A33B0100456875 /* AppDelegate+UserNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E6B2C2456E9A700150D1C /* AppDelegate+UserNotificationCenter.swift */; };
 		2D8FE6CC24A33B0100456875 /* PossibleExposureTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D79429D2467E34D008AF148 /* PossibleExposureTable.swift */; };
@@ -545,8 +545,8 @@
 		2D39489D248E40A3001766A4 /* Setup3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup3.swift; sourceTree = "<group>"; };
 		2D39489F248E548E001766A4 /* PossibleExposureSummaryValueViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleExposureSummaryValueViewModifier.swift; sourceTree = "<group>"; };
 		2D3948A1248E6354001766A4 /* ENRiskScore+QualitativeLevels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ENRiskScore+QualitativeLevels.swift"; sourceTree = "<group>"; };
-		2D3948A5248E7DD1001766A4 /* AZExposureRiskScorer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AZExposureRiskScorer.swift; sourceTree = "<group>"; };
-		2D3948A7248EA454001766A4 /* ExposureRiskScoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureRiskScoring.swift; sourceTree = "<group>"; };
+		2D3948A5248E7DD1001766A4 /* AZExposureRiskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AZExposureRiskModel.swift; sourceTree = "<group>"; };
+		2D3948A7248EA454001766A4 /* ExposureRiskModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureRiskModeling.swift; sourceTree = "<group>"; };
 		2D3948A9248EB954001766A4 /* ExposureRiskScoringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureRiskScoringTests.swift; sourceTree = "<group>"; };
 		2D46AA382465E1000003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ENExposureConfiguration+CodableExposureConfiguration.swift"; sourceTree = "<group>"; };
 		2D46AA3A2465E1010003936C /* CodableDiagnosisKey+ENTemporaryExposureKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CodableDiagnosisKey+ENTemporaryExposureKey.swift"; sourceTree = "<group>"; };
@@ -765,8 +765,8 @@
 			children = (
 				2DC639C724BEEE95003A0328 /* ExposureNotificationConstants.swift */,
 				2D7887FA24B1C1A3005D25BB /* ENVerificationUtils.swift */,
-				2D3948A7248EA454001766A4 /* ExposureRiskScoring.swift */,
-				2D3948A5248E7DD1001766A4 /* AZExposureRiskScorer.swift */,
+				2D3948A7248EA454001766A4 /* ExposureRiskModeling.swift */,
+				2D3948A5248E7DD1001766A4 /* AZExposureRiskModel.swift */,
 				2D3948A1248E6354001766A4 /* ENRiskScore+QualitativeLevels.swift */,
 				2DC639D124BF0AA0003A0328 /* Date+ENIntervalNumber.swift */,
 				2DC639D624BF0B49003A0328 /* ENIntervalNumber+Date.swift */,
@@ -1510,7 +1510,7 @@
 				2D235A0224AC651300C8FD56 /* AppDelegate.swift in Sources */,
 				2D235A0324AC651300C8FD56 /* ENExposureConfiguration+CodableExposureConfiguration.swift in Sources */,
 				2D235A0524AC651300C8FD56 /* ENStatus+LocalizedDetailDescription.swift in Sources */,
-				2D235A0624AC651300C8FD56 /* ExposureRiskScoring.swift in Sources */,
+				2D235A0624AC651300C8FD56 /* ExposureRiskModeling.swift in Sources */,
 				2D235A0724AC651300C8FD56 /* ApplicationController.swift in Sources */,
 				2D235A0824AC651300C8FD56 /* ReportingStep1.swift in Sources */,
 				2D235A0924AC651300C8FD56 /* HowItWorks.swift in Sources */,
@@ -1531,7 +1531,7 @@
 				2D92B6DA24BB6DC900003BDD /* LocalStore+RiskLevelAdditions.swift in Sources */,
 				2D235A1224AC651300C8FD56 /* ExposureNotificationsDiagnosisKeyServing.swift in Sources */,
 				2D049D5B24BDC5D10060B422 /* RKManager.swift in Sources */,
-				2D235A1424AC651300C8FD56 /* AZExposureRiskScorer.swift in Sources */,
+				2D235A1424AC651300C8FD56 /* AZExposureRiskModel.swift in Sources */,
 				2D9DE20D24BF31C000897D5C /* ENExposureInfo+CodableExposureInfo.swift in Sources */,
 				2D235A1524AC651300C8FD56 /* SubCallToAction.swift in Sources */,
 				2D235A1624AC651300C8FD56 /* AppDelegate+UserNotificationCenter.swift in Sources */,
@@ -1614,7 +1614,7 @@
 				2D17BED024ABBFCF00A2CFD9 /* ExposureNotificationsDiagnosisVerificationProviding.swift in Sources */,
 				2DC639CA24BEEE9A003A0328 /* ExposureNotificationConstants.swift in Sources */,
 				2D72545524A35E92003E5914 /* ENStatus+LocalizedDetailDescription.swift in Sources */,
-				2D72545624A35E92003E5914 /* ExposureRiskScoring.swift in Sources */,
+				2D72545624A35E92003E5914 /* ExposureRiskModeling.swift in Sources */,
 				2D72545724A35E92003E5914 /* ReportingStep1.swift in Sources */,
 				2D72545824A35E92003E5914 /* HowItWorks.swift in Sources */,
 				2D72545924A35E92003E5914 /* PageControl.swift in Sources */,
@@ -1630,7 +1630,7 @@
 				2D72545F24A35E92003E5914 /* ContentView.swift in Sources */,
 				2D72546124A35E92003E5914 /* ExposureNotificationsDiagnosisKeyServing.swift in Sources */,
 				2D26096B24ADE535009CDBCE /* CovidWatchInfoDictionaryKeys.swift in Sources */,
-				2D72546324A35E92003E5914 /* AZExposureRiskScorer.swift in Sources */,
+				2D72546324A35E92003E5914 /* AZExposureRiskModel.swift in Sources */,
 				2D081A3524B8AA8400506164 /* CodableRegion+Arizona.swift in Sources */,
 				2D081A3A24B8B2CD00506164 /* RegionSelection.swift in Sources */,
 				2D72546424A35E92003E5914 /* SubCallToAction.swift in Sources */,
@@ -1718,7 +1718,7 @@
 				2D8FE6B724A33B0100456875 /* AppDelegate.swift in Sources */,
 				2D8FE6B824A33B0100456875 /* ENExposureConfiguration+CodableExposureConfiguration.swift in Sources */,
 				2D8FE6BA24A33B0100456875 /* ENStatus+LocalizedDetailDescription.swift in Sources */,
-				2D8FE6BB24A33B0100456875 /* ExposureRiskScoring.swift in Sources */,
+				2D8FE6BB24A33B0100456875 /* ExposureRiskModeling.swift in Sources */,
 				2D7254AA24A38225003E5914 /* ApplicationController.swift in Sources */,
 				2D8FE6BC24A33B0100456875 /* ReportingStep1.swift in Sources */,
 				2D8FE6BD24A33B0100456875 /* HowItWorks.swift in Sources */,
@@ -1738,7 +1738,7 @@
 				2D8FE6C624A33B0100456875 /* ExposureNotificationsDiagnosisKeyServing.swift in Sources */,
 				2D92B6D824BB6DC900003BDD /* LocalStore+RiskLevelAdditions.swift in Sources */,
 				2D049D5924BDC5D10060B422 /* RKManager.swift in Sources */,
-				2D8FE6C824A33B0100456875 /* AZExposureRiskScorer.swift in Sources */,
+				2D8FE6C824A33B0100456875 /* AZExposureRiskModel.swift in Sources */,
 				2D8FE6C924A33B0100456875 /* SubCallToAction.swift in Sources */,
 				2D9DE20B24BF31BF00897D5C /* ENExposureInfo+CodableExposureInfo.swift in Sources */,
 				2D8FE6CB24A33B0100456875 /* AppDelegate+UserNotificationCenter.swift in Sources */,
@@ -1820,7 +1820,7 @@
 				2D9CF3CE2455B9F1005B085E /* AppDelegate.swift in Sources */,
 				2D46AA3E2465E1010003936C /* ENExposureConfiguration+CodableExposureConfiguration.swift in Sources */,
 				2D29BAF124607DA100E8BEC4 /* ENStatus+LocalizedDetailDescription.swift in Sources */,
-				2D3948A8248EA455001766A4 /* ExposureRiskScoring.swift in Sources */,
+				2D3948A8248EA455001766A4 /* ExposureRiskModeling.swift in Sources */,
 				2D7942A02467E915008AF148 /* ReportingStep1.swift in Sources */,
 				2D92B6D724BB6DC900003BDD /* LocalStore+RiskLevelAdditions.swift in Sources */,
 				2D5D940D246019D500718412 /* HowItWorks.swift in Sources */,
@@ -1838,7 +1838,7 @@
 				2D7887F624B0CE00005D25BB /* MenuDemoCapsule.swift in Sources */,
 				2D46AA472465E10E0003936C /* ExposureNotificationsDiagnosisKeyServing.swift in Sources */,
 				2D049D4824BDC5D10060B422 /* RKMonth.swift in Sources */,
-				2D3948A6248E7DD1001766A4 /* AZExposureRiskScorer.swift in Sources */,
+				2D3948A6248E7DD1001766A4 /* AZExposureRiskModel.swift in Sources */,
 				2D049D3224BB98130060B422 /* CodableRegion+Arizona.swift in Sources */,
 				2D049D5824BDC5D10060B422 /* RKManager.swift in Sources */,
 				2DD7B498245F65E1001B30F0 /* SubCallToAction.swift in Sources */,

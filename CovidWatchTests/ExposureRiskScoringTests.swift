@@ -17,15 +17,15 @@ class ExposureRiskScoringTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testAZExposureRiskScorer() {
-        let scorer = AZExposureRiskScorer()
+    func testAZExposureRiskModel() {
+        let model = AZExposureRiskModel()
         let message = "Computed risk score does not match expected risk score"
 
         // ## Single exposure info tests ##
 
         // Scenario: "Sufficiently risky individual, 30 minutes close contact"
         XCTAssertEqual(
-            scorer.computeRiskScore(
+            model.computeRiskScore(
                 forAttenuationDurations: [30.0 * 60.0, 0.0, 0.0],
                 transmissionRiskLevel: 4
             ),
@@ -35,7 +35,7 @@ class ExposureRiskScoringTests: XCTestCase {
 
         // Scenario: "Sufficiently risky individual, 30 minutes at med. attenuation"
         XCTAssertEqual(
-            scorer.computeRiskScore(
+            model.computeRiskScore(
                 forAttenuationDurations: [0.0, 30.0 * 60.0, 0.0],
                 transmissionRiskLevel: 4
             ),
@@ -45,7 +45,7 @@ class ExposureRiskScoringTests: XCTestCase {
 
         // Scenario: "Sufficiently risky individual, 5 minutes close contact"
         XCTAssertEqual(
-            scorer.computeRiskScore(
+            model.computeRiskScore(
                 forAttenuationDurations: [5.0 * 60.0, 0.0, 0.0],
                 transmissionRiskLevel: 4
             ),
@@ -55,7 +55,7 @@ class ExposureRiskScoringTests: XCTestCase {
 
         // Scenario: "Highest risk individual, 30 minutes at med. attenuation"
         XCTAssertEqual(
-            scorer.computeRiskScore(
+            model.computeRiskScore(
                 forAttenuationDurations: [0.0, 30.0 * 60.0, 0.0],
                 transmissionRiskLevel: 6
             ),
@@ -65,7 +65,7 @@ class ExposureRiskScoringTests: XCTestCase {
 
         // Scenario: "Highest risk individual, 5 minutes close contact"
         XCTAssertEqual(
-            scorer.computeRiskScore(
+            model.computeRiskScore(
                 forAttenuationDurations: [5.0 * 60.0, 0.0, 0.0],
                 transmissionRiskLevel: 6
             ),
@@ -75,7 +75,7 @@ class ExposureRiskScoringTests: XCTestCase {
 
         // Scenario: "Highest risk individual, 5 minutes at med attenuation"
         XCTAssertEqual(
-            scorer.computeRiskScore(
+            model.computeRiskScore(
                 forAttenuationDurations: [0.0, 5.0 * 60.0, 0.0],
                 transmissionRiskLevel: 6
             ),
@@ -85,7 +85,7 @@ class ExposureRiskScoringTests: XCTestCase {
 
         // Scenario: "Highest risk individual, 30 minutes at long distance"
         XCTAssertEqual(
-            scorer.computeRiskScore(
+            model.computeRiskScore(
                 forAttenuationDurations: [0.0, 0.0, 30.0 * 60.0],
                 transmissionRiskLevel: 6
             ),
@@ -95,7 +95,7 @@ class ExposureRiskScoringTests: XCTestCase {
 
         // Scenario: "Asymptomatic shedder at peak risk, 30 min at med. attenuation"
         XCTAssertEqual(
-            scorer.computeRiskScore(
+            model.computeRiskScore(
                 forAttenuationDurations: [0.0, 30.0 * 60.0, 0.0],
                 transmissionRiskLevel: 3
             ),
@@ -105,7 +105,7 @@ class ExposureRiskScoringTests: XCTestCase {
 
         // Scenario: "Low shedder, 30 min at medium attenuation"
         XCTAssertEqual(
-            scorer.computeRiskScore(
+            model.computeRiskScore(
                 forAttenuationDurations: [0.0, 30.0 * 60.0, 0.0],
                 transmissionRiskLevel: 2
             ),
@@ -115,7 +115,7 @@ class ExposureRiskScoringTests: XCTestCase {
 
         // Scenario: "Low shedder, 5 min at med. attenuation"
         XCTAssertEqual(
-            scorer.computeRiskScore(
+            model.computeRiskScore(
                 forAttenuationDurations: [0.0, 5.0 * 60.0, 0.0],
                 transmissionRiskLevel: 2
             ),
@@ -125,7 +125,7 @@ class ExposureRiskScoringTests: XCTestCase {
 
         // Scenario: "Highest risk individual, 30 min in each bucket"
         XCTAssertEqual(
-            scorer.computeRiskScore(
+            model.computeRiskScore(
                 forAttenuationDurations: [30.0 * 60.0, 30.0 * 60.0, 30.0 * 60.0],
                 transmissionRiskLevel: 6
             ),
@@ -135,7 +135,7 @@ class ExposureRiskScoringTests: XCTestCase {
 
         // Scenario: "Highest risk individual, 30 min in each bucket"
         XCTAssertEqual(
-            scorer.computeRiskScore(
+            model.computeRiskScore(
                 forAttenuationDurations: [30.0 * 60.0, 30.0 * 60.0, 30.0 * 60.0],
                 transmissionRiskLevel: 1
             ),
@@ -145,7 +145,7 @@ class ExposureRiskScoringTests: XCTestCase {
 
         // Scenario: "Highest risk individual 15 minutes close contact"
         XCTAssertEqual(
-            scorer.computeRiskScore(
+            model.computeRiskScore(
                 forAttenuationDurations: [15.0 * 60.0, 0.0, 0.0],
                 transmissionRiskLevel: 6
             ),
@@ -155,7 +155,7 @@ class ExposureRiskScoringTests: XCTestCase {
 
         // Scenario: "Lowest risk individual 15 minutes close contact"
         XCTAssertEqual(
-            scorer.computeRiskScore(
+            model.computeRiskScore(
                 forAttenuationDurations: [15.0 * 60.0, 0.0, 0.0],
                 transmissionRiskLevel: 1
             ),
@@ -165,7 +165,7 @@ class ExposureRiskScoringTests: XCTestCase {
 
         // Scenario: "Highest risk individual 15 minutes long distance"
         XCTAssertEqual(
-            scorer.computeRiskScore(
+            model.computeRiskScore(
                 forAttenuationDurations: [0.0, 0.0, 15.0 * 60.0],
                 transmissionRiskLevel: 6
             ),
@@ -175,7 +175,7 @@ class ExposureRiskScoringTests: XCTestCase {
 
         // Scenario: "Lowest risk individual 15 minutes long distance"
         XCTAssertEqual(
-            scorer.computeRiskScore(
+            model.computeRiskScore(
                 forAttenuationDurations: [0.0, 0.0, 15.0 * 60.0],
                 transmissionRiskLevel: 1
             ),
@@ -212,19 +212,19 @@ class ExposureRiskScoringTests: XCTestCase {
         ]
 
         XCTAssertEqual(
-            scorer.computeDateRiskLevel(forExposureInfos: exposures, computeDate: day2),
+            model.computeDateRiskLevel(forExposureInfos: exposures, computeDate: day2),
             4.147819, // Expected
             accuracy: 0.0001,
             message
         )
         XCTAssertEqual(
-            scorer.computeDateRiskLevel(forExposureInfos: exposures, computeDate: day3),
+            model.computeDateRiskLevel(forExposureInfos: exposures, computeDate: day3),
             7.221063, // Expected
             accuracy: 0.0001,
             message
         )
         XCTAssertEqual(
-            scorer.computeDateRiskLevel(forExposureInfos: exposures, computeDate: day18),
+            model.computeDateRiskLevel(forExposureInfos: exposures, computeDate: day18),
             2.251825, // Expected
             accuracy: 0.0001,
             message
@@ -258,19 +258,19 @@ class ExposureRiskScoringTests: XCTestCase {
         ]
 
         XCTAssertEqual(
-            scorer.computeDateRiskLevel(forExposureInfos: exposures, computeDate: day2),
+            model.computeDateRiskLevel(forExposureInfos: exposures, computeDate: day2),
             0.0, // Expected
             accuracy: 0.0001,
             message
         )
         XCTAssertEqual(
-            scorer.computeDateRiskLevel(forExposureInfos: exposures, computeDate: day4),
+            model.computeDateRiskLevel(forExposureInfos: exposures, computeDate: day4),
             10.2363, // Expected
             accuracy: 0.0001,
             message
         )
         XCTAssertEqual(
-            scorer.computeDateRiskLevel(forExposureInfos: exposures, computeDate: day18),
+            model.computeDateRiskLevel(forExposureInfos: exposures, computeDate: day18),
             3.489957, // Expected
             accuracy: 0.0001,
             message
@@ -284,25 +284,25 @@ class ExposureRiskScoringTests: XCTestCase {
 
         key.rollingStartNumber = day0.intervalNumber
         XCTAssertEqual(
-            scorer.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
             6 // Expected
         )
 
         key.rollingStartNumber = day2.intervalNumber
         XCTAssertEqual(
-            scorer.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
             5 // Expected
         )
 
         key.rollingStartNumber = day3.intervalNumber
         XCTAssertEqual(
-            scorer.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
             3 // Expected
         )
 
         key.rollingStartNumber = day18.intervalNumber
         XCTAssertEqual(
-            scorer.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
             0 // Expected
         )
 
@@ -313,25 +313,25 @@ class ExposureRiskScoringTests: XCTestCase {
 
         key.rollingStartNumber = day2Ago.intervalNumber
         XCTAssertEqual(
-            scorer.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
             6 // Expected
         )
 
         key.rollingStartNumber = day3Ago.intervalNumber
         XCTAssertEqual(
-            scorer.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
             5 // Expected
         )
 
         key.rollingStartNumber = day4Ago.intervalNumber
         XCTAssertEqual(
-            scorer.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
             4 // Expected
         )
 
         key.rollingStartNumber = day18Ago.intervalNumber
         XCTAssertEqual(
-            scorer.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
             0 // Expected
         )
 

@@ -147,19 +147,6 @@ struct Menu: View {
                                 .environmentObject(self.userData)
                         }
 
-                        if !self.localStore.diagnoses.isEmpty {
-                            // TODO
-                            //                            Divider()
-                            //
-                            //                            Button(action: {
-                            //                                self.isShowingNotifyOthers.toggle()
-                            //                            }) {
-                            //                                HStack {
-                            //                                    Text("MENU_NOTIFY_OTHERS")
-                            //                                }.modifier(MenuTitleText())
-                            //                            }
-                            //                            .sheet(isPresented: $isShowingNotifyOthers) { Reporting().environmentObject(self.localStore) }
-                        }
                         Group {
                             Divider()
 

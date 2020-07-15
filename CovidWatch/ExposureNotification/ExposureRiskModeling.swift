@@ -6,7 +6,7 @@
 import Foundation
 import ExposureNotification
 
-public protocol ExposureRiskScoring {
+public protocol ExposureRiskModeling {
 
     func computeRiskScore(
         forExposureInfo exposureInfo: ENExposureInfo

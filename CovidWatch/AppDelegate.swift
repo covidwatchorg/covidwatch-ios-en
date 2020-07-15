@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = ExposureManager.shared
         let useAZRiscoring = Bundle.main.infoDictionary?[.useAZRiskScoring] as? Bool ?? false
         if useAZRiscoring {
-            ExposureManager.shared.riskScorer = AZExposureRiskScorer()
+            ExposureManager.shared.riskModel = AZExposureRiskModel()
         }
 
         // Setup application controller

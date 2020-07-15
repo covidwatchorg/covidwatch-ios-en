@@ -204,10 +204,10 @@ struct ReportingStep2: View {
                             // Set tranmission risk level based on symptoms start date
                             keys.forEach({ $0.transmissionRiskLevel = 6 })
 
-                            if let riskScorer = ExposureManager.shared.riskScorer {
+                            if let riskModel = ExposureManager.shared.riskModel {
 
                                 keys.forEach {
-                                    $0.transmissionRiskLevel = riskScorer.computeTransmissionRiskLevel(
+                                    $0.transmissionRiskLevel = riskModel.computeTransmissionRiskLevel(
                                         forTemporaryExposureKey: $0,
                                         symptomsStartDate: self.localStore.diagnoses[self.selectedDiagnosisIndex].symptomsStartDate
                                     )

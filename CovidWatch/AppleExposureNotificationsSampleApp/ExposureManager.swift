@@ -17,7 +17,7 @@ class ExposureManager {
 
     let manager = ENManager()
 
-    var riskScorer: ExposureRiskScoring?
+    var riskModel: ExposureRiskModeling?
 
     init() {
         manager.activate { _ in
@@ -46,8 +46,8 @@ class ExposureManager {
     }
 
     func updateRiskLevel() {
-        if let riskScorer = self.riskScorer {
-            LocalStore.shared.riskLevelValue = riskScorer.computeDateRiskLevel(forExposureInfos: LocalStore.shared.exposuresInfos.map({ ENExposureInfo($0) }), computeDate: Date())
+        if let riskModel = self.riskModel {
+            LocalStore.shared.riskLevelValue = riskModel.computeDateRiskLevel(forExposureInfos: LocalStore.shared.exposuresInfos.map({ ENExposureInfo($0) }), computeDate: Date())
         }
     }
 
@@ -128,8 +128,8 @@ class ExposureManager {
 
                                     // Map score between 0 and 8
                                     var totalRiskScore: ENRiskScore = ENRiskScore( 8.0 / pow(8, 4))
-                                    if let riskScorer = self.riskScorer {
-                                        totalRiskScore = riskScorer.computeRiskScore(forExposureInfo: exposure)
+                                    if let riskModel = self.riskModel {
+                                        totalRiskScore = riskModel.computeRiskScore(forExposureInfo: exposure)
                                     }
 
                                     let e = CodableExposureInfo(
