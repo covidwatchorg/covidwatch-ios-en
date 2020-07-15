@@ -32,11 +32,11 @@ public struct AZExposureRiskConfiguration {
     ]
 
     var riskLevelsForDaysIncludingAndBeforeSymptomsStartDay: [ENRiskLevel] = [
-        6, 6, 6, 5, 4, 3, 2, 1, 1, 1, 1, 1,
+        6, 6, 5, 3, 2, 1, 1,
     ]
 
     var riskLevelsForDaysIncludingAndAfterSymptomsStartDay: [ENRiskLevel] = [
-        6, 6, 5, 3, 2, 1, 1,
+        6, 6, 6, 5, 4, 3, 2, 1, 1, 1, 1, 1,
     ]
 }
 

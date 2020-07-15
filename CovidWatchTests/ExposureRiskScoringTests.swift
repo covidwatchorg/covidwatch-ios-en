@@ -291,13 +291,13 @@ class ExposureRiskScoringTests: XCTestCase {
         key.rollingStartNumber = day2.intervalNumber
         XCTAssertEqual(
             model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
-            5 // Expected
+            6 // Expected
         )
 
         key.rollingStartNumber = day3.intervalNumber
         XCTAssertEqual(
             model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
-            3 // Expected
+            5 // Expected
         )
 
         key.rollingStartNumber = day18.intervalNumber
@@ -314,19 +314,19 @@ class ExposureRiskScoringTests: XCTestCase {
         key.rollingStartNumber = day2Ago.intervalNumber
         XCTAssertEqual(
             model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
-            6 // Expected
+            5 // Expected
         )
 
         key.rollingStartNumber = day3Ago.intervalNumber
         XCTAssertEqual(
             model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
-            5 // Expected
+            3 // Expected
         )
 
         key.rollingStartNumber = day4Ago.intervalNumber
         XCTAssertEqual(
             model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
-            4 // Expected
+            2 // Expected
         )
 
         key.rollingStartNumber = day18Ago.intervalNumber
