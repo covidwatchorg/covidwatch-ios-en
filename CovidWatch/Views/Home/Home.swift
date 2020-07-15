@@ -60,7 +60,8 @@ struct Home: View {
                                 )
                             }
                             .sheet(isPresented: $isShowingExposureSettings) {
-                                Setup1(dismissesAutomatically: true).environmentObject(self.userData)
+                                Setup1(dismissesAutomatically: true, showsSteps: false)
+                                    .environmentObject(self.userData)
                             }
                         }
 
@@ -84,7 +85,8 @@ struct Home: View {
                                 )
                             }
                             .sheet(isPresented: $isShowingNotificationSettings) {
-                                Setup2(dismissesAutomatically: true).environmentObject(self.userData)
+                                Setup2(dismissesAutomatically: true, showsSteps: false)
+                                    .environmentObject(self.userData)
                             }
                         }
 

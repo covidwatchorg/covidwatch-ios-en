@@ -9,12 +9,15 @@ struct Setup2: View {
 
     @EnvironmentObject var userData: UserData
 
-    var dismissesAutomatically: Bool
+    let dismissesAutomatically: Bool
+
+    let showsSteps: Bool
 
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
-    init(dismissesAutomatically: Bool = false) {
+    init(dismissesAutomatically: Bool = false, showsSteps: Bool = true) {
         self.dismissesAutomatically = dismissesAutomatically
+        self.showsSteps = showsSteps
     }
 
     var body: some View {
@@ -27,7 +30,9 @@ struct Setup2: View {
 
                     Spacer(minLength: .headerHeight)
 
-                    HowItWorksTitleText(text: Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("SETUP_PRE_TITLE", comment: ""), NSNumber(value: 2), NSNumber(value: 2)).uppercased()))
+                    if showsSteps {
+                        HowItWorksTitleText(text: Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("SETUP_PRE_TITLE", comment: ""), NSNumber(value: 2), NSNumber(value: 2)).uppercased()))
+                    }
 
                     Text("ENABLE_PUSH_NOTIFICATIONS_TITLE")
                         .modifier(StandardTitleTextViewModifier())
