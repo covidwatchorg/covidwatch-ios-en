@@ -120,7 +120,7 @@
 		2D235A2324AC651300C8FD56 /* UIWindow+ViewControllerUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA4B2465E1190003936C /* UIWindow+ViewControllerUtility.swift */; };
 		2D235A2424AC651300C8FD56 /* MenuTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF824609F6100E8BEC4 /* MenuTitleText.swift */; };
 		2D235A2624AC651300C8FD56 /* OSLog+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D63D591245CBCC00027D43B /* OSLog+Additions.swift */; };
-		2D235A2824AC651300C8FD56 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B499245F66F2001B30F0 /* Constants.swift */; };
+		2D235A2824AC651300C8FD56 /* LayoutConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B499245F66F2001B30F0 /* LayoutConstants.swift */; };
 		2D235A2924AC651300C8FD56 /* GoogleExposureNotificationsDiagnosisVerificationServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D17BEC924AB3DFC00A2CFD9 /* GoogleExposureNotificationsDiagnosisVerificationServerAPI.swift */; };
 		2D235A2B24AC651300C8FD56 /* HowItWorks2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034B724603D6200351C3C /* HowItWorks2.swift */; };
 		2D235A2C24AC651300C8FD56 /* ENRiskLevel+LocalizedDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5149E62483918400702A60 /* ENRiskLevel+LocalizedDescription.swift */; };
@@ -262,7 +262,7 @@
 		2D72547324A35E92003E5914 /* UIWindow+ViewControllerUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA4B2465E1190003936C /* UIWindow+ViewControllerUtility.swift */; };
 		2D72547424A35E92003E5914 /* MenuTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF824609F6100E8BEC4 /* MenuTitleText.swift */; };
 		2D72547624A35E92003E5914 /* OSLog+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D63D591245CBCC00027D43B /* OSLog+Additions.swift */; };
-		2D72547824A35E92003E5914 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B499245F66F2001B30F0 /* Constants.swift */; };
+		2D72547824A35E92003E5914 /* LayoutConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B499245F66F2001B30F0 /* LayoutConstants.swift */; };
 		2D72547A24A35E92003E5914 /* HowItWorks2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034B724603D6200351C3C /* HowItWorks2.swift */; };
 		2D72547B24A35E92003E5914 /* ENRiskLevel+LocalizedDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5149E62483918400702A60 /* ENRiskLevel+LocalizedDescription.swift */; };
 		2D72547C24A35E92003E5914 /* ENTemporaryExposureKey+CodableDiagnosisKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3C2465E1010003936C /* ENTemporaryExposureKey+CodableDiagnosisKey.swift */; };
@@ -386,7 +386,7 @@
 		2D8FE6D824A33B0100456875 /* UIWindow+ViewControllerUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA4B2465E1190003936C /* UIWindow+ViewControllerUtility.swift */; };
 		2D8FE6D924A33B0100456875 /* MenuTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF824609F6100E8BEC4 /* MenuTitleText.swift */; };
 		2D8FE6DB24A33B0100456875 /* OSLog+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D63D591245CBCC00027D43B /* OSLog+Additions.swift */; };
-		2D8FE6DD24A33B0100456875 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B499245F66F2001B30F0 /* Constants.swift */; };
+		2D8FE6DD24A33B0100456875 /* LayoutConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B499245F66F2001B30F0 /* LayoutConstants.swift */; };
 		2D8FE6DF24A33B0100456875 /* HowItWorks2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034B724603D6200351C3C /* HowItWorks2.swift */; };
 		2D8FE6E024A33B0100456875 /* ENRiskLevel+LocalizedDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5149E62483918400702A60 /* ENRiskLevel+LocalizedDescription.swift */; };
 		2D8FE6E124A33B0100456875 /* ENTemporaryExposureKey+CodableDiagnosisKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA3C2465E1010003936C /* ENTemporaryExposureKey+CodableDiagnosisKey.swift */; };
@@ -496,7 +496,7 @@
 		2DD7B494245F646D001B30F0 /* SetupMessageTextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B493245F646D001B30F0 /* SetupMessageTextViewModifier.swift */; };
 		2DD7B496245F64D8001B30F0 /* CallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B495245F64D8001B30F0 /* CallToAction.swift */; };
 		2DD7B498245F65E1001B30F0 /* SubCallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B497245F65E1001B30F0 /* SubCallToAction.swift */; };
-		2DD7B49A245F66F2001B30F0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B499245F66F2001B30F0 /* Constants.swift */; };
+		2DD7B49A245F66F2001B30F0 /* LayoutConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B499245F66F2001B30F0 /* LayoutConstants.swift */; };
 		2DFEED072476AD4200D2C620 /* Data+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFEED062476AD4200D2C620 /* Data+Random.swift */; };
 		2DFEED0A2476BD0400D2C620 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 2DFEED092476BD0400D2C620 /* ZIPFoundation */; };
 /* End PBXBuildFile section */
@@ -658,7 +658,7 @@
 		2DD7B493245F646D001B30F0 /* SetupMessageTextViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupMessageTextViewModifier.swift; sourceTree = "<group>"; };
 		2DD7B495245F64D8001B30F0 /* CallToAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallToAction.swift; sourceTree = "<group>"; };
 		2DD7B497245F65E1001B30F0 /* SubCallToAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCallToAction.swift; sourceTree = "<group>"; };
-		2DD7B499245F66F2001B30F0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2DD7B499245F66F2001B30F0 /* LayoutConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutConstants.swift; sourceTree = "<group>"; };
 		2DFEED05247695CA00D2C620 /* Dev.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Dev.entitlements; sourceTree = "<group>"; };
 		2DFEED062476AD4200D2C620 /* Data+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Random.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1027,7 +1027,7 @@
 		2DD7B443245F4439001B30F0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2DD7B499245F66F2001B30F0 /* Constants.swift */,
+				2DD7B499245F66F2001B30F0 /* LayoutConstants.swift */,
 				2DD7B441245F3FF1001B30F0 /* ContentView.swift */,
 				2DD7B444245F4DE7001B30F0 /* HeaderBar.swift */,
 				2DD7B495245F64D8001B30F0 /* CallToAction.swift */,
@@ -1557,7 +1557,7 @@
 				2D235A2324AC651300C8FD56 /* UIWindow+ViewControllerUtility.swift in Sources */,
 				2D235A2424AC651300C8FD56 /* MenuTitleText.swift in Sources */,
 				2D235A2624AC651300C8FD56 /* OSLog+Additions.swift in Sources */,
-				2D235A2824AC651300C8FD56 /* Constants.swift in Sources */,
+				2D235A2824AC651300C8FD56 /* LayoutConstants.swift in Sources */,
 				2D235A2924AC651300C8FD56 /* GoogleExposureNotificationsDiagnosisVerificationServerAPI.swift in Sources */,
 				2D26096724ADDBBA009CDBCE /* CovidWatchGoogleExposureNotificationsDiagnosisVerificationServerConfiguration.swift in Sources */,
 				2D235A2B24AC651300C8FD56 /* HowItWorks2.swift in Sources */,
@@ -1657,7 +1657,7 @@
 				2D26096624ADDBBA009CDBCE /* CovidWatchGoogleExposureNotificationsDiagnosisVerificationServerConfiguration.swift in Sources */,
 				2D049D4624BDC5D10060B422 /* RKCell.swift in Sources */,
 				2D72547624A35E92003E5914 /* OSLog+Additions.swift in Sources */,
-				2D72547824A35E92003E5914 /* Constants.swift in Sources */,
+				2D72547824A35E92003E5914 /* LayoutConstants.swift in Sources */,
 				2D049D5624BDC5D10060B422 /* RKViewController.swift in Sources */,
 				2D92B6D924BB6DC900003BDD /* LocalStore+HomeRiskLevelAdditions.swift in Sources */,
 				2D049D5224BDC5D10060B422 /* RKColorSettings.swift in Sources */,
@@ -1766,7 +1766,7 @@
 				2D8FE6D824A33B0100456875 /* UIWindow+ViewControllerUtility.swift in Sources */,
 				2D8FE6D924A33B0100456875 /* MenuTitleText.swift in Sources */,
 				2D8FE6DB24A33B0100456875 /* OSLog+Additions.swift in Sources */,
-				2D8FE6DD24A33B0100456875 /* Constants.swift in Sources */,
+				2D8FE6DD24A33B0100456875 /* LayoutConstants.swift in Sources */,
 				2D17BECB24AB3DFC00A2CFD9 /* GoogleExposureNotificationsDiagnosisVerificationServerAPI.swift in Sources */,
 				2D8FE6DF24A33B0100456875 /* HowItWorks2.swift in Sources */,
 				2D8FE6E024A33B0100456875 /* ENRiskLevel+LocalizedDescription.swift in Sources */,
@@ -1868,7 +1868,7 @@
 				2D92B6D224BB3F6B00003BDD /* NextSteps.swift in Sources */,
 				2D29BAF924609F6100E8BEC4 /* MenuTitleText.swift in Sources */,
 				2D63D592245CBCC10027D43B /* OSLog+Additions.swift in Sources */,
-				2DD7B49A245F66F2001B30F0 /* Constants.swift in Sources */,
+				2DD7B49A245F66F2001B30F0 /* LayoutConstants.swift in Sources */,
 				2D17BECA24AB3DFC00A2CFD9 /* GoogleExposureNotificationsDiagnosisVerificationServerAPI.swift in Sources */,
 				2D9034B824603D6200351C3C /* HowItWorks2.swift in Sources */,
 				2D5149E72483918400702A60 /* ENRiskLevel+LocalizedDescription.swift in Sources */,
