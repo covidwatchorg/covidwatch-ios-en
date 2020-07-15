@@ -18,7 +18,7 @@ public protocol ExposureRiskScoring {
     ) -> ENRiskScore
 
     func computeDateRiskLevel(
-        forExposures exposures: [ENExposureInfo],
+        forExposureInfos exposureInfos: [ENExposureInfo],
         computeDate: Date
     ) -> Double
 

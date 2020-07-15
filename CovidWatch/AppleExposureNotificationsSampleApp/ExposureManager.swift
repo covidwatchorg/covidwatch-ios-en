@@ -47,7 +47,7 @@ class ExposureManager {
 
     func updateRiskLevel() {
         if let riskScorer = self.riskScorer {
-            LocalStore.shared.riskLevelValue = riskScorer.computeDateRiskLevel(forExposures: LocalStore.shared.exposuresInfos.map({ ENExposureInfo($0) }), computeDate: Date())
+            LocalStore.shared.riskLevelValue = riskScorer.computeDateRiskLevel(forExposureInfos: LocalStore.shared.exposuresInfos.map({ ENExposureInfo($0) }), computeDate: Date())
         }
     }
 

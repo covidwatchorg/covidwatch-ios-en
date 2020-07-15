@@ -109,10 +109,10 @@ public class AZExposureRiskScorer: ExposureRiskScoring {
     }
 
     public func computeDateRiskLevel(
-        forExposures exposures: [ENExposureInfo], computeDate: Date
+        forExposureInfos exposureInfos: [ENExposureInfo], computeDate: Date
     ) -> Double {
         var dateTransmissionRisks: [Date: Double] = [:]
-        for exposure in exposures {
+        for exposure in exposureInfos {
             let newRisk = computeRisk(forExposure: exposure)
             if let prevRisk = dateTransmissionRisks[exposure.date] {
                 let combinedRisk = combineRisks(forRisks: [prevRisk, newRisk])

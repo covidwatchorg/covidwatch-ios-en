@@ -877,6 +877,7 @@
 				2D081A3224B8AA8400506164 /* CodableRegion+Arizona.swift */,
 				2D5D9404245FF88800718412 /* UserDefaultPropertyWrapper.swift */,
 				2D5D9401245FF85C00718412 /* UserData.swift */,
+				2D92B6D624BB6DC900003BDD /* LocalStore+RiskLevelAdditions.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -935,7 +936,6 @@
 			isa = PBXGroup;
 			children = (
 				2D5D940A2460118D00718412 /* Home.swift */,
-				2D92B6D624BB6DC900003BDD /* LocalStore+RiskLevelAdditions.swift */,
 				2D29BAE8246060B400E8BEC4 /* Alert.swift */,
 				2DD7B497245F65E1001B30F0 /* SubCallToAction.swift */,
 				2D74E4682465D428002057B9 /* PossibleExposureSummary.swift */,

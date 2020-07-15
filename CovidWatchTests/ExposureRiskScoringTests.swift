@@ -212,19 +212,19 @@ class ExposureRiskScoringTests: XCTestCase {
         ]
 
         XCTAssertEqual(
-            scorer.computeDateRiskLevel(forExposures: exposures, computeDate: day2),
+            scorer.computeDateRiskLevel(forExposureInfos: exposures, computeDate: day2),
             4.147819, // Expected
             accuracy: 0.0001,
             message
         )
         XCTAssertEqual(
-            scorer.computeDateRiskLevel(forExposures: exposures, computeDate: day3),
+            scorer.computeDateRiskLevel(forExposureInfos: exposures, computeDate: day3),
             7.221063, // Expected
             accuracy: 0.0001,
             message
         )
         XCTAssertEqual(
-            scorer.computeDateRiskLevel(forExposures: exposures, computeDate: day18),
+            scorer.computeDateRiskLevel(forExposureInfos: exposures, computeDate: day18),
             2.251825, // Expected
             accuracy: 0.0001,
             message
@@ -258,19 +258,19 @@ class ExposureRiskScoringTests: XCTestCase {
         ]
 
         XCTAssertEqual(
-            scorer.computeDateRiskLevel(forExposures: exposures, computeDate: day2),
+            scorer.computeDateRiskLevel(forExposureInfos: exposures, computeDate: day2),
             0.0, // Expected
             accuracy: 0.0001,
             message
         )
         XCTAssertEqual(
-            scorer.computeDateRiskLevel(forExposures: exposures, computeDate: day4),
+            scorer.computeDateRiskLevel(forExposureInfos: exposures, computeDate: day4),
             10.2363, // Expected
             accuracy: 0.0001,
             message
         )
         XCTAssertEqual(
-            scorer.computeDateRiskLevel(forExposures: exposures, computeDate: day18),
+            scorer.computeDateRiskLevel(forExposureInfos: exposures, computeDate: day18),
             3.489957, // Expected
             accuracy: 0.0001,
             message
