@@ -32,9 +32,13 @@ extension LocalStore {
         }
     }
 
-    var homeRiskLevelColor: Color {
+}
 
-        switch homeRiskLevel {
+extension LocalStore.HomeRiskLevel {
+
+    var color: Color {
+
+        switch self {
             case .unknown:
                 return Color(UIColor.systemGray2)
             case .low:
@@ -47,9 +51,9 @@ extension LocalStore {
 
     }
 
-    var homeRiskLevelDescription: String {
+    var description: String {
 
-        switch homeRiskLevel {
+        switch self {
             case .unknown:
                 return NSLocalizedString("RISK_LEVEL_UNKNOWN", comment: "")
             case .low:
@@ -64,9 +68,9 @@ extension LocalStore {
 
     }
 
-    var homeRiskLevelNextSteps: [CodableRegion.NextStep] {
+    var nextSteps: [CodableRegion.NextStep] {
 
-        switch homeRiskLevel {
+        switch self {
             case .unknown:
                 return UserData.shared.region.nextStepsRiskUnknown
             case .low:
@@ -81,13 +85,12 @@ extension LocalStore {
 
     }
 
-    var homeRiskLevelImageName: String {
-        switch homeRiskLevel {
+    var imageName: String {
+        switch self {
             case .unknown:
                 return "Risk Level Unknown"
             default:
                 return "Risk Level Alert"
         }
     }
-
 }

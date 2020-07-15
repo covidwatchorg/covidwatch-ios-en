@@ -437,10 +437,10 @@
 		2D92B6D324BB3F6B00003BDD /* NextSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D92B6D124BB3F6B00003BDD /* NextSteps.swift */; };
 		2D92B6D424BB3F6B00003BDD /* NextSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D92B6D124BB3F6B00003BDD /* NextSteps.swift */; };
 		2D92B6D524BB3F6B00003BDD /* NextSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D92B6D124BB3F6B00003BDD /* NextSteps.swift */; };
-		2D92B6D724BB6DC900003BDD /* LocalStore+RiskLevelAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D92B6D624BB6DC900003BDD /* LocalStore+RiskLevelAdditions.swift */; };
-		2D92B6D824BB6DC900003BDD /* LocalStore+RiskLevelAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D92B6D624BB6DC900003BDD /* LocalStore+RiskLevelAdditions.swift */; };
-		2D92B6D924BB6DC900003BDD /* LocalStore+RiskLevelAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D92B6D624BB6DC900003BDD /* LocalStore+RiskLevelAdditions.swift */; };
-		2D92B6DA24BB6DC900003BDD /* LocalStore+RiskLevelAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D92B6D624BB6DC900003BDD /* LocalStore+RiskLevelAdditions.swift */; };
+		2D92B6D724BB6DC900003BDD /* LocalStore+HomeRiskLevelAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D92B6D624BB6DC900003BDD /* LocalStore+HomeRiskLevelAdditions.swift */; };
+		2D92B6D824BB6DC900003BDD /* LocalStore+HomeRiskLevelAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D92B6D624BB6DC900003BDD /* LocalStore+HomeRiskLevelAdditions.swift */; };
+		2D92B6D924BB6DC900003BDD /* LocalStore+HomeRiskLevelAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D92B6D624BB6DC900003BDD /* LocalStore+HomeRiskLevelAdditions.swift */; };
+		2D92B6DA24BB6DC900003BDD /* LocalStore+HomeRiskLevelAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D92B6D624BB6DC900003BDD /* LocalStore+HomeRiskLevelAdditions.swift */; };
 		2D9CF3CE2455B9F1005B085E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9CF3CD2455B9F1005B085E /* AppDelegate.swift */; };
 		2D9CF3DA2455B9F4005B085E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D9CF3D92455B9F4005B085E /* Assets.xcassets */; };
 		2D9CF3E82455B9F5005B085E /* CovidWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9CF3E72455B9F5005B085E /* CovidWatchTests.swift */; };
@@ -613,7 +613,7 @@
 		2D927E3224AC86F90029A323 /* GoogleExposureNotificationsDiagnosisVerificationServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleExposureNotificationsDiagnosisVerificationServer.swift; sourceTree = "<group>"; };
 		2D927E3724ACAD540029A323 /* Dist-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Dist-Info.plist"; sourceTree = "<group>"; };
 		2D92B6D124BB3F6B00003BDD /* NextSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextSteps.swift; sourceTree = "<group>"; };
-		2D92B6D624BB6DC900003BDD /* LocalStore+RiskLevelAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStore+RiskLevelAdditions.swift"; sourceTree = "<group>"; };
+		2D92B6D624BB6DC900003BDD /* LocalStore+HomeRiskLevelAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStore+HomeRiskLevelAdditions.swift"; sourceTree = "<group>"; };
 		2D9CF3CA2455B9F1005B085E /* Covid Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Covid Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D9CF3CD2455B9F1005B085E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D9CF3D92455B9F4005B085E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -877,7 +877,7 @@
 				2D081A3224B8AA8400506164 /* CodableRegion+Arizona.swift */,
 				2D5D9404245FF88800718412 /* UserDefaultPropertyWrapper.swift */,
 				2D5D9401245FF85C00718412 /* UserData.swift */,
-				2D92B6D624BB6DC900003BDD /* LocalStore+RiskLevelAdditions.swift */,
+				2D92B6D624BB6DC900003BDD /* LocalStore+HomeRiskLevelAdditions.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1528,7 +1528,7 @@
 				2D92B6D524BB3F6B00003BDD /* NextSteps.swift in Sources */,
 				2D049D4B24BDC5D10060B422 /* RKMonth.swift in Sources */,
 				2D415F6B24AF142A00870EF2 /* CovidWatchGoogleExposureNotificationsDiagnosisKeyServerConfiguration.swift in Sources */,
-				2D92B6DA24BB6DC900003BDD /* LocalStore+RiskLevelAdditions.swift in Sources */,
+				2D92B6DA24BB6DC900003BDD /* LocalStore+HomeRiskLevelAdditions.swift in Sources */,
 				2D235A1224AC651300C8FD56 /* ExposureNotificationsDiagnosisKeyServing.swift in Sources */,
 				2D049D5B24BDC5D10060B422 /* RKManager.swift in Sources */,
 				2D235A1424AC651300C8FD56 /* AZExposureRiskModel.swift in Sources */,
@@ -1659,7 +1659,7 @@
 				2D72547624A35E92003E5914 /* OSLog+Additions.swift in Sources */,
 				2D72547824A35E92003E5914 /* Constants.swift in Sources */,
 				2D049D5624BDC5D10060B422 /* RKViewController.swift in Sources */,
-				2D92B6D924BB6DC900003BDD /* LocalStore+RiskLevelAdditions.swift in Sources */,
+				2D92B6D924BB6DC900003BDD /* LocalStore+HomeRiskLevelAdditions.swift in Sources */,
 				2D049D5224BDC5D10060B422 /* RKColorSettings.swift in Sources */,
 				2D72547A24A35E92003E5914 /* HowItWorks2.swift in Sources */,
 				2D72547B24A35E92003E5914 /* ENRiskLevel+LocalizedDescription.swift in Sources */,
@@ -1736,7 +1736,7 @@
 				2D92B6D324BB3F6B00003BDD /* NextSteps.swift in Sources */,
 				2D049D4924BDC5D10060B422 /* RKMonth.swift in Sources */,
 				2D8FE6C624A33B0100456875 /* ExposureNotificationsDiagnosisKeyServing.swift in Sources */,
-				2D92B6D824BB6DC900003BDD /* LocalStore+RiskLevelAdditions.swift in Sources */,
+				2D92B6D824BB6DC900003BDD /* LocalStore+HomeRiskLevelAdditions.swift in Sources */,
 				2D049D5924BDC5D10060B422 /* RKManager.swift in Sources */,
 				2D8FE6C824A33B0100456875 /* AZExposureRiskModel.swift in Sources */,
 				2D8FE6C924A33B0100456875 /* SubCallToAction.swift in Sources */,
@@ -1822,7 +1822,7 @@
 				2D29BAF124607DA100E8BEC4 /* ENStatus+LocalizedDetailDescription.swift in Sources */,
 				2D3948A8248EA455001766A4 /* ExposureRiskModeling.swift in Sources */,
 				2D7942A02467E915008AF148 /* ReportingStep1.swift in Sources */,
-				2D92B6D724BB6DC900003BDD /* LocalStore+RiskLevelAdditions.swift in Sources */,
+				2D92B6D724BB6DC900003BDD /* LocalStore+HomeRiskLevelAdditions.swift in Sources */,
 				2D5D940D246019D500718412 /* HowItWorks.swift in Sources */,
 				2D5D94132460232A00718412 /* PageControl.swift in Sources */,
 				2D5D940B2460118D00718412 /* Home.swift in Sources */,

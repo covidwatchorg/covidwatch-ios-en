@@ -105,16 +105,16 @@ struct Home: View {
                                 self.isShowingPossibleExposures.toggle()
                             }) {
                                 HStack {
-                                    Image(self.localStore.homeRiskLevelImageName)
+                                    Image(self.localStore.homeRiskLevel.imageName)
 
-                                    Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("HOME_RISK_SUMMARY_TITLE", comment: ""), self.localStore.homeRiskLevelDescription))
+                                    Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("HOME_RISK_SUMMARY_TITLE", comment: ""), self.localStore.homeRiskLevel.description))
                                         .font(.custom("Montserrat-Medium", size: 18))
                                         .foregroundColor(Color.white)
                                 }
                                 .padding(.vertical, .standardSpacing)
                                 .frame(maxWidth: .infinity, minHeight: .minTappableTargetDimension, alignment: .leading)
                                 .padding(.horizontal, 2 * .standardSpacing)
-                                .background(self.localStore.homeRiskLevelColor)
+                                .background(self.localStore.homeRiskLevel.color)
                             }
                             .sheet(isPresented: $isShowingPossibleExposures) {
                                 PossibleExposures()
