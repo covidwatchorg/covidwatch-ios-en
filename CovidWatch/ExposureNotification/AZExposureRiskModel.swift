@@ -18,17 +18,17 @@ public struct AZExposureRiskConfiguration {
         0.6651614 // Low attenuation: 2m < D
     ]
 
-    var doseResponseLambda = 1.71E-05
+    var doseResponseLambda = 0.0000171
 
     var transmissionRiskValuesForLevels: [Double] = [
-        0.00E+00, // Level 0
-        1.00E+01, // Level 1
-        pow(10, (1+2/6)), // Level 2
-        pow(10, (1+3/6)), // Level 3
-        pow(10, (1+4/6)), // Level 4
-        pow(10, (1+5/6)), // Level 5
-        pow(10, (1+6/6)), // Level 6
-        pow(10, (1+7/6)) // Level 7 (unused)
+        0, // Level 0
+        10, // Level 1
+        21.5443469, // Level 2
+        31.6227766, // Level 3
+        46.4158883, // Level 4
+        68.1292069, // Level 5
+        100, // Level 6
+        100 // Level 7 (unused)
     ]
 
     var riskLevelsForDaysIncludingAndBeforeSymptomsStartDay: [ENRiskLevel] = [
