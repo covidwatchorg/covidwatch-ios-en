@@ -20,6 +20,8 @@ extension ENStatus {
                 return NSLocalizedString("EXPOSURE_NOTIFICATION_STATUS_BLUETOOTH_OFF_MESSAGE", comment: "")
             case .restricted:
                 return NSLocalizedString("EXPOSURE_NOTIFICATION_STATUS_RESTRICTED_MESSAGE", comment: "")
+            case .paused:
+                return NSLocalizedString("EXPOSURE_NOTIFICATION_STATUS_PAUSED_MESSAGE", comment: "")
             @unknown default:
                 return ""
         }
