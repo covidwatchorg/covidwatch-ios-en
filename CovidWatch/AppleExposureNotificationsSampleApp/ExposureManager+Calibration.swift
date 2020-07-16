@@ -72,12 +72,12 @@ extension ExposureManager {
                                         semaphore.signal()
                                         return
                                     }
-                                let newExposures: [Exposure] = exposuresInfos!.map { exposure in
+                                let newExposures: [CodableExposureInfo] = exposuresInfos!.map { exposure in
                                     var totalRiskScore: ENRiskScore = ENRiskScore(exposure.totalRiskScoreFullRange * 8.0 / pow(8, 4))
                                     if let riskModel = self.riskModel {
                                         totalRiskScore = riskModel.computeRiskScore(forExposureInfo: exposure)
                                     }
-                                    let e = Exposure(
+                                    let e = CodableExposureInfo(
                                         attenuationDurations: exposure.attenuationDurations.map({ $0.doubleValue }),
                                         attenuationValue: exposure.attenuationValue,
                                         date: exposure.date,

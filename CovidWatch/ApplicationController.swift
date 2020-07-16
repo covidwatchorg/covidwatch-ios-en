@@ -183,7 +183,7 @@ class ApplicationController: NSObject {
         do {
             let json = try JSONEncoder().encode(
                 ExposureConfigurationWithExposures(
-                    exposureConfiguration: LocalStore.shared.exposureConfiguration,
+                    exposureConfiguration: UserData.shared.region.exposureConfiguration,
                     possibleExposures: LocalStore.shared.exposuresInfos
                 )
             )

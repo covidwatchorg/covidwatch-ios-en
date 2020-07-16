@@ -82,32 +82,32 @@ struct Menu: View {
 
                             #if DEBUG_CALIBRATION
 
-                            Button(action: {
-                                let alertController = UIAlertController(
-                                    title: NSLocalizedString("EXPOSURE_CONFIGURATION_JSON_TITLE", comment: ""),
-                                    message: nil,
-                                    preferredStyle: .alert
-                                )
-                                alertController.addTextField { (textField) in
-                                    textField.text = self.localStore.exposureConfiguration
-                                }
-                                alertController.addAction(UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""), style: .cancel, handler: nil))
-                                alertController.addAction(UIAlertAction(title: NSLocalizedString("SAVE", comment: ""), style: .default, handler: { _ in
-                                    guard let json = alertController.textFields?.first?.text else { return }
-                                    self.localStore.exposureConfiguration = json
-                                }))
-                                alertController.addAction(UIAlertAction(title: NSLocalizedString("RESET_TO_DEFAULT", comment: ""), style: .default, handler: { _ in
-                                    self.localStore.exposureConfiguration = LocalStore.exposureConfigurationDefault
-                                }))
-                                UIApplication.shared.topViewController?.present(alertController, animated: true)
-                            }) {
-                                HStack {
-                                    MenuDemoCapsule()
-                                    Text("DEMO_SET_EXPOSURE_CONFIGURATION_JSON_TITLE")
-                                }.modifier(MenuTitleText())
-                            }
-
-                            Divider()
+//                            Button(action: {
+//                                let alertController = UIAlertController(
+//                                    title: NSLocalizedString("EXPOSURE_CONFIGURATION_JSON_TITLE", comment: ""),
+//                                    message: nil,
+//                                    preferredStyle: .alert
+//                                )
+//                                alertController.addTextField { (textField) in
+//                                    textField.text = self.localStore.exposureConfiguration
+//                                }
+//                                alertController.addAction(UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""), style: .cancel, handler: nil))
+//                                alertController.addAction(UIAlertAction(title: NSLocalizedString("SAVE", comment: ""), style: .default, handler: { _ in
+//                                    guard let json = alertController.textFields?.first?.text else { return }
+//                                    self.localStore.exposureConfiguration = json
+//                                }))
+//                                alertController.addAction(UIAlertAction(title: NSLocalizedString("RESET_TO_DEFAULT", comment: ""), style: .default, handler: { _ in
+//                                    self.localStore.exposureConfiguration = LocalStore.exposureConfigurationDefault
+//                                }))
+//                                UIApplication.shared.topViewController?.present(alertController, animated: true)
+//                            }) {
+//                                HStack {
+//                                    MenuDemoCapsule()
+//                                    Text("DEMO_SET_EXPOSURE_CONFIGURATION_JSON_TITLE")
+//                                }.modifier(MenuTitleText())
+//                            }
+//
+//                            Divider()
 
                             #endif
                         }

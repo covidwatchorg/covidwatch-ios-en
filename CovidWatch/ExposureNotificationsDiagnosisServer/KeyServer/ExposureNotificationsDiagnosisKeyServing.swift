@@ -23,13 +23,4 @@ public protocol ExposureNotificationsDiagnosisKeyServing {
         completion: @escaping (Result<[URL], Error>) -> Void
     )
 
-    func getExposureConfiguration(
-        completion: (Result<ENExposureConfiguration, Error>) -> Void
-    )
-
-    #if DEBUG_CALIBRATION
-    func getExposureConfigurationList(
-        completion: (Result<[ENExposureConfiguration], Error>) -> Void
-    )
-    #endif
 }

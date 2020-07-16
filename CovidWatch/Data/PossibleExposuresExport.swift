@@ -6,6 +6,6 @@
 import Foundation
 
 struct ExposureConfigurationWithExposures: Encodable {
-    let exposureConfiguration: String
+    let exposureConfiguration: CodableExposureConfiguration
     let possibleExposures: [CodableExposureInfo]
 }
