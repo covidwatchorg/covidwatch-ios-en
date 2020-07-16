@@ -117,7 +117,7 @@ public class Server {
             log: .en
         )
 
-        let codableExposureConfiguration = LocalStore.shared.exposureConfiguration
+        let codableExposureConfiguration = UserData.shared.region.exposureConfiguration
         var exposureConfigurationList = [ENExposureConfiguration]()
         for attenuationDurationThresholds in codableExposureConfiguration.attenuationDurationThresholdList {
             let exposureConfiguration = ENExposureConfiguration()
