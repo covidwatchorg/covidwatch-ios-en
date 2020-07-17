@@ -8,6 +8,7 @@
 import Foundation
 import ExposureNotification
 import SwiftProtobuf
+import os.log
 
 @available(iOS 13.5, *)
 public class Server {
@@ -73,23 +74,73 @@ public class Server {
 
     func getExposureConfiguration(completion: @escaping (Result<ENExposureConfiguration, Error>) -> Void) {
 
-        if let diagnosisServer = self.keyServer {
+        ApplicationController.shared.getRegions { (result) in
 
-            diagnosisServer.getExposureConfiguration(completion: completion)
-        } else {
-            completion(.failure(CocoaError(.fileNoSuchFile)))
+            switch result {
+
+                case let .success(regions):
+
+                    UserData.shared.regions = regions
+                    if let index = regions.firstIndex(where: { $0.id == UserData.shared.region.id }) {
+                        UserData.shared.region = regions[index]
+                    }
+                    let exposureConfiguration = ENExposureConfiguration(UserData.shared.region.exposureConfiguration)
+
+                    os_log(
+                        "Got from server exposure configuration=%@ ",
+                        log: .en,
+                        exposureConfiguration.description
+                    )
+
+                    completion(.success(exposureConfiguration))
+
+                case let .failure(error):
+
+                    os_log(
+                        "Getting from server exposure configuration failed=%@",
+                        log: .en,
+                        type: .error,
+                        error as CVarArg
+                    )
+
+                    completion(.failure(error))
+            }
+
         }
     }
 
     #if DEBUG_CALIBRATION
     func getExposureConfigurationList(completion: @escaping (Result<[ENExposureConfiguration], Error>) -> Void) {
 
-        if let keyServer = self.keyServer {
+        os_log(
+            "Getting exposure configuration from server ...",
+            log: .en
+        )
 
-            keyServer.getExposureConfigurationList(completion: completion)
-        } else {
-            completion(.failure(CocoaError(.fileNoSuchFile)))
+        let codableExposureConfiguration = UserData.shared.region.exposureConfiguration
+        var exposureConfigurationList = [ENExposureConfiguration]()
+        for attenuationDurationThresholds in codableExposureConfiguration.attenuationDurationThresholdList {
+            let exposureConfiguration = ENExposureConfiguration()
+            exposureConfiguration.minimumRiskScore = codableExposureConfiguration.minimumRiskScore
+            exposureConfiguration.attenuationLevelValues =
+                codableExposureConfiguration.attenuationLevelValues as [NSNumber]
+            exposureConfiguration.daysSinceLastExposureLevelValues = codableExposureConfiguration.daysSinceLastExposureLevelValues as [NSNumber]
+            exposureConfiguration.durationLevelValues =
+                codableExposureConfiguration.durationLevelValues as [NSNumber]
+            exposureConfiguration.transmissionRiskLevelValues =
+                codableExposureConfiguration.transmissionRiskLevelValues as [NSNumber]
+            exposureConfiguration.setValue(attenuationDurationThresholds, forKey: "attenuationDurationThresholds")
+
+            exposureConfigurationList.append(exposureConfiguration)
+
+            os_log(
+                "Got exposure configuration=%@ from server",
+                log: .en,
+                exposureConfiguration.description
+            )
         }
+
+        completion(.success(exposureConfigurationList))
     }
     #endif
 

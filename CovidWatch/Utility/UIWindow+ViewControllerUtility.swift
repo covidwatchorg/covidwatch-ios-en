@@ -20,7 +20,7 @@ extension UIApplication {
         #if AppExtension
             return nil
         #else
-            return topViewController(keyWindow)
+            return topViewController(UIApplication.shared.windows.filter({$0.isKeyWindow}).first)
         #endif
     }
 

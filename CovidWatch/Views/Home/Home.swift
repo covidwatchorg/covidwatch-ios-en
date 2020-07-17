@@ -60,7 +60,8 @@ struct Home: View {
                                 )
                             }
                             .sheet(isPresented: $isShowingExposureSettings) {
-                                Setup1(dismissesAutomatically: true).environmentObject(self.userData)
+                                Setup1(dismissesAutomatically: true, showsSteps: false)
+                                    .environmentObject(self.userData)
                             }
                         }
 
@@ -84,7 +85,8 @@ struct Home: View {
                                 )
                             }
                             .sheet(isPresented: $isShowingNotificationSettings) {
-                                Setup2(dismissesAutomatically: true).environmentObject(self.userData)
+                                Setup2(dismissesAutomatically: true, showsSteps: false)
+                                    .environmentObject(self.userData)
                             }
                         }
 
@@ -105,16 +107,16 @@ struct Home: View {
                                 self.isShowingPossibleExposures.toggle()
                             }) {
                                 HStack {
-                                    Image(self.localStore.riskLevelImageName)
+                                    Image(self.localStore.homeRiskLevel.imageName)
 
-                                    Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("MY_RISK_LEVEL_TITLE", comment: ""), self.localStore.riskLevelDescription))
+                                    Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("HOME_RISK_SUMMARY_TITLE", comment: ""), self.localStore.homeRiskLevel.description))
                                         .font(.custom("Montserrat-Medium", size: 18))
                                         .foregroundColor(Color.white)
                                 }
                                 .padding(.vertical, .standardSpacing)
                                 .frame(maxWidth: .infinity, minHeight: .minTappableTargetDimension, alignment: .leading)
                                 .padding(.horizontal, 2 * .standardSpacing)
-                                .background(self.localStore.riskLevelColor)
+                                .background(self.localStore.homeRiskLevel.color)
                             }
                             .sheet(isPresented: $isShowingPossibleExposures) {
                                 PossibleExposures()
@@ -144,7 +146,7 @@ struct Home: View {
                             Button(action: {
                                 self.isShowingReporting.toggle()
                             }) {
-                                Text("NOTIFY_OTHERS").modifier(SmallCallToAction())
+                                Text("HOME_NOTIFY_OTHERS_BUTTON").modifier(SmallCallToAction())
                             }
                             .padding(.top, 2 * .standardSpacing)
                             .padding(.bottom, .standardSpacing)

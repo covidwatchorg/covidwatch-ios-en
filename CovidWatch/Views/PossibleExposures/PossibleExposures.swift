@@ -11,7 +11,7 @@ struct PossibleExposures: View {
 
     @EnvironmentObject var localStore: LocalStore
 
-    @State private var selectedExposure: Exposure?
+    @State private var selectedExposure: CodableExposureInfo?
 
     let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -66,7 +66,7 @@ struct PossibleExposures: View {
                         .background(Color("Possible Exposures Last Check Background Color"))
 
                     VStack(spacing: 0) {
-                        if self.localStore.exposures.isEmpty {
+                        if self.localStore.exposuresInfos.isEmpty {
 
                             HStack {
                                 VStack(spacing: 0) {
@@ -89,31 +89,31 @@ struct PossibleExposures: View {
                             .padding(.horizontal, 2 * .standardSpacing)
                             .background(LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.4), Color(red: 0.263, green: 0.769, blue: 0.851, opacity: 1)]), startPoint: .top, endPoint: .bottom))
                         } else {
-                            ForEach(0..<self.localStore.exposures.count) { index in
+                            ForEach(0..<self.localStore.exposuresInfos.count) { index in
 
                                 Group {
                                     Button(action: {
-                                        if self.selectedExposure == self.localStore.exposures[index] {
+                                        if self.selectedExposure == self.localStore.exposuresInfos[index] {
                                             self.selectedExposure = nil
                                         } else {
-                                            self.selectedExposure = self.localStore.exposures[index]
+                                            self.selectedExposure = self.localStore.exposuresInfos[index]
                                         }
                                     }) {
                                         VStack(spacing: 0) {
 
                                             PossibleExposureRow(
-                                                exposure: self.localStore.exposures[index],
-                                                isExpanded: self.localStore.exposures[index] == self.selectedExposure
+                                                exposure: self.localStore.exposuresInfos[index],
+                                                isExpanded: self.localStore.exposuresInfos[index] == self.selectedExposure
                                             ).frame(minHeight: 54)
                                                 .padding(.horizontal, 2 * .standardSpacing)
 
                                             Divider()
 
                                             // Is Expanded?
-                                            if self.localStore.exposures[index] == self.selectedExposure {
+                                            if self.localStore.exposuresInfos[index] == self.selectedExposure {
 
                                                 HStack {
-                                                    PossibleExposureTable(exposure: self.localStore.exposures[index])
+                                                    PossibleExposureTable(exposure: self.localStore.exposuresInfos[index])
                                                 }
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                                 .background(Color(UIColor.systemGray6))

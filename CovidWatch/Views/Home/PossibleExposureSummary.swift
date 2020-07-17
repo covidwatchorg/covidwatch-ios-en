@@ -10,14 +10,14 @@ struct PossibleExposureSummary: View {
     @EnvironmentObject var localStore: LocalStore
 
     func maxTotalRiscScore() -> UInt8 {
-        self.localStore.exposures.max(by: { $0.totalRiskScore < $1.totalRiskScore })?.totalRiskScore ?? 0
+        self.localStore.exposuresInfos.max(by: { $0.totalRiskScore < $1.totalRiskScore })?.totalRiskScore ?? 0
     }
 
     func daysSinceLastExposure() -> Int? {
-        if self.localStore.exposures.isEmpty {
+        if self.localStore.exposuresInfos.isEmpty {
             return nil
         }
-        return Calendar.current.dateComponents([.day], from: self.localStore.exposures.first!.date, to: Date()).day ?? 0
+        return Calendar.current.dateComponents([.day], from: self.localStore.exposuresInfos.first!.date, to: Date()).day ?? 0
     }
 
     func accessibilityLabel() -> String {
@@ -34,7 +34,7 @@ struct PossibleExposureSummary: View {
             components.append(NSLocalizedString("UNKNOWN_DAYS_SINCE_LAST_EXPOSURE", comment: ""))
         }
 
-        components.append(String.localizedStringWithFormat(NSLocalizedString("%d exposures in the last 14 days", comment: ""), self.localStore.exposures.count))
+        components.append(String.localizedStringWithFormat(NSLocalizedString("%d exposures in the last 14 days", comment: ""), self.localStore.exposuresInfos.count))
 
         components.append(String.localizedStringWithFormat(NSLocalizedString("HOME_TOTAL_RISK_SCORE_ACCESSIBILITY_LABEL", comment: ""), self.maxTotalRiscScore()))
 
@@ -69,7 +69,7 @@ struct PossibleExposureSummary: View {
 
                     HStack {
 
-                        Text(verbatim: self.localStore.exposures.isEmpty ? "-" :  String(Calendar.current.dateComponents([.day], from: self.localStore.exposures.first!.date, to: Date()).day ?? 0))
+                        Text(verbatim: self.localStore.exposuresInfos.isEmpty ? "-" :  String(Calendar.current.dateComponents([.day], from: self.localStore.exposuresInfos.first!.date, to: Date()).day ?? 0))
                             .modifier(PossibleExposureSummaryValueViewModifier())
                             .background(Capsule(style: .circular).foregroundColor(Color(UIColor.systemGray2)))
 
@@ -86,7 +86,7 @@ struct PossibleExposureSummary: View {
 
                     HStack {
 
-                        Text(verbatim: NumberFormatter.localizedString(from: NSNumber(value: self.localStore.exposures.count), number: .decimal))
+                        Text(verbatim: NumberFormatter.localizedString(from: NSNumber(value: self.localStore.exposuresInfos.count), number: .decimal))
                             .modifier(PossibleExposureSummaryValueViewModifier())
                             .background(Capsule(style: .circular).foregroundColor(Color(UIColor.systemGray2)))
 

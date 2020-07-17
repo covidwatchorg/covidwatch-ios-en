@@ -102,7 +102,7 @@ struct HeaderBar: View {
                         }) {
                             Text(self.userData.region.name)
                                 .font(.custom("Montserrat-Semibold", size: 12))
-                                .foregroundColor(Color.secondary)
+                                .foregroundColor(Color("Tint Color"))
                                 .underline()
                         }.sheet(isPresented: self.$isShowingRegionSelection) {
                             RegionSelection(

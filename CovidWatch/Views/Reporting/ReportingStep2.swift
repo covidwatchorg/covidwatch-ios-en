@@ -14,22 +14,29 @@ struct ReportingStep2: View {
 
     @State var verificationCode: String = ""
 
-    @State var symptomsStartDate: String = ""
+    @State var symptomsStartDateString: String = ""
 
     @State var isSubmittingDiagnosis = false
 
     @State var isShowingNextStep = false
 
-    let selectedTestResultIndex: Int
+    @State var isShowingSymptonOnSetDatePicker = false
 
-    var dateFormatter: DateFormatter {
+    var rkManager = RKManager(calendar: Calendar.current, minimumDate: Date()-14*24*60*60, maximumDate: Date(), mode: 0)
+
+    let selectedDiagnosisIndex: Int
+
+    let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
+        formatter.doesRelativeDateFormatting = true
         return formatter
-    }
+    }()
 
-    init(selectedTestResultIndex: Int = 0) {
-        self.selectedTestResultIndex = selectedTestResultIndex
+    @State var isAsymptomatic = false
+
+    init(selectedDiagnosisIndex: Int = 0) {
+        self.selectedDiagnosisIndex = selectedDiagnosisIndex
         UIScrollView.appearance().keyboardDismissMode = .onDrag
     }
 
@@ -62,12 +69,6 @@ struct ReportingStep2: View {
 
                 Spacer(minLength: 2 * .standardSpacing)
 
-                Text("REPORTING_VERIFY_MESSAGE")
-                    .font(.custom("Montserrat-Regular", size: 16))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .foregroundColor(Color.secondary)
-                    .padding(.horizontal, 2 * .standardSpacing)
-
                 Group {
                     Spacer(minLength: 2 * .standardSpacing)
 
@@ -81,9 +82,15 @@ struct ReportingStep2: View {
 
                     TextField(NSLocalizedString("VERIFICATION_CODE_TITLE", comment: ""), text: self.$verificationCode)
                         .padding(.horizontal, 2 * .standardSpacing)
+                        .foregroundColor(Color.primary)
                         .keyboardType(.numberPad)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                    Spacer().frame(height: 2 * .standardSpacing)
                 }
+
+                Divider()
+                    .padding(.horizontal, .standardSpacing)
 
                 Group {
                     Spacer(minLength: 2 * .standardSpacing)
@@ -96,10 +103,59 @@ struct ReportingStep2: View {
 
                     Spacer(minLength: .standardSpacing)
 
-                    TextField(NSLocalizedString("SELECT_DATE", comment: ""), text: self.$symptomsStartDate)
-                        .padding(.horizontal, 2 * .standardSpacing)
-                        .keyboardType(.numberPad)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    Button(action: {
+                        self.isShowingSymptonOnSetDatePicker.toggle()
+                    }) {
+                        TextField(NSLocalizedString("SELECT_DATE", comment: ""), text: self.$symptomsStartDateString)
+                            .padding(.horizontal, 2 * .standardSpacing)
+                            .foregroundColor(Color.primary)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .opacity(isAsymptomatic ? 0.5 : 1.0)
+                            .disabled(true)
+                    }
+                    .disabled(isAsymptomatic)
+                    .sheet(isPresented: self.$isShowingSymptonOnSetDatePicker, content: {
+                        ZStack(alignment: .top) {
+                            RKViewController(isPresented: self.$isShowingSymptonOnSetDatePicker, rkManager: self.rkManager)
+                                .padding(.top, .headerHeight)
+
+                            HeaderBar(showMenu: false, showDismissButton: true)
+                                .environmentObject(self.userData)
+                                .environmentObject(self.localStore)
+                        }
+                        .onDisappear {
+                            self.symptomsStartDateString = self.rkManager.selectedDate == nil ? "" : self.dateFormatter.string(from: self.rkManager.selectedDate)
+                            self.localStore.diagnoses[self.selectedDiagnosisIndex].symptomsStartDate = self.rkManager.selectedDate
+                        }
+                    })
+
+                    Spacer(minLength: .standardSpacing)
+
+                    HStack(alignment: .center) {
+
+                        Button(action: {
+                            withAnimation {
+                                self.isAsymptomatic.toggle()
+                                if self.isAsymptomatic {
+                                    self.rkManager.selectedDate = nil
+                                    self.symptomsStartDateString = ""
+                                }
+                            }
+                        }) {
+                            if self.isAsymptomatic {
+                                Image("Checkbox Checked")
+                            } else {
+                                Image("Checkbox Unchecked")
+                            }
+
+                            Text("I have no symptoms.")
+                                .foregroundColor(Color.secondary)
+                        }
+                    }.padding(.horizontal, 2 * .standardSpacing)
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+
+                    Spacer().frame(height: 2 * .standardSpacing)
+
                 }
 
                 Button(action: {
@@ -120,11 +176,11 @@ struct ReportingStep2: View {
                         )
                     }
 
-                    if self.localStore.testResults[self.selectedTestResultIndex].verificationCode != self.verificationCode {
-                        self.localStore.testResults[self.selectedTestResultIndex].isVerified = false
+                    if self.localStore.diagnoses[self.selectedDiagnosisIndex].verificationCode != self.verificationCode {
+                        self.localStore.diagnoses[self.selectedDiagnosisIndex].isVerified = false
                     }
-                    self.localStore.testResults[self.selectedTestResultIndex].verificationCode = self.verificationCode
-                    self.localStore.testResults[self.selectedTestResultIndex].isAdded = true
+                    self.localStore.diagnoses[self.selectedDiagnosisIndex].verificationCode = self.verificationCode
+                    self.localStore.diagnoses[self.selectedDiagnosisIndex].isAdded = true
 
                     let actionAfterCodeVerification = {
 
@@ -135,21 +191,41 @@ struct ReportingStep2: View {
                                 return
                             }
 
-                            guard let keys = keys, !keys.isEmpty else {
+                            guard var keys = keys, !keys.isEmpty else {
                                 errorHandler(ENError(.internal))
                                 return
                             }
 
-                            // TODO: Set tranmission risk level for the diagnosis keys based on questions *before* sharing them with the key server.
-                            keys.forEach { $0.transmissionRiskLevel = 6 }
+                            // Before uploading the diagnosis keys to the key server, set their:
+                            // - Tranmission Risk Level (v1.0 and above)
+                            // - Days Since Onset (v1.5 and above)
+                            // - Report Type (v1.5 and above)
+
+                            // Set tranmission risk level based on symptoms start date
+                            keys.forEach({ $0.transmissionRiskLevel = 6 })
+
+                            if let riskModel = ExposureManager.shared.riskModel {
+
+                                keys.forEach {
+                                    $0.transmissionRiskLevel = riskModel.computeTransmissionRiskLevel(
+                                        forTemporaryExposureKey: $0,
+                                        symptomsStartDate: self.localStore.diagnoses[self.selectedDiagnosisIndex].symptomsStartDate
+                                    )
+                                }
+
+                                // Filter out keys if needed, to optimize server storage.
+                                if !self.localStore.diagnoses[self.selectedDiagnosisIndex].shareZeroTranmissionRiskLevelDiagnosisKeys {
+                                    keys = keys.filter({ $0.transmissionRiskLevel != 0 })
+                                }
+                            }
 
                             let actionAfterVerificationCertificateRequest = {
 
                                 // Step 8 of https://developers.google.com/android/exposure-notifications/verification-system
                                 Server.shared.postDiagnosisKeys(
                                     keys,
-                                    verificationPayload: self.localStore.testResults[self.selectedTestResultIndex].verificationCertificate,
-                                    hmacKey: self.localStore.testResults[self.selectedTestResultIndex].hmacKey
+                                    verificationPayload: self.localStore.diagnoses[self.selectedDiagnosisIndex].verificationCertificate,
+                                    hmacKey: self.localStore.diagnoses[self.selectedDiagnosisIndex].hmacKey
                                 ) { error in
                                     // Step 9
                                     // Since this is the last step, ensure `isSubmittingDiagnosis` is set to false.
@@ -162,7 +238,7 @@ struct ReportingStep2: View {
                                         return
                                     }
 
-                                    self.localStore.testResults[self.selectedTestResultIndex].isShared = true
+                                    self.localStore.diagnoses[self.selectedDiagnosisIndex].isShared = true
 
                                     withAnimation {
                                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -176,9 +252,9 @@ struct ReportingStep2: View {
                                 do {
                                     let hmac = try ENVerificationUtils.calculateExposureKeyHMAC(
                                         forTemporaryExposureKeys: keys,
-                                        secret: self.localStore.testResults[self.selectedTestResultIndex].hmacKey
+                                        secret: self.localStore.diagnoses[self.selectedDiagnosisIndex].hmacKey
                                     ).base64EncodedString()
-                                    guard let longTermToken = self.localStore.testResults[self.selectedTestResultIndex].longTermToken else {
+                                    guard let longTermToken = self.localStore.diagnoses[self.selectedDiagnosisIndex].longTermToken else {
                                         // Shouldn't get here...
                                         self.isSubmittingDiagnosis = false
                                         return
@@ -189,13 +265,13 @@ struct ReportingStep2: View {
                                         switch result {
                                             case let .success(codableVerificationCertificateResponse):
 
-                                                self.localStore.testResults[self.selectedTestResultIndex].verificationCertificate = codableVerificationCertificateResponse.certificate
+                                                self.localStore.diagnoses[self.selectedDiagnosisIndex].verificationCertificate = codableVerificationCertificateResponse.certificate
 
                                                 actionAfterVerificationCertificateRequest()
 
                                             case let .failure(error):
                                                 // Something went wrong. Maybe the long-term token is not valid anymore?
-                                                self.localStore.testResults[self.selectedTestResultIndex].isVerified = false
+                                                self.localStore.diagnoses[self.selectedDiagnosisIndex].isVerified = false
                                                 errorHandler(error)
                                                 return
                                         }
@@ -212,7 +288,7 @@ struct ReportingStep2: View {
                         }
                     }
 
-                    if !self.localStore.testResults[self.selectedTestResultIndex].isVerified {
+                    if !self.localStore.diagnoses[self.selectedDiagnosisIndex].isVerified {
 
                         if bypassPublicHealthAuthorityVerification {
 
@@ -225,12 +301,12 @@ struct ReportingStep2: View {
                                 switch result {
                                     case let .success(codableVerifyCodeResponse):
 
-                                        self.localStore.testResults[self.selectedTestResultIndex].isVerified = true
-                                        self.localStore.testResults[self.selectedTestResultIndex].longTermToken = codableVerifyCodeResponse.token
+                                        self.localStore.diagnoses[self.selectedDiagnosisIndex].isVerified = true
+                                        self.localStore.diagnoses[self.selectedDiagnosisIndex].longTermToken = codableVerifyCodeResponse.token
                                         let formatter = ISO8601DateFormatter()
                                         formatter.formatOptions = [.withFullDate]
-                                        self.localStore.testResults[self.selectedTestResultIndex].dateAdministered = formatter.date(from: codableVerifyCodeResponse.testDate) ?? Date()
-                                        self.localStore.testResults[self.selectedTestResultIndex].testType = codableVerifyCodeResponse.testType
+                                        self.localStore.diagnoses[self.selectedDiagnosisIndex].testDate = formatter.date(from: codableVerifyCodeResponse.testDate) ?? Date()
+                                        self.localStore.diagnoses[self.selectedDiagnosisIndex].testType = codableVerifyCodeResponse.testType
 
                                         actionAfterCodeVerification()
 
@@ -257,7 +333,7 @@ struct ReportingStep2: View {
                     }.modifier(SmallCallToAction())
                 }
                 .disabled(self.isSubmittingDiagnosis)
-                .padding(.top, 2 * .standardSpacing)
+                .padding(.top, 3 * .standardSpacing)
                 .padding(.horizontal, 2 * .standardSpacing)
                 .padding(.bottom, .standardSpacing)
 

@@ -32,6 +32,7 @@ public struct CodableRegion: Codable {
     let nextStepsRiskMedium: [NextStep]
     let nextStepsRiskHigh: [NextStep]
     let nextStepsRiskVerifiedPositive: [NextStep]
+    let exposureConfiguration: CodableExposureConfiguration = .default
 }
 
 extension CodableRegion.NextStepType {
@@ -50,5 +51,4 @@ extension CodableRegion.NextStepType {
                 return "square.and.arrow.up.fill"
         }
     }
-
 }

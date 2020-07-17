@@ -21,7 +21,7 @@ struct NextSteps: View {
 
             Spacer(minLength: .standardSpacing)
 
-            ForEach(self.localStore.riskLevelNextSteps, id: \.self) { nextStep in
+            ForEach(self.localStore.homeRiskLevel.nextSteps, id: \.self) { nextStep in
 
                 VStack(spacing: 0) {
 
@@ -65,13 +65,13 @@ struct NextSteps: View {
                     }) {
                         HStack(alignment: .firstTextBaseline, spacing: .standardSpacing) {
 
-                            Image(systemName: nextStep.type.systemImageName)
-                                .foregroundColor(self.localStore.riskLevelColor)
-
                             Text(verbatim: nextStep.description)
                                 .foregroundColor(Color.secondary)
                                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 64, maxHeight: .infinity, alignment: .leading)
                                 .font(.custom("Montserrat-Regular", size: 14))
+
+                            Image(systemName: nextStep.type.systemImageName)
+                                .foregroundColor(Color("Tint Color"))
                         }
                         .padding(.standardSpacing)
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 64, maxHeight: .infinity, alignment: .leading)

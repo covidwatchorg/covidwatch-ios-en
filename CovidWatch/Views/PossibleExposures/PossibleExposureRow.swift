@@ -7,7 +7,7 @@ import SwiftUI
 
 struct PossibleExposureRow: View {
 
-    let exposure: Exposure
+    let exposure: CodableExposureInfo
 
     let isExpanded: Bool
 

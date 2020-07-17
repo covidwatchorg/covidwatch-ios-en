@@ -14,8 +14,7 @@ public class ENVerificationUtils {
         case stringEncodingFailure
     }
 
-    // CalculateExposureKeyHMAC will calculate the verification protocol HMAC value.
-    // Input keys are already to be base64 encoded. They will be sorted if necessary.
+    // Calculates the verification protocol HMAC value. Input keys will be sorted if necessary.
     static func calculateExposureKeyHMAC(
         forTemporaryExposureKeys keys: [ENTemporaryExposureKey],
         secret: Data) throws -> Data {

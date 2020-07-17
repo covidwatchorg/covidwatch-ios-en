@@ -10,102 +10,125 @@ struct Setup1: View {
 
     let dismissesAutomatically: Bool
 
+    let showsSteps: Bool
+
+    @State var isShowingNextStep = false
+
     @EnvironmentObject var userData: UserData
 
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
-    init(dismissesAutomatically: Bool = false) {
+    init(dismissesAutomatically: Bool = false, showsSteps: Bool = true) {
         self.dismissesAutomatically = dismissesAutomatically
+        self.showsSteps = showsSteps
     }
 
     var body: some View {
 
-        ZStack(alignment: .bottom) {
-
-            ScrollView(.vertical, showsIndicators: false) {
-
-                VStack(spacing: 0) {
-
-                    Spacer(minLength: .headerHeight)
-
-                    HowItWorksTitleText(text: Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("SETUP_PRE_TITLE", comment: ""), NSNumber(value: 1), NSNumber(value: 2)).uppercased()))
-
-                    Text("ENABLE_EXPOSURE_NOTIFICATIONS_TITLE")
-                        .modifier(StandardTitleTextViewModifier())
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 2 * .standardSpacing)
-
-                    Spacer(minLength: 2 * .standardSpacing)
-
-                    Image("Setup 1")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .accessibility(label: Text("ENABLE_EXPOSURE_NOTIFICATIONS_IMAGE_ACCESSIBILITY_LABEL"))
-                        .padding(.horizontal, 2 * .standardSpacing)
-
-                    Spacer(minLength: 2 * .standardSpacing)
-
-                    Text("ENABLE_EXPOSURE_NOTIFICATIONS_MESSAGE")
-                        .modifier(SetupMessageTextViewModifier())
-                        .padding(.horizontal, 2 * .standardSpacing)
-
-                    Spacer(minLength: .stickyFooterHeight + .standardSpacing)
-
-                }
+        VStack {
+            if !isShowingNextStep {
+                setup1.transition(.slide)
+            } else {
+                Setup2().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
             }
+        }
+    }
 
-            VStack {
+    var setup1: some View {
 
-                Button(action: {
+        ZStack(alignment: .top) {
 
-                    ExposureManager.shared.manager.setExposureNotificationEnabled(true) { (error) in
+            ZStack(alignment: .bottom) {
 
-                        if let error = error {
-                            ApplicationController.shared.handleExposureNotificationEnabled(error: error)
-                            return
+                ScrollView(.vertical, showsIndicators: false) {
+
+                    VStack(spacing: 0) {
+
+                        Spacer(minLength: .headerHeight)
+
+                        if showsSteps {
+                            HowItWorksTitleText(text: Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("SETUP_PRE_TITLE", comment: ""), NSNumber(value: 1), NSNumber(value: 2)).uppercased()))
                         }
 
+                        Text("ENABLE_EXPOSURE_NOTIFICATIONS_TITLE")
+                            .modifier(StandardTitleTextViewModifier())
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.horizontal, 2 * .standardSpacing)
+
+                        Spacer(minLength: 2 * .standardSpacing)
+
+                        Image("Setup 1")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .accessibility(label: Text("ENABLE_EXPOSURE_NOTIFICATIONS_IMAGE_ACCESSIBILITY_LABEL"))
+                            .padding(.horizontal, 2 * .standardSpacing)
+
+                        Spacer(minLength: 2 * .standardSpacing)
+
+                        Text("ENABLE_EXPOSURE_NOTIFICATIONS_MESSAGE")
+                            .modifier(SetupMessageTextViewModifier())
+                            .padding(.horizontal, 2 * .standardSpacing)
+
+                        Spacer(minLength: .stickyFooterHeight + .standardSpacing)
+
+                    }
+                }
+
+                VStack {
+
+                    Button(action: {
+
+                        ExposureManager.shared.manager.setExposureNotificationEnabled(true) { (error) in
+
+                            if let error = error {
+                                ApplicationController.shared.handleExposureNotificationEnabled(error: error)
+                                return
+                            }
+
+                            withAnimation {
+                                self.isShowingNextStep = true
+                            }
+
+                            if self.dismissesAutomatically {
+                                self.presentationMode.wrappedValue.dismiss()
+                            }
+                        }
+
+                    }) {
+
+                        Text("ENABLE")
+                            .modifier(SmallCallToAction())
+
+                    }
+                    .padding(.top, .standardSpacing)
+                    .padding(.horizontal, 2 * .standardSpacing)
+
+                    Button(action: {
+
                         withAnimation {
-                            self.userData.isExposureNotificationSetup = true
+                            self.isShowingNextStep = true
                         }
 
                         if self.dismissesAutomatically {
                             self.presentationMode.wrappedValue.dismiss()
                         }
+                    }) {
+
+                        Text("NOT_NOW")
+                            .font(.custom("Montserrat-Medium", size: 16))
+                            .frame(maxWidth: .infinity)
+                            .padding()
+
                     }
-
-                }) {
-
-                    Text("ENABLE")
-                        .modifier(SmallCallToAction())
-
+                    .padding(.top, 5)
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .padding(.bottom, .standardSpacing)
                 }
-                .padding(.top, .standardSpacing)
-                .padding(.horizontal, 2 * .standardSpacing)
-
-                Button(action: {
-
-                    withAnimation {
-                        self.userData.isExposureNotificationSetup = true
-                    }
-
-                    if self.dismissesAutomatically {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }
-                }) {
-
-                    Text("NOT_NOW")
-                        .font(.custom("Montserrat-Medium", size: 16))
-                        .frame(maxWidth: .infinity)
-                        .padding()
-
-                }
-                .padding(.top, 5)
-                .padding(.horizontal, 2 * .standardSpacing)
-                .padding(.bottom, .standardSpacing)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .stickyFooterHeight, alignment: .topLeading)
+                .background(BlurView(style: .systemChromeMaterial).edgesIgnoringSafeArea(.all))
             }
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .stickyFooterHeight, alignment: .topLeading)
-            .background(BlurView(style: .systemChromeMaterial).edgesIgnoringSafeArea(.all))
+
+            HeaderBar(showMenu: false)
         }
     }
 }

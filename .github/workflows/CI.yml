@@ -6,15 +6,20 @@ on:
   pull_request:
     branches: [ master, v4 ]
 
-env:
-  DEVELOPER_DIR: /Applications/Xcode_11.6_beta.app
+# env:
+#   DEVELOPER_DIR: /Applications/Xcode_11.6_beta.app
   
 jobs:
-  build:
-
-    runs-on: macos-latest
-
+  SwiftLint:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Build
-      run: xcodebuild clean build -project CovidWatch.xcodeproj -scheme CovidWatch-Arizona-Dev -destination "platform=iOS Simulator,name=iPhone 11 Pro Max"
+    - uses: actions/checkout@v1
+    - name: GitHub Action for SwiftLint
+      uses: norio-nomura/action-swiftlint@3.0.1
+
+#   Build:
+#     runs-on: macos-latest
+#     steps:
+#     - uses: actions/checkout@v1
+#     - name: Build
+#       run: xcodebuild clean build -project CovidWatch.xcodeproj -scheme CovidWatch-Arizona-Dev -destination "platform=iOS Simulator,name=iPhone 11 Pro Max"

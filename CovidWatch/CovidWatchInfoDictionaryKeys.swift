@@ -15,6 +15,6 @@ extension String {
     static let verificationServerApiKey = "CWVerificationServerApiKey"
     static let releaseSameDayKeys = "CWReleaseSameDayKeys"
     static let bypassPublicHealthAuthorityVerification = "CWBypassPublicHealthAuthorityVerification"
-    static let useAZRiskScoring = "CWUseAZRiskScoring"
+    static let useAZRiskModel = "CWUseAZRiskModel"
     static let appRegionsJSONURL = "CWAppRegionsJSONURL"
 }

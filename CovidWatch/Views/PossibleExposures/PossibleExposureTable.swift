@@ -7,7 +7,7 @@ import SwiftUI
 
 struct PossibleExposureTable: View {
 
-    let exposure: Exposure
+    let exposure: CodableExposureInfo
 
     let durationFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()

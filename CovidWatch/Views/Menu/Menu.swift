@@ -5,11 +5,6 @@
 
 import SwiftUI
 
-struct ExposureConfigurationWithExposures: Encodable {
-    let exposureConfiguration: String
-    let possibleExposures: [Exposure]
-}
-
 struct Menu: View {
 
     @EnvironmentObject var userData: UserData
@@ -23,6 +18,8 @@ struct Menu: View {
     @State var isShowingNotifyOthers: Bool = false
 
     @State var isShowingHowItWorks: Bool = false
+
+    @State var isShowingRegionSelection: Bool = false
 
     init() {
         UITableView.appearance().backgroundColor = .systemBackground
@@ -57,42 +54,14 @@ struct Menu: View {
                             Divider()
 
                             Button(action: {
-                                self.localStore.exposures = []
+                                self.localStore.riskLevelValue = nil
+                                self.localStore.exposuresInfos = []
                                 self.localStore.dateLastPerformedExposureDetection = nil
                                 self.localStore.previousDiagnosisKeyFileURLs = []
                             }) {
                                 HStack {
                                     MenuDemoCapsule()
                                     Text("DEMO_RESET_POSSIBLE_EXPOSURES_TITLE")
-                                }.modifier(MenuTitleText())
-                            }
-
-                            #endif
-
-                            #if DEBUG_CALIBRATION
-
-                            Button(action: {
-                                let alertController = UIAlertController(
-                                    title: NSLocalizedString("EXPOSURE_CONFIGURATION_JSON_TITLE", comment: ""),
-                                    message: nil,
-                                    preferredStyle: .alert
-                                )
-                                alertController.addTextField { (textField) in
-                                    textField.text = self.localStore.exposureConfiguration
-                                }
-                                alertController.addAction(UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""), style: .cancel, handler: nil))
-                                alertController.addAction(UIAlertAction(title: NSLocalizedString("SAVE", comment: ""), style: .default, handler: { _ in
-                                    guard let json = alertController.textFields?.first?.text else { return }
-                                    self.localStore.exposureConfiguration = json
-                                }))
-                                alertController.addAction(UIAlertAction(title: NSLocalizedString("RESET_TO_DEFAULT", comment: ""), style: .default, handler: { _ in
-                                    self.localStore.exposureConfiguration = LocalStore.exposureConfigurationDefault
-                                }))
-                                UIApplication.shared.topViewController?.present(alertController, animated: true)
-                            }) {
-                                HStack {
-                                    MenuDemoCapsule()
-                                    Text("DEMO_SET_EXPOSURE_CONFIGURATION_JSON_TITLE")
                                 }.modifier(MenuTitleText())
                             }
 
@@ -108,6 +77,38 @@ struct Menu: View {
                             }
 
                             Divider()
+
+                            #endif
+
+                            #if DEBUG_CALIBRATION
+
+//                            Button(action: {
+//                                let alertController = UIAlertController(
+//                                    title: NSLocalizedString("EXPOSURE_CONFIGURATION_JSON_TITLE", comment: ""),
+//                                    message: nil,
+//                                    preferredStyle: .alert
+//                                )
+//                                alertController.addTextField { (textField) in
+//                                    textField.text = self.localStore.exposureConfiguration
+//                                }
+//                                alertController.addAction(UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""), style: .cancel, handler: nil))
+//                                alertController.addAction(UIAlertAction(title: NSLocalizedString("SAVE", comment: ""), style: .default, handler: { _ in
+//                                    guard let json = alertController.textFields?.first?.text else { return }
+//                                    self.localStore.exposureConfiguration = json
+//                                }))
+//                                alertController.addAction(UIAlertAction(title: NSLocalizedString("RESET_TO_DEFAULT", comment: ""), style: .default, handler: { _ in
+//                                    self.localStore.exposureConfiguration = LocalStore.exposureConfigurationDefault
+//                                }))
+//                                UIApplication.shared.topViewController?.present(alertController, animated: true)
+//                            }) {
+//                                HStack {
+//                                    MenuDemoCapsule()
+//                                    Text("DEMO_SET_EXPOSURE_CONFIGURATION_JSON_TITLE")
+//                                }.modifier(MenuTitleText())
+//                            }
+//
+//                            Divider()
+
                             #endif
                         }
 
@@ -119,7 +120,7 @@ struct Menu: View {
                             HStack {
                                 Text("MENU_POSSIBLE_EXPOSURES_TITLE")
                                 Spacer()
-                                if (self.localStore.exposures.max(by: { $0.totalRiskScore < $1.totalRiskScore })?.totalRiskScore ?? 0 > 6) {
+                                if (self.localStore.exposuresInfos.max(by: { $0.totalRiskScore < $1.totalRiskScore })?.totalRiskScore ?? 0 > 6) {
                                     Image("Settings Alert")
                                         .accessibility(hidden: true)
                                 }
@@ -140,32 +141,37 @@ struct Menu: View {
                                 Text("MENU_NOTIFY_OTHERS")
                             }.modifier(MenuTitleText())
                         }
-                        .sheet(isPresented: $isShowingNotifyOthers) { ReportingStep1().environmentObject(self.localStore) }
-
-                        if !self.localStore.testResults.isEmpty {
-                            // TODO
-//                            Divider()
-//
-//                            Button(action: {
-//                                self.isShowingNotifyOthers.toggle()
-//                            }) {
-//                                HStack {
-//                                    Text("MENU_NOTIFY_OTHERS")
-//                                }.modifier(MenuTitleText())
-//                            }
-//                            .sheet(isPresented: $isShowingNotifyOthers) { Reporting().environmentObject(self.localStore) }
+                        .sheet(isPresented: $isShowingNotifyOthers) {
+                            ReportingStep1()
+                                .environmentObject(self.localStore)
+                                .environmentObject(self.userData)
                         }
 
-                        Divider()
+                        Group {
+                            Divider()
 
-                        Button(action: {
-                            self.isShowingHowItWorks.toggle()
-                        }) {
-                            HStack {
-                                Text("HOW_IT_WORKS_TITLE")
-                            }.modifier(MenuTitleText())
+                            Button(action: {
+                                self.isShowingRegionSelection.toggle()
+                            }) {
+                                HStack {
+                                    Text("MENU_CHANGE_REGION_TITLE")
+                                }.modifier(MenuTitleText())
+                            }
+                            .sheet(isPresented: $isShowingRegionSelection) { RegionSelection(selectedRegionIndex: self.userData.selectedRegionIndex) }
                         }
-                        .sheet(isPresented: $isShowingHowItWorks) { HowItWorks(showsSetupButton: false, showsDismissButton: true).environmentObject(self.userData) }
+
+                        Group {
+                            Divider()
+
+                            Button(action: {
+                                self.isShowingHowItWorks.toggle()
+                            }) {
+                                HStack {
+                                    Text("HOW_IT_WORKS_TITLE")
+                                }.modifier(MenuTitleText())
+                            }
+                            .sheet(isPresented: $isShowingHowItWorks) { HowItWorks(showsSetupButton: false, showsDismissButton: true).environmentObject(self.userData) }
+                        }
 
                         Divider()
 
@@ -186,72 +192,68 @@ struct Menu: View {
 
                         Divider()
 
-                        Button(action: {
-                            guard let url = URL(string: "https://www.covidwatch.org") else { return }
-                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                        }) {
-                            HStack {
-                                Text("COVID_WATCH_WEBSITE_TITLE")
-                                Spacer()
-                                Image("Menu Action")
-                                    .accessibility(hidden: true)
-                            }.modifier(MenuTitleText())
+                        Group {
+                            Button(action: {
+                                guard let url = URL(string: "https://www.covidwatch.org") else { return }
+                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                            }) {
+                                HStack {
+                                    Text("COVID_WATCH_WEBSITE_TITLE")
+                                    Spacer()
+                                    Image("Menu Action")
+                                        .accessibility(hidden: true)
+                                }.modifier(MenuTitleText())
+                            }
+
+                            Divider()
                         }
 
-                        Divider()
+                        Group {
+                            Button(action: {
+                                guard let url = URL(string: "https://www.covidwatch.org/privacy") else { return }
+                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                            }) {
+                                HStack {
+                                    Text("PRIVACY_POLICY_TITLE")
+                                    Spacer()
+                                    Image("Menu Action")
+                                        .accessibility(hidden: true)
+                                }.modifier(MenuTitleText())
+                            }
 
-                        Button(action: {
-                            guard let url = URL(string: "https://www.covidwatch.org/faq") else { return }
-                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                        }) {
-                            HStack {
-                                Text("FAQ_TITLE")
-                                Spacer()
-                                Image("Menu Action")
-                                    .accessibility(hidden: true)
-                            }.modifier(MenuTitleText())
+                            Divider()
                         }
 
-                        Divider()
+                        Group {
+                            Button(action: {
+                                guard let url = URL(string: "https://www.covidwatch.org/privacy") else { return }
+                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                            }) {
+                                HStack {
+                                    Text("TEMS_OF_USE_TITLE")
+                                    Spacer()
+                                    Image("Menu Action")
+                                        .accessibility(hidden: true)
+                                }.modifier(MenuTitleText())
+                            }
 
-                        Button(action: {
-                            guard let url = URL(string: "https://www.covidwatch.org/privacy") else { return }
-                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                        }) {
-                            HStack {
-                                Text("TEMS_OF_USE_TITLE")
-                                Spacer()
-                                Image("Menu Action")
-                                    .accessibility(hidden: true)
-                            }.modifier(MenuTitleText())
+                            Divider()
                         }
 
-                        Divider()
+                        Group {
+                            Button(action: {
+                                guard let url = URL(string: "https://covidwatch.zendesk.com/hc/en-us/requests/new") else { return }
+                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                            }) {
+                                HStack {
+                                    Text("GET_SUPPORT_TITLE")
+                                    Spacer()
+                                    Image("Menu Action")
+                                        .accessibility(hidden: true)
+                                }.modifier(MenuTitleText())
+                            }
 
-                        Button(action: {
-                            guard let url = URL(string: "https://www.covidwatch.org/privacy") else { return }
-                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                        }) {
-                            HStack {
-                                Text("PRIVACY_POLICY_TITLE")
-                                Spacer()
-                                Image("Menu Action")
-                                    .accessibility(hidden: true)
-                            }.modifier(MenuTitleText())
-                        }
-
-                        Divider()
-
-                        Button(action: {
-                            guard let url = URL(string: "https://www.covidwatch.org/support") else { return }
-                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                        }) {
-                            HStack {
-                                Text("GET_SUPPORT_TITLE")
-                                Spacer()
-                                Image("Menu Action")
-                                    .accessibility(hidden: true)
-                            }.modifier(MenuTitleText())
+                            Divider()
                         }
                     }
                 }

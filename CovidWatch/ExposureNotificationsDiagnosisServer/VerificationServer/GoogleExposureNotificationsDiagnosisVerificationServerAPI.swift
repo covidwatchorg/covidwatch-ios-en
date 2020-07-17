@@ -5,6 +5,12 @@
 
 import Foundation
 
+extension String {
+    public static let testTypeConfirmed = "confirmed"
+    public static let testTypeLikely = "likely"
+    public static let testTypeNegative = "negative"
+}
+
 public struct CodableErrorReturn: Codable {
     let error: String
 }

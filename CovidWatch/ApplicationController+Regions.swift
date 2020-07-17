@@ -1,6 +1,6 @@
 //
 //  Created by Zsombor Szabo on 12/07/2020.
-//  Copyright © 2020 Covid Watch. All rights reserved.
+//  
 //
 
 import Foundation
@@ -19,7 +19,7 @@ extension ApplicationController {
                     UserData.shared.regions = regions
                     if let index = regions.firstIndex(where: { $0.id == UserData.shared.region.id }) {
                         UserData.shared.region = regions[index]
-                }
+                    }
                 case let .failure(error):
                     if notifyUserOnError {
                         UIApplication.shared.topViewController?.present(error, animated: true)
