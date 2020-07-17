@@ -21,8 +21,14 @@ extension CodableRegion.NextStep {
 
     static let shareTheApp: Self = .init(
         type: .share,
-        description: "Share the app to improve your exposure notification and risk level accuracy. It works best when everyone uses it.",
+        description: "Share the app to improve your exposure notification accuracy. It works best when everyone uses it.",
         url: "https://covidwatch.org"
+    )
+
+    static let nextStepsVerificationCodeDefault: Self = .init(
+        type: .phone,
+        description: "For others in this region, please call Arizona Department of Health Services at (844) 542-8201 for assistance.",
+        url: "tel:1-844-542-8201"
     )
 
 }
@@ -37,54 +43,44 @@ extension CodableRegion {
     ]
 
     static let `default`: Self = .init(
-        id: 0,
+        id: .arizonaState,
         name: "Arizona State",
-        logoTypeImageName: "Public Health Authority Logotype - Arizona State",
-        logoImageName: "Public Health Authority Logo - Arizona State",
         riskLowThreshold: 0.14,
         riskHighThreshold: 3.00,
-        nextStepsRiskUnknown: [
-            .infoAppIsActive,
-            .infoKeepAppInstalled,
+        nextStepsNoSignificantExposure: [
+            .shareTheApp
+        ],
+        nextStepsSignificantExposure: [
+            .shareTheApp
+        ],
+        nextStepsVerifiedPositive: [
+            .shareTheApp
+        ],
+        nextStepsVerificationCode: [
             .init(
-                type: .website,
-                description: "Visit the Public Health Website for local resources that are available to you.",
-                url: "https://www.azdhs.gov"
-            ),
-            .shareTheApp
-        ],
-        nextStepsRiskLow: [
-            .shareTheApp
-        ],
-        nextStepsRiskMedium: [
-            .shareTheApp
-        ],
-        nextStepsRiskHigh: [
-            .shareTheApp
-        ],
-        nextStepsRiskVerifiedPositive: [
-            .shareTheApp
+                type: .phone,
+                description: "Please call Arizona Department of Health Services at (844) 542-8201 for assistance.",
+                url: "tel:1-844-542-8201"
+            )
         ]
     )
 
     static let universityOfArizona: Self = .init(
-        id: 1,
+        id: .universityOfArizona,
         name: "University of Arizona",
-        logoTypeImageName: "Public Health Authority Logotype - University of Arizona",
-        logoImageName: "Public Health Authority Logo - University of Arizona",
         riskLowThreshold: 0.14,
         riskHighThreshold: 3.00,
-        nextStepsRiskUnknown: [
-            .infoAppIsActive,
-            .infoKeepAppInstalled,
+        nextStepsNoSignificantExposure: [
             .init(
                 type: .website,
-                description: "Visit the University of Arizona website for local resources that are available to you.",
-                url: "https://arizona.edu"
+                description: "Monitor yourself for COVID-19 symtoms.",
+                url: "https://covid19.arizona.edu/prevention-health/covid-19-symptoms?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_covid19_symptoms_no_exposure"
             ),
-            .shareTheApp
-        ],
-        nextStepsRiskLow: [
+            .init(
+                type: .phone,
+                description: "If you have COVID-19 symptoms, call Campus Health at (520) 621-9202.",
+                url: "tel:1-520-621-9202"
+            ),
             .init(
                 type: .website,
                 description: "Learn how to protect yourself and others.",
@@ -92,34 +88,21 @@ extension CodableRegion {
             ),
             .shareTheApp
         ],
-        nextStepsRiskMedium: [
+        nextStepsSignificantExposure: [
             .init(
-                type: .phone,
-                description: "Call Campus Health at (520) 621-9202.",
-                url: "tel:1-520-621-9202"
-            ),
-            .init(
-                type: .website,
-                description: "Monitor yourself for COVID-19 symtoms.",
-                url: "https://covid19.arizona.edu/prevention-health/covid-19-symptoms?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_covid19_symptoms_mediium"
-                ),
-            .shareTheApp
-        ],
-        nextStepsRiskHigh: [
-            .init(
-                type: .phone,
-                description: "Stay at home and contact Campus Health at (520) 621-9202.",
-                url: "tel:1-520-621-9202"
-            ),
-            .init(
-                type: .getTestedDates,
-                description: "Schedule a COVID-19 test between: ",
+                type: .stayAtHomeDate,
+                description: "Stay at home until: ",
                 url: nil
             ),
             .init(
+                type: .getTestedDate,
+                description: "Call Campus Health at (520) 621-9202 and schedule a COVID-19 test for: ",
+                url: "tel:1-520-621-9202"
+            ),
+            .init(
                 type: .website,
-                description: "Monitor yourself for COVID-19 symtoms.",
-                url: "https://covid19.arizona.edu/prevention-health/covid-19-symptoms?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_covid19_symptoms_high"
+                description: "Monitor COVID-19 symptoms and get tested ASAP if symptoms appear.",
+                url: "https://covid19.arizona.edu/prevention-health/covid-19-symptoms?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_covid19_significant_exposure"
             ),
             .init(
                 type: .website,
@@ -128,7 +111,7 @@ extension CodableRegion {
             ),
             .shareTheApp
         ],
-        nextStepsRiskVerifiedPositive: [
+        nextStepsVerifiedPositive: [
             .init(
                 type: .phone,
                 description: "Follow up with Campus Health at (520) 621-9202 and your healthcare provider for more instructions.",
@@ -140,68 +123,52 @@ extension CodableRegion {
                 url: "https://health.arizona.edu/SAFER?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_case_management"
             ),
             .shareTheApp
+        ],
+        nextStepsVerificationCode: [
+            .init(
+                type: .phone,
+                description: "If you are a student or staff at UArizona, please call Campus Health Services at 520-621-9202 to obtain one. If you were tested in a different region, have a copy of your results ready.",
+                url: "tel:1-520-621-9202"
+            ),
+            .nextStepsVerificationCodeDefault
         ]
     )
 
     static let arizonaStateUniversity: Self = .init(
-        id: 0,
+        id: .arizonaStateUniversity,
         name: "Arizona State University",
-        logoTypeImageName: "Public Health Authority Logotype - Arizona State University",
-        logoImageName: "Public Health Authority Logo - Arizona State University",
         riskLowThreshold: 0.14,
         riskHighThreshold: 3.00,
-        nextStepsRiskUnknown: [
-            .infoAppIsActive,
-            .infoKeepAppInstalled,
-            .init(
-                type: .website,
-                description: "Visit the Public Health Website for local resources that are available to you.",
-                url: "https://www.azdhs.gov"
-            ),
+        nextStepsNoSignificantExposure: [
             .shareTheApp
         ],
-        nextStepsRiskLow: [
+        nextStepsSignificantExposure: [
             .shareTheApp
         ],
-        nextStepsRiskMedium: [
+        nextStepsVerifiedPositive: [
             .shareTheApp
         ],
-        nextStepsRiskHigh: [
-            .shareTheApp
-        ],
-        nextStepsRiskVerifiedPositive: [
-            .shareTheApp
+        nextStepsVerificationCode: [
+            .nextStepsVerificationCodeDefault
         ]
     )
 
     static let northernArizonaUniversity: Self = .init(
-        id: 0,
+        id: .northernArizonaUniversity,
         name: "Northern Arizona University",
-        logoTypeImageName: "Public Health Authority Logotype - Northern Arizona University",
-        logoImageName: "Public Health Authority Logo - Northern Arizona University",
         riskLowThreshold: 0.14,
         riskHighThreshold: 3.00,
-        nextStepsRiskUnknown: [
-            .infoAppIsActive,
-            .infoKeepAppInstalled,
-            .init(
-                type: .website,
-                description: "Visit the Public Health Website for local resources that are available to you.",
-                url: "https://www.azdhs.gov"
-            ),
+                nextStepsNoSignificantExposure: [
             .shareTheApp
         ],
-        nextStepsRiskLow: [
+        nextStepsSignificantExposure: [
             .shareTheApp
         ],
-        nextStepsRiskMedium: [
+        nextStepsVerifiedPositive: [
             .shareTheApp
         ],
-        nextStepsRiskHigh: [
-            .shareTheApp
-        ],
-        nextStepsRiskVerifiedPositive: [
-            .shareTheApp
+        nextStepsVerificationCode: [
+            .nextStepsVerificationCodeDefault
         ]
     )
 

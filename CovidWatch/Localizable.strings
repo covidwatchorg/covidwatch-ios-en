@@ -186,7 +186,7 @@ All strings for the project, separated for localization.
 "HOME_POSSIBLE_EXPOSURES_SUMMARY_TITLE" = "Possible Exposure Summary";
 
 /* Title */
-"NOTIFY_OTHERS_CALL_TO_ACTION_TITLE" = "Have a diagnosis?";
+"NOTIFY_OTHERS_CALL_TO_ACTION_TITLE" = "Have a Positive Diagnosis?";
 
 /* Message */
 "NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE" = "Anonymously share it with others to help stop the spread in your region.";
@@ -195,7 +195,7 @@ All strings for the project, separated for localization.
 "NOTIFY_OTHERS_TITLE" = "Anonymously Share a Diagnosis";
 
 /* Button */
-"HOME_NOTIFY_OTHERS_BUTTON" = "Learn How";
+"HOME_NOTIFY_OTHERS_BUTTON" = "How to Share It";
 
 /* Button */
 "NOTIFY_OTHERS" = "Anonymously Share Diagnosis";
@@ -237,22 +237,13 @@ All strings for the project, separated for localization.
 "HOME_TOTAL_RISK_SCORE_ROW_2_LABEL" = "(0-8 scale)";
 
 /* Title */
-"HOME_RISK_SUMMARY_TITLE" = "Possible Risk Today: %@";
+"RISK_LEVEL_LOW" = "No Significant Exposures";
 
 /* Title */
-"RISK_LEVEL_UNKNOWN" = "Unknown";
+"RISK_LEVEL_HIGH" = "Significant Exposure Detected";
 
 /* Title */
-"RISK_LEVEL_LOW" = "Low";
-
-/* Title */
-"RISK_LEVEL_MEDIUM" = "Medium";
-
-/* Title */
-"RISK_LEVEL_HIGH" = "High";
-
-/* Title */
-"RISK_LEVEL_VERIFIED_POSITIVE" = "Verified Positive";
+"RISK_LEVEL_VERIFIED_POSITIVE" = "Verified Positive Diagnosis";
 
 // # MENU
 

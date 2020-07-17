@@ -99,7 +99,7 @@ struct Home: View {
 
                             Image("Home")
                                 .resizable()
-                                .aspectRatio(contentMode: .fill)
+                                .aspectRatio(contentMode: .fit)
                                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .top)
                                 .accessibility(label: Text("HOME_IMAGE_ACCESSIBILITY_LABEL"))
 
@@ -107,10 +107,8 @@ struct Home: View {
                                 self.isShowingPossibleExposures.toggle()
                             }) {
                                 HStack {
-                                    Image(self.localStore.homeRiskLevel.imageName)
-
-                                    Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("HOME_RISK_SUMMARY_TITLE", comment: ""), self.localStore.homeRiskLevel.description))
-                                        .font(.custom("Montserrat-Medium", size: 18))
+                                    Text(verbatim: self.localStore.homeRiskLevel.description)
+                                        .font(.custom("Montserrat-Bold", size: 18))
                                         .foregroundColor(Color.white)
                                 }
                                 .padding(.vertical, .standardSpacing)
@@ -129,38 +127,42 @@ struct Home: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .background(Color(UIColor.systemGray6))
 
-                            Spacer(minLength: 2 * .standardSpacing)
+                            if self.localStore.homeRiskLevel != .verifiedPositive {
 
-                            Text("NOTIFY_OTHERS_CALL_TO_ACTION_TITLE")
-                                .font(.custom("Montserrat-Semibold", size: 18))
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                                Spacer(minLength: 2 * .standardSpacing)
+
+                                Text("NOTIFY_OTHERS_CALL_TO_ACTION_TITLE")
+                                    .font(.custom("Montserrat-Semibold", size: 18))
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.horizontal, 2 * .standardSpacing)
+
+                                Spacer(minLength: .standardSpacing)
+
+                                Text("NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE")
+                                    .modifier(SubCallToAction())
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.horizontal, 2 * .standardSpacing)
+
+                                Button(action: {
+                                    self.isShowingReporting.toggle()
+                                }) {
+                                    Text("HOME_NOTIFY_OTHERS_BUTTON").modifier(SmallCallToAction())
+                                }
+                                .padding(.top, 2 * .standardSpacing)
+                                .padding(.bottom, .standardSpacing)
                                 .padding(.horizontal, 2 * .standardSpacing)
-
-                            Spacer(minLength: .standardSpacing)
-
-                            Text("NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE")
-                                .modifier(SubCallToAction())
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.horizontal, 2 * .standardSpacing)
-
-                            Button(action: {
-                                self.isShowingReporting.toggle()
-                            }) {
-                                Text("HOME_NOTIFY_OTHERS_BUTTON").modifier(SmallCallToAction())
-                            }
-                            .padding(.top, 2 * .standardSpacing)
-                            .padding(.bottom, .standardSpacing)
-                            .padding(.horizontal, 2 * .standardSpacing)
-                            .sheet(isPresented: $isShowingReporting) {
-                                ReportingStep1()
-                                    .environmentObject(self.localStore)
-                                    .environmentObject(self.userData)
+                                .sheet(isPresented: $isShowingReporting) {
+                                    ReportingStep1()
+                                        .environmentObject(self.localStore)
+                                        .environmentObject(self.userData)
+                                }
                             }
 
                             Image("Powered By CW Grey")
                                 .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
                                 .padding(.top, .standardSpacing)
                                 .padding(.bottom, .standardSpacing)
+
                         }
 
                         //                            LinearGradient(gradient: Gradient(colors: [.init(red: 0.263, green: 0.769, blue: 0.851), .init(red: 1, green: 1, blue: 1, opacity: 0.4)]), startPoint: .top, endPoint: .bottom)

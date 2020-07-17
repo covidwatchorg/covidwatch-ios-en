@@ -67,14 +67,14 @@ struct NextSteps: View {
 
                             Text(verbatim: nextStep.description)
                                 .foregroundColor(Color.secondary)
-                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 64, maxHeight: .infinity, alignment: .leading)
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 54, maxHeight: .infinity, alignment: .leading)
                                 .font(.custom("Montserrat-Regular", size: 14))
 
                             Image(systemName: nextStep.type.systemImageName)
                                 .foregroundColor(Color("Tint Color"))
                         }
                         .padding(.standardSpacing)
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 64, maxHeight: .infinity, alignment: .leading)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 54, maxHeight: .infinity, alignment: .leading)
                         .background(Color(UIColor.systemBackground))
                     }
 

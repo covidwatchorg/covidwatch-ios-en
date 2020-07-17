@@ -203,4 +203,11 @@ class ApplicationController: NSObject {
             )
         }
     }
+
+    func defaultRegionJSON() {
+        let regions = CodableRegion.all
+        if let data = try? JSONEncoder().encode(regions) {
+            print(String(data: data, encoding: .utf8)!)
+        }
+    }
 }

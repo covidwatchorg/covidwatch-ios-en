@@ -109,7 +109,7 @@ public class LocalStore: ObservableObject {
         willSet { objectWillChange.send() }
     }
 
-    @Persisted(userDefaultsKey: "homeRiskLevel", notificationName: .init("LocalStoreHomeRiskLevelDidChange"), defaultValue: .unknown)
+    @Persisted(userDefaultsKey: "homeRiskLevel", notificationName: .init("LocalStoreHomeRiskLevelDidChange"), defaultValue: .low)
     public var homeRiskLevel: HomeRiskLevel {
         willSet { objectWillChange.send() }
     }

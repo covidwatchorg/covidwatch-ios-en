@@ -56,7 +56,7 @@
 	<key>CWUseAZRiskModel</key>
 	<true/>
 	<key>CWAppRegionsJSONURL</key>
-	<string>https://storage.googleapis.com/covid-watch-arizona-app-regions/arizona.json</string>
+	<string>https://storage.googleapis.com/covid-watch-arizona-app-regions/arizona2.json</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>

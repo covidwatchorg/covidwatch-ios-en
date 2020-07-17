@@ -9,7 +9,7 @@ import SwiftUI
 extension LocalStore {
 
     public enum HomeRiskLevel: Int, Codable {
-        case unknown, low, medium, high, verifiedPositive
+        case low, high, verifiedPositive
     }
 
     public func updateHomeRiskLevel() {
@@ -19,16 +19,12 @@ extension LocalStore {
                 self.homeRiskLevel = .verifiedPositive
             }
 
-            if riskLevelValue < UserData.shared.region.riskLowThreshold {
-                self.homeRiskLevel = .low
-            } else if riskLevelValue >= UserData.shared.region.riskLowThreshold && riskLevelValue < UserData.shared.region.riskHighThreshold {
-                self.homeRiskLevel = .medium
-            } else {
+            if riskLevelValue >= UserData.shared.region.riskHighThreshold {
                 self.homeRiskLevel = .high
             }
 
         } else {
-            self.homeRiskLevel = .unknown
+            self.homeRiskLevel = .low
         }
     }
 
@@ -39,12 +35,8 @@ extension LocalStore.HomeRiskLevel {
     var color: Color {
 
         switch self {
-            case .unknown:
-                return Color(UIColor.systemGray2)
             case .low:
-                return Color("Risk Level Low Color")
-            case .medium:
-                return Color("Risk Level Medium Color")
+                return Color(UIColor.systemGray2)
             default:
                 return Color("Risk Level High Color")
         }
@@ -54,12 +46,8 @@ extension LocalStore.HomeRiskLevel {
     var description: String {
 
         switch self {
-            case .unknown:
-                return NSLocalizedString("RISK_LEVEL_UNKNOWN", comment: "")
             case .low:
                 return NSLocalizedString("RISK_LEVEL_LOW", comment: "")
-            case .medium:
-                return NSLocalizedString("RISK_LEVEL_MEDIUM", comment: "")
             case .high:
                 return NSLocalizedString("RISK_LEVEL_HIGH", comment: "")
             case .verifiedPositive:
@@ -71,26 +59,14 @@ extension LocalStore.HomeRiskLevel {
     var nextSteps: [CodableRegion.NextStep] {
 
         switch self {
-            case .unknown:
-                return UserData.shared.region.nextStepsRiskUnknown
             case .low:
-                return UserData.shared.region.nextStepsRiskLow
-            case .medium:
-                return UserData.shared.region.nextStepsRiskMedium
+                return UserData.shared.region.nextStepsNoSignificantExposure
             case .high:
-                return UserData.shared.region.nextStepsRiskHigh
+                return UserData.shared.region.nextStepsSignificantExposure
             case .verifiedPositive:
-                return UserData.shared.region.nextStepsRiskVerifiedPositive
+                return UserData.shared.region.nextStepsVerifiedPositive
         }
 
     }
 
-    var imageName: String {
-        switch self {
-            case .unknown:
-                return "Risk Level Unknown"
-            default:
-                return "Risk Level Alert"
-        }
-    }
 }
