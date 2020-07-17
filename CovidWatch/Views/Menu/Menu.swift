@@ -157,7 +157,11 @@ struct Menu: View {
                                     Text("MENU_CHANGE_REGION_TITLE")
                                 }.modifier(MenuTitleText())
                             }
-                            .sheet(isPresented: $isShowingRegionSelection) { RegionSelection(selectedRegionIndex: self.userData.selectedRegionIndex) }
+                            .sheet(isPresented: $isShowingRegionSelection) {
+                                RegionSelection(selectedRegionIndex: self.userData.selectedRegionIndex)
+                                    .environmentObject(self.userData)
+                                    .environmentObject(self.localStore)
+                            }
                         }
 
                         Group {
