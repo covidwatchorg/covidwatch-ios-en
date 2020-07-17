@@ -40,7 +40,7 @@ struct PossibleExposures: View {
                     Toggle(isOn: self.$userData.exposureNotificationEnabled) {
                         Text("EXPOSURE_NOTIFICATIONS_TITLE")
                             .font(.custom("Montserrat-SemiBold", size: 18))
-                            .foregroundColor(Color.secondary)
+                            .foregroundColor(Color.primary)
                     }
                     .padding(.horizontal, 2 * .standardSpacing)
                     .frame(maxWidth: .infinity, alignment: .leading)
