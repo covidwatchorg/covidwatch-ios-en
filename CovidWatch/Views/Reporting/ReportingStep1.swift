@@ -14,6 +14,8 @@ struct ReportingStep1: View {
 
     @State var isShowingNextStep = false
 
+    @State var isShowingWhereIsMyCode: Bool = false
+
     @State var selectedDiagnosisIndex = 0
 
     var body: some View {
@@ -35,8 +37,7 @@ struct ReportingStep1: View {
 
             VStack(spacing: 0) {
 
-                HowItWorksTitleText(text: Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("STEP_X_OF_Y_TITLE", comment: ""), NSNumber(value: 1), NSNumber(value: 3)).uppercased()))
-                    .padding(.top, .headerHeight)
+                Spacer(minLength: .headerHeight)
 
                 Text("NOTIFY_OTHERS_TITLE")
                     .modifier(StandardTitleTextViewModifier())
@@ -44,11 +45,41 @@ struct ReportingStep1: View {
 
                 Spacer(minLength: 2 * .standardSpacing)
 
-                Text("NOTIFY_OTHERS_CALL_TO_ACTION_LONG_MESSAGE")
-                    .font(.custom("Montserrat-Regular", size: 16))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .foregroundColor(Color.secondary)
-                    .padding(.horizontal, 2 * .standardSpacing)
+                ForEach(1 ..< 4) { index in
+                    Group {
+                        Spacer(minLength: .standardSpacing)
+
+                        HStack(alignment: .firstTextBaseline) {
+                            Text(verbatim: "\(index).")
+                                .font(.custom("Montserrat-SemiBold", size: 16))
+                                .foregroundColor(Color.primary)
+
+                            Text(verbatim: NSLocalizedString("NOTIFY_OTHERS_STEP\(index)_MESSAGE", comment: ""))
+                                .font(.custom("Montserrat-Regular", size: 16))
+                                .foregroundColor(Color.secondary)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        .padding(.horizontal, 2 * .standardSpacing)
+                    }
+                }
+
+                Button(action: {
+                    self.isShowingWhereIsMyCode.toggle()
+                }) {
+
+                    Text("WHERE_IS_MY_CODE")
+                        .font(.custom("Montserrat-SemiBold", size: 16))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                }
+                .padding(.top, 2 * .standardSpacing)
+                .padding(.horizontal, 2 * .standardSpacing)
+                .padding(.bottom, 2 * .standardSpacing)
+                .sheet(isPresented: $isShowingWhereIsMyCode) {
+                    WhereIsMyCode()
+                        .environmentObject(self.localStore)
+                        .environmentObject(self.userData)
+                }
 
                 Button(action: {
 
@@ -80,7 +111,6 @@ struct ReportingStep1: View {
                     Text("SHARE_A_POSITIVE_DIAGNOSIS").modifier(SmallCallToAction())
 
                 }
-                .padding(.top, 2 * .standardSpacing)
                 .padding(.horizontal, 2 * .standardSpacing)
                 .padding(.bottom, .standardSpacing)
 

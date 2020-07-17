@@ -60,8 +60,7 @@ struct ReportingStep2: View {
 
             VStack(spacing: 0) {
 
-                HowItWorksTitleText(text: Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("STEP_X_OF_Y_TITLE", comment: ""), NSNumber(value: 2), NSNumber(value: 3)).uppercased()))
-                    .padding(.top, .headerHeight)
+                Spacer(minLength: .headerHeight)
 
                 Text("REPORTING_VERIFY_TITLE")
                     .modifier(StandardTitleTextViewModifier())

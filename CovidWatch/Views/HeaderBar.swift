@@ -17,8 +17,6 @@ struct HeaderBar: View {
 
     @State var isShowingMenu: Bool = false
 
-    @State var isShowingRegionSelection: Bool = false
-
     @EnvironmentObject var userData: UserData
 
     @EnvironmentObject var localStore: LocalStore
@@ -93,28 +91,9 @@ struct HeaderBar: View {
                 .padding(.horizontal, 2 * .standardSpacing)
 
                 if self.showRegionSelection {
-                    HStack {
-                        Text("SELECTED_REGION")
-                            .font(.custom("Montserrat-Semibold", size: 12))
-                            .foregroundColor(Color.secondary)
-                        Button(action: {
-                            self.isShowingRegionSelection.toggle()
-                        }) {
-                            Text(self.userData.region.name)
-                                .font(.custom("Montserrat-Semibold", size: 12))
-                                .foregroundColor(Color("Tint Color"))
-                                .underline()
-                        }.sheet(isPresented: self.$isShowingRegionSelection) {
-                            RegionSelection(
-                                selectedRegionIndex: self.userData.selectedRegionIndex,
-                                dismissOnFinish: true
-                            )
-                                .environmentObject(self.userData)
-                                .environmentObject(self.localStore)
-                        }
-                    }
-                    .padding(.horizontal, 2 * .standardSpacing)
-                    .padding(.bottom, .standardSpacing)
+                    SelectedRegion()
+                        .padding(.horizontal, 2 * .standardSpacing)
+                        .padding(.bottom, .standardSpacing)
                 }
             }
 

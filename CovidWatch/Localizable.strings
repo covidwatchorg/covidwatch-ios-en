@@ -192,7 +192,7 @@ All strings for the project, separated for localization.
 "NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE" = "Anonymously share it with others to help stop the spread in your region.";
 
 /* Title */
-"NOTIFY_OTHERS_TITLE" = "Anonymously Share a Diagnosis";
+"NOTIFY_OTHERS_TITLE" = "How to Share a Positive Diagnosis";
 
 /* Button */
 "HOME_NOTIFY_OTHERS_BUTTON" = "How to Share It";
@@ -430,8 +430,32 @@ All strings for the project, separated for localization.
 /* Message */
 "NOTIFY_OTHERS_CALL_TO_ACTION_LONG_MESSAGE" = "If you have a diagnosis for COVID-19, you can help stop the spread in your communities by anonymously sharing it.";
 
+/* Message */
+"NOTIFY_OTHERS_STEP1_MESSAGE" = "Provide a Diagnosis Verification Code.";
+
+/* Message */
+"NOTIFY_OTHERS_STEP2_MESSAGE" = "Answer brief questions.";
+
+/* Message */
+"NOTIFY_OTHERS_STEP3_MESSAGE" = "Anonymously share diagnosis to help stop the spread by letting other app users get notified of possible exposure if they were nearby.";
+
 /* Button */
-"SHARE_A_POSITIVE_DIAGNOSIS" = "Continue";
+"SHARE_A_POSITIVE_DIAGNOSIS" = "Let's Go";
+
+/* Button */
+"WHERE_IS_MY_CODE" = "Where is my code?";
+
+/* Title */
+"WHERE_IS_MY_CODE_TITLE" = "Where is my code?";
+
+/* Button */
+"WHERE_IS_MY_CODE_CALL" = "Call";
+
+/* Message */
+"WHERE_IS_MY_CODE_WHAT_IS_QUESTION" = "What is a Diagnosis Verification Code?";
+
+/* Message */
+"WHERE_IS_MY_CODE_WHAT_IS_ANSWER" = "It is a string of numbers that is provided by an official COVID-19 testing source to verify a diagnosis. It can be used in the app to share a completely anonymous diagnosis with other people using the app.";
 
 /* Title */
 "REPORTING_VERIFY_TITLE" = "Anonymously Share a Diagnosis";
