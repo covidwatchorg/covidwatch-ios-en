@@ -476,6 +476,21 @@ All strings for the project, separated for localization.
 "SYMPTOMS_START_DATE_QUESTION" = "When did your symptoms start?";
 
 /* Message */
+"SYMPTOMS_START_DATE_ASYMPTOMATIC" = "I have no symptoms.";
+
+/* Message */
+"EXPOSED_START_DATE_QUESTION" = "When do you think you were exposed?";
+
+/* Message */
+"TEST_START_DATE_QUESTION" = "When did you get tested?";
+
+/* Message */
+"EXPOSED_START_DATE_UNKNOWN" = "I do not know.";
+
+/* Message */
+"TEST_START_DATE_UNKNOWN" = "I do not know.";
+
+/* Message */
 "TEST_DATE_QUESTION" = "When did you get tested?";
 
 /* Title */

@@ -22,6 +22,14 @@ struct ReportingStep2: View {
 
     @State var isShowingSymptonOnSetDatePicker = false
 
+    @State var isShowingExposedDatePicker = false
+
+    @State var exposedStartDateString: String = ""
+
+    @State var isShowingTestDatePicker = false
+
+    @State var testStartDateString: String = ""
+
     var rkManager = RKManager(calendar: Calendar.current, minimumDate: Date()-14*24*60*60, maximumDate: Date(), mode: 0)
 
     let selectedDiagnosisIndex: Int
@@ -34,6 +42,10 @@ struct ReportingStep2: View {
     }()
 
     @State var isAsymptomatic = false
+
+    @State var dontKnowExposedDate = false
+
+    @State var dontKnowTestDate = false
 
     init(selectedDiagnosisIndex: Int = 0) {
         self.selectedDiagnosisIndex = selectedDiagnosisIndex
@@ -91,70 +103,18 @@ struct ReportingStep2: View {
                 Divider()
                     .padding(.horizontal, .standardSpacing)
 
-                Group {
-                    Spacer(minLength: 2 * .standardSpacing)
+                self.symptomsStart
 
-                    Text("SYMPTOMS_START_DATE_QUESTION")
-                        .font(.custom("Montserrat-SemiBold", size: 18))
-                        .foregroundColor(Color.primary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 2 * .standardSpacing)
+                if self.isAsymptomatic {
+                    Divider()
+                        .padding(.horizontal, .standardSpacing)
 
-                    Spacer(minLength: .standardSpacing)
+                    self.exposedStart
 
-                    Button(action: {
-                        self.isShowingSymptonOnSetDatePicker.toggle()
-                    }) {
-                        TextField(NSLocalizedString("SELECT_DATE", comment: ""), text: self.$symptomsStartDateString)
-                            .padding(.horizontal, 2 * .standardSpacing)
-                            .foregroundColor(Color.primary)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .opacity(isAsymptomatic ? 0.5 : 1.0)
-                            .disabled(true)
-                    }
-                    .disabled(isAsymptomatic)
-                    .sheet(isPresented: self.$isShowingSymptonOnSetDatePicker, content: {
-                        ZStack(alignment: .top) {
-                            RKViewController(isPresented: self.$isShowingSymptonOnSetDatePicker, rkManager: self.rkManager)
-                                .padding(.top, .headerHeight)
+                    Divider()
+                        .padding(.horizontal, .standardSpacing)
 
-                            HeaderBar(showMenu: false, showDismissButton: true)
-                                .environmentObject(self.userData)
-                                .environmentObject(self.localStore)
-                        }
-                        .onDisappear {
-                            self.symptomsStartDateString = self.rkManager.selectedDate == nil ? "" : self.dateFormatter.string(from: self.rkManager.selectedDate)
-                            self.localStore.diagnoses[self.selectedDiagnosisIndex].symptomsStartDate = self.rkManager.selectedDate
-                        }
-                    })
-
-                    Spacer(minLength: .standardSpacing)
-
-                    HStack(alignment: .center) {
-
-                        Button(action: {
-                            withAnimation {
-                                self.isAsymptomatic.toggle()
-                                if self.isAsymptomatic {
-                                    self.rkManager.selectedDate = nil
-                                    self.symptomsStartDateString = ""
-                                }
-                            }
-                        }) {
-                            if self.isAsymptomatic {
-                                Image("Checkbox Checked")
-                            } else {
-                                Image("Checkbox Unchecked")
-                            }
-
-                            Text("I have no symptoms.")
-                                .foregroundColor(Color.secondary)
-                        }
-                    }.padding(.horizontal, 2 * .standardSpacing)
-                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-
-                    Spacer().frame(height: 2 * .standardSpacing)
-
+                    self.testStart
                 }
 
                 Button(action: {
@@ -341,9 +301,217 @@ struct ReportingStep2: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .top)
                     .accessibility(hidden: true)
+                    .transition(.slide)
             }
         }
 
+    }
+
+    var symptomsStart: some View {
+        Group {
+            Spacer(minLength: 2 * .standardSpacing)
+
+            Text("SYMPTOMS_START_DATE_QUESTION")
+                .font(.custom("Montserrat-SemiBold", size: 18))
+                .foregroundColor(Color.primary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 2 * .standardSpacing)
+
+            Spacer(minLength: .standardSpacing)
+
+            Button(action: {
+                self.isShowingSymptonOnSetDatePicker.toggle()
+            }) {
+                TextField(NSLocalizedString("SELECT_DATE", comment: ""), text: self.$symptomsStartDateString)
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .foregroundColor(Color.primary)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .opacity(isAsymptomatic ? 0.5 : 1.0)
+                    .disabled(true)
+            }
+            .disabled(isAsymptomatic)
+            .sheet(isPresented: self.$isShowingSymptonOnSetDatePicker, content: {
+                ZStack(alignment: .top) {
+                    RKViewController(isPresented: self.$isShowingSymptonOnSetDatePicker, rkManager: self.rkManager)
+                        .padding(.top, .headerHeight)
+
+                    HeaderBar(showMenu: false, showDismissButton: true)
+                        .environmentObject(self.userData)
+                        .environmentObject(self.localStore)
+                }
+                .onDisappear {
+                    self.symptomsStartDateString = self.rkManager.selectedDate == nil ? "" : self.dateFormatter.string(from: self.rkManager.selectedDate)
+                    self.localStore.diagnoses[self.selectedDiagnosisIndex].symptomsStartDate = self.rkManager.selectedDate
+                }
+            })
+
+            Spacer(minLength: .standardSpacing)
+
+            HStack(alignment: .center) {
+
+                Button(action: {
+                    withAnimation {
+                        self.isAsymptomatic.toggle()
+                        if self.isAsymptomatic {
+                            self.rkManager.selectedDate = nil
+                            self.symptomsStartDateString = ""
+                            self.localStore.diagnoses[self.selectedDiagnosisIndex].symptomsStartDate = nil
+                        }
+                    }
+                }) {
+                    if self.isAsymptomatic {
+                        Image("Checkbox Checked")
+                    } else {
+                        Image("Checkbox Unchecked")
+                    }
+
+                    Text("SYMPTOMS_START_DATE_ASYMPTOMATIC")
+                        .foregroundColor(Color.secondary)
+                }
+            }.padding(.horizontal, 2 * .standardSpacing)
+            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+
+            Spacer().frame(height: 2 * .standardSpacing)
+
+        }
+    }
+
+    var exposedStart: some View {
+        Group {
+            Spacer(minLength: 2 * .standardSpacing)
+
+            Text("EXPOSED_START_DATE_QUESTION")
+                .font(.custom("Montserrat-SemiBold", size: 18))
+                .foregroundColor(Color.primary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 2 * .standardSpacing)
+
+            Spacer(minLength: .standardSpacing)
+
+            Button(action: {
+                self.isShowingExposedDatePicker.toggle()
+            }) {
+                TextField(NSLocalizedString("SELECT_DATE", comment: ""), text: self.$exposedStartDateString)
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .foregroundColor(Color.primary)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .opacity(dontKnowExposedDate ? 0.5 : 1.0)
+                    .disabled(true)
+            }
+            .disabled(dontKnowExposedDate)
+            .sheet(isPresented: self.$isShowingExposedDatePicker, content: {
+                ZStack(alignment: .top) {
+                    RKViewController(isPresented: self.$isShowingExposedDatePicker, rkManager: self.rkManager)
+                        .padding(.top, .headerHeight)
+
+                    HeaderBar(showMenu: false, showDismissButton: true)
+                        .environmentObject(self.userData)
+                        .environmentObject(self.localStore)
+                }
+                .onDisappear {
+                    self.exposedStartDateString = self.rkManager.selectedDate == nil ? "" : self.dateFormatter.string(from: self.rkManager.selectedDate)
+                    self.localStore.diagnoses[self.selectedDiagnosisIndex].exposedStartDate = self.rkManager.selectedDate
+                }
+            })
+
+            Spacer(minLength: .standardSpacing)
+
+            HStack(alignment: .center) {
+
+                Button(action: {
+                    withAnimation {
+                        self.dontKnowExposedDate.toggle()
+                        if self.dontKnowExposedDate {
+                            self.rkManager.selectedDate = nil
+                            self.exposedStartDateString = ""
+                            self.localStore.diagnoses[self.selectedDiagnosisIndex].exposedStartDate = nil
+                        }
+                    }
+                }) {
+                    if self.dontKnowExposedDate {
+                        Image("Checkbox Checked")
+                    } else {
+                        Image("Checkbox Unchecked")
+                    }
+
+                    Text("EXPOSED_START_DATE_UNKNOWN")
+                        .foregroundColor(Color.secondary)
+                }
+            }.padding(.horizontal, 2 * .standardSpacing)
+            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+
+            Spacer().frame(height: 2 * .standardSpacing)
+
+        }
+    }
+
+    var testStart: some View {
+        Group {
+            Spacer(minLength: 2 * .standardSpacing)
+
+            Text("TEST_START_DATE_QUESTION")
+                .font(.custom("Montserrat-SemiBold", size: 18))
+                .foregroundColor(Color.primary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 2 * .standardSpacing)
+
+            Spacer(minLength: .standardSpacing)
+
+            Button(action: {
+                self.isShowingTestDatePicker.toggle()
+            }) {
+                TextField(NSLocalizedString("SELECT_DATE", comment: ""), text: self.$testStartDateString)
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .foregroundColor(Color.primary)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .opacity(dontKnowTestDate ? 0.5 : 1.0)
+                    .disabled(true)
+            }
+            .disabled(dontKnowTestDate)
+            .sheet(isPresented: self.$isShowingTestDatePicker, content: {
+                ZStack(alignment: .top) {
+                    RKViewController(isPresented: self.$isShowingTestDatePicker, rkManager: self.rkManager)
+                        .padding(.top, .headerHeight)
+
+                    HeaderBar(showMenu: false, showDismissButton: true)
+                        .environmentObject(self.userData)
+                        .environmentObject(self.localStore)
+                }
+                .onDisappear {
+                    self.testStartDateString = self.rkManager.selectedDate == nil ? "" : self.dateFormatter.string(from: self.rkManager.selectedDate)
+                    self.localStore.diagnoses[self.selectedDiagnosisIndex].testDate = self.rkManager.selectedDate
+                }
+            })
+
+            Spacer(minLength: .standardSpacing)
+
+            HStack(alignment: .center) {
+
+                Button(action: {
+                    withAnimation {
+                        self.dontKnowTestDate.toggle()
+                        if self.dontKnowTestDate {
+                            self.rkManager.selectedDate = nil
+                            self.testStartDateString = ""
+                            self.localStore.diagnoses[self.selectedDiagnosisIndex].testDate = nil
+                        }
+                    }
+                }) {
+                    if self.dontKnowTestDate {
+                        Image("Checkbox Checked")
+                    } else {
+                        Image("Checkbox Unchecked")
+                    }
+
+                    Text("TEST_START_DATE_UNKNOWN")
+                        .foregroundColor(Color.secondary)
+                }
+            }.padding(.horizontal, 2 * .standardSpacing)
+            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+
+            Spacer().frame(height: 2 * .standardSpacing)
+
+        }
     }
 }
 

@@ -457,6 +457,10 @@
 		2DAE666324C1D57500814B15 /* SelectedRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAE666124C1D57500814B15 /* SelectedRegion.swift */; };
 		2DAE666424C1D57500814B15 /* SelectedRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAE666124C1D57500814B15 /* SelectedRegion.swift */; };
 		2DAE666524C1D57500814B15 /* SelectedRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAE666124C1D57500814B15 /* SelectedRegion.swift */; };
+		2DAE666724C20FA900814B15 /* PastDiagnoses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAE666624C20FA900814B15 /* PastDiagnoses.swift */; };
+		2DAE666824C20FA900814B15 /* PastDiagnoses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAE666624C20FA900814B15 /* PastDiagnoses.swift */; };
+		2DAE666924C20FA900814B15 /* PastDiagnoses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAE666624C20FA900814B15 /* PastDiagnoses.swift */; };
+		2DAE666A24C20FA900814B15 /* PastDiagnoses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAE666624C20FA900814B15 /* PastDiagnoses.swift */; };
 		2DB302B724BF30E1005A8F59 /* ENExposureInfo+CodableExposureInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB302B624BF30E1005A8F59 /* ENExposureInfo+CodableExposureInfo.swift */; };
 		2DBC07B3248552B4001304BB /* StandardTitleTextViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBC07B2248552B4001304BB /* StandardTitleTextViewModifier.swift */; };
 		2DC639C824BEEE95003A0328 /* ExposureNotificationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC639C724BEEE95003A0328 /* ExposureNotificationConstants.swift */; };
@@ -631,6 +635,7 @@
 		2DA839A22462FD5B004BD707 /* Blur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		2DAE665C24C1D47D00814B15 /* WhereIsMyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereIsMyCode.swift; sourceTree = "<group>"; };
 		2DAE666124C1D57500814B15 /* SelectedRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedRegion.swift; sourceTree = "<group>"; };
+		2DAE666624C20FA900814B15 /* PastDiagnoses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastDiagnoses.swift; sourceTree = "<group>"; };
 		2DB302B624BF30E1005A8F59 /* ENExposureInfo+CodableExposureInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ENExposureInfo+CodableExposureInfo.swift"; sourceTree = "<group>"; };
 		2DBC07B2248552B4001304BB /* StandardTitleTextViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardTitleTextViewModifier.swift; sourceTree = "<group>"; };
 		2DC639C724BEEE95003A0328 /* ExposureNotificationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureNotificationConstants.swift; sourceTree = "<group>"; };
@@ -1026,6 +1031,14 @@
 			path = CovidWatchUITests;
 			sourceTree = "<group>";
 		};
+		2DAE666B24C20FB300814B15 /* PastDiagnoses */ = {
+			isa = PBXGroup;
+			children = (
+				2DAE666624C20FA900814B15 /* PastDiagnoses.swift */,
+			);
+			path = PastDiagnoses;
+			sourceTree = "<group>";
+		};
 		2DD7B443245F4439001B30F0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1044,6 +1057,7 @@
 				2D9034CB2460525200351C3C /* Home */,
 				2D46AA602465E6A30003936C /* PossibleExposures */,
 				2D7942A12467E91A008AF148 /* Reporting */,
+				2DAE666B24C20FB300814B15 /* PastDiagnoses */,
 				2D29BAF72460955000E8BEC4 /* Menu */,
 				2D9034CA2460509200351C3C /* Support */,
 			);
@@ -1554,6 +1568,7 @@
 				2DC639D024BEF1A5003A0328 /* ENTemporaryExposureKey+RollingStartDate.swift in Sources */,
 				2D235A2024AC651300C8FD56 /* PossibleExposureRow.swift in Sources */,
 				2D235A2124AC651300C8FD56 /* HowItWorks4.swift in Sources */,
+				2DAE666A24C20FA900814B15 /* PastDiagnoses.swift in Sources */,
 				2D081A3624B8AA8400506164 /* CodableRegion+Arizona.swift in Sources */,
 				2D235A2224AC651300C8FD56 /* PageViewController.swift in Sources */,
 				2D4DE89F24C0B9260056F8D2 /* RKMonth.swift in Sources */,
@@ -1664,6 +1679,7 @@
 				2D72547824A35E92003E5914 /* LayoutConstants.swift in Sources */,
 				2D4DE8AE24C0B9260056F8D2 /* RKWeekdayHeader.swift in Sources */,
 				2D92B6D924BB6DC900003BDD /* LocalStore+HomeRiskLevelAdditions.swift in Sources */,
+				2DAE666924C20FA900814B15 /* PastDiagnoses.swift in Sources */,
 				2D72547A24A35E92003E5914 /* HowItWorks2.swift in Sources */,
 				2DAE666424C1D57500814B15 /* SelectedRegion.swift in Sources */,
 				2D72547B24A35E92003E5914 /* ENRiskLevel+LocalizedDescription.swift in Sources */,
@@ -1763,6 +1779,7 @@
 				2DC639CE24BEF1A5003A0328 /* ENTemporaryExposureKey+RollingStartDate.swift in Sources */,
 				2D8FE6D424A33B0100456875 /* Blur.swift in Sources */,
 				2D8FE6D524A33B0100456875 /* PossibleExposureRow.swift in Sources */,
+				2DAE666824C20FA900814B15 /* PastDiagnoses.swift in Sources */,
 				2D081A3424B8AA8400506164 /* CodableRegion+Arizona.swift in Sources */,
 				2D8FE6D624A33B0100456875 /* HowItWorks4.swift in Sources */,
 				2D4DE89D24C0B9260056F8D2 /* RKMonth.swift in Sources */,
@@ -1866,6 +1883,7 @@
 				2DC639CD24BEF1A5003A0328 /* ENTemporaryExposureKey+RollingStartDate.swift in Sources */,
 				2DA839A32462FD5C004BD707 /* Blur.swift in Sources */,
 				2D79429824671F28008AF148 /* PossibleExposureRow.swift in Sources */,
+				2DAE666724C20FA900814B15 /* PastDiagnoses.swift in Sources */,
 				2D9034BC24603EA600351C3C /* HowItWorks4.swift in Sources */,
 				2D5D940F2460231200718412 /* PageViewController.swift in Sources */,
 				2D4DE89C24C0B9260056F8D2 /* RKMonth.swift in Sources */,
