@@ -27,6 +27,5 @@ public protocol ExposureRiskModeling {
         symptomsStartDate: Date?
     ) -> ENRiskLevel
     
-    func getMostRecentSignificantExposureDate(forExposureInfos exposureInfos: [ENExposureInfo], riskThreshold: Double
-      ) -> Date?
+    func getMostRecentSignificantExposureDate(forExposureInfos exposureInfos: [ENExposureInfo]) -> Date?
 }

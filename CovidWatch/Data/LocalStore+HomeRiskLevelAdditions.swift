@@ -16,6 +16,10 @@ extension LocalStore {
         if diagnoses.contains(where: { $0.isVerified && $0.testType == .testTypeConfirmed }) {
             self.homeRiskLevel = .verifiedPositive
         }
+        else if let significantExposureDate = self.mostRecentSignificantExposureDate{
+            self.homeRiskLevel = .high // TODO: update
+            
+/*
         else if let riskLevelValue = riskLevelValue {
             if riskLevelValue < UserData.shared.region.riskLowThreshold {
                 self.homeRiskLevel = .low
@@ -24,7 +28,7 @@ extension LocalStore {
             } else {
                 self.homeRiskLevel = .high
             }
-
+*/
         } else {
             self.homeRiskLevel = .unknown
         }

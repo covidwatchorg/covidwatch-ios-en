@@ -109,6 +109,12 @@ public class LocalStore: ObservableObject {
         willSet { objectWillChange.send() }
         didSet { self.updateHomeRiskLevel() }
     }
+    
+    @Persisted(userDefaultsKey: "mostRecentSignificantExposureDate", notificationName: .init("LocalStoreMostRecentSignicantExposureDateDidChange"), defaultValue: nil)
+    public var mostRecentSignificantExposureDate: Date? {
+        willSet { objectWillChange.send() }
+        didSet { self.updateHomeRiskLevel() }
+    }
 
     @Persisted(userDefaultsKey: "homeRiskLevel", notificationName: .init("LocalStoreHomeRiskLevelDidChange"), defaultValue: .unknown)
     public var homeRiskLevel: HomeRiskLevel {

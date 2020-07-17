@@ -40,6 +40,8 @@ extension AZExposureRiskModel {
         var riskLevelsForDaysIncludingAndAfterSymptomsStartDay: [ENRiskLevel] = [
             6, 6, 6, 5, 4, 3, 2, 1, 1, 1, 1, 1,
         ]
+        
+        var significantRiskThreshold = 0.011
     }
 }
 
@@ -181,8 +183,7 @@ public class AZExposureRiskModel: ExposureRiskModeling {
         return 0
     }
     
-    public func getMostRecentSignificantExposureDate(forExposureInfos exposureInfos: [ENExposureInfo], riskThreshold: Double
-    ) -> Date? {
+    public func getMostRecentSignificantExposureDate(forExposureInfos exposureInfos: [ENExposureInfo]) -> Date? {
         var dateTransmissionRisks: [Date: Double] = [:]
         for exposure in exposureInfos {
             let newRisk = computeRisk(forExposure: exposure)
@@ -195,7 +196,7 @@ public class AZExposureRiskModel: ExposureRiskModeling {
         }
         var mostRecentSignificantExposureDate : Date?
         for (date, risk) in dateTransmissionRisks {
-            if risk >= riskThreshold{
+            if risk >= self.configuration.significantRiskThreshold{
                 if let comparisonDate = mostRecentSignificantExposureDate{
                     if date > comparisonDate{
                         mostRecentSignificantExposureDate = date
