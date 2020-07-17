@@ -158,8 +158,10 @@ struct Menu: View {
                                 }.modifier(MenuTitleText())
                             }
                             .sheet(isPresented: $isShowingRegionSelection) {
-                                RegionSelection(selectedRegionIndex: self.userData.selectedRegionIndex)
-                                    .environmentObject(self.userData)
+                                RegionSelection(
+                                    selectedRegionIndex: self.userData.selectedRegionIndex,
+                                    dismissOnFinish: true
+                                ).environmentObject(self.userData)
                                     .environmentObject(self.localStore)
                             }
                         }
