@@ -12,7 +12,7 @@ struct HowItWorksTitleText: View {
     var body: some View {
         self.text
             .font(.custom("Montserrat-Regular", size: 14))
-            .foregroundColor(Color.secondary)
+            .foregroundColor(Color.primary)
             .padding(.horizontal, 2 * .standardSpacing)
             .frame(maxWidth: .infinity, alignment: .leading)
     }

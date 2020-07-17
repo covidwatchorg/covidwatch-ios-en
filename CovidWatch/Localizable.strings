@@ -15,13 +15,13 @@ All strings for the project, separated for localization.
 "GENERIC_PUBLIC_HEALTH_DEPARTMENT_IMAGE_ACCESSIBILITY_LABEL" = "Public Health Authority";
 
 /* Title */
-"SELECT_REGION" = "Select Region";
+"SELECT_REGION" = "Select a Region";
 
 /* Title */
 "SELECTED_REGION" = "Region:";
 
 /* Message */
-"REGION_SELECTION_PRIVACY_DISCLAIMER" = "We value your privacy. This application is always anonymous and your location is never collected or stored. Selecting a region will allow you to receive information on available healthcare resources without ever having to share a location. Your region can be changed at any time.";
+"REGION_SELECTION_PRIVACY_DISCLAIMER" = "We value your privacy. Selecting a region will let you see regional healthcare resources without ever having to share your location. This can be changed at any time.";
 
 /* Button */
 "CONTINUE" = "Continue";
@@ -72,10 +72,10 @@ All strings for the project, separated for localization.
 "WELCOME_TITLE" = "Welcome to the";
 
 /* Title */
-"WELCOME_APP_NAME" = "COVID-19 Exposure Notification App";
+"WELCOME_APP_NAME" = "Covid Watch Exposure Notification App";
 
 /* Message */
-"WELCOME_MESSAGE" = "Support the path back to campus and help prevent the spread of COVID-19 with safe, secure, and anonymous exposure notifications.";
+"WELCOME_MESSAGE" = "Together, we have the power to stop the spread of COVID-19 with safe, secure, and anonymous exposure notifications.";
 
 // ## HOW IT WORKS 1
 
@@ -86,7 +86,7 @@ All strings for the project, separated for localization.
 "HOW_IT_WORKS_1_IMAGE_ACCESSIBILITY_LABEL" = "Sam and Jane Chat";
 
 /* Message */
-"HOW_IT_WORKS_1_MESSAGE" = "While Sam and Jane chat, their phones note each others’ Bluetooth signals and the app lists them securely as random numbers. Their personal information and location are never recorded.";
+"HOW_IT_WORKS_1_MESSAGE" = "While Sam and Jane chat, their phones note each others’ Bluetooth signals and the app lists them securely as random numbers. Personal information and location are never recorded.";
 
 // ## HOW IT WORKS 2
 
@@ -97,7 +97,7 @@ All strings for the project, separated for localization.
 "HOW_IT_WORKS_2_IMAGE_ACCESSIBILITY_LABEL" = "Sam Tests Positive";
 
 /* Message */
-"HOW_IT_WORKS_2_MESSAGE" = "Days later, Sam tests positive for COVID-19. He decides to share his test results with the app, which then notifes others of possible exposure to the virus.";
+"HOW_IT_WORKS_2_MESSAGE" = "Days later, Sam is positively diagnosed with COVID-19. He shares his diagnosis with the app, which then notifies others who were nearby of possible exposure.";
 
 // ## HOW IT WORKS 3
 
@@ -108,7 +108,7 @@ All strings for the project, separated for localization.
 "HOW_IT_WORKS_3_IMAGE_ACCESSIBILITY_LABEL" = "Jane's Phone Gets a Notification";
 
 /* Message */
-"HOW_IT_WORKS_3_MESSAGE" = "Jane gets a notification saying she was near a person who tested positive. The app explains what to do next and how to find healthcare resources nearby.";
+"HOW_IT_WORKS_3_MESSAGE" = "Jane gets a notification saying she was near an anonymous person who tested positive. The app explains what to do next and how to find local resources.";
 
 // ## HOW IT WORKS 4
 
@@ -119,7 +119,7 @@ All strings for the project, separated for localization.
 "HOW_IT_WORKS_4_IMAGE_ACCESSIBILITY_LABEL" = "Jane and Sam Help Keep Their Communities Safe";
 
 /* Message */
-"HOW_IT_WORKS_4_MESSAGE" = "By opting in to enable exposure notifications and stay home while asymptomatic or sick, they help others stay safe. They share the app with family and friends so that they can help too.";
+"HOW_IT_WORKS_4_MESSAGE" = "By enabling notifications and staying home when at risk of exposing others, they help prevent the spread of COVID-19 within their communities.";
 
 /* Button */
 "CONTINUE_SETUP" = "Continue Setup";
@@ -144,7 +144,7 @@ All strings for the project, separated for localization.
 "ENABLE_EXPOSURE_NOTIFICATIONS_IMAGE_ACCESSIBILITY_LABEL" = "Enable Exposure Notifications";
 
 /* Message */
-"ENABLE_EXPOSURE_NOTIFICATIONS_MESSAGE" = "These notifications are designed to let you know if you’ve been exposed to a person who later reports themselves as testing positive for COVID-19. It can be turned off at any time.";
+"ENABLE_EXPOSURE_NOTIFICATIONS_MESSAGE" = "These notifications will let know if you’ve been exposed to a person who later reports themselves as having tested positive for COVID-19. It can be turned off at any time.";
 
 // ## SETUP 2
 
@@ -155,7 +155,7 @@ All strings for the project, separated for localization.
 "ENABLE_PUSH_NOTIFICATIONS_IMAGE_ACCESSIBILITY_LABEL" = "Enable Push Notifications";
 
 /* Message */
-"ENABLE_PUSH_NOTIFICATIONS_MESSAGE" = "These notifications are designed to let you know if the application settings are preventing it from functioning properly.";
+"ENABLE_PUSH_NOTIFICATIONS_MESSAGE" = "These notifications will let you know if the app settings are preventing it from functioning properly. This will only occur if Bluetooth is turned off.";
 
 // ## SETUP 3
 
@@ -163,13 +163,16 @@ All strings for the project, separated for localization.
 "SETUP_3_IMAGE_ACCESSIBILITY_LABEL" = "3 People Looking at Phone";
 
 /* Message */
-"SETUP_3_1_MESSAGE" = "You’re all set!";
+"SETUP_3_1_MESSAGE" = "Setup Complete";
 
 /* Message */
-"SETUP_3_2_MESSAGE" = "You can now receive exposure notifications and get tips on what to do next if people you were near shared verified positive COVID-19 test results in the app.";
+"SETUP_3_2_TITLE" = "You can now...";
+
+/* Message */
+"SETUP_3_3_MESSAGE" = "• Get exposure notifications\n• Anonymously notify others\n• Get COVID-19 exposure updates\n• Get resources and recommendations\n";
 
 /* Title */
-"SETUP_3_GO_TO_HOME" = "Continue";
+"SETUP_3_GO_TO_HOME" = "View Detected Exposures";
 
 // # HOME
 

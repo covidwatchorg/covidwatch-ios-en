@@ -38,12 +38,6 @@ final class UserData: ObservableObject {
     @Published(key: "isSetupCompleted")
     var isSetupCompleted: Bool = false
 
-    @Published(key: "isExposureNotificationSetup")
-    var isExposureNotificationSetup: Bool = false
-
-    @Published(key: "isUserNotificationsSetup")
-    var isUserNotificationsSetup: Bool = false
-
     @Published
     var showHomeWelcomeMessage: Bool = false
 

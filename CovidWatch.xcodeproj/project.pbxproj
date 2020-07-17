@@ -23,10 +23,6 @@
 		2D081A3924B8B2CD00506164 /* RegionSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D081A3724B8B2CD00506164 /* RegionSelection.swift */; };
 		2D081A3A24B8B2CD00506164 /* RegionSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D081A3724B8B2CD00506164 /* RegionSelection.swift */; };
 		2D081A3B24B8B2CD00506164 /* RegionSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D081A3724B8B2CD00506164 /* RegionSelection.swift */; };
-		2D081A3D24B8C45900506164 /* SplashRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D081A3C24B8C45900506164 /* SplashRegion.swift */; };
-		2D081A3E24B8C45900506164 /* SplashRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D081A3C24B8C45900506164 /* SplashRegion.swift */; };
-		2D081A3F24B8C45900506164 /* SplashRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D081A3C24B8C45900506164 /* SplashRegion.swift */; };
-		2D081A4024B8C45900506164 /* SplashRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D081A3C24B8C45900506164 /* SplashRegion.swift */; };
 		2D17BECA24AB3DFC00A2CFD9 /* GoogleExposureNotificationsDiagnosisVerificationServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D17BEC924AB3DFC00A2CFD9 /* GoogleExposureNotificationsDiagnosisVerificationServerAPI.swift */; };
 		2D17BECB24AB3DFC00A2CFD9 /* GoogleExposureNotificationsDiagnosisVerificationServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D17BEC924AB3DFC00A2CFD9 /* GoogleExposureNotificationsDiagnosisVerificationServerAPI.swift */; };
 		2D17BECC24AB3DFC00A2CFD9 /* GoogleExposureNotificationsDiagnosisVerificationServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D17BEC924AB3DFC00A2CFD9 /* GoogleExposureNotificationsDiagnosisVerificationServerAPI.swift */; };
@@ -47,7 +43,6 @@
 		2D2359F124AC651300C8FD56 /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94082460023900718412 /* Splash.swift */; };
 		2D2359F224AC651300C8FD56 /* UserDefaultPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D9404245FF88800718412 /* UserDefaultPropertyWrapper.swift */; };
 		2D2359F324AC651300C8FD56 /* ExposureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA512465E1240003936C /* ExposureManager.swift */; };
-		2D2359F424AC651300C8FD56 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034C42460498A00351C3C /* Setup.swift */; };
 		2D2359F524AC651300C8FD56 /* ExposureNotificationsDiagnosisVerificationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D17BECD24ABBFCF00A2CFD9 /* ExposureNotificationsDiagnosisVerificationProviding.swift */; };
 		2D2359F624AC651300C8FD56 /* HowItWorksTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D85167F2484FA1C00F8E5BE /* HowItWorksTitleText.swift */; };
 		2D2359F724AC651300C8FD56 /* UNAuthorizationStatus+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF224607F2C00E8BEC4 /* UNAuthorizationStatus+Additions.swift */; };
@@ -222,7 +217,6 @@
 		2D72544224A35E92003E5914 /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94082460023900718412 /* Splash.swift */; };
 		2D72544324A35E92003E5914 /* UserDefaultPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D9404245FF88800718412 /* UserDefaultPropertyWrapper.swift */; };
 		2D72544424A35E92003E5914 /* ExposureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA512465E1240003936C /* ExposureManager.swift */; };
-		2D72544524A35E92003E5914 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034C42460498A00351C3C /* Setup.swift */; };
 		2D72544624A35E92003E5914 /* HowItWorksTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D85167F2484FA1C00F8E5BE /* HowItWorksTitleText.swift */; };
 		2D72544724A35E92003E5914 /* UNAuthorizationStatus+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF224607F2C00E8BEC4 /* UNAuthorizationStatus+Additions.swift */; };
 		2D72544824A35E92003E5914 /* SmallCallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7942952466CEE0008AF148 /* SmallCallToAction.swift */; };
@@ -346,7 +340,6 @@
 		2D8FE6A724A33B0100456875 /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D94082460023900718412 /* Splash.swift */; };
 		2D8FE6A824A33B0100456875 /* UserDefaultPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D9404245FF88800718412 /* UserDefaultPropertyWrapper.swift */; };
 		2D8FE6A924A33B0100456875 /* ExposureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46AA512465E1240003936C /* ExposureManager.swift */; };
-		2D8FE6AA24A33B0100456875 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034C42460498A00351C3C /* Setup.swift */; };
 		2D8FE6AB24A33B0100456875 /* HowItWorksTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D85167F2484FA1C00F8E5BE /* HowItWorksTitleText.swift */; };
 		2D8FE6AC24A33B0100456875 /* UNAuthorizationStatus+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF224607F2C00E8BEC4 /* UNAuthorizationStatus+Additions.swift */; };
 		2D8FE6AD24A33B0100456875 /* SmallCallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7942952466CEE0008AF148 /* SmallCallToAction.swift */; };
@@ -425,7 +418,6 @@
 		2D9034B824603D6200351C3C /* HowItWorks2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034B724603D6200351C3C /* HowItWorks2.swift */; };
 		2D9034BA24603E1A00351C3C /* HowItWorks3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034B924603E1A00351C3C /* HowItWorks3.swift */; };
 		2D9034BC24603EA600351C3C /* HowItWorks4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034BB24603EA600351C3C /* HowItWorks4.swift */; };
-		2D9034C52460498A00351C3C /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034C42460498A00351C3C /* Setup.swift */; };
 		2D9034C7246049EC00351C3C /* Setup1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034C6246049EC00351C3C /* Setup1.swift */; };
 		2D9034C924604BB000351C3C /* Setup2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034C824604BB000351C3C /* Setup2.swift */; };
 		2D927E2924AC7F430029A323 /* GoogleExposureNotificationsDiagnosisKeyServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D927E2824AC7F430029A323 /* GoogleExposureNotificationsDiagnosisKeyServerAPI.swift */; };
@@ -526,7 +518,6 @@
 		2D081A2D24B8A55200506164 /* CodableRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableRegion.swift; sourceTree = "<group>"; };
 		2D081A3224B8AA8400506164 /* CodableRegion+Arizona.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableRegion+Arizona.swift"; sourceTree = "<group>"; };
 		2D081A3724B8B2CD00506164 /* RegionSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelection.swift; sourceTree = "<group>"; };
-		2D081A3C24B8C45900506164 /* SplashRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRegion.swift; sourceTree = "<group>"; };
 		2D17BEC924AB3DFC00A2CFD9 /* GoogleExposureNotificationsDiagnosisVerificationServerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleExposureNotificationsDiagnosisVerificationServerAPI.swift; sourceTree = "<group>"; };
 		2D17BECD24ABBFCF00A2CFD9 /* ExposureNotificationsDiagnosisVerificationProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureNotificationsDiagnosisVerificationProviding.swift; sourceTree = "<group>"; };
 		2D235A5024AC651300C8FD56 /* Covid Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Covid Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -609,7 +600,6 @@
 		2D9034B724603D6200351C3C /* HowItWorks2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowItWorks2.swift; sourceTree = "<group>"; };
 		2D9034B924603E1A00351C3C /* HowItWorks3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowItWorks3.swift; sourceTree = "<group>"; };
 		2D9034BB24603EA600351C3C /* HowItWorks4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowItWorks4.swift; sourceTree = "<group>"; };
-		2D9034C42460498A00351C3C /* Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
 		2D9034C6246049EC00351C3C /* Setup1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup1.swift; sourceTree = "<group>"; };
 		2D9034C824604BB000351C3C /* Setup2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup2.swift; sourceTree = "<group>"; };
 		2D927E2824AC7F430029A323 /* GoogleExposureNotificationsDiagnosisKeyServerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleExposureNotificationsDiagnosisKeyServerAPI.swift; sourceTree = "<group>"; };
@@ -810,7 +800,6 @@
 			isa = PBXGroup;
 			children = (
 				2D5D94082460023900718412 /* Splash.swift */,
-				2D081A3C24B8C45900506164 /* SplashRegion.swift */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -913,7 +902,6 @@
 		2D9034C32460497700351C3C /* Setup */ = {
 			isa = PBXGroup;
 			children = (
-				2D9034C42460498A00351C3C /* Setup.swift */,
 				2D9034C6246049EC00351C3C /* Setup1.swift */,
 				2D9034C824604BB000351C3C /* Setup2.swift */,
 				2D39489D248E40A3001766A4 /* Setup3.swift */,
@@ -1477,7 +1465,6 @@
 				2D2359E624AC651300C8FD56 /* PossibleExposureSummary.swift in Sources */,
 				2D2359E724AC651300C8FD56 /* ENRiskScore+QualitativeLevels.swift in Sources */,
 				2D2359E824AC651300C8FD56 /* StandardTitleTextViewModifier.swift in Sources */,
-				2D081A4024B8C45900506164 /* SplashRegion.swift in Sources */,
 				2D4DE8AF24C0B9260056F8D2 /* RKWeekdayHeader.swift in Sources */,
 				2D2359E924AC651300C8FD56 /* Welcome.swift in Sources */,
 				2D2359EA24AC651300C8FD56 /* Data+Random.swift in Sources */,
@@ -1492,7 +1479,6 @@
 				2D2359F124AC651300C8FD56 /* Splash.swift in Sources */,
 				2D2359F224AC651300C8FD56 /* UserDefaultPropertyWrapper.swift in Sources */,
 				2D2359F324AC651300C8FD56 /* ExposureManager.swift in Sources */,
-				2D2359F424AC651300C8FD56 /* Setup.swift in Sources */,
 				2D4DE8B324C0B9260056F8D2 /* RKDate.swift in Sources */,
 				2D2359F524AC651300C8FD56 /* ExposureNotificationsDiagnosisVerificationProviding.swift in Sources */,
 				2D927E3624AC86F90029A323 /* GoogleExposureNotificationsDiagnosisVerificationServer.swift in Sources */,
@@ -1594,10 +1580,8 @@
 				2D72544024A35E92003E5914 /* Server.swift in Sources */,
 				2D72544124A35E92003E5914 /* ReportingStep3.swift in Sources */,
 				2D72544224A35E92003E5914 /* Splash.swift in Sources */,
-				2D081A3F24B8C45900506164 /* SplashRegion.swift in Sources */,
 				2D72544324A35E92003E5914 /* UserDefaultPropertyWrapper.swift in Sources */,
 				2D72544424A35E92003E5914 /* ExposureManager.swift in Sources */,
-				2D72544524A35E92003E5914 /* Setup.swift in Sources */,
 				2D72544624A35E92003E5914 /* HowItWorksTitleText.swift in Sources */,
 				2D72544724A35E92003E5914 /* UNAuthorizationStatus+Additions.swift in Sources */,
 				2D72544824A35E92003E5914 /* SmallCallToAction.swift in Sources */,
@@ -1686,7 +1670,6 @@
 				2D8FE69C24A33B0100456875 /* PossibleExposureSummary.swift in Sources */,
 				2D8FE69D24A33B0100456875 /* ENRiskScore+QualitativeLevels.swift in Sources */,
 				2D8FE69E24A33B0100456875 /* StandardTitleTextViewModifier.swift in Sources */,
-				2D081A3E24B8C45900506164 /* SplashRegion.swift in Sources */,
 				2D4DE8AD24C0B9260056F8D2 /* RKWeekdayHeader.swift in Sources */,
 				2D8FE69F24A33B0100456875 /* Welcome.swift in Sources */,
 				2D8FE6A024A33B0100456875 /* Data+Random.swift in Sources */,
@@ -1701,7 +1684,6 @@
 				2D8FE6A724A33B0100456875 /* Splash.swift in Sources */,
 				2D8FE6A824A33B0100456875 /* UserDefaultPropertyWrapper.swift in Sources */,
 				2D8FE6A924A33B0100456875 /* ExposureManager.swift in Sources */,
-				2D8FE6AA24A33B0100456875 /* Setup.swift in Sources */,
 				2D4DE8B124C0B9260056F8D2 /* RKDate.swift in Sources */,
 				2D17BECF24ABBFCF00A2CFD9 /* ExposureNotificationsDiagnosisVerificationProviding.swift in Sources */,
 				2D927E3424AC86F90029A323 /* GoogleExposureNotificationsDiagnosisVerificationServer.swift in Sources */,
@@ -1808,7 +1790,6 @@
 				2D4DE8B024C0B9260056F8D2 /* RKDate.swift in Sources */,
 				2D17BECE24ABBFCF00A2CFD9 /* ExposureNotificationsDiagnosisVerificationProviding.swift in Sources */,
 				2D927E3324AC86F90029A323 /* GoogleExposureNotificationsDiagnosisVerificationServer.swift in Sources */,
-				2D9034C52460498A00351C3C /* Setup.swift in Sources */,
 				2DC639D224BF0AA0003A0328 /* Date+IntervalNumber.swift in Sources */,
 				2D8516802484FA1C00F8E5BE /* HowItWorksTitleText.swift in Sources */,
 				2DC639D724BF0B49003A0328 /* ENIntervalNumber+Date.swift in Sources */,
@@ -1857,7 +1838,6 @@
 				2D46AA582465E1240003936C /* DeveloperDiagnosisKeyFileProtobuf.pb.swift in Sources */,
 				2D26096924ADE535009CDBCE /* CovidWatchInfoDictionaryKeys.swift in Sources */,
 				2D5D941624602FE100718412 /* HowItWorks1.swift in Sources */,
-				2D081A3D24B8C45900506164 /* SplashRegion.swift in Sources */,
 				2D46AA402465E1010003936C /* CodableDiagnosisKey+ENTemporaryExposureKey.swift in Sources */,
 				2D4DE8A424C0B9260056F8D2 /* RKManager.swift in Sources */,
 				2D081A2E24B8A55200506164 /* CodableRegion.swift in Sources */,

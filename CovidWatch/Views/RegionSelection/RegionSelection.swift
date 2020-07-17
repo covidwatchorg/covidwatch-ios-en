@@ -11,29 +11,29 @@ struct RegionSelection: View {
 
     @EnvironmentObject var userData: UserData
 
-    @State var showSplashRegion = false
-
-    var regions = CodableRegion.all
     @State private var selectedRegionIndex: Int
 
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var isShowingNextStep = false
 
-    var body: some View {
-        VStack {
-            if self.showSplashRegion {
-                SplashRegion().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
-            } else {
-                self.splash.transition(.slide)
-            }
-        }
-    }
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     init(selectedRegionIndex: Int, dismissOnFinish: Bool = false) {
         self._selectedRegionIndex = .init(initialValue: selectedRegionIndex)
         self.dismissOnFinish = dismissOnFinish
     }
 
-    var splash: some View {
+    var body: some View {
+
+        VStack {
+            if !isShowingNextStep {
+                regionSelection.transition(.slide)
+            } else {
+                Setup3().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+            }
+        }
+    }
+
+    var regionSelection: some View {
 
         ZStack(alignment: .top) {
 
@@ -72,8 +72,8 @@ struct RegionSelection: View {
 
                     VStack(spacing: 0) {
                         Picker("SELECT_REGION", selection: $selectedRegionIndex) {
-                            ForEach(0 ..< self.regions.count) {
-                                Text(verbatim: self.regions[$0].name)
+                            ForEach(0 ..< self.userData.regions.count) {
+                                Text(verbatim: self.userData.regions[$0].name)
                                     .font(.custom("Montserrat-SemiBold", size: 16))
                                     .foregroundColor(.white)
                                     .multilineTextAlignment(.center)
@@ -94,12 +94,12 @@ struct RegionSelection: View {
                     Spacer().frame(height: .standardSpacing)
 
                     Button(action: {
-                        self.userData.region = self.regions[self.selectedRegionIndex]
+                        self.userData.region = self.userData.regions[self.selectedRegionIndex]
                         withAnimation {
                             if self.dismissOnFinish {
                                 self.presentationMode.wrappedValue.dismiss()
                             } else {
-                                self.showSplashRegion = true
+                                self.isShowingNextStep = true
                             }
                         }
                     }) {

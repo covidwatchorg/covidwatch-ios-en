@@ -9,14 +9,6 @@ struct Setup3: View {
 
     @EnvironmentObject var userData: UserData
 
-    var dismissesAutomatically: Bool
-
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
-    init(dismissesAutomatically: Bool = false) {
-        self.dismissesAutomatically = dismissesAutomatically
-    }
-
     var body: some View {
 
         ZStack(alignment: .top) {
@@ -25,7 +17,14 @@ struct Setup3: View {
 
                 VStack(spacing: 0) {
 
-                    Spacer(minLength: .headerHeight)
+                    Spacer(minLength: .largeHeaderHeight)
+
+                    Text("SETUP_3_1_MESSAGE")
+                        .modifier(StandardTitleTextViewModifier())
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, 2 * .standardSpacing)
+
+                    Spacer(minLength: .standardSpacing)
 
                     Image("Setup 3")
                         .resizable()
@@ -35,19 +34,19 @@ struct Setup3: View {
 
                     Spacer(minLength: .standardSpacing)
 
-                    Text("SETUP_3_1_MESSAGE")
-                        .modifier(StandardTitleTextViewModifier())
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("SETUP_3_2_TITLE")
+                        .font(.custom("Montserrat-Semibold", size: 18))
+                        .foregroundColor(Color.primary)
                         .padding(.horizontal, 2 * .standardSpacing)
+                        .frame(maxWidth: .infinity, alignment: .leading)
 
                     Spacer(minLength: .standardSpacing)
 
-                    Text("SETUP_3_2_MESSAGE")
+                    Text("SETUP_3_3_MESSAGE")
                         .modifier(SetupMessageTextViewModifier())
                         .padding(.horizontal, 2 * .standardSpacing)
                         .frame(maxWidth: .infinity, alignment: .leading)
-
-                    Spacer(minLength: .standardSpacing)
+                        .lineSpacing(.standardSpacing)
 
                     Group {
                         Button(action: {
@@ -60,10 +59,12 @@ struct Setup3: View {
                         }
                         .padding(.horizontal, 2 * .standardSpacing)
                     }
+
+                    Spacer(minLength: .standardSpacing)
                 }
             }
 
-            HeaderBar(showMenu: false)
+            HeaderBar(showMenu: false, showRegionSelection: true)
         }
     }
 }

@@ -31,7 +31,9 @@ extension CodableRegion {
 
     static let all: [CodableRegion] = [
         `default`,
-        universityOfArizona
+        universityOfArizona,
+        arizonaStateUniversity,
+        northernArizonaUniversity
     ]
 
     static let `default`: Self = .init(
@@ -137,6 +139,68 @@ extension CodableRegion {
                 description: "Register with University of Arizona's Contact Tracing team.",
                 url: "https://health.arizona.edu/SAFER?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_case_management"
             ),
+            .shareTheApp
+        ]
+    )
+
+    static let arizonaStateUniversity: Self = .init(
+        id: 0,
+        name: "Arizona State University",
+        logoTypeImageName: "Public Health Authority Logotype - Arizona State University",
+        logoImageName: "Public Health Authority Logo - Arizona State University",
+        riskLowThreshold: 0.14,
+        riskHighThreshold: 3.00,
+        nextStepsRiskUnknown: [
+            .infoAppIsActive,
+            .infoKeepAppInstalled,
+            .init(
+                type: .website,
+                description: "Visit the Public Health Website for local resources that are available to you.",
+                url: "https://www.azdhs.gov"
+            ),
+            .shareTheApp
+        ],
+        nextStepsRiskLow: [
+            .shareTheApp
+        ],
+        nextStepsRiskMedium: [
+            .shareTheApp
+        ],
+        nextStepsRiskHigh: [
+            .shareTheApp
+        ],
+        nextStepsRiskVerifiedPositive: [
+            .shareTheApp
+        ]
+    )
+
+    static let northernArizonaUniversity: Self = .init(
+        id: 0,
+        name: "Northern Arizona University",
+        logoTypeImageName: "Public Health Authority Logotype - Northern Arizona University",
+        logoImageName: "Public Health Authority Logo - Northern Arizona University",
+        riskLowThreshold: 0.14,
+        riskHighThreshold: 3.00,
+        nextStepsRiskUnknown: [
+            .infoAppIsActive,
+            .infoKeepAppInstalled,
+            .init(
+                type: .website,
+                description: "Visit the Public Health Website for local resources that are available to you.",
+                url: "https://www.azdhs.gov"
+            ),
+            .shareTheApp
+        ],
+        nextStepsRiskLow: [
+            .shareTheApp
+        ],
+        nextStepsRiskMedium: [
+            .shareTheApp
+        ],
+        nextStepsRiskHigh: [
+            .shareTheApp
+        ],
+        nextStepsRiskVerifiedPositive: [
             .shareTheApp
         ]
     )
