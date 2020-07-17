@@ -180,4 +180,31 @@ public class AZExposureRiskModel: ExposureRiskModeling {
 
         return 0
     }
+    
+    public func getMostRecentSignificantExposureDate(forExposureInfos exposureInfos: [ENExposureInfo], riskThreshold: Double
+    ) -> Date? {
+        var dateTransmissionRisks: [Date: Double] = [:]
+        for exposure in exposureInfos {
+            let newRisk = computeRisk(forExposure: exposure)
+            if let prevRisk = dateTransmissionRisks[exposure.date] {
+                let combinedRisk = combineRisks(forRisks: [prevRisk, newRisk])
+                dateTransmissionRisks[exposure.date] = combinedRisk
+            } else {
+                dateTransmissionRisks[exposure.date] = newRisk
+            }
+        }
+        var mostRecentSignificantExposureDate : Date?
+        for (date, risk) in dateTransmissionRisks {
+            if risk >= riskThreshold{
+                if let comparisonDate = mostRecentSignificantExposureDate{
+                    if date > comparisonDate{
+                        mostRecentSignificantExposureDate = date
+                    }
+                }else{
+                    mostRecentSignificantExposureDate = date
+                }
+            }
+        }
+        return(mostRecentSignificantExposureDate)
+    }
 }
