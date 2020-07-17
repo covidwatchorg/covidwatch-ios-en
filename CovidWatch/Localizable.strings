@@ -482,10 +482,10 @@ All strings for the project, separated for localization.
 "SELECT_DATE" = "Select Date";
 
 /* Title */
-"REPORTING_FINISH_TITLE" = "Diagnosis Sent Anonymously";
+"REPORTING_FINISH_TITLE" = "Diagnosis Shared";
 
 /* Message */
-"REPORTING_FINISH_SUBTITLE_MESSAGE" = "Thank you for helping slow the spread of COVID-19 within your communities!";
+"REPORTING_FINISH_SUBTITLE_MESSAGE" = "Thank you for helping slow the spread of COVID-19 within your region.";
 
 /* Message */
 "REPORTING_FINISH_MESSAGE_1" = "To continue helping others:";

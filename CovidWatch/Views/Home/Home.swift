@@ -126,6 +126,11 @@ struct Home: View {
                                 .padding(.vertical, 2 * .standardSpacing)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .background(Color(UIColor.systemGray6))
+                                .sheet(isPresented: $isShowingReporting) {
+                                    ReportingStep1()
+                                        .environmentObject(self.localStore)
+                                        .environmentObject(self.userData)
+                                }
 
                             if self.localStore.homeRiskLevel != .verifiedPositive {
 
@@ -151,11 +156,6 @@ struct Home: View {
                                 .padding(.top, 2 * .standardSpacing)
                                 .padding(.bottom, .standardSpacing)
                                 .padding(.horizontal, 2 * .standardSpacing)
-                                .sheet(isPresented: $isShowingReporting) {
-                                    ReportingStep1()
-                                        .environmentObject(self.localStore)
-                                        .environmentObject(self.userData)
-                                }
                             }
 
                             Image("Powered By CW Grey")
@@ -164,9 +164,6 @@ struct Home: View {
                                 .padding(.bottom, .standardSpacing)
 
                         }
-
-                        //                            LinearGradient(gradient: Gradient(colors: [.init(red: 0.263, green: 0.769, blue: 0.851), .init(red: 1, green: 1, blue: 1, opacity: 0.4)]), startPoint: .top, endPoint: .bottom)
-                        //                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 10, alignment: .top)
                     }
                 }
             }

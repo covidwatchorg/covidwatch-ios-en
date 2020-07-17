@@ -336,9 +336,11 @@ struct ReportingStep2: View {
                 .padding(.horizontal, 2 * .standardSpacing)
                 .padding(.bottom, .standardSpacing)
 
-                Image("Doctors Security")
+                Image("Notify Others Footer")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .top)
                     .accessibility(hidden: true)
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .top)
             }
         }
 

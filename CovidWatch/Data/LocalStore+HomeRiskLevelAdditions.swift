@@ -13,12 +13,13 @@ extension LocalStore {
     }
 
     public func updateHomeRiskLevel() {
+
+        if self.diagnoses.contains(where: { $0.isVerified && $0.testType == .testTypeConfirmed }) {
+            self.homeRiskLevel = .verifiedPositive
+            return
+        }
+
         if let riskLevelValue = riskLevelValue {
-
-            if diagnoses.contains(where: { $0.isVerified && $0.testType == .testTypeConfirmed }) {
-                self.homeRiskLevel = .verifiedPositive
-            }
-
             if riskLevelValue >= UserData.shared.region.riskHighThreshold {
                 self.homeRiskLevel = .high
             }
