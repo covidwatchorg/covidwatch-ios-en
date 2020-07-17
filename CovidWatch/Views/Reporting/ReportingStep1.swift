@@ -111,6 +111,7 @@ struct ReportingStep1: View {
                     Text("SHARE_A_POSITIVE_DIAGNOSIS").modifier(SmallCallToAction())
 
                 }
+                .padding(.top, .standardSpacing)
                 .padding(.horizontal, 2 * .standardSpacing)
                 .padding(.bottom, .standardSpacing)
 
