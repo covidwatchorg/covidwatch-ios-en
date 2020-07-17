@@ -11,28 +11,29 @@ struct RegionSelection: View {
 
     @EnvironmentObject var userData: UserData
 
-    @State var showSplashRegion = false
-
     @State private var selectedRegionIndex: Int
 
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var isShowingNextStep = false
 
-    var body: some View {
-        VStack {
-            if self.showSplashRegion {
-                SplashRegion().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
-            } else {
-                self.splash.transition(.slide)
-            }
-        }
-    }
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     init(selectedRegionIndex: Int, dismissOnFinish: Bool = false) {
         self._selectedRegionIndex = .init(initialValue: selectedRegionIndex)
         self.dismissOnFinish = dismissOnFinish
     }
 
-    var splash: some View {
+    var body: some View {
+
+        VStack {
+            if !isShowingNextStep {
+                regionSelection.transition(.slide)
+            } else {
+                Setup3().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+            }
+        }
+    }
+
+    var regionSelection: some View {
 
         ZStack(alignment: .top) {
 
@@ -98,7 +99,7 @@ struct RegionSelection: View {
                             if self.dismissOnFinish {
                                 self.presentationMode.wrappedValue.dismiss()
                             } else {
-                                self.showSplashRegion = true
+                                self.isShowingNextStep = true
                             }
                         }
                     }) {

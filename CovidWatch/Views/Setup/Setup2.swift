@@ -13,6 +13,8 @@ struct Setup2: View {
 
     let showsSteps: Bool
 
+    @State var isShowingNextStep = false
+
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     init(dismissesAutomatically: Bool = false, showsSteps: Bool = true) {
@@ -22,98 +24,116 @@ struct Setup2: View {
 
     var body: some View {
 
-        ZStack(alignment: .bottom) {
+        VStack {
+            if !isShowingNextStep {
+                setup2.transition(.slide)
+            } else {
+                RegionSelection(selectedRegionIndex: self.userData.selectedRegionIndex)
+                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                    .environmentObject(self.userData)
+            }
+        }
+    }
 
-            ScrollView(.vertical, showsIndicators: false) {
+    var setup2: some View {
 
-                VStack(spacing: 0) {
+        ZStack(alignment: .top) {
 
-                    Spacer(minLength: .headerHeight)
+            ZStack(alignment: .bottom) {
 
-                    if showsSteps {
-                        HowItWorksTitleText(text: Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("SETUP_PRE_TITLE", comment: ""), NSNumber(value: 2), NSNumber(value: 2)).uppercased()))
+                ScrollView(.vertical, showsIndicators: false) {
+
+                    VStack(spacing: 0) {
+
+                        Spacer(minLength: .headerHeight)
+
+                        if showsSteps {
+                            HowItWorksTitleText(text: Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("SETUP_PRE_TITLE", comment: ""), NSNumber(value: 2), NSNumber(value: 2)).uppercased()))
+                        }
+
+                        Text("ENABLE_PUSH_NOTIFICATIONS_TITLE")
+                            .modifier(StandardTitleTextViewModifier())
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.horizontal, 2 * .standardSpacing)
+
+                        Spacer(minLength: 2 * .standardSpacing)
+
+                        Image("Setup 2")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .accessibility(label: Text("ENABLE_PUSH_NOTIFICATIONS_IMAGE_ACCESSIBILITY_LABEL"))
+                            .padding(.horizontal, 2 * .standardSpacing)
+
+                        Spacer(minLength: 2 * .standardSpacing)
+
+                        Text("ENABLE_PUSH_NOTIFICATIONS_MESSAGE")
+                            .modifier(SetupMessageTextViewModifier())
+                            .padding(.horizontal, 2 * .standardSpacing)
+
+                        Spacer(minLength: .stickyFooterHeight + .standardSpacing)
+
                     }
+                }
 
-                    Text("ENABLE_PUSH_NOTIFICATIONS_TITLE")
-                        .modifier(StandardTitleTextViewModifier())
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 2 * .standardSpacing)
+                VStack {
 
-                    Spacer(minLength: 2 * .standardSpacing)
+                    Button(action: {
 
-                    Image("Setup 2")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .accessibility(label: Text("ENABLE_PUSH_NOTIFICATIONS_IMAGE_ACCESSIBILITY_LABEL"))
-                        .padding(.horizontal, 2 * .standardSpacing)
+                        UNUserNotificationCenter.current().requestAuthorization(
+                            options: [.alert, .sound, .badge],
+                            completionHandler: { (_, error) in
 
-                    Spacer(minLength: 2 * .standardSpacing)
+                                DispatchQueue.main.async {
+                                    if let error = error {
+                                        UIApplication.shared.topViewController?.present(error, animated: true)
+                                        return
+                                    }
 
-                    Text("ENABLE_PUSH_NOTIFICATIONS_MESSAGE")
-                        .modifier(SetupMessageTextViewModifier())
-                        .padding(.horizontal, 2 * .standardSpacing)
+                                    withAnimation {
+                                        self.isShowingNextStep = true
+                                    }
 
-                    Spacer(minLength: .stickyFooterHeight + .standardSpacing)
+                                    if self.dismissesAutomatically {
+                                        self.presentationMode.wrappedValue.dismiss()
+                                    }
+                                }
+                        })
+
+                    }) {
+
+                        Text("ENABLE").modifier(SmallCallToAction())
+
+                    }
+                    .padding(.top, .standardSpacing)
+                    .padding(.horizontal, 2 * .standardSpacing)
+
+                    Button(action: {
+
+                        withAnimation {
+                            self.isShowingNextStep = true
+                        }
+
+                        if self.dismissesAutomatically {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                    }) {
+
+                        Text("NOT_NOW")
+                            .font(.custom("Montserrat-Medium", size: 16))
+                            .frame(maxWidth: .infinity)
+                            .padding()
+
+                    }
+                    .padding(.top, 5)
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .padding(.bottom, .standardSpacing)
 
                 }
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .stickyFooterHeight, alignment: .topLeading)
+                .background(BlurView(style: .systemChromeMaterial).edgesIgnoringSafeArea(.all))
             }
 
-            VStack {
-
-                Button(action: {
-
-                    UNUserNotificationCenter.current().requestAuthorization(
-                        options: [.alert, .sound, .badge],
-                        completionHandler: { (_, error) in
-
-                            DispatchQueue.main.async {
-                                if let error = error {
-                                    UIApplication.shared.topViewController?.present(error, animated: true)
-                                    return
-                                }
-
-                                withAnimation {
-                                    self.userData.isUserNotificationsSetup = true
-                                }
-
-                                if self.dismissesAutomatically {
-                                    self.presentationMode.wrappedValue.dismiss()
-                                }
-                            }
-                    })
-
-                }) {
-
-                    Text("ENABLE").modifier(SmallCallToAction())
-
-                }
-                .padding(.top, .standardSpacing)
-                .padding(.horizontal, 2 * .standardSpacing)
-
-                Button(action: {
-
-                    withAnimation {
-                        self.userData.isUserNotificationsSetup = true
-                    }
-
-                    if self.dismissesAutomatically {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }
-                }) {
-
-                    Text("NOT_NOW")
-                        .font(.custom("Montserrat-Medium", size: 16))
-                        .frame(maxWidth: .infinity)
-                        .padding()
-
-                }
-                .padding(.top, 5)
-                .padding(.horizontal, 2 * .standardSpacing)
-                .padding(.bottom, .standardSpacing)
-
-            }
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .stickyFooterHeight, alignment: .topLeading)
-            .background(BlurView(style: .systemChromeMaterial).edgesIgnoringSafeArea(.all))
+            HeaderBar(showMenu: false)
         }
     }
 }

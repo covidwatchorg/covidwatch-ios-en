@@ -17,7 +17,7 @@ struct ContentView: View {
                 Splash().transition(.slide)
             } else {
                 if !userData.isSetupCompleted {
-                    Setup().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                    Setup1().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                 } else {
                     Home().transition(.move(edge: .trailing))
                 }

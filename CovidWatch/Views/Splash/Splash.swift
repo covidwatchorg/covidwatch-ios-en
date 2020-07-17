@@ -8,13 +8,12 @@ struct Splash: View {
 
     @EnvironmentObject var userData: UserData
 
-    @State var showRegionSelection = false
+    @State var showNextStep = false
 
     var body: some View {
         VStack {
-            if self.showRegionSelection {
-                RegionSelection(selectedRegionIndex: self.userData.selectedRegionIndex)
-                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+            if self.showNextStep {
+                Welcome().transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
             } else {
                 self.splash.transition(.slide)
             }
@@ -54,7 +53,7 @@ struct Splash: View {
 
                     Button(action: {
                         withAnimation {
-                            self.showRegionSelection = true
+                            self.showNextStep = true
                         }
                     }) {
 
@@ -67,11 +66,7 @@ struct Splash: View {
 
                     }.padding(.horizontal, 2 * .standardSpacing)
 
-                    Spacer(minLength: 2 * .standardSpacing)
-
-                    Image("Powered By CW")
-                        .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
-                        .padding(.bottom, .standardSpacing)
+                    Spacer(minLength: .standardSpacing)
                 }
             }
         }
