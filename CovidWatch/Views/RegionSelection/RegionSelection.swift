@@ -13,7 +13,6 @@ struct RegionSelection: View {
 
     @State var showSplashRegion = false
 
-    var regions = CodableRegion.all
     @State private var selectedRegionIndex: Int
 
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -72,8 +71,8 @@ struct RegionSelection: View {
 
                     VStack(spacing: 0) {
                         Picker("SELECT_REGION", selection: $selectedRegionIndex) {
-                            ForEach(0 ..< self.regions.count) {
-                                Text(verbatim: self.regions[$0].name)
+                            ForEach(0 ..< self.userData.regions.count) {
+                                Text(verbatim: self.userData.regions[$0].name)
                                     .font(.custom("Montserrat-SemiBold", size: 16))
                                     .foregroundColor(.white)
                                     .multilineTextAlignment(.center)
@@ -94,7 +93,7 @@ struct RegionSelection: View {
                     Spacer().frame(height: .standardSpacing)
 
                     Button(action: {
-                        self.userData.region = self.regions[self.selectedRegionIndex]
+                        self.userData.region = self.userData.regions[self.selectedRegionIndex]
                         withAnimation {
                             if self.dismissOnFinish {
                                 self.presentationMode.wrappedValue.dismiss()
