@@ -189,8 +189,12 @@ func getDateString(date : Date) -> String{
 }
 
 
-// searches and replaces strings with this format:
+// searches the input string and replaces the first substring matching this format:
 //          DAYS_FROM_EXPOSURE{LATEST,16,TRUE}
+// With a date relative to significant detected exposures
+//  1st param: either 'EARLIEST' or 'LATEST', describes whether the earliest or latest significant exposure date should be used
+// 2nd param: an integer. The requested date is the exposure date incremented by this many days
+// 3rd param: 'TRUE' or 'FALSE'. True means that the requested date is adjusted to not fall on a weekend (Saturday -> Friday and Sunday -> Monday). False means the requested date is left as-is
 func parseNextStepDescription(description : String) -> String{
 
     // Search for one string in another.
