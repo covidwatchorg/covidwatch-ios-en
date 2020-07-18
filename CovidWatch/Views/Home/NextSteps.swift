@@ -5,6 +5,7 @@
 
 import SwiftUI
 
+
 struct NextSteps: View {
 
     @EnvironmentObject var userData: UserData
@@ -65,7 +66,7 @@ struct NextSteps: View {
                     }) {
                         HStack(alignment: .firstTextBaseline, spacing: .standardSpacing) {
 
-                            Text(verbatim: nextStep.description)
+                            Text(verbatim: parseNextStepDescription(description: nextStep.description) )
                                 .foregroundColor(Color.secondary)
                                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 54, maxHeight: .infinity, alignment: .leading)
                                 .font(.custom("Montserrat-Regular", size: 14))
@@ -91,3 +92,4 @@ struct NextSteps_Previews: PreviewProvider {
         NextSteps()
     }
 }
+

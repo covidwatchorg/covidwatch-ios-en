@@ -91,12 +91,12 @@ extension CodableRegion {
         nextStepsSignificantExposure: [
             .init(
                 type: .stayAtHomeDate,
-                description: "Stay at home until: ",
+                description: "Stay at home until: DAYS_FROM_EXPOSURE{LATEST,14,FALSE}",
                 url: nil
             ),
             .init(
                 type: .getTestedDate,
-                description: "Call Campus Health at (520) 621-9202 and schedule a COVID-19 test for: ",
+                description: "Call Campus Health at (520) 621-9202 and schedule a COVID-19 test for: DAYS_FROM_EXPOSURE{EARLIEST,7,TRUE}",
                 url: "tel:1-520-621-9202"
             ),
             .init(

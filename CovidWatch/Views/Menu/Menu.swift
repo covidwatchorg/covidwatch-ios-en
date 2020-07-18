@@ -54,7 +54,7 @@ struct Menu: View {
                             Divider()
 
                             Button(action: {
-                                self.localStore.riskLevelValue = nil
+                                self.localStore.riskMetrics = nil
                                 self.localStore.exposuresInfos = []
                                 self.localStore.dateLastPerformedExposureDetection = nil
                                 self.localStore.previousDiagnosisKeyFileURLs = []
