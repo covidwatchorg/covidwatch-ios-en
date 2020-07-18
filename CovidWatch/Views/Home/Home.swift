@@ -184,7 +184,7 @@ struct Home_Previews: PreviewProvider {
 
 func getDateString(date : Date) -> String{
     let formatter3 = DateFormatter()
-    formatter3.dateFormat = "E, d MMM"
+    formatter3.dateFormat = "EEEE, MMMM d"
     return(formatter3.string(from: date))
 }
 
@@ -235,10 +235,14 @@ func evaluateRequestedDate(tokens : [String]) -> Date? {
                     let components = calendar.dateComponents([.weekday], from: requestedDate)
                     if(components.weekday == 1){
                         // Falls on a sunday so add one day
-                        return(Calendar.current.date(byAdding: .day, value: 1, to: requestedDate))
+                        let adjustedDate = Calendar.current.date(byAdding: .day, value: 1, to: requestedDate)
+                        return(adjustedDate)
                     }else if(components.weekday == 7){
                         // Falls on a saturday so subtract one day
-                        return(Calendar.current.date(byAdding: .day, value: -1, to: requestedDate))
+                        let adjustedDate = Calendar.current.date(byAdding: .day, value: -1, to: requestedDate)
+                        return(adjustedDate)
+                    }else{
+                        return(requestedDate)
                     }
                 }else if(tokens[2] == "FALSE"){
                     return(requestedDate)
