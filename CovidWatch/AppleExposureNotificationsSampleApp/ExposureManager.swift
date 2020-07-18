@@ -45,11 +45,13 @@ class ExposureManager {
         LocalStore.shared.exposureDetectionErrorLocalizedDescription = nil
     }
 
-    func updateRiskLevel() {
-        if let riskModel = self.riskModel {
+    public func updateRiskMetrics() {
+        if let riskModel = self.riskModel{
             LocalStore.shared.riskLevelValue = riskModel.computeDateRiskLevel(forExposureInfos: LocalStore.shared.exposuresInfos.map({ ENExposureInfo($0) }), computeDate: Date())
         }
+        
     }
+    
 
     static let authorizationStatusChangeNotification = Notification.Name("ExposureManagerAuthorizationStatusChangedNotification")
 
@@ -68,8 +70,6 @@ class ExposureManager {
         }
         detectingExposures = true
 
-        self.updateRiskLevel()
-
         var localURLs = importURLs
         var newDiagnosisKeyFileURLs = [URL]()
 
@@ -86,8 +86,7 @@ class ExposureManager {
                         LocalStore.shared.previousDiagnosisKeyFileURLs += newDiagnosisKeyFileURLs
 
                         updateSavedExposures(newExposures: newExposures)
-                        updateRiskLevel()
-
+                     
                         success = true
                     case let .failure(error):
                         LocalStore.shared.exposureDetectionErrorLocalizedDescription = error.localizedDescription

@@ -69,7 +69,8 @@ public class AZExposureRiskModel: ExposureRiskModeling {
     private func computeAttenuationDurationRiskScore(
         forAttenuationDurations attenuationDurations: [Double]
     ) -> Double {
-        guard attenuationDurations.count == self.configuration.attenuationDurationWeights.count else {
+        // iOS 13.6 silently introduced a 4th attenuation bucket, but our weight vector is only set for 3 buckets
+        guard attenuationDurations.count >= self.configuration.attenuationDurationWeights.count else {
             return 0.0
         }
         return

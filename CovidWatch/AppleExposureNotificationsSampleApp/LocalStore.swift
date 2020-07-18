@@ -84,7 +84,7 @@ public class LocalStore: ObservableObject {
     @Persisted(userDefaultsKey: "exposureInfos", notificationName: .init("LocalStoreExposureInfosDidChange"), defaultValue: [])
     public var exposuresInfos: [CodableExposureInfo] {
         willSet { objectWillChange.send() }
-        didSet { self.updateHomeRiskLevel() }
+        didSet { ExposureManager.shared.updateRiskMetrics() }
     }
 
     @Persisted(userDefaultsKey: "dateLastPerformedExposureDetection",
@@ -108,6 +108,7 @@ public class LocalStore: ObservableObject {
     @Persisted(userDefaultsKey: "riskLevelValue", notificationName: .init("LocalStoreRiskLevelValueDidChange"), defaultValue: nil)
     public var riskLevelValue: Double? {
         willSet { objectWillChange.send() }
+        didSet { self.updateHomeRiskLevel() }
     }
 
     @Persisted(userDefaultsKey: "homeRiskLevel", notificationName: .init("LocalStoreHomeRiskLevelDidChange"), defaultValue: .low)
