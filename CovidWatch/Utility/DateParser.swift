@@ -11,9 +11,9 @@ import Foundation
 
 
 func getDateString(date : Date) -> String{
-    let formatter3 = DateFormatter()
-    formatter3.dateFormat = "EEEE, MMMM d"
-    return(formatter3.string(from: date))
+    let formatter = DateFormatter()
+    formatter.dateFormat = "EEEE, MMMM d"
+    return(formatter.string(from: date))
 }
 
 
@@ -54,7 +54,7 @@ func parseNextStepDescription(description : String) -> String{
 // accepts an array of parsed tokens.
 // properly formatted tokens will take the values:
 //  tokens[0] = {EARLIEST, LATEST}
-//  tokens[1] = {an integer}
+//  tokens[1] = {any integer}
 //  tokens[2] = {TRUE, FALSE}
 func evaluateRequestedDate(tokens : [String]) -> Date? {
     guard(tokens.count == 3) else{
