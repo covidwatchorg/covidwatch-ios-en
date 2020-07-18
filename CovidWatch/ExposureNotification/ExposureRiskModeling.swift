@@ -29,4 +29,14 @@ public protocol ExposureRiskModeling {
     
 
     func getMostRecentSignificantExposureDate(forExposureInfos exposureInfos: [ENExposureInfo]) -> Date?
+    
+     func getLeastRecentSignificantExposureDate(forExposureInfos exposureInfos: [ENExposureInfo]) -> Date?
+    
+    func computeRiskMetrics(forExposureInfos exposureInfos: [ENExposureInfo]) -> RiskMetrics
+}
+
+public struct RiskMetrics : Codable{
+    var riskLevelValue : Double
+    var leastRecentSignificantExposureDate : Date?
+    var mostRecentSignificantExposureDate : Date?
 }

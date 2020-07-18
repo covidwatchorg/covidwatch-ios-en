@@ -21,6 +21,8 @@ public struct CodableExposureInfo: Codable, Equatable {
     #endif
 }
 
+
+
 public struct Diagnosis: Codable {
     public var id = UUID()                // A unique identifier for this test result used internally
     public var isAdded = false            // Whether the user completed the add diagnosis flow for this test result
@@ -104,15 +106,9 @@ public class LocalStore: ObservableObject {
         willSet { objectWillChange.send() }
         didSet { self.updateHomeRiskLevel() }
     }
-
-    @Persisted(userDefaultsKey: "riskLevelValue", notificationName: .init("LocalStoreRiskLevelValueDidChange"), defaultValue: nil)
-    public var riskLevelValue: Double? {
-        willSet { objectWillChange.send() }
-        didSet { self.updateHomeRiskLevel() }
-    }
     
-    @Persisted(userDefaultsKey: "mostRecentSignificantExposureDate", notificationName: .init("LocalStoreMostRecentSignificantExposureDateDidChange"), defaultValue: nil)
-    public var mostRecentSignificantExposureDate: Date? {
+    @Persisted(userDefaultsKey: "riskMetrics", notificationName: .init("LocalStoreRiskMetricsDidChange"), defaultValue: nil)
+    public var riskMetrics: RiskMetrics? {
         willSet { objectWillChange.send() }
         didSet { self.updateHomeRiskLevel() }
     }

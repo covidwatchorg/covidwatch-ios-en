@@ -136,18 +136,11 @@ public class AZExposureRiskModel: ExposureRiskModeling {
     public func computeDateRiskLevel(
         forExposureInfos exposureInfos: [ENExposureInfo], computeDate: Date
     ) -> Double {
-        var dateTransmissionRisks: [Date: Double] = [:]
-        for exposure in exposureInfos {
-            let newRisk = computeRisk(forExposure: exposure)
-            if let prevRisk = dateTransmissionRisks[exposure.date] {
-                let combinedRisk = combineRisks(forRisks: [prevRisk, newRisk])
-                dateTransmissionRisks[exposure.date] = combinedRisk
-            } else {
-                dateTransmissionRisks[exposure.date] = newRisk
-            }
-        }
+        
+        let dateExposureRisks = getDateExposureRisks(forExposureInfos: exposureInfos)
+        
         var infectedRisk = 0.0
-        for (exposureDate, transmissionRisk) in dateTransmissionRisks {
+        for (exposureDate, transmissionRisk) in dateExposureRisks {
             let diffComponents = Calendar.current.dateComponents([.day], from: exposureDate, to: computeDate)
             let days = diffComponents.day!
             if days >= 0 && days < self.configuration.discountSchedule.count {
@@ -184,19 +177,26 @@ public class AZExposureRiskModel: ExposureRiskModeling {
         return 0
     }
     
-    public func getMostRecentSignificantExposureDate(forExposureInfos exposureInfos: [ENExposureInfo]) -> Date? {
-        var dateTransmissionRisks: [Date: Double] = [:]
+    private func getDateExposureRisks(forExposureInfos exposureInfos: [ENExposureInfo]) -> [Date: Double]{
+        var dateExposureRisks: [Date: Double] = [:]
         for exposure in exposureInfos {
             let newRisk = computeRisk(forExposure: exposure)
-            if let prevRisk = dateTransmissionRisks[exposure.date] {
+            if let prevRisk = dateExposureRisks[exposure.date] {
                 let combinedRisk = combineRisks(forRisks: [prevRisk, newRisk])
-                dateTransmissionRisks[exposure.date] = combinedRisk
+                dateExposureRisks[exposure.date] = combinedRisk
             } else {
-                dateTransmissionRisks[exposure.date] = newRisk
+                dateExposureRisks[exposure.date] = newRisk
             }
         }
+        return(dateExposureRisks)
+    }
+    
+    public func getMostRecentSignificantExposureDate(forExposureInfos exposureInfos: [ENExposureInfo]) -> Date? {
+
+        let dateExposureRisks = getDateExposureRisks(forExposureInfos: exposureInfos)
+        
         var mostRecentSignificantExposureDate : Date?
-        for (date, risk) in dateTransmissionRisks {
+        for (date, risk) in dateExposureRisks {
             if risk >= self.configuration.significantRiskThreshold{
                 if let comparisonDate = mostRecentSignificantExposureDate{
                     if date > comparisonDate{
@@ -208,5 +208,33 @@ public class AZExposureRiskModel: ExposureRiskModeling {
             }
         }
         return(mostRecentSignificantExposureDate)
+    }
+    
+    public func getLeastRecentSignificantExposureDate(forExposureInfos exposureInfos: [ENExposureInfo]) -> Date? {
+
+        let dateExposureRisks = getDateExposureRisks(forExposureInfos: exposureInfos)
+        
+        var leastRecentSignificantExposureDate : Date?
+        for (date, risk) in dateExposureRisks {
+            if risk >= self.configuration.significantRiskThreshold{
+                if let comparisonDate = leastRecentSignificantExposureDate{
+                    if date < comparisonDate{
+                        leastRecentSignificantExposureDate = date
+                    }
+                }else{
+                    leastRecentSignificantExposureDate = date
+                }
+            }
+        }
+        return(leastRecentSignificantExposureDate)
+    }
+    
+    public func computeRiskMetrics(forExposureInfos exposureInfos: [ENExposureInfo]) -> RiskMetrics{
+        let riskMetrics = RiskMetrics(
+            riskLevelValue : computeDateRiskLevel(forExposureInfos: exposureInfos, computeDate: Date()),
+            leastRecentSignificantExposureDate : getLeastRecentSignificantExposureDate(forExposureInfos: exposureInfos),
+            mostRecentSignificantExposureDate : getMostRecentSignificantExposureDate(forExposureInfos: exposureInfos)
+        )
+        return(riskMetrics)
     }
 }
