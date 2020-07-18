@@ -26,4 +26,7 @@ public protocol ExposureRiskModeling {
         forTemporaryExposureKey key: ENTemporaryExposureKey,
         symptomsStartDate: Date?
     ) -> ENRiskLevel
+    
+
+    func getMostRecentSignificantExposureDate(forExposureInfos exposureInfos: [ENExposureInfo]) -> Date?
 }

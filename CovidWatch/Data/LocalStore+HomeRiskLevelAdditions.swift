@@ -19,14 +19,18 @@ extension LocalStore {
             return
         }
 
-        if let riskLevelValue = riskLevelValue {
-            if riskLevelValue >= UserData.shared.region.riskHighThreshold {
+        if let mostRecentSignificantExposureDate = self.mostRecentSignificantExposureDate {
+            let diffComponents = Calendar.current.dateComponents([.day], from: mostRecentSignificantExposureDate, to: Date())
+            let diffComponentsDay = diffComponents.day ?? .max
+            if diffComponentsDay <= 14 { // TODO: put number of days in config
                 self.homeRiskLevel = .high
+                return
             }
 
-        } else {
-            self.homeRiskLevel = .low
         }
+        
+        self.homeRiskLevel = .low
+        
     }
     
     
