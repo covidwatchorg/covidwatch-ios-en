@@ -195,6 +195,8 @@ func getDateString(date : Date) -> String{
 //  1st param: either 'EARLIEST' or 'LATEST', describes whether the earliest or latest significant exposure date should be used
 // 2nd param: an integer. The requested date is the exposure date incremented by this many days
 // 3rd param: 'TRUE' or 'FALSE'. True means that the requested date is adjusted to not fall on a weekend (Saturday -> Friday and Sunday -> Monday). False means the requested date is left as-is
+// Currently only replaces the first pattern matched
+// Doesnt handle between the parameters. "LATEST,16,TRUE" is OK, "LATEST, 16, TRUE" is not
 func parseNextStepDescription(description : String) -> String{
 
     // Search for one string in another.
@@ -212,13 +214,20 @@ func parseNextStepDescription(description : String) -> String{
         if let requestedDate = evaluateRequestedDate(tokens: tokens){
             let dateString = getDateString(date: requestedDate)
             var parsedDescription = description
+            // replace DAYS_FROM_EXPOSURE{*,*,*} with the requested date
             parsedDescription.replaceSubrange(range, with: dateString)
             return(parsedDescription)
         }
     }
+    // return original string
     return(description)
 }
 
+// accepts an array of parsed tokens.
+// properly formatted tokens will take the values:
+//  tokens[0] = {EARLIEST, LATEST}
+//  tokens[1] = {an integer}
+//  tokens[2] = {TRUE, FALSE}
 func evaluateRequestedDate(tokens : [String]) -> Date? {
     guard(tokens.count == 3) else{
         return(nil)
