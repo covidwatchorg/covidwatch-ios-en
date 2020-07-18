@@ -56,6 +56,8 @@ func parseNextStepDescription(description : String) -> String{
 //  tokens[0] = {EARLIEST, LATEST}
 //  tokens[1] = {any integer}
 //  tokens[2] = {TRUE, FALSE}
+// Requires that LocalStore.shared.riskMetrics?.leastRecentSignificantExposureDate
+// and LocalStore.shared.riskMetrics?.mostRecentSignificantExposureDate are set
 func evaluateRequestedDate(tokens : [String]) -> Date? {
     guard(tokens.count == 3) else{
         return(nil)
