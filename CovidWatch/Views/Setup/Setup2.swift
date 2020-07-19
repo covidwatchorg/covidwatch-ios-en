@@ -7,7 +7,7 @@ import SwiftUI
 
 struct Setup2: View {
 
-    @EnvironmentObject var userData: UserData
+    @EnvironmentObject var localStore: LocalStore
 
     let dismissesAutomatically: Bool
 
@@ -28,9 +28,9 @@ struct Setup2: View {
             if !isShowingNextStep {
                 setup2.transition(.slide)
             } else {
-                RegionSelection(selectedRegionIndex: self.userData.selectedRegionIndex)
+                RegionSelection(selectedRegionIndex: self.localStore.selectedRegionIndex)
                     .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
-                    .environmentObject(self.userData)
+                    .environmentObject(self.localStore)
             }
         }
     }

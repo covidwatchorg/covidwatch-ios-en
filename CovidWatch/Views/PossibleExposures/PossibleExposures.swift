@@ -7,8 +7,6 @@ import SwiftUI
 
 struct PossibleExposures: View {
 
-    @EnvironmentObject var userData: UserData
-
     @EnvironmentObject var localStore: LocalStore
 
     @State private var selectedExposure: CodableExposureInfo?
@@ -37,7 +35,7 @@ struct PossibleExposures: View {
 
                     Spacer(minLength: 2 * .standardSpacing)
 
-                    Toggle(isOn: self.$userData.exposureNotificationEnabled) {
+                    Toggle(isOn: self.$localStore.exposureNotificationEnabled) {
                         Text("EXPOSURE_NOTIFICATIONS_TITLE")
                             .font(.custom("Montserrat-SemiBold", size: 18))
                             .foregroundColor(Color.primary)
@@ -47,7 +45,7 @@ struct PossibleExposures: View {
 
                     Spacer(minLength: .standardSpacing)
 
-                    Text(verbatim: self.userData.exposureNotificationStatusMessage)
+                    Text(verbatim: self.localStore.exposureNotificationStatusMessage)
                         .font(.custom("Montserrat-Regular", size: 13))
                         .foregroundColor(Color.secondary)
                         .padding(.horizontal, 2 * .standardSpacing)
@@ -135,7 +133,7 @@ struct PossibleExposures: View {
                             .padding(.horizontal, 2 * .standardSpacing)
                             .frame(maxWidth: .infinity, alignment: .leading)
 
-                        Image("Powered By CW Grey")
+                        Image("Powered By CW for ADHS Grey")
                             .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
                             .padding(.top, 2 * .standardSpacing)
                             .padding(.bottom, .standardSpacing)
@@ -145,7 +143,6 @@ struct PossibleExposures: View {
 
             HeaderBar(showMenu: false, showDismissButton: true)
                 .environmentObject(self.localStore)
-                .environmentObject(self.userData)
         }
     }
 }

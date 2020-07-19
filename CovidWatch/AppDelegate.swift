@@ -23,9 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
         self.window?.tintColor = UIColor(named: "Tint Color")
         window.makeKeyAndVisible()
-        let contentView = ContentView()
-            .environmentObject(UserData.shared)
-            .environmentObject(LocalStore.shared)
+        let contentView = ContentView().environmentObject(LocalStore.shared)
         self.window?.rootViewController = UIHostingController(rootView: contentView)
 
         // Setup exposure notification key and verification servers
@@ -36,7 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = ExposureManager.shared
         let useAZRiskModel = Bundle.main.infoDictionary?[.useAZRiskModel] as? Bool ?? false
         if useAZRiskModel {
-            ExposureManager.shared.riskModel = AZExposureRiskModel()
+            let riskModel = AZExposureRiskModel(configuration: LocalStore.shared.region.azRiskModelConfiguration)
+            ExposureManager.shared.riskModel = riskModel
         }
 
         // Setup application controller

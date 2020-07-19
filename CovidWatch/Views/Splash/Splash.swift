@@ -6,7 +6,7 @@ import SwiftUI
 
 struct Splash: View {
 
-    @EnvironmentObject var userData: UserData
+    @EnvironmentObject var localStore: LocalStore
 
     @State var showNextStep = false
 

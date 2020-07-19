@@ -70,7 +70,7 @@ struct ReportingStep3: View {
                     .padding(.top, 2 * .standardSpacing)
                     .padding(.bottom, 2 * .standardSpacing)
 
-                Image("Powered By CW Grey")
+                Image("Powered By CW for ADHS Grey")
                     .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
                     .padding(.top, 2 * .standardSpacing)
                     .padding(.bottom, .standardSpacing)

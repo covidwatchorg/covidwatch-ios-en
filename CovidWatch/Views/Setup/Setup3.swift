@@ -7,7 +7,7 @@ import SwiftUI
 
 struct Setup3: View {
 
-    @EnvironmentObject var userData: UserData
+    @EnvironmentObject var localStore: LocalStore
 
     var body: some View {
 
@@ -51,8 +51,8 @@ struct Setup3: View {
                     Group {
                         Button(action: {
                             withAnimation {
-                                self.userData.showHomeWelcomeMessage = true
-                                self.userData.isSetupCompleted = true
+                                self.localStore.showHomeWelcomeMessage = true
+                                self.localStore.isSetupCompleted = true
                             }
                         }) {
                             Text("SETUP_3_GO_TO_HOME").modifier(SmallCallToAction())

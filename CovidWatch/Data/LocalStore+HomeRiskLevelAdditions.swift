@@ -18,8 +18,8 @@ extension LocalStore {
             self.homeRiskLevel = .verifiedPositive
             return
         }
-        
-        if let riskMetrics = self.riskMetrics{
+
+        if let riskMetrics = self.riskMetrics {
             if let mostRecentSignificantExposureDate = riskMetrics.mostRecentSignificantExposureDate {
                 let diffComponents = Calendar.current.dateComponents([.day], from: mostRecentSignificantExposureDate, to: Date())
                 let diffComponentsDay = diffComponents.day ?? .max
@@ -31,12 +31,8 @@ extension LocalStore {
             }
         }
 
-        
         self.homeRiskLevel = .low
     }
-    
-    
-
 
 }
 
@@ -70,11 +66,11 @@ extension LocalStore.HomeRiskLevel {
 
         switch self {
             case .low:
-                return UserData.shared.region.nextStepsNoSignificantExposure
+                return LocalStore.shared.region.nextStepsNoSignificantExposure
             case .high:
-                return UserData.shared.region.nextStepsSignificantExposure
+                return LocalStore.shared.region.nextStepsSignificantExposure
             case .verifiedPositive:
-                return UserData.shared.region.nextStepsVerifiedPositive
+                return LocalStore.shared.region.nextStepsVerifiedPositive
         }
 
     }

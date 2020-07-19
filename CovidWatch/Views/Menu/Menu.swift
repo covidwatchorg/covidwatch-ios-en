@@ -7,8 +7,6 @@ import SwiftUI
 
 struct Menu: View {
 
-    @EnvironmentObject var userData: UserData
-
     @EnvironmentObject var localStore: LocalStore
 
     @State var isShowingSettings: Bool = false
@@ -128,7 +126,6 @@ struct Menu: View {
                         }
                         .sheet(isPresented: $isShowingPossibleExposures) {
                             PossibleExposures()
-                                .environmentObject(self.userData)
                                 .environmentObject(self.localStore)
                         }
 
@@ -144,7 +141,6 @@ struct Menu: View {
                         .sheet(isPresented: $isShowingNotifyOthers) {
                             ReportingStep1()
                                 .environmentObject(self.localStore)
-                                .environmentObject(self.userData)
                         }
 
                         Group {
@@ -159,10 +155,9 @@ struct Menu: View {
                             }
                             .sheet(isPresented: $isShowingRegionSelection) {
                                 RegionSelection(
-                                    selectedRegionIndex: self.userData.selectedRegionIndex,
+                                    selectedRegionIndex: self.localStore.selectedRegionIndex,
                                     dismissOnFinish: true
-                                ).environmentObject(self.userData)
-                                    .environmentObject(self.localStore)
+                                ).environmentObject(self.localStore)
                             }
                         }
 
@@ -176,7 +171,7 @@ struct Menu: View {
                                     Text("HOW_IT_WORKS_TITLE")
                                 }.modifier(MenuTitleText())
                             }
-                            .sheet(isPresented: $isShowingHowItWorks) { HowItWorks(showsSetupButton: false, showsDismissButton: true).environmentObject(self.userData) }
+                            .sheet(isPresented: $isShowingHowItWorks) { HowItWorks(showsSetupButton: false, showsDismissButton: true).environmentObject(self.localStore) }
                         }
 
                         Divider()
@@ -268,7 +263,6 @@ struct Menu: View {
 
             HeaderBar(showMenu: false, showDismissButton: true)
                 .environmentObject(self.localStore)
-                .environmentObject(self.userData)
         }
     }
 }

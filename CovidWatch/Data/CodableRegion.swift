@@ -31,8 +31,6 @@ public struct CodableRegion: Codable {
 
     let id: RegionID
     let name: String
-    let riskLowThreshold: Double
-    let riskHighThreshold: Double
 
     let nextStepsNoSignificantExposure: [NextStep]
     let nextStepsSignificantExposure: [NextStep]
@@ -41,6 +39,8 @@ public struct CodableRegion: Codable {
     let nextStepsVerificationCode: [NextStep]
 
     let exposureConfiguration: CodableExposureConfiguration = .default
+
+    let azRiskModelConfiguration = AZExposureRiskModel.Configuration()
 }
 
 extension CodableRegion {

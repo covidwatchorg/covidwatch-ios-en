@@ -7,8 +7,6 @@ import SwiftUI
 
 struct PastDiagnoses: View {
 
-    @EnvironmentObject var userData: UserData
-
     @EnvironmentObject var localStore: LocalStore
 
     var body: some View {
@@ -30,7 +28,6 @@ struct PastDiagnoses: View {
 
             HeaderBar(showMenu: false, showDismissButton: true)
                 .environmentObject(self.localStore)
-                .environmentObject(self.userData)
         }
     }
 }

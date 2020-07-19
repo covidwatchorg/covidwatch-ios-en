@@ -10,8 +10,6 @@ struct ReportingStep2: View {
 
     @EnvironmentObject var localStore: LocalStore
 
-    @EnvironmentObject var userData: UserData
-
     @State var verificationCode: String = ""
 
     @State var symptomsStartDateString: String = ""
@@ -336,7 +334,6 @@ struct ReportingStep2: View {
                         .padding(.top, .headerHeight)
 
                     HeaderBar(showMenu: false, showDismissButton: true)
-                        .environmentObject(self.userData)
                         .environmentObject(self.localStore)
                 }
                 .onDisappear {
@@ -405,7 +402,6 @@ struct ReportingStep2: View {
                         .padding(.top, .headerHeight)
 
                     HeaderBar(showMenu: false, showDismissButton: true)
-                        .environmentObject(self.userData)
                         .environmentObject(self.localStore)
                 }
                 .onDisappear {
@@ -474,7 +470,6 @@ struct ReportingStep2: View {
                         .padding(.top, .headerHeight)
 
                     HeaderBar(showMenu: false, showDismissButton: true)
-                        .environmentObject(self.userData)
                         .environmentObject(self.localStore)
                 }
                 .onDisappear {

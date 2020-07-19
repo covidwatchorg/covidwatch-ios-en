@@ -7,7 +7,7 @@ import SwiftUI
 
 struct Welcome: View {
 
-    @EnvironmentObject var userData: UserData
+    @EnvironmentObject var localStore: LocalStore
 
     @State var showHowItWorks = false
 

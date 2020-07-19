@@ -5,10 +5,7 @@
 
 import SwiftUI
 
-
 struct NextSteps: View {
-
-    @EnvironmentObject var userData: UserData
 
     @EnvironmentObject var localStore: LocalStore
 
@@ -92,4 +89,3 @@ struct NextSteps_Previews: PreviewProvider {
         NextSteps()
     }
 }
-

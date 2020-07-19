@@ -21,8 +21,8 @@ class ApplicationController: NSObject {
     override init() {
         super.init()
 
-        if UserData.shared.firstRun {
-            UserData.shared.firstRun = false
+        if LocalStore.shared.firstRun {
+            LocalStore.shared.firstRun = false
         }
 
         self.configureExposureNotificationStatusObserver()
@@ -38,7 +38,7 @@ class ApplicationController: NSObject {
             DispatchQueue.main.async {
                 withAnimation {
                     if self.checkENManagerAuthorizationStatus() {
-                        UserData.shared.exposureNotificationStatus = ExposureManager.shared.manager.exposureNotificationStatus
+                        LocalStore.shared.exposureNotificationStatus = ExposureManager.shared.manager.exposureNotificationStatus
                     }
                 }
             }
@@ -53,7 +53,7 @@ class ApplicationController: NSObject {
             DispatchQueue.main.async {
                 withAnimation {
                     if self.checkENManagerAuthorizationStatus() {
-                        UserData.shared.exposureNotificationEnabled =
+                        LocalStore.shared.exposureNotificationEnabled =
                             ExposureManager.shared.manager.exposureNotificationEnabled
                     }
                 }
@@ -64,12 +64,12 @@ class ApplicationController: NSObject {
     func checkENManagerAuthorizationStatus() -> Bool {
         switch ENManager.authorizationStatus {
             case .restricted:
-                UserData.shared.exposureNotificationStatus = .restricted
-                UserData.shared.exposureNotificationEnabled = false
+                LocalStore.shared.exposureNotificationStatus = .restricted
+                LocalStore.shared.exposureNotificationEnabled = false
                 return false
             case .notAuthorized:
-                UserData.shared.exposureNotificationStatus = .disabled
-                UserData.shared.exposureNotificationEnabled = false
+                LocalStore.shared.exposureNotificationStatus = .disabled
+                LocalStore.shared.exposureNotificationEnabled = false
                 return false
             default:
              ()
@@ -93,7 +93,7 @@ class ApplicationController: NSObject {
 
                 DispatchQueue.main.async {
                     withAnimation {
-                        UserData.shared.notificationsAuthorizationStatus =
+                        LocalStore.shared.notificationsAuthorizationStatus =
                             settings.authorizationStatus
                     }
                 }
@@ -183,7 +183,7 @@ class ApplicationController: NSObject {
         do {
             let json = try JSONEncoder().encode(
                 ExposureConfigurationWithExposures(
-                    exposureConfiguration: UserData.shared.region.exposureConfiguration,
+                    exposureConfiguration: LocalStore.shared.region.exposureConfiguration,
                     possibleExposures: LocalStore.shared.exposuresInfos
                 )
             )

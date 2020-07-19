@@ -7,7 +7,7 @@ import SwiftUI
 
 struct HowItWorks4: View {
 
-    @EnvironmentObject var userData: UserData
+    @EnvironmentObject var localStore: LocalStore
 
     let showsSetupButton: Bool
 
@@ -45,7 +45,7 @@ struct HowItWorks4: View {
 
                     Button(action: {
                         withAnimation {
-                            self.userData.isOnboardingCompleted = true
+                            self.localStore.isOnboardingCompleted = true
                         }
                     }) {
 

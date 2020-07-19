@@ -80,11 +80,11 @@ public class Server {
 
                 case let .success(regions):
 
-                    UserData.shared.regions = regions
-                    if let index = regions.firstIndex(where: { $0.id == UserData.shared.region.id }) {
-                        UserData.shared.region = regions[index]
+                    LocalStore.shared.regions = regions
+                    if let index = regions.firstIndex(where: { $0.id == LocalStore.shared.region.id }) {
+                        LocalStore.shared.region = regions[index]
                     }
-                    let exposureConfiguration = ENExposureConfiguration(UserData.shared.region.exposureConfiguration)
+                    let exposureConfiguration = ENExposureConfiguration(LocalStore.shared.region.exposureConfiguration)
 
                     os_log(
                         "Got from server exposure configuration=%@ ",
@@ -117,7 +117,7 @@ public class Server {
             log: .en
         )
 
-        let codableExposureConfiguration = UserData.shared.region.exposureConfiguration
+        let codableExposureConfiguration = LocalStore.shared.region.exposureConfiguration
         var exposureConfigurationList = [ENExposureConfiguration]()
         for attenuationDurationThresholds in codableExposureConfiguration.attenuationDurationThresholdList {
             let exposureConfiguration = ENExposureConfiguration()

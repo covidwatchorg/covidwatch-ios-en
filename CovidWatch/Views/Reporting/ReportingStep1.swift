@@ -10,8 +10,6 @@ struct ReportingStep1: View {
 
     @EnvironmentObject var localStore: LocalStore
 
-    @EnvironmentObject var userData: UserData
-
     @State var isShowingNextStep = false
 
     @State var isShowingWhereIsMyCode: Bool = false
@@ -78,7 +76,6 @@ struct ReportingStep1: View {
                 .sheet(isPresented: $isShowingWhereIsMyCode) {
                     WhereIsMyCode()
                         .environmentObject(self.localStore)
-                        .environmentObject(self.userData)
                 }
 
                 Button(action: {

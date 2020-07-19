@@ -9,7 +9,7 @@ struct RegionSelection: View {
 
     let dismissOnFinish: Bool
 
-    @EnvironmentObject var userData: UserData
+    @EnvironmentObject var localStore: LocalStore
 
     @State private var selectedRegionIndex: Int
 
@@ -72,8 +72,8 @@ struct RegionSelection: View {
 
                     VStack(spacing: 0) {
                         Picker("SELECT_REGION", selection: $selectedRegionIndex) {
-                            ForEach(0 ..< self.userData.regions.count) {
-                                Text(verbatim: self.userData.regions[$0].name)
+                            ForEach(0 ..< self.localStore.regions.count) {
+                                Text(verbatim: self.localStore.regions[$0].name)
                                     .font(.custom("Montserrat-SemiBold", size: 16))
                                     .foregroundColor(.white)
                                     .multilineTextAlignment(.center)
@@ -94,7 +94,7 @@ struct RegionSelection: View {
                     Spacer().frame(height: .standardSpacing)
 
                     Button(action: {
-                        self.userData.region = self.userData.regions[self.selectedRegionIndex]
+                        self.localStore.region = self.localStore.regions[self.selectedRegionIndex]
                         withAnimation {
                             if self.dismissOnFinish {
                                 self.presentationMode.wrappedValue.dismiss()

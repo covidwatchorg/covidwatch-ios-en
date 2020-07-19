@@ -8,8 +8,6 @@ import os.log
 
 struct Home: View {
 
-    @EnvironmentObject var userData: UserData
-
     @EnvironmentObject var localStore: LocalStore
 
     @State var isShowingExposureSettings: Bool = false
@@ -30,10 +28,10 @@ struct Home: View {
 
                     VStack(spacing: 1) {
 
-                        if self.userData.showHomeWelcomeMessage {
+                        if self.localStore.showHomeWelcomeMessage {
                             Button(action: {
                                 withAnimation {
-                                    self.userData.showHomeWelcomeMessage = false
+                                    self.localStore.showHomeWelcomeMessage = false
                                 }
                             }) {
                                 Alert(
@@ -45,31 +43,31 @@ struct Home: View {
                             }
                         }
 
-                        if userData.exposureNotificationStatus != .active {
+                        if localStore.exposureNotificationStatus != .active {
                             Button(action: {
 
-                                if self.userData.exposureNotificationStatus == .unknown ||
-                                    self.userData.exposureNotificationStatus == .disabled {
+                                if self.localStore.exposureNotificationStatus == .unknown ||
+                                    self.localStore.exposureNotificationStatus == .disabled {
                                     self.isShowingExposureSettings.toggle()
                                 }
 
                             }) {
                                 Alert(
-                                    message: userData.exposureNotificationStatus.localizedDetailDescription,
+                                    message: localStore.exposureNotificationStatus.localizedDetailDescription,
                                     backgroundColor: Color("Alert Standard Color"),
-                                    detailImage: (self.userData.exposureNotificationStatus == .unknown || self.userData.exposureNotificationStatus == .disabled) ? Image("Right Arrow") : nil
+                                    detailImage: (self.localStore.exposureNotificationStatus == .unknown || self.localStore.exposureNotificationStatus == .disabled) ? Image("Right Arrow") : nil
                                 )
                             }
                             .sheet(isPresented: $isShowingExposureSettings) {
                                 Setup1(dismissesAutomatically: true, showsSteps: false)
-                                    .environmentObject(self.userData)
+                                    .environmentObject(self.localStore)
                             }
                         }
 
-                        if userData.notificationsAuthorizationStatus != .authorized {
+                        if localStore.notificationsAuthorizationStatus != .authorized {
                             Button(action: {
 
-                                if self.userData.notificationsAuthorizationStatus == .denied {
+                                if self.localStore.notificationsAuthorizationStatus == .denied {
                                     guard let settingsUrl = URL(string: UIApplication.openSettingsURLString),
                                         UIApplication.shared.canOpenURL(settingsUrl) else {
                                             return
@@ -81,13 +79,13 @@ struct Home: View {
 
                             }) {
                                 Alert(
-                                    message: userData.notificationsAuthorizationStatus.localizedDetailDescription,
+                                    message: localStore.notificationsAuthorizationStatus.localizedDetailDescription,
                                     backgroundColor: Color("Alert Standard Color")
                                 )
                             }
                             .sheet(isPresented: $isShowingNotificationSettings) {
                                 Setup2(dismissesAutomatically: true, showsSteps: false)
-                                    .environmentObject(self.userData)
+                                    .environmentObject(self.localStore)
                             }
                         }
 
@@ -119,7 +117,6 @@ struct Home: View {
                             }
                             .sheet(isPresented: $isShowingPossibleExposures) {
                                 PossibleExposures()
-                                    .environmentObject(self.userData)
                                     .environmentObject(self.localStore)
                             }
 
@@ -130,7 +127,6 @@ struct Home: View {
                                 .sheet(isPresented: $isShowingReporting) {
                                     ReportingStep1()
                                         .environmentObject(self.localStore)
-                                        .environmentObject(self.userData)
                                 }
 
                             if self.localStore.homeRiskLevel != .verifiedPositive {
@@ -159,7 +155,7 @@ struct Home: View {
                                 .padding(.horizontal, 2 * .standardSpacing)
                             }
 
-                            Image("Powered By CW Grey")
+                            Image("Powered By CW for ADHS Grey")
                                 .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
                                 .padding(.top, .standardSpacing)
                                 .padding(.bottom, .standardSpacing)
@@ -171,7 +167,6 @@ struct Home: View {
 
             HeaderBar(showRegionSelection: true)
                 .environmentObject(self.localStore)
-                .environmentObject(self.userData)
         }
     }
 }

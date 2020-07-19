@@ -7,6 +7,7 @@ A class that contains and manages locally stored app data.
 
 import Foundation
 import ExposureNotification
+import SwiftUI
 
 public struct CodableExposureInfo: Codable, Equatable {
     let attenuationDurations: [TimeInterval]
@@ -20,8 +21,6 @@ public struct CodableExposureInfo: Codable, Equatable {
     let timeDetected: Date
     #endif
 }
-
-
 
 public struct Diagnosis: Codable {
     public var id = UUID()                // A unique identifier for this test result used internally
@@ -86,7 +85,7 @@ public class LocalStore: ObservableObject {
     @Persisted(userDefaultsKey: "exposureInfos", notificationName: .init("LocalStoreExposureInfosDidChange"), defaultValue: [])
     public var exposuresInfos: [CodableExposureInfo] {
         willSet { objectWillChange.send() }
-        didSet { ExposureManager.shared.updateRiskMetrics() }
+        didSet { ExposureManager.shared.updateRiskMetricsIfNeeded() }
     }
 
     @Persisted(userDefaultsKey: "dateLastPerformedExposureDetection",
@@ -106,7 +105,7 @@ public class LocalStore: ObservableObject {
         willSet { objectWillChange.send() }
         didSet { self.updateHomeRiskLevel() }
     }
-    
+
     @Persisted(userDefaultsKey: "riskMetrics", notificationName: .init("LocalStoreRiskMetricsDidChange"), defaultValue: nil)
     public var riskMetrics: RiskMetrics? {
         willSet { objectWillChange.send() }
@@ -118,4 +117,89 @@ public class LocalStore: ObservableObject {
         willSet { objectWillChange.send() }
     }
 
+    @Persisted(userDefaultsKey: "regions", notificationName: .init("LocalStoreRegionsDidChange"), defaultValue: CodableRegion.all)
+    public var regions: [CodableRegion] {
+        willSet { objectWillChange.send() }
+    }
+
+    @Persisted(userDefaultsKey: "region", notificationName: .init("LocalStoreRegionDidChange"), defaultValue: .default)
+    public var region: CodableRegion {
+        willSet { objectWillChange.send() }
+        didSet {
+            // Update risk model configuration from region
+            if let azRiskModel = ExposureManager.shared.riskModel as? AZExposureRiskModel {
+                azRiskModel.configuration = region.azRiskModelConfiguration
+                ExposureManager.shared.updateRiskMetricsIfNeeded()
+            }
+        }
+    }
+
+    public var selectedRegionIndex: Int {
+        self.regions.firstIndex(where: { $0.id == self.region.id }) ?? 0
+    }
+
+    // User Data
+
+    @Published(key: "firstRun")
+    var firstRun: Bool = true
+
+    @Published(key: "isOnboardingCompleted")
+    var isOnboardingCompleted: Bool = false
+
+    @Published(key: "isSetupCompleted")
+    var isSetupCompleted: Bool = false
+
+    @Published
+    var showHomeWelcomeMessage: Bool = false
+
+    @Published
+    var exposureNotificationEnabled: Bool = ExposureManager.shared.manager.exposureNotificationEnabled {
+        didSet {
+            guard exposureNotificationEnabled != oldValue else { return }
+
+            defer {
+                self.configureExposureNotificationStatusMessage()
+            }
+
+            guard ENManager.authorizationStatus == .authorized else {
+                if ENManager.authorizationStatus != .unknown {
+                    if self.exposureNotificationEnabled {
+                        withAnimation {
+                            ApplicationController.shared.handleExposureNotificationEnabled(error: ENError(.notAuthorized))
+                            self.exposureNotificationEnabled = false
+                        }
+                    }
+                }
+                return
+            }
+
+            ExposureManager.shared.manager.setExposureNotificationEnabled(
+                self.exposureNotificationEnabled
+            ) { (error) in
+
+                if let error = error {
+                    ApplicationController.shared.handleExposureNotificationEnabled(error: error)
+                    return
+                }
+            }
+        }
+    }
+
+    @Published
+    var exposureNotificationStatus: ENStatus = .active {
+        didSet {
+            configureExposureNotificationStatusMessage()
+        }
+    }
+
+    func configureExposureNotificationStatusMessage() {
+        self.exposureNotificationStatusMessage =
+            self.exposureNotificationStatus.localizedDetailDescription
+    }
+
+    @Published
+    var exposureNotificationStatusMessage: String = ""
+
+    @Published
+    var notificationsAuthorizationStatus: UNAuthorizationStatus = .authorized
 }

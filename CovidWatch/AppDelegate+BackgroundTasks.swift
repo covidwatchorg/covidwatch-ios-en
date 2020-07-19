@@ -21,6 +21,9 @@ extension AppDelegate {
 
         BGTaskScheduler.shared.register(forTaskWithIdentifier: .exposureNotificationBackgroundTaskIdentifier, using: .main) { task in
 
+            // Ensure risk metrics are updated daily, even if there aren't any new exposures detected.
+            ExposureManager.shared.updateRiskMetricsIfNeeded()
+
             // Notify the user if bluetooth is off
             ExposureManager.shared.showBluetoothOffUserNotificationIfNeeded()
 

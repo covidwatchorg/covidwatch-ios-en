@@ -8,7 +8,7 @@ import ExposureNotification
 
 extension AZExposureRiskModel {
 
-    public struct Configuration {
+    public struct Configuration: Codable {
 
         var discountSchedule: [Double] = [
             1, 0.99998, 0.994059, 0.9497885, 0.858806, 0.755134, 0.660103392, 0.586894919, 0.533407703, 0.494373128, 0.463039432, 0.438587189, 0.416241392, 0.393207216, 0.367287169, 0.340932595, 0.313997176, 0.286927378, 0.265554932, 0.240765331, 0.217746365, 0.201059905, 0.185435372, 0.172969757, 0.156689676, 0.141405162, 0.124388311, 0.108319101, 0.094752304, 0.081300662, 0.070016527, 0.056302622, 0.044703284, 0.036214683, 0.030309399, 0.024554527, 0.018833743, 0.014769669
@@ -40,7 +40,7 @@ extension AZExposureRiskModel {
         var riskLevelsForDaysIncludingAndAfterSymptomsStartDay: [ENRiskLevel] = [
             6, 6, 6, 5, 4, 3, 2, 1, 1, 1, 1, 1,
         ]
-        
+
         var significantRiskThreshold = 0.011
     }
 }
@@ -66,7 +66,11 @@ extension AZRiskScoreValue {
 
 public class AZExposureRiskModel: ExposureRiskModeling {
 
-    let configuration = AZExposureRiskModel.Configuration()
+    var configuration = AZExposureRiskModel.Configuration()
+
+    init(configuration: AZExposureRiskModel.Configuration) {
+        self.configuration = configuration
+    }
 
     private func computeAttenuationDurationRiskScore(
         forAttenuationDurations attenuationDurations: [Double]
@@ -136,9 +140,9 @@ public class AZExposureRiskModel: ExposureRiskModeling {
     public func computeDateRiskLevel(
         forExposureInfos exposureInfos: [ENExposureInfo], computeDate: Date
     ) -> Double {
-        
+
         let dateExposureRisks = getDateExposureRisks(forExposureInfos: exposureInfos)
-        
+
         var infectedRisk = 0.0
         for (exposureDate, transmissionRisk) in dateExposureRisks {
             let diffComponents = Calendar.current.dateComponents([.day], from: exposureDate, to: computeDate)
@@ -176,8 +180,8 @@ public class AZExposureRiskModel: ExposureRiskModeling {
 
         return 0
     }
-    
-    private func getDateExposureRisks(forExposureInfos exposureInfos: [ENExposureInfo]) -> [Date: Double]{
+
+    private func getDateExposureRisks(forExposureInfos exposureInfos: [ENExposureInfo]) -> [Date: Double] {
         var dateExposureRisks: [Date: Double] = [:]
         for exposure in exposureInfos {
             let newRisk = computeRisk(forExposure: exposure)
@@ -190,50 +194,46 @@ public class AZExposureRiskModel: ExposureRiskModeling {
         }
         return(dateExposureRisks)
     }
-    
+
     public func getMostRecentSignificantExposureDate(forExposureInfos exposureInfos: [ENExposureInfo]) -> Date? {
 
         let dateExposureRisks = getDateExposureRisks(forExposureInfos: exposureInfos)
-        
-        var mostRecentSignificantExposureDate : Date?
-        for (date, risk) in dateExposureRisks {
-            if risk >= self.configuration.significantRiskThreshold{
-                if let comparisonDate = mostRecentSignificantExposureDate{
-                    if date > comparisonDate{
-                        mostRecentSignificantExposureDate = date
-                    }
-                }else{
+
+        var mostRecentSignificantExposureDate: Date?
+        for (date, risk) in dateExposureRisks where risk >= self.configuration.significantRiskThreshold {
+            if let comparisonDate = mostRecentSignificantExposureDate {
+                if date > comparisonDate {
                     mostRecentSignificantExposureDate = date
                 }
+            } else {
+                mostRecentSignificantExposureDate = date
             }
         }
         return(mostRecentSignificantExposureDate)
     }
-    
+
     public func getLeastRecentSignificantExposureDate(forExposureInfos exposureInfos: [ENExposureInfo]) -> Date? {
 
         let dateExposureRisks = getDateExposureRisks(forExposureInfos: exposureInfos)
-        
-        var leastRecentSignificantExposureDate : Date?
-        for (date, risk) in dateExposureRisks {
-            if risk >= self.configuration.significantRiskThreshold{
-                if let comparisonDate = leastRecentSignificantExposureDate{
-                    if date < comparisonDate{
-                        leastRecentSignificantExposureDate = date
-                    }
-                }else{
+
+        var leastRecentSignificantExposureDate: Date?
+        for (date, risk) in dateExposureRisks where risk >= self.configuration.significantRiskThreshold {
+            if let comparisonDate = leastRecentSignificantExposureDate {
+                if date < comparisonDate {
                     leastRecentSignificantExposureDate = date
                 }
+            } else {
+                leastRecentSignificantExposureDate = date
             }
         }
         return(leastRecentSignificantExposureDate)
     }
-    
-    public func computeRiskMetrics(forExposureInfos exposureInfos: [ENExposureInfo]) -> RiskMetrics{
+
+    public func computeRiskMetrics(forExposureInfos exposureInfos: [ENExposureInfo]) -> RiskMetrics {
         let riskMetrics = RiskMetrics(
-            riskLevelValue : computeDateRiskLevel(forExposureInfos: exposureInfos, computeDate: Date()),
-            leastRecentSignificantExposureDate : getLeastRecentSignificantExposureDate(forExposureInfos: exposureInfos),
-            mostRecentSignificantExposureDate : getMostRecentSignificantExposureDate(forExposureInfos: exposureInfos)
+            riskLevelValue: computeDateRiskLevel(forExposureInfos: exposureInfos, computeDate: Date()),
+            leastRecentSignificantExposureDate: getLeastRecentSignificantExposureDate(forExposureInfos: exposureInfos),
+            mostRecentSignificantExposureDate: getMostRecentSignificantExposureDate(forExposureInfos: exposureInfos)
         )
         return(riskMetrics)
     }

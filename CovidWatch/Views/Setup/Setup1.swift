@@ -14,7 +14,7 @@ struct Setup1: View {
 
     @State var isShowingNextStep = false
 
-    @EnvironmentObject var userData: UserData
+    @EnvironmentObject var localStore: LocalStore
 
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 

@@ -45,8 +45,6 @@ extension CodableRegion {
     static let `default`: Self = .init(
         id: .arizonaState,
         name: "Arizona State",
-        riskLowThreshold: 0.14,
-        riskHighThreshold: 3.00,
         nextStepsNoSignificantExposure: [
             .shareTheApp
         ],
@@ -68,8 +66,6 @@ extension CodableRegion {
     static let universityOfArizona: Self = .init(
         id: .universityOfArizona,
         name: "University of Arizona",
-        riskLowThreshold: 0.14,
-        riskHighThreshold: 3.00,
         nextStepsNoSignificantExposure: [
             .init(
                 type: .website,
@@ -137,8 +133,6 @@ extension CodableRegion {
     static let arizonaStateUniversity: Self = .init(
         id: .arizonaStateUniversity,
         name: "Arizona State University",
-        riskLowThreshold: 0.14,
-        riskHighThreshold: 3.00,
         nextStepsNoSignificantExposure: [
             .shareTheApp
         ],
@@ -156,8 +150,6 @@ extension CodableRegion {
     static let northernArizonaUniversity: Self = .init(
         id: .northernArizonaUniversity,
         name: "Northern Arizona University",
-        riskLowThreshold: 0.14,
-        riskHighThreshold: 3.00,
                 nextStepsNoSignificantExposure: [
             .shareTheApp
         ],

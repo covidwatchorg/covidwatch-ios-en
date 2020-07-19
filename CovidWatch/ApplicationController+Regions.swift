@@ -16,9 +16,9 @@ extension ApplicationController {
         getRegions { (result) in
             switch result {
                 case let .success(regions):
-                    UserData.shared.regions = regions
-                    if let index = regions.firstIndex(where: { $0.id == UserData.shared.region.id }) {
-                        UserData.shared.region = regions[index]
+                    LocalStore.shared.regions = regions
+                    if let index = regions.firstIndex(where: { $0.id == LocalStore.shared.region.id }) {
+                        LocalStore.shared.region = regions[index]
                     }
                 case let .failure(error):
                     if notifyUserOnError {

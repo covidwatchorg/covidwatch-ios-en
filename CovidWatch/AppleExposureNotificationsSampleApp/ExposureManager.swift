@@ -45,14 +45,12 @@ class ExposureManager {
         LocalStore.shared.exposureDetectionErrorLocalizedDescription = nil
     }
 
-    public func updateRiskMetrics() {
-        if let riskModel = self.riskModel{
+    public func updateRiskMetricsIfNeeded() {
+        if let riskModel = self.riskModel {
             let exposures = LocalStore.shared.exposuresInfos.map({ ENExposureInfo($0) })
             LocalStore.shared.riskMetrics = riskModel.computeRiskMetrics(forExposureInfos: exposures)
         }
-        
     }
-    
 
     static let authorizationStatusChangeNotification = Notification.Name("ExposureManagerAuthorizationStatusChangedNotification")
 
@@ -87,7 +85,7 @@ class ExposureManager {
                         LocalStore.shared.previousDiagnosisKeyFileURLs += newDiagnosisKeyFileURLs
 
                         updateSavedExposures(newExposures: newExposures)
-                     
+
                         success = true
                     case let .failure(error):
                         LocalStore.shared.exposureDetectionErrorLocalizedDescription = error.localizedDescription
@@ -126,8 +124,9 @@ class ExposureManager {
                                 }
                                 let newExposures: [CodableExposureInfo] = exposures!.map { exposure in
 
-                                    // Map score between 0 and 8
-                                    var totalRiskScore: ENRiskScore = ENRiskScore( 8.0 / pow(8, 4))
+                                    // Map risk score 0-4096 range to 0-8 range.
+                                    var totalRiskScore = ENRiskScore(exposure.totalRiskScoreFullRange * 8.0 / pow(8, 4))
+                                    // Recompute risk score, if there is a risk model.
                                     if let riskModel = self.riskModel {
                                         totalRiskScore = riskModel.computeRiskScore(forExposureInfo: exposure)
                                     }

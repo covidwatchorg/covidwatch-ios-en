@@ -8,8 +8,6 @@ import SwiftUI
 struct WhereIsMyCode: View {
     @EnvironmentObject var localStore: LocalStore
 
-    @EnvironmentObject var userData: UserData
-
     var body: some View {
 
         ZStack(alignment: .top) {
@@ -25,7 +23,7 @@ struct WhereIsMyCode: View {
 
                 Spacer(minLength: .standardSpacing)
 
-                ForEach(self.userData.region.nextStepsVerificationCode, id: \.self) { nextStep in
+                ForEach(self.localStore.region.nextStepsVerificationCode, id: \.self) { nextStep in
 
                     Group {
                         Spacer().frame(height: 10)

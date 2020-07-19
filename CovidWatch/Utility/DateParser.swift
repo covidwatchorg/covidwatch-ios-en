@@ -8,14 +8,11 @@
 
 import Foundation
 
-
-
-func getDateString(date : Date) -> String{
+func getDateString(date: Date) -> String {
     let formatter = DateFormatter()
     formatter.dateFormat = "EEEE, MMMM d"
     return(formatter.string(from: date))
 }
-
 
 // searches the input string and replaces the first substring matching this format:
 //          DAYS_FROM_EXPOSURE{LATEST,16,TRUE}
@@ -25,21 +22,21 @@ func getDateString(date : Date) -> String{
 // 3rd param: 'TRUE' or 'FALSE'. True means that the requested date is adjusted to not fall on a weekend (Saturday -> Friday and Sunday -> Monday). False means the requested date is left as-is
 // Currently only replaces the first pattern matched
 // Doesnt handle space between the parameters. "LATEST,16,TRUE" is OK, "LATEST, 16, TRUE" is not
-func parseNextStepDescription(description : String) -> String{
+func parseNextStepDescription(description: String) -> String {
 
     // Search for one string in another.
     let result = description.range(of: #"DAYS_FROM_EXPOSURE\{.*\}"#,
-                            options:.regularExpression)
-    
+                            options: .regularExpression)
+
     // See if string was found.
     if let range = result {
         var parsed = description[range].replacingOccurrences(of: "DAYS_FROM_EXPOSURE{", with: "")
         parsed = parsed.replacingOccurrences(of: "}", with: "")
-        
+
         let delimiter = ","
         let tokens = parsed.components(separatedBy: delimiter)
-        
-        if let requestedDate = evaluateRequestedDate(tokens: tokens){
+
+        if let requestedDate = evaluateRequestedDate(tokens: tokens) {
             let dateString = getDateString(date: requestedDate)
             var parsedDescription = description
             // replace DAYS_FROM_EXPOSURE{*,*,*} with the requested date
@@ -58,36 +55,36 @@ func parseNextStepDescription(description : String) -> String{
 //  tokens[2] = {TRUE, FALSE}
 // Requires that LocalStore.shared.riskMetrics?.leastRecentSignificantExposureDate
 // and LocalStore.shared.riskMetrics?.mostRecentSignificantExposureDate are set
-func evaluateRequestedDate(tokens : [String]) -> Date? {
-    guard(tokens.count == 3) else{
+func evaluateRequestedDate(tokens: [String]) -> Date? {
+    guard tokens.count == 3 else {
         return(nil)
     }
-    
-    var baseDate : Date?
-    if(tokens[0] == "LATEST"){
+
+    var baseDate: Date?
+    if tokens[0] == "LATEST" {
         baseDate = LocalStore.shared.riskMetrics?.mostRecentSignificantExposureDate
-    }else if(tokens[0] == "EARLIEST"){
+    } else if tokens[0] == "EARLIEST" {
         baseDate = LocalStore.shared.riskMetrics?.leastRecentSignificantExposureDate
     }
-    
-    if let baseDate = baseDate{
-        if let dayOffset = Int(tokens[1]){
-            if let requestedDate = Calendar.current.date(byAdding: .day, value: dayOffset, to: baseDate){
-                if(tokens[2] == "TRUE"){
+
+    if let baseDate = baseDate {
+        if let dayOffset = Int(tokens[1]) {
+            if let requestedDate = Calendar.current.date(byAdding: .day, value: dayOffset, to: baseDate) {
+                if tokens[2] == "TRUE" {
                     let calendar = Calendar(identifier: .gregorian)
                     let components = calendar.dateComponents([.weekday], from: requestedDate)
-                    if(components.weekday == 1){
+                    if components.weekday == 1 {
                         // Falls on a sunday so add one day
                         let adjustedDate = Calendar.current.date(byAdding: .day, value: 1, to: requestedDate)
                         return(adjustedDate)
-                    }else if(components.weekday == 7){
+                    } else if components.weekday == 7 {
                         // Falls on a saturday so subtract one day
                         let adjustedDate = Calendar.current.date(byAdding: .day, value: -1, to: requestedDate)
                         return(adjustedDate)
-                    }else{
+                    } else {
                         return(requestedDate)
                     }
-                }else if(tokens[2] == "FALSE"){
+                } else if tokens[2] == "FALSE" {
                     return(requestedDate)
                 }
             }

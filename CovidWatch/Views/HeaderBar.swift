@@ -17,8 +17,6 @@ struct HeaderBar: View {
 
     @State var isShowingMenu: Bool = false
 
-    @EnvironmentObject var userData: UserData
-
     @EnvironmentObject var localStore: LocalStore
 
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -46,7 +44,7 @@ struct HeaderBar: View {
 
                 HStack {
 
-                    Image(self.userData.region.logoImageName)
+                    Image(self.localStore.region.logoImageName)
                         .accessibility(label: Text("GENERIC_PUBLIC_HEALTH_DEPARTMENT_IMAGE_ACCESSIBILITY_LABEL"))
 
                     Spacer()
@@ -68,9 +66,7 @@ struct HeaderBar: View {
                                     .accessibility(label: Text("MENU"))
                                     .accessibility(hint: Text("MENU_ACCESSIBILITY_HINT"))
                             }.sheet(isPresented: self.$isShowingMenu) {
-                                Menu()
-                                    .environmentObject(self.userData)
-                                    .environmentObject(self.localStore)
+                                Menu().environmentObject(self.localStore)
                             }
                         }
                         if self.showDismissButton {

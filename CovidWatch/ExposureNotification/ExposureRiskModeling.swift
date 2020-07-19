@@ -26,17 +26,22 @@ public protocol ExposureRiskModeling {
         forTemporaryExposureKey key: ENTemporaryExposureKey,
         symptomsStartDate: Date?
     ) -> ENRiskLevel
-    
 
-    func getMostRecentSignificantExposureDate(forExposureInfos exposureInfos: [ENExposureInfo]) -> Date?
-    
-     func getLeastRecentSignificantExposureDate(forExposureInfos exposureInfos: [ENExposureInfo]) -> Date?
-    
-    func computeRiskMetrics(forExposureInfos exposureInfos: [ENExposureInfo]) -> RiskMetrics
+    func getMostRecentSignificantExposureDate(
+        forExposureInfos exposureInfos: [ENExposureInfo]
+    ) -> Date?
+
+     func getLeastRecentSignificantExposureDate(
+        forExposureInfos exposureInfos: [ENExposureInfo]
+     ) -> Date?
+
+    func computeRiskMetrics(
+        forExposureInfos exposureInfos: [ENExposureInfo]
+    ) -> RiskMetrics
 }
 
-public struct RiskMetrics : Codable{
-    var riskLevelValue : Double
-    var leastRecentSignificantExposureDate : Date?
-    var mostRecentSignificantExposureDate : Date?
+public struct RiskMetrics: Codable {
+    var riskLevelValue: Double
+    var leastRecentSignificantExposureDate: Date?
+    var mostRecentSignificantExposureDate: Date?
 }
