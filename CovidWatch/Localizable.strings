@@ -63,6 +63,18 @@ All strings for the project, separated for localization.
 /* Title */
 "HOW_IT_WORKS_TITLE" = "How It Works";
 
+/* Button */
+"HOW_IT_WORKS_PAGE_CONTROL_PREVIOUS_BUTTON_ACCESSIBILITY_LABEL" = "Previous";
+
+/* Message */
+"HOW_IT_WORKS_PAGE_CONTROL_PREVIOUS_BUTTON_ACCESSIBILITY_HINT" = "Navigates to previous page";
+
+/* Button */
+"HOW_IT_WORKS_PAGE_CONTROL_NEXT_BUTTON_ACCESSIBILITY_LABEL" = "Next";
+
+/* Message */
+"HOW_IT_WORKS_PAGE_CONTROL_NEXT_BUTTON_ACCESSIBILITY_HINT" = "Navigates to next page";
+
 // ## HOW IT WORKS 0
 
 /* Title */
