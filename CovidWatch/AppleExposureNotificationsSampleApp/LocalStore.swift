@@ -9,7 +9,7 @@ import Foundation
 import ExposureNotification
 import SwiftUI
 
-public struct CodableExposureInfo: Codable, Equatable {
+public struct CodableExposureInfo: Codable, Equatable, Hashable {
     let attenuationDurations: [TimeInterval]
     let attenuationValue: ENAttenuation
     let date: Date

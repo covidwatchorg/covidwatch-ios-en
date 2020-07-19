@@ -65,60 +65,75 @@ struct PastDiagnoses: View {
 
                             if diagnosis == self.selectedDiagnosis {
 
-                                VStack(alignment: .leading, spacing: 0) {
+                                ZStack(alignment: .bottom) {
 
-                                    VStack(alignment: .leading, spacing: 5) {
-                                        HStack {
-                                            Text("SYMPTOMS_START_DATE")
-                                                .font(.custom("Montserrat-Semibold", size: 13))
+                                    ZStack(alignment: .top) {
+                                        VStack(alignment: .leading, spacing: 0) {
 
-                                            Text(verbatim: self.selectedDiagnosis?.symptomsStartDate == nil ? NSLocalizedString("N/A", comment: "") : DateFormatter.localizedString(from: self.selectedDiagnosis!.symptomsStartDate!, dateStyle: .medium, timeStyle: .none))
-                                                .font(.custom("Montserrat-Regular", size: 13))
+                                            VStack(alignment: .leading, spacing: 5) {
+                                                HStack {
+                                                    Text("SYMPTOMS_START_DATE")
+                                                        .font(.custom("Montserrat-Semibold", size: 13))
+
+                                                    Text(verbatim: self.selectedDiagnosis?.symptomsStartDate == nil ? NSLocalizedString("N/A", comment: "") : DateFormatter.localizedString(from: self.selectedDiagnosis!.symptomsStartDate!, dateStyle: .medium, timeStyle: .none))
+                                                        .font(.custom("Montserrat-Regular", size: 13))
+                                                }
+
+                                                HStack {
+                                                    Text("POSSIBLE_INFECTION_DATE")
+                                                        .font(.custom("Montserrat-Semibold", size: 13))
+
+                                                    Text(verbatim: self.selectedDiagnosis?.possibleInfectionDate == nil ? NSLocalizedString("N/A", comment: "") : DateFormatter.localizedString(from: self.selectedDiagnosis!.possibleInfectionDate!, dateStyle: .medium, timeStyle: .none))
+                                                        .font(.custom("Montserrat-Regular", size: 13))
+                                                }
+
+                                                HStack {
+                                                    Text("TEST_DATE")
+                                                        .font(.custom("Montserrat-Semibold", size: 13))
+
+                                                    Text(verbatim: self.selectedDiagnosis?.testDate == nil ? NSLocalizedString("N/A", comment: "") : DateFormatter.localizedString(from: self.selectedDiagnosis!.testDate!, dateStyle: .medium, timeStyle: .none))
+                                                        .font(.custom("Montserrat-Regular", size: 13))
+                                                }
+                                            }
+                                            .accessibilityElement(children: .combine)
+
+                                            Spacer().frame(height: 2 * .standardSpacing)
+
+                                            Button(action: {
+
+                                                let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+                                                actionSheet.addAction(UIAlertAction(title: NSLocalizedString("DELETE_DIAGNOSIS", comment: ""), style: .destructive, handler: { _ in
+
+                                                    self.selectedDiagnosis = nil
+                                                    self.localStore.diagnoses.removeAll(where: ({ $0 == diagnosis }))
+
+                                                }))
+                                                actionSheet.addAction(UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""), style: .cancel, handler: nil))
+
+                                                UIApplication.shared.topViewController?.present(actionSheet, animated: true)
+
+                                            }) {
+                                                Text("DELETE_DIAGNOSIS")
+                                                    .font(.custom("Montserrat-Semibold", size: 13))
+                                            }
+
                                         }
+                                        .padding(.vertical, 2 * .standardSpacing)
+                                        .padding(.horizontal, 4 * .standardSpacing)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .background(Color(UIColor.systemGray6))
 
-                                        HStack {
-                                            Text("POSSIBLE_INFECTION_DATE")
-                                                .font(.custom("Montserrat-Semibold", size: 13))
-
-                                            Text(verbatim: self.selectedDiagnosis?.possibleInfectionDate == nil ? NSLocalizedString("N/A", comment: "") : DateFormatter.localizedString(from: self.selectedDiagnosis!.possibleInfectionDate!, dateStyle: .medium, timeStyle: .none))
-                                                .font(.custom("Montserrat-Regular", size: 13))
-                                        }
-
-                                        HStack {
-                                            Text("TEST_DATE")
-                                                .font(.custom("Montserrat-Semibold", size: 13))
-
-                                            Text(verbatim: self.selectedDiagnosis?.testDate == nil ? NSLocalizedString("N/A", comment: "") : DateFormatter.localizedString(from: self.selectedDiagnosis!.testDate!, dateStyle: .medium, timeStyle: .none))
-                                                .font(.custom("Montserrat-Regular", size: 13))
-                                        }
+                                        Image("Expandable Row Top Gradient")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .accessibility(hidden: true)
                                     }
-                                    .accessibilityElement(children: .combine)
 
-                                    Spacer().frame(height: 2 * .standardSpacing)
-
-                                    Button(action: {
-
-                                        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-                                        actionSheet.addAction(UIAlertAction(title: NSLocalizedString("DELETE_DIAGNOSIS", comment: ""), style: .destructive, handler: { _ in
-
-                                            self.selectedDiagnosis = nil
-                                            self.localStore.diagnoses.removeAll(where: ({ $0 == diagnosis }))
-
-                                        }))
-                                        actionSheet.addAction(UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""), style: .cancel, handler: nil))
-
-                                        UIApplication.shared.topViewController?.present(actionSheet, animated: true)
-
-                                    }) {
-                                        Text("DELETE_DIAGNOSIS")
-                                            .font(.custom("Montserrat-Semibold", size: 13))
-                                    }
-
+                                    Image("Expandable Row Bottom Gradient")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .accessibility(hidden: true)
                                 }
-                                .padding(.vertical, 2 * .standardSpacing)
-                                .padding(.horizontal, 4 * .standardSpacing)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .background(Color(UIColor.systemGray6))
                             }
                         }
                     }

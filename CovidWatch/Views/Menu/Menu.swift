@@ -76,6 +76,8 @@ struct Menu: View {
                                 }.modifier(MenuTitleText())
                             }
 
+                            Divider()
+
                             Spacer().frame(height: 4 * .standardSpacing)
 
                             #endif

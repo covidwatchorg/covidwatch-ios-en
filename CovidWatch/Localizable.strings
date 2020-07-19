@@ -327,7 +327,7 @@ All strings for the project, separated for localization.
 "EXPOSURE_NOTIFICATION_STATUS_UNKOWN_MESSAGE" = "Status of Exposure Notification is unknown.";
 
 /* Message */
-"EXPOSURE_NOTIFICATION_STATUS_ACTIVE_MESSAGE" = "Exposure Notification is active on the system.";
+"EXPOSURE_NOTIFICATION_STATUS_ACTIVE_MESSAGE" = "You will be notified of possible exposures to COVID-19. We recommend that this setting remain on until the pandemic is over.";
 
 /* Message */
 "EXPOSURE_NOTIFICATION_STATUS_DISABLED_MESSAGE" = "Exposure Notification is disabled.";
@@ -399,6 +399,21 @@ All strings for the project, separated for localization.
 
 /* Title */
 "ATTENUATION_DURATIONS_TITLE" = "Attenuation Durations";
+
+/* Title */
+"EXPOSURE_INFO_DETAIL_EXPOSURE_DATA" = "Exposure Info";
+
+/* Button */
+"EXPOSURE_INFO_DETAIL_LEARN_MORE" = "Learn More";
+
+/* Title */
+"EXPOSURE_INFO_DETAIL_ATTENUATION_DURATIONS_TITLE" = "• Attenuation Durations: ";
+
+/* Title */
+"EXPOSURE_INFO_DETAIL_TRANMISSION_RISK_LEVEL_TITLE" = "• Transmission Risk Level: ";
+
+/* Title */
+"EXPOSURE_INFO_DETAIL_TOTAL_RISK_SCORE_TITLE" = "• Total Risk Score: ";
 
 /* Title */
 "ATTENUATION_DURATION_THRESHOLDS_TITLE" = "Attenuation Thresholds";

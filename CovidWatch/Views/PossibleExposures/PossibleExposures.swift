@@ -19,6 +19,24 @@ struct PossibleExposures: View {
         return dateFormatter
     }()
 
+    let durationFormatter: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.minute]
+        formatter.unitsStyle = .abbreviated
+        return formatter
+    }()
+
+    func duration(for timeInterval: TimeInterval, unitStyle: DateComponentsFormatter.UnitsStyle = .abbreviated) -> String {
+        durationFormatter.unitsStyle = unitStyle
+        guard let string = durationFormatter.string(from: timeInterval) else {
+            return ""
+        }
+        if timeInterval == 1800 {
+            return "≥" + string
+        }
+        return string
+    }
+
     var body: some View {
 
         ZStack(alignment: .top) {
@@ -86,15 +104,18 @@ struct PossibleExposures: View {
                             .padding(.top, .standardSpacing)
                             .padding(.horizontal, 2 * .standardSpacing)
                             .background(LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.4), Color(red: 0.263, green: 0.769, blue: 0.851, opacity: 1)]), startPoint: .top, endPoint: .bottom))
-                        } else {
-                            ForEach(0..<self.localStore.exposuresInfos.count) { index in
 
-                                Group {
+                        } else {
+
+                            ForEach(self.localStore.exposuresInfos, id: \.self) { exposureInfo in
+
+                                VStack(spacing: 0) {
+
                                     Button(action: {
-                                        if self.selectedExposure == self.localStore.exposuresInfos[index] {
+                                        if self.selectedExposure == exposureInfo {
                                             self.selectedExposure = nil
                                         } else {
-                                            self.selectedExposure = self.localStore.exposuresInfos[index]
+                                            self.selectedExposure = exposureInfo
                                         }
                                     }) {
                                         VStack(spacing: 0) {
@@ -102,30 +123,97 @@ struct PossibleExposures: View {
                                             Divider()
 
                                             PossibleExposureRow(
-                                                exposure: self.localStore.exposuresInfos[index],
-                                                isExpanded: self.localStore.exposuresInfos[index] == self.selectedExposure
+                                                exposure: exposureInfo,
+                                                isExpanded: exposureInfo == self.selectedExposure
                                             ).frame(minHeight: 54)
                                                 .padding(.horizontal, 2 * .standardSpacing)
 
-                                            // Is Expanded?
-                                            if self.localStore.exposuresInfos[index] == self.selectedExposure {
-
-                                                HStack {
-                                                    PossibleExposureTable(exposure: self.localStore.exposuresInfos[index])
-                                                }
-                                                .frame(maxWidth: .infinity, alignment: .leading)
-                                                .background(Color(UIColor.systemGray6))
-
-                                                Divider()
-                                            } else {
+                                            if exposureInfo == self.selectedExposure {
                                                 Divider()
                                             }
                                         }
                                     }
                                     .accessibility(hint: Text("SHOWS_MORE_INFO_ACCESSIBILITY_HINT"))
                                     .frame(minHeight: 54)
+
+                                    if exposureInfo == self.selectedExposure {
+
+                                        ZStack(alignment: .bottom) {
+
+                                            ZStack(alignment: .top) {
+
+                                                VStack(alignment: .leading, spacing: 0) {
+
+                                                    Text("EXPOSURE_INFO_DETAIL_EXPOSURE_DATA")
+                                                        .font(.custom("Montserrat-Semibold", size: 13))
+
+                                                    Spacer().frame(height: .standardSpacing)
+
+                                                    VStack(alignment: .leading, spacing: 5) {
+                                                        HStack {
+                                                            Text("EXPOSURE_INFO_DETAIL_ATTENUATION_DURATIONS_TITLE")
+                                                                .font(.custom("Montserrat-Medium", size: 12))
+
+                                                            Text(verbatim: "\(exposureInfo.attenuationDurations.map({ self.duration(for: $0)}).joined(separator: ", "))")
+                                                                .accessibility(label: Text(verbatim: exposureInfo.attenuationDurations.map({ self.duration(for: $0, unitStyle: .spellOut)}).joined(separator: ", ")))
+                                                                .font(.custom("Montserrat-Medium", size: 12))
+                                                        }
+
+                                                        HStack {
+                                                            Text("EXPOSURE_INFO_DETAIL_TRANMISSION_RISK_LEVEL_TITLE")
+                                                                .font(.custom("Montserrat-Medium", size: 12))
+
+                                                            Text(verbatim: String(exposureInfo.transmissionRiskLevel))
+                                                                .font(.custom("Montserrat-Medium", size: 12))
+                                                        }
+
+                                                        HStack {
+                                                            Text("EXPOSURE_INFO_DETAIL_TOTAL_RISK_SCORE_TITLE")
+                                                                .font(.custom("Montserrat-Medium", size: 12))
+
+                                                            Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("TOTAL_RISK_SCORE_VALUE", comment: ""), NSNumber(value: self.selectedExposure!.totalRiskScore)))
+                                                                .font(.custom("Montserrat-Medium", size: 12))
+                                                        }
+                                                    }
+                                                    .accessibilityElement(children: .combine)
+
+                                                    Spacer().frame(height: 2 * .standardSpacing)
+
+                                                    Button(action: {
+
+                                                        guard let url = URL(string: "https://covidwatch.org/faq"),
+                                                            UIApplication.shared.canOpenURL(url) else {
+                                                                return
+                                                        }
+                                                        UIApplication.shared.open(url, completionHandler: nil)
+
+                                                    }) {
+                                                        Text("EXPOSURE_INFO_DETAIL_LEARN_MORE")
+                                                            .font(.custom("Montserrat-Semibold", size: 13))
+                                                    }
+
+                                                }
+                                                .padding(.vertical, 2 * .standardSpacing)
+                                                .padding(.horizontal, 2 * .standardSpacing)
+                                                .frame(maxWidth: .infinity, alignment: .leading)
+                                                .background(Color(UIColor.systemGray6))
+
+                                                Image("Expandable Row Top Gradient")
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .accessibility(hidden: true)
+                                            }
+
+                                            Image("Expandable Row Bottom Gradient")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .accessibility(hidden: true)
+                                        }
+                                    }
                                 }
                             }
+
+                            Divider()
                         }
 
                         Spacer(minLength: 2 * .standardSpacing)
