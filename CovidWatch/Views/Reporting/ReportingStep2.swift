@@ -28,7 +28,11 @@ struct ReportingStep2: View {
 
     @State var testStartDateString: String = ""
 
-    var rkManager = RKManager(calendar: Calendar.current, minimumDate: Date()-14*24*60*60, maximumDate: Date(), mode: 0)
+    var rkManager: RKManager = {
+        let manager = RKManager(calendar: Calendar.current, minimumDate: Date()-14*24*60*60, maximumDate: Date(), mode: 0)
+        manager.colors.selectedBackColor = Color("Tint Color")
+        return manager
+    }()
 
     let selectedDiagnosisIndex: Int
 
@@ -195,7 +199,7 @@ struct ReportingStep2: View {
                                         return
                                     }
 
-                                    self.localStore.diagnoses[self.selectedDiagnosisIndex].isShared = true
+                                    self.localStore.diagnoses[self.selectedDiagnosisIndex].isSubmitted = true
 
                                     withAnimation {
                                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -406,7 +410,7 @@ struct ReportingStep2: View {
                 }
                 .onDisappear {
                     self.exposedStartDateString = self.rkManager.selectedDate == nil ? "" : self.dateFormatter.string(from: self.rkManager.selectedDate)
-                    self.localStore.diagnoses[self.selectedDiagnosisIndex].exposedStartDate = self.rkManager.selectedDate
+                    self.localStore.diagnoses[self.selectedDiagnosisIndex].possibleInfectionDate = self.rkManager.selectedDate
                 }
             })
 
@@ -420,7 +424,7 @@ struct ReportingStep2: View {
                         if self.dontKnowExposedDate {
                             self.rkManager.selectedDate = nil
                             self.exposedStartDateString = ""
-                            self.localStore.diagnoses[self.selectedDiagnosisIndex].exposedStartDate = nil
+                            self.localStore.diagnoses[self.selectedDiagnosisIndex].possibleInfectionDate = nil
                         }
                     }
                 }) {

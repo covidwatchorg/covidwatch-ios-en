@@ -22,13 +22,16 @@ public struct CodableExposureInfo: Codable, Equatable {
     #endif
 }
 
-public struct Diagnosis: Codable {
+public struct Diagnosis: Codable, Equatable {
     public var id = UUID()                // A unique identifier for this test result used internally
     public var isAdded = false            // Whether the user completed the add diagnosis flow for this test result
+    public var submitDate: Date?
+    public var isSubmitted = false { // Whether diagnosis keys were shared with the Health Authority for the purpose of notifying others
+        didSet { self.submitDate = Date() }
+    }
     public var testDate: Date?  // The date the test was administered
-    public var isShared = false           // Whether diagnosis keys were shared with the Health Authority for the purpose of notifying others
     public var symptomsStartDate: Date?
-    public var exposedStartDate: Date?
+    public var possibleInfectionDate: Date?
     public var isVerified = false         // Whether the diagnosis was verified by the Health Authority for the purpose of notifying others
     public var verificationCode: String?  // The 8-digit verification code issued by the Verification Server
     public var longTermToken: String?     // The 24h long-term token issued by the Verification Server

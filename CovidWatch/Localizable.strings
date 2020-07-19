@@ -269,7 +269,10 @@ All strings for the project, separated for localization.
 "MENU_POSSIBLE_EXPOSURES_TITLE" = "Possible COVID-19 Exposures";
 
 /* Title */
-"MENU_NOTIFY_OTHERS" = "Have a Diagnosis?";
+"MENU_NOTIFY_OTHERS" = "Have a Positive Diagnosis?";
+
+/* Title */
+"MENU_VIEW_PAST_DIAGNOSES_TITLE" = "View Past Diagnoses";
 
 /* Title */
 "MENU_CHANGE_REGION_TITLE" = "Change Region";
@@ -284,13 +287,36 @@ All strings for the project, separated for localization.
 "FAQ_TITLE" = "FAQ";
 
 /* Title */
-"TEMS_OF_USE_TITLE" = "Terms of Use";
+"TEMS_OF_SERVICE_TITLE" = "Terms of Service";
 
 /* Title */
 "PRIVACY_POLICY_TITLE" = "Privacy Policy";
 
 /* Title */
 "GET_SUPPORT_TITLE" = "Get Support";
+
+// # PAST DIAGNOSES
+
+/* Title */
+"PAST_DIAGNOSES_TITLE" = "Past Diagnoses";
+
+/* Title */
+"VERIFIED_POSITIVE_TITLE" = "Verified COVID-19 Positive";
+
+/* Title */
+"SUBMIT_DATE" = "Submit Date: ";
+
+/* Title */
+"SYMPTOMS_START_DATE" = "• Symptoms Start Date: ";
+
+/* Title */
+"POSSIBLE_INFECTION_DATE" = "• Possible Infection Date: ";
+
+/* Title */
+"TEST_DATE" = "• Test Date: ";
+
+/* Button */
+"DELETE_DIAGNOSIS" = "Delete Diagnosis";
 
 // # POSSIBLE EXPOSURES
 

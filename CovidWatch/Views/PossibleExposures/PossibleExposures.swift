@@ -99,13 +99,13 @@ struct PossibleExposures: View {
                                     }) {
                                         VStack(spacing: 0) {
 
+                                            Divider()
+
                                             PossibleExposureRow(
                                                 exposure: self.localStore.exposuresInfos[index],
                                                 isExpanded: self.localStore.exposuresInfos[index] == self.selectedExposure
                                             ).frame(minHeight: 54)
                                                 .padding(.horizontal, 2 * .standardSpacing)
-
-                                            Divider()
 
                                             // Is Expanded?
                                             if self.localStore.exposuresInfos[index] == self.selectedExposure {
@@ -116,6 +116,8 @@ struct PossibleExposures: View {
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                                 .background(Color(UIColor.systemGray6))
 
+                                                Divider()
+                                            } else {
                                                 Divider()
                                             }
                                         }

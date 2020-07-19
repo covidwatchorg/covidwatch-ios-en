@@ -19,6 +19,8 @@ struct Menu: View {
 
     @State var isShowingRegionSelection: Bool = false
 
+    @State var isShowingPastDiagnoses: Bool = false
+
     init() {
         UITableView.appearance().backgroundColor = .systemBackground
     }
@@ -74,7 +76,7 @@ struct Menu: View {
                                 }.modifier(MenuTitleText())
                             }
 
-                            Divider()
+                            Spacer().frame(height: 4 * .standardSpacing)
 
                             #endif
 
@@ -110,8 +112,6 @@ struct Menu: View {
                             #endif
                         }
 
-                        Divider()
-
                         Button(action: {
                             self.isShowingPossibleExposures.toggle()
                         }) {
@@ -129,18 +129,38 @@ struct Menu: View {
                                 .environmentObject(self.localStore)
                         }
 
-                        Divider()
+                        Group {
+                            Divider()
 
-                        Button(action: {
-                            self.isShowingNotifyOthers.toggle()
-                        }) {
-                            HStack {
-                                Text("MENU_NOTIFY_OTHERS")
-                            }.modifier(MenuTitleText())
+                            Button(action: {
+                                self.isShowingNotifyOthers.toggle()
+                            }) {
+                                HStack {
+                                    Text("MENU_NOTIFY_OTHERS")
+                                }.modifier(MenuTitleText())
+                            }
+                            .sheet(isPresented: $isShowingNotifyOthers) {
+                                ReportingStep1()
+                                    .environmentObject(self.localStore)
+                            }
                         }
-                        .sheet(isPresented: $isShowingNotifyOthers) {
-                            ReportingStep1()
-                                .environmentObject(self.localStore)
+
+                        if !self.localStore.diagnoses.isEmpty {
+                            Group {
+                                Divider()
+
+                                Button(action: {
+                                    self.isShowingPastDiagnoses.toggle()
+                                }) {
+                                    HStack {
+                                        Text("MENU_VIEW_PAST_DIAGNOSES_TITLE")
+                                    }.modifier(MenuTitleText())
+                                }
+                                .sheet(isPresented: $isShowingPastDiagnoses) {
+                                    PastDiagnoses()
+                                        .environmentObject(self.localStore)
+                                }
+                            }
                         }
 
                         Group {
@@ -175,6 +195,8 @@ struct Menu: View {
                         }
 
                         Divider()
+
+                        Spacer().frame(height: 4 * .standardSpacing)
 
                         Button(action: {
                             guard let url = URL(string: "https://www.cdc.gov/coronavirus/2019-ncov/index.html") else { return }
@@ -231,7 +253,7 @@ struct Menu: View {
                                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
                             }) {
                                 HStack {
-                                    Text("TEMS_OF_USE_TITLE")
+                                    Text("TEMS_OF_SERVICE_TITLE")
                                     Spacer()
                                     Image("Menu Action")
                                         .accessibility(hidden: true)

@@ -88,10 +88,7 @@ struct ReportingStep1: View {
 
                     let diagnosis = Diagnosis(
                         id: UUID(),
-                        isAdded: false,
-                        testDate: Date(),
-                        isShared: false,
-                        isVerified: false,
+                        isSubmitted: false,
                         testType: .testTypeConfirmed
                     )
                     self.localStore.diagnoses.insert(diagnosis, at: 0)
