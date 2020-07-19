@@ -12,6 +12,7 @@ struct PageViewController: UIViewControllerRepresentable {
     var controllers: [UIViewController]
     let loops: Bool = false
     @Binding var currentPage: Int
+    @Binding var forwardAnimation: Bool
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -29,7 +30,7 @@ struct PageViewController: UIViewControllerRepresentable {
 
     func updateUIViewController(_ pageViewController: UIPageViewController, context: Context) {
         pageViewController.setViewControllers(
-            [controllers[currentPage]], direction: .forward, animated: true)
+            [controllers[currentPage]], direction: forwardAnimation ? .forward : .reverse, animated: true)
     }
 
     class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
