@@ -39,7 +39,6 @@ struct Menu: View {
                         Group {
 
                             #if DEBUG
-                            Divider()
 
                             Button(action: {
                                 _ = ExposureManager.shared.detectExposures(notifyUserOnError: true) { _ in
