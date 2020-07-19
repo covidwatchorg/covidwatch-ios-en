@@ -3,7 +3,7 @@
 //  CovidWatch-California-Dev
 //
 //  Created by James Petrie on 2020-07-18.
-//  Copyright © 2020 Covid Watch. All rights reserved.
+//  
 //
 
 import Foundation
