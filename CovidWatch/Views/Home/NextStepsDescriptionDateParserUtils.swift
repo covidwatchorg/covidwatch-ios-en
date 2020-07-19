@@ -10,7 +10,7 @@ import Foundation
 
 func getDateString(date: Date) -> String {
     let formatter = DateFormatter()
-    formatter.dateFormat = "EEEE, MMMM d"
+    formatter.dateStyle = .medium
     return(formatter.string(from: date))
 }
 

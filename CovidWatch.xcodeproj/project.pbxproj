@@ -502,10 +502,10 @@
 		2DD7B49A245F66F2001B30F0 /* LayoutConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD7B499245F66F2001B30F0 /* LayoutConstants.swift */; };
 		2DFEED072476AD4200D2C620 /* Data+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFEED062476AD4200D2C620 /* Data+Random.swift */; };
 		2DFEED0A2476BD0400D2C620 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 2DFEED092476BD0400D2C620 /* ZIPFoundation */; };
-		717A17FF24C30F8A0018F2F2 /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717A17FE24C30F8A0018F2F2 /* DateParser.swift */; };
-		717A180024C30F8A0018F2F2 /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717A17FE24C30F8A0018F2F2 /* DateParser.swift */; };
-		717A180124C30F8A0018F2F2 /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717A17FE24C30F8A0018F2F2 /* DateParser.swift */; };
-		717A180224C30F8A0018F2F2 /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717A17FE24C30F8A0018F2F2 /* DateParser.swift */; };
+		717A17FF24C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717A17FE24C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift */; };
+		717A180024C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717A17FE24C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift */; };
+		717A180124C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717A17FE24C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift */; };
+		717A180224C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717A17FE24C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -668,7 +668,7 @@
 		2DD7B499245F66F2001B30F0 /* LayoutConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutConstants.swift; sourceTree = "<group>"; };
 		2DFEED05247695CA00D2C620 /* Dev.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Dev.entitlements; sourceTree = "<group>"; };
 		2DFEED062476AD4200D2C620 /* Data+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Random.swift"; sourceTree = "<group>"; };
-		717A17FE24C30F8A0018F2F2 /* DateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
+		717A17FE24C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextStepsDescriptionDateParserUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -835,7 +835,6 @@
 				2D46AA4B2465E1190003936C /* UIWindow+ViewControllerUtility.swift */,
 				2D46AA4C2465E1190003936C /* UIViewController+ErrorPresenting.swift */,
 				2DFEED062476AD4200D2C620 /* Data+Random.swift */,
-				717A17FE24C30F8A0018F2F2 /* DateParser.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -948,6 +947,7 @@
 				2D74E4682465D428002057B9 /* PossibleExposureSummary.swift */,
 				2D39489F248E548E001766A4 /* PossibleExposureSummaryValueViewModifier.swift */,
 				2D92B6D124BB3F6B00003BDD /* NextSteps.swift */,
+				717A17FE24C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1490,7 +1490,7 @@
 			files = (
 				2D2359E624AC651300C8FD56 /* PossibleExposureSummary.swift in Sources */,
 				2D2359E724AC651300C8FD56 /* ENRiskScore+QualitativeLevels.swift in Sources */,
-				717A180224C30F8A0018F2F2 /* DateParser.swift in Sources */,
+				717A180224C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift in Sources */,
 				2D2359E824AC651300C8FD56 /* StandardTitleTextViewModifier.swift in Sources */,
 				2D4DE8AF24C0B9260056F8D2 /* RKWeekdayHeader.swift in Sources */,
 				2D2359E924AC651300C8FD56 /* Welcome.swift in Sources */,
@@ -1652,7 +1652,7 @@
 				2D72546524A35E92003E5914 /* ApplicationController.swift in Sources */,
 				2D72546624A35E92003E5914 /* AppDelegate+UserNotificationCenter.swift in Sources */,
 				2D72546724A35E92003E5914 /* PossibleExposureTable.swift in Sources */,
-				717A180124C30F8A0018F2F2 /* DateParser.swift in Sources */,
+				717A180124C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift in Sources */,
 				2D72546824A35E92003E5914 /* LocalStore.swift in Sources */,
 				2D72546924A35E92003E5914 /* HowItWorks3.swift in Sources */,
 				2D4DE89E24C0B9260056F8D2 /* RKMonth.swift in Sources */,
@@ -1701,7 +1701,7 @@
 			files = (
 				2D8FE69C24A33B0100456875 /* PossibleExposureSummary.swift in Sources */,
 				2D8FE69D24A33B0100456875 /* ENRiskScore+QualitativeLevels.swift in Sources */,
-				717A180024C30F8A0018F2F2 /* DateParser.swift in Sources */,
+				717A180024C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift in Sources */,
 				2D8FE69E24A33B0100456875 /* StandardTitleTextViewModifier.swift in Sources */,
 				2D4DE8AD24C0B9260056F8D2 /* RKWeekdayHeader.swift in Sources */,
 				2D8FE69F24A33B0100456875 /* Welcome.swift in Sources */,
@@ -1805,7 +1805,7 @@
 			files = (
 				2D74E4692465D429002057B9 /* PossibleExposureSummary.swift in Sources */,
 				2D7254B024A90DD6003E5914 /* ApplicationController.swift in Sources */,
-				717A17FF24C30F8A0018F2F2 /* DateParser.swift in Sources */,
+				717A17FF24C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift in Sources */,
 				2D081A3824B8B2CD00506164 /* RegionSelection.swift in Sources */,
 				2D3948A2248E6354001766A4 /* ENRiskScore+QualitativeLevels.swift in Sources */,
 				2D4DE8AC24C0B9260056F8D2 /* RKWeekdayHeader.swift in Sources */,

@@ -73,6 +73,7 @@ public class Persisted<Value: Codable> {
         }
     }
 }
+
 public class LocalStore: ObservableObject {
 
     public static let shared = LocalStore()
