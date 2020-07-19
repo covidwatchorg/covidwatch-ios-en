@@ -32,9 +32,9 @@ struct PageView<Page: View>: View {
                         .accessibility(hint: Text("HOW_IT_WORKS_PAGE_CONTROL_PREVIOUS_BUTTON_ACCESSIBILITY_HINT"))
                         .padding(.standardSpacing)
                 }
-                Spacer().frame(width: 74)
+                Spacer().frame(width: 66)
                 PageControl(numberOfPages: viewControllers.count, currentPage: $currentPage)
-                Spacer().frame(width: 74)
+                Spacer().frame(width: 66)
                 Button(action: {
                     if self.currentPage < self.viewControllers.count - 1 {
                         self.currentPage += 1
