@@ -182,9 +182,9 @@ class ApplicationController: NSObject {
         let possibleExposuresPath = cachesDirectory.appendingPathComponent("\(fileName).json")
         do {
             let json = try JSONEncoder().encode(
-                ExposureConfigurationWithExposures(
-                    exposureConfiguration: LocalStore.shared.region.exposureConfiguration,
-                    possibleExposures: LocalStore.shared.exposuresInfos
+                PossibleExposureInfosExport(
+                    possibleExposureInfos: LocalStore.shared.exposuresInfos,
+                    region: LocalStore.shared.region
                 )
             )
             try json.write(to: possibleExposuresPath)
