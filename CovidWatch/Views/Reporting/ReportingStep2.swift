@@ -119,184 +119,186 @@ struct ReportingStep2: View {
                     self.testStart
                 }
 
-                Button(action: {
+                if self.isAsymptomatic || !self.symptomsStartDateString.isEmpty {
+                    Button(action: {
 
-                    // Bypassing public health authority verification can be done:
-                    // - on the app side, by configuring the app's info plist.
-                    // - on the key server side, by configuring its database / authorizedapp table for this particular app.
-                    let bypassPublicHealthAuthorityVerification = Bundle.main.infoDictionary?[.bypassPublicHealthAuthorityVerification] as? Bool ?? false
+                        // Bypassing public health authority verification can be done:
+                        // - on the app side, by configuring the app's info plist.
+                        // - on the key server side, by configuring its database / authorizedapp table for this particular app.
+                        let bypassPublicHealthAuthorityVerification = Bundle.main.infoDictionary?[.bypassPublicHealthAuthorityVerification] as? Bool ?? false
 
-                    self.isSubmittingDiagnosis = true
+                        self.isSubmittingDiagnosis = true
 
-                    let errorHandler: (Error) -> Void = { error in
-                        self.isSubmittingDiagnosis = false
-                        UIApplication.shared.topViewController?.present(
-                            error,
-                            animated: true,
-                            completion: nil
-                        )
-                    }
+                        let errorHandler: (Error) -> Void = { error in
+                            self.isSubmittingDiagnosis = false
+                            UIApplication.shared.topViewController?.present(
+                                error,
+                                animated: true,
+                                completion: nil
+                            )
+                        }
 
-                    if self.localStore.diagnoses[self.selectedDiagnosisIndex].verificationCode != self.verificationCode {
-                        self.localStore.diagnoses[self.selectedDiagnosisIndex].isVerified = false
-                    }
-                    self.localStore.diagnoses[self.selectedDiagnosisIndex].verificationCode = self.verificationCode
-                    self.localStore.diagnoses[self.selectedDiagnosisIndex].isAdded = true
+                        if self.localStore.diagnoses[self.selectedDiagnosisIndex].verificationCode != self.verificationCode {
+                            self.localStore.diagnoses[self.selectedDiagnosisIndex].isVerified = false
+                        }
+                        self.localStore.diagnoses[self.selectedDiagnosisIndex].verificationCode = self.verificationCode
+                        self.localStore.diagnoses[self.selectedDiagnosisIndex].isAdded = true
 
-                    let actionAfterCodeVerification = {
+                        let actionAfterCodeVerification = {
 
-                        // To be able to calculate the hmac for the diagnosis keys, we need to request them now.
-                        ExposureManager.shared.getDiagnosisKeys { (keys, error) in
-                            if let error = error {
-                                errorHandler(error)
-                                return
-                            }
-
-                            guard var keys = keys, !keys.isEmpty else {
-                                errorHandler(ENError(.internal))
-                                return
-                            }
-
-                            // Before uploading the diagnosis keys to the key server, set their:
-                            // - Tranmission Risk Level (v1.0 and above)
-                            // - Days Since Onset (v1.5 and above)
-                            // - Report Type (v1.5 and above)
-
-                            // Set tranmission risk level based on symptoms start date
-                            keys.forEach({ $0.transmissionRiskLevel = 6 })
-
-                            if let riskModel = ExposureManager.shared.riskModel {
-
-                                keys.forEach {
-                                    $0.transmissionRiskLevel = riskModel.computeTransmissionRiskLevel(
-                                        forTemporaryExposureKey: $0,
-                                        symptomsStartDate: self.localStore.diagnoses[self.selectedDiagnosisIndex].symptomsStartDate
-                                    )
-                                }
-
-                                // Filter out keys if needed, to optimize server storage.
-                                if !self.localStore.diagnoses[self.selectedDiagnosisIndex].shareZeroTranmissionRiskLevelDiagnosisKeys {
-                                    keys = keys.filter({ $0.transmissionRiskLevel != 0 })
-                                }
-                            }
-
-                            let actionAfterVerificationCertificateRequest = {
-
-                                // Step 8 of https://developers.google.com/android/exposure-notifications/verification-system
-                                Server.shared.postDiagnosisKeys(
-                                    keys,
-                                    verificationPayload: self.localStore.diagnoses[self.selectedDiagnosisIndex].verificationCertificate,
-                                    hmacKey: self.localStore.diagnoses[self.selectedDiagnosisIndex].hmacKey
-                                ) { error in
-                                    // Step 9
-                                    // Since this is the last step, ensure `isSubmittingDiagnosis` is set to false.
-                                    defer {
-                                        self.isSubmittingDiagnosis = false
-                                    }
-
-                                    if let error = error {
-                                        errorHandler(error)
-                                        return
-                                    }
-
-                                    self.localStore.diagnoses[self.selectedDiagnosisIndex].isSubmitted = true
-
-                                    withAnimation {
-                                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                                        self.isShowingNextStep = true
-                                    }
-                                }
-                            }
-
-                            if !bypassPublicHealthAuthorityVerification {
-
-                                do {
-                                    let hmac = try ENVerificationUtils.calculateExposureKeyHMAC(
-                                        forTemporaryExposureKeys: keys,
-                                        secret: self.localStore.diagnoses[self.selectedDiagnosisIndex].hmacKey
-                                    ).base64EncodedString()
-                                    guard let longTermToken = self.localStore.diagnoses[self.selectedDiagnosisIndex].longTermToken else {
-                                        // Shouldn't get here...
-                                        self.isSubmittingDiagnosis = false
-                                        return
-                                    }
-                                    // Step 6 of https://developers.google.com/android/exposure-notifications/verification-system
-                                    Server.shared.getVerificationCertificate(forLongTermToken: longTermToken, hmac: hmac) { result in
-                                        // Step 7
-                                        switch result {
-                                            case let .success(codableVerificationCertificateResponse):
-
-                                                self.localStore.diagnoses[self.selectedDiagnosisIndex].verificationCertificate = codableVerificationCertificateResponse.certificate
-
-                                                actionAfterVerificationCertificateRequest()
-
-                                            case let .failure(error):
-                                                // Something went wrong. Maybe the long-term token is not valid anymore?
-                                                self.localStore.diagnoses[self.selectedDiagnosisIndex].isVerified = false
-                                                errorHandler(error)
-                                                return
-                                        }
-                                    }
-
-                                } catch {
+                            // To be able to calculate the hmac for the diagnosis keys, we need to request them now.
+                            ExposureManager.shared.getDiagnosisKeys { (keys, error) in
+                                if let error = error {
                                     errorHandler(error)
                                     return
                                 }
-                            } else {
-                                actionAfterVerificationCertificateRequest()
-                            }
 
-                        }
-                    }
+                                guard var keys = keys, !keys.isEmpty else {
+                                    errorHandler(ENError(.internal))
+                                    return
+                                }
 
-                    if !self.localStore.diagnoses[self.selectedDiagnosisIndex].isVerified {
+                                // Before uploading the diagnosis keys to the key server, set their:
+                                // - Tranmission Risk Level (v1.0 and above)
+                                // - Days Since Onset (v1.5 and above)
+                                // - Report Type (v1.5 and above)
 
-                        if bypassPublicHealthAuthorityVerification {
+                                // Set tranmission risk level based on symptoms start date
+                                keys.forEach({ $0.transmissionRiskLevel = 6 })
 
-                            actionAfterCodeVerification()
+                                if let riskModel = ExposureManager.shared.riskModel {
 
-                        } else {
-                            // Step 4 of https://developers.google.com/android/exposure-notifications/verification-system
-                            Server.shared.verifyCode(self.verificationCode) { result in
-                                // Step 5
-                                switch result {
-                                    case let .success(codableVerifyCodeResponse):
+                                    keys.forEach {
+                                        $0.transmissionRiskLevel = riskModel.computeTransmissionRiskLevel(
+                                            forTemporaryExposureKey: $0,
+                                            symptomsStartDate: self.localStore.diagnoses[self.selectedDiagnosisIndex].symptomsStartDate
+                                        )
+                                    }
 
-                                        self.localStore.diagnoses[self.selectedDiagnosisIndex].isVerified = true
-                                        self.localStore.diagnoses[self.selectedDiagnosisIndex].longTermToken = codableVerifyCodeResponse.token
-                                        let formatter = ISO8601DateFormatter()
-                                        formatter.formatOptions = [.withFullDate]
-                                        self.localStore.diagnoses[self.selectedDiagnosisIndex].testDate = formatter.date(from: codableVerifyCodeResponse.testDate) ?? Date()
-                                        self.localStore.diagnoses[self.selectedDiagnosisIndex].testType = codableVerifyCodeResponse.testType
+                                    // Filter out keys if needed, to optimize server storage.
+                                    if !self.localStore.diagnoses[self.selectedDiagnosisIndex].shareZeroTranmissionRiskLevelDiagnosisKeys {
+                                        keys = keys.filter({ $0.transmissionRiskLevel != 0 })
+                                    }
+                                }
 
-                                        actionAfterCodeVerification()
+                                let actionAfterVerificationCertificateRequest = {
 
-                                    case let .failure(error):
+                                    // Step 8 of https://developers.google.com/android/exposure-notifications/verification-system
+                                    Server.shared.postDiagnosisKeys(
+                                        keys,
+                                        verificationPayload: self.localStore.diagnoses[self.selectedDiagnosisIndex].verificationCertificate,
+                                        hmacKey: self.localStore.diagnoses[self.selectedDiagnosisIndex].hmacKey
+                                    ) { error in
+                                        // Step 9
+                                        // Since this is the last step, ensure `isSubmittingDiagnosis` is set to false.
+                                        defer {
+                                            self.isSubmittingDiagnosis = false
+                                        }
+
+                                        if let error = error {
+                                            errorHandler(error)
+                                            return
+                                        }
+
+                                        self.localStore.diagnoses[self.selectedDiagnosisIndex].isSubmitted = true
+
+                                        withAnimation {
+                                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                                            self.isShowingNextStep = true
+                                        }
+                                    }
+                                }
+
+                                if !bypassPublicHealthAuthorityVerification {
+
+                                    do {
+                                        let hmac = try ENVerificationUtils.calculateExposureKeyHMAC(
+                                            forTemporaryExposureKeys: keys,
+                                            secret: self.localStore.diagnoses[self.selectedDiagnosisIndex].hmacKey
+                                        ).base64EncodedString()
+                                        guard let longTermToken = self.localStore.diagnoses[self.selectedDiagnosisIndex].longTermToken else {
+                                            // Shouldn't get here...
+                                            self.isSubmittingDiagnosis = false
+                                            return
+                                        }
+                                        // Step 6 of https://developers.google.com/android/exposure-notifications/verification-system
+                                        Server.shared.getVerificationCertificate(forLongTermToken: longTermToken, hmac: hmac) { result in
+                                            // Step 7
+                                            switch result {
+                                                case let .success(codableVerificationCertificateResponse):
+
+                                                    self.localStore.diagnoses[self.selectedDiagnosisIndex].verificationCertificate = codableVerificationCertificateResponse.certificate
+
+                                                    actionAfterVerificationCertificateRequest()
+
+                                                case let .failure(error):
+                                                    // Something went wrong. Maybe the long-term token is not valid anymore?
+                                                    self.localStore.diagnoses[self.selectedDiagnosisIndex].isVerified = false
+                                                    errorHandler(error)
+                                                    return
+                                            }
+                                        }
+
+                                    } catch {
                                         errorHandler(error)
                                         return
+                                    }
+                                } else {
+                                    actionAfterVerificationCertificateRequest()
+                                }
+
+                            }
+                        }
+
+                        if !self.localStore.diagnoses[self.selectedDiagnosisIndex].isVerified {
+
+                            if bypassPublicHealthAuthorityVerification {
+
+                                actionAfterCodeVerification()
+
+                            } else {
+                                // Step 4 of https://developers.google.com/android/exposure-notifications/verification-system
+                                Server.shared.verifyCode(self.verificationCode) { result in
+                                    // Step 5
+                                    switch result {
+                                        case let .success(codableVerifyCodeResponse):
+
+                                            self.localStore.diagnoses[self.selectedDiagnosisIndex].isVerified = true
+                                            self.localStore.diagnoses[self.selectedDiagnosisIndex].longTermToken = codableVerifyCodeResponse.token
+                                            let formatter = ISO8601DateFormatter()
+                                            formatter.formatOptions = [.withFullDate]
+                                            self.localStore.diagnoses[self.selectedDiagnosisIndex].testDate = formatter.date(from: codableVerifyCodeResponse.testDate) ?? Date()
+                                            self.localStore.diagnoses[self.selectedDiagnosisIndex].testType = codableVerifyCodeResponse.testType
+
+                                            actionAfterCodeVerification()
+
+                                        case let .failure(error):
+                                            errorHandler(error)
+                                            return
+                                    }
                                 }
                             }
-                        }
 
-                    } else {
-                        actionAfterCodeVerification()
-                    }
-
-                }) {
-                    Group {
-                        if !self.isSubmittingDiagnosis {
-                            Text("REPORTING_VERIFY_NOTIFY_OTHERS")
                         } else {
-                            ActivityIndicator(isAnimating: self.$isSubmittingDiagnosis) {
-                                $0.color = .white
-                            }
+                            actionAfterCodeVerification()
                         }
-                    }.modifier(SmallCallToAction())
+
+                    }) {
+                        Group {
+                            if !self.isSubmittingDiagnosis {
+                                Text("REPORTING_VERIFY_NOTIFY_OTHERS")
+                            } else {
+                                ActivityIndicator(isAnimating: self.$isSubmittingDiagnosis) {
+                                    $0.color = .white
+                                }
+                            }
+                        }.modifier(SmallCallToAction())
+                    }
+                    .disabled(self.isSubmittingDiagnosis)
+                    .padding(.top, 3 * .standardSpacing)
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .padding(.bottom, .standardSpacing)
                 }
-                .disabled(self.isSubmittingDiagnosis)
-                .padding(.top, 3 * .standardSpacing)
-                .padding(.horizontal, 2 * .standardSpacing)
-                .padding(.bottom, .standardSpacing)
 
                 Image("Notify Others Footer")
                     .resizable()
@@ -341,8 +343,10 @@ struct ReportingStep2: View {
                         .environmentObject(self.localStore)
                 }
                 .onDisappear {
-                    self.symptomsStartDateString = self.rkManager.selectedDate == nil ? "" : self.dateFormatter.string(from: self.rkManager.selectedDate)
-                    self.localStore.diagnoses[self.selectedDiagnosisIndex].symptomsStartDate = self.rkManager.selectedDate
+                    withAnimation {
+                        self.symptomsStartDateString = self.rkManager.selectedDate == nil ? "" : self.dateFormatter.string(from: self.rkManager.selectedDate)
+                        self.localStore.diagnoses[self.selectedDiagnosisIndex].symptomsStartDate = self.rkManager.selectedDate
+                    }
                 }
             })
 
