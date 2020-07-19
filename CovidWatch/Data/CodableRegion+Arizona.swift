@@ -44,7 +44,7 @@ extension CodableRegion {
 
     static let `default`: Self = .init(
         id: .arizonaState,
-        name: "Arizona State",
+        name: "The State of Arizona",
         nextStepsNoSignificantExposure: [
             .shareTheApp
         ],

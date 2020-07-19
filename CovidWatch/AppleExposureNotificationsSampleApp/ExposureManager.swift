@@ -48,7 +48,7 @@ class ExposureManager {
     public func updateRiskMetricsIfNeeded() {
         if let riskModel = self.riskModel {
             let exposures = LocalStore.shared.exposuresInfos.map({ ENExposureInfo($0) })
-            LocalStore.shared.riskMetrics = riskModel.computeRiskMetrics(forExposureInfos: exposures)
+            LocalStore.shared.riskMetrics = riskModel.computeRiskMetrics(forExposureInfos: exposures, computedDate: Date())
         }
     }
 

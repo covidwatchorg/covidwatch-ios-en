@@ -17,7 +17,7 @@ public protocol ExposureRiskModeling {
         transmissionRiskLevel: ENRiskLevel
     ) -> ENRiskScore
 
-    func computeDateRiskLevel(
+    func computeRiskLevelValue(
         forExposureInfos exposureInfos: [ENExposureInfo],
         computeDate: Date
     ) -> Double
@@ -36,7 +36,8 @@ public protocol ExposureRiskModeling {
      ) -> Date?
 
     func computeRiskMetrics(
-        forExposureInfos exposureInfos: [ENExposureInfo]
+        forExposureInfos exposureInfos: [ENExposureInfo],
+        computedDate: Date
     ) -> RiskMetrics
 }
 
