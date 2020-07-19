@@ -18,8 +18,6 @@ public struct CodableRegion: Codable {
         case info
         case phone
         case website
-        case stayAtHomeDate
-        case getTestedDate
         case share
     }
 
@@ -76,7 +74,7 @@ extension CodableRegion.NextStepType {
 
     var systemImageName: String {
         switch self {
-            case .info, .stayAtHomeDate, .getTestedDate:
+            case .info:
                 return "info.circle.fill"
             case .phone:
                 return "phone.fill"
