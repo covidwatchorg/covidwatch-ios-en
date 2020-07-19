@@ -9,6 +9,8 @@ struct ContentView: View {
 
     @EnvironmentObject var localStore: LocalStore
 
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
     var body: some View {
         VStack {
             if !localStore.isOnboardingCompleted {

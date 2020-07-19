@@ -5,6 +5,7 @@
 import UserNotifications
 import UIKit
 import os.log
+import SwiftUI
 
 extension UNNotificationCategory {
 }
@@ -50,11 +51,15 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         completionHandler([.alert, .sound])
     }
 
+    // TODO: File bug, because this doesn't get called for Exposure Notifications.
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse,
         withCompletionHandler completionHandler: @escaping () -> Void
     ) {
+        if let viewController = self.window?.rootViewController as? UIHostingController<ContentView> {
+            viewController.rootView.presentationMode.wrappedValue.dismiss()
+        }
         completionHandler()
     }
 
