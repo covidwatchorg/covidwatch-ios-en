@@ -24,7 +24,7 @@ func getDateString(date : Date) -> String{
 // 2nd param: an integer. The requested date is the exposure date incremented by this many days
 // 3rd param: 'TRUE' or 'FALSE'. True means that the requested date is adjusted to not fall on a weekend (Saturday -> Friday and Sunday -> Monday). False means the requested date is left as-is
 // Currently only replaces the first pattern matched
-// Doesnt handle between the parameters. "LATEST,16,TRUE" is OK, "LATEST, 16, TRUE" is not
+// Doesnt handle space between the parameters. "LATEST,16,TRUE" is OK, "LATEST, 16, TRUE" is not
 func parseNextStepDescription(description : String) -> String{
 
     // Search for one string in another.
