@@ -171,7 +171,7 @@ struct ReportingStep2: View {
                                     keys.forEach {
                                         $0.transmissionRiskLevel = riskModel.computeTransmissionRiskLevel(
                                             forTemporaryExposureKey: $0,
-                                            symptomStartDate: self.localStore.diagnoses[self.selectedDiagnosisIndex].symptomsStartDate,
+                                            symptomsStartDate: self.localStore.diagnoses[self.selectedDiagnosisIndex].symptomsStartDate,
                                             testDate: self.localStore.diagnoses[self.selectedDiagnosisIndex].testDate,
                                             possibleInfectionDate: self.localStore.diagnoses[self.selectedDiagnosisIndex].possibleInfectionDate
                                         )

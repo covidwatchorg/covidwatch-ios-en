@@ -165,14 +165,14 @@ public class AZExposureRiskModel: ExposureRiskModeling {
 
     public func computeTransmissionRiskLevel(
         forTemporaryExposureKey key: ENTemporaryExposureKey,
-        symptomStartDate: Date?,
+        symptomsStartDate: Date?,
         testDate: Date?,
         possibleInfectionDate: Date?
     ) -> ENRiskLevel {
 
         let keyRollingStartDate = key.rollingStartDate
 
-        if let symptomStartDate = symptomStartDate {
+        if let symptomStartDate = symptomsStartDate {
             let relativeSymptomDay = relativeDay(from: symptomStartDate, to: keyRollingStartDate)
             if let risk = configuration.riskLevelsForDaysRelativeToSymptomsStartDay[relativeSymptomDay] {
                 return risk

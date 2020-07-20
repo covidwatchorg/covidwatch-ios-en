@@ -24,7 +24,7 @@ public protocol ExposureRiskModeling {
 
     func computeTransmissionRiskLevel(
         forTemporaryExposureKey key: ENTemporaryExposureKey,
-        symptomStartDate: Date?,
+        symptomsStartDate: Date?,
         testDate: Date?,
         possibleInfectionDate: Date?
     ) -> ENRiskLevel
