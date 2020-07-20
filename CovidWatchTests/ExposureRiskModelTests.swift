@@ -284,25 +284,25 @@ class ExposureRiskModelTests: XCTestCase {
 
         key.rollingStartNumber = day0.intervalNumber
         XCTAssertEqual(
-            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomStartDate: Date().intervalNumber.date),
             6 // Expected
         )
 
         key.rollingStartNumber = day2.intervalNumber
         XCTAssertEqual(
-            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomStartDate: Date().intervalNumber.date),
             6 // Expected
         )
 
         key.rollingStartNumber = day3.intervalNumber
         XCTAssertEqual(
-            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomStartDate: Date().intervalNumber.date),
             5 // Expected
         )
 
         key.rollingStartNumber = day18.intervalNumber
         XCTAssertEqual(
-            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomStartDate: Date().intervalNumber.date),
             0 // Expected
         )
 
@@ -313,25 +313,25 @@ class ExposureRiskModelTests: XCTestCase {
 
         key.rollingStartNumber = day2Ago.intervalNumber
         XCTAssertEqual(
-            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomStartDate: Date().intervalNumber.date),
             5 // Expected
         )
 
         key.rollingStartNumber = day3Ago.intervalNumber
         XCTAssertEqual(
-            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomStartDate: Date().intervalNumber.date),
             3 // Expected
         )
 
         key.rollingStartNumber = day4Ago.intervalNumber
         XCTAssertEqual(
-            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomStartDate: Date().intervalNumber.date),
             2 // Expected
         )
 
         key.rollingStartNumber = day18Ago.intervalNumber
         XCTAssertEqual(
-            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomStartDate: Date().intervalNumber.date),
             0 // Expected
         )
 
