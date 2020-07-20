@@ -22,8 +22,10 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>CWKeyServerExposureBaseURL</key>
-	<string>https://exposure-3horfxouua-uc.a.run.app</string>
+	<key>CWAppRegionsJSONURL</key>
+	<string>https://storage.googleapis.com/covid-watch-arizona-app-regions/arizona.json</string>
+	<key>CWBypassPublicHealthAuthorityVerification</key>
+	<false/>
 	<key>CWKeyServerAppConfigurationRegions</key>
 	<array>
 		<string>US</string>
@@ -32,18 +34,16 @@
 	<string>exposure-notification-export-fxega</string>
 	<key>CWKeyServerExportConfigurationFilenameRoot</key>
 	<string>exposureKeyExport-US</string>
+	<key>CWKeyServerExposureBaseURL</key>
+	<string>https://exposure-3horfxouua-uc.a.run.app</string>
+	<key>CWReleaseSameDayKeys</key>
+	<false/>
+	<key>CWUseAZRiskModel</key>
+	<true/>
 	<key>CWVerificationServerApiKey</key>
 	<string>L2bUqnUXZiT1d4xZoMS5JydDfYmHKByicEPGZhrs7dDf2nHeCMGAvPbT0w586UFbxx7uuR4MoqP30BzpYfy2YQ</string>
 	<key>CWVerificationServerApiServerBaseURL</key>
 	<string>https://apiserver-p74lg75vsa-uc.a.run.app</string>
-	<key>CWReleaseSameDayKeys</key>
-	<false/>
-	<key>CWBypassPublicHealthAuthorityVerification</key>
-	<false/>
-	<key>CWUseAZRiskModel</key>
-	<true/>
-	<key>CWAppRegionsJSONURL</key>
-	<string>https://storage.googleapis.com/covid-watch-arizona-app-regions/arizona.json</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
