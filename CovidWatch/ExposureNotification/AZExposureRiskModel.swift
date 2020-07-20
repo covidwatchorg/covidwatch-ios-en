@@ -33,24 +33,15 @@ extension AZExposureRiskModel {
             100 // Level 7 (unused)
         ]
 
-        var riskLevelsForDaysIncludingAndBeforeSymptomsStartDay: [ENRiskLevel] = [
-            6, 6, 5, 3, 2, 1, 1,
+        var riskLevelsForDaysRelativeToSymptomsStartDay: [Int: ENRiskLevel] = [
+            -6: 1, -5: 1, -4: 2, -3: 3, -2: 5, -1: 6, 0: 6, 1: 6, 2: 6, 3: 5, 4: 4, 5: 3, 6: 2, 7: 1, 8: 1, 9: 1, 10: 1, 11: 1
         ]
 
-        var riskLevelsForDaysIncludingAndAfterSymptomsStartDay: [ENRiskLevel] = [
-            6,
+        var riskLevelsForDaysRelativeToTestDay: [Int: ENRiskLevel] = [
+            -4: 2, -3: 2, -2: 2, -1: 3, 0: 3, 1: 3, 2: 2, 3: 2, 4: 2
         ]
 
-        var riskLevelsForDaysRelativeToSymptomDay: [Int : ENRiskLevel] = [
-            -6 : 1, -5 : 1, -4 : 2, -3 : 3, -2 : 5, -1 : 6, 0 : 6, 1 : 6, 2 : 6, 3 : 5, 4 : 4, 5 : 3, 6 : 2, 7 : 1, 8 : 1, 9 : 1, 10 : 1, 11 : 1
-        ]
-        
-        var riskLevelsForDaysRelativeToTestDay: [Int : ENRiskLevel] = [
-            -4:2, -3:2, -2:2, -1:3, 0:3, 1:3, 2:2, 3:2, 4:2
-        ]
-        
-        var excludeDaysRelativeToPossibleInfectedDay: [Int] = [0,1]
-        
+        var excludeDaysRelativeToPossibleInfectedDay: [Int] = [0, 1]
 
         var significantRiskLevelValueThreshold = 0.011
     }
@@ -172,27 +163,28 @@ public class AZExposureRiskModel: ExposureRiskModeling {
         return(riskLevel)
     }
 
-
     public func computeTransmissionRiskLevel(
         forTemporaryExposureKey key: ENTemporaryExposureKey,
-        symptomStartDate: Date?, testDate: Date?, possibleInfectionDate: Date?
+        symptomStartDate: Date?,
+        testDate: Date?,
+        possibleInfectionDate: Date?
     ) -> ENRiskLevel {
 
         let keyRollingStartDate = key.rollingStartDate
-        
+
         if let symptomStartDate = symptomStartDate {
             let relativeSymptomDay = relativeDay(from: symptomStartDate, to: keyRollingStartDate)
-            if let risk = configuration.riskLevelsForDaysRelativeToSymptomDay[relativeSymptomDay]{
+            if let risk = configuration.riskLevelsForDaysRelativeToSymptomsStartDay[relativeSymptomDay] {
                 return risk
-            }else{
+            } else {
                 return 0
             }
-        }else if let testDate = testDate{
+        } else if let testDate = testDate {
             let relativeTestDay = relativeDay(from: testDate, to: keyRollingStartDate)
-            if let risk = configuration.riskLevelsForDaysRelativeToTestDay[relativeTestDay]{
-                if let possibleInfectionDate = possibleInfectionDate{
+            if let risk = configuration.riskLevelsForDaysRelativeToTestDay[relativeTestDay] {
+                if let possibleInfectionDate = possibleInfectionDate {
                     let relativeInfectionDay = relativeDay(from: possibleInfectionDate, to: keyRollingStartDate)
-                    if configuration.excludeDaysRelativeToPossibleInfectedDay.contains(relativeInfectionDay){
+                    if configuration.excludeDaysRelativeToPossibleInfectedDay.contains(relativeInfectionDay) {
                         return 0
                     }
                 }
@@ -260,8 +252,7 @@ public class AZExposureRiskModel: ExposureRiskModeling {
     }
 }
 
-
-func relativeDay(from startDate: Date, to endDate : Date) -> Int{
+func relativeDay(from startDate: Date, to endDate: Date) -> Int {
     let diffComponents = Calendar.current.dateComponents([.day], from: startDate, to: endDate)
     return(diffComponents.day ?? .max)
 }
