@@ -10,6 +10,8 @@ struct ReportingStep2: View {
 
     @EnvironmentObject var localStore: LocalStore
 
+    @State var isShowingWhereIsMyCode: Bool = false
+
     @State var verificationCode: String = ""
 
     @State var symptomsStartDateString: String = ""
@@ -85,11 +87,23 @@ struct ReportingStep2: View {
                 Group {
                     Spacer(minLength: 2 * .standardSpacing)
 
-                    Text("VERIFICATION_CODE_QUESTION")
-                        .font(.custom("Montserrat-SemiBold", size: 18))
-                        .foregroundColor(Color.primary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 2 * .standardSpacing)
+                    Button(action: {
+                        self.isShowingWhereIsMyCode.toggle()
+                    }) {
+                        HStack(alignment: .firstTextBaseline) {
+                            Text("VERIFICATION_CODE_QUESTION")
+                                .font(.custom("Montserrat-SemiBold", size: 18))
+                                .foregroundColor(Color.primary)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+
+                            Image(systemName: "info.circle.fill")
+                        }
+                    }
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .sheet(isPresented: $isShowingWhereIsMyCode) {
+                        WhereIsMyCode()
+                            .environmentObject(self.localStore)
+                    }
 
                     Spacer(minLength: .standardSpacing)
 

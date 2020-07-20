@@ -517,7 +517,7 @@ All strings for the project, separated for localization.
 "REPORTING_VERIFY_MESSAGE" = "To anonymously share a diagnosis, enter your Verification Code below.";
 
 /* Button */
-"REPORTING_VERIFY_NOTIFY_OTHERS" = "Anonymously Share Diagnosis";
+"REPORTING_VERIFY_NOTIFY_OTHERS" = "Share Diagnosis";
 
 /* Question */
 "VERIFICATION_CODE_QUESTION" = "What is your Verification Code?";
