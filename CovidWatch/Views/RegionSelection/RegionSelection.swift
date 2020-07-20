@@ -45,10 +45,12 @@ struct RegionSelection: View {
                 VStack(spacing: 0) {
 
                     Image("Covid Watch Logo Stacked White")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
                         .accessibility(label: Text("COVID_WATCH_LOGO_STACKED_IMAGE_ACCESSIBILITY_LABEL"))
                         .padding(.top, 2 * .standardSpacing)
 
-                    Spacer().frame(height: 4 * .standardSpacing)
+                    Spacer().frame(height: 2 * .standardSpacing)
 
 //                    Text("SPLASH_MESSAGE")
 //                        .font(.custom("Montserrat-SemiBold", size: 21))
@@ -70,21 +72,17 @@ struct RegionSelection: View {
                         Spacer().frame(height: .standardSpacing)
                     }
 
-                    VStack(spacing: 0) {
-                        Picker("SELECT_REGION", selection: $selectedRegionIndex) {
-                            ForEach(0 ..< self.localStore.regions.count) {
-                                Text(verbatim: self.localStore.regions[$0].name)
-                                    .font(.custom("Montserrat-SemiBold", size: 16))
-                                    .foregroundColor(.white)
-                                    .multilineTextAlignment(.center)
-                            }
+                    Picker("SELECT_REGION", selection: $selectedRegionIndex) {
+                        ForEach(0 ..< self.localStore.regions.count) {
+                            Text(verbatim: self.localStore.regions[$0].name)
+                                .font(.custom("Montserrat-SemiBold", size: 16))
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.center)
                         }
-                        .preferredColorScheme(.dark)
-                        .labelsHidden()
                     }
-                    .padding(.horizontal, 2 * .standardSpacing)
-
-                    Spacer().frame(height: .standardSpacing)
+                    .padding(.horizontal, -2 * .standardSpacing) // Yes, -2 * .standardSpacing
+                    .preferredColorScheme(.dark)
+                    .labelsHidden()
 
                     Text("REGION_SELECTION_PRIVACY_DISCLAIMER")
                         .font(.custom("Montserrat-SemiBold", size: 13))

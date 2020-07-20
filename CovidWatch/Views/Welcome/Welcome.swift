@@ -72,7 +72,7 @@ struct Welcome: View {
 
                     }.padding(.horizontal, 2 * .standardSpacing)
 
-                    Spacer(minLength: 32 + .standardSpacing)
+                    Spacer(minLength: .standardSpacing)
                 }
             }
 

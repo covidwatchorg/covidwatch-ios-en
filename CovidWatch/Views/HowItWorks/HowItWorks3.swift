@@ -30,7 +30,7 @@ struct HowItWorks3: View {
 
                 HowItWorksMessageText(text: Text("HOW_IT_WORKS_3_MESSAGE"))
 
-                Spacer(minLength: 3 * .standardSpacing)
+                Spacer(minLength: .footerHeight + .standardSpacing)
             }
         }
     }

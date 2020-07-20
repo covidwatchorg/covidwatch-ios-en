@@ -55,7 +55,7 @@ struct HowItWorks4: View {
 
                 }
 
-                Spacer(minLength: 4 * .standardSpacing)
+                Spacer(minLength: .footerHeight + .standardSpacing)
             }
         }
     }
