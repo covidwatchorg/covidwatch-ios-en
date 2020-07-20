@@ -79,6 +79,7 @@ struct RegionSelection: View {
                                     .multilineTextAlignment(.center)
                             }
                         }
+                        .preferredColorScheme(.dark)
                         .labelsHidden()
                     }
                     .padding(.horizontal, 2 * .standardSpacing)
