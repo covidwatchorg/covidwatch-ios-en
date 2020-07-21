@@ -335,7 +335,6 @@ class ExposureRiskModelTests: XCTestCase {
             0 // Expected
         )
 
-
         key.rollingStartNumber = day0.intervalNumber
         XCTAssertEqual(
             model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: nil, testDate: Date().intervalNumber.date, possibleInfectionDate: nil ),
@@ -359,7 +358,6 @@ class ExposureRiskModelTests: XCTestCase {
             model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: nil, testDate: Date().intervalNumber.date, possibleInfectionDate: nil),
             0 // Expected
         )
-
 
         key.rollingStartNumber = day0.intervalNumber
         XCTAssertEqual(
@@ -390,14 +388,13 @@ class ExposureRiskModelTests: XCTestCase {
             model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: nil, testDate: day0, possibleInfectionDate: day4Ago ),
             0 // Expected
         )
-        
+
         key.rollingStartNumber = day3Ago.intervalNumber
         XCTAssertEqual(
             model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: nil, testDate: day0, possibleInfectionDate: day3Ago ),
             0 // Expected
         )
 
-        
     }
 
 }
