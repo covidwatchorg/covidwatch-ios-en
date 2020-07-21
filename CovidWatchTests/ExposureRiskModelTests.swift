@@ -284,25 +284,25 @@ class ExposureRiskModelTests: XCTestCase {
 
         key.rollingStartNumber = day0.intervalNumber
         XCTAssertEqual(
-            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date, testDate: nil, possibleInfectionDate: nil ),
             6 // Expected
         )
 
         key.rollingStartNumber = day2.intervalNumber
         XCTAssertEqual(
-            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date, testDate: nil, possibleInfectionDate: nil),
             6 // Expected
         )
 
         key.rollingStartNumber = day3.intervalNumber
         XCTAssertEqual(
-            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date, testDate: nil, possibleInfectionDate: nil),
             5 // Expected
         )
 
         key.rollingStartNumber = day18.intervalNumber
         XCTAssertEqual(
-            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date, testDate: nil, possibleInfectionDate: nil),
             0 // Expected
         )
 
@@ -313,28 +313,91 @@ class ExposureRiskModelTests: XCTestCase {
 
         key.rollingStartNumber = day2Ago.intervalNumber
         XCTAssertEqual(
-            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date, testDate: nil, possibleInfectionDate: nil),
             5 // Expected
         )
 
         key.rollingStartNumber = day3Ago.intervalNumber
         XCTAssertEqual(
-            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date, testDate: nil, possibleInfectionDate: nil),
             3 // Expected
         )
 
         key.rollingStartNumber = day4Ago.intervalNumber
         XCTAssertEqual(
-            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date, testDate: nil, possibleInfectionDate: nil),
             2 // Expected
         )
 
         key.rollingStartNumber = day18Ago.intervalNumber
         XCTAssertEqual(
-            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomStartDate: Date().intervalNumber.date),
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: Date().intervalNumber.date, testDate: nil, possibleInfectionDate: nil),
             0 // Expected
         )
 
+
+        key.rollingStartNumber = day0.intervalNumber
+        XCTAssertEqual(
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: nil, testDate: Date().intervalNumber.date, possibleInfectionDate: nil ),
+            3 // Expected
+        )
+
+        key.rollingStartNumber = day2Ago.intervalNumber
+        XCTAssertEqual(
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: nil, testDate: Date().intervalNumber.date, possibleInfectionDate: nil),
+            2 // Expected
+        )
+
+        key.rollingStartNumber = day3Ago.intervalNumber
+        XCTAssertEqual(
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: nil, testDate: Date().intervalNumber.date, possibleInfectionDate: nil),
+            2 // Expected
+        )
+
+        key.rollingStartNumber = day18Ago.intervalNumber
+        XCTAssertEqual(
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: nil, testDate: Date().intervalNumber.date, possibleInfectionDate: nil),
+            0 // Expected
+        )
+
+
+        key.rollingStartNumber = day0.intervalNumber
+        XCTAssertEqual(
+          model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: nil, testDate: day0, possibleInfectionDate: day3Ago ),
+          3 // Expected
+        )
+
+        key.rollingStartNumber = day0.intervalNumber
+        XCTAssertEqual(
+          model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: nil, testDate: day2, possibleInfectionDate: day4Ago),
+          2 // Expected
+        )
+
+        key.rollingStartNumber = day0.intervalNumber
+        XCTAssertEqual(
+          model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: nil, testDate: day3, possibleInfectionDate: day18Ago),
+          2 // Expected
+        )
+
+        key.rollingStartNumber = day0.intervalNumber
+        XCTAssertEqual(
+          model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: nil, testDate: day18Ago, possibleInfectionDate: nil),
+          0 // Expected
+        )
+
+        key.rollingStartNumber = day3Ago.intervalNumber
+        XCTAssertEqual(
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: nil, testDate: day0, possibleInfectionDate: day4Ago ),
+            0 // Expected
+        )
+        
+        key.rollingStartNumber = day3Ago.intervalNumber
+        XCTAssertEqual(
+            model.computeTransmissionRiskLevel(forTemporaryExposureKey: key, symptomsStartDate: nil, testDate: day0, possibleInfectionDate: day3Ago ),
+            0 // Expected
+        )
+
+        
     }
 
 }
