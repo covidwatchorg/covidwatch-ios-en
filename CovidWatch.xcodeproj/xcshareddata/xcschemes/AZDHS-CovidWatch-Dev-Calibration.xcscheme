@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2D9CF3C92455B9F1005B085E"
+               BlueprintIdentifier = "2D72543024A35E92003E5914"
                BuildableName = "Covid Watch.app"
-               BlueprintName = "CovidWatch-California-Dev"
+               BlueprintName = "AZDHS-CovidWatch-Dev-Calibration"
                ReferencedContainer = "container:CovidWatch.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,16 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2D9CF3E22455B9F5005B085E"
-               BuildableName = "CovidWatchTests.xctest"
-               BlueprintName = "CovidWatchTests"
-               ReferencedContainer = "container:CovidWatch.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -54,9 +44,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2D9CF3C92455B9F1005B085E"
+            BlueprintIdentifier = "2D72543024A35E92003E5914"
             BuildableName = "Covid Watch.app"
-            BlueprintName = "CovidWatch-California-Dev"
+            BlueprintName = "AZDHS-CovidWatch-Dev-Calibration"
             ReferencedContainer = "container:CovidWatch.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -67,15 +57,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2D9CF3C92455B9F1005B085E"
+            BlueprintIdentifier = "2D72543024A35E92003E5914"
             BuildableName = "Covid Watch.app"
-            BlueprintName = "CovidWatch-California-Dev"
+            BlueprintName = "AZDHS-CovidWatch-Dev-Calibration"
             ReferencedContainer = "container:CovidWatch.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

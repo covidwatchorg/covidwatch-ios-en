@@ -135,6 +135,7 @@
 		2D29BAF324607F2C00E8BEC4 /* UNAuthorizationStatus+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF224607F2C00E8BEC4 /* UNAuthorizationStatus+Additions.swift */; };
 		2D29BAF62460951200E8BEC4 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF52460951200E8BEC4 /* Menu.swift */; };
 		2D29BAF924609F6100E8BEC4 /* MenuTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D29BAF824609F6100E8BEC4 /* MenuTitleText.swift */; };
+		2D32AFF024C6DC46006E6082 /* Assets-Arizona.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D8FE71724A3431800456875 /* Assets-Arizona.xcassets */; };
 		2D39489E248E40A3001766A4 /* Setup3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39489D248E40A3001766A4 /* Setup3.swift */; };
 		2D3948A0248E548E001766A4 /* PossibleExposureSummaryValueViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D39489F248E548E001766A4 /* PossibleExposureSummaryValueViewModifier.swift */; };
 		2D3948A2248E6354001766A4 /* ENRiskScore+QualitativeLevels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3948A1248E6354001766A4 /* ENRiskScore+QualitativeLevels.swift */; };
@@ -401,7 +402,6 @@
 		2D8FE70D24A33B0100456875 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B45B245F50A0001B30F0 /* Montserrat-SemiBold.ttf */; };
 		2D8FE70E24A33B0100456875 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DD7B454245F50A0001B30F0 /* Montserrat-Thin.ttf */; };
 		2D8FE71824A3431800456875 /* Assets-Arizona.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D8FE71724A3431800456875 /* Assets-Arizona.xcassets */; };
-		2D8FE71A24A346AF00456875 /* Assets-California.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D8FE71924A346AF00456875 /* Assets-California.xcassets */; };
 		2D8FE71C24A347D500456875 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D9CF3D92455B9F4005B085E /* Assets.xcassets */; };
 		2D9034B824603D6200351C3C /* HowItWorks2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034B724603D6200351C3C /* HowItWorks2.swift */; };
 		2D9034BA24603E1A00351C3C /* HowItWorks3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9034B924603E1A00351C3C /* HowItWorks3.swift */; };
@@ -501,19 +501,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2D78880424B1CC80005D25BB /* PBXContainerItemProxy */ = {
+		2D0D56A124C6E15F002F7BFC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2D9CF3C22455B9F1005B085E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D9CF3C92455B9F1005B085E;
-			remoteInfo = "CovidWatch-California-Dev";
+			remoteInfo = "CovidWatch-Arizona-Dev";
 		};
-		2D9CF3EF2455B9F5005B085E /* PBXContainerItemProxy */ = {
+		2D0D56A324C6E169002F7BFC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2D9CF3C22455B9F1005B085E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D9CF3C92455B9F1005B085E;
-			remoteInfo = CovidWatch;
+			remoteInfo = "CovidWatch-Arizona-Dev";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -575,7 +575,7 @@
 		2D5D94122460232A00718412 /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		2D5D941524602FE100718412 /* HowItWorks1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorks1.swift; sourceTree = "<group>"; };
 		2D63D591245CBCC00027D43B /* OSLog+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OSLog+Additions.swift"; sourceTree = "<group>"; };
-		2D72549F24A35E92003E5914 /* CW DEMO AZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CW DEMO AZ.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D72549F24A35E92003E5914 /* Covid Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Covid Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D7254A224A36BDC003E5914 /* Dist.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dist.entitlements; sourceTree = "<group>"; };
 		2D7254A324A37280003E5914 /* Dev-Calibration-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dev-Calibration-Info.plist"; sourceTree = "<group>"; };
 		2D7254A424A3765A003E5914 /* ApplicationController+Calibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApplicationController+Calibration.swift"; sourceTree = "<group>"; };
@@ -957,7 +957,7 @@
 				2D9CF3E32455B9F5005B085E /* CovidWatchTests.xctest */,
 				2D9CF3EE2455B9F5005B085E /* CovidWatchUITests.xctest */,
 				2D8FE71524A33B0100456875 /* Covid Watch.app */,
-				2D72549F24A35E92003E5914 /* CW DEMO AZ.app */,
+				2D72549F24A35E92003E5914 /* Covid Watch.app */,
 				2D235A5024AC651300C8FD56 /* Covid Watch.app */,
 			);
 			name = Products;
@@ -1081,9 +1081,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2D2359DF24AC651300C8FD56 /* CovidWatch-Arizona-Dist */ = {
+		2D2359DF24AC651300C8FD56 /* AZDHS-CovidWatch-Dist */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D235A4D24AC651300C8FD56 /* Build configuration list for PBXNativeTarget "CovidWatch-Arizona-Dist" */;
+			buildConfigurationList = 2D235A4D24AC651300C8FD56 /* Build configuration list for PBXNativeTarget "AZDHS-CovidWatch-Dist" */;
 			buildPhases = (
 				2D415F6924AE355700870EF2 /* SwiftLint */,
 				2D2359E524AC651300C8FD56 /* Sources */,
@@ -1094,7 +1094,7 @@
 			);
 			dependencies = (
 			);
-			name = "CovidWatch-Arizona-Dist";
+			name = "AZDHS-CovidWatch-Dist";
 			packageProductDependencies = (
 				2D2359E024AC651300C8FD56 /* SwiftProtobuf */,
 				2D2359E224AC651300C8FD56 /* ZIPFoundation */,
@@ -1103,9 +1103,9 @@
 			productReference = 2D235A5024AC651300C8FD56 /* Covid Watch.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D72543024A35E92003E5914 /* CovidWatch-Arizona-Dev-Calibration */ = {
+		2D72543024A35E92003E5914 /* AZDHS-CovidWatch-Dev-Calibration */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D72549C24A35E92003E5914 /* Build configuration list for PBXNativeTarget "CovidWatch-Arizona-Dev-Calibration" */;
+			buildConfigurationList = 2D72549C24A35E92003E5914 /* Build configuration list for PBXNativeTarget "AZDHS-CovidWatch-Dev-Calibration" */;
 			buildPhases = (
 				2D415F6824AE266A00870EF2 /* SwiftLint */,
 				2D72543624A35E92003E5914 /* Sources */,
@@ -1116,18 +1116,18 @@
 			);
 			dependencies = (
 			);
-			name = "CovidWatch-Arizona-Dev-Calibration";
+			name = "AZDHS-CovidWatch-Dev-Calibration";
 			packageProductDependencies = (
 				2D72543124A35E92003E5914 /* SwiftProtobuf */,
 				2D72543324A35E92003E5914 /* ZIPFoundation */,
 			);
 			productName = CovidWatch;
-			productReference = 2D72549F24A35E92003E5914 /* CW DEMO AZ.app */;
+			productReference = 2D72549F24A35E92003E5914 /* Covid Watch.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D8FE69524A33B0100456875 /* CovidWatch-Arizona-Dev */ = {
+		2D8FE69524A33B0100456875 /* AZDHS-CovidWatch-Dev */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D8FE71224A33B0100456875 /* Build configuration list for PBXNativeTarget "CovidWatch-Arizona-Dev" */;
+			buildConfigurationList = 2D8FE71224A33B0100456875 /* Build configuration list for PBXNativeTarget "AZDHS-CovidWatch-Dev" */;
 			buildPhases = (
 				2D415F6A24AE3BE300870EF2 /* SwiftLint */,
 				2D8FE69B24A33B0100456875 /* Sources */,
@@ -1138,7 +1138,7 @@
 			);
 			dependencies = (
 			);
-			name = "CovidWatch-Arizona-Dev";
+			name = "AZDHS-CovidWatch-Dev";
 			packageProductDependencies = (
 				2D8FE69624A33B0100456875 /* SwiftProtobuf */,
 				2D8FE69824A33B0100456875 /* ZIPFoundation */,
@@ -1147,9 +1147,9 @@
 			productReference = 2D8FE71524A33B0100456875 /* Covid Watch.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D9CF3C92455B9F1005B085E /* CovidWatch-California-Dev */ = {
+		2D9CF3C92455B9F1005B085E /* CovidWatch-Arizona-Dev */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D9CF3F72455B9F5005B085E /* Build configuration list for PBXNativeTarget "CovidWatch-California-Dev" */;
+			buildConfigurationList = 2D9CF3F72455B9F5005B085E /* Build configuration list for PBXNativeTarget "CovidWatch-Arizona-Dev" */;
 			buildPhases = (
 				E20D4F06245B9B0000B97B4B /* SwiftLint */,
 				2D9CF3C62455B9F1005B085E /* Sources */,
@@ -1160,7 +1160,7 @@
 			);
 			dependencies = (
 			);
-			name = "CovidWatch-California-Dev";
+			name = "CovidWatch-Arizona-Dev";
 			packageProductDependencies = (
 				2D46AA5C2465E1710003936C /* SwiftProtobuf */,
 				2DFEED092476BD0400D2C620 /* ZIPFoundation */,
@@ -1180,7 +1180,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				2D78880524B1CC80005D25BB /* PBXTargetDependency */,
+				2D0D56A224C6E15F002F7BFC /* PBXTargetDependency */,
 			);
 			name = CovidWatchTests;
 			productName = CovidWatchTests;
@@ -1198,7 +1198,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				2D9CF3F02455B9F5005B085E /* PBXTargetDependency */,
+				2D0D56A424C6E169002F7BFC /* PBXTargetDependency */,
 			);
 			name = CovidWatchUITests;
 			productName = CovidWatchUITests;
@@ -1245,10 +1245,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2D9CF3C92455B9F1005B085E /* CovidWatch-California-Dev */,
-				2D8FE69524A33B0100456875 /* CovidWatch-Arizona-Dev */,
-				2D72543024A35E92003E5914 /* CovidWatch-Arizona-Dev-Calibration */,
-				2D2359DF24AC651300C8FD56 /* CovidWatch-Arizona-Dist */,
+				2D9CF3C92455B9F1005B085E /* CovidWatch-Arizona-Dev */,
+				2D8FE69524A33B0100456875 /* AZDHS-CovidWatch-Dev */,
+				2D72543024A35E92003E5914 /* AZDHS-CovidWatch-Dev-Calibration */,
+				2D2359DF24AC651300C8FD56 /* AZDHS-CovidWatch-Dist */,
 				2D9CF3E22455B9F5005B085E /* CovidWatchTests */,
 				2D9CF3ED2455B9F5005B085E /* CovidWatchUITests */,
 			);
@@ -1353,7 +1353,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D8FE71A24A346AF00456875 /* Assets-California.xcassets in Resources */,
 				2DD7B48F245F50A0001B30F0 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				2DD7B47C245F50A0001B30F0 /* Montserrat-MediumItalic.ttf in Resources */,
 				2DD7B475245F50A0001B30F0 /* Montserrat-Light.ttf in Resources */,
@@ -1377,6 +1376,7 @@
 				2D72542E24A353C9003E5914 /* LaunchScreen.storyboard in Resources */,
 				2DD7B480245F50A0001B30F0 /* Montserrat-SemiBold.ttf in Resources */,
 				2DD7B479245F50A0001B30F0 /* Montserrat-Thin.ttf in Resources */,
+				2D32AFF024C6DC46006E6082 /* Assets-Arizona.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1904,15 +1904,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2D78880524B1CC80005D25BB /* PBXTargetDependency */ = {
+		2D0D56A224C6E15F002F7BFC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D9CF3C92455B9F1005B085E /* CovidWatch-California-Dev */;
-			targetProxy = 2D78880424B1CC80005D25BB /* PBXContainerItemProxy */;
+			target = 2D9CF3C92455B9F1005B085E /* CovidWatch-Arizona-Dev */;
+			targetProxy = 2D0D56A124C6E15F002F7BFC /* PBXContainerItemProxy */;
 		};
-		2D9CF3F02455B9F5005B085E /* PBXTargetDependency */ = {
+		2D0D56A424C6E169002F7BFC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D9CF3C92455B9F1005B085E /* CovidWatch-California-Dev */;
-			targetProxy = 2D9CF3EF2455B9F5005B085E /* PBXContainerItemProxy */;
+			target = 2D9CF3C92455B9F1005B085E /* CovidWatch-Arizona-Dev */;
+			targetProxy = 2D0D56A324C6E169002F7BFC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2006,7 +2006,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = gov.azdhs.covidwatch.ios;
 				PRODUCT_MODULE_NAME = CovidWatch;
-				PRODUCT_NAME = "CW DEMO AZ";
+				PRODUCT_NAME = "Covid Watch";
 				PROVISIONING_PROFILE_SPECIFIER = "AZDHS Covid Watch iOS Development";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG_CALIBRATION DEBUG";
@@ -2037,7 +2037,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = gov.azdhs.covidwatch.ios;
 				PRODUCT_MODULE_NAME = CovidWatch;
-				PRODUCT_NAME = "CW DEMO AZ";
+				PRODUCT_NAME = "Covid Watch";
 				PROVISIONING_PROFILE_SPECIFIER = "AZDHS Covid Watch iOS Development";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG_CALIBRATION DEBUG";
@@ -2152,7 +2152,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2206,7 +2206,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -2232,10 +2232,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.california.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.arizona.ios;
 				PRODUCT_MODULE_NAME = CovidWatch;
 				PRODUCT_NAME = "Covid Watch";
-				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch California Dev";
+				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch Arizona Development";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2258,10 +2258,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.california.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.arizona.ios;
 				PRODUCT_MODULE_NAME = CovidWatch;
 				PRODUCT_NAME = "Covid Watch";
-				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch California Dev";
+				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch Arizona Development";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2357,7 +2357,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2D235A4D24AC651300C8FD56 /* Build configuration list for PBXNativeTarget "CovidWatch-Arizona-Dist" */ = {
+		2D235A4D24AC651300C8FD56 /* Build configuration list for PBXNativeTarget "AZDHS-CovidWatch-Dist" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D235A4E24AC651300C8FD56 /* Debug */,
@@ -2366,7 +2366,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D72549C24A35E92003E5914 /* Build configuration list for PBXNativeTarget "CovidWatch-Arizona-Dev-Calibration" */ = {
+		2D72549C24A35E92003E5914 /* Build configuration list for PBXNativeTarget "AZDHS-CovidWatch-Dev-Calibration" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D72549D24A35E92003E5914 /* Debug */,
@@ -2375,7 +2375,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D8FE71224A33B0100456875 /* Build configuration list for PBXNativeTarget "CovidWatch-Arizona-Dev" */ = {
+		2D8FE71224A33B0100456875 /* Build configuration list for PBXNativeTarget "AZDHS-CovidWatch-Dev" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D8FE71324A33B0100456875 /* Debug */,
@@ -2393,7 +2393,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D9CF3F72455B9F5005B085E /* Build configuration list for PBXNativeTarget "CovidWatch-California-Dev" */ = {
+		2D9CF3F72455B9F5005B085E /* Build configuration list for PBXNativeTarget "CovidWatch-Arizona-Dev" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D9CF3F82455B9F5005B085E /* Debug */,

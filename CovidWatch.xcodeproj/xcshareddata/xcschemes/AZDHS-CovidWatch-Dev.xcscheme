@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2D72543024A35E92003E5914"
-               BuildableName = "CW DEMO AZ.app"
-               BlueprintName = "CovidWatch-Arizona-Dev-Calibration"
+               BlueprintIdentifier = "2D8FE69524A33B0100456875"
+               BuildableName = "Covid Watch.app"
+               BlueprintName = "AZDHS-CovidWatch-Dev"
                ReferencedContainer = "container:CovidWatch.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,9 +44,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2D72543024A35E92003E5914"
-            BuildableName = "CW DEMO AZ.app"
-            BlueprintName = "CovidWatch-Arizona-Dev-Calibration"
+            BlueprintIdentifier = "2D8FE69524A33B0100456875"
+            BuildableName = "Covid Watch.app"
+            BlueprintName = "AZDHS-CovidWatch-Dev"
             ReferencedContainer = "container:CovidWatch.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -61,9 +61,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2D72543024A35E92003E5914"
-            BuildableName = "CW DEMO AZ.app"
-            BlueprintName = "CovidWatch-Arizona-Dev-Calibration"
+            BlueprintIdentifier = "2D8FE69524A33B0100456875"
+            BuildableName = "Covid Watch.app"
+            BlueprintName = "AZDHS-CovidWatch-Dev"
             ReferencedContainer = "container:CovidWatch.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
