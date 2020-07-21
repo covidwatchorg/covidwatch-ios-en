@@ -2232,10 +2232,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.ios.california;
+				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.california.ios;
 				PRODUCT_MODULE_NAME = CovidWatch;
 				PRODUCT_NAME = "Covid Watch";
-				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch iOS California Dev";
+				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch California Dev";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2258,10 +2258,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.ios.california;
+				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.california.ios;
 				PRODUCT_MODULE_NAME = CovidWatch;
 				PRODUCT_NAME = "Covid Watch";
-				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch iOS California Dev";
+				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch California Dev";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
