@@ -310,7 +310,7 @@ All strings for the project, separated for localization.
 // # PAST DIAGNOSES
 
 /* Title */
-"PAST_DIAGNOSES_TITLE" = "Past Diagnoses";
+"PAST_DIAGNOSES_TITLE" = "My Past Positive Diagnoses";
 
 /* Title */
 "VERIFIED_POSITIVE_TITLE" = "Verified COVID-19 Positive";
