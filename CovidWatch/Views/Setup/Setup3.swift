@@ -36,7 +36,7 @@ struct Setup3: View {
 
                     Text("SETUP_3_2_TITLE")
                         .font(.custom("Montserrat-Semibold", size: 18))
-                        .foregroundColor(Color.primary)
+                        .foregroundColor(Color("Text Color"))
                         .padding(.horizontal, 2 * .standardSpacing)
                         .frame(maxWidth: .infinity, alignment: .leading)
 

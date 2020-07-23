@@ -15,7 +15,7 @@ struct SelectedRegion: View {
         HStack {
             Text("SELECTED_REGION")
                 .font(.custom("Montserrat-Semibold", size: 12))
-                .foregroundColor(Color.secondary)
+                .foregroundColor(Color("Text Color"))
             Button(action: {
                 self.isShowingRegionSelection.toggle()
             }) {

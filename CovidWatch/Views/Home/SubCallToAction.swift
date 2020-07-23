@@ -9,7 +9,7 @@ struct SubCallToAction: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.custom("Montserrat-Regular", size: 14))
-            .foregroundColor(Color.secondary)
+            .foregroundColor(Color("Text Color"))
             .multilineTextAlignment(.leading)
     }
 }

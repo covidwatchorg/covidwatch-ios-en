@@ -93,7 +93,7 @@ struct ReportingStep2: View {
                         HStack(alignment: .firstTextBaseline) {
                             Text("VERIFICATION_CODE_QUESTION")
                                 .font(.custom("Montserrat-SemiBold", size: 18))
-                                .foregroundColor(Color.primary)
+                                .foregroundColor(Color("Text Color"))
                                 .frame(maxWidth: .infinity, alignment: .leading)
 
                             Image(systemName: "info.circle.fill")
@@ -109,7 +109,7 @@ struct ReportingStep2: View {
 
                     TextField(NSLocalizedString("VERIFICATION_CODE_TITLE", comment: ""), text: self.$verificationCode)
                         .padding(.horizontal, 2 * .standardSpacing)
-                        .foregroundColor(Color.primary)
+                        .foregroundColor(Color("Text Color"))
                         .keyboardType(.numberPad)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
 
@@ -335,7 +335,7 @@ struct ReportingStep2: View {
 
             Text("SYMPTOMS_START_DATE_QUESTION")
                 .font(.custom("Montserrat-SemiBold", size: 18))
-                .foregroundColor(Color.primary)
+                .foregroundColor(Color("Text Color"))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 2 * .standardSpacing)
 
@@ -346,7 +346,7 @@ struct ReportingStep2: View {
             }) {
                 TextField(NSLocalizedString("SELECT_DATE", comment: ""), text: self.$symptomsStartDateString)
                     .padding(.horizontal, 2 * .standardSpacing)
-                    .foregroundColor(Color.primary)
+                    .foregroundColor(Color("Text Color"))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .opacity(isAsymptomatic ? 0.5 : 1.0)
                     .disabled(true)
@@ -389,7 +389,7 @@ struct ReportingStep2: View {
                     }
 
                     Text("SYMPTOMS_START_DATE_ASYMPTOMATIC")
-                        .foregroundColor(Color.secondary)
+                        .foregroundColor(Color("Text Color"))
                 }
             }.padding(.horizontal, 2 * .standardSpacing)
             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
@@ -405,7 +405,7 @@ struct ReportingStep2: View {
 
             Text("EXPOSED_START_DATE_QUESTION")
                 .font(.custom("Montserrat-SemiBold", size: 18))
-                .foregroundColor(Color.primary)
+                .foregroundColor(Color("Text Color"))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 2 * .standardSpacing)
 
@@ -416,7 +416,7 @@ struct ReportingStep2: View {
             }) {
                 TextField(NSLocalizedString("SELECT_DATE", comment: ""), text: self.$exposedStartDateString)
                     .padding(.horizontal, 2 * .standardSpacing)
-                    .foregroundColor(Color.primary)
+                    .foregroundColor(Color("Text Color"))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .opacity(dontKnowExposedDate ? 0.5 : 1.0)
                     .disabled(true)
@@ -457,7 +457,7 @@ struct ReportingStep2: View {
                     }
 
                     Text("EXPOSED_START_DATE_UNKNOWN")
-                        .foregroundColor(Color.secondary)
+                        .foregroundColor(Color("Text Color"))
                 }
             }.padding(.horizontal, 2 * .standardSpacing)
             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
@@ -473,7 +473,7 @@ struct ReportingStep2: View {
 
             Text("TEST_START_DATE_QUESTION")
                 .font(.custom("Montserrat-SemiBold", size: 18))
-                .foregroundColor(Color.primary)
+                .foregroundColor(Color("Text Color"))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 2 * .standardSpacing)
 
@@ -484,7 +484,7 @@ struct ReportingStep2: View {
             }) {
                 TextField(NSLocalizedString("SELECT_DATE", comment: ""), text: self.$testStartDateString)
                     .padding(.horizontal, 2 * .standardSpacing)
-                    .foregroundColor(Color.primary)
+                    .foregroundColor(Color("Text Color"))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .opacity(dontKnowTestDate ? 0.5 : 1.0)
                     .disabled(true)
@@ -525,7 +525,7 @@ struct ReportingStep2: View {
                     }
 
                     Text("TEST_START_DATE_UNKNOWN")
-                        .foregroundColor(Color.secondary)
+                        .foregroundColor(Color("Text Color"))
                 }
             }.padding(.horizontal, 2 * .standardSpacing)
             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)

@@ -35,7 +35,7 @@ struct WhereIsMyCode: View {
                                 Spacer().frame(height: 2 * .standardSpacing)
 
                                 Text(verbatim: nextStep.description)
-                                    .foregroundColor(Color.primary)
+                                    .foregroundColor(Color("Text Color"))
                                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                                     .font(.custom("Montserrat-Regular", size: 14))
 
@@ -99,7 +99,7 @@ struct WhereIsMyCode: View {
 
                 Text("WHERE_IS_MY_CODE_WHAT_IS_QUESTION")
                     .font(.custom("Montserrat-SemiBold", size: 16))
-                    .foregroundColor(Color.primary)
+                    .foregroundColor(Color("Text Color"))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 2 * .standardSpacing)
 
@@ -107,7 +107,7 @@ struct WhereIsMyCode: View {
 
                 Text("WHERE_IS_MY_CODE_WHAT_IS_ANSWER")
                     .font(.custom("Montserrat-Regular", size: 14))
-                    .foregroundColor(Color.secondary)
+                    .foregroundColor(Color("Text Color"))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 2 * .standardSpacing)
 

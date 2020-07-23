@@ -45,7 +45,7 @@ struct PossibleExposureRow: View {
         Text(" ") +
         Text(verbatim: formattedDate())
             .font(.custom("Montserrat-Semibold", size: 14))
-            .foregroundColor(Color.primary)
+            .foregroundColor(Color("Text Color"))
     }
 }
 

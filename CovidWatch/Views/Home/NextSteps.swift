@@ -13,7 +13,7 @@ struct NextSteps: View {
         VStack(spacing: 0) {
             Text("HOME_NEXT_STEPS_MESSAGE")
                 .font(.custom("Montserrat-Semibold", size: 14))
-                .foregroundColor(Color.primary)
+                .foregroundColor(Color("Text Color"))
                 .padding(.horizontal, 2 * .standardSpacing)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -64,7 +64,7 @@ struct NextSteps: View {
                         HStack(alignment: .firstTextBaseline, spacing: .standardSpacing) {
 
                             Text(verbatim: parseNextStepDescription(description: nextStep.description) )
-                                .foregroundColor(Color.secondary)
+                                .foregroundColor(Color("Text Color"))
                                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 54, maxHeight: .infinity, alignment: .leading)
                                 .font(.custom("Montserrat-Regular", size: 14))
 

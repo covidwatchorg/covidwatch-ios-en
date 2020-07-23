@@ -26,7 +26,7 @@ struct ReportingStep3: View {
 
                     Text("REPORTING_FINISH_SUBTITLE_MESSAGE")
                         .font(.custom("Montserrat-Regular", size: 16))
-                        .foregroundColor(Color.secondary)
+                        .foregroundColor(Color("Text Color"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 2 * .standardSpacing)
 
@@ -34,7 +34,7 @@ struct ReportingStep3: View {
 
                     Text("REPORTING_FINISH_MESSAGE_1")
                         .font(.custom("Montserrat-Semibold", size: 16))
-                        .foregroundColor(Color.primary)
+                        .foregroundColor(Color("Text Color"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 2 * .standardSpacing)
 
@@ -42,7 +42,7 @@ struct ReportingStep3: View {
 
                     Text("REPORTING_FINISH_MESSAGE_2")
                         .font(.custom("Montserrat-Regular", size: 14))
-                        .foregroundColor(Color.secondary)
+                        .foregroundColor(Color("Text Color"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 2 * .standardSpacing)
 
@@ -50,7 +50,7 @@ struct ReportingStep3: View {
 
                     Text("REPORTING_FINISH_MESSAGE_3")
                         .font(.custom("Montserrat-Regular", size: 14))
-                        .foregroundColor(Color.secondary)
+                        .foregroundColor(Color("Text Color"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 2 * .standardSpacing)
                 }

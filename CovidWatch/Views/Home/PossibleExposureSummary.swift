@@ -56,7 +56,7 @@ struct PossibleExposureSummary: View {
 
             Text("HOME_POSSIBLE_EXPOSURES_SUMMARY_TITLE")
                 .font(.custom("Montserrat-Bold", size: 16))
-                .foregroundColor(Color.secondary)
+                .foregroundColor(Color("Text Color"))
                 .padding(.horizontal, 2 * .standardSpacing)
                 .frame(maxWidth: .infinity, minHeight: .minTappableTargetDimension, alignment: .center)
                 .background(Color(UIColor.systemGray6))
@@ -75,13 +75,13 @@ struct PossibleExposureSummary: View {
 
                         Text("HOME_DAYS_ROW_1_LABEL")
                             .font(.custom("Montserrat-Bold", size: 13))
-                            .foregroundColor(Color.secondary)
+                            .foregroundColor(Color("Text Color"))
 
                             + Text(verbatim: " ") +
 
                             Text("HOME_DAYS_ROW_2_LABEL")
                                 .font(.custom("Montserrat-Regular", size: 13))
-                                .foregroundColor(Color.secondary)
+                                .foregroundColor(Color("Text Color"))
                     }
 
                     HStack {
@@ -92,13 +92,13 @@ struct PossibleExposureSummary: View {
 
                         Text("HOME_TOTAL_EXPOSURES_ROW_1_LABEL")
                             .font(.custom("Montserrat-Bold", size: 13))
-                            .foregroundColor(Color.secondary)
+                            .foregroundColor(Color("Text Color"))
 
                             + Text(verbatim: " ") +
 
                             Text("HOME_TOTAL_EXPOSURES_ROW_2_LABEL")
                                 .font(.custom("Montserrat-Regular", size: 13))
-                                .foregroundColor(Color.secondary)
+                                .foregroundColor(Color("Text Color"))
                     }
 
                     HStack {
@@ -110,13 +110,13 @@ struct PossibleExposureSummary: View {
 
                         Text("HOME_TOTAL_RISK_SCORE_ROW_1_LABEL")
                             .font(.custom("Montserrat-Bold", size: 13))
-                            .foregroundColor(Color.secondary)
+                            .foregroundColor(Color("Text Color"))
 
                             + Text(verbatim: " ") +
 
                             Text("HOME_TOTAL_RISK_SCORE_ROW_2_LABEL")
                                 .font(.custom("Montserrat-Regular", size: 13))
-                                .foregroundColor(Color.secondary)
+                                .foregroundColor(Color("Text Color"))
                     }
                 }
                 .padding(.horizontal, 2 * .standardSpacing)

@@ -50,11 +50,11 @@ struct ReportingStep1: View {
                         HStack(alignment: .firstTextBaseline) {
                             Text(verbatim: "\(index).")
                                 .font(.custom("Montserrat-SemiBold", size: 16))
-                                .foregroundColor(Color.primary)
+                                .foregroundColor(Color("Text Color"))
 
                             Text(verbatim: NSLocalizedString("NOTIFY_OTHERS_STEP\(index)_MESSAGE", comment: ""))
                                 .font(.custom("Montserrat-Regular", size: 16))
-                                .foregroundColor(Color.secondary)
+                                .foregroundColor(Color("Text Color"))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         .padding(.horizontal, 2 * .standardSpacing)

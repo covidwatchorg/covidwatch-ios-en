@@ -48,7 +48,7 @@ struct Welcome: View {
 
                     Text("WELCOME_APP_NAME")
                         .font(.custom("Montserrat-SemiBold", size: 23))
-                        .foregroundColor(Color.primary)
+                        .foregroundColor(Color("Text Color"))
                         .padding(.horizontal, 2 * .standardSpacing)
                         .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -56,7 +56,7 @@ struct Welcome: View {
 
                     Text("WELCOME_MESSAGE")
                         .font(.custom("Montserrat-Regular", size: 18))
-                        .foregroundColor(Color.secondary)
+                        .foregroundColor(Color("Text Color"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 2 * .standardSpacing)
 

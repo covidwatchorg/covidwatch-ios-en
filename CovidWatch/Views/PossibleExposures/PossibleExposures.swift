@@ -56,7 +56,7 @@ struct PossibleExposures: View {
                     Toggle(isOn: self.$localStore.exposureNotificationEnabled) {
                         Text("EXPOSURE_NOTIFICATIONS_TITLE")
                             .font(.custom("Montserrat-SemiBold", size: 18))
-                            .foregroundColor(Color.primary)
+                            .foregroundColor(Color("Text Color"))
                     }
                     .padding(.horizontal, 2 * .standardSpacing)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -65,7 +65,7 @@ struct PossibleExposures: View {
 
                     Text(verbatim: self.localStore.exposureNotificationStatusMessage)
                         .font(.custom("Montserrat-Regular", size: 13))
-                        .foregroundColor(Color.secondary)
+                        .foregroundColor(Color("Text Color"))
                         .padding(.horizontal, 2 * .standardSpacing)
                         .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -89,12 +89,12 @@ struct PossibleExposures: View {
 
                                     Text("POSSIBLE_EXPOSURES_NO_EXPOSURES_TITLE")
                                         .font(.custom("Montserrat-Bold", size: 13))
-                                        .foregroundColor(Color.primary)
+                                        .foregroundColor(Color("Text Color"))
                                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, alignment: .topLeading)
 
                                     Text("POSSIBLE_EXPOSURES_NO_EXPOSURES_MESSAGE")
                                         .font(.custom("Montserrat-Regular", size: 13))
-                                        .foregroundColor(Color.secondary)
+                                        .foregroundColor(Color("Text Color"))
                                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
                                 }
                                 Spacer()

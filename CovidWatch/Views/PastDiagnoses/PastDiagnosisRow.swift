@@ -29,7 +29,7 @@ struct PastDiagnosisRow: View {
                             Text(verbatim: diagnosis.submitDate == nil ? NSLocalizedString("N/A", comment: "") : DateFormatter.localizedString(from: diagnosis.submitDate!, dateStyle: .medium, timeStyle: .none))
                     }
                     .font(.custom("Montserrat-Regular", size: 14))
-                    .foregroundColor(Color.secondary)
+                    .foregroundColor(Color("Text Color"))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
