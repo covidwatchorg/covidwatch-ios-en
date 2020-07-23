@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 public struct CodableRegion: Codable {
 
@@ -72,16 +73,16 @@ extension CodableRegion {
 
 extension CodableRegion.NextStepType {
 
-    var systemImageName: String {
+    var image: Image {
         switch self {
             case .info:
-                return "info.circle.fill"
+                return Image(systemName: "info.circle.fill")
             case .phone:
-                return "phone.fill"
+                return Image("Phone Call")
             case .website:
-                return "safari.fill"
+                return Image("Share Box")
             case .share:
-                return "square.and.arrow.up.fill"
+                return Image("Share")
         }
     }
 }

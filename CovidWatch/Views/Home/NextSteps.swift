@@ -68,7 +68,7 @@ struct NextSteps: View {
                                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 54, maxHeight: .infinity, alignment: .leading)
                                 .font(.custom("Montserrat-Regular", size: 14))
 
-                            Image(systemName: nextStep.type.systemImageName)
+                            nextStep.type.image
                                 .foregroundColor(Color("Tint Color"))
                         }
                         .padding(.standardSpacing)
