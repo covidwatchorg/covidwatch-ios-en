@@ -40,7 +40,7 @@ struct Setup3: View {
                         .padding(.horizontal, 2 * .standardSpacing)
                         .frame(maxWidth: .infinity, alignment: .leading)
 
-                    Spacer(minLength: .standardSpacing)
+                    Spacer(minLength: 2 * .standardSpacing)
 
                     Text("SETUP_3_3_MESSAGE")
                         .modifier(SetupMessageTextViewModifier())
