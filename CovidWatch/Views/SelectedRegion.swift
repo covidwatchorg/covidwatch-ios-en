@@ -14,13 +14,13 @@ struct SelectedRegion: View {
     var body: some View {
         HStack {
             Text("SELECTED_REGION")
-                .font(.custom("Montserrat-Semibold", size: 12))
+                .font(.custom("Montserrat-Medium", size: 12))
                 .foregroundColor(Color("Text Color"))
             Button(action: {
                 self.isShowingRegionSelection.toggle()
             }) {
                 Text(self.localStore.region.name)
-                    .font(.custom("Montserrat-Semibold", size: 12))
+                    .font(.custom("Montserrat-Medium", size: 12))
                     .foregroundColor(Color("Tint Color"))
                     .underline()
             }.sheet(isPresented: self.$isShowingRegionSelection) {
