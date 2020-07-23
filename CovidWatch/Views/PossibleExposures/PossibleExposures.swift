@@ -216,17 +216,16 @@ struct PossibleExposures: View {
                             Divider()
                         }
 
-                        Spacer(minLength: 2 * .standardSpacing)
+                        Group {
+                            Spacer(minLength: 2 * .standardSpacing)
 
-                        Text("EXPOSURES_ARE_SAVED_MESSAGE")
-                            .modifier(SubCallToAction())
-                            .padding(.horizontal, 2 * .standardSpacing)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            Text("EXPOSURES_ARE_SAVED_MESSAGE")
+                                .modifier(SubCallToAction())
+                                .padding(.horizontal, 2 * .standardSpacing)
+                                .frame(maxWidth: .infinity, alignment: .leading)
 
-                        Image("Powered By CW for ADHS Grey")
-                            .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
-                            .padding(.top, 2 * .standardSpacing)
-                            .padding(.bottom, .standardSpacing)
+                            Spacer(minLength: .standardSpacing)
+                        }
                     }
                 }
             }
