@@ -493,7 +493,7 @@ All strings for the project, separated for localization.
 "NOTIFY_OTHERS_STEP3_MESSAGE" = "Anonymously share diagnosis to help stop the spread by letting other app users get notified of possible exposure if they were nearby.";
 
 /* Button */
-"SHARE_A_POSITIVE_DIAGNOSIS" = "Let's Go";
+"SHARE_A_POSITIVE_DIAGNOSIS" = "Continue";
 
 /* Button */
 "WHERE_IS_MY_CODE" = "Where is my code?";
