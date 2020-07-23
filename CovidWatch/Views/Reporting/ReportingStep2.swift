@@ -192,9 +192,9 @@ struct ReportingStep2: View {
                                     }
 
                                     // Filter out keys if needed, to optimize server storage.
-                                    if !self.localStore.diagnoses[self.selectedDiagnosisIndex].shareZeroTranmissionRiskLevelDiagnosisKeys {
-                                        keys = keys.filter({ $0.transmissionRiskLevel != 0 })
-                                    }
+//                                    if !self.localStore.diagnoses[self.selectedDiagnosisIndex].shareZeroTranmissionRiskLevelDiagnosisKeys {
+//                                        keys = keys.filter({ $0.transmissionRiskLevel != 0 })
+//                                    }
                                 }
 
                                 let actionAfterVerificationCertificateRequest = {
@@ -283,7 +283,9 @@ struct ReportingStep2: View {
                                             self.localStore.diagnoses[self.selectedDiagnosisIndex].longTermToken = codableVerifyCodeResponse.token
                                             let formatter = ISO8601DateFormatter()
                                             formatter.formatOptions = [.withFullDate]
-                                            self.localStore.diagnoses[self.selectedDiagnosisIndex].testDate = formatter.date(from: codableVerifyCodeResponse.testDate) ?? Date()
+                                            if let date = codableVerifyCodeResponse.symptomDate {
+                                                self.localStore.diagnoses[self.selectedDiagnosisIndex].symptomsStartDate = formatter.date(from: date)
+                                            }
                                             self.localStore.diagnoses[self.selectedDiagnosisIndex].testType = codableVerifyCodeResponse.testType
 
                                             actionAfterCodeVerification()

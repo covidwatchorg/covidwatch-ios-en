@@ -43,7 +43,7 @@
 	<key>CWVerificationServerApiKey</key>
 	<string>L2bUqnUXZiT1d4xZoMS5JydDfYmHKByicEPGZhrs7dDf2nHeCMGAvPbT0w586UFbxx7uuR4MoqP30BzpYfy2YQ</string>
 	<key>CWVerificationServerApiServerBaseURL</key>
-	<string>https://apiserver-p74lg75vsa-uc.a.run.app</string>
+	<string>https://apiserver-vma367ngxq-uc.a.run.app</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>

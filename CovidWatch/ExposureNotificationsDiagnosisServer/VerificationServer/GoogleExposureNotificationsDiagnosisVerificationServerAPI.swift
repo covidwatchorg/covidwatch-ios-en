@@ -21,13 +21,13 @@ public struct CodableVerifyCodeRequest: Codable {
 
 public struct CodableVerifyCodeResponse: Codable {
     let testType: String
-    let testDate: String
+    let symptomDate: String?
     let token: String
     let error: String
 
     enum CodingKeys: String, CodingKey {
         case testType = "testtype"
-        case testDate = "testdate"
+        case symptomDate
         case token
         case error
     }
