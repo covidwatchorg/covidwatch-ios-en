@@ -85,7 +85,7 @@ struct RegionSelection: View {
                     .labelsHidden()
 
                     Text("REGION_SELECTION_PRIVACY_DISCLAIMER")
-                        .font(.custom("Montserrat-SemiBold", size: 13))
+                        .font(.custom("Montserrat-SemiBold", size: 14))
                         .foregroundColor(.white)
                         .padding(.horizontal, 2 * .standardSpacing)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
