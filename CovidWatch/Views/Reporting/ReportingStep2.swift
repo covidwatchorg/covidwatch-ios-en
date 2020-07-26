@@ -192,9 +192,9 @@ struct ReportingStep2: View {
                                     }
 
                                     // Filter out keys if needed, to optimize server storage.
-//                                    if !self.localStore.diagnoses[self.selectedDiagnosisIndex].shareZeroTranmissionRiskLevelDiagnosisKeys {
-//                                        keys = keys.filter({ $0.transmissionRiskLevel != 0 })
-//                                    }
+                                    if !self.localStore.diagnoses[self.selectedDiagnosisIndex].shareZeroTranmissionRiskLevelDiagnosisKeys {
+                                        keys = keys.filter({ $0.transmissionRiskLevel != 0 })
+                                    }
                                 }
 
                                 let actionAfterVerificationCertificateRequest = {
@@ -256,6 +256,19 @@ struct ReportingStep2: View {
                                         }
 
                                     } catch {
+                                        if let error = error as? ENVerificationUtils.ENVerificationUtilsError,
+                                            error == .emptyListOfKeys {
+
+                                            self.isSubmittingDiagnosis = false
+                                            self.localStore.diagnoses[self.selectedDiagnosisIndex].isSubmitted = true
+                                            withAnimation {
+                                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                                                self.isShowingNextStep = true
+                                            }
+
+                                            return
+                                        }
+
                                         errorHandler(error)
                                         return
                                     }
