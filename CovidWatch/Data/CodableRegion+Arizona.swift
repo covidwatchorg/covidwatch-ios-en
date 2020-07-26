@@ -86,9 +86,9 @@ extension CodableRegion {
         ],
         nextStepsSignificantExposure: [
             .init(
-                type: .info,
+                type: .website,
                 description: "Stay at home until DAYS_FROM_EXPOSURE{LATEST,14,FALSE}.",
-                url: nil
+                url:"http://covid19.arizona.edu/self-quarantine?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_self_quarantine"
             ),
             .init(
                 type: .phone,
@@ -98,7 +98,7 @@ extension CodableRegion {
             .init(
                 type: .website,
                 description: "Monitor COVID-19 symptoms and get tested ASAP if symptoms appear.",
-                url: "https://covid19.arizona.edu/prevention-health/covid-19-symptoms?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_covid19_significant_exposure"
+                url: "https://covid19.arizona.edu/prevention-health/covid-19-symptoms?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_covid19_symptoms"
             ),
             .init(
                 type: .website,
