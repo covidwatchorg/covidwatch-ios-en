@@ -234,7 +234,7 @@ struct Menu: View {
 
                         Group {
                             Button(action: {
-                                guard let url = URL(string: "https://www.covidwatch.org/privacy") else { return }
+                                guard let url = URL(string: "https://www.azdhs.gov/privacy-policy.php") else { return }
                                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
                             }) {
                                 HStack {
