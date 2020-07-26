@@ -15,12 +15,12 @@ extension AZExposureRiskModel {
         ]
 
         var attenuationDurationWeights = [
-            2.0182978, // High attenuation: D < 0.5m
-            1.1507629, // Medium attenuation: 0.5m < D < 2m
-            0.6651614 // Low attenuation: 2m < D
+            2.7459983, // High attenuation: D < 0.5m
+            1.0607454, // Medium attenuation: 0.5m < D < 2m
+            0.2704947 // Low attenuation: 2m < D
         ]
 
-        var doseResponseLambda = 0.0000171
+        var doseResponseLambda = 0.00000271
 
         var transmissionRiskValuesForLevels: [Double] = [
             0, // Level 0
