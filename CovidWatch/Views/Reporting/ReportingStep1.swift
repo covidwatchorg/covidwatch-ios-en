@@ -47,10 +47,11 @@ struct ReportingStep1: View {
                     Group {
                         Spacer(minLength: .standardSpacing)
 
-                        HStack(alignment: .firstTextBaseline) {
+                        HStack(alignment: .firstTextBaseline, spacing: 0) {
                             Text(verbatim: "\(index).")
                                 .font(.custom("Montserrat-SemiBold", size: 16))
                                 .foregroundColor(Color("Text Color"))
+                                .frame(minWidth: 2 * .standardSpacing, alignment: .leading)
 
                             Text(verbatim: NSLocalizedString("NOTIFY_OTHERS_STEP\(index)_MESSAGE", comment: ""))
                                 .font(.custom("Montserrat-Regular", size: 16))
