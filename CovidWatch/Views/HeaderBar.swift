@@ -40,7 +40,7 @@ struct HeaderBar: View {
             BlurView(style: .systemChromeMaterial)
                 .edgesIgnoringSafeArea(.all)
 
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 0) {
 
                 HStack {
 
@@ -89,7 +89,6 @@ struct HeaderBar: View {
                 if self.showRegionSelection {
                     SelectedRegion()
                         .padding(.horizontal, 2 * .standardSpacing)
-                        .padding(.bottom, .standardSpacing)
                 }
             }
 

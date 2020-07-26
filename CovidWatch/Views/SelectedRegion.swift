@@ -23,6 +23,7 @@ struct SelectedRegion: View {
                     .font(.custom("Montserrat-Medium", size: 12))
                     .foregroundColor(Color("Tint Color"))
                     .underline()
+                    .frame(minHeight: .minTappableTargetDimension)
             }.sheet(isPresented: self.$isShowingRegionSelection) {
                 RegionSelection(
                     selectedRegionIndex: self.localStore.selectedRegionIndex,
