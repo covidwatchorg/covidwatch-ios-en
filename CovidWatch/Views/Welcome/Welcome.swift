@@ -35,12 +35,6 @@ struct Welcome: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .accessibility(label: Text("WELCOME_IMAGE_ACCESSIBILITY_LABEL"))
-                        .background(
-                            Image("Rectangle 33")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .accessibility(hidden: true)
-                    )
 
                     Spacer(minLength: .standardSpacing)
 
