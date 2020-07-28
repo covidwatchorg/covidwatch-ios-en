@@ -608,7 +608,7 @@
 		2D927E3724ACAD540029A323 /* Dist-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Dist-Info.plist"; sourceTree = "<group>"; };
 		2D92B6D124BB3F6B00003BDD /* NextSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextSteps.swift; sourceTree = "<group>"; };
 		2D92B6D624BB6DC900003BDD /* LocalStore+HomeRiskLevelAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStore+HomeRiskLevelAdditions.swift"; sourceTree = "<group>"; };
-		2D9CF3CA2455B9F1005B085E /* Covid Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Covid Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D9CF3CA2455B9F1005B085E /* Covid Watch AZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Covid Watch AZ.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D9CF3CD2455B9F1005B085E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D9CF3D92455B9F4005B085E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D9CF3DC2455B9F4005B085E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -953,7 +953,7 @@
 		2D9CF3CB2455B9F1005B085E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2D9CF3CA2455B9F1005B085E /* Covid Watch.app */,
+				2D9CF3CA2455B9F1005B085E /* Covid Watch AZ.app */,
 				2D9CF3E32455B9F5005B085E /* CovidWatchTests.xctest */,
 				2D9CF3EE2455B9F5005B085E /* CovidWatchUITests.xctest */,
 				2D8FE71524A33B0100456875 /* Covid Watch.app */,
@@ -1166,7 +1166,7 @@
 				2DFEED092476BD0400D2C620 /* ZIPFoundation */,
 			);
 			productName = CovidWatch;
-			productReference = 2D9CF3CA2455B9F1005B085E /* Covid Watch.app */;
+			productReference = 2D9CF3CA2455B9F1005B085E /* Covid Watch AZ.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2D9CF3E22455B9F5005B085E /* CovidWatchTests */ = {
@@ -2234,7 +2234,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.arizona.ios;
 				PRODUCT_MODULE_NAME = CovidWatch;
-				PRODUCT_NAME = "Covid Watch";
+				PRODUCT_NAME = "Covid Watch AZ";
 				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch Arizona Development";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_VERSION = 5.0;
@@ -2260,7 +2260,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.covidwatch.arizona.ios;
 				PRODUCT_MODULE_NAME = CovidWatch;
-				PRODUCT_NAME = "Covid Watch";
+				PRODUCT_NAME = "Covid Watch AZ";
 				PROVISIONING_PROFILE_SPECIFIER = "Covid Watch Arizona Development";
 				SCHEME_FILE = "${INTERMEDIATES_OUTPUT_DIR}current_scheme.txt";
 				SWIFT_VERSION = 5.0;
@@ -2276,7 +2276,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GD7NMG67S7;
 				INFOPLIST_FILE = CovidWatchTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2286,7 +2286,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Covid Watch.app/Covid Watch";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Covid Watch AZ.app/Covid Watch AZ";
 			};
 			name = Debug;
 		};
@@ -2298,7 +2298,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GD7NMG67S7;
 				INFOPLIST_FILE = CovidWatchTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2308,7 +2308,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Covid Watch.app/Covid Watch";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Covid Watch AZ.app/Covid Watch AZ";
 			};
 			name = Release;
 		};

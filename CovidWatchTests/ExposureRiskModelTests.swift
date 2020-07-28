@@ -29,7 +29,7 @@ class ExposureRiskModelTests: XCTestCase {
                 forAttenuationDurations: [30.0 * 60.0, 0.0, 0.0],
                 transmissionRiskLevel: 4
             ),
-            8, // Expected
+            1, // Expected
             message
         )
 
@@ -39,7 +39,7 @@ class ExposureRiskModelTests: XCTestCase {
                 forAttenuationDurations: [0.0, 30.0 * 60.0, 0.0],
                 transmissionRiskLevel: 4
             ),
-            4, // Expected
+            0, // Expected
             message
         )
 
@@ -59,7 +59,7 @@ class ExposureRiskModelTests: XCTestCase {
                 forAttenuationDurations: [0.0, 30.0 * 60.0, 0.0],
                 transmissionRiskLevel: 6
             ),
-            8, // Expected
+            0, // Expected
             message
         )
 
@@ -69,7 +69,7 @@ class ExposureRiskModelTests: XCTestCase {
                 forAttenuationDurations: [5.0 * 60.0, 0.0, 0.0],
                 transmissionRiskLevel: 6
             ),
-            2, // Expected
+            0, // Expected
             message
         )
 
@@ -89,7 +89,7 @@ class ExposureRiskModelTests: XCTestCase {
                 forAttenuationDurations: [0.0, 0.0, 30.0 * 60.0],
                 transmissionRiskLevel: 6
             ),
-            5, // Expected
+            0, // Expected
             message
         )
 
@@ -99,7 +99,7 @@ class ExposureRiskModelTests: XCTestCase {
                 forAttenuationDurations: [0.0, 30.0 * 60.0, 0.0],
                 transmissionRiskLevel: 3
             ),
-            2, // Expected
+            0, // Expected
             message
         )
 
@@ -109,7 +109,7 @@ class ExposureRiskModelTests: XCTestCase {
                 forAttenuationDurations: [0.0, 30.0 * 60.0, 0.0],
                 transmissionRiskLevel: 2
             ),
-            1, // Expected
+            0, // Expected
             message
         )
 
@@ -129,7 +129,7 @@ class ExposureRiskModelTests: XCTestCase {
                 forAttenuationDurations: [30.0 * 60.0, 30.0 * 60.0, 30.0 * 60.0],
                 transmissionRiskLevel: 6
             ),
-            8, // Expected
+            5, // Expected
             message
         )
 
@@ -139,7 +139,7 @@ class ExposureRiskModelTests: XCTestCase {
                 forAttenuationDurations: [30.0 * 60.0, 30.0 * 60.0, 30.0 * 60.0],
                 transmissionRiskLevel: 1
             ),
-            2, // Expected
+            0, // Expected
             message
         )
 
@@ -149,7 +149,7 @@ class ExposureRiskModelTests: XCTestCase {
                 forAttenuationDurations: [15.0 * 60.0, 0.0, 0.0],
                 transmissionRiskLevel: 6
             ),
-            8, // Expected
+            1, // Expected
             message
         )
 
@@ -169,7 +169,7 @@ class ExposureRiskModelTests: XCTestCase {
                 forAttenuationDurations: [0.0, 0.0, 15.0 * 60.0],
                 transmissionRiskLevel: 6
             ),
-            2, // Expected
+            0, // Expected
             message
         )
 
@@ -213,19 +213,19 @@ class ExposureRiskModelTests: XCTestCase {
 
         XCTAssertEqual(
             model.computeRiskLevelValue(forExposureInfos: exposures, computeDate: day2),
-            4.147819, // Expected
+            0.689657, // Expected
             accuracy: 0.0001,
             message
         )
         XCTAssertEqual(
             model.computeRiskLevelValue(forExposureInfos: exposures, computeDate: day3),
-            7.221063, // Expected
+            1.395461, // Expected
             accuracy: 0.0001,
             message
         )
         XCTAssertEqual(
             model.computeRiskLevelValue(forExposureInfos: exposures, computeDate: day18),
-            2.251825, // Expected
+            0.436539, // Expected
             accuracy: 0.0001,
             message
         )
@@ -265,13 +265,13 @@ class ExposureRiskModelTests: XCTestCase {
         )
         XCTAssertEqual(
             model.computeRiskLevelValue(forExposureInfos: exposures, computeDate: day4),
-            10.2363, // Expected
+            1.527189, // Expected
             accuracy: 0.0001,
             message
         )
         XCTAssertEqual(
             model.computeRiskLevelValue(forExposureInfos: exposures, computeDate: day18),
-            3.489957, // Expected
+            0.520678, // Expected
             accuracy: 0.0001,
             message
         )
