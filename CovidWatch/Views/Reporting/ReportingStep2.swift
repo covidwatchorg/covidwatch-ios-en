@@ -152,6 +152,15 @@ struct ReportingStep2: View {
                             )
                         }
 
+                        let emptyKeyListHandler: () -> Void = {
+                            self.isSubmittingDiagnosis = false
+                            self.localStore.diagnoses[self.selectedDiagnosisIndex].isSubmitted = true
+                            withAnimation {
+                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                                self.isShowingNextStep = true
+                            }
+                        }
+
                         if self.localStore.diagnoses[self.selectedDiagnosisIndex].verificationCode != self.verificationCode {
                             self.localStore.diagnoses[self.selectedDiagnosisIndex].isVerified = false
                         }
@@ -168,7 +177,7 @@ struct ReportingStep2: View {
                                 }
 
                                 guard var keys = keys, !keys.isEmpty else {
-                                    errorHandler(ENError(.internal))
+                                    emptyKeyListHandler()
                                     return
                                 }
 
@@ -259,12 +268,7 @@ struct ReportingStep2: View {
                                         if let error = error as? ENVerificationUtils.ENVerificationUtilsError,
                                             error == .emptyListOfKeys {
 
-                                            self.isSubmittingDiagnosis = false
-                                            self.localStore.diagnoses[self.selectedDiagnosisIndex].isSubmitted = true
-                                            withAnimation {
-                                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                                                self.isShowingNextStep = true
-                                            }
+                                            emptyKeyListHandler()
 
                                             return
                                         }
