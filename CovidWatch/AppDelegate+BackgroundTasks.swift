@@ -49,6 +49,7 @@ extension AppDelegate {
         guard ENManager.authorizationStatus == .authorized else { return }
         let taskRequest = BGProcessingTaskRequest(identifier: .exposureNotificationBackgroundTaskIdentifier)
         taskRequest.requiresNetworkConnectivity = true
+        taskRequest.earliestBeginDate = Date().addingTimeInterval(6 * 60 * 60)
         do {
             try BGTaskScheduler.shared.submit(taskRequest)
         } catch {
