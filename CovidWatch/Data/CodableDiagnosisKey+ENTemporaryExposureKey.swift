@@ -7,7 +7,7 @@ import ExposureNotification
 
 extension CodableDiagnosisKey {
 
-    @available(iOS 13.5, *)
+    @available(iOS 13.6, *)
     init(_ key: ENTemporaryExposureKey) {
         self.init(
             keyData: key.keyData,

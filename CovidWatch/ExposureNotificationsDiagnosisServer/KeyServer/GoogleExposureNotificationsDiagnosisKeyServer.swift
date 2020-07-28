@@ -13,7 +13,7 @@ public struct GoogleCloudPlatform {
     static let cloudStorageBaseURLString = "https://storage.googleapis.com"
 }
 
-@available(iOS 13.5, *)
+@available(iOS 13.6, *)
 public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotificationsDiagnosisKeyServing {
 
     public struct Configuration {

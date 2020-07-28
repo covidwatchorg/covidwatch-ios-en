@@ -5,7 +5,7 @@
 import Foundation
 import ExposureNotification
 
-@available(iOS 13.5, *)
+@available(iOS 13.6, *)
 extension ENTemporaryExposureKey {
 
     convenience init(_ key: CodableDiagnosisKey) {

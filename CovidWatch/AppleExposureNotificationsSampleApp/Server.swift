@@ -10,7 +10,7 @@ import ExposureNotification
 import SwiftProtobuf
 import os.log
 
-@available(iOS 13.5, *)
+@available(iOS 13.6, *)
 public class Server {
 
     public init() {}

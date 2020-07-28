@@ -7,7 +7,7 @@ import Foundation
 import os.log
 import Combine
 
-@available(iOS 13.5, *)
+@available(iOS 13.6, *)
 public class GoogleExposureNotificationsDiagnosisVerificationServer: ExposureNotificationsDiagnosisVerificationProviding {
 
     public struct Configuration {
@@ -73,6 +73,9 @@ public class GoogleExposureNotificationsDiagnosisVerificationServer: ExposureNot
                     httpResponse.statusCode == 200 else {
                         if let errorResponse = try? JSONDecoder().decode(CodableErrorReturn.self, from: element.data) {
                             throw ServerError.serverSideError(errorResponse.error)
+                        }
+                        if let message = String(bytes: element.data, encoding: .utf8) {
+                            throw ServerError.serverSideError(message)
                         }
                         throw URLError(.badServerResponse)
                 }
@@ -146,6 +149,9 @@ public class GoogleExposureNotificationsDiagnosisVerificationServer: ExposureNot
                     httpResponse.statusCode == 200 else {
                         if let errorResponse = try? JSONDecoder().decode(CodableErrorReturn.self, from: element.data) {
                             throw ServerError.serverSideError(errorResponse.error)
+                        }
+                        if let message = String(bytes: element.data, encoding: .utf8) {
+                            throw ServerError.serverSideError(message)
                         }
                         throw URLError(.badServerResponse)
                 }
