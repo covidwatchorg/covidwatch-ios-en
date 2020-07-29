@@ -7,11 +7,13 @@ import ExposureNotification
 
 public protocol ExposureNotificationsDiagnosisKeyServing {
 
-    func postDiagnosisKeys(
+    func publishDiagnosisKeys(
         _ diagnosisKeys: [ENTemporaryExposureKey],
         verificationPayload: String?,
         hmacKey: Data?,
-        completion: @escaping (Error?) -> Void
+        symptomOnsetInterval: ENIntervalNumber,
+        revisionToken: String?,
+        completion: @escaping (Result<CodablePublishResponse, Error>) -> Void
     )
 
     func getDiagnosisKeyFileURLs(

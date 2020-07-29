@@ -6,12 +6,21 @@
 import Foundation
 import ExposureNotification
 
-public struct CodablePublishExposure: Codable {
+public struct CodablePublish: Codable {
     let temporaryExposureKeys: [CodableDiagnosisKey]
     let regions: [String]
     let appPackageName: String
     let verificationPayload: String
     let hmackey: String
+    let symptomOnsetInterval: ENIntervalNumber
+    let revisionToken: String?
+    let padding: String
+}
+
+public struct CodablePublishResponse: Codable {
+    let revisionToken: String
+    let insertedExposures: Int
+    let error: String
     let padding: String
 }
 

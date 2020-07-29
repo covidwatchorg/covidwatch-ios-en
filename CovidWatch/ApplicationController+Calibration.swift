@@ -74,7 +74,7 @@ extension ApplicationController {
             diagnosisKeys[index].transmissionRiskLevel = transmissionRiskLevels[index]
         }
 
-        Server.shared.postDiagnosisKeys(diagnosisKeys) { error in
+        Server.shared.publishDiagnosisKeys(diagnosisKeys) { error in
             if let error = error {
                 DispatchQueue.main.async {
                     UIApplication.shared.topViewController?.present(

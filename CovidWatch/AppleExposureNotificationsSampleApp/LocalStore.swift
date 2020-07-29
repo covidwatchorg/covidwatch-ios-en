@@ -38,6 +38,7 @@ public struct Diagnosis: Codable, Equatable {
     public var testType: String          // The test type. Can be `confirmed`, `negative`, `likely`
     public var hmacKey: Data = Data.random(count: 16) // The secret key used for hmac calculation of the diagnosis keys
     public var verificationCertificate: String? // The verification certificate issued by the Verification Server
+    public var revisionToken: String? // The revisionToken, which is issued by the Key Server, is an opaque string that must be passed back if the same devices wishes to publish TEKs again.
     public var shareZeroTranmissionRiskLevelDiagnosisKeys: Bool = false
 }
 

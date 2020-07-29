@@ -209,20 +209,31 @@ struct ReportingStep2: View {
                                 let actionAfterVerificationCertificateRequest = {
 
                                     // Step 8 of https://developers.google.com/android/exposure-notifications/verification-system
-                                    Server.shared.postDiagnosisKeys(
+                                    Server.shared.publishDiagnosisKeys(
                                         keys,
                                         verificationPayload: self.localStore.diagnoses[self.selectedDiagnosisIndex].verificationCertificate,
-                                        hmacKey: self.localStore.diagnoses[self.selectedDiagnosisIndex].hmacKey
-                                    ) { error in
+                                        hmacKey: self.localStore.diagnoses[self.selectedDiagnosisIndex].hmacKey,
+                                        symptomOnsetInterval: self.localStore.diagnoses[self.selectedDiagnosisIndex].symptomsStartDate?.intervalNumber ?? 0,
+                                        revisionToken: self.localStore.diagnoses[self.selectedDiagnosisIndex].revisionToken
+                                    ) { result in
                                         // Step 9
                                         // Since this is the last step, ensure `isSubmittingDiagnosis` is set to false.
                                         defer {
                                             self.isSubmittingDiagnosis = false
                                         }
 
-                                        if let error = error {
-                                            errorHandler(error)
-                                            return
+                                        switch result {
+                                            case let .success(publishResponse):
+
+                                                if !publishResponse.error.isEmpty {
+                                                    errorHandler(GoogleExposureNotificationsDiagnosisKeyServer.ServerError.serverSideError(publishResponse.error))
+                                                    return
+                                                }
+                                                self.localStore.diagnoses[self.selectedDiagnosisIndex].revisionToken = publishResponse.revisionToken
+
+                                            case let .failure(error):
+                                                errorHandler(error)
+                                                return
                                         }
 
                                         self.localStore.diagnoses[self.selectedDiagnosisIndex].isSubmitted = true

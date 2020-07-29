@@ -20,23 +20,27 @@ public class Server {
     public var keyServer: ExposureNotificationsDiagnosisKeyServing?
     public var verificationServer: ExposureNotificationsDiagnosisVerificationProviding?
 
-    func postDiagnosisKeys(
+    public func publishDiagnosisKeys(
         _ diagnosisKeys: [ENTemporaryExposureKey],
         verificationPayload: String? = nil,
         hmacKey: Data? = nil,
-        completion: @escaping (Error?
-        ) -> Void) {
+        symptomOnsetInterval: ENIntervalNumber = 0,
+        revisionToken: String? = nil,
+        completion: @escaping (Result<CodablePublishResponse, Error>) -> Void
+    ) {
 
         if let diagnosisServer = self.keyServer {
 
-            diagnosisServer.postDiagnosisKeys(
+            diagnosisServer.publishDiagnosisKeys(
                 diagnosisKeys,
                 verificationPayload: verificationPayload,
                 hmacKey: hmacKey,
+                symptomOnsetInterval: symptomOnsetInterval,
+                revisionToken: revisionToken,
                 completion: completion
             )
         } else {
-            completion(CocoaError(.fileNoSuchFile))
+            completion(.failure(CocoaError(.fileNoSuchFile)))
         }
     }
 
