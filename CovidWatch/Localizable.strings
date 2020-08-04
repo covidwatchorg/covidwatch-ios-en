@@ -6,7 +6,7 @@ All strings for the project, separated for localization.
 // # SPLASH
 
 /* Message */
-"SPLASH_MESSAGE" = "The power to stop COVID-19 in the palm of your hand.";
+"SPLASH_MESSAGE" = "Together, we have the power to stop COVID-19.";
 
 /* Title */
 "COVID_WATCH_LOGO_STACKED_IMAGE_ACCESSIBILITY_LABEL" = "Cool-looking Covid Watch Logo";
