@@ -228,7 +228,7 @@ All strings for the project, separated for localization.
 "HOME_TOTAL_RISK_SCORE_ACCESSIBILITY_LABEL" = "%d total risk score (0-8 scale)";
 
 /* Message */
-"HOME_NEXT_STEPS_MESSAGE" = "Next steps based on your possible COVID-19 exposures and selected region:";
+"HOME_NEXT_STEPS_MESSAGE" = "Next steps based on your possible exposures and selected region:";
 
 /* Special */
 "HOME_DAYS_ROW_1_LABEL" = "days";
