@@ -490,7 +490,7 @@ All strings for the project, separated for localization.
 "NOTIFY_OTHERS_STEP2_MESSAGE" = "Answer brief questions.";
 
 /* Message */
-"NOTIFY_OTHERS_STEP3_MESSAGE" = "Anonymously share diagnosis to help stop the spread by letting other app users get notified of possible exposure if they were nearby.";
+"NOTIFY_OTHERS_STEP3_MESSAGE" = "Share the diagnosis without ever having to provide your identity or location. This will anonymously notify other app users of possible exposure if they were nearby.";
 
 /* Button */
 "SHARE_A_POSITIVE_DIAGNOSIS" = "Continue";
