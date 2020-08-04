@@ -184,7 +184,7 @@ All strings for the project, separated for localization.
 "SETUP_3_3_MESSAGE" = "• Get exposure notifications\n• Anonymously notify others\n• Access local public health resources and recommendations";
 
 /* Title */
-"SETUP_3_GO_TO_HOME" = "View Detected Exposures";
+"SETUP_3_GO_TO_HOME" = "Get Started";
 
 // # HOME
 
