@@ -17,14 +17,16 @@ struct Setup3: View {
 
                 VStack(spacing: 0) {
 
-                    Spacer(minLength: .largeHeaderHeight)
+                    Group {
+                        Spacer(minLength: .largeHeaderHeight)
 
-                    Text("SETUP_3_1_MESSAGE")
-                        .modifier(StandardTitleTextViewModifier())
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 2 * .standardSpacing)
+                        Text("SETUP_3_1_MESSAGE")
+                            .modifier(StandardTitleTextViewModifier())
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.horizontal, 2 * .standardSpacing)
 
-                    Spacer(minLength: .standardSpacing)
+                        Spacer(minLength: .standardSpacing)
+                    }
 
                     Image("Setup 3")
                         .resizable()
@@ -47,6 +49,8 @@ struct Setup3: View {
                         .padding(.horizontal, 2 * .standardSpacing)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .lineSpacing(.standardSpacing)
+
+                    Spacer(minLength: 2 * .standardSpacing)
 
                     Group {
                         Button(action: {
