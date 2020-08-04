@@ -8,7 +8,7 @@ import SwiftUI
 struct SmallCallToAction: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(.custom("Montserrat-Bold", size: 18))
+            .font(.custom("Montserrat-SemiBold", size: 16))
             .frame(maxWidth: .infinity, minHeight: .callToActionSmallButtonHeight)
             .foregroundColor(.white)
             .background(Color("Tint Color"))
