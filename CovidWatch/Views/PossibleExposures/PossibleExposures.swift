@@ -167,13 +167,6 @@ struct PossibleExposures: View {
                                                                 .font(.custom("Montserrat-Medium", size: 12))
                                                         }
 
-                                                        HStack {
-                                                            Text("EXPOSURE_INFO_DETAIL_TOTAL_RISK_SCORE_TITLE")
-                                                                .font(.custom("Montserrat-Medium", size: 12))
-
-                                                            Text(verbatim: String.localizedStringWithFormat(NSLocalizedString("TOTAL_RISK_SCORE_VALUE", comment: ""), NSNumber(value: self.selectedExposure!.totalRiskScore)))
-                                                                .font(.custom("Montserrat-Medium", size: 12))
-                                                        }
                                                     }
                                                     .accessibilityElement(children: .combine)
 

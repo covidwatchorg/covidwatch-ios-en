@@ -413,7 +413,7 @@ All strings for the project, separated for localization.
 "ATTENUATION_DURATIONS_TITLE" = "Attenuation Durations";
 
 /* Title */
-"EXPOSURE_INFO_DETAIL_EXPOSURE_DATA" = "Exposure Info";
+"EXPOSURE_INFO_DETAIL_EXPOSURE_DATA" = "Exposure Data";
 
 /* Button */
 "EXPOSURE_INFO_DETAIL_LEARN_MORE" = "Learn More";
