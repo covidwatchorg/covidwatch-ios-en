@@ -220,7 +220,9 @@ struct PossibleExposures: View {
                             Spacer(minLength: 2 * .standardSpacing)
 
                             Text("EXPOSURES_ARE_SAVED_MESSAGE")
-                                .modifier(SubCallToAction())
+                                .font(.custom("Montserrat-Regular", size: 13))
+                                .foregroundColor(Color("Text Color"))
+                                .multilineTextAlignment(.center)
                                 .padding(.horizontal, 2 * .standardSpacing)
                                 .frame(maxWidth: .infinity, alignment: .leading)
 
