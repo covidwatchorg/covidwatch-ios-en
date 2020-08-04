@@ -395,7 +395,7 @@ All strings for the project, separated for localization.
 "DETAILS_TITLE" = "Details";
 
 /* Message */
-"POSSIBLE_EXPOSURE_MESSAGE" = "You were near someone who has shared a positive and verified diagnosis of COVID-19.";
+"POSSIBLE_EXPOSURE_MESSAGE" = "You were near someone who tested positive for COVID-19.";
 
 /* Title */
 "DATE_TITLE" = "Date";
@@ -599,7 +599,7 @@ All strings for the project, separated for localization.
 // # USER NOTIFICATION
 
 /* User notification. Do NOT add period at the end. */
-"USER_NOTIFICATION_EXPLANATION" = "You were near someone who has shared a positive and verified diagnosis of COVID-19";
+"USER_NOTIFICATION_EXPLANATION" = "You were near someone who tested positive for COVID-19";
 
 /* User notification title */
 "USER_NOTIFICATION_BLUETOOTH_OFF_TITLE" = "Bluetooth Off";
