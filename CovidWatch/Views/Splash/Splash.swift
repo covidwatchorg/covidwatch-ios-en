@@ -58,7 +58,7 @@ struct Splash: View {
                     }) {
 
                         Text("GET_STARTED")
-                            .font(.custom("Montserrat-Bold", size: 24))
+                            .font(.custom("Montserrat-SemiBold", size: 24))
                             .frame(maxWidth: .infinity, minHeight: .callToActionButtonHeight)
                             .foregroundColor(Color("Tint Color"))
                             .background(Color.white)
