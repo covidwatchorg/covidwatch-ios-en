@@ -59,7 +59,7 @@ struct Home: View {
                                 )
                             }
                             .sheet(isPresented: $isShowingExposureSettings) {
-                                Setup1(dismissesAutomatically: true)
+                                    Setup1(dismissesAutomatically: true)
                                     .environmentObject(self.localStore)
                             }
                         }
