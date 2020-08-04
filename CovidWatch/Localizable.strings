@@ -21,7 +21,7 @@ All strings for the project, separated for localization.
 "SELECTED_REGION" = "Region:";
 
 /* Message */
-"REGION_SELECTION_PRIVACY_DISCLAIMER" = "We value your privacy. Selecting a region will let you see regional healthcare resources without ever having to share your location. This can be changed at any time.";
+"REGION_SELECTION_PRIVACY_DISCLAIMER" = "We value your privacy. Select a region to see local healthcare resources without ever sharing your location or identity. You can change this selection at any time.";
 
 /* Button */
 "CONTINUE" = "Continue";
