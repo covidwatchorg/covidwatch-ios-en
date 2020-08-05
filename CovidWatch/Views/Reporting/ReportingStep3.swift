@@ -32,24 +32,8 @@ struct ReportingStep3: View {
 
                     Spacer().frame(height: 2 * .standardSpacing)
 
-                    Text("REPORTING_FINISH_MESSAGE_1")
+                    Text("REPORTING_FINISH_MESSAGE")
                         .font(.custom("Montserrat-Semibold", size: 16))
-                        .foregroundColor(Color("Text Color"))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 2 * .standardSpacing)
-
-                    Spacer().frame(height: .standardSpacing)
-
-                    Text("REPORTING_FINISH_MESSAGE_2")
-                        .font(.custom("Montserrat-Regular", size: 14))
-                        .foregroundColor(Color("Text Color"))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 2 * .standardSpacing)
-
-                    Spacer().frame(height: .standardSpacing)
-
-                    Text("REPORTING_FINISH_MESSAGE_3")
-                        .font(.custom("Montserrat-Regular", size: 14))
                         .foregroundColor(Color("Text Color"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 2 * .standardSpacing)
