@@ -18,7 +18,7 @@ struct Setup3: View {
                 VStack(spacing: 0) {
 
                     Group {
-                        Spacer(minLength: .largeHeaderHeight)
+                        Spacer(minLength: .largeHeaderHeight + .standardSpacing)
 
                         Text("SETUP_3_1_MESSAGE")
                             .modifier(StandardTitleTextViewModifier())

@@ -13,7 +13,7 @@ struct ReportingStep3: View {
 
             VStack(spacing: 0) {
 
-                Spacer(minLength: .headerHeight)
+                Spacer(minLength: .headerHeight + .standardSpacing)
 
                 Text("REPORTING_FINISH_TITLE")
                     .modifier(StandardTitleTextViewModifier())

@@ -76,7 +76,7 @@ struct ReportingStep2: View {
 
             VStack(spacing: 0) {
 
-                Spacer(minLength: .headerHeight)
+                Spacer(minLength: .headerHeight + .standardSpacing)
 
                 Text("REPORTING_VERIFY_TITLE")
                     .modifier(StandardTitleTextViewModifier())

@@ -41,7 +41,7 @@ struct Setup1: View {
 
                     VStack(spacing: 0) {
 
-                        Spacer(minLength: .headerHeight)
+                        Spacer(minLength: .headerHeight + .standardSpacing)
 
                         Text("ENABLE_EXPOSURE_NOTIFICATIONS_TITLE")
                             .modifier(StandardTitleTextViewModifier())

@@ -21,7 +21,7 @@ struct HowItWorks4: View {
 
             VStack(spacing: 0) {
 
-                Spacer(minLength: .headerHeight)
+                Spacer(minLength: .headerHeight + .standardSpacing)
 
                 HowItWorksTitleText(text: Text(verbatim: NSLocalizedString("HOW_IT_WORKS_TITLE", comment: "").uppercased()))
 

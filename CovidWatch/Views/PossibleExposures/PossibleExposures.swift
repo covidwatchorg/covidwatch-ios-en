@@ -45,7 +45,7 @@ struct PossibleExposures: View {
 
                 VStack(spacing: 0) {
 
-                    Spacer(minLength: .headerHeight)
+                    Spacer(minLength: .headerHeight + .standardSpacing)
 
                     Text("POSSIBLE_EXPOSURES_TITLE")
                         .modifier(StandardTitleTextViewModifier())

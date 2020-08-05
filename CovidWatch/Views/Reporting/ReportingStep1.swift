@@ -35,7 +35,7 @@ struct ReportingStep1: View {
 
             VStack(spacing: 0) {
 
-                Spacer(minLength: .headerHeight)
+                Spacer(minLength: .headerHeight + .standardSpacing)
 
                 Text("NOTIFY_OTHERS_TITLE")
                     .modifier(StandardTitleTextViewModifier())

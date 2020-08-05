@@ -14,7 +14,7 @@ struct WhereIsMyCode: View {
 
             ScrollView(.vertical, showsIndicators: false) {
 
-                Spacer(minLength: .largeHeaderHeight)
+                Spacer(minLength: .largeHeaderHeight + .standardSpacing)
 
                 Text("WHERE_IS_MY_CODE_TITLE")
                     .modifier(StandardTitleTextViewModifier())

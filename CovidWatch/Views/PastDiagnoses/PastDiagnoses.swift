@@ -25,7 +25,7 @@ struct PastDiagnoses: View {
 
                 VStack(spacing: 0) {
 
-                    Spacer(minLength: .headerHeight)
+                    Spacer(minLength: .headerHeight + .standardSpacing)
 
                     Text("PAST_DIAGNOSES_TITLE")
                         .modifier(StandardTitleTextViewModifier())
