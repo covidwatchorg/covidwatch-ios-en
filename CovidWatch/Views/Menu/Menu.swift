@@ -250,7 +250,7 @@ struct Menu: View {
 
                         Group {
                             Button(action: {
-                                guard let url = URL(string: "https://www.covidwatch.org/privacy") else { return }
+                                guard let url = URL(string: "https://www.covidwatch.org/terms") else { return }
                                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
                             }) {
                                 HStack {
