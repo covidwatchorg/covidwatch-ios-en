@@ -44,7 +44,7 @@
 		<string>US</string>
 	</array>
 	<key>CWKeyServerExportConfigurationCloudStorageBucketName</key>
-	<string>exposure-notification-export-naxby</string>
+	<string>exposure-notification-export-covidwatch-prod</string>
 	<key>CWKeyServerExportConfigurationFilenameRoot</key>
 	<string>exposureKeyExport-US</string>
 	<key>CWKeyServerExposureBaseURL</key>
