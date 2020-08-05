@@ -45,6 +45,7 @@ extension CodableRegion {
     static let `default`: Self = .init(
         id: .arizonaState,
         name: "State of Arizona",
+        isDisabled: true,
         nextStepsNoSignificantExposure: [
             .shareTheApp
         ],
@@ -54,12 +55,16 @@ extension CodableRegion {
         nextStepsVerifiedPositive: [
             .shareTheApp
         ],
-        nextStepsVerificationCode: [
+        nextStepsDisabled: [
             .init(
-                type: .phone,
-                description: "Please call Arizona Department of Health Services at (844) 542-8201 for assistance.",
-                url: "tel:1-844-542-8201"
-            )
+                type: .website,
+                description: "Visit the Arizona Department of Health Services website to share your thoughts on this app.",
+                url: "https://www.azdhs.gov"
+            ),
+            .shareTheApp
+        ],
+        nextStepsVerificationCode: [
+            .nextStepsVerificationCodeDefault
         ]
     )
 

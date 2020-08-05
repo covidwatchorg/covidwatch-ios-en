@@ -9,10 +9,15 @@ import SwiftUI
 extension LocalStore {
 
     public enum HomeRiskLevel: Int, Codable {
-        case low, high, verifiedPositive
+        case low, high, verifiedPositive, disabled
     }
 
     public func updateHomeRiskLevel() {
+
+        if self.region.isDisabled {
+            self.homeRiskLevel = .disabled
+            return
+        }
 
         if self.diagnoses.contains(where: { $0.isVerified && $0.testType == .testTypeConfirmed }) {
             self.homeRiskLevel = .verifiedPositive
@@ -41,7 +46,7 @@ extension LocalStore.HomeRiskLevel {
     var color: Color {
 
         switch self {
-            case .low:
+            case .low, .disabled:
                 return Color(UIColor.systemGray2)
             default:
                 return Color("Risk Level High Color")
@@ -58,6 +63,8 @@ extension LocalStore.HomeRiskLevel {
                 return NSLocalizedString("RISK_LEVEL_HIGH", comment: "")
             case .verifiedPositive:
                 return NSLocalizedString("RISK_LEVEL_VERIFIED_POSITIVE", comment: "")
+            case .disabled:
+                return NSLocalizedString("RISK_LEVEL_DISABLED", comment: "")
         }
 
     }
@@ -71,6 +78,8 @@ extension LocalStore.HomeRiskLevel {
                 return LocalStore.shared.region.nextStepsSignificantExposure
             case .verifiedPositive:
                 return LocalStore.shared.region.nextStepsVerifiedPositive
+            case .disabled:
+                return LocalStore.shared.region.nextStepsDisabled ?? []
         }
 
     }

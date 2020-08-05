@@ -129,7 +129,7 @@ struct Home: View {
                                         .environmentObject(self.localStore)
                                 }
 
-                            if self.localStore.homeRiskLevel != .verifiedPositive {
+                            if self.localStore.homeRiskLevel != .verifiedPositive && !self.localStore.region.isDisabled {
 
                                 Spacer(minLength: 2 * .standardSpacing)
 

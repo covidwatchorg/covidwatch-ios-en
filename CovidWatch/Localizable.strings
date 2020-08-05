@@ -257,6 +257,9 @@ All strings for the project, separated for localization.
 /* Title */
 "RISK_LEVEL_VERIFIED_POSITIVE" = "Verified Positive Diagnosis";
 
+/* Title */
+"RISK_LEVEL_DISABLED" = "Under Development";
+
 // # MENU
 
 /* Title */

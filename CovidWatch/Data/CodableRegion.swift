@@ -20,6 +20,7 @@ public struct CodableRegion: Codable {
         case phone
         case website
         case share
+        case selectRegion
     }
 
     public struct NextStep: Codable, Hashable {
@@ -30,10 +31,12 @@ public struct CodableRegion: Codable {
 
     let id: RegionID
     let name: String
+    var isDisabled: Bool = false
 
     let nextStepsNoSignificantExposure: [NextStep]
     let nextStepsSignificantExposure: [NextStep]
     let nextStepsVerifiedPositive: [NextStep]
+    var nextStepsDisabled: [NextStep]?
 
     let nextStepsVerificationCode: [NextStep]
 
@@ -83,6 +86,8 @@ extension CodableRegion.NextStepType {
                 return Image("Share Box")
             case .share:
                 return Image("Share")
+            case .selectRegion:
+                return Image("Globe")
         }
     }
 }

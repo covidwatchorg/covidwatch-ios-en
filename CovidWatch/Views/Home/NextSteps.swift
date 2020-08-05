@@ -9,6 +9,8 @@ struct NextSteps: View {
 
     @EnvironmentObject var localStore: LocalStore
 
+    @State var isShowingRegionSelection: Bool = false
+
     var body: some View {
         VStack(spacing: 0) {
             Text("HOME_NEXT_STEPS_MESSAGE")
@@ -39,6 +41,9 @@ struct NextSteps: View {
                                     }
                                     ApplicationController.shared.handleTapShareApp(url: url)
                             }
+
+                            case .selectRegion:
+                                self.isShowingRegionSelection.toggle()
 
                             default:
                                 if let url = nextStep.url {
@@ -74,6 +79,12 @@ struct NextSteps: View {
                         .padding(.standardSpacing)
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 54, maxHeight: .infinity, alignment: .leading)
                         .background(Color(UIColor.systemBackground))
+                    }
+                    .sheet(isPresented: self.$isShowingRegionSelection) {
+                        RegionSelection(
+                            selectedRegionIndex: self.localStore.selectedRegionIndex,
+                            dismissOnFinish: true
+                        ).environmentObject(self.localStore)
                     }
 
                     Spacer().frame(height: 3)
