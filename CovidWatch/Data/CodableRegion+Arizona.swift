@@ -74,7 +74,7 @@ extension CodableRegion {
         nextStepsNoSignificantExposure: [
             .init(
                 type: .website,
-                description: "Monitor yourself for COVID-19 symptoms.",
+                description: "Monitor COVID-19 symptoms.",
                 url: "https://covid19.arizona.edu/prevention-health/covid-19-symptoms?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_covid19_symptoms_no_exposure"
             ),
             .init(
@@ -155,16 +155,66 @@ extension CodableRegion {
     static let northernArizonaUniversity: Self = .init(
         id: .northernArizonaUniversity,
         name: "Northern Arizona University",
-                nextStepsNoSignificantExposure: [
+        nextStepsNoSignificantExposure: [
+            .init(
+                type: .website,
+                description: "Learn how to protect myself and others.",
+                url: "https://in.nau.edu/campus-health-services/covid-19/"
+            ),
+            .init(
+                type: .website,
+                description: "Monitor COVID-19 symptoms.",
+                url: "https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html"
+            ),
+            .init(
+                type: .phone,
+                description: "If you have COVID-19 symptoms, call Campus Health at (928) 523-2131.",
+                url: "tel:1-928-523-2131"
+            ),
             .shareTheApp
         ],
         nextStepsSignificantExposure: [
+            .init(
+                type: .website,
+                description: "Please stay at home and follow the self-quaratine guidelines.",
+                url:"https://in.nau.edu/wp-content/uploads/sites/202/COVID-CHS-selfquarantine-7-16-20.pdf"
+            ),
+            .init(
+                type: .website,
+                description: "Monitor COVID-19 symptoms and get tested ASAP if symptoms appear.",
+                url:"https://in.nau.edu/campus-health-services/covid-testing/"
+            ),
+            .init(
+                type: .phone,
+                description: "Call Campus Health at (928) 523-2131 or your health care provider for guidance.",
+                url: "tel:1-928-523-2131"
+            ),
             .shareTheApp
         ],
         nextStepsVerifiedPositive: [
+            .init(
+                type: .website,
+                description: "Please stay at home and follow the self-quaratine guidelines.",
+                url:"https://in.nau.edu/wp-content/uploads/sites/202/COVID-CHS-selfisolation-7-16-201.pdf"
+            ),
+            .init(
+                type: .phone,
+                description: "Follow up with Campus Health at (928) 523-2131 or your healthcare provider for more instructions.",
+                url: "tel:1-928-523-2131"
+            ),
+            .init(
+                type: .website,
+                description: "Register with NAU's Exposure Tracing team.",
+                url: "https://in.nau.edu/"
+            ),
             .shareTheApp
         ],
         nextStepsVerificationCode: [
+            .init(
+                type: .phone,
+                description: "If you are a student or staff at NAU, please call Campus Health Services at (928) 523-2131 to obtain one. If you were tested elsewhere, have a copy of your results ready. ",
+                url: "tel:1-928-523-2131"
+            ),
             .nextStepsVerificationCodeDefault
         ]
     )
