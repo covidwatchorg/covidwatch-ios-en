@@ -20,24 +20,28 @@ struct ReportingStep3: View {
                     .padding(.horizontal, 2 * .standardSpacing)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
 
-                Group {
+                Spacer().frame(height: 2 * .standardSpacing)
 
-                    Spacer().frame(height: 2 * .standardSpacing)
+                Text("REPORTING_FINISH_SUBTITLE_MESSAGE")
+                    .font(.custom("Montserrat-Regular", size: 16))
+                    .foregroundColor(Color("Text Color"))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 2 * .standardSpacing)
 
-                    Text("REPORTING_FINISH_SUBTITLE_MESSAGE")
-                        .font(.custom("Montserrat-Regular", size: 16))
-                        .foregroundColor(Color("Text Color"))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 2 * .standardSpacing)
+                Spacer().frame(height: 2 * .standardSpacing)
 
-                    Spacer().frame(height: 2 * .standardSpacing)
+                Image("Earth")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .top)
 
-                    Text("REPORTING_FINISH_MESSAGE")
-                        .font(.custom("Montserrat-Semibold", size: 16))
-                        .foregroundColor(Color("Text Color"))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 2 * .standardSpacing)
-                }
+                Spacer().frame(height: 2 * .standardSpacing)
+
+                Text("REPORTING_FINISH_MESSAGE")
+                    .font(.custom("Montserrat-Regular", size: 14))
+                    .foregroundColor(Color("Text Color"))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 2 * .standardSpacing)
 
                 Button(action: {
                     ApplicationController.shared.handleTapShareApp()
@@ -46,13 +50,6 @@ struct ReportingStep3: View {
                 }
                 .padding(.top, 2 * .standardSpacing)
                 .padding(.horizontal, 2 * .standardSpacing)
-
-                Image("Family Earth")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .top)
-                    .padding(.top, 2 * .standardSpacing)
-                    .padding(.bottom, 2 * .standardSpacing)
 
                 Image("Powered By CW for ADHS Grey")
                     .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
