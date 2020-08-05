@@ -76,7 +76,7 @@ struct WhereIsMyCode: View {
                                         }
                                     }
                                 }) {
-                                    Text("WHERE_IS_MY_CODE_CALL")
+                                    Text(nextStep.type == .website ? "WHERE_IS_MY_CODE_WEBSITE" : "WHERE_IS_MY_CODE_CALL")
                                         .font(.custom("Montserrat-SemiBold", size: 14))
                                         .padding(.horizontal, 2 * .standardSpacing)
                                         .frame(minHeight: .callToActionSmallButtonHeight)

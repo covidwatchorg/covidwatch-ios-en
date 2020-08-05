@@ -26,9 +26,9 @@ extension CodableRegion.NextStep {
     )
 
     static let nextStepsVerificationCodeDefault: Self = .init(
-        type: .phone,
-        description: "For others in this region, please call Arizona Department of Health Services at (844) 542-8201 for assistance.",
-        url: "tel:1-844-542-8201"
+        type: .website,
+        description: "For all others, the app is currently under development to support other states and regions. Visit the Covid Watch website for more information.",
+        url: "https://covidwatch.org"
     )
 
 }

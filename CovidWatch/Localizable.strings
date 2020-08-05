@@ -504,6 +504,9 @@ All strings for the project, separated for localization.
 /* Button */
 "WHERE_IS_MY_CODE_CALL" = "Call";
 
+/* Button */
+"WHERE_IS_MY_CODE_WEBSITE" = "Learn More";
+
 /* Message */
 "WHERE_IS_MY_CODE_WHAT_IS_QUESTION" = "What is a Diagnosis Verification Code?";
 
