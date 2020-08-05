@@ -176,7 +176,7 @@ extension CodableRegion {
         nextStepsSignificantExposure: [
             .init(
                 type: .website,
-                description: "Please stay at home and follow the self-quaratine guidelines.",
+                description: "Please stay at home and follow the self-isolation guidelines.",
                 url:"https://in.nau.edu/wp-content/uploads/sites/202/COVID-CHS-selfquarantine-7-16-20.pdf"
             ),
             .init(
@@ -194,7 +194,7 @@ extension CodableRegion {
         nextStepsVerifiedPositive: [
             .init(
                 type: .website,
-                description: "Please stay at home and follow the self-quaratine guidelines.",
+                description: "Please stay at home and follow the self-isolation guidelines.",
                 url:"https://in.nau.edu/wp-content/uploads/sites/202/COVID-CHS-selfisolation-7-16-201.pdf"
             ),
             .init(
