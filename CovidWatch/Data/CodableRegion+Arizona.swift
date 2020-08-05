@@ -205,7 +205,7 @@ extension CodableRegion {
             .init(
                 type: .website,
                 description: "Register with NAU's Exposure Tracing team.",
-                url: "https://in.nau.edu/"
+                url: "https://in.nau.edu/campus-health-services/exposure-tracing"
             ),
             .shareTheApp
         ],
