@@ -302,9 +302,6 @@ All strings for the project, separated for localization.
 "FAQ_TITLE" = "FAQ";
 
 /* Title */
-"TEMS_OF_SERVICE_TITLE" = "Terms of Service";
-
-/* Title */
 "PRIVACY_POLICY_TITLE" = "Privacy Policy";
 
 /* Title */
