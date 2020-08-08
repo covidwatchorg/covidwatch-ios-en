@@ -348,7 +348,7 @@ All strings for the project, separated for localization.
 "EXPOSURE_NOTIFICATION_STATUS_BLUETOOTH_OFF_MESSAGE" = "Bluetooth has been turned off on the system. Bluetooth is required for Exposure Notification.";
 
 /* Message */
-"EXPOSURE_NOTIFICATION_STATUS_RESTRICTED_MESSAGE" = "Exposure Notification is not active due to system restrictions, such as parental controls.";
+"EXPOSURE_NOTIFICATION_STATUS_RESTRICTED_MESSAGE" = "Exposure Notification is not active due to system restrictions. Restarting the phone may fix this issue.";
 
 /* Message */
 "EXPOSURE_NOTIFICATION_STATUS_PAUSED_MESSAGE" = "The user paused Exposure Notification to temporarily disable Bluetooth advertising and scanning.";
