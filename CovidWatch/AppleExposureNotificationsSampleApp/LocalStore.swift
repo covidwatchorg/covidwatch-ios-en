@@ -32,7 +32,11 @@ public struct Diagnosis: Codable, Equatable {
     public var testDate: Date?  // The date the test was administered
     public var symptomsStartDate: Date?
     public var possibleInfectionDate: Date?
-    public var isVerified = false         // Whether the diagnosis was verified by the Health Authority for the purpose of notifying others
+    public var isVerified = false {         // Whether the diagnosis was verified by the Health Authority for the purpose of notifying others
+        didSet {
+            if isVerified { verificationCode = nil }
+        }
+    }
     public var verificationCode: String?  // The 8-digit verification code issued by the Verification Server
     public var longTermToken: String?     // The 24h long-term token issued by the Verification Server
     public var testType: String          // The test type. Can be `confirmed`, `negative`, `likely`
