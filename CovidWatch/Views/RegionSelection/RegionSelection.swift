@@ -19,8 +19,8 @@ struct RegionSelection: View {
 
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
-    init(selectedRegionIndex: Int, dismissOnFinish: Bool = false) {
-        self._selectedRegionIndex = .init(initialValue: selectedRegionIndex + 1)
+    init(selectedRegionIndex: Int?, dismissOnFinish: Bool = false) {
+        self._selectedRegionIndex = .init(initialValue: selectedRegionIndex != nil ? selectedRegionIndex! + 1 : 0)
         self.dismissOnFinish = dismissOnFinish
     }
 

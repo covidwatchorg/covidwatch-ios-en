@@ -25,7 +25,7 @@ struct Setup2: View {
             if !isShowingNextStep {
                 setup2.transition(.slide)
             } else {
-                RegionSelection(selectedRegionIndex: self.localStore.selectedRegionIndex)
+                RegionSelection(selectedRegionIndex: nil)
                     .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                     .environmentObject(self.localStore)
             }
