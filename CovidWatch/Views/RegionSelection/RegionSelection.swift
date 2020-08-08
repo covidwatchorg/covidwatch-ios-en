@@ -20,7 +20,7 @@ struct RegionSelection: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     init(selectedRegionIndex: Int, dismissOnFinish: Bool = false) {
-        self._selectedRegionIndex = .init(initialValue: selectedRegionIndex)
+        self._selectedRegionIndex = .init(initialValue: selectedRegionIndex + 1)
         self.dismissOnFinish = dismissOnFinish
     }
 
@@ -89,7 +89,7 @@ struct RegionSelection: View {
 
                     if isShowingContinue {
                         Button(action: {
-                            self.localStore.region = self.localStore.regions[self.selectedRegionIndex]
+                            self.localStore.region = self.localStore.regions[self.selectedRegionIndex - 1]
                             withAnimation {
                                 if self.dismissOnFinish {
                                     self.presentationMode.wrappedValue.dismiss()
