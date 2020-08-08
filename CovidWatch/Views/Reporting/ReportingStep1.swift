@@ -14,8 +14,6 @@ struct ReportingStep1: View {
 
     @State var isShowingWhereIsMyCode: Bool = false
 
-    @State var selectedDiagnosisIndex = 0
-
     var body: some View {
 
         ZStack(alignment: .top) {
@@ -86,14 +84,6 @@ struct ReportingStep1: View {
                     ApplicationController.shared.handleTapCalibrationShareAPositiveDiagnosisButton()
 
                     #else
-
-                    let diagnosis = Diagnosis(
-                        id: UUID(),
-                        isSubmitted: false,
-                        testType: .testTypeConfirmed
-                    )
-                    self.localStore.diagnoses.insert(diagnosis, at: 0)
-                    self.selectedDiagnosisIndex = 0
 
                     withAnimation {
                         self.isShowingNextStep = true
