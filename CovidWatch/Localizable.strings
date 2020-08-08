@@ -156,7 +156,7 @@ All strings for the project, separated for localization.
 "ENABLE_EXPOSURE_NOTIFICATIONS_IMAGE_ACCESSIBILITY_LABEL" = "Enable Exposure Notifications";
 
 /* Message */
-"ENABLE_EXPOSURE_NOTIFICATIONS_MESSAGE" = "These notifications will let know if you’ve been exposed to a person who later reports themselves as having tested positive for COVID-19. It can be turned off at any time.";
+"ENABLE_EXPOSURE_NOTIFICATIONS_MESSAGE" = "These notifications will let you know if you’ve been exposed to a person who later reports themselves as having tested positive for COVID-19. It can be turned off at any time.";
 
 // ## SETUP 2
 
