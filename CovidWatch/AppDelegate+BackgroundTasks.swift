@@ -21,6 +21,19 @@ extension AppDelegate {
 
         BGTaskScheduler.shared.register(forTaskWithIdentifier: .exposureNotificationBackgroundTaskIdentifier, using: .main) { task in
 
+            // Delete possible exposures older than 30 days
+            LocalStore.shared.exposuresInfos = LocalStore.shared.exposuresInfos.filter({
+                $0.date > Date().addingTimeInterval(-30 * 24 * 60 * 60)
+            })
+
+            // Delete diagnoses older than 30 days
+            LocalStore.shared.diagnoses = LocalStore.shared.diagnoses.filter({
+                if let submitDate = $0.submitDate {
+                    return submitDate > Date().addingTimeInterval(-30 * 24 * 60 * 60)
+                }
+                return true
+            })
+
             // Ensure risk metrics are updated daily, even if there aren't any new exposures detected.
             ExposureManager.shared.updateRiskMetricsIfNeeded()
 
