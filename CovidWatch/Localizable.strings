@@ -84,7 +84,7 @@ All strings for the project, separated for localization.
 "WELCOME_TITLE" = "Welcome to the";
 
 /* Title */
-"WELCOME_APP_NAME" = "Covid Watch Arizona Exposure Notification App";
+"WELCOME_APP_NAME" = "Covid Watch Arizona Exposure Notifications App";
 
 /* Message */
 "WELCOME_MESSAGE" = "Together, we have the power to stop the spread of COVID-19 with safe, secure, and anonymous exposure notifications.";
@@ -336,22 +336,22 @@ All strings for the project, separated for localization.
 "EXPOSURE_NOTIFICATIONS_TITLE" = "Exposure Notifications";
 
 /* Message */
-"EXPOSURE_NOTIFICATION_STATUS_UNKOWN_MESSAGE" = "Status of Exposure Notification is unknown.";
+"EXPOSURE_NOTIFICATION_STATUS_UNKOWN_MESSAGE" = "Status of Exposure Notifications is unknown.";
 
 /* Message */
 "EXPOSURE_NOTIFICATION_STATUS_ACTIVE_MESSAGE" = "You will be notified of possible exposures to COVID-19. We recommend that this setting remain on until the pandemic is over.";
 
 /* Message */
-"EXPOSURE_NOTIFICATION_STATUS_DISABLED_MESSAGE" = "Exposure Notification is disabled.";
+"EXPOSURE_NOTIFICATION_STATUS_DISABLED_MESSAGE" = "Exposure Notifications are disabled.";
 
 /* Message */
 "EXPOSURE_NOTIFICATION_STATUS_BLUETOOTH_OFF_MESSAGE" = "Bluetooth has been turned off on the system. Bluetooth is required for Exposure Notification.";
 
 /* Message */
-"EXPOSURE_NOTIFICATION_STATUS_RESTRICTED_MESSAGE" = "Exposure Notification is not active due to system restrictions. Restarting the phone may fix this issue.";
+"EXPOSURE_NOTIFICATION_STATUS_RESTRICTED_MESSAGE" = "Exposure Notifications are not active due to system restrictions. Restarting the phone may fix this issue.";
 
 /* Message */
-"EXPOSURE_NOTIFICATION_STATUS_PAUSED_MESSAGE" = "The user paused Exposure Notification to temporarily disable Bluetooth advertising and scanning.";
+"EXPOSURE_NOTIFICATION_STATUS_PAUSED_MESSAGE" = "The user paused Exposure Notifications to temporarily disable Bluetooth advertising and scanning.";
 
 /* Message */
 "EXPOSURES_LAST_CHECKED_NEVER_MESSAGE" = "Last checked: Never.";
@@ -591,7 +591,7 @@ All strings for the project, separated for localization.
 "BACKGROUND_TIMEOUT" = "Ran out of background time.";
 
 /* Error */
-"ACCES_TO_EN_DENIED" = "Access to Exposure Notification denied.";
+"ACCES_TO_EN_DENIED" = "Access to Exposure Notifications denied.";
 
 // # USER NOTIFICATION
 
