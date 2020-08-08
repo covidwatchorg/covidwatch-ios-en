@@ -27,7 +27,7 @@ extension CodableRegion.NextStep {
 
     static let nextStepsVerificationCodeDefault: Self = .init(
         type: .website,
-        description: "For all others, the app is currently under development to support other states and regions. Visit the Covid Watch website for more information.",
+        description: "For others, the app is currently under development to support other states and regions. Visit the Covid Watch website for more information.",
         url: "https://covidwatch.org"
     )
 
@@ -128,7 +128,7 @@ extension CodableRegion {
         nextStepsVerificationCode: [
             .init(
                 type: .phone,
-                description: "If you are a student or staff at UArizona, please call Campus Health Services at 520-621-9202 to obtain one. If you were tested elsewhere, please have your results ready.",
+                description: "If you are a student or staff member at University of Arizona, please call Campus Health Services at 520-621-9202 to obtain one. If you were tested elsewhere, please have your results ready.",
                 url: "tel:1-520-621-9202"
             ),
             .nextStepsVerificationCodeDefault
