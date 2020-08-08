@@ -15,6 +15,8 @@ struct RegionSelection: View {
 
     @State var isShowingNextStep = false
 
+    @State var isShowingContinue = false
+
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     init(selectedRegionIndex: Int, dismissOnFinish: Bool = false) {
@@ -52,33 +54,25 @@ struct RegionSelection: View {
 
                     Spacer().frame(height: 2 * .standardSpacing)
 
-//                    Text("SPLASH_MESSAGE")
-//                        .font(.custom("Montserrat-SemiBold", size: 21))
-//                        .foregroundColor(.white)
-//                        .multilineTextAlignment(.center)
-//                        .frame(maxWidth: .infinity, alignment: .center)
-//                        .padding(.horizontal, 2 * .standardSpacing)
-//
-//                    Spacer().frame(height: .standardSpacing)
+                    Text("SPLASH_MESSAGE")
+                        .font(.custom("Montserrat-SemiBold", size: 18))
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.horizontal, 2 * .standardSpacing)
 
-                    Group {
-                        Text("SELECT_REGION")
-                            .font(.custom("Montserrat-SemiBold", size: 21))
-                            .foregroundColor(.white)
-                            .multilineTextAlignment(.center)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .padding(.horizontal, 2 * .standardSpacing)
-
-                        Spacer().frame(height: .standardSpacing)
-                    }
+                    Spacer().frame(height: .standardSpacing)
 
                     Picker("SELECT_REGION", selection: $selectedRegionIndex) {
-                        ForEach(0 ..< self.localStore.regions.count) {
-                            Text(verbatim: self.localStore.regions[$0].name)
+                        ForEach(0 ..< self.localStore.regions.count + 1) {
+                            Text(verbatim: $0 != 0 ? self.localStore.regions[($0) - 1].name : NSLocalizedString("SELECT_REGION", comment: ""))
                                 .font(.custom("Montserrat-SemiBold", size: 16))
                                 .foregroundColor(.white)
                                 .multilineTextAlignment(.center)
                         }
+                    }
+                    .onReceive([self.selectedRegionIndex].publisher.first()) { _ in
+                        self.isShowingContinue = (self.selectedRegionIndex != 0)
                     }
                     .padding(.horizontal, -2 * .standardSpacing) // Yes, -2 * .standardSpacing
                     .preferredColorScheme(.dark)
@@ -89,30 +83,33 @@ struct RegionSelection: View {
                         .foregroundColor(.white)
                         .padding(.horizontal, 2 * .standardSpacing)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .animation(.none)
 
                     Spacer().frame(height: .standardSpacing)
 
-                    Button(action: {
-                        self.localStore.region = self.localStore.regions[self.selectedRegionIndex]
-                        withAnimation {
-                            if self.dismissOnFinish {
-                                self.presentationMode.wrappedValue.dismiss()
-                            } else {
-                                self.isShowingNextStep = true
+                    if isShowingContinue {
+                        Button(action: {
+                            self.localStore.region = self.localStore.regions[self.selectedRegionIndex]
+                            withAnimation {
+                                if self.dismissOnFinish {
+                                    self.presentationMode.wrappedValue.dismiss()
+                                } else {
+                                    self.isShowingNextStep = true
+                                }
                             }
+                        }) {
+
+                            Text("CONTINUE")
+                                .font(.custom("Montserrat-Bold", size: 18))
+                                .frame(maxWidth: .infinity, minHeight: .callToActionSmallButtonHeight)
+                                .foregroundColor(Color("Tint Color"))
+                                .background(Color.white)
+                                .cornerRadius(.callToActionSmallButtonCornerRadius, antialiased: true)
+
                         }
-                    }) {
-
-                        Text("CONTINUE")
-                            .font(.custom("Montserrat-Bold", size: 18))
-                            .frame(maxWidth: .infinity, minHeight: .callToActionSmallButtonHeight)
-                            .foregroundColor(Color("Tint Color"))
-                            .background(Color.white)
-                            .cornerRadius(.callToActionSmallButtonCornerRadius, antialiased: true)
-
+                        .padding(.horizontal, 2 * .standardSpacing)
+                        .padding(.bottom, .standardSpacing)
                     }
-                    .padding(.horizontal, 2 * .standardSpacing)
-                    .padding(.bottom, .standardSpacing)
                 }
             }
         }
