@@ -6,52 +6,52 @@
 import SwiftUI
 
 struct Setup3: View {
-
+    
     @EnvironmentObject var localStore: LocalStore
-
+    
     var body: some View {
-
+        
         ZStack(alignment: .top) {
-
+            
             ScrollView(.vertical, showsIndicators: false) {
-
+                
                 VStack(spacing: 0) {
-
+                    
                     Group {
                         Spacer(minLength: .largeHeaderHeight + .standardSpacing)
-
+                        
                         Text("SETUP_3_1_MESSAGE")
                             .modifier(StandardTitleTextViewModifier())
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal, 2 * .standardSpacing)
-
+                        
                         Spacer(minLength: .standardSpacing)
                     }
-
+                    
                     Image("Setup 3")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .accessibility(label: Text("SETUP_3_IMAGE_ACCESSIBILITY_LABEL"))
-                        .padding(.horizontal, 2 * .standardSpacing)
-
+                        .padding(.horizontal, 10 * .standardSpacing)
+                    
                     Spacer(minLength: .standardSpacing)
-
+                    
                     Text("SETUP_3_2_TITLE")
                         .font(.custom("Montserrat-Semibold", size: 18))
                         .foregroundColor(Color("Text Color"))
                         .padding(.horizontal, 2 * .standardSpacing)
                         .frame(maxWidth: .infinity, alignment: .leading)
-
+                    
                     Spacer(minLength: 2 * .standardSpacing)
-
+                    
                     Text("SETUP_3_3_MESSAGE")
                         .modifier(SetupMessageTextViewModifier())
                         .padding(.horizontal, 2 * .standardSpacing)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .lineSpacing(.standardSpacing)
-
+                    
                     Spacer(minLength: 2 * .standardSpacing)
-
+                    
                     Group {
                         Button(action: {
                             withAnimation {
@@ -63,11 +63,11 @@ struct Setup3: View {
                         }
                         .padding(.horizontal, 2 * .standardSpacing)
                     }
-
+                    
                     Spacer(minLength: .standardSpacing)
                 }
             }
-
+            
             HeaderBar(showMenu: false, showRegionSelection: true)
         }
     }
