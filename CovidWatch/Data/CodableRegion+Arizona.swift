@@ -27,8 +27,8 @@ extension CodableRegion.NextStep {
 
     static let nextStepsVerificationCodeDefault: Self = .init(
         type: .website,
-        description: "For others, the app is currently under development to support other states and regions. Visit the Covid Watch website for more information.",
-        url: "https://covidwatch.org"
+        description: "For others in Arizona, the statewide app is under development. Visit the Arizona Department of Health Services website for more information.",
+        url: "https://azdhs.gov"
     )
 
 }
