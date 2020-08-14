@@ -118,5 +118,7 @@
 	</array>
 	<key>ENDeveloperRegion</key>
 	<string>US-AZ</string>
+	<key>ENAPIVersion</key>
+	<string>1</string>
 </dict>
 </plist>
