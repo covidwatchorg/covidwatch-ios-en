@@ -517,10 +517,19 @@ All strings for the project, separated for localization.
 "WHERE_IS_MY_CODE_TITLE" = "Where is my code?";
 
 /* Button */
-"WHERE_IS_MY_CODE_CALL" = "Call";
+"WHERE_IS_MY_CODE_INFO" = "Learn More";
+
+/* Button */
+"WHERE_IS_MY_CODE_PHONE" = "Call";
 
 /* Button */
 "WHERE_IS_MY_CODE_WEBSITE" = "Learn More";
+
+/* Button */
+"WHERE_IS_MY_CODE_SHARE" = "Share";
+
+/* Button */
+"WHERE_IS_MY_CODE_SELECT_REGION" = "Choose a Different Region";
 
 /* Message */
 "WHERE_IS_MY_CODE_WHAT_IS_QUESTION" = "What is a Diagnosis Verification Code?";

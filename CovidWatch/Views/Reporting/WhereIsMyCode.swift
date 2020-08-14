@@ -6,7 +6,10 @@
 import SwiftUI
 
 struct WhereIsMyCode: View {
+
     @EnvironmentObject var localStore: LocalStore
+
+    @State var isShowingRegionSelection: Bool = false
 
     var body: some View {
 
@@ -56,6 +59,9 @@ struct WhereIsMyCode: View {
                                                 ApplicationController.shared.handleTapShareApp(url: url)
                                         }
 
+                                        case .selectRegion:
+                                            self.isShowingRegionSelection.toggle()
+
                                         default:
                                             if let url = nextStep.url {
                                                 guard let url = URL(string: url) else {
@@ -76,13 +82,19 @@ struct WhereIsMyCode: View {
                                         }
                                     }
                                 }) {
-                                    Text(nextStep.type == .website ? "WHERE_IS_MY_CODE_WEBSITE" : "WHERE_IS_MY_CODE_CALL")
+                                    Text(verbatim: nextStep.type.callToActionLocalizedMessage)
                                         .font(.custom("Montserrat-SemiBold", size: 14))
                                         .padding(.horizontal, 2 * .standardSpacing)
                                         .frame(minHeight: .callToActionSmallButtonHeight)
                                         .foregroundColor(.white)
                                         .background(Color("Tint Color"))
                                         .cornerRadius(.callToActionSmallButtonCornerRadius, antialiased: true)
+                                }
+                                .sheet(isPresented: self.$isShowingRegionSelection) {
+                                    RegionSelection(
+                                        selectedRegionIndex: self.localStore.selectedRegionIndex,
+                                        dismissOnFinish: true
+                                    ).environmentObject(self.localStore)
                                 }
 
                                 Spacer().frame(height: 2 * .standardSpacing)

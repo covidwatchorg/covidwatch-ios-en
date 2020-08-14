@@ -44,6 +44,24 @@ public struct CodableRegion: Codable {
     let azRiskModelConfiguration = AZExposureRiskModel.Configuration()
 }
 
+extension CodableRegion.NextStepType {
+
+    public var callToActionLocalizedMessage: String {
+        switch self {
+            case .info:
+                return NSLocalizedString("WHERE_IS_MY_CODE_INFO", comment: "")
+            case .phone:
+                return NSLocalizedString("WHERE_IS_MY_CODE_PHONE", comment: "")
+            case .website:
+                return NSLocalizedString("WHERE_IS_MY_CODE_WEBSITE", comment: "")
+            case .share:
+                return NSLocalizedString("WHERE_IS_MY_CODE_SHARE", comment: "")
+            case .selectRegion:
+                return NSLocalizedString("WHERE_IS_MY_CODE_SELECT_REGION", comment: "")
+        }
+    }
+}
+
 extension CodableRegion {
 
     var logoTypeImageName: String {
