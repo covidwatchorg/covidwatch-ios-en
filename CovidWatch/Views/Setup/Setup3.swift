@@ -25,16 +25,23 @@ struct Setup3: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal, 2 * .standardSpacing)
 
-                        Spacer(minLength: .standardSpacing)
+                        Spacer(minLength: 2 * .standardSpacing)
                     }
 
                     Image("Setup 3")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
                         .accessibility(label: Text("SETUP_3_IMAGE_ACCESSIBILITY_LABEL"))
                         .padding(.horizontal, 2 * .standardSpacing)
 
-                    Spacer(minLength: .standardSpacing)
+                    Group {
+                        Spacer(minLength: 2 * .standardSpacing)
+
+                        Text("SETUP_3_1_1_MESSAGE")
+                            .modifier(SetupMessageTextViewModifier())
+                            .padding(.horizontal, 2 * .standardSpacing)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+
+                    Spacer(minLength: 2 * .standardSpacing)
 
                     Text("SETUP_3_2_TITLE")
                         .font(.custom("Montserrat-Semibold", size: 18))

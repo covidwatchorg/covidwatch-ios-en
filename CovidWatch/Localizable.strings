@@ -175,13 +175,16 @@ All strings for the project, separated for localization.
 "SETUP_3_IMAGE_ACCESSIBILITY_LABEL" = "3 People Looking at Phone";
 
 /* Message */
-"SETUP_3_1_MESSAGE" = "Setup Complete";
+"SETUP_3_1_MESSAGE" = "That’s it. Setup Complete.";
+
+/* Message */
+"SETUP_3_1_1_MESSAGE" = "When exposure notifications are enabled, the app will detect exposures as you go about your day.";
 
 /* Message */
 "SETUP_3_2_TITLE" = "You can now...";
 
 /* Message */
-"SETUP_3_3_MESSAGE" = "• Get exposure notifications whenever the setting is enabled\n• Anonymously notify others when you choose to\n• Get resources and recommendations";
+"SETUP_3_3_MESSAGE" = "• Get exposure notifications\n• Anonymously notify others\n• Access local public health resources and recommendations";
 
 /* Title */
 "SETUP_3_GO_TO_HOME" = "Get Started";
