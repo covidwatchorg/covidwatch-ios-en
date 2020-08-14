@@ -14,8 +14,6 @@ struct Home: View {
 
     @State var isShowingNotificationSettings: Bool = false
 
-    @State var isShowingPossibleExposures: Bool = false
-
     @State var isShowingReporting: Bool = false
 
     var body: some View {
@@ -102,23 +100,13 @@ struct Home: View {
                                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .top)
                                 .accessibility(label: Text("HOME_IMAGE_ACCESSIBILITY_LABEL"))
 
-                            Button(action: {
-                                self.isShowingPossibleExposures.toggle()
-                            }) {
-                                HStack {
-                                    Text(verbatim: self.localStore.homeRiskLevel.description)
-                                        .font(.custom("Montserrat-Bold", size: 18))
-                                        .foregroundColor(Color.white)
-                                }
+                            Text(verbatim: self.localStore.homeRiskLevel.description)
+                                .font(.custom("Montserrat-Bold", size: 18))
+                                .foregroundColor(Color.white)
                                 .padding(.vertical, .standardSpacing)
                                 .frame(maxWidth: .infinity, minHeight: .minTappableTargetDimension, alignment: .leading)
                                 .padding(.horizontal, 2 * .standardSpacing)
                                 .background(self.localStore.homeRiskLevel.color)
-                            }
-                            .sheet(isPresented: $isShowingPossibleExposures) {
-                                PossibleExposures()
-                                    .environmentObject(self.localStore)
-                            }
 
                             NextSteps()
                                 .padding(.vertical, 2 * .standardSpacing)
