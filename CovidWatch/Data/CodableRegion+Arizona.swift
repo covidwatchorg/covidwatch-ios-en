@@ -47,20 +47,17 @@ extension CodableRegion {
         name: "State of Arizona",
         isDisabled: true,
         nextStepsNoSignificantExposure: [
+            .init(
+                type: .website,
+                description: "Visit the Arizona Department of Health Services website to share your thoughts on this app.",
+                url: "https://www.azdhs.gov"
+            ),
             .shareTheApp
         ],
         nextStepsSignificantExposure: [
             .shareTheApp
         ],
         nextStepsVerifiedPositive: [
-            .shareTheApp
-        ],
-        nextStepsDisabled: [
-            .init(
-                type: .website,
-                description: "Visit the Arizona Department of Health Services website to share your thoughts on this app.",
-                url: "https://www.azdhs.gov"
-            ),
             .shareTheApp
         ],
         nextStepsVerificationCode: [
