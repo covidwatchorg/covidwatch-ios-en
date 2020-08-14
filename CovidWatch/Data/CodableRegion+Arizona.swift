@@ -27,7 +27,7 @@ extension CodableRegion.NextStep {
 
     static let nextStepsVerificationCodeDefault: Self = .init(
         type: .website,
-        description: "Statewide app support is currently under development. You will continue to get exposure notifications, but can only share an anonymous COVID-19 diagnosis if you are part of a region with full app support.",
+        description: "For others in Arizona, the statewide app is under development. Visit the Arizona Department of Health Services website for more information.",
         url: "https://azdhs.gov"
     )
 
@@ -80,7 +80,11 @@ extension CodableRegion {
             .shareTheApp
         ],
         nextStepsVerificationCode: [
-            .nextStepsVerificationCodeDefault
+            .init(
+                type: .selectRegion,
+                description: "Statewide app support is currently under development. You will continue to get exposure notifications, but can only share an anonymous COVID-19 diagnosis if you are part of a region with full app support.",
+                url: nil
+            )
         ]
     )
 
