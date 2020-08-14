@@ -37,8 +37,14 @@ struct ReportingStep2: View {
     )
 
     var rkManager: RKManager = {
-        let manager = RKManager(calendar: Calendar.current, minimumDate: Date()-14*24*60*60, maximumDate: Date(), mode: 0)
+        let manager = RKManager(
+            calendar: .current,
+            minimumDate: Date().addingTimeInterval(-60*60*24*14),
+            maximumDate: Date().addingTimeInterval(60*60*24*30),
+            mode: 0
+        )
         manager.colors.selectedBackColor = Color("Tint Color")
+        manager.disabledDates = (1...30).map({ Date().addingTimeInterval(60*60*24*Double($0)) })
         return manager
     }()
 
