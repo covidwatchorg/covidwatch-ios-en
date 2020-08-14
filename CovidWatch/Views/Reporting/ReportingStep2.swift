@@ -370,7 +370,7 @@ struct ReportingStep2: View {
                     .padding(.horizontal, 2 * .standardSpacing)
                     .foregroundColor(Color("Text Color"))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .opacity(isAsymptomatic ? 0.5 : 1.0)
+                    .opacity(isAsymptomatic ? 0.4 : 1.0)
                     .disabled(true)
             }
             .disabled(isAsymptomatic)
@@ -440,7 +440,7 @@ struct ReportingStep2: View {
                     .padding(.horizontal, 2 * .standardSpacing)
                     .foregroundColor(Color("Text Color"))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .opacity(dontKnowExposedDate ? 0.5 : 1.0)
+                    .opacity(dontKnowExposedDate ? 0.4 : 1.0)
                     .disabled(true)
             }
             .disabled(dontKnowExposedDate)
@@ -508,7 +508,7 @@ struct ReportingStep2: View {
                     .padding(.horizontal, 2 * .standardSpacing)
                     .foregroundColor(Color("Text Color"))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .opacity(dontKnowTestDate ? 0.5 : 1.0)
+                    .opacity(dontKnowTestDate ? 0.4 : 1.0)
                     .disabled(true)
             }
             .disabled(dontKnowTestDate)
