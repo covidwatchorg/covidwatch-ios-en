@@ -27,7 +27,7 @@ extension CodableRegion.NextStep {
 
     static let nextStepsVerificationCodeDefault: Self = .init(
         type: .website,
-        description: "For others in Arizona, the statewide app is under development. Visit the Arizona Department of Health Services website for more information.",
+        description: "Statewide app support is currently under development. You will continue to get exposure notifications, but can only share an anonymous COVID-19 diagnosis if you are part of a region with full app support.",
         url: "https://azdhs.gov"
     )
 
@@ -55,9 +55,29 @@ extension CodableRegion {
             .shareTheApp
         ],
         nextStepsSignificantExposure: [
+            .init(
+                type: .website,
+                description: "Learn how to protect myself and others.",
+                url: "https://azdhs.gov/preparedness/epidemiology-disease-control/infectious-disease-epidemiology/index.php#novel-coronavirus-what-everyone-needs"
+            ),
+            .init(
+                type: .website,
+                description: "Find a test site if symptoms appear.",
+                url: "https://azdhs.gov/preparedness/epidemiology-disease-control/infectious-disease-epidemiology/index.php#novel-coronavirus-testing"
+            ),
             .shareTheApp
         ],
         nextStepsVerifiedPositive: [
+            .init(
+                type: .website,
+                description: "Learn how to protect myself and others.",
+                url: "https://azdhs.gov/preparedness/epidemiology-disease-control/infectious-disease-epidemiology/index.php#novel-coronavirus-what-everyone-needs"
+            ),
+            .init(
+                type: .website,
+                description: "Find a test site.",
+                url: "https://azdhs.gov/preparedness/epidemiology-disease-control/infectious-disease-epidemiology/index.php#novel-coronavirus-testing"
+            ),
             .shareTheApp
         ],
         nextStepsVerificationCode: [
