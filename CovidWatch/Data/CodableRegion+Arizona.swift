@@ -21,7 +21,7 @@ extension CodableRegion.NextStep {
 
     static let shareTheApp: Self = .init(
         type: .share,
-        description: "Share the app to help stop the spread of COVID-19.",
+        description: "Share the app to improve your exposure notification accuracy.",
         url: "https://covidwatch.org"
     )
 
@@ -49,7 +49,7 @@ extension CodableRegion {
         nextStepsNoSignificantExposure: [
             .init(
                 type: .website,
-                description: "Visit the Arizona Department of Health Services website to share your thoughts on this app.",
+                description: "Visit the Arizona Department of Health Services website to share your thoughts about the app.",
                 url: "https://www.azdhs.gov"
             ),
             .shareTheApp
