@@ -16,6 +16,8 @@ struct Home: View {
 
     @State var isShowingReporting: Bool = false
 
+    @State var isShowingRegionSelection: Bool = false
+
     var body: some View {
 
         ZStack(alignment: .top) {
@@ -137,6 +139,30 @@ struct Home: View {
                                     self.isShowingReporting.toggle()
                                 }) {
                                     Text("HOME_NOTIFY_OTHERS_BUTTON").modifier(SmallCallToAction())
+                                }
+                                .padding(.top, 2 * .standardSpacing)
+                                .padding(.bottom, .standardSpacing)
+                                .padding(.horizontal, 2 * .standardSpacing)
+
+                            } else if self.localStore.region.isDisabled {
+
+                                Spacer(minLength: 2 * .standardSpacing)
+
+                                Text("HOME_REGION_DISABLED_MESSAGE")
+                                    .modifier(SubCallToAction())
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.horizontal, 2 * .standardSpacing)
+
+                                Button(action: {
+                                    self.isShowingRegionSelection.toggle()
+                                }) {
+                                    Text("HOME_REGION_DISABLED_SELECT_OTHER").modifier(SmallCallToAction())
+                                }
+                                .sheet(isPresented: self.$isShowingRegionSelection) {
+                                    RegionSelection(
+                                        selectedRegionIndex: self.localStore.selectedRegionIndex,
+                                        dismissOnFinish: true
+                                    ).environmentObject(self.localStore)
                                 }
                                 .padding(.top, 2 * .standardSpacing)
                                 .padding(.bottom, .standardSpacing)
