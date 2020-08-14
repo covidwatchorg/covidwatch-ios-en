@@ -36,7 +36,6 @@ public struct CodableRegion: Codable {
     let nextStepsNoSignificantExposure: [NextStep]
     let nextStepsSignificantExposure: [NextStep]
     let nextStepsVerifiedPositive: [NextStep]
-    var nextStepsDisabled: [NextStep]?
 
     let nextStepsVerificationCode: [NextStep]
 
