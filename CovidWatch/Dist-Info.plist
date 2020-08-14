@@ -31,11 +31,11 @@
 		<string>US</string>
 	</array>
 	<key>CWKeyServerExportConfigurationCloudStorageBucketName</key>
-	<string>exposure-notification-export-fxega</string>
+	<string>exposure-notification-export-covidwatch-prod</string>
 	<key>CWKeyServerExportConfigurationFilenameRoot</key>
 	<string>exposureKeyExport-US</string>
 	<key>CWKeyServerExposureBaseURL</key>
-	<string>https://dev.exposure.key.covidwatch.org</string>
+	<string>https://exposure.key.covidwatch.org</string>
 	<key>CWReleaseSameDayKeys</key>
 	<false/>
 	<key>CWUseAZRiskModel</key>
@@ -43,7 +43,7 @@
 	<key>CWVerificationServerApiKey</key>
 	<string>L2bUqnUXZiT1d4xZoMS5JydDfYmHKByicEPGZhrs7dDf2nHeCMGAvPbT0w586UFbxx7uuR4MoqP30BzpYfy2YQ</string>
 	<key>CWVerificationServerApiServerBaseURL</key>
-	<string>https://dev.apiserver.verification.covidwatch.org</string>
+	<string>https://apiserver.verification.covidwatch.org</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
