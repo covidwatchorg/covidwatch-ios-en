@@ -541,7 +541,7 @@ All strings for the project, separated for localization.
 "VERIFICATION_CODE_QUESTION" = "What is your Verification Code?";
 
 /* Title */
-"VERIFICATION_CODE_TITLE" = "Verification Code";
+"VERIFICATION_CODE_TITLE" = "Enter Code";
 
 /* Message */
 "SYMPTOMS_START_DATE_QUESTION" = "When did your symptoms start?";
