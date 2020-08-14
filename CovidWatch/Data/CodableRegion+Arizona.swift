@@ -38,7 +38,6 @@ extension CodableRegion {
     static let all: [CodableRegion] = [
         `default`,
         universityOfArizona,
-        arizonaStateUniversity,
         northernArizonaUniversity
     ]
 
