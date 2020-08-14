@@ -10,6 +10,17 @@ extension LocalStore {
 
     public enum HomeRiskLevel: Int, Codable {
         case low, high, verifiedPositive, disabled
+
+        var nextStepsLocalizedDescription: String {
+            switch self {
+                case .low, .disabled:
+                    return NSLocalizedString("NEXT_STEPS_HOME_RISK_LEVEL_LOW_MESSAGE", comment: "")
+                case .high:
+                    return NSLocalizedString("NEXT_STEPS_HOME_RISK_LEVEL_HIGH_MESSAGE", comment: "")
+                case .verifiedPositive:
+                    return NSLocalizedString("NEXT_STEPS_HOME_RISK_LEVEL_VERIFIED_POSITIVE_MESSAGE", comment: "")
+            }
+        }
     }
 
     public func updateHomeRiskLevel() {

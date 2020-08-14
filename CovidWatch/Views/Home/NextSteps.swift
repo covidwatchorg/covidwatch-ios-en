@@ -13,7 +13,18 @@ struct NextSteps: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            Text("HOME_NEXT_STEPS_MESSAGE")
+
+            if self.localStore.homeRiskLevel == .low {
+                Text("HOME_NEXT_STEPS_PRE_MESSAGE")
+                    .font(.custom("Montserrat-Regular", size: 14))
+                    .foregroundColor(Color("Text Color"))
+                    .padding(.horizontal, 2 * .standardSpacing)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                Spacer(minLength: .standardSpacing)
+            }
+
+            Text(verbatim: self.localStore.homeRiskLevel.nextStepsLocalizedDescription)
                 .font(.custom("Montserrat-Semibold", size: 14))
                 .foregroundColor(Color("Text Color"))
                 .padding(.horizontal, 2 * .standardSpacing)

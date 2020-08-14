@@ -231,7 +231,16 @@ All strings for the project, separated for localization.
 "HOME_TOTAL_RISK_SCORE_ACCESSIBILITY_LABEL" = "%d total risk score (0-8 scale)";
 
 /* Message */
-"HOME_NEXT_STEPS_MESSAGE" = "Next steps:";
+"HOME_NEXT_STEPS_PRE_MESSAGE" = "When exposure notifications are enabled you will be notified of possible exposures to COVID-19.";
+
+/* Message */
+"NEXT_STEPS_HOME_RISK_LEVEL_LOW_MESSAGE" = "Next steps:";
+
+/* Message */
+"NEXT_STEPS_HOME_RISK_LEVEL_HIGH_MESSAGE" = "Next steps based on your possible exposures and selected region:";
+
+/* Message */
+"NEXT_STEPS_HOME_RISK_LEVEL_VERIFIED_POSITIVE_MESSAGE" = "Next steps based on selected region:";
 
 /* Special */
 "HOME_DAYS_ROW_1_LABEL" = "days";
