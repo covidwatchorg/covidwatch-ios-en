@@ -39,7 +39,7 @@ extension CodableRegion {
         `default`,
         universityOfArizona,
         northernArizonaUniversity
-        ].sorted { $0.name < $1.name }
+    ]
 
     static let `default`: Self = .init(
         id: .arizonaState,
