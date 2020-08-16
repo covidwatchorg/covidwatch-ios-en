@@ -623,6 +623,12 @@ All strings for the project, separated for localization.
 /* Error */
 "ACCES_TO_EN_DENIED" = "Access to Exposure Notifications denied.";
 
+/* Title */
+"ENABLE_EXPOSURE_NOTIFICATIONS_SHARE_DIAGNOSIS_TITLE" = "Enable Exposure Notifications?";
+
+/* Message */
+"ENABLE_EXPOSURE_NOTIFICATIONS_SHARE_DIAGNOSIS_MESSAGE" = "Exposure Notifications needs to be enabled to share a diagnosis.";
+
 // # USER NOTIFICATION
 
 /* User notification. Do NOT add period at the end. */
