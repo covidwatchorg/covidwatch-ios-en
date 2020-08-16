@@ -599,6 +599,12 @@ All strings for the project, separated for localization.
 /* Title */
 "ERROR" = "Error";
 
+/* Title */
+"VERIFICATION_INVALID_SERVER_ERROR_TITLE" = "Unable to Confirm Diagnosis";
+
+/* Message */
+"VERIFICATION_INVALID_SERVER_ERROR_MESSAGE" = "This may happen if the verification code was entered incorrectly. Please re-enter your verification code.";
+
 /* Button */
 "OK" = "OK";
 

@@ -161,7 +161,21 @@ struct ReportingStep2: View {
                             self.isSubmittingDiagnosis = true
 
                             let errorHandler: (Error) -> Void = { error in
+
                                 self.isSubmittingDiagnosis = false
+
+                                if case let GoogleExposureNotificationsDiagnosisVerificationServer.ServerError.serverSideError(errorMessage) = error, errorMessage == "internal server error" {
+
+                                    UIApplication.shared.topViewController?.present(
+                                        title: NSLocalizedString("VERIFICATION_INVALID_SERVER_ERROR_TITLE", comment: ""),
+                                        message: NSLocalizedString("VERIFICATION_INVALID_SERVER_ERROR_MESSAGE", comment: ""),
+                                        animated: true,
+                                        completion: nil
+                                    )
+
+                                    return
+                                }
+
                                 UIApplication.shared.topViewController?.present(
                                     error,
                                     animated: true,
