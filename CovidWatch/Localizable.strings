@@ -36,7 +36,7 @@ All strings for the project, separated for localization.
 "GET_STARTED" = "Get Started";
 
 /* Title */
-"POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL" = "Powered by Covid Watch";
+"POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL" = "Powered by Covid Watch for ADHS";
 
 // # HEADER BAR
 
