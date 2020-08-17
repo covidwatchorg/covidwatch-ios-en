@@ -341,7 +341,7 @@ struct ReportingStep2: View {
                                                     self.diagnosis.longTermToken = codableVerifyCodeResponse.token
                                                     let formatter = ISO8601DateFormatter()
                                                     formatter.formatOptions = [.withFullDate]
-                                                    if let date = codableVerifyCodeResponse.symptomDate {
+                                                    if let date = codableVerifyCodeResponse.symptomDate, !date.isEmpty {
                                                         self.diagnosis.symptomsStartDate = formatter.date(from: date)
                                                     }
                                                     self.diagnosis.testType = codableVerifyCodeResponse.testType
