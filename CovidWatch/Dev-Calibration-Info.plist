@@ -36,7 +36,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CWAppRegionsJSONURL</key>
-	<string>https://storage.googleapis.com/covid-watch-arizona-regions/arizona-v3.json</string>
+	<string>https://storage.googleapis.com/covid-watch-arizona-regions/arizona-v4.json</string>
 	<key>CWBypassPublicHealthAuthorityVerification</key>
 	<true/>
 	<key>CWKeyServerAppConfigurationRegions</key>

@@ -32,6 +32,7 @@ public struct CodableRegion: Codable {
     let id: RegionID
     let name: String
     var isDisabled: Bool = false
+    var recentExposureDays: Int = 14
 
     let nextStepsNoSignificantExposure: [NextStep]
     let nextStepsSignificantExposure: [NextStep]

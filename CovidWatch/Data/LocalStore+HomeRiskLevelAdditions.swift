@@ -34,7 +34,7 @@ extension LocalStore {
             if let mostRecentSignificantExposureDate = riskMetrics.mostRecentSignificantExposureDate {
                 let diffComponents = Calendar.current.dateComponents([.day], from: mostRecentSignificantExposureDate, to: Date())
                 let diffComponentsDay = diffComponents.day ?? .max
-                if diffComponentsDay <= 14 { // TODO: put number of days in config
+                if diffComponentsDay <= self.region.recentExposureDays {
                     self.homeRiskLevel = .high
                     return
                 }
