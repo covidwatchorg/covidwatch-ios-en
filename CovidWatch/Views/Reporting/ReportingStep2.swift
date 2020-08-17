@@ -148,15 +148,15 @@ struct ReportingStep2: View {
                         Divider()
                             .padding(.horizontal, .standardSpacing)
 
-                        self.exposedStart
+                        self.testStart
 
                         Divider()
                             .padding(.horizontal, .standardSpacing)
 
-                        self.testStart
+                        self.exposedStart
                     }
 
-                    if self.isAsymptomatic || !self.symptomsStartDateString.isEmpty {
+                    if (!self.symptomsStartDateString.isEmpty) || (self.isAsymptomatic && !self.testStartDateString.isEmpty) {
                         Button(action: {
 
                             let actionsAfterExposureNotificationsEnabled = {

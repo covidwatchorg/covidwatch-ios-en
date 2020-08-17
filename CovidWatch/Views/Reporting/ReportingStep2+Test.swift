@@ -41,13 +41,15 @@ extension ReportingStep2 {
                 }
                 .onDisappear {
 
-                    if let selectedDate = self.testStartRKManager.selectedDate {
+                    withAnimation {
+                        if let selectedDate = self.testStartRKManager.selectedDate {
 
-                        self.testStartDateString = self.dateFormatter.string(from: selectedDate)
-                        self.diagnosis.testDate = selectedDate
+                            self.testStartDateString = self.dateFormatter.string(from: selectedDate)
+                            self.diagnosis.testDate = selectedDate
 
-                    } else {
-                        self.testStartRKManager.selectedDate = self.diagnosis.testDate
+                        } else {
+                            self.testStartRKManager.selectedDate = self.diagnosis.testDate
+                        }
                     }
                 }
             })
