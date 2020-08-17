@@ -84,6 +84,6 @@ extension ReportingStep2 {
     }
 
     public func configureTestStartDisabledDates() {
-        testStartRKManager.maximumDate = exposedStartRKManager.selectedDate ?? Date()
+        testStartRKManager.minimumDate = exposedStartRKManager.selectedDate ?? Date()
     }
 }
