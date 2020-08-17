@@ -37,7 +37,7 @@
 	<key>CWKeyServerExposureBaseURL</key>
 	<string>https://dev.exposure.key.covidwatch.org</string>
 	<key>CWReleaseSameDayKeys</key>
-	<true/>
+	<false/>
 	<key>CWUseAZRiskModel</key>
 	<true/>
 	<key>CWVerificationServerApiKey</key>
@@ -56,8 +56,6 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>LSSupportsOpeningDocumentsInPlace</key>
-	<false/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Black.ttf</string>
@@ -104,19 +102,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>CFBundleDocumentTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeIconFiles</key>
-			<array/>
-			<key>CFBundleTypeName</key>
-			<string>EN Export ZIP Archive</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.pkware.zip-archive</string>
-			</array>
-		</dict>
 	</array>
 </dict>
 </plist>

@@ -38,7 +38,7 @@ struct Menu: View {
 
                         Group {
 
-                            #if DEBUG
+                            #if !DIST_APP_STORE
 
                             Button(action: {
                                 _ = ExposureManager.shared.detectExposures(notifyUserOnError: true) { _ in
