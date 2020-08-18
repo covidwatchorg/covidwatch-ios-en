@@ -49,7 +49,7 @@ extension CodableRegion {
             .init(
                 type: .website,
                 description: "Visit the Arizona Department of Health Services website to share your thoughts about the app.",
-                url: "https://www.azdhs.gov"
+                url: "https://www.covidwatch.org/survey/azdhs"
             ),
             .shareTheApp
         ],
