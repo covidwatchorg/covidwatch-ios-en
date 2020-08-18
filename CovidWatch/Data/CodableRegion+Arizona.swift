@@ -95,7 +95,7 @@ extension CodableRegion {
             .init(
                 type: .website,
                 description: "Monitor COVID-19 symptoms.",
-                url: "https://covid19.arizona.edu/prevention-health/covid-19-symptoms?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_covid19_symptoms_no_exposure"
+                url: "https://covid19.arizona.edu/prevention-health/covid-19-symptoms-prevention? utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_covid19_symptoms_no_exposure"
             ),
             .init(
                 type: .phone,
@@ -105,7 +105,7 @@ extension CodableRegion {
             .init(
                 type: .website,
                 description: "Learn how to protect yourself and others.",
-                url: "http://covid19.arizona.edu/prevention-health/protect-yourself-others?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_protect_yourself"
+                url: "https://covid19.arizona.edu/face-coverings?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_protect_yourself"
             ),
             .shareTheApp
         ],
@@ -123,7 +123,7 @@ extension CodableRegion {
             .init(
                 type: .website,
                 description: "Monitor COVID-19 symptoms and get tested ASAP if symptoms appear.",
-                url: "https://covid19.arizona.edu/prevention-health/covid-19-symptoms?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_covid19_symptoms"
+                url: "https://covid19.arizona.edu/prevention-health/covid-19-symptoms-prevention? utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_covid19_symptoms"
             ),
             .init(
                 type: .website,
