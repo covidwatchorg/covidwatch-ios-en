@@ -27,8 +27,8 @@ extension CodableRegion.NextStep {
 
     static let nextStepsVerificationCodeDefault: Self = .init(
         type: .website,
-        description: "For others in Arizona, the statewide app is under development. Visit the Arizona Department of Health Services website for more information.",
-        url: "https://azdhs.gov"
+        description: "For others in Arizona, the statewide app is under development. Visit the Covid Watch website to let us know your thoughts on the app.",
+        url: "https://www.covidwatch.org/partners/adhs-feedback"
     )
 
 }
@@ -48,7 +48,7 @@ extension CodableRegion {
         nextStepsNoSignificantExposure: [
             .init(
                 type: .website,
-                description: "Visit the Arizona Department of Health Services website to share your thoughts about the app.",
+                description: "Visit the Covid Watch website to share your feedback on the app.",
                 url: "https://www.covidwatch.org/partners/adhs-feedback"
             ),
             .shareTheApp
@@ -148,7 +148,7 @@ extension CodableRegion {
         nextStepsVerificationCode: [
             .init(
                 type: .phone,
-                description: "If you are a student or staff member at University of Arizona, please call Campus Health Services at 520-621-9202 to obtain one. If you were tested elsewhere, please have your results ready.",
+                description: "If you are a student, faculty or staff member at University of Arizona, please call Campus Health Services at 520-621-9202 to obtain one. If you were tested elsewhere, please have your results ready.",
                 url: "tel:1-520-621-9202"
             ),
             .nextStepsVerificationCodeDefault
@@ -232,7 +232,7 @@ extension CodableRegion {
         nextStepsVerificationCode: [
             .init(
                 type: .phone,
-                description: "If you are a student or staff at NAU, please call Campus Health Services at (928) 523-2131 to obtain one. If you were tested elsewhere, have a copy of your results ready. ",
+                description: "If you are a student, faculty or staff at NAU, please call Campus Health Services at (928) 523-2131 to obtain one. If you were tested elsewhere, have a copy of your results ready. ",
                 url: "tel:1-928-523-2131"
             ),
             .nextStepsVerificationCodeDefault
