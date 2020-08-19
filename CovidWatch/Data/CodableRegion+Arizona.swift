@@ -148,7 +148,7 @@ extension CodableRegion {
         nextStepsVerificationCode: [
             .init(
                 type: .phone,
-                description: "If you are a student, faculty or staff member at University of Arizona, please call Campus Health Services at 520-621-9202 to obtain one. If you were tested elsewhere, please have your results ready.",
+                description: "If you are a student, faculty, or staff member at University of Arizona, please call Campus Health Services at 520-621-9202 to obtain one. If you were tested elsewhere, please have your results ready.",
                 url: "tel:1-520-621-9202"
             ),
             .nextStepsVerificationCodeDefault
@@ -232,7 +232,7 @@ extension CodableRegion {
         nextStepsVerificationCode: [
             .init(
                 type: .phone,
-                description: "If you are a student, faculty or staff at NAU, please call Campus Health Services at (928) 523-2131 to obtain one. If you were tested elsewhere, have a copy of your results ready. ",
+                description: "If you are a student, faculty, or staff at NAU, please call Campus Health Services at (928) 523-2131 to obtain one. If you were tested elsewhere, have a copy of your results ready. ",
                 url: "tel:1-928-523-2131"
             ),
             .nextStepsVerificationCodeDefault
