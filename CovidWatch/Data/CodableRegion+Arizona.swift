@@ -95,7 +95,7 @@ extension CodableRegion {
             .init(
                 type: .website,
                 description: "Monitor COVID-19 symptoms.",
-                url: "https://covid19.arizona.edu/prevention-health/covid-19-symptoms-prevention? utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_covid19_symptoms_no_exposure"
+                url: "https://covid19.arizona.edu/prevention-health/covid-19-symptoms-prevention?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_covid19_symptoms_no_exposure"
             ),
             .init(
                 type: .phone,
