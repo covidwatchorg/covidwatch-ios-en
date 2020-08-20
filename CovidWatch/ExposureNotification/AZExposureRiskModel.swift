@@ -15,12 +15,12 @@ extension AZExposureRiskModel {
         ]
 
         var attenuationDurationWeights = [
-            2.7459983, // High attenuation: D < 0.5m
-            1.0607454, // Medium attenuation: 0.5m < D < 2m
-            0.2704947 // Low attenuation: 2m < D
+            2.39, // Low attenuation / close proximity
+            0.6, // Medium attenuation / medium proximity
+            0.06 // high attenuation / far proximity
         ]
 
-        var doseResponseLambda = 0.00000271
+        var doseResponseLambda = 0.0000031
 
         var transmissionRiskValuesForLevels: [Double] = [
             0, // Level 0
@@ -34,7 +34,7 @@ extension AZExposureRiskModel {
         ]
 
         var riskLevelsForDaysRelativeToSymptomsStartDay: [Int: ENRiskLevel] = [
-            -6: 1, -5: 1, -4: 2, -3: 3, -2: 5, -1: 6, 0: 6, 1: 6, 2: 6, 3: 5, 4: 4, 5: 3, 6: 2, 7: 1, 8: 1, 9: 1, 10: 1, 11: 1
+            -5: 1, -4: 3, -3: 4, -2: 5, -1: 6, 0: 6, 1: 6, 2: 6, 3: 5, 4: 4, 5: 3, 6: 2, 7: 2, 8: 1, 9: 1
         ]
 
         var riskLevelsForDaysRelativeToTestDay: [Int: ENRiskLevel] = [
@@ -43,7 +43,7 @@ extension AZExposureRiskModel {
 
         var excludeDaysRelativeToPossibleInfectedDay: [Int] = [0, 1]
 
-        var significantRiskLevelValueThreshold = 0.011
+        var significantRiskLevelValueThreshold = 0.01
     }
 }
 
