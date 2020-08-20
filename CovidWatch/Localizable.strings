@@ -523,7 +523,7 @@ All strings for the project, separated for localization.
 "WHERE_IS_MY_CODE_PHONE" = "Call";
 
 /* Button */
-"WHERE_IS_MY_CODE_WEBSITE" = "Learn More";
+"WHERE_IS_MY_CODE_WEBSITE" = "Visit Website";
 
 /* Button */
 "WHERE_IS_MY_CODE_SHARE" = "Share";
