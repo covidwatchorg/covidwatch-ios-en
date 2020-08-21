@@ -16,6 +16,7 @@ extension ApplicationController {
         getRegions { (result) in
             switch result {
                 case let .success(regions):
+//                    print(regions)
                     LocalStore.shared.regions = regions
                     if let index = regions.firstIndex(where: { $0.id == LocalStore.shared.region.id }) {
                         LocalStore.shared.region = regions[index]
