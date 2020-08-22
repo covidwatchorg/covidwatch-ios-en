@@ -1,25 +1,75 @@
 name: CI
 
+env:
+  XC_VERSION: ${{ '11.6' }}
+  XC_PROJECT: ${{ 'CovidWatch.xcodeproj' }}
+  XC_CONFIGURATION: ${{ 'Debug' }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
 on:
   push:
-    branches: [ master, v4 ]
+    branches: 
+      - master
   pull_request:
-    branches: [ master, v4 ]
+    types: [opened, synchronize, reopened]
 
-# env:
-#   DEVELOPER_DIR: /Applications/Xcode_11.6_beta.app
-  
 jobs:
+  
+  # Enforce Swift style and conventions
   SwiftLint:
     runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: GitHub Action for SwiftLint
-      uses: norio-nomura/action-swiftlint@3.0.1
 
-#   Build:
-#     runs-on: macos-latest
-#     steps:
-#     - uses: actions/checkout@v1
-#     - name: Build
-#       run: xcodebuild clean build -project CovidWatch.xcodeproj -scheme CovidWatch-Arizona-Dev -destination "platform=iOS Simulator,name=iPhone 11 Pro Max"
+    steps:
+    
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: SwiftLint Scan
+      uses: norio-nomura/action-swiftlint@3.1.0
+  
+  # Detect bugs, vulnerabilities and code smells
+  SonarCloud:    
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+
+  # Check if build succeeds
+  Build:
+    runs-on: macos-latest
+  
+    strategy:
+        matrix:
+          XC_DESTINATION: ['platform=iOS Simulator,name=iPhone 11 Pro Max']
+          XC_SCHEME: ['AZDHS-CovidWatch-Dev', 'AZDHS-CovidWatch-Dist']
+
+    steps:
+      
+      - name: Select Xcode
+        run: |
+          sudo xcode-select -switch /Applications/Xcode_$XC_VERSION.app
+          xcodebuild -version
+          
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Build
+        env: 
+          XC_DESTINATION: ${{ matrix.XC_DESTINATION }}
+          XC_SCHEME: ${{ matrix.XC_SCHEME }}
+        run: | 
+           xcodebuild clean build \
+            -project "$XC_PROJECT" \
+            -scheme "$XC_SCHEME" \
+            -configuration "$XC_CONFIGURATION" \
+            -destination "${XC_DESTINATION}" \
+             CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
