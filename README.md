@@ -1,7 +1,6 @@
 # covidwatch-ios-en
 
-**Covid Watch iOS Exposure Notification app**  
-Built for Google/Apple Exposure Notification Framework
+**Covid Watch iOS Exposure Notifications app**
 
 [Team page](https://www.notion.so/covidwatch/iOS-App-Development-Team-691c0e5c99a94c2c99e625286e32c197)
 
