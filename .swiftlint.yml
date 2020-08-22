@@ -12,6 +12,7 @@ excluded:
 - Pods
 - SwiftLint/Common/3rdPartyLib
 - CovidWatch/*/*.pb.swift
+- DerivedData
 function_body_length:
     warning: 300
     error: 500

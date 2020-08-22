@@ -1,0 +1,115 @@
+name: Distribute
+
+on:
+  push:
+    tags: 
+      - v*
+
+jobs:
+
+  AZDHS-CovidWatch-Dist:
+
+    runs-on: [macos-latest]
+
+    env:
+      XC_VERSION: ${{ '11.6' }}
+      XC_PROJECT: ${{ 'CovidWatch.xcodeproj' }}
+      XC_SCHEME: ${{ 'AZDHS-CovidWatch-Dist' }}
+      XC_CONFIGURATION: ${{ 'Release' }}
+      XC_ARCHIVE_PATH: ${{ './AZDHS-CovidWatch-Dist.xcarchive' }}
+      XC_EXPORT_PATH: ${{ './artifacts/' }}
+      XC_EXPORT_OPTIONS_FILE_PATH: ${{ './export/AZDHS_ExportOptions.plist' }}
+      ENCRYPTED_CERTS_FILE_PATH: ${{ './export/AZDHS_distribution.p12.gpg' }}
+      DECRYPTED_CERTS_FILE_PATH: ${{ './export/AZDHS_distribution.p12' }}
+      ENCRYPTED_PROVISION_FILE_PATH: ${{ './export/AZDHS_Covid_Watch_iOS_App_Store.mobileprovision.tar.gz.gpg' }}
+      DECRYPTED_PROVISION_FILE_PATH: ${{ './export/AZDHS_Covid_Watch_iOS_App_Store.mobileprovision.tar.gz' }}
+      CERTS_ENCRYPTION_PWD: ${{ secrets.DEPLOY_PASSWORD }}
+      PROVISION_ENCRYPTION_PWD: ${{ secrets.DEPLOY_PASSWORD }}
+      CERTS_EXPORT_PWD: ${{ secrets.DEPLOY_PASSWORD }}
+      KEYCHAIN: ${{ 'build.keychain' }}
+    
+    steps:
+
+    - name: Select Xcode
+      run: |
+        sudo xcode-select -switch /Applications/Xcode_$XC_VERSION.app
+        xcodebuild -version
+
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Bump version
+      uses: yanamura/ios-bump-version@v1
+
+    - name: Commit bumped version to repository
+      run: |
+        git add .
+        git commit -m "Bump version"
+        git push origin HEAD
+    
+    - name: Set up Xcode signing
+      run: |
+        security create-keychain -p "" "$KEYCHAIN"
+        security list-keychains -s "$KEYCHAIN"
+        security default-keychain -s "$KEYCHAIN"
+        security unlock-keychain -p "" "$KEYCHAIN"
+        security set-keychain-settings
+        security list-keychains
+        gpg -d -o "$DECRYPTED_CERTS_FILE_PATH" --pinentry-mode=loopback --passphrase "$CERTS_ENCRYPTION_PWD" "$ENCRYPTED_CERTS_FILE_PATH"
+        gpg -d -o "$DECRYPTED_PROVISION_FILE_PATH" --pinentry-mode=loopback --passphrase "$PROVISION_ENCRYPTION_PWD" "$ENCRYPTED_PROVISION_FILE_PATH"
+        security import "$DECRYPTED_CERTS_FILE_PATH" -k "$KEYCHAIN" -P "$CERTS_EXPORT_PWD" -A
+        security set-key-partition-list -S apple-tool:,apple: -s -k "" "$KEYCHAIN"
+        tar xzvf $DECRYPTED_PROVISION_FILE_PATH
+        mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
+        for PROVISION in `ls ./*.mobileprovision`
+        do
+          UUID=`/usr/libexec/PlistBuddy -c 'Print :UUID' /dev/stdin <<< $(security cms -D -i ./$PROVISION)`
+          cp "./$PROVISION" "$HOME/Library/MobileDevice/Provisioning Profiles/$UUID.mobileprovision"
+        done
+
+    - name: Build archive
+      run: |
+        mkdir -p artifacts
+        xcodebuild archive \
+          -project "$XC_PROJECT" \
+          -scheme "$XC_SCHEME" \
+          -configuration "$XC_CONFIGURATION" \
+          -archivePath "$XC_ARCHIVE_PATH" \
+          "OTHER_CODE_SIGN_FLAGS=--keychain '$KEYCHAIN'"
+
+    - name: Export archive for App Store
+      run: |
+        xcodebuild \
+          -exportArchive \
+          -archivePath "$XC_ARCHIVE_PATH" \
+          -exportOptionsPlist "$XC_EXPORT_OPTIONS_FILE_PATH" \
+          -exportPath "$XC_EXPORT_PATH"
+
+    - name: Upload artifacts to GitHub
+      uses: actions/upload-artifact@v2
+      with:
+       name: IPA
+       path: ./artifacts/*.ipa
+       if-no-files-found: error
+
+    - name: Upload app to App Store
+      env:
+        APP_STORE_CONNECT_USERNAME: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
+        APP_STORE_CONNECT_PASSWORD: ${{ secrets.APP_STORE_CONNECT_PASSWORD }}
+      run: |
+        xcrun altool \
+          --upload-app \
+          --type ios \
+          --file "$XC_EXPORT_PATH/$XC_SCHEME.ipa" \
+          --username "$APP_STORE_CONNECT_USERNAME" \
+          --password "$APP_STORE_CONNECT_PASSWORD" \
+          --verbose
+
+    - name: Upload app to Data Theorem
+      env:
+        DT_UPLOAD_API_KEY: ${{ secrets.DT_UPLOAD_API_KEY }}
+      run: |
+        step1_response=$(curl -X POST -H "Authorization: APIKey ${DT_UPLOAD_API_KEY}"  --data ""  https://api.securetheorem.com/uploadapi/v1/upload_init)
+        upload_url=$(echo ${step1_response} | cut -f 3 -d" "  | tr -d '"')
+        step2_response=$(curl -F file=@${XC_EXPORT_PATH}/${XC_SCHEME}.ipa ${upload_url} --retry 3)
+         
