@@ -40,9 +40,9 @@ public struct CodableRegion: Codable {
 
     let nextStepsVerificationCode: [NextStep]
 
-    let exposureConfiguration: CodableExposureConfiguration = .default
+    var exposureConfiguration: CodableExposureConfiguration = .default
 
-    let azRiskModelConfiguration = AZExposureRiskModel.Configuration()
+    var azRiskModelConfiguration = AZExposureRiskModel.Configuration()
 }
 
 extension CodableRegion.NextStepType {
