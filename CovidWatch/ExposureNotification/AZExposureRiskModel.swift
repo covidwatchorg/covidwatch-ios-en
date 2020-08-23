@@ -160,7 +160,7 @@ public class AZExposureRiskModel: ExposureRiskModeling {
             }
         }
         let riskLevel = (infectedRisk * 100.0)
-        return(riskLevel)
+        return riskLevel
     }
 
     public func computeTransmissionRiskLevel(
@@ -209,7 +209,7 @@ public class AZExposureRiskModel: ExposureRiskModeling {
                 dateExposureRisks[exposure.date] = newRisk
             }
         }
-        return(dateExposureRisks)
+        return dateExposureRisks
     }
 
     public func getMostRecentSignificantExposureDate(
@@ -248,11 +248,11 @@ public class AZExposureRiskModel: ExposureRiskModeling {
             leastRecentSignificantExposureDate: getLeastRecentSignificantExposureDate(forExposureInfos: exposureInfos),
             mostRecentSignificantExposureDate: getMostRecentSignificantExposureDate(forExposureInfos: exposureInfos)
         )
-        return(riskMetrics)
+        return riskMetrics
     }
 }
 
 func relativeDay(from startDate: Date, to endDate: Date) -> Int {
     let diffComponents = Calendar.current.dateComponents([.day], from: startDate, to: endDate)
-    return(diffComponents.day ?? .max)
+    return diffComponents.day ?? .max
 }

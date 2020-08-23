@@ -11,7 +11,7 @@ import Foundation
 func getDateString(date: Date) -> String {
     let formatter = DateFormatter()
     formatter.dateStyle = .medium
-    return(formatter.string(from: date))
+    return formatter.string(from: date)
 }
 
 // searches the input string and replaces the first substring matching this format:
@@ -41,11 +41,11 @@ func parseNextStepDescription(description: String) -> String {
             var parsedDescription = description
             // replace DAYS_FROM_EXPOSURE{*,*,*} with the requested date
             parsedDescription.replaceSubrange(range, with: dateString)
-            return(parsedDescription)
+            return parsedDescription
         }
     }
     // return original string
-    return(description)
+    return description
 }
 
 // accepts an array of parsed tokens.
@@ -57,7 +57,7 @@ func parseNextStepDescription(description: String) -> String {
 // and LocalStore.shared.riskMetrics?.mostRecentSignificantExposureDate are set
 func evaluateRequestedDate(tokens: [String]) -> Date? {
     guard tokens.count == 3 else {
-        return(nil)
+        return nil
     }
 
     var baseDate: Date?
@@ -76,19 +76,19 @@ func evaluateRequestedDate(tokens: [String]) -> Date? {
                     if components.weekday == 1 {
                         // Falls on a sunday so add one day
                         let adjustedDate = Calendar.current.date(byAdding: .day, value: 1, to: requestedDate)
-                        return(adjustedDate)
+                        return adjustedDate
                     } else if components.weekday == 7 {
                         // Falls on a saturday so subtract one day
                         let adjustedDate = Calendar.current.date(byAdding: .day, value: -1, to: requestedDate)
-                        return(adjustedDate)
+                        return adjustedDate
                     } else {
-                        return(requestedDate)
+                        return requestedDate
                     }
                 } else if tokens[2] == "FALSE" {
-                    return(requestedDate)
+                    return requestedDate
                 }
             }
         }
     }
-    return(nil)
+    return nil
 }
