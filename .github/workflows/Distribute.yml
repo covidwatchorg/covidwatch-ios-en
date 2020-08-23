@@ -43,9 +43,16 @@ jobs:
 
     - name: Commit bumped version to repository
       run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git switch -c temp
         git add .
         git commit -m "Bump version"
-        git push origin HEAD
+        git fetch
+        git checkout master
+        git merge temp
+        git branch -d temp
+        git push origin master
     
     - name: Set up Xcode signing
       run: |
@@ -112,4 +119,3 @@ jobs:
         step1_response=$(curl -X POST -H "Authorization: APIKey ${DT_UPLOAD_API_KEY}"  --data ""  https://api.securetheorem.com/uploadapi/v1/upload_init)
         upload_url=$(echo ${step1_response} | cut -f 3 -d" "  | tr -d '"')
         step2_response=$(curl -F file=@${XC_EXPORT_PATH}/${XC_SCHEME}.ipa ${upload_url} --retry 3)
-         
