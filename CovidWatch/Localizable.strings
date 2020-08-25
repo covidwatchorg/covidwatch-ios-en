@@ -84,7 +84,7 @@ All strings for the project, separated for localization.
 "WELCOME_TITLE" = "Welcome to the";
 
 /* Title */
-"WELCOME_APP_NAME" = "Covid Watch Arizona Exposure Notifications App";
+"WELCOME_APP_NAME" = "Covid Watch Exposure Notifications App";
 
 /* Message */
 "WELCOME_MESSAGE" = "Together, we have the power to stop the spread of COVID-19 with safe, secure, and anonymous exposure notifications.";

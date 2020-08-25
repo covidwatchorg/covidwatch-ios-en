@@ -7,24 +7,6 @@ import Foundation
 
 extension CodableRegion.NextStep {
 
-    static let infoAppIsActive: Self = .init(
-        type: .info,
-        description: "The app is active. You can now receive exposure notifications from others you were near who later report themselves as positive for COVID-19.",
-        url: nil
-    )
-
-    static let infoKeepAppInstalled: Self = .init(
-        type: .info,
-        description: "Keep the app installed until the pandemic is over so that you can continue to help reduce the spread in your communities.",
-        url: nil
-    )
-
-    static let shareTheApp: Self = .init(
-        type: .share,
-        description: "Share the app to improve your exposure notification accuracy.",
-        url: "https://covidwatch.org"
-    )
-
     static let nextStepsVerificationCodeDefault: Self = .init(
         type: .website,
         description: "For others in Arizona, the statewide app is under development. Visit the Covid Watch website to let us know your thoughts on the app.",

@@ -13,6 +13,7 @@ public struct CodableRegion: Codable {
         case universityOfArizona
         case arizonaStateUniversity
         case northernArizonaUniversity
+        case bermuda
     }
 
     public enum NextStepType: Int, Codable {
@@ -73,6 +74,8 @@ extension CodableRegion {
                 return "Public Health Authority Logotype - Arizona State University"
             case .northernArizonaUniversity:
                 return "Public Health Authority Logotype - Northern Arizona University"
+            case .bermuda:
+                return "Public Health Authority Logotype - Bermuda"
             default:
                 return "Public Health Authority Logotype - Arizona State"
         }
@@ -86,6 +89,8 @@ extension CodableRegion {
                 return "Public Health Authority Logo - Arizona State University"
             case .northernArizonaUniversity:
                 return "Public Health Authority Logo - Northern Arizona University"
+            case .bermuda:
+                return "Public Health Authority Logo - Bermuda"
             default:
                 return "Public Health Authority Logo - Arizona State"
         }
@@ -108,4 +113,25 @@ extension CodableRegion.NextStepType {
                 return Image("Globe")
         }
     }
+}
+
+extension CodableRegion.NextStep {
+
+    static let infoAppIsActive: Self = .init(
+        type: .info,
+        description: "The app is active. You can now receive exposure notifications from others you were near who later report themselves as positive for COVID-19.",
+        url: nil
+    )
+
+    static let infoKeepAppInstalled: Self = .init(
+        type: .info,
+        description: "Keep the app installed until the pandemic is over so that you can continue to help reduce the spread in your communities.",
+        url: nil
+    )
+
+    static let shareTheApp: Self = .init(
+        type: .share,
+        description: "Share the app to improve your exposure notification accuracy.",
+        url: "https://covidwatch.org"
+    )
 }
