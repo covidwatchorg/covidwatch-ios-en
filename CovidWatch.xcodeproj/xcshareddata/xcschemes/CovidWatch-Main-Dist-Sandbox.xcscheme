@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2DDA40CC24F59F48007AC29A"
-               BuildableName = "CovidWatch-Main-Dist-Sandbox.app"
+               BuildableName = "Covid Watch.app"
                BlueprintName = "CovidWatch-Main-Dist-Sandbox"
                ReferencedContainer = "container:CovidWatch.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2DDA40CC24F59F48007AC29A"
-            BuildableName = "CovidWatch-Main-Dist-Sandbox.app"
+            BuildableName = "Covid Watch.app"
             BlueprintName = "CovidWatch-Main-Dist-Sandbox"
             ReferencedContainer = "container:CovidWatch.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2DDA40CC24F59F48007AC29A"
-            BuildableName = "CovidWatch-Main-Dist-Sandbox.app"
+            BuildableName = "Covid Watch.app"
             BlueprintName = "CovidWatch-Main-Dist-Sandbox"
             ReferencedContainer = "container:CovidWatch.xcodeproj">
          </BuildableReference>
