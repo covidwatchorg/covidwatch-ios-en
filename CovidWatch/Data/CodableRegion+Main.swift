@@ -10,7 +10,7 @@ extension CodableRegion.NextStep {
     static let nextStepsVerificationCodeDefault: Self = .init(
         type: .website,
         description: "For others, please visit the Covid Watch website to let us know your thoughts on the app.",
-        url: "https://www.covidwatch.org/partners/main-feedback"
+        url: "https://www.covidwatch.org/partners/bermuda-feedback"
     )
 
 }
