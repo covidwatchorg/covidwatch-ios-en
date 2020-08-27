@@ -29,18 +29,18 @@ extension CodableRegion {
         nextStepsNoSignificantExposure: [
             .init(
                 type: .website,
-                description: "Learn how to protect myself and others.",
-                url: "https://www.gov.bm/coronavirus-guidance"
-            ),
-            .init(
-                type: .website,
                 description: "Monitor COVID-19 symptoms.",
-                url: "https://www.gov.bm/coronavirus-guidance"
+                url: "https://www.gov.bm/sites/default/files/COVID-19-Symptom-Self-Assessment-v2.pdf"
             ),
             .init(
                 type: .phone,
-                description: "If you have COVID-19 symptoms, call (441) 278-4900.",
-                url: "tel:1-441-278-4900"
+                description: "If you have COVID-19 symptoms, call the Government COVID-19 Hotline at 1-(441)-444-2498.",
+                url: "tel:1-441-444-2498"
+            ),
+            .init(
+                type: .website,
+                description: "Learn how to protect myself and others.",
+                url: "https://www.gov.bm/coronavirus-wellbeing"
             ),
             .shareTheApp
         ],
@@ -52,29 +52,29 @@ extension CodableRegion {
             ),
             .init(
                 type: .phone,
-                description: "Call (441) 278-4900 and schedule a COVID-19 test for DAYS_FROM_EXPOSURE{EARLIEST,7,TRUE}.",
-                url: "tel:1-441-278-4900"
+                description: "Call the Government COVID-19 Hotline at 1-(441)-444-2498 and schedule a COVID-19 test for DAYS_FROM_EXPOSURE{EARLIEST,7,TRUE}.",
+                url: "tel:1-441-444-2498"
             ),
             .init(
                 type: .website,
-                description: "Monitor COVID-19 symptoms and get tested ASAP if symptoms appear.",
-                url:"https://www.gov.bm/coronavirus-get-tested"
+                description: "If you have symptoms follow the self-quaratine guidelines.",
+                url:"https://www.gov.bm/sites/default/files/11436%20-%20Coronavirus%202020_Precautions%20Poster_2_0.pdf"
             ),
             .shareTheApp
         ],
         nextStepsVerifiedPositive: [
             .init(
                 type: .website,
-                description: "Follow up with (441) 278-4900 and your healthcare provider for more instructions.",
-                url: "tel:1-441-278-4900"
+                description: "Follow up with the Government COVID-19 Hotline at 1-(441)-444-2498 or your healthcare provider for more instructions.",
+                url: "tel:1-441-444-2498"
             ),
             .shareTheApp
         ],
         nextStepsVerificationCode: [
             .init(
                 type: .phone,
-                description: "If you got tested in Bermuda, call (441) 278-4900 to obtain a verification code. If you were tested elsewhere, have a copy of your results ready.",
-                url: "tel:1-441-278-4900"
+                description: "For those located in Bermuda, please call the Government COVID-19 Hotline at 1-(441)-444-2498 to obtain one. If you were tested elsewhere, please have the documentation of your test result ready.",
+                url: "tel:1-441-444-2498"
             ),
         ]
     )
