@@ -161,12 +161,12 @@ extension CodableRegion {
             .init(
                 type: .website,
                 description: "Learn how to protect myself and others.",
-                url: "https://in.nau.edu/campus-health-services/covid-19/"
+                url: "https://in.nau.edu/campus-health-services/covid-19?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_protect_yourself"
             ),
             .init(
                 type: .website,
                 description: "Monitor COVID-19 symptoms.",
-                url: "https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html"
+                url: "https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_covid19_symptoms_no_exposure"
             ),
             .init(
                 type: .phone,
@@ -179,12 +179,12 @@ extension CodableRegion {
             .init(
                 type: .website,
                 description: "Please stay at home and follow the self-isolation guidelines.",
-                url:"https://in.nau.edu/wp-content/uploads/sites/202/COVID-CHS-selfquarantine-7-16-20.pdf"
+                url:"https://in.nau.edu/wp-content/uploads/sites/202/COVID-CHS-selfquarantine-7-16-20.pdf?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_self_quarantine"
             ),
             .init(
                 type: .website,
                 description: "Monitor COVID-19 symptoms and get tested ASAP if symptoms appear.",
-                url:"https://in.nau.edu/campus-health-services/covid-testing/"
+                url:"https://in.nau.edu/campus-health-services/covid-testing? utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_covid19_symptoms"
             ),
             .init(
                 type: .phone,
@@ -197,7 +197,7 @@ extension CodableRegion {
             .init(
                 type: .website,
                 description: "Please stay at home and follow the self-isolation guidelines.",
-                url:"https://in.nau.edu/wp-content/uploads/sites/202/COVID-CHS-selfisolation-7-16-201.pdf"
+                url:"https://in.nau.edu/wp-content/uploads/sites/202/COVID-CHS-selfisolation-7-16-201.pdf?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_self_quarantine"
             ),
             .init(
                 type: .phone,
@@ -207,7 +207,7 @@ extension CodableRegion {
             .init(
                 type: .website,
                 description: "Register with NAU's Exposure Tracing team.",
-                url: "https://in.nau.edu/campus-health-services/exposure-tracing"
+                url: "https://in.nau.edu/campus-health-services/exposure-tracing?utm_source=covid_watch_app&utm_medium=referral&utm_campaign=covid_watch_case_management"
             ),
             .shareTheApp
         ],
