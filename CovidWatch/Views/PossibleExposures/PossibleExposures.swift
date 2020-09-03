@@ -136,6 +136,7 @@ struct PossibleExposures: View {
                                     .accessibility(hint: Text("SHOWS_MORE_INFO_ACCESSIBILITY_HINT"))
                                     .frame(minHeight: 54)
 
+                                    #if !DIST_APP_STORE
                                     if exposureInfo == self.selectedExposure {
 
                                         ZStack(alignment: .bottom) {
@@ -203,6 +204,7 @@ struct PossibleExposures: View {
                                                 .accessibility(hidden: true)
                                         }
                                     }
+                                    #endif
                                 }
                             }
 

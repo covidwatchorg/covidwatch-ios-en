@@ -30,11 +30,13 @@ struct PossibleExposureRow: View {
             HStack(spacing: 0) {
                 self.formattedDateText
                 Spacer()
+                #if !DIST_APP_STORE
                 if self.isExpanded {
                     Image("Arrow Up")
                 } else {
                     Image("Arrow Down")
                 }
+                #endif
             }
             .accessibility(label: Text(verbatim: accessibilityLabel()))
             .frame(maxWidth: .infinity, maxHeight: 54, alignment: .leading)

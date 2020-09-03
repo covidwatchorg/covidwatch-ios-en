@@ -42,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = ApplicationController.shared
         ApplicationController.shared.refreshRegions()
 //        ApplicationController.shared.defaultRegionJSON()
+//        LocalStore.shared.exposuresInfos = [CodableExposureInfo(attenuationDurations: [30, 30, 30], attenuationValue: 1, date: Date(), duration: 30, totalRiskScore: 6, transmissionRiskLevel: 6)]
 
         // Setup background tasks
         self.setupBackgroundTask()
