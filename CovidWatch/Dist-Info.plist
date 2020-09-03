@@ -21,7 +21,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.2</string>
 	<key>CFBundleVersion</key>
-	<string>137</string>
+	<string>138</string>
 	<key>CWAppRegionsJSONURL</key>
 	<string>https://storage.googleapis.com/covid-watch-arizona-regions/arizona-v4.json</string>
 	<key>CWBypassPublicHealthAuthorityVerification</key>
