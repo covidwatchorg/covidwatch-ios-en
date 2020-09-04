@@ -39,6 +39,7 @@ struct WhereIsMyCode: View {
 
                                 Text(verbatim: nextStep.description)
                                     .foregroundColor(Color("Text Color"))
+                                    .fixedSize(horizontal: false, vertical: true)
                                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                                     .font(.custom("Montserrat-Regular", size: 14))
 
