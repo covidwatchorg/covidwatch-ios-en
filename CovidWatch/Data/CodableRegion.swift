@@ -134,4 +134,10 @@ extension CodableRegion.NextStep {
         description: "Share the app to improve your exposure notification accuracy.",
         url: "https://covidwatch.org"
     )
+
+    static let whyDidIReceiveAnExposureNotification: Self = .init(
+        type: .info,
+        description: "Why would I receive a COVID-19 exposure notification?",
+        url: "https://covidwatch.zendesk.com/hc/en-us/articles/360052305514-Why-did-I-receive-a-possible-COVID-19-exposure-notification"
+    )
 }

@@ -36,6 +36,7 @@ extension CodableRegion {
             .shareTheApp
         ],
         nextStepsSignificantExposure: [
+            .whyDidIReceiveAnExposureNotification,
             .init(
                 type: .website,
                 description: "Learn how to protect myself and others.",
@@ -92,6 +93,7 @@ extension CodableRegion {
             .shareTheApp
         ],
         nextStepsSignificantExposure: [
+            .whyDidIReceiveAnExposureNotification,
             .init(
                 type: .website,
                 description: "Stay at home until DAYS_FROM_EXPOSURE{LATEST,14,FALSE}.",
@@ -144,6 +146,7 @@ extension CodableRegion {
             .shareTheApp
         ],
         nextStepsSignificantExposure: [
+            .whyDidIReceiveAnExposureNotification,
             .shareTheApp
         ],
         nextStepsVerifiedPositive: [
@@ -176,6 +179,7 @@ extension CodableRegion {
             .shareTheApp
         ],
         nextStepsSignificantExposure: [
+            .whyDidIReceiveAnExposureNotification,
             .init(
                 type: .website,
                 description: "Please stay at home and follow the self-isolation guidelines.",

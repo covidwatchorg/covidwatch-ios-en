@@ -20,10 +20,10 @@ extension CodableExposureConfiguration {
     static let `default`: Self = .init(
         minimumRiskScore: 0,
         attenuationDurationThresholds: [50, 70],
-        attenuationLevelValues: [1, 1, 1, 1, 1, 1, 1, 1],
+        attenuationLevelValues: [0, 1, 1, 1, 1, 1, 1, 1],
         daysSinceLastExposureLevelValues: [1, 1, 1, 1, 1, 1, 1, 1],
-        durationLevelValues: [1, 1, 1, 1, 1, 1, 1, 1],
-        transmissionRiskLevelValues: [1, 1, 1, 1, 1, 1, 1, 1]
+        durationLevelValues: [0, 0, 0, 1, 1, 1, 1, 1],
+        transmissionRiskLevelValues: [0, 0, 0, 0, 0, 1, 1, 1]
     )
     #endif
 
