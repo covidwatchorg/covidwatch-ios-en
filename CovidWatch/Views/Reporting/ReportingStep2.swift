@@ -148,12 +148,12 @@ struct ReportingStep2: View {
                         Divider()
                             .padding(.horizontal, .standardSpacing)
 
-                        self.testStart
+                        self.exposedStart
 
                         Divider()
                             .padding(.horizontal, .standardSpacing)
 
-                        self.exposedStart
+                        self.testStart
                     }
 
                     if (!self.symptomsStartDateString.isEmpty) || (self.isAsymptomatic && !self.testStartDateString.isEmpty) {
