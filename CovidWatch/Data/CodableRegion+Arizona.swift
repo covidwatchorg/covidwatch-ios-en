@@ -28,6 +28,7 @@ extension CodableRegion {
         name: "State of Arizona",
         isDisabled: true,
         nextStepsNoSignificantExposure: [
+            .whyDidIReceiveAnExposureNotification,
             .init(
                 type: .website,
                 description: "Visit the Covid Watch website to share your feedback on the app.",
@@ -36,7 +37,6 @@ extension CodableRegion {
             .shareTheApp
         ],
         nextStepsSignificantExposure: [
-            .whyDidIReceiveAnExposureNotification,
             .init(
                 type: .website,
                 description: "Learn how to protect myself and others.",
@@ -75,6 +75,7 @@ extension CodableRegion {
         id: .universityOfArizona,
         name: "University of Arizona",
         nextStepsNoSignificantExposure: [
+            .whyDidIReceiveAnExposureNotification,
             .init(
                 type: .website,
                 description: "Monitor COVID-19 symptoms.",
@@ -93,7 +94,6 @@ extension CodableRegion {
             .shareTheApp
         ],
         nextStepsSignificantExposure: [
-            .whyDidIReceiveAnExposureNotification,
             .init(
                 type: .website,
                 description: "Stay at home until DAYS_FROM_EXPOSURE{LATEST,14,FALSE}.",
@@ -143,10 +143,10 @@ extension CodableRegion {
         id: .arizonaStateUniversity,
         name: "Arizona State University",
         nextStepsNoSignificantExposure: [
+            .whyDidIReceiveAnExposureNotification,
             .shareTheApp
         ],
         nextStepsSignificantExposure: [
-            .whyDidIReceiveAnExposureNotification,
             .shareTheApp
         ],
         nextStepsVerifiedPositive: [
@@ -161,6 +161,7 @@ extension CodableRegion {
         id: .northernArizonaUniversity,
         name: "Northern Arizona University",
         nextStepsNoSignificantExposure: [
+            .whyDidIReceiveAnExposureNotification,
             .init(
                 type: .website,
                 description: "Learn how to protect myself and others.",
@@ -179,7 +180,6 @@ extension CodableRegion {
             .shareTheApp
         ],
         nextStepsSignificantExposure: [
-            .whyDidIReceiveAnExposureNotification,
             .init(
                 type: .website,
                 description: "Please stay at home and follow the self-isolation guidelines.",
