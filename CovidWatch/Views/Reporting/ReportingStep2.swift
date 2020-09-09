@@ -182,6 +182,46 @@ struct ReportingStep2: View {
                                         )
 
                                         return
+
+                                    } else if case let GoogleExposureNotificationsDiagnosisVerificationServer.ServerError.serverSideError(errorMessage) = error, errorMessage == "verification code used" {
+
+                                        let contactAction = UIAlertAction(title: NSLocalizedString("CONTACT", comment: ""), style: .cancel) { (_) in
+                                            self.isShowingWhereIsMyCode.toggle()
+                                            _ = self.sheet(isPresented: self.$isShowingWhereIsMyCode) {
+                                                WhereIsMyCode()
+                                                    .environmentObject(self.localStore)
+                                            }
+                                        }
+
+                                        UIApplication.shared.topViewController?.present(
+                                            title: NSLocalizedString("VERIFICATION_INVALID_SERVER_ERROR_TITLE", comment: ""),
+                                            message: NSLocalizedString("VERIFICATION_CODE_USED_ERROR_MESSAGE", comment: ""),
+                                            recoveryAction: contactAction,
+                                            animated: true,
+                                            completion: nil
+                                        )
+
+                                        return
+
+                                    } else if case let GoogleExposureNotificationsDiagnosisVerificationServer.ServerError.serverSideError(errorMessage) = error, errorMessage == "verification code expired" {
+
+                                        let contactAction = UIAlertAction(title: NSLocalizedString("CONTACT", comment: ""), style: .cancel) { (_) in
+                                            self.isShowingWhereIsMyCode.toggle()
+                                            _ = self.sheet(isPresented: self.$isShowingWhereIsMyCode) {
+                                                WhereIsMyCode()
+                                                    .environmentObject(self.localStore)
+                                            }
+                                        }
+
+                                        UIApplication.shared.topViewController?.present(
+                                            title: NSLocalizedString("VERIFICATION_INVALID_SERVER_ERROR_TITLE", comment: ""),
+                                            message: NSLocalizedString("VERIFICATION_CODE_EXPIRED_ERROR_MESSAGE", comment: ""),
+                                            recoveryAction: contactAction,
+                                            animated: true,
+                                            completion: nil
+                                        )
+
+                                        return
                                     }
 
                                     UIApplication.shared.topViewController?.present(
