@@ -605,8 +605,17 @@ All strings for the project, separated for localization.
 /* Message */
 "VERIFICATION_INVALID_SERVER_ERROR_MESSAGE" = "This may happen if the verification code was entered incorrectly. Please re-enter your verification code.";
 
+/* Message */
+"VERIFICATION_CODE_USED_ERROR_MESSAGE" = "The verification code is not valid anymore. Contact your public health authority to get a new code.";
+
+/* Message */
+"VERIFICATION_CODE_EXPIRED_ERROR_MESSAGE" = "The verification code is expired. Contact your public health authority to get a new code.";
+
 /* Button */
 "OK" = "OK";
+
+/* Button */
+"CONTACT" = "Contact";
 
 /* Button */
 "CONTINUE" = "Continue";

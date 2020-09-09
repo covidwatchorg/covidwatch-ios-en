@@ -94,6 +94,11 @@ extension UIViewController {
             style: .default,
             handler: nil)
         )
+        
+        if let action = recoveryAction {
+            alertController.addAction(action)
+        }
+        
         present(alertController, animated: flag, completion: completion)
     }
 }
