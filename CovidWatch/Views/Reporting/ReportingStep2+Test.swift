@@ -52,36 +52,7 @@ extension ReportingStep2 {
                         }
                     }
                 }
-            })
-
-            Spacer(minLength: .standardSpacing)
-
-            HStack(alignment: .center) {
-
-                Button(action: {
-                    withAnimation {
-                        self.dontKnowTestDate.toggle()
-                        if self.dontKnowTestDate {
-                            self.testStartRKManager.selectedDate = nil
-                            self.testStartDateString = ""
-                            self.diagnosis.testDate = nil
-                        }
-                    }
-                }) {
-                    if self.dontKnowTestDate {
-                        Image("Checkbox Checked")
-                    } else {
-                        Image("Checkbox Unchecked")
-                    }
-
-                    Text("TEST_START_DATE_UNKNOWN")
-                        .foregroundColor(Color("Text Color"))
-                }
-            }.padding(.horizontal, 2 * .standardSpacing)
-            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-
-            Spacer().frame(height: 2 * .standardSpacing)
-
+            }).modifier(TextfieldClearButton(text: self.$testStartDateString))
         }
     }
 

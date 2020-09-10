@@ -51,7 +51,7 @@ extension ReportingStep2 {
                         }
                     }
                 }
-            })
+            }).modifier(TextfieldClearButton(text: self.$symptomsStartDateString))
 
             Spacer(minLength: .standardSpacing)
 

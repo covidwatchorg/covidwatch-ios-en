@@ -878,6 +878,8 @@
 		2DDA41E424F5B1B7007AC29A /* Assets-Main.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D8FE71924A346AF00456875 /* Assets-Main.xcassets */; };
 		2DFEED072476AD4200D2C620 /* Data+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFEED062476AD4200D2C620 /* Data+Random.swift */; };
 		2DFEED0A2476BD0400D2C620 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 2DFEED092476BD0400D2C620 /* ZIPFoundation */; };
+		714AE039250A04B5005C181B /* TextfieldClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AE038250A04B5005C181B /* TextfieldClearButton.swift */; };
+		714AE03A250A065A005C181B /* TextfieldClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AE038250A04B5005C181B /* TextfieldClearButton.swift */; };
 		717A17FF24C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717A17FE24C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift */; };
 		717A180024C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717A17FE24C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift */; };
 		717A180124C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717A17FE24C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift */; };
@@ -1052,6 +1054,7 @@
 		2DDA41E224F5AEA8007AC29A /* Main-Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Main-Dev-Info.plist"; path = "/Users/zsombor/Development/covidwatch-ios-en/Main-Dev-Info.plist"; sourceTree = "<absolute>"; };
 		2DFEED05247695CA00D2C620 /* Dev.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Dev.entitlements; sourceTree = "<group>"; };
 		2DFEED062476AD4200D2C620 /* Data+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Random.swift"; sourceTree = "<group>"; };
+		714AE038250A04B5005C181B /* TextfieldClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldClearButton.swift; sourceTree = "<group>"; };
 		717A17FE24C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextStepsDescriptionDateParserUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1322,6 +1325,7 @@
 				2DD5CDE024E92AE8005DF096 /* ReportingStep2+Test.swift */,
 				2D7942A624682EF9008AF148 /* ReportingStep3.swift */,
 				2DAE665C24C1D47D00814B15 /* WhereIsMyCode.swift */,
+				714AE038250A04B5005C181B /* TextfieldClearButton.swift */,
 			);
 			path = Reporting;
 			sourceTree = "<group>";
@@ -2529,6 +2533,7 @@
 				2D46AA4E2465E1190003936C /* UIWindow+ViewControllerUtility.swift in Sources */,
 				2D92B6D224BB3F6B00003BDD /* NextSteps.swift in Sources */,
 				2D29BAF924609F6100E8BEC4 /* MenuTitleText.swift in Sources */,
+				714AE039250A04B5005C181B /* TextfieldClearButton.swift in Sources */,
 				2D4DE8A824C0B9260056F8D2 /* RKColorSettings.swift in Sources */,
 				2D63D592245CBCC10027D43B /* OSLog+Additions.swift in Sources */,
 				2DD7B49A245F66F2001B30F0 /* LayoutConstants.swift in Sources */,
@@ -2862,6 +2867,7 @@
 				2DDA41B624F5AEA7007AC29A /* UIWindow+ViewControllerUtility.swift in Sources */,
 				2DDA41B724F5AEA7007AC29A /* MenuTitleText.swift in Sources */,
 				2DDA41B824F5AEA7007AC29A /* RKColorSettings.swift in Sources */,
+				714AE03A250A065A005C181B /* TextfieldClearButton.swift in Sources */,
 				2DDA41B924F5AEA7007AC29A /* OSLog+Additions.swift in Sources */,
 				2DDA41BA24F5AEA7007AC29A /* LayoutConstants.swift in Sources */,
 				2DDA41BB24F5AEA7007AC29A /* GoogleExposureNotificationsDiagnosisVerificationServerAPI.swift in Sources */,

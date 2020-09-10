@@ -58,7 +58,7 @@ extension ReportingStep2 {
                         self.exposedStartRKManager.selectedDate = self.diagnosis.possibleInfectionDate
                     }
                 }
-            })
+            }).modifier(TextfieldClearButton(text: self.$exposedStartDateString))
 
             Spacer(minLength: .standardSpacing)
 
