@@ -878,6 +878,13 @@
 		2DDA41E424F5B1B7007AC29A /* Assets-Main.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D8FE71924A346AF00456875 /* Assets-Main.xcassets */; };
 		2DFEED072476AD4200D2C620 /* Data+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFEED062476AD4200D2C620 /* Data+Random.swift */; };
 		2DFEED0A2476BD0400D2C620 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 2DFEED092476BD0400D2C620 /* ZIPFoundation */; };
+		714AE039250A04B5005C181B /* TextfieldClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AE038250A04B5005C181B /* TextfieldClearButton.swift */; };
+		714AE03A250A065A005C181B /* TextfieldClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AE038250A04B5005C181B /* TextfieldClearButton.swift */; };
+		714AE03B250A928F005C181B /* TextfieldClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AE038250A04B5005C181B /* TextfieldClearButton.swift */; };
+		714AE03C250A9290005C181B /* TextfieldClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AE038250A04B5005C181B /* TextfieldClearButton.swift */; };
+		714AE03D250A9291005C181B /* TextfieldClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AE038250A04B5005C181B /* TextfieldClearButton.swift */; };
+		714AE03E250A9291005C181B /* TextfieldClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AE038250A04B5005C181B /* TextfieldClearButton.swift */; };
+		714AE03F250A9292005C181B /* TextfieldClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714AE038250A04B5005C181B /* TextfieldClearButton.swift */; };
 		717A17FF24C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717A17FE24C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift */; };
 		717A180024C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717A17FE24C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift */; };
 		717A180124C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717A17FE24C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift */; };
@@ -1052,6 +1059,7 @@
 		2DDA41E224F5AEA8007AC29A /* Main-Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Main-Dev-Info.plist"; path = "/Users/zsombor/Development/covidwatch-ios-en/Main-Dev-Info.plist"; sourceTree = "<absolute>"; };
 		2DFEED05247695CA00D2C620 /* Dev.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Dev.entitlements; sourceTree = "<group>"; };
 		2DFEED062476AD4200D2C620 /* Data+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Random.swift"; sourceTree = "<group>"; };
+		714AE038250A04B5005C181B /* TextfieldClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldClearButton.swift; sourceTree = "<group>"; };
 		717A17FE24C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextStepsDescriptionDateParserUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1322,6 +1330,7 @@
 				2DD5CDE024E92AE8005DF096 /* ReportingStep2+Test.swift */,
 				2D7942A624682EF9008AF148 /* ReportingStep3.swift */,
 				2DAE665C24C1D47D00814B15 /* WhereIsMyCode.swift */,
+				714AE038250A04B5005C181B /* TextfieldClearButton.swift */,
 			);
 			path = Reporting;
 			sourceTree = "<group>";
@@ -2211,6 +2220,7 @@
 				2D235A2324AC651300C8FD56 /* UIWindow+ViewControllerUtility.swift in Sources */,
 				2D235A2424AC651300C8FD56 /* MenuTitleText.swift in Sources */,
 				2D235A2624AC651300C8FD56 /* OSLog+Additions.swift in Sources */,
+				714AE03D250A9291005C181B /* TextfieldClearButton.swift in Sources */,
 				2D4DE8AB24C0B9260056F8D2 /* RKColorSettings.swift in Sources */,
 				2D235A2824AC651300C8FD56 /* LayoutConstants.swift in Sources */,
 				2D235A2924AC651300C8FD56 /* GoogleExposureNotificationsDiagnosisVerificationServerAPI.swift in Sources */,
@@ -2277,6 +2287,7 @@
 				2DD5CDE324E92AE8005DF096 /* ReportingStep2+Test.swift in Sources */,
 				2D72545D24A35E92003E5914 /* PossibleExposureSummaryValueViewModifier.swift in Sources */,
 				2D72545E24A35E92003E5914 /* CallToAction.swift in Sources */,
+				714AE03C250A9290005C181B /* TextfieldClearButton.swift in Sources */,
 				2D72545F24A35E92003E5914 /* ContentView.swift in Sources */,
 				2D4DE8B624C0B9260056F8D2 /* RKViewController.swift in Sources */,
 				2D72546124A35E92003E5914 /* ExposureNotificationsDiagnosisKeyServing.swift in Sources */,
@@ -2424,6 +2435,7 @@
 				2D8FE6D724A33B0100456875 /* PageViewController.swift in Sources */,
 				2D8FE6D824A33B0100456875 /* UIWindow+ViewControllerUtility.swift in Sources */,
 				2D8FE6D924A33B0100456875 /* MenuTitleText.swift in Sources */,
+				714AE03B250A928F005C181B /* TextfieldClearButton.swift in Sources */,
 				2D4DE8A924C0B9260056F8D2 /* RKColorSettings.swift in Sources */,
 				2D8FE6DB24A33B0100456875 /* OSLog+Additions.swift in Sources */,
 				2D8FE6DD24A33B0100456875 /* LayoutConstants.swift in Sources */,
@@ -2529,6 +2541,7 @@
 				2D46AA4E2465E1190003936C /* UIWindow+ViewControllerUtility.swift in Sources */,
 				2D92B6D224BB3F6B00003BDD /* NextSteps.swift in Sources */,
 				2D29BAF924609F6100E8BEC4 /* MenuTitleText.swift in Sources */,
+				714AE039250A04B5005C181B /* TextfieldClearButton.swift in Sources */,
 				2D4DE8A824C0B9260056F8D2 /* RKColorSettings.swift in Sources */,
 				2D63D592245CBCC10027D43B /* OSLog+Additions.swift in Sources */,
 				2DD7B49A245F66F2001B30F0 /* LayoutConstants.swift in Sources */,
@@ -2652,6 +2665,7 @@
 				2DD5CE4624EA806F005DF096 /* UIWindow+ViewControllerUtility.swift in Sources */,
 				2DD5CE4724EA806F005DF096 /* MenuTitleText.swift in Sources */,
 				2DD5CE4824EA806F005DF096 /* OSLog+Additions.swift in Sources */,
+				714AE03E250A9291005C181B /* TextfieldClearButton.swift in Sources */,
 				2DD5CE4924EA806F005DF096 /* RKColorSettings.swift in Sources */,
 				2DD5CE4A24EA806F005DF096 /* LayoutConstants.swift in Sources */,
 				2DD5CE4B24EA806F005DF096 /* GoogleExposureNotificationsDiagnosisVerificationServerAPI.swift in Sources */,
@@ -2757,6 +2771,7 @@
 				2DDA412924F59F48007AC29A /* MenuTitleText.swift in Sources */,
 				2DDA412A24F59F48007AC29A /* OSLog+Additions.swift in Sources */,
 				2DDA412B24F59F48007AC29A /* RKColorSettings.swift in Sources */,
+				714AE03F250A9292005C181B /* TextfieldClearButton.swift in Sources */,
 				2DDA412C24F59F48007AC29A /* LayoutConstants.swift in Sources */,
 				2DDA412D24F59F48007AC29A /* GoogleExposureNotificationsDiagnosisVerificationServerAPI.swift in Sources */,
 				2DDA412E24F59F48007AC29A /* GoogleExposureNotificationsDiagnosisVerificationServerConfiguration+Shared.swift in Sources */,
@@ -2862,6 +2877,7 @@
 				2DDA41B624F5AEA7007AC29A /* UIWindow+ViewControllerUtility.swift in Sources */,
 				2DDA41B724F5AEA7007AC29A /* MenuTitleText.swift in Sources */,
 				2DDA41B824F5AEA7007AC29A /* RKColorSettings.swift in Sources */,
+				714AE03A250A065A005C181B /* TextfieldClearButton.swift in Sources */,
 				2DDA41B924F5AEA7007AC29A /* OSLog+Additions.swift in Sources */,
 				2DDA41BA24F5AEA7007AC29A /* LayoutConstants.swift in Sources */,
 				2DDA41BB24F5AEA7007AC29A /* GoogleExposureNotificationsDiagnosisVerificationServerAPI.swift in Sources */,
