@@ -47,7 +47,8 @@ struct Home: View {
                             Button(action: {
 
                                 if self.localStore.exposureNotificationStatus == .unknown ||
-                                    self.localStore.exposureNotificationStatus == .disabled {
+                                    self.localStore.exposureNotificationStatus == .disabled ||
+                                    self.localStore.exposureNotificationStatus == .restricted {
                                     self.isShowingExposureSettings.toggle()
                                 }
 
@@ -55,7 +56,8 @@ struct Home: View {
                                 Alert(
                                     message: localStore.exposureNotificationStatus.localizedDetailDescription,
                                     backgroundColor: Color("Alert Standard Color"),
-                                    detailImage: (self.localStore.exposureNotificationStatus == .unknown || self.localStore.exposureNotificationStatus == .disabled) ? Image("Right Arrow") : nil
+                                    detailImage: (self.localStore.exposureNotificationStatus == .unknown || self.localStore.exposureNotificationStatus == .disabled ||
+                                        self.localStore.exposureNotificationStatus == .restricted) ? Image("Right Arrow") : nil
                                 )
                             }
                             .sheet(isPresented: $isShowingExposureSettings) {
