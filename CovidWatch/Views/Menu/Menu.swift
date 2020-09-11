@@ -261,6 +261,10 @@ struct Menu: View {
 
                             Divider()
                         }
+                        Image("Powered By CW for HA Grey")
+                            .accessibility(label: Text("POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL"))
+                            .padding(.top, .standardSpacing * 2)
+                            .padding(.bottom, .standardSpacing)
                     }
                 }
                 .padding(.horizontal, 2 * .standardSpacing)
