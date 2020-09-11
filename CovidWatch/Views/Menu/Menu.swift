@@ -146,21 +146,19 @@ struct Menu: View {
                             }
                         }
 
-                        if !self.localStore.diagnoses.isEmpty {
-                            Group {
-                                Divider()
+                        Group {
+                            Divider()
 
-                                Button(action: {
-                                    self.isShowingPastDiagnoses.toggle()
-                                }) {
-                                    HStack {
-                                        Text("MENU_VIEW_PAST_DIAGNOSES_TITLE")
-                                    }.modifier(MenuTitleText())
-                                }
-                                .sheet(isPresented: $isShowingPastDiagnoses) {
-                                    PastDiagnoses()
-                                        .environmentObject(self.localStore)
-                                }
+                            Button(action: {
+                                self.isShowingPastDiagnoses.toggle()
+                            }) {
+                                HStack {
+                                    Text("MENU_VIEW_PAST_DIAGNOSES_TITLE")
+                                }.modifier(MenuTitleText())
+                            }
+                            .sheet(isPresented: $isShowingPastDiagnoses) {
+                                PastDiagnoses()
+                                    .environmentObject(self.localStore)
                             }
                         }
 
