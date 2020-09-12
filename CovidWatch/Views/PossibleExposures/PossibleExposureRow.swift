@@ -12,7 +12,13 @@ struct PossibleExposureRow: View {
     let isExpanded: Bool
 
     func formattedDate() -> String {
-        return DateFormatter.localizedString(from: exposure.date, dateStyle: .medium, timeStyle: .none)
+        // convert exposure.date from UTC to local time, stricly for display purposes
+        let utcDate = exposure.date
+        let timezone = TimeZone.current
+        let seconds = TimeInterval(timezone.secondsFromGMT(for: utcDate))
+        let localDate = Date(timeInterval: seconds, since: utcDate)
+
+        return DateFormatter.localizedString(from: localDate, dateStyle: .medium, timeStyle: .none)
     }
 
     func accessibilityLabel() -> String {
