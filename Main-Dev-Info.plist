@@ -34,7 +34,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.2</string>
 	<key>CFBundleVersion</key>
-	<string>138</string>
+	<string>140</string>
 	<key>CWAppRegionsJSONURL</key>
 	<string>https://storage.googleapis.com/dev-covid-watch-main-regions/main-v4.json</string>
 	<key>CWBypassPublicHealthAuthorityVerification</key>
