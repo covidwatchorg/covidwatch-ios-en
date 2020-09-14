@@ -24,7 +24,8 @@ public class Server {
         _ diagnosisKeys: [ENTemporaryExposureKey],
         verificationPayload: String? = nil,
         hmacKey: Data? = nil,
-        completion: @escaping (Error?
+        revisionToken: String? = nil,
+        completion: @escaping (Result<CodablePublishExposureRevisionToken, Error>
         ) -> Void) {
 
         if let diagnosisServer = self.keyServer {
@@ -33,10 +34,11 @@ public class Server {
                 diagnosisKeys,
                 verificationPayload: verificationPayload,
                 hmacKey: hmacKey,
+                revisionToken: revisionToken,
                 completion: completion
             )
         } else {
-            completion(CocoaError(.fileNoSuchFile))
+            completion(.failure(CocoaError(.fileNoSuchFile)))
         }
     }
 
