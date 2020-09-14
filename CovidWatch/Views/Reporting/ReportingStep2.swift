@@ -292,25 +292,28 @@ struct ReportingStep2: View {
                                             Server.shared.postDiagnosisKeys(
                                                 keys,
                                                 verificationPayload: self.diagnosis.verificationCertificate,
-                                                hmacKey: self.diagnosis.hmacKey
-                                            ) { error in
-                                                // Step 9
-                                                // Since this is the last step, ensure `isSubmittingDiagnosis` is set to false.
-                                                defer {
-                                                    self.isSubmittingDiagnosis = false
-                                                }
+                                                hmacKey: self.diagnosis.hmacKey,
+                                                revisionToken: self.localStore.revisionToken) { (result) in
 
-                                                if let error = error {
+                                                switch result {
+                                                case let .success(codableRevisionToken):
+                                                    // Step 9
+                                                    // Since this is the last step, ensure `isSubmittingDiagnosis` is set to false.
+                                                    defer {
+                                                        self.isSubmittingDiagnosis = false
+                                                    }
+
+                                                    self.diagnosis.isSubmitted = true
+                                                    self.localStore.diagnoses.insert(self.diagnosis, at: 0)
+                                                    self.localStore.revisionToken = codableRevisionToken.revisionToken
+
+                                                    withAnimation {
+                                                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                                                        self.isShowingNextStep = true
+                                                    }
+
+                                                case let .failure(error):
                                                     errorHandler(error)
-                                                    return
-                                                }
-
-                                                self.diagnosis.isSubmitted = true
-                                                self.localStore.diagnoses.insert(self.diagnosis, at: 0)
-
-                                                withAnimation {
-                                                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                                                    self.isShowingNextStep = true
                                                 }
                                             }
                                         }
