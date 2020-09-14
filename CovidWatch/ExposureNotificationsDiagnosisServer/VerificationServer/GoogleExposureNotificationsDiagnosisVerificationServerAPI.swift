@@ -23,7 +23,7 @@ public struct CodableVerifyCodeResponse: Codable {
     let testType: String
     let symptomDate: String?
     let token: String
-    let error: String
+    let error: String?
 
     enum CodingKeys: String, CodingKey {
         case testType = "testtype"
@@ -45,5 +45,5 @@ public struct CodableVerificationCertificateRequest: Codable {
 
 public struct CodableVerificationCertificateResponse: Codable {
     let certificate: String
-    let error: String
+    let error: String?
 }
