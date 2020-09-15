@@ -1053,14 +1053,14 @@
 		2DD7B497245F65E1001B30F0 /* SubCallToAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCallToAction.swift; sourceTree = "<group>"; };
 		2DD7B499245F66F2001B30F0 /* LayoutConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutConstants.swift; sourceTree = "<group>"; };
 		2DDA415424F59F48007AC29A /* Covid Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Covid Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2DDA415524F59F48007AC29A /* Main-Dist-Sandbox-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Main-Dist-Sandbox-Info.plist"; path = "/Users/zsombor/Development/covidwatch-ios-en/Main-Dist-Sandbox-Info.plist"; sourceTree = "<absolute>"; };
 		2DDA415624F5A617007AC29A /* CodableRegion+Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableRegion+Main.swift"; sourceTree = "<group>"; };
 		2DDA41E124F5AEA7007AC29A /* Covid Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Covid Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2DDA41E224F5AEA8007AC29A /* Main-Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Main-Dev-Info.plist"; path = "/Users/zsombor/Development/covidwatch-ios-en/Main-Dev-Info.plist"; sourceTree = "<absolute>"; };
 		2DFEED05247695CA00D2C620 /* Dev.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Dev.entitlements; sourceTree = "<group>"; };
 		2DFEED062476AD4200D2C620 /* Data+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Random.swift"; sourceTree = "<group>"; };
 		714AE038250A04B5005C181B /* TextfieldClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldClearButton.swift; sourceTree = "<group>"; };
 		717A17FE24C30F8A0018F2F2 /* NextStepsDescriptionDateParserUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextStepsDescriptionDateParserUtils.swift; sourceTree = "<group>"; };
+		71A7051D251121CE006EAC3A /* Main-Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Main-Dev-Info.plist"; sourceTree = SOURCE_ROOT; };
+		71A7051E251121CE006EAC3A /* Main-Dist-Sandbox-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Main-Dist-Sandbox-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1428,8 +1428,8 @@
 				2D9CF3DE2455B9F4005B085E /* Dev-Info.plist */,
 				2DD5CE7424EA80DF005DF096 /* Dist-Sandbox-Info.plist */,
 				2D927E3724ACAD540029A323 /* Dist-Info.plist */,
-				2DDA41E224F5AEA8007AC29A /* Main-Dev-Info.plist */,
-				2DDA415524F59F48007AC29A /* Main-Dist-Sandbox-Info.plist */,
+				71A7051D251121CE006EAC3A /* Main-Dev-Info.plist */,
+				71A7051E251121CE006EAC3A /* Main-Dist-Sandbox-Info.plist */,
 				2D26096824ADE535009CDBCE /* CovidWatchInfoDictionaryKeys.swift */,
 				2D7254A224A36BDC003E5914 /* Dist.entitlements */,
 				2DFEED05247695CA00D2C620 /* Dev.entitlements */,
@@ -2925,7 +2925,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/Dist.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 140;
+				CURRENT_PROJECT_VERSION = 141;
 				DEVELOPMENT_TEAM = V7CAXYQSWH;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DIST_APP_STORE=1",
@@ -2957,7 +2957,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/Dist.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 140;
+				CURRENT_PROJECT_VERSION = 141;
 				DEVELOPMENT_TEAM = V7CAXYQSWH;
 				GCC_PREPROCESSOR_DEFINITIONS = "DIST_APP_STORE=1";
 				INFOPLIST_FILE = "CovidWatch/Dist-Info.plist";
@@ -2986,7 +2986,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/Dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 140;
+				CURRENT_PROJECT_VERSION = 141;
 				DEVELOPMENT_TEAM = V7CAXYQSWH;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG_CALIBRATION=1",
@@ -3018,7 +3018,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/Dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 140;
+				CURRENT_PROJECT_VERSION = 141;
 				DEVELOPMENT_TEAM = V7CAXYQSWH;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG_CALIBRATION=1",
@@ -3050,7 +3050,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/Dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 140;
+				CURRENT_PROJECT_VERSION = 141;
 				DEVELOPMENT_TEAM = V7CAXYQSWH;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				INFOPLIST_FILE = "CovidWatch/Dev-Info.plist";
@@ -3079,7 +3079,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/Dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 140;
+				CURRENT_PROJECT_VERSION = 141;
 				DEVELOPMENT_TEAM = V7CAXYQSWH;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "CovidWatch/Dev-Info.plist";
@@ -3224,7 +3224,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/Dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 140;
+				CURRENT_PROJECT_VERSION = 141;
 				DEVELOPMENT_TEAM = GD7NMG67S7;
 				INFOPLIST_FILE = "CovidWatch/Dev-Info.plist";
 				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
@@ -3251,7 +3251,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/Dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 140;
+				CURRENT_PROJECT_VERSION = 141;
 				DEVELOPMENT_TEAM = GD7NMG67S7;
 				INFOPLIST_FILE = "CovidWatch/Dev-Info.plist";
 				INTERMEDIATES_OUTPUT_DIR = "${PROJECT_DIR}/build/intermediates/${CONFIGURATION}/";
@@ -3364,7 +3364,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/Dist.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 140;
+				CURRENT_PROJECT_VERSION = 141;
 				DEVELOPMENT_TEAM = V7CAXYQSWH;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				INFOPLIST_FILE = "CovidWatch/Dist-Sandbox-Info.plist";
@@ -3393,7 +3393,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/Dist.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 140;
+				CURRENT_PROJECT_VERSION = 141;
 				DEVELOPMENT_TEAM = V7CAXYQSWH;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "CovidWatch/Dist-Sandbox-Info.plist";
@@ -3422,7 +3422,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/Dist.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 140;
+				CURRENT_PROJECT_VERSION = 141;
 				DEVELOPMENT_TEAM = GD7NMG67S7;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				INFOPLIST_FILE = "Main-Dist-Sandbox-Info.plist";
@@ -3451,7 +3451,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/Dist.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 140;
+				CURRENT_PROJECT_VERSION = 141;
 				DEVELOPMENT_TEAM = GD7NMG67S7;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "Main-Dist-Sandbox-Info.plist";
@@ -3480,7 +3480,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/Dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 140;
+				CURRENT_PROJECT_VERSION = 141;
 				DEVELOPMENT_TEAM = GD7NMG67S7;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				INFOPLIST_FILE = "Main-Dev-Info.plist";
@@ -3509,7 +3509,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidWatch/Dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 140;
+				CURRENT_PROJECT_VERSION = 141;
 				DEVELOPMENT_TEAM = GD7NMG67S7;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "Main-Dev-Info.plist";

@@ -34,7 +34,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.2</string>
 	<key>CFBundleVersion</key>
-	<string>140</string>
+	<string>141</string>
 	<key>CWAppRegionsJSONURL</key>
 	<string>https://storage.googleapis.com/dev-covid-watch-arizona-regions/arizona-v4.json</string>
 	<key>CWBypassPublicHealthAuthorityVerification</key>
@@ -44,19 +44,19 @@
 		<string>US</string>
 	</array>
 	<key>CWKeyServerExportConfigurationCloudStorageBucketName</key>
-	<string>exposure-notification-export-qflab</string>
+	<string>exposure-notification-export-fxega</string>
 	<key>CWKeyServerExportConfigurationFilenameRoot</key>
 	<string>exposureKeyExport-US</string>
 	<key>CWKeyServerExposureBaseURL</key>
-	<string>https://demo.exposure.key.covidwatch.org</string>
+	<string>https://dev.exposure.key.covidwatch.org</string>
 	<key>CWReleaseSameDayKeys</key>
 	<true/>
 	<key>CWUseAZRiskModel</key>
 	<true/>
 	<key>CWVerificationServerApiKey</key>
-	<string>1FD6Cfk9l6zJv8XgpGY0xjEA8PTnUdYC52oSDggC9MBipWtYMScbYGttXjHbXvIvAnUZKu763MBQ6QDgcpIGqw.1.JAF2GQQqBThhsMyz6V7gVqH0-FDBC7fFOEuYNjaYCPWOKp0Zlp5YvejUPqlsofpbSh4qeCZDzIORrMazKMAX1g</string>
+	<string>L2bUqnUXZiT1d4xZoMS5JydDfYmHKByicEPGZhrs7dDf2nHeCMGAvPbT0w586UFbxx7uuR4MoqP30BzpYfy2YQ</string>
 	<key>CWVerificationServerApiServerBaseURL</key>
-	<string>https://demo.apiserver.verification.covidwatch.org</string>
+	<string>https://dev.apiserver.verification.covidwatch.org</string>
 	<key>ENAPIVersion</key>
 	<string>1</string>
 	<key>ENDeveloperRegion</key>
