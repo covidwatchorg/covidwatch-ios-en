@@ -11,8 +11,7 @@ public protocol ExposureNotificationsDiagnosisKeyServing {
         _ diagnosisKeys: [ENTemporaryExposureKey],
         verificationPayload: String?,
         hmacKey: Data?,
-        revisionToken: String?,
-        completion: @escaping (Result<CodablePublishExposureRevisionToken, Error>) -> Void
+        completion: @escaping (Error?) -> Void
     )
 
     func getDiagnosisKeyFileURLs(

@@ -156,9 +156,6 @@ public class LocalStore: ObservableObject {
     @Published
     var showHomeWelcomeMessage: Bool = false
 
-    @Published(key: "revisionToken")
-    var revisionToken: String = ""
-
     @Published
     var exposureNotificationEnabled: Bool = ExposureManager.shared.manager.exposureNotificationEnabled {
         didSet {
