@@ -1,0 +1,432 @@
+/* Abstract:
+All strings for the project, separated for localization.
+# SPLASH
+Message */
+"SPLASH_MESSAGE" = "Juntos, tenemos el poder de detener COVID-19.";
+/* Title */
+"COVID_WATCH_LOGO_STACKED_IMAGE_ACCESSIBILITY_LABEL" = "Logotipo de reloj Covid de aspecto atractivo";
+/* Title */
+"GENERIC_PUBLIC_HEALTH_DEPARTMENT_IMAGE_ACCESSIBILITY_LABEL" = "Autoridad de salud pública";
+/* Title */
+"SELECT_REGION" = "Seleccione una región";
+/* Title */
+"SELECTED_REGION" = "Región:";
+/* Message */
+"REGION_SELECTION_PRIVACY_DISCLAIMER" = "Valoramos su privacidad. Seleccione una región para ver los recursos de atención médica locales sin tener que compartir su ubicación o identidad. Puede cambiar esta selección en cualquier momento.";
+/* Button */
+"CONTINUE" = "Seguir";
+/* Button */
+"BACK" = "Espalda";
+/* Title */
+"SPLASH_IMAGE_ACCESSIBILITY_LABEL" = "Red de personas";
+/* Button */
+"GET_STARTED" = "Empezar";
+/* Title */
+"POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL" = "Desarrollado por Covid Watch para ADHS";
+/* # HEADER BAR
+Title */
+"DEMO_TITLE" = "MANIFESTACIÓN";
+/* Title */
+"DEMO_SUBTITLE" = "Autoridad de salud pública";
+/* Button */
+"MENU" = "Menú";
+/* Message */
+"MENU_ACCESSIBILITY_HINT" = "Muestra el menú";
+/* Button */
+"DISMISS" = "Descartar";
+/* Message */
+"DISMISS_ACCESSIBILITY_HINT" = "Descarta la vista actual";
+/* # ONBOARDING
+Title */
+"HOW_IT_WORKS_TITLE" = "Cómo funciona";
+/* Button */
+"HOW_IT_WORKS_PAGE_CONTROL_PREVIOUS_BUTTON_ACCESSIBILITY_LABEL" = "Anterior";
+/* Message */
+"HOW_IT_WORKS_PAGE_CONTROL_PREVIOUS_BUTTON_ACCESSIBILITY_HINT" = "Navega a la página anterior";
+/* Button */
+"HOW_IT_WORKS_PAGE_CONTROL_NEXT_BUTTON_ACCESSIBILITY_LABEL" = "próximo";
+/* Message */
+"HOW_IT_WORKS_PAGE_CONTROL_NEXT_BUTTON_ACCESSIBILITY_HINT" = "Navega a la página siguiente";
+/* ## HOW IT WORKS 0
+Title */
+"WELCOME_IMAGE_ACCESSIBILITY_LABEL" = "Bienvenidos";
+/* Title */
+"WELCOME_TITLE" = "Bienvenida a la";
+/* Title */
+"WELCOME_APP_NAME" = "Aplicación de notificaciones de exposición Covid Watch";
+/* Message */
+"WELCOME_MESSAGE" = "Juntos, tenemos el poder de detener la propagación de COVID-19 con notificaciones de exposición seguras, protegidas y anónimas.";
+/* ## HOW IT WORKS 1
+Title */
+"HOW_IT_WORKS_1_SUBTITLE" = "Siempre anónimo";
+/* Title */
+"HOW_IT_WORKS_1_IMAGE_ACCESSIBILITY_LABEL" = "Sam y Jane charlan";
+/* Message */
+"HOW_IT_WORKS_1_MESSAGE" = "Mientras Sam y Jane conversan, sus teléfonos notan las señales de Bluetooth de los demás y la aplicación las enumera de forma segura como números aleatorios. La información personal y la ubicación nunca se registran.";
+/* ## HOW IT WORKS 2
+Title */
+"HOW_IT_WORKS_2_SUBTITLE" = "Notificar a otros";
+/* Title */
+"HOW_IT_WORKS_2_IMAGE_ACCESSIBILITY_LABEL" = "Sam da positivo";
+/* Message */
+"HOW_IT_WORKS_2_MESSAGE" = "Días después, Sam recibe un diagnóstico positivo de COVID-19. Él comparte su diagnóstico con la aplicación, que luego notifica a otras personas cercanas sobre una posible exposición.";
+/* ## HOW IT WORKS 3
+Title */
+"HOW_IT_WORKS_3_SUBTITLE" = "Recibir notificaciones";
+/* Title */
+"HOW_IT_WORKS_3_IMAGE_ACCESSIBILITY_LABEL" = "El teléfono de Jane recibe una notificación";
+/* Message */
+"HOW_IT_WORKS_3_MESSAGE" = "Jane recibe una notificación que dice que estaba cerca de una persona anónima que dio positivo. La aplicación explica qué hacer a continuación y cómo encontrar recursos locales.";
+/* ## HOW IT WORKS 4
+Title */
+"HOW_IT_WORKS_4_SUBTITLE" = "Comunidades de ayuda";
+/* Title */
+"HOW_IT_WORKS_4_IMAGE_ACCESSIBILITY_LABEL" = "Jane y Sam ayudan a mantener seguras sus comunidades";
+/* Message */
+"HOW_IT_WORKS_4_MESSAGE" = "Al habilitar las notificaciones y quedarse en casa cuando corren el riesgo de exponer a otros, ayudan a prevenir la propagación de COVID-19 dentro de sus comunidades.";
+/* Button */
+"CONTINUE_SETUP" = "Continuar con la configuración";
+/* # SETUP
+Button */
+"ENABLE" = "Habilitar";
+/* Button */
+"NOT_NOW" = "Ahora no";
+/* ## SETUP 1
+Title */
+"SETUP_PRE_TITLE" = "Configuración %@ de %@";
+/* Title */
+"ENABLE_EXPOSURE_NOTIFICATIONS_TITLE" = "Habilitar notificaciones de exposición";
+/* Title */
+"ENABLE_EXPOSURE_NOTIFICATIONS_IMAGE_ACCESSIBILITY_LABEL" = "Habilitar notificaciones de exposición";
+/* Message */
+"ENABLE_EXPOSURE_NOTIFICATIONS_MESSAGE" = "Estas notificaciones le permitirán saber si ha estado expuesto a una persona que luego reporta haber dado positivo por COVID-19. Se puede apagar en cualquier momento.";
+/* ## SETUP 2
+Title */
+"ENABLE_PUSH_NOTIFICATIONS_TITLE" = "Habilitar notificaciones push";
+/* Title */
+"ENABLE_PUSH_NOTIFICATIONS_IMAGE_ACCESSIBILITY_LABEL" = "Habilitar notificaciones push";
+/* Message */
+"ENABLE_PUSH_NOTIFICATIONS_MESSAGE" = "Estas notificaciones le permitirán saber si la configuración de la aplicación impide que funcione correctamente. Esto solo ocurrirá si Bluetooth está apagado.";
+/* ## SETUP 3
+Title */
+"SETUP_3_IMAGE_ACCESSIBILITY_LABEL" = "3 personas mirando el teléfono";
+/* Message */
+"SETUP_3_1_MESSAGE" = "Eso es. Instalación completa.";
+/* Message */
+"SETUP_3_1_1_MESSAGE" = "Cuando las notificaciones de exposición están habilitadas, la aplicación detectará exposiciones a medida que avanza su día.";
+/* Message */
+"SETUP_3_2_TITLE" = "Tu puedes ahora...";
+/* Message */
+"SETUP_3_3_MESSAGE" = "• Recibe notificaciones de exposición \n • Notificar a otros de forma anónima \n • Acceder a recursos y recomendaciones de salud pública local";
+/* Title */
+"SETUP_3_GO_TO_HOME" = "Empezar";
+/* # HOME
+Title */
+"HOME_WELCOME_MESSAGE" = "¡Bienvenidos! Toque alrededor para tener una idea de cómo funciona la aplicación. Compártelo con amigos y familiares para mejorar la precisión de sus datos de exposición.";
+/* Title */
+"HOME_IMAGE_ACCESSIBILITY_LABEL" = "Amor, tierra";
+/* Title */
+"HOME_POSSIBLE_EXPOSURES_SUMMARY_TITLE" = "Resumen de posible exposición";
+/* Title */
+"NOTIFY_OTHERS_CALL_TO_ACTION_TITLE" = "¿Tiene un diagnóstico positivo?";
+/* Message */
+"NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE" = "Compártelo de forma anónima con otras personas para ayudar a detener la propagación en su región.";
+/* Title */
+"NOTIFY_OTHERS_TITLE" = "Cómo compartir un diagnóstico positivo";
+/* Button */
+"HOME_NOTIFY_OTHERS_BUTTON" = "Cómo compartirlo";
+/* Message */
+"HOME_REGION_DISABLED_MESSAGE" = "El soporte de aplicaciones en todo el estado está actualmente en desarrollo. Continuará recibiendo notificaciones de exposición, pero solo podrá compartir un diagnóstico de COVID-19 anónimo si es parte de una región con soporte completo para aplicaciones.";
+/* Button */
+"HOME_REGION_DISABLED_SELECT_OTHER" = "Elija una región diferente";
+/* Button */
+"NOTIFY_OTHERS" = "Comparta el diagnóstico de forma anónima";
+/* Button */
+"SHARE_THE_APP" = "Comparte la aplicación";
+/* Message */
+"SHARE_THE_APP_SHEET_MESSAGE" = "Conviértete en Covid Watcher y ayuda a tu comunidad a mantenerse segura.";
+/* Message */
+"SHOWS_MORE_INFO_ACCESSIBILITY_HINT" = "Muestra más información";
+/* Message */
+"UNKNOWN_DAYS_SINCE_LAST_EXPOSURE" = "Días desconocidos desde la última exposición";
+/* Message */
+"HOME_TOTAL_RISK_SCORE_ACCESSIBILITY_LABEL" = "%d puntuación de riesgo total (escala de 0 a 8)";
+/* Message */
+"HOME_NEXT_STEPS_PRE_MESSAGE" = "Cuando las notificaciones de exposición están habilitadas, se le notificará de posibles exposiciones a COVID-19.";
+/* Message */
+"NEXT_STEPS_HOME_RISK_LEVEL_LOW_MESSAGE" = "Próximos pasos:";
+/* Message */
+"NEXT_STEPS_HOME_RISK_LEVEL_HIGH_MESSAGE" = "Próximos pasos según sus posibles exposiciones y la región seleccionada:";
+/* Message */
+"NEXT_STEPS_HOME_RISK_LEVEL_VERIFIED_POSITIVE_MESSAGE" = "Próximos pasos basados en la región seleccionada:";
+/* Special */
+"HOME_DAYS_ROW_1_LABEL" = "dias";
+/* Special */
+"HOME_DAYS_ROW_2_LABEL" = "desde la última exposición";
+/* Special */
+"HOME_TOTAL_EXPOSURES_ROW_1_LABEL" = "exposiciones";
+/* Special */
+"HOME_TOTAL_EXPOSURES_ROW_2_LABEL" = "en los últimos 14 días";
+/* Special */
+"HOME_TOTAL_RISK_SCORE_ROW_1_LABEL" = "puntuación de riesgo total";
+/* Special */
+"HOME_TOTAL_RISK_SCORE_ROW_2_LABEL" = "(Escala 0-8)";
+/* Title */
+"RISK_LEVEL_LOW" = "Sin exposiciones significativas";
+/* Title */
+"RISK_LEVEL_HIGH" = "Exposición significativa detectada";
+/* Title */
+"RISK_LEVEL_VERIFIED_POSITIVE" = "Diagnóstico positivo verificado";
+/* # MENU
+Title */
+"EXPOSURE_CONFIGURATION_JSON_TITLE" = "Configuración de exposición JSON";
+/* Title */
+"DEMO_RESET_POSSIBLE_EXPOSURES_TITLE" = "Restablecer posibles exposiciones";
+/* Title */
+"DEMO_DETECT_EXPOSURES_FROM_SERVER_TITLE" = "Detectar exposiciones del servidor";
+/* Title */
+"DEMO_SET_EXPOSURE_CONFIGURATION_JSON_TITLE" = "Establecer configuración de exposición JSON";
+/* Title */
+"DEMO_EXPORT_POSSIBLE_EXPOSURES_TITLE" = "Exportar posibles exposiciones";
+/* Title */
+"POSSIBLE_EXPOSURES_TITLE" = "Posibles exposiciones";
+/* Title */
+"MENU_POSSIBLE_EXPOSURES_TITLE" = "Posibles exposiciones al COVID-19";
+/* Title */
+"MENU_NOTIFY_OTHERS" = "¿Tiene un diagnóstico positivo?";
+/* Title */
+"MENU_VIEW_PAST_DIAGNOSES_TITLE" = "Ver diagnósticos pasados";
+/* Title */
+"MENU_CHANGE_REGION_TITLE" = "Cambia región";
+/* Title */
+"HEALTH_GUIDELINES_TITLE" = "Pautas de salud de los CDC";
+/* Title */
+"COVID_WATCH_WEBSITE_TITLE" = "Sitio web de Covid Watch";
+/* Title */
+"FAQ_TITLE" = "Preguntas más frecuentes";
+/* Title */
+"PRIVACY_POLICY_TITLE" = "Política de privacidad";
+/* Title */
+"GET_SUPPORT_TITLE" = "Obtener apoyo";
+/* # PAST DIAGNOSES
+Title */
+"PAST_DIAGNOSES_TITLE" = "Mis diagnósticos positivos pasados";
+/* Title */
+"VERIFIED_POSITIVE_TITLE" = "Positivo COVID-19 verificado";
+/* Title */
+"SUBMIT_DATE" = "Fecha de envío:";
+/* Title */
+"SYMPTOMS_START_DATE" = "• Fecha de inicio de los síntomas:";
+/* Title */
+"POSSIBLE_INFECTION_DATE" = "• Fecha posible de infección:";
+/* Title */
+"TEST_DATE" = "• Fecha de la prueba:";
+/* Button */
+"DELETE_DIAGNOSIS" = "Eliminar diagnóstico";
+/* # POSSIBLE EXPOSURES
+Title */
+"EXPOSURE_NOTIFICATIONS_TITLE" = "Notificaciones de exposición";
+/* Message */
+"EXPOSURE_NOTIFICATION_STATUS_UNKOWN_MESSAGE" = "Se desconoce el estado de las notificaciones de exposición.";
+/* Message */
+"EXPOSURE_NOTIFICATION_STATUS_ACTIVE_MESSAGE" = "Se le notificará de posibles exposiciones a COVID-19. Recomendamos que esta configuración permanezca activada hasta que termine la pandemia.";
+/* Message */
+"EXPOSURE_NOTIFICATION_STATUS_DISABLED_MESSAGE" = "Las notificaciones de exposición están desactivadas.";
+/* Message */
+"EXPOSURE_NOTIFICATION_STATUS_BLUETOOTH_OFF_MESSAGE" = "Bluetooth se ha desactivado en el sistema. Se requiere Bluetooth para la notificación de exposición.";
+/* Message */
+"EXPOSURE_NOTIFICATION_STATUS_RESTRICTED_MESSAGE" = "Las notificaciones de exposición deben estar habilitadas para que la aplicación funcione. Toque para revisar su configuración.";
+/* Message */
+"EXPOSURE_NOTIFICATION_STATUS_PAUSED_MESSAGE" = "El usuario pausó las notificaciones de exposición para deshabilitar temporalmente la publicidad y el escaneo de Bluetooth.";
+/* Message */
+"EXPOSURES_LAST_CHECKED_NEVER_MESSAGE" = "Última comprobación: nunca.";
+/* Message */
+"EXPOSURES_LAST_CHECKED_DATE_MESSAGE" = "Última comprobación: %@ .";
+/* Message */
+"EXPOSURES_ARE_SAVED_MESSAGE" = "Cada posible exposición se guarda en esta aplicación y se eliminará automáticamente después de 30 días.";
+/* Title */
+"POSSIBLE_EXPOSURES_NO_EXPOSURES_TITLE" = "No se detectaron exposiciones";
+/* Message */
+"POSSIBLE_EXPOSURES_NO_EXPOSURES_MESSAGE" = "Continúe siguiendo las instrucciones de la autoridad de salud pública y vuelva a consultar más tarde para obtener actualizaciones.";
+/* Title */
+"EXPOSURE_HIGH_RISK_TITLE" = "Alto riesgo:";
+/* Title */
+"EXPOSURE_MEDIUM_RISK_TITLE" = "Medicina. Riesgo:";
+/* Title */
+"EXPOSURE_LOW_RISK_TITLE" = "Riesgo bajo:";
+/* Message */
+"HIGH_RISK_EXPOSURE_DATE_MESSAGE" = "Exposición de alto riesgo en %@";
+/* Message */
+"MEDIUM_RISK_EXPOSURE_DATE_MESSAGE" = "Exposición al riesgo medio en %@";
+/* Message */
+"LOW_RISK_EXPOSURE_DATE_MESSAGE" = "Exposición de bajo riesgo en %@";
+/* # POSSIBLE EXPOSURE DETAIL
+Title */
+"POSSIBLE_EXPOSURE_TITLE" = "Posible exposición";
+/* Title */
+"DETAILS_TITLE" = "Detalles";
+/* Message */
+"POSSIBLE_EXPOSURE_MESSAGE" = "Alguien cercano a usted informó que tenía COVID-19.";
+/* Title */
+"DATE_TITLE" = "Fecha";
+/* Title */
+"DURATION_TITLE" = "Duración";
+/* Title */
+"ATTENUATION_TITLE" = "RLV de atenuación ponderada en el tiempo";
+/* Value */
+"ATTENUATION_VALUE" = "%@ de 8";
+/* Title */
+"ATTENUATION_DURATIONS_TITLE" = "Duraciones de atenuación";
+/* Title */
+"EXPOSURE_INFO_DETAIL_EXPOSURE_DATA" = "Datos de exposición";
+/* Button */
+"EXPOSURE_INFO_DETAIL_LEARN_MORE" = "Aprende más";
+/* Title */
+"EXPOSURE_INFO_DETAIL_ATTENUATION_DURATIONS_TITLE" = "• Duraciones de atenuación:";
+/* Title */
+"EXPOSURE_INFO_DETAIL_TRANMISSION_RISK_LEVEL_TITLE" = "• Nivel de riesgo de transmisión:";
+/* Title */
+"EXPOSURE_INFO_DETAIL_TOTAL_RISK_SCORE_TITLE" = "• Puntaje de riesgo total:";
+/* Title */
+"ATTENUATION_DURATION_THRESHOLDS_TITLE" = "Umbrales de atenuación";
+/* Title */
+"TRANSMISSION_RISK_LEVEL_TITLE" = "Nivel de riesgo de transmisión";
+/* Title */
+"TOTAL_RISK_SCORE_TITLE" = "Puntaje de riesgo total";
+/* Title */
+"TOTAL_RISK_SCORE_VALUE" = "%@ de 8";
+/* Title */
+"EN_RISK_LEVEL_0_TITLE" = "0: sin usar";
+/* Title */
+"EN_RISK_LEVEL_1_TITLE" = "1: Prueba confirmada - Baja";
+/* Title */
+"EN_RISK_LEVEL_2_TITLE" = "2: Prueba confirmada - Estándar";
+/* Title */
+"EN_RISK_LEVEL_3_TITLE" = "3: Prueba confirmada - Alta";
+/* Title */
+"EN_RISK_LEVEL_4_TITLE" = "4: diagnóstico clínico confirmado";
+/* Title */
+"EN_RISK_LEVEL_5_TITLE" = "5: Autoinforme";
+/* Title */
+"EN_RISK_LEVEL_6_TITLE" = "6: caso negativo";
+/* Title */
+"EN_RISK_LEVEL_7_TITLE" = "7: caso recursivo";
+/* Title */
+"EN_RISK_LEVEL_8_TITLE" = "8: Sin usar / personalizado";
+/* Title */
+"NEXT_STEPS_TITLE" = "Próximos pasos";
+/* Message */
+"NEXT_STEPS_MESSAGE" = "• Varius non, quis fermentum, feugiat mecenas eu.";
+/* Title */
+"FIND_TEST_SITE_TITLE" = "Encuentre el sitio de prueba COVID-19";
+/* # REPORTING
+Title */
+"STEP_X_OF_Y_TITLE" = "Paso %@ de %@";
+/* Message */
+"NOTIFY_OTHERS_CALL_TO_ACTION_LONG_MESSAGE" = "Si tiene un diagnóstico de COVID-19, puede ayudar a detener la propagación en sus comunidades compartiéndolo de forma anónima.";
+/* Message */
+"NOTIFY_OTHERS_STEP1_MESSAGE" = "Proporcione un código de verificación de diagnóstico.";
+/* Message */
+"NOTIFY_OTHERS_STEP2_MESSAGE" = "Responde preguntas breves.";
+/* Message */
+"NOTIFY_OTHERS_STEP3_MESSAGE" = "Comparta el diagnóstico sin tener que proporcionar su identidad o ubicación. Esto notificará de forma anónima a otros usuarios de la aplicación sobre una posible exposición si estuvieran cerca.";
+/* Button */
+"SHARE_A_POSITIVE_DIAGNOSIS" = "Seguir";
+/* Button */
+"WHERE_IS_MY_CODE" = "Donde esta mi código?";
+/* Title */
+"WHERE_IS_MY_CODE_TITLE" = "Donde esta mi código?";
+/* Button */
+"WHERE_IS_MY_CODE_INFO" = "Aprende más";
+/* Button */
+"WHERE_IS_MY_CODE_PHONE" = "Llamada";
+/* Button */
+"WHERE_IS_MY_CODE_WEBSITE" = "Visita el sitio web";
+/* Button */
+"WHERE_IS_MY_CODE_SHARE" = "Compartir";
+/* Button */
+"WHERE_IS_MY_CODE_SELECT_REGION" = "Elija una región diferente";
+/* Message */
+"WHERE_IS_MY_CODE_WHAT_IS_QUESTION" = "¿Qué es un código de verificación de diagnóstico?";
+/* Message */
+"WHERE_IS_MY_CODE_WHAT_IS_ANSWER" = "Es una cadena de números proporcionada por una fuente oficial de pruebas COVID-19 para verificar un diagnóstico. Se puede utilizar en la aplicación para compartir un diagnóstico completamente anónimo con otras personas que utilizan la aplicación.";
+/* Title */
+"REPORTING_VERIFY_TITLE" = "Comparta un diagnóstico de forma anónima";
+/* Message */
+"REPORTING_VERIFY_MESSAGE" = "Para compartir un diagnóstico de forma anónima, ingrese su código de verificación a continuación.";
+/* Button */
+"REPORTING_VERIFY_NOTIFY_OTHERS" = "Compartir diagnóstico";
+/* Question */
+"VERIFICATION_CODE_QUESTION" = "¿Cuál es su código de verificación?";
+/* Title */
+"VERIFICATION_CODE_TITLE" = "Introduzca el código";
+/* Message */
+"SYMPTOMS_START_DATE_QUESTION" = "¿Cuándo empezaron sus síntomas?";
+/* Message */
+"SYMPTOMS_START_DATE_ASYMPTOMATIC" = "No tengo sintomas";
+/* Message */
+"EXPOSED_START_DATE_QUESTION" = "¿Cuándo cree que estuvo expuesto?";
+/* Message */
+"TEST_START_DATE_QUESTION" = "¿Cuándo te hiciste la prueba?";
+/* Message */
+"EXPOSED_START_DATE_UNKNOWN" = "Yo no sé.";
+/* Message */
+"TEST_START_DATE_UNKNOWN" = "Yo no sé.";
+/* Message */
+"TEST_DATE_QUESTION" = "¿Cuándo te hiciste la prueba?";
+/* Title */
+"SELECT_DATE" = "Seleccione fecha";
+/* Title */
+"REPORTING_FINISH_TITLE" = "Diagnóstico compartido";
+/* Message */
+"REPORTING_FINISH_SUBTITLE_MESSAGE" = "Gracias por ayudar a frenar la propagación de COVID-19 en su región.";
+/* Message */
+"REPORTING_FINISH_MESSAGE" = "Para continuar ayudando, mantenga la aplicación instalada hasta que termine la pandemia y compártala con amigos y familiares para que ellos también puedan ayudar.";
+/* # GENERIC
+Button */
+"CANCEL" = "Cancelar";
+/* Button */
+"SAVE" = "Salvar";
+/* Button */
+"RESET_TO_DEFAULT" = "Restablecen a los predeterminados";
+/* Title */
+"ERROR" = "Error";
+/* Title */
+"VERIFICATION_INVALID_SERVER_ERROR_TITLE" = "No se puede confirmar el diagnóstico";
+/* Message */
+"VERIFICATION_INVALID_SERVER_ERROR_MESSAGE" = "Esto puede suceder si el código de verificación se ingresó incorrectamente. Vuelva a ingresar su código de verificación.";
+/* Message */
+"VERIFICATION_CODE_USED_ERROR_MESSAGE" = "El código de verificación ya no es válido. Comuníquese con su autoridad de salud pública para obtener un nuevo código.";
+/* Message */
+"VERIFICATION_CODE_EXPIRED_ERROR_MESSAGE" = "El código de verificación caducó. Comuníquese con su autoridad de salud pública para obtener un nuevo código.";
+/* Button */
+"OK" = "Okay";
+/* Button */
+"CONTACT" = "Contacto";
+/* Button */
+"NEXT" = "próximo";
+/* Button */
+"SETTINGS" = "Configuraciones";
+/* Error */
+"BACKGROUND_TIMEOUT" = "Se acabó el tiempo de fondo.";
+/* Error */
+"ACCES_TO_EN_DENIED" = "Acceso denegado a las notificaciones de exposición.";
+/* Title */
+"ENABLE_EXPOSURE_NOTIFICATIONS_SHARE_DIAGNOSIS_TITLE" = "¿Habilitar notificaciones de exposición?";
+/* Message */
+"ENABLE_EXPOSURE_NOTIFICATIONS_SHARE_DIAGNOSIS_MESSAGE" = "Las notificaciones de exposición deben estar habilitadas para compartir un diagnóstico.";
+/* # USER NOTIFICATION
+User notification. Do NOT add period at the end. */
+"USER_NOTIFICATION_EXPLANATION" = "Alguien cercano a usted informó que tenía COVID-19";
+/* User notification title */
+"USER_NOTIFICATION_BLUETOOTH_OFF_TITLE" = "Bluetooth desactivado";
+/* User notification */
+"USER_NOTIFICATION_BLUETOOTH_OFF_BODY" = "Active Bluetooth para continuar usando el registro de exposición y las notificaciones de COVID-19.";
+/* Message */
+"USER_NOTIFICATION_AUTHORIZATION_STATUS_NOT_DETERMINED_DESCRIPTION" = "El usuario aún no ha elegido si la aplicación puede publicar notificaciones de usuario.";
+/* Message */
+"USER_NOTIFICATION_AUTHORIZATION_STATUS_DENIED_DESCRIPTION" = "La aplicación no está autorizada a publicar notificaciones de usuario.";
+/* Message */
+"USER_NOTIFICATION_AUTHORIZATION_STATUS_AUTHORIZED_DESCRIPTION" = "La aplicación está autorizada a publicar notificaciones de usuario.";
+/* Message */
+"USER_NOTIFICATION_AUTHORIZATION_STATUS_PROVISIONAL_DESCRIPTION" = "La aplicación está autorizada a publicar notificaciones de usuario no interrumpidas.";

@@ -1,0 +1,432 @@
+/* Abstract:
+All strings for the project, separated for localization.
+# SPLASH
+Message */
+"SPLASH_MESSAGE" = "在一起，我们有权停止COVID-19。";
+/* Title */
+"COVID_WATCH_LOGO_STACKED_IMAGE_ACCESSIBILITY_LABEL" = "酷酷的Covid手表徽标";
+/* Title */
+"GENERIC_PUBLIC_HEALTH_DEPARTMENT_IMAGE_ACCESSIBILITY_LABEL" = "公共卫生局";
+/* Title */
+"SELECT_REGION" = "选择地区";
+/* Title */
+"SELECTED_REGION" = "地区：";
+/* Message */
+"REGION_SELECTION_PRIVACY_DISCLAIMER" = "我们重视您的隐私。选择一个区域即可查看本地医疗资源，而无需共享您的位置或身份。您可以随时更改此选择。";
+/* Button */
+"CONTINUE" = "继续";
+/* Button */
+"BACK" = "背部";
+/* Title */
+"SPLASH_IMAGE_ACCESSIBILITY_LABEL" = "人民网";
+/* Button */
+"GET_STARTED" = "开始使用";
+/* Title */
+"POWERED_BY_CW_IMAGE_ACCESSIBILITY_LABEL" = "由Covid Watch支持ADHS";
+/* # HEADER BAR
+Title */
+"DEMO_TITLE" = "演示";
+/* Title */
+"DEMO_SUBTITLE" = "公共卫生局";
+/* Button */
+"MENU" = "菜单";
+/* Message */
+"MENU_ACCESSIBILITY_HINT" = "显示菜单";
+/* Button */
+"DISMISS" = "解雇";
+/* Message */
+"DISMISS_ACCESSIBILITY_HINT" = "关闭当前视图";
+/* # ONBOARDING
+Title */
+"HOW_IT_WORKS_TITLE" = "这个怎么运作";
+/* Button */
+"HOW_IT_WORKS_PAGE_CONTROL_PREVIOUS_BUTTON_ACCESSIBILITY_LABEL" = "以前";
+/* Message */
+"HOW_IT_WORKS_PAGE_CONTROL_PREVIOUS_BUTTON_ACCESSIBILITY_HINT" = "导航到上一页";
+/* Button */
+"HOW_IT_WORKS_PAGE_CONTROL_NEXT_BUTTON_ACCESSIBILITY_LABEL" = "下一个";
+/* Message */
+"HOW_IT_WORKS_PAGE_CONTROL_NEXT_BUTTON_ACCESSIBILITY_HINT" = "导航到下一页";
+/* ## HOW IT WORKS 0
+Title */
+"WELCOME_IMAGE_ACCESSIBILITY_LABEL" = "欢迎";
+/* Title */
+"WELCOME_TITLE" = "欢迎来到";
+/* Title */
+"WELCOME_APP_NAME" = "Covid Watch曝光通知应用程式";
+/* Message */
+"WELCOME_MESSAGE" = "总之，我们有能力通过安全，可靠和匿名的暴露通知来阻止COVID-19的传播。";
+/* ## HOW IT WORKS 1
+Title */
+"HOW_IT_WORKS_1_SUBTITLE" = "总是匿名";
+/* Title */
+"HOW_IT_WORKS_1_IMAGE_ACCESSIBILITY_LABEL" = "山姆和简聊天";
+/* Message */
+"HOW_IT_WORKS_1_MESSAGE" = "当Sam和Jane聊天时，他们的手机会记录彼此的蓝牙信号，并且该应用程序会将它们安全地列出为随机数。永远不会记录个人信息和位置。";
+/* ## HOW IT WORKS 2
+Title */
+"HOW_IT_WORKS_2_SUBTITLE" = "通知其他人";
+/* Title */
+"HOW_IT_WORKS_2_IMAGE_ACCESSIBILITY_LABEL" = "山姆测试阳性";
+/* Message */
+"HOW_IT_WORKS_2_MESSAGE" = "几天后，Sam被确诊为COVID-19。他与该应用共享诊断，然后将该应用通知附近的其他人。";
+/* ## HOW IT WORKS 3
+Title */
+"HOW_IT_WORKS_3_SUBTITLE" = "得到通知";
+/* Title */
+"HOW_IT_WORKS_3_IMAGE_ACCESSIBILITY_LABEL" = "简的电话收到通知";
+/* Message */
+"HOW_IT_WORKS_3_MESSAGE" = "简收到一条通知，说她在一个测试阳性的匿名人士附近。该应用程序说明下一步做什么以及如何查找本地资源。";
+/* ## HOW IT WORKS 4
+Title */
+"HOW_IT_WORKS_4_SUBTITLE" = "帮助社区";
+/* Title */
+"HOW_IT_WORKS_4_IMAGE_ACCESSIBILITY_LABEL" = "简和萨姆帮助维护社区安全";
+/* Message */
+"HOW_IT_WORKS_4_MESSAGE" = "通过启用通知并在有暴露他人的危险时留在家里，它们有助于防止COVID-19在其社区内传播。";
+/* Button */
+"CONTINUE_SETUP" = "继续设定";
+/* # SETUP
+Button */
+"ENABLE" = "启用";
+/* Button */
+"NOT_NOW" = "现在不要";
+/* ## SETUP 1
+Title */
+"SETUP_PRE_TITLE" = "设置%@ of %@";
+/* Title */
+"ENABLE_EXPOSURE_NOTIFICATIONS_TITLE" = "启用曝光通知";
+/* Title */
+"ENABLE_EXPOSURE_NOTIFICATIONS_IMAGE_ACCESSIBILITY_LABEL" = "启用曝光通知";
+/* Message */
+"ENABLE_EXPOSURE_NOTIFICATIONS_MESSAGE" = "这些通知将让您知道您是否曾与某个人接触，该人后来报告称自己的COVID-19测试呈阳性。它可以随时关闭。";
+/* ## SETUP 2
+Title */
+"ENABLE_PUSH_NOTIFICATIONS_TITLE" = "启用推送通知";
+/* Title */
+"ENABLE_PUSH_NOTIFICATIONS_IMAGE_ACCESSIBILITY_LABEL" = "启用推送通知";
+/* Message */
+"ENABLE_PUSH_NOTIFICATIONS_MESSAGE" = "这些通知将让您知道应用设置是否阻止其正常运行。仅当关闭蓝牙时才会发生这种情况。";
+/* ## SETUP 3
+Title */
+"SETUP_3_IMAGE_ACCESSIBILITY_LABEL" = "3个人看着电话";
+/* Message */
+"SETUP_3_1_MESSAGE" = "而已。安装完成。";
+/* Message */
+"SETUP_3_1_1_MESSAGE" = "启用曝光通知后，该应用将在您一天的活动中检测到曝光。";
+/* Message */
+"SETUP_3_2_TITLE" = "您现在可以...";
+/* Message */
+"SETUP_3_3_MESSAGE" = "•获取曝光通知\n •匿名通知其他人\n •获取当地公共卫生资源和建议";
+/* Title */
+"SETUP_3_GO_TO_HOME" = "开始使用";
+/* # HOME
+Title */
+"HOME_WELCOME_MESSAGE" = "欢迎！点按一下以了解应用程序的工作方式。与朋友和家人分享，以提高曝光数据的准确性。";
+/* Title */
+"HOME_IMAGE_ACCESSIBILITY_LABEL" = "爱地球";
+/* Title */
+"HOME_POSSIBLE_EXPOSURES_SUMMARY_TITLE" = "可能的接触总结";
+/* Title */
+"NOTIFY_OTHERS_CALL_TO_ACTION_TITLE" = "有肯定的诊断？";
+/* Message */
+"NOTIFY_OTHERS_CALL_TO_ACTION_MESSAGE" = "与他人匿名分享，以帮助阻止在您所在地区的传播。";
+/* Title */
+"NOTIFY_OTHERS_TITLE" = "如何分享积极的诊断";
+/* Button */
+"HOME_NOTIFY_OTHERS_BUTTON" = "如何分享";
+/* Message */
+"HOME_REGION_DISABLED_MESSAGE" = "目前正在开发全州应用程序支持。您将继续获得曝光通知，但是如果您所在地区拥有完整的应用程序支持，则只能共享匿名的COVID-19诊断。";
+/* Button */
+"HOME_REGION_DISABLED_SELECT_OTHER" = "选择其他地区";
+/* Button */
+"NOTIFY_OTHERS" = "匿名共享诊断";
+/* Button */
+"SHARE_THE_APP" = "分享应用";
+/* Message */
+"SHARE_THE_APP_SHEET_MESSAGE" = "成为Covid Watcher，并帮助您的社区保持安全。";
+/* Message */
+"SHOWS_MORE_INFO_ACCESSIBILITY_HINT" = "显示更多信息";
+/* Message */
+"UNKNOWN_DAYS_SINCE_LAST_EXPOSURE" = "自上次曝光以来的未知天数";
+/* Message */
+"HOME_TOTAL_RISK_SCORE_ACCESSIBILITY_LABEL" = "%d总风险评分（0-8评分）";
+/* Message */
+"HOME_NEXT_STEPS_PRE_MESSAGE" = "启用暴露通知后，您将收到可能暴露于COVID-19的通知。";
+/* Message */
+"NEXT_STEPS_HOME_RISK_LEVEL_LOW_MESSAGE" = "下一步：";
+/* Message */
+"NEXT_STEPS_HOME_RISK_LEVEL_HIGH_MESSAGE" = "根据您可能的曝光次数和所选区域进行的下一步：";
+/* Message */
+"NEXT_STEPS_HOME_RISK_LEVEL_VERIFIED_POSITIVE_MESSAGE" = "根据所选区域的后续步骤：";
+/* Special */
+"HOME_DAYS_ROW_1_LABEL" = "天";
+/* Special */
+"HOME_DAYS_ROW_2_LABEL" = "自上次曝光以来";
+/* Special */
+"HOME_TOTAL_EXPOSURES_ROW_1_LABEL" = "曝光";
+/* Special */
+"HOME_TOTAL_EXPOSURES_ROW_2_LABEL" = "最近14天";
+/* Special */
+"HOME_TOTAL_RISK_SCORE_ROW_1_LABEL" = "总风险评分";
+/* Special */
+"HOME_TOTAL_RISK_SCORE_ROW_2_LABEL" = "（0-8比例）";
+/* Title */
+"RISK_LEVEL_LOW" = "无明显暴露";
+/* Title */
+"RISK_LEVEL_HIGH" = "检测到大量接触";
+/* Title */
+"RISK_LEVEL_VERIFIED_POSITIVE" = "经验证的阳性诊断";
+/* # MENU
+Title */
+"EXPOSURE_CONFIGURATION_JSON_TITLE" = "曝光设定JSON";
+/* Title */
+"DEMO_RESET_POSSIBLE_EXPOSURES_TITLE" = "重设可能的曝光";
+/* Title */
+"DEMO_DETECT_EXPOSURES_FROM_SERVER_TITLE" = "从服务器检测曝光";
+/* Title */
+"DEMO_SET_EXPOSURE_CONFIGURATION_JSON_TITLE" = "设置曝光配置JSON";
+/* Title */
+"DEMO_EXPORT_POSSIBLE_EXPOSURES_TITLE" = "导出可能的暴露";
+/* Title */
+"POSSIBLE_EXPOSURES_TITLE" = "可能的暴露";
+/* Title */
+"MENU_POSSIBLE_EXPOSURES_TITLE" = "可能的COVID-19暴露";
+/* Title */
+"MENU_NOTIFY_OTHERS" = "有肯定的诊断？";
+/* Title */
+"MENU_VIEW_PAST_DIAGNOSES_TITLE" = "查看过去的诊断";
+/* Title */
+"MENU_CHANGE_REGION_TITLE" = "变更地区";
+/* Title */
+"HEALTH_GUIDELINES_TITLE" = "CDC健康指南";
+/* Title */
+"COVID_WATCH_WEBSITE_TITLE" = "Covid Watch网站";
+/* Title */
+"FAQ_TITLE" = "常问问题";
+/* Title */
+"PRIVACY_POLICY_TITLE" = "隐私政策";
+/* Title */
+"GET_SUPPORT_TITLE" = "得到支持";
+/* # PAST DIAGNOSES
+Title */
+"PAST_DIAGNOSES_TITLE" = "我过去的积极诊断";
+/* Title */
+"VERIFIED_POSITIVE_TITLE" = "已验证COVID-19阳性";
+/* Title */
+"SUBMIT_DATE" = "提交日期：";
+/* Title */
+"SYMPTOMS_START_DATE" = "•症状开始日期：";
+/* Title */
+"POSSIBLE_INFECTION_DATE" = "•可能的感染日期：";
+/* Title */
+"TEST_DATE" = "•测试日期：";
+/* Button */
+"DELETE_DIAGNOSIS" = "删除诊断";
+/* # POSSIBLE EXPOSURES
+Title */
+"EXPOSURE_NOTIFICATIONS_TITLE" = "曝光通知";
+/* Message */
+"EXPOSURE_NOTIFICATION_STATUS_UNKOWN_MESSAGE" = "曝光通知的状态未知。";
+/* Message */
+"EXPOSURE_NOTIFICATION_STATUS_ACTIVE_MESSAGE" = "您将被告知可能接触COVID-19的信息。我们建议在大流行结束之前保持此设置。";
+/* Message */
+"EXPOSURE_NOTIFICATION_STATUS_DISABLED_MESSAGE" = "曝光通知被禁用。";
+/* Message */
+"EXPOSURE_NOTIFICATION_STATUS_BLUETOOTH_OFF_MESSAGE" = "系统上的蓝牙已关闭。曝光通知需要蓝牙。";
+/* Message */
+"EXPOSURE_NOTIFICATION_STATUS_RESTRICTED_MESSAGE" = "必须启用曝光通知才能使应用程序正常运行。点击以查看您的设置。";
+/* Message */
+"EXPOSURE_NOTIFICATION_STATUS_PAUSED_MESSAGE" = "用户暂停了“曝光通知”以暂时禁用蓝牙广告和扫描。";
+/* Message */
+"EXPOSURES_LAST_CHECKED_NEVER_MESSAGE" = "上次检查：从不。";
+/* Message */
+"EXPOSURES_LAST_CHECKED_DATE_MESSAGE" = "上次检查： %@ 。";
+/* Message */
+"EXPOSURES_ARE_SAVED_MESSAGE" = "每种可能的曝光都会保存在此应用中，并在30天后自动删除。";
+/* Title */
+"POSSIBLE_EXPOSURES_NO_EXPOSURES_TITLE" = "未检测到暴露";
+/* Message */
+"POSSIBLE_EXPOSURES_NO_EXPOSURES_MESSAGE" = "继续遵循公共卫生当局的指导，并稍后再检查是否有更新。";
+/* Title */
+"EXPOSURE_HIGH_RISK_TITLE" = "高风险：";
+/* Title */
+"EXPOSURE_MEDIUM_RISK_TITLE" = "中风险：";
+/* Title */
+"EXPOSURE_LOW_RISK_TITLE" = "低风险：";
+/* Message */
+"HIGH_RISK_EXPOSURE_DATE_MESSAGE" = "%@高风险敞口";
+/* Message */
+"MEDIUM_RISK_EXPOSURE_DATE_MESSAGE" = "%@中等风险";
+/* Message */
+"LOW_RISK_EXPOSURE_DATE_MESSAGE" = "%@低风险敞口";
+/* # POSSIBLE EXPOSURE DETAIL
+Title */
+"POSSIBLE_EXPOSURE_TITLE" = "可能的暴露";
+/* Title */
+"DETAILS_TITLE" = "细节";
+/* Message */
+"POSSIBLE_EXPOSURE_MESSAGE" = "您附近的某个人报告患有COVID-19。";
+/* Title */
+"DATE_TITLE" = "日期";
+/* Title */
+"DURATION_TITLE" = "持续时间";
+/* Title */
+"ATTENUATION_TITLE" = "时间加权衰减RLV";
+/* Value */
+"ATTENUATION_VALUE" = "%@ of 8";
+/* Title */
+"ATTENUATION_DURATIONS_TITLE" = "衰减持续时间";
+/* Title */
+"EXPOSURE_INFO_DETAIL_EXPOSURE_DATA" = "曝光数据";
+/* Button */
+"EXPOSURE_INFO_DETAIL_LEARN_MORE" = "学到更多";
+/* Title */
+"EXPOSURE_INFO_DETAIL_ATTENUATION_DURATIONS_TITLE" = "•衰减持续时间：";
+/* Title */
+"EXPOSURE_INFO_DETAIL_TRANMISSION_RISK_LEVEL_TITLE" = "•传播风险等级：";
+/* Title */
+"EXPOSURE_INFO_DETAIL_TOTAL_RISK_SCORE_TITLE" = "•总风险评分：";
+/* Title */
+"ATTENUATION_DURATION_THRESHOLDS_TITLE" = "衰减阈值";
+/* Title */
+"TRANSMISSION_RISK_LEVEL_TITLE" = "传播风险等级";
+/* Title */
+"TOTAL_RISK_SCORE_TITLE" = "总风险评分";
+/* Title */
+"TOTAL_RISK_SCORE_VALUE" = "%@ of 8";
+/* Title */
+"EN_RISK_LEVEL_0_TITLE" = "0：未使用";
+/* Title */
+"EN_RISK_LEVEL_1_TITLE" = "1：已确认测试-低";
+/* Title */
+"EN_RISK_LEVEL_2_TITLE" = "2：确认测试-标准";
+/* Title */
+"EN_RISK_LEVEL_3_TITLE" = "3：确认测试-高";
+/* Title */
+"EN_RISK_LEVEL_4_TITLE" = "4：确诊临床";
+/* Title */
+"EN_RISK_LEVEL_5_TITLE" = "5：自我报告";
+/* Title */
+"EN_RISK_LEVEL_6_TITLE" = "6：否定情况";
+/* Title */
+"EN_RISK_LEVEL_7_TITLE" = "7：递归的情况";
+/* Title */
+"EN_RISK_LEVEL_8_TITLE" = "8：未使用/自定义";
+/* Title */
+"NEXT_STEPS_TITLE" = "下一步";
+/* Message */
+"NEXT_STEPS_MESSAGE" = "•Varius non，quis fermentum，feugiat maecenas eu。";
+/* Title */
+"FIND_TEST_SITE_TITLE" = "查找COVID-19测试地点";
+/* # REPORTING
+Title */
+"STEP_X_OF_Y_TITLE" = "第%@步骤，共%@";
+/* Message */
+"NOTIFY_OTHERS_CALL_TO_ACTION_LONG_MESSAGE" = "如果您诊断为COVID-19，可以通过匿名共享来帮助阻止社区中的传播。";
+/* Message */
+"NOTIFY_OTHERS_STEP1_MESSAGE" = "提供诊断验证码。";
+/* Message */
+"NOTIFY_OTHERS_STEP2_MESSAGE" = "回答简短的问题。";
+/* Message */
+"NOTIFY_OTHERS_STEP3_MESSAGE" = "分享诊断，而无需提供您的身份或位置。如果其他应用程序用户在附近，它将以匿名方式通知其他用户。";
+/* Button */
+"SHARE_A_POSITIVE_DIAGNOSIS" = "继续";
+/* Button */
+"WHERE_IS_MY_CODE" = "我的代码在哪里？";
+/* Title */
+"WHERE_IS_MY_CODE_TITLE" = "我的代码在哪里？";
+/* Button */
+"WHERE_IS_MY_CODE_INFO" = "学到更多";
+/* Button */
+"WHERE_IS_MY_CODE_PHONE" = "呼叫";
+/* Button */
+"WHERE_IS_MY_CODE_WEBSITE" = "访问网站";
+/* Button */
+"WHERE_IS_MY_CODE_SHARE" = "分享";
+/* Button */
+"WHERE_IS_MY_CODE_SELECT_REGION" = "选择其他地区";
+/* Message */
+"WHERE_IS_MY_CODE_WHAT_IS_QUESTION" = "什么是诊断验证码？";
+/* Message */
+"WHERE_IS_MY_CODE_WHAT_IS_ANSWER" = "这是一串数字，由官方COVID-19测试来源提供以验证诊断。可以在应用程序中使用它来与使用该应用程序的其他人共享完全匿名的诊断。";
+/* Title */
+"REPORTING_VERIFY_TITLE" = "匿名分享诊断";
+/* Message */
+"REPORTING_VERIFY_MESSAGE" = "要匿名共享诊断，请在下面输入您的验证码。";
+/* Button */
+"REPORTING_VERIFY_NOTIFY_OTHERS" = "共享诊断";
+/* Question */
+"VERIFICATION_CODE_QUESTION" = "您的验证码是什么？";
+/* Title */
+"VERIFICATION_CODE_TITLE" = "输入验证码";
+/* Message */
+"SYMPTOMS_START_DATE_QUESTION" = "您的症状何时开始？";
+/* Message */
+"SYMPTOMS_START_DATE_ASYMPTOMATIC" = "我没有症状。";
+/* Message */
+"EXPOSED_START_DATE_QUESTION" = "你什么时候觉得自己暴露了？";
+/* Message */
+"TEST_START_DATE_QUESTION" = "你什么时候测试的？";
+/* Message */
+"EXPOSED_START_DATE_UNKNOWN" = "我不知道。";
+/* Message */
+"TEST_START_DATE_UNKNOWN" = "我不知道。";
+/* Message */
+"TEST_DATE_QUESTION" = "你什么时候测试的？";
+/* Title */
+"SELECT_DATE" = "选择日期";
+/* Title */
+"REPORTING_FINISH_TITLE" = "诊断共享";
+/* Message */
+"REPORTING_FINISH_SUBTITLE_MESSAGE" = "感谢您帮助减缓了COVID-19在您所在地区的传播。";
+/* Message */
+"REPORTING_FINISH_MESSAGE" = "要继续提供帮助，请在大流行结束之前一直安装该应用程序，然后与亲朋好友共享该应用程序，以便他们也能提供帮助。";
+/* # GENERIC
+Button */
+"CANCEL" = "取消";
+/* Button */
+"SAVE" = "保存";
+/* Button */
+"RESET_TO_DEFAULT" = "重置为默认";
+/* Title */
+"ERROR" = "错误";
+/* Title */
+"VERIFICATION_INVALID_SERVER_ERROR_TITLE" = "无法确认诊断";
+/* Message */
+"VERIFICATION_INVALID_SERVER_ERROR_MESSAGE" = "如果验证码输入错误，可能会发生这种情况。请重新输入您的验证码。";
+/* Message */
+"VERIFICATION_CODE_USED_ERROR_MESSAGE" = "验证码不再有效。请与您的公共卫生部门联系以获取新密码。";
+/* Message */
+"VERIFICATION_CODE_EXPIRED_ERROR_MESSAGE" = "验证码已过期。请与您的公共卫生部门联系以获取新密码。";
+/* Button */
+"OK" = "好";
+/* Button */
+"CONTACT" = "联系";
+/* Button */
+"NEXT" = "下一个";
+/* Button */
+"SETTINGS" = "设定值";
+/* Error */
+"BACKGROUND_TIMEOUT" = "跑出背景时间。";
+/* Error */
+"ACCES_TO_EN_DENIED" = "拒绝访问曝光通知。";
+/* Title */
+"ENABLE_EXPOSURE_NOTIFICATIONS_SHARE_DIAGNOSIS_TITLE" = "启用曝光通知？";
+/* Message */
+"ENABLE_EXPOSURE_NOTIFICATIONS_SHARE_DIAGNOSIS_MESSAGE" = "需要启用“曝光通知”以共享诊断。";
+/* # USER NOTIFICATION
+User notification. Do NOT add period at the end. */
+"USER_NOTIFICATION_EXPLANATION" = "您附近的某个人报告患有COVID-19";
+/* User notification title */
+"USER_NOTIFICATION_BLUETOOTH_OFF_TITLE" = "蓝牙关闭";
+/* User notification */
+"USER_NOTIFICATION_BLUETOOTH_OFF_BODY" = "打开蓝牙以继续使用COVID-19曝光记录和通知。";
+/* Message */
+"USER_NOTIFICATION_AUTHORIZATION_STATUS_NOT_DETERMINED_DESCRIPTION" = "用户尚未选择应用程序是否可以发布用户通知。";
+/* Message */
+"USER_NOTIFICATION_AUTHORIZATION_STATUS_DENIED_DESCRIPTION" = "该应用程序无权发布用户通知。";
+/* Message */
+"USER_NOTIFICATION_AUTHORIZATION_STATUS_AUTHORIZED_DESCRIPTION" = "该应用程序有权发布用户通知。";
+/* Message */
+"USER_NOTIFICATION_AUTHORIZATION_STATUS_PROVISIONAL_DESCRIPTION" = "该应用程序有权发布不间断的用户通知。";
