@@ -57,8 +57,7 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
         _ diagnosisKeys: [ENTemporaryExposureKey],
         verificationPayload: String? = nil,
         hmacKey: Data? = nil,
-        revisionToken: String? = nil,
-        completion: @escaping (Result<CodablePublishExposureRevisionToken, Error>) -> Void
+        completion: @escaping (Error?) -> Void
     ) {
         os_log(
             "Posting %d diagnosis key(s) ...",
@@ -81,12 +80,11 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
             appPackageName: self.configuration.appConfiguration.appPackageName,
             verificationPayload: verificationPayload ?? "",
             hmackey: hmacKey?.base64EncodedString() ?? "",
-            padding: Data.random(count: Int.random(in: 1024..<2048)).base64EncodedString(),
-            revisionToken: revisionToken ?? ""
+            padding: Data.random(count: Int.random(in: 1024..<2048)).base64EncodedString()
         )
 
         guard let requestURL = URL(string: self.configuration.exposureBaseURLString) else {
-            completion(.failure(URLError(.badURL)))
+            completion(URLError(.badURL))
             return
         }
 
@@ -96,7 +94,7 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
             encoder.dataEncodingStrategy = .base64
             uploadData = try encoder.encode(publishExposure)
         } catch {
-            completion(.failure(error))
+            completion(error)
             return
         }
 
@@ -114,7 +112,6 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
                 }
                 return element.data
         }
-        .decode(type: CodablePublishExposureRevisionToken.self, decoder: JSONDecoder())
         .receive(on: DispatchQueue.main)
         .receive(subscriber: Subscribers.Sink(receiveCompletion: { (sinkCompletion) in
             switch sinkCompletion {
@@ -126,16 +123,16 @@ public class GoogleExposureNotificationsDiagnosisKeyServer: ExposureNotification
                         diagnosisKeys.count,
                         error as CVarArg
                     )
-                    completion(.failure(error))
+                    completion(error)
                 case .finished: ()
             }
-        }, receiveValue: { (value) in
+        }, receiveValue: { (_) in
             os_log(
                 "Posted %d diagnosis key(s)",
                 log: .en,
                 diagnosisKeys.count
             )
-            completion(.success(value))
+            completion(nil)
         }))
     }
 

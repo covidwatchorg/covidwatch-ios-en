@@ -292,29 +292,25 @@ struct ReportingStep2: View {
                                             Server.shared.postDiagnosisKeys(
                                                 keys,
                                                 verificationPayload: self.diagnosis.verificationCertificate,
-                                                hmacKey: self.diagnosis.hmacKey,
-                                                revisionToken: self.localStore.revisionToken) { (result) in
+                                                hmacKey: self.diagnosis.hmacKey) { (error) in
 
-                                                switch result {
-                                                case let .success(codableRevisionToken):
                                                     // Step 9
                                                     // Since this is the last step, ensure `isSubmittingDiagnosis` is set to false.
                                                     defer {
                                                         self.isSubmittingDiagnosis = false
                                                     }
 
+                                                    if let error = error {
+                                                        errorHandler(error)
+                                                    }
+
                                                     self.diagnosis.isSubmitted = true
                                                     self.localStore.diagnoses.insert(self.diagnosis, at: 0)
-                                                    self.localStore.revisionToken = codableRevisionToken.revisionToken
 
                                                     withAnimation {
                                                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                                                         self.isShowingNextStep = true
                                                     }
-
-                                                case let .failure(error):
-                                                    errorHandler(error)
-                                                }
                                             }
                                         }
 

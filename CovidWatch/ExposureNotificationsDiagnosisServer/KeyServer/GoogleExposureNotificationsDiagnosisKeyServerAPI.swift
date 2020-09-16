@@ -13,11 +13,6 @@ public struct CodablePublishExposure: Codable {
     let verificationPayload: String
     let hmackey: String
     let padding: String
-    let revisionToken: String
-}
-
-public struct CodablePublishExposureRevisionToken: Codable {
-    let revisionToken: String
 }
 
 public struct CodableDiagnosisKey: Codable, Equatable {
