@@ -130,21 +130,19 @@ struct Menu: View {
                                 .environmentObject(self.localStore)
                         }
 
-                        if self.localStore.region.id != .arizonaState {
-                            Group {
-                                Divider()
+                        Group {
+                            Divider()
 
-                                Button(action: {
-                                    self.isShowingNotifyOthers.toggle()
-                                }) {
-                                    HStack {
-                                        Text("MENU_NOTIFY_OTHERS")
-                                    }.modifier(MenuTitleText())
-                                }
-                                .sheet(isPresented: $isShowingNotifyOthers) {
-                                    ReportingStep1()
-                                        .environmentObject(self.localStore)
-                                }
+                            Button(action: {
+                                self.isShowingNotifyOthers.toggle()
+                            }) {
+                                HStack {
+                                    Text("MENU_NOTIFY_OTHERS")
+                                }.modifier(MenuTitleText())
+                            }
+                            .sheet(isPresented: $isShowingNotifyOthers) {
+                                ReportingStep1()
+                                    .environmentObject(self.localStore)
                             }
                         }
 
